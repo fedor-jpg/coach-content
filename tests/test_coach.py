@@ -1,4 +1,5 @@
 import argparse
+import hashlib
 import importlib.util
 import json
 import os
@@ -232,7 +233,46 @@ class StateTests(unittest.TestCase):
 
 
 class RenderTests(unittest.TestCase):
-    def test_binary_rehydration_preserves_relative_receipts_and_hash_guards(self):
+    def test_hook_revision_refreshes_cover_caption_and_preserves_audio(self):
+        with tempfile.TemporaryDirectory(prefix="coach-hook-revision-") as directory:
+            folder = Path(directory)
+            source = fixture(folder)
+            spec = {"source": source.name, "rights": "Generated pattern and tone; no verified speech",
+                    "test_media": True, "clips": [{"start": 0, "end": 2}], "framing": "contain",
+                    "hook": "Check one decision.", "hook_seconds": 0.75, "cta": "TEST EXAMPLE", "cta_seconds": 0.75,
+                    "captions": [], "caption_engine": "drawtext", "cover_title": "Check one decision.",
+                    "cover_subtitle": "Mechanical fixture only", "cover_time": 1, "credit": "GENERATED TEST MEDIA"}
+            coach.save(folder / "edit.json", spec)
+            first = invoke("render", folder / "edit.json", folder / "reel.mp4")
+            first_cover = invoke("cover", folder / "edit.json", folder / "cover.jpg")
+            suffix = "\nTEST EXAMPLE\nGenerated mechanical fixture; no endorsement or send.\n"
+            (folder / "caption.txt").write_text(spec["hook"] + suffix, encoding="utf-8")
+            preserved = {p: coach.digest(p) for p in folder.iterdir() if p.is_file()}
+            spec["hook"] = spec["cover_title"] = "What would change your mind?"
+            coach.save(folder / "edit-revision.json", spec)
+            second = invoke("render", folder / "edit-revision.json", folder / "reel-revision.mp4")
+            second_cover = invoke("cover", folder / "edit-revision.json", folder / "cover-revision.jpg")
+            (folder / "caption-revision.txt").write_text(spec["hook"] + suffix, encoding="utf-8")
+            self.assertNotEqual(first["output_sha256"], second["output_sha256"])
+            self.assertNotEqual(first_cover["sha256"], second_cover["sha256"])
+            self.assertEqual((folder / "caption-revision.txt").read_text(encoding="utf-8"), spec["cover_title"] + suffix)
+            self.assertNotEqual(coach.digest(folder / "caption.txt"), coach.digest(folder / "caption-revision.txt"))
+            for path, digest in preserved.items():
+                self.assertEqual(coach.digest(path), digest)
+            hashes = []
+            for name in ("reel.mp4", "reel-revision.mp4"):
+                pcm = subprocess.run(["ffmpeg", "-v", "error", "-i", str(folder / name), "-map", "0:a:0",
+                                      "-c:a", "pcm_s16le", "-f", "s16le", "-"], capture_output=True, check=True).stdout
+                self.assertTrue(pcm)
+                hashes.append(hashlib.sha256(pcm).hexdigest())
+            self.assertEqual(*hashes)
+            self.assertEqual(first["source_sha256"], second["source_sha256"])
+            receipt = coach.load(folder / "reel-revision.receipt.json")
+            self.assertEqual(receipt["spec"]["captions"], [])
+            self.assertIn("human playback and editorial acceptance required", receipt["verification"])
+            self.assertEqual(coach.probe(folder / "cover-revision.jpg")["streams"][0]["width"], 720)
+
+    def test_complete_snapshot_restores_exact_files_before_locator_advances(self):
         with tempfile.TemporaryDirectory(prefix="coach-rehydrate-") as directory:
             base = Path(directory)
             original, stored, restored = [base / name for name in ("original campaign", "local binary fixture", "new execution")]
@@ -254,38 +294,58 @@ class RenderTests(unittest.TestCase):
                                 ("edit", "renders/reel.receipt.json"), ("delivery", "delivery.json")):
                 invoke("set", state, "--stage", stage, "--file", original / name)
                 invoke("approve", state, "--stage", stage, "--by", "MECHANICAL FIXTURE")
+            (original / "transcript.txt").write_text("Generated pattern and tone; not real coach speech.\n", encoding="utf-8")
             skill = (ROOT / "plugin/skills/campaign/SKILL.md").read_text(encoding="utf-8")
-            template = json.loads(skill.split("```json\n")[2].split("```", 1)[0])["items"][0]
-            pointers = []
-            for local in (source, original / "renders/reel.mp4"):
-                shutil.copyfile(local, stored / local.name)
-                pointers.append({**template, "workspace_path": local.relative_to(original).as_posix(),
-                                 "artifact_url": "https://example.invalid/artifact/mechanical-fixture",
-                                 "artifact_path": local.name, "artifact_version": "mechanical-v1",
-                                 "sha256": coach.digest(local), "bytes": local.stat().st_size})
-            coach.save(original / "media-locations.json", {"items": pointers})
-            for local in original.rglob("*.json"):
-                target = restored / local.relative_to(original)
+            index = json.loads(skill.split("```json\n")[2].split("```", 1)[0])
+            previous = {"artifact_url": "https://example.invalid/artifact/previous-fixture",
+                        "artifact_version": "fixture-v1", "index_path": "snapshot.json", "index_sha256": "previous-fixture"}
+            locator = base / "project-locator.json"
+            coach.save(locator, previous)
+            locator_hash = coach.digest(locator)
+            index["previous_locator"] = previous
+            index["files"] = [{"path": p.relative_to(original).as_posix(), "sha256": coach.digest(p), "bytes": p.stat().st_size}
+                              for p in sorted(original.rglob("*")) if p.is_file()]
+            for entry in index["files"]:
+                target = stored / entry["path"]
                 target.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(local, target)
+                shutil.copyfile(original / entry["path"], target)
+            coach.save(stored / "snapshot.json", index)
+            candidate = {**previous, "artifact_url": "https://example.invalid/artifact/new-fixture",
+                         "artifact_version": "fixture-v2", "index_sha256": coach.digest(stored / "snapshot.json")}
+            for entry in index["files"]:
+                if not entry["path"].endswith(".mp4"):
+                    target = restored / entry["path"]
+                    target.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copyfile(stored / entry["path"], target)
             restored_state = restored / "campaign.json"
             action = ("action", restored_state, "--stage", "delivery", "--key", "fixture-only", "--result", "pending")
-            for pointer in reversed(coach.load(restored / "media-locations.json")["items"]):
-                target = restored / pointer["workspace_path"]
-                target.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(stored / pointer["artifact_path"], target)
-                self.assertEqual(coach.digest(target), pointer["sha256"])
-                self.assertEqual(target.stat().st_size, pointer["bytes"])
-                if target.name == "reel.mp4":
-                    with self.assertRaises(AssertionError):
-                        invoke(*action)
-            restored_source = restored / "media" / source.name
-            restored_source.write_bytes(b"Wrong readback bytes; mechanical negative fixture")
+            (restored / "renders").mkdir(exist_ok=True)
+            shutil.copyfile(stored / "renders/reel.mp4", restored / "renders/reel.mp4")
+            partial_index = {"files": [e for e in index["files"] if (restored / e["path"]).exists()]}
+            coach.validate_resources(partial_index, restored)
+            with self.assertRaises(OSError):
+                coach.current_artifact(coach.load(restored_state), "delivery", restored, approved=True)
             with self.assertRaises(AssertionError):
                 invoke(*action)
-            shutil.copyfile(stored / source.name, restored_source)
-            for local in original.rglob("*.json"):
-                self.assertEqual(coach.digest(local), coach.digest(restored / local.relative_to(original)))
+            self.assertEqual(coach.digest(locator), locator_hash)
+            restored_source = restored / "media" / source.name
+            restored_source.parent.mkdir(parents=True)
+            restored_source.write_bytes(b"Wrong readback bytes; mechanical negative fixture")
+            with self.assertRaises(ValueError):
+                coach.validate_resources(index, restored)
+            with self.assertRaises(AssertionError):
+                invoke(*action)
+            self.assertEqual(coach.digest(locator), locator_hash)
+            shutil.copyfile(stored / "media" / source.name, restored_source)
+            coach.validate_resources(index, restored)
+            coach.current_artifact(coach.load(restored_state), "delivery", restored, approved=True)
+            for entry in index["files"]:
+                self.assertEqual(coach.digest(restored / entry["path"]), entry["sha256"])
+                self.assertEqual((restored / entry["path"]).stat().st_size, entry["bytes"])
+                self.assertEqual(coach.digest(original / entry["path"]), entry["sha256"])
+            self.assertEqual(coach.load(stored / "snapshot.json")["previous_locator"], previous)
+            coach.save(locator, candidate)
+            self.assertEqual(coach.load(locator)["index_sha256"], coach.digest(stored / "snapshot.json"))
             receipt = coach.load(restored / "renders/reel.receipt.json")
             coach.validate_resources(receipt, restored / "renders")
             self.assertEqual(coach.probe(restored / "renders/reel.mp4")["streams"][0]["width"], 720)

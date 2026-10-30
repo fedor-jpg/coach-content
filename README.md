@@ -12,10 +12,10 @@ Install from [fedor-jpg/coach-content](https://github.com/fedor-jpg/coach-conten
 5. Select the native Project or folder for the campaign.
 6. Run `/coach-content:start` with your video, transcript and programme context.
 
-Version 0.2.1 installed and resolved resources without an environment variable; saving the brief before media passed.
-Native text-ledger recovery and separate private storage of a small synthetic MP4 passed across sessions.
-Version 0.2.2 adds guarded private Artifact persistence instructions. Updated behavior, brief recovery and real-source media recovery remain unverified.
-Supply a permitted video and transcript for the locally demonstrated path; native provided-file intake remains unverified.
+Native 0.2.2 rendered a supplied licensed short clip and recovered it in a fresh session for revision; source/audio preservation and direct MP4 playback/download were verified.
+Native private MP4/JSON/TXT readback also passed. These are component checks, not content-quality or full-flow acceptance.
+Version 0.2.3 addresses matching revision assets, unsupported subtitle timing and one-snapshot persistence; updated native behavior remains unverified.
+Supply permitted media and a transcript. Arbitrary large-source ingestion remains unverified.
 YouTube-link-only intake is unsupported in the verified path. The native source download returned HTTP 403; do not bypass it.
 Publication and subscriber delivery remain separate, unverified steps. Nothing sends automatically.
 
