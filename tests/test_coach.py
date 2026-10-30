@@ -1,6 +1,7 @@
 import argparse
 import importlib.util
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -162,6 +163,29 @@ class StateTests(unittest.TestCase):
         with self.assertRaises(AssertionError):
             self.artifact("edit", {"output_sha256": "fixture", "source_sha256": "wrong", "promise_sha256": "wrong"})
 
+    def test_text_only_restore_blocks_approvals_and_actions_without_media(self):
+        media = self.folder / "mechanical-fixture.bin"
+        media.write_bytes(b"Test bytes only, not coach video")
+        self.artifact("source", {"files": [{"path": media.name, "sha256": coach.digest(media)}]})
+        for stage in coach.STAGES[1:]:
+            self.artifact(stage, {"version": 1})
+        for stage in coach.STAGES:
+            invoke("approve", self.state, "--stage", stage, "--by", "Fixture")
+        restored = self.folder / "text-only-restore"
+        restored.mkdir()
+        for path in self.folder.glob("*.json"):
+            shutil.copy2(path, restored / path.name)
+        state = restored / "campaign.json"
+        before = coach.digest(state)
+        self.assertTrue(invoke("show", state)["approvals"])
+        self.assertFalse((restored / media.name).exists())
+        for stage in ("delivery", "review"):
+            with self.assertRaises(AssertionError):
+                invoke("approve", state, "--stage", stage, "--by", "Fixture")
+            with self.assertRaises(AssertionError):
+                invoke("action", state, "--stage", stage, "--key", "missing-media-" + stage, "--result", "pending")
+        self.assertEqual(coach.digest(state), before)
+
     def test_legacy_ledger_cannot_authorize(self):
         coach.save(self.state, {"version": 1})
         with self.assertRaises(AssertionError):
@@ -298,6 +322,88 @@ class RenderTests(unittest.TestCase):
 
 
 class PackageTests(unittest.TestCase):
+    def test_brief_text_roundtrip_without_media_does_not_approve_source(self):
+        skill = (ROOT / "plugin/skills/campaign/SKILL.md").read_text(encoding="utf-8")
+        template = json.loads(skill.split("```json\n", 1)[1].split("```", 1)[0])
+        supplied = {"audience": "Adults", "programme": "Four sessions on workplace decisions",
+                    "source_reference": "https://example.org/permitted-recording", "rights_statement": "User says reuse is permitted",
+                    "language": "English", "intent": "Prepare a Reel and exercise", "limits": None}
+        self.assertEqual(set(template), set(supplied))
+        with tempfile.TemporaryDirectory() as directory:
+            first = Path(directory) / "first execution"
+            second = Path(directory) / "new execution"
+            first.mkdir()
+            second.mkdir()
+            invoke("init", first / "campaign.json")
+            coach.save(first / "brief.json", {**template, **supplied})
+            before = invoke("show", first / "campaign.json")
+            documents = {name: (first / name).read_text(encoding="utf-8") for name in ("brief.json", "campaign.json")}
+            for name, text in documents.items():
+                (second / name).write_text(text, encoding="utf-8")
+                self.assertEqual(coach.digest(second / name), coach.digest(first / name))
+            restored = coach.load(second / "brief.json")
+            self.assertEqual(restored, supplied)
+            self.assertEqual([key for key, value in restored.items() if value is None], ["limits"])
+            state = invoke("show", second / "campaign.json")
+            self.assertEqual(state, before)
+            self.assertFalse(state["artifacts"])
+            self.assertFalse(state["approvals"])
+            self.assertFalse(state["actions"])
+
+    def test_resources_without_environment_follow_relocated_helper(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "installed plugin with spaces"
+            shutil.copytree(ROOT / "plugin", root)
+            env = dict(os.environ)
+            env.pop("CLAUDE_PLUGIN_ROOT", None)
+            result = subprocess.run([shutil.which("python3"), str(root / "scripts/coach.py"), "resources"],
+                                    capture_output=True, text=True, cwd=directory, env=env)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            paths = json.loads(result.stdout)
+            self.assertEqual(Path(paths["root"]), root.resolve())
+            self.assertEqual(paths["name"], "coach-content")
+            self.assertEqual(paths["version"], coach.load(root / ".claude-plugin/plugin.json")["version"])
+            for name in ("manifest", "helper", "campaign", "video", "delivery", "criteria"):
+                path = Path(paths[name])
+                self.assertTrue(path.is_relative_to(root.resolve()))
+                self.assertEqual(path.read_bytes(), (ROOT / "plugin" / path.relative_to(root.resolve())).read_bytes())
+            result = subprocess.run([shutil.which("python3"), paths["helper"], "doctor"],
+                                    capture_output=True, text=True, cwd=directory, env=env)
+            self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_resources_ignore_stale_environment_and_reject_wrong_manifest(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "installed"
+            shutil.copytree(ROOT / "plugin", root)
+            env = {**os.environ, "CLAUDE_PLUGIN_ROOT": str(Path(directory) / "not-installed")}
+            command = [shutil.which("python3"), str(root / "scripts/coach.py"), "resources"]
+            result = subprocess.run(command, capture_output=True, text=True, env=env)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(Path(json.loads(result.stdout)["root"]), root.resolve())
+            manifest_path = root / ".claude-plugin/plugin.json"
+            for manifest in ({"name": "other-plugin", "version": "0.2.1"}, {"name": "coach-content"}):
+                coach.save(manifest_path, manifest)
+                result = subprocess.run(command, capture_output=True, text=True, env=env)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn("Installed manifest", result.stderr)
+
+    def test_resources_reject_missing_or_escaping_skill(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / "installed"
+            shutil.copytree(ROOT / "plugin", root)
+            skill = root / "skills/campaign/SKILL.md"
+            skill.unlink()
+            command = [shutil.which("python3"), str(root / "scripts/coach.py"), "resources"]
+            result = subprocess.run(command, capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("resource is missing", result.stderr)
+            outside = Path(directory) / "outside.md"
+            outside.write_text("Not part of installed plugin", encoding="utf-8")
+            skill.symlink_to(outside)
+            result = subprocess.run(command, capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("outside its root", result.stderr)
+
     def test_release_allowlist_and_checksums(self):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "release"
@@ -319,6 +425,7 @@ class PackageTests(unittest.TestCase):
         plugin = (ROOT / marketplace["plugins"][0]["source"]).resolve()
         self.assertTrue(plugin.is_relative_to(ROOT))
         self.assertEqual(coach.load(plugin / ".claude-plugin/plugin.json")["name"], "coach-content")
+        self.assertEqual(coach.load(plugin / ".claude-plugin/plugin.json")["version"], marketplace["plugins"][0]["version"])
         self.assertEqual(len(list((plugin / "skills").glob("*/SKILL.md"))), 3)
         self.assertTrue((plugin / "commands/start.md").is_file())
         with tempfile.TemporaryDirectory() as directory:

@@ -1,6 +1,6 @@
 # Maintainer Notes
 
-Local Git marketplace package, version 0.2.0. One start command and three skills.
+Git marketplace package, version 0.2.1. One start command and three skills.
 This package creates and revises actual MP4 files when the host provides its required media tools.
 It does not install tools, publish Reels, send messages, or create services.
 
@@ -14,12 +14,12 @@ Installation repository: https://github.com/fedor-jpg/coach-content
 4. Install Coach Content from that marketplace.
 5. Run `/coach-content:start` with a permitted recording and programme context.
 
-The UI route was inspected by the main task. This package has not been installed on an independent account.
-Public plugin-code distribution was authorized on 2026-10-30. This does not establish native installation or product acceptance.
+The main task installed version 0.2.0 in Claude web and invoked the real start command.
+Public plugin-code distribution was authorized on 2026-10-30. Full product acceptance and the updated installation remain unverified.
 Do not use the private development repository as the coach's distribution.
 Distribute only the allowlisted marketplace, plugin, documentation and tests.
 Exclude `docs/artifacts`, `_system`, runtime caches and private campaign media from distribution.
-The marketplace uses `./plugin`; copy the directory contents intact to the future Git repository root.
+The marketplace uses `./plugin`; retain the directory structure at the Git repository root.
 
 ## Runtime
 
@@ -27,7 +27,11 @@ The assistant, not the coach, executes the included Python helper in the host's 
 Python 3.10+, FFmpeg with libx264/AAC and either libass subtitles or drawtext, and ffprobe must already be available on PATH.
 `doctor` reports missing capabilities without installing anything. No API keys, LLM endpoints or third-party Python modules are required.
 The default FFmpeg on the development Mac lacks libass. A separate already-installed full FFmpeg build is used for media tests.
-That local build does not establish availability in Cowork. Native execution and native artifact return remain integration gates.
+That local build does not establish availability in Cowork. The main task separately verified installed helper doctor exit0 with native Python3.13.18 and FFmpeg6.1.1.
+Version0.2.0 initially failed because CLAUDE_PLUGIN_ROOT was unset. Claude recovered using its actual installed plugin path.
+Version0.2.1 discovers host-exposed locations first and accepts a nonempty environment path only as a fallback candidate.
+The helper's resources command verifies the adjacent manifest and required files, then returns absolute paths without environment dependence.
+This is resource validation, not a filesystem search or proof of binary input/output support.
 
 Optional `transcribe` uses an existing whisper-cli executable and an explicitly supplied real GGML model.
 It extracts a bounded audio window and writes source-aligned machine transcript segments without a network API.
@@ -59,9 +63,19 @@ Ledger version 2 uses the DAG source -> promise -> edit -> delivery -> review.
 Artifact and referenced file hashes are checked at approval and before pending external actions.
 Promise changes invalidate an edit that embeds its CTA. A fresh delivery cannot hide stale prerequisites.
 Old ledgers are readable history only; they cannot authorize actions. Rebuild their artifacts in DAG order.
-Keep campaign files in the existing authorized native Project/Work in a folder location, not /tmp.
+Use the existing authorized native folder or document-backed Project. Do not silently use /tmp as durable storage.
+Document-backed Projects require actual native read/write operations and a separate execution working copy.
+Write changed JSON/text dependencies before the ledger, then read back and compare UTF-8 hashes. Check for concurrent edits before overwrite.
+Keep internal ledgers hidden from coach-facing outputs when the actual host schema supports visibility controls.
 If no workspace exists, make one native location selection an explicit setup step. Do not broaden file permissions.
-Native persistence and resumption remain unverified. Local files do not imply upload or cross-device access.
+Native JSON write/read was byte-identical and helper show passed. A second session recovered the same empty ledger without initialization or replacement.
+Version0.2.1 also saves a minimal brief.json before media arrives, independently of source approval. Resume reads it before asking for missing facts.
+The brief contains supplied audience, programme, source reference, rights statement, language, intent and limits; no complete chat or customer records.
+It grants no authorization and supplies no verified media evidence. Updated native brief recovery and binary persistence remain unverified.
+On resume, restore text through the actual Project operations and verify referenced bytes before approvals. Missing media remains a blocker.
+Local files do not imply upload or cross-device access. Do not serialize binaries into text documents to bypass transfer limits.
+The tested Project writer accepts text only; binary Project uploads are read-only to tools. Source upload and generated-media handoff remain unproven.
+Missing referenced media blocks affected approvals and pending external actions even when the text ledger restores successfully.
 Sources: https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork
 and https://academy.claude.com/tutorials/get-started-in-claude-cowork-in-three-steps .
 
@@ -72,6 +86,7 @@ The package does not claim that an instruction rubric improves quality until the
 ## Acceptance boundaries
 
 Local mechanical media and state tests are separate from native installation, coach usability, real-source editorial acceptance and live delivery.
+The local brief test round-trips actual JSON/text and checks unchanged empty approvals. It is not a native Project or conversational acceptance test.
 The current checked Chatfuel catalogue lacks a Reel publisher. New-file transfer into Chatfuel remains unverified.
 The delivery skill prepares a useful text benefit and defines approval, readback, recipient testing and shutdown.
 It does not fabricate missing connector operations. Full G0-G5 acceptance remains open.

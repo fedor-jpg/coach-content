@@ -12,7 +12,8 @@ Install from [fedor-jpg/coach-content](https://github.com/fedor-jpg/coach-conten
 5. Select the native Project or folder for the campaign.
 6. Run `/coach-content:start` with your video, transcript and programme context.
 
-Native installation and execution of this plugin are not yet verified.
+Version 0.2.0 installed and ran the helper in Claude web; 0.2.1 fixes resource discovery without an environment variable.
+Native Project JSON readback and empty-ledger recovery in a second session passed. Updated installation, brief recovery and binary persistence remain unverified.
 Supply a permitted video and transcript for the locally demonstrated path; native provided-file intake remains unverified.
 YouTube-link-only intake is unsupported in the verified path. The native source download returned HTTP 403; do not bypass it.
 Publication and subscriber delivery remain separate, unverified steps. Nothing sends automatically.

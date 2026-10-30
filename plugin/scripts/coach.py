@@ -75,6 +75,22 @@ def doctor():
             "status": "local runtime ready; native Cowork execution not established by this check"}
 
 
+def resources():
+    root = Path(__file__).resolve().parents[1]
+    names = {"manifest": ".claude-plugin/plugin.json", "helper": "scripts/coach.py",
+             "campaign": "skills/campaign/SKILL.md", "video": "skills/video/SKILL.md",
+             "delivery": "skills/delivery/SKILL.md", "criteria": "skills/video/references/criteria.md"}
+    paths = {key: (root / name).resolve() for key, name in names.items()}
+    for path in paths.values():
+        if not path.is_relative_to(root) or not path.is_file():
+            raise ValueError("Installed plugin resource is missing or outside its root")
+    manifest = load(paths["manifest"])
+    if manifest.get("name") != "coach-content" or not isinstance(manifest.get("version"), str) or not manifest["version"]:
+        raise ValueError("Installed manifest must identify coach-content and its version")
+    return {"name": manifest["name"], "version": manifest["version"], "root": str(root),
+            **{key: str(path) for key, path in paths.items()}}
+
+
 def probe(path):
     return json.loads(run(["ffprobe", "-v", "error", "-protocol_whitelist", "file,pipe", "-show_streams", "-show_format",
                            "-of", "json", str(path)]))
@@ -493,6 +509,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("doctor")
+    commands.add_parser("resources", help="Verify and resolve resources beside this installed helper; no environment variable required")
     edit = commands.add_parser("render")
     edit.add_argument("spec")
     edit.add_argument("output")
@@ -525,6 +542,8 @@ def main():
     try:
         if args.command == "doctor":
             result = doctor()
+        elif args.command == "resources":
+            result = resources()
         elif args.command == "render":
             result = render(args.spec, args.output)
         elif args.command == "transcribe":
