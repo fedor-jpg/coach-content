@@ -232,6 +232,65 @@ class StateTests(unittest.TestCase):
 
 
 class RenderTests(unittest.TestCase):
+    def test_binary_rehydration_preserves_relative_receipts_and_hash_guards(self):
+        with tempfile.TemporaryDirectory(prefix="coach-rehydrate-") as directory:
+            base = Path(directory)
+            original, stored, restored = [base / name for name in ("original campaign", "local binary fixture", "new execution")]
+            for folder in (original, stored, restored, original / "media", original / "edits", original / "renders"):
+                folder.mkdir()
+            source = fixture(original / "media")
+            coach.save(original / "source.json", {"source_sha256": coach.digest(source),
+                       "files": [{"path": "media/" + source.name, "sha256": coach.digest(source)}]})
+            coach.save(original / "promise.json", {"benefit": "Mechanical rehydration fixture; not a subscriber send"})
+            spec = {"source": "../media/" + source.name, "rights": "Generated test pattern and tone only",
+                    "test_media": True, "clips": [{"start": 0, "end": 1}], "framing": "contain",
+                    "promise_sha256": coach.digest(original / "promise.json"), "captions": []}
+            coach.save(original / "edits/edit.json", spec)
+            invoke("render", original / "edits/edit.json", original / "renders/reel.mp4")
+            coach.save(original / "delivery.json", {"message": "Mechanical fixture, no external send"})
+            state = original / "campaign.json"
+            invoke("init", state)
+            for stage, name in (("source", "source.json"), ("promise", "promise.json"),
+                                ("edit", "renders/reel.receipt.json"), ("delivery", "delivery.json")):
+                invoke("set", state, "--stage", stage, "--file", original / name)
+                invoke("approve", state, "--stage", stage, "--by", "MECHANICAL FIXTURE")
+            skill = (ROOT / "plugin/skills/campaign/SKILL.md").read_text(encoding="utf-8")
+            template = json.loads(skill.split("```json\n")[2].split("```", 1)[0])["items"][0]
+            pointers = []
+            for local in (source, original / "renders/reel.mp4"):
+                shutil.copyfile(local, stored / local.name)
+                pointers.append({**template, "workspace_path": local.relative_to(original).as_posix(),
+                                 "artifact_url": "https://example.invalid/artifact/mechanical-fixture",
+                                 "artifact_path": local.name, "artifact_version": "mechanical-v1",
+                                 "sha256": coach.digest(local), "bytes": local.stat().st_size})
+            coach.save(original / "media-locations.json", {"items": pointers})
+            for local in original.rglob("*.json"):
+                target = restored / local.relative_to(original)
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(local, target)
+            restored_state = restored / "campaign.json"
+            action = ("action", restored_state, "--stage", "delivery", "--key", "fixture-only", "--result", "pending")
+            for pointer in reversed(coach.load(restored / "media-locations.json")["items"]):
+                target = restored / pointer["workspace_path"]
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(stored / pointer["artifact_path"], target)
+                self.assertEqual(coach.digest(target), pointer["sha256"])
+                self.assertEqual(target.stat().st_size, pointer["bytes"])
+                if target.name == "reel.mp4":
+                    with self.assertRaises(AssertionError):
+                        invoke(*action)
+            restored_source = restored / "media" / source.name
+            restored_source.write_bytes(b"Wrong readback bytes; mechanical negative fixture")
+            with self.assertRaises(AssertionError):
+                invoke(*action)
+            shutil.copyfile(stored / source.name, restored_source)
+            for local in original.rglob("*.json"):
+                self.assertEqual(coach.digest(local), coach.digest(restored / local.relative_to(original)))
+            receipt = coach.load(restored / "renders/reel.receipt.json")
+            coach.validate_resources(receipt, restored / "renders")
+            self.assertEqual(coach.probe(restored / "renders/reel.mp4")["streams"][0]["width"], 720)
+            self.assertEqual(invoke(*action)["actions"]["fixture-only"]["status"], "pending")
+
     def test_explicit_portrait_and_standalone_cover(self):
         with tempfile.TemporaryDirectory(prefix="coach-portrait-") as directory:
             folder = Path(directory)

@@ -1,6 +1,6 @@
 # Maintainer Notes
 
-Git marketplace package, version 0.2.1. One start command and three skills.
+Git marketplace package, version 0.2.2. One start command and three skills.
 This package creates and revises actual MP4 files when the host provides its required media tools.
 It does not install tools, publish Reels, send messages, or create services.
 
@@ -14,8 +14,8 @@ Installation repository: https://github.com/fedor-jpg/coach-content
 4. Install Coach Content from that marketplace.
 5. Run `/coach-content:start` with a permitted recording and programme context.
 
-The main task installed version 0.2.0 in Claude web and invoked the real start command.
-Public plugin-code distribution was authorized on 2026-10-30. Full product acceptance and the updated installation remain unverified.
+The main task installed version 0.2.0 in Claude web and invoked the real start command, then installed version0.2.1.
+Public plugin-code distribution was authorized on 2026-10-30. Full product acceptance and version0.2.2 installation remain unverified.
 Do not use the private development repository as the coach's distribution.
 Distribute only the allowlisted marketplace, plugin, documentation and tests.
 Exclude `docs/artifacts`, `_system`, runtime caches and private campaign media from distribution.
@@ -30,6 +30,7 @@ The default FFmpeg on the development Mac lacks libass. A separate already-insta
 That local build does not establish availability in Cowork. The main task separately verified installed helper doctor exit0 with native Python3.13.18 and FFmpeg6.1.1.
 Version0.2.0 initially failed because CLAUDE_PLUGIN_ROOT was unset. Claude recovered using its actual installed plugin path.
 Version0.2.1 discovers host-exposed locations first and accepts a nonempty environment path only as a fallback candidate.
+The main task verified actual installed0.2.1 resource discovery with the root variable empty and a hash-identical native brief write/read.
 The helper's resources command verifies the adjacent manifest and required files, then returns absolute paths without environment dependence.
 This is resource validation, not a filesystem search or proof of binary input/output support.
 
@@ -71,10 +72,10 @@ If no workspace exists, make one native location selection an explicit setup ste
 Native JSON write/read was byte-identical and helper show passed. A second session recovered the same empty ledger without initialization or replacement.
 Version0.2.1 also saves a minimal brief.json before media arrives, independently of source approval. Resume reads it before asking for missing facts.
 The brief contains supplied audience, programme, source reference, rights statement, language, intent and limits; no complete chat or customer records.
-It grants no authorization and supplies no verified media evidence. Updated native brief recovery and binary persistence remain unverified.
+It grants no authorization and supplies no verified media evidence. Updated native brief recovery remains unverified.
 On resume, restore text through the actual Project operations and verify referenced bytes before approvals. Missing media remains a blocker.
 Local files do not imply upload or cross-device access. Do not serialize binaries into text documents to bypass transfer limits.
-The tested Project writer accepts text only; binary Project uploads are read-only to tools. Source upload and generated-media handoff remain unproven.
+The tested Project writer accepts text only; binary Project uploads are read-only to those tools. A separate native private Artifact binary branch is available as described below.
 Missing referenced media blocks affected approvals and pending external actions even when the text ledger restores successfully.
 Sources: https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork
 and https://academy.claude.com/tutorials/get-started-in-claude-cowork-in-three-steps .
@@ -104,3 +105,25 @@ The native Commons download failed at the gateway with CONNECT403; no source dow
 A separate native synthetic two-second H264/AAC file appeared in the file viewer, readyState4 and duration2.
 That proves mechanical generation/viewing only, not source intake, this helper, installation or independent download verification.
 Provided-file input remains a separate untested branch. Broad file-URL upload permission remains off.
+
+## Private Artifact persistence
+
+The native Artifact files scope saved a private synthetic two-second MP4 and read it in an independent session.
+Hash and byte count matched; ffprobe identified H264,720x1280,7361bytes,no audio. This is mechanical evidence, not real coach content or delivery.
+The assets scope failed and must not be used. The observed schema permits standard web files up to15MB; inspect current schema before use.
+Version0.2.2 permits only supported private binary writes with exact byte/hash readback and a verified Project text pointer.
+media-locations.json records Artifact URL,path,version,SHA-256,byte count and the workspace-relative destination, never an obsolete absolute scratch path.
+Receipts and stage JSON remain byte-identical during recovery; their relative references must resolve in the recreated working tree.
+If a version selector is absent, do not claim historical version selection. Require saved bytes/hash equality before use.
+Missing source bytes still block approvals/actions even when the finished Reel is restored. Private links are not recipient-accessible delivery URLs.
+No binary-as-text encoding, splitting oversized files, public-share requirement, new connector or network-policy workaround is allowed.
+Large-source ingestion, real-source rendering/persistence and full campaign recovery remain unverified.
+
+## Explicit video-later branch
+
+When the coach says the video will arrive later without asking for source selection, save and verify the brief, then stop.
+Reuse verified environment evidence or make one necessary check. Do not start captions, ASR, network searches or technical draft cards.
+Internal working text uses native execution if the file-writing tool auto-presents cards. Use hidden Project writes only where the actual schema supports them.
+Respond with known inputs and the one next action, not repeated questions or a technical intake screen.
+Preserve already-supplied demo/test-only status. Do not select or request approval of CTA/DM copy before source selection.
+Main tests this conversational behavior in the native host; local file tests do not establish that acceptance.
