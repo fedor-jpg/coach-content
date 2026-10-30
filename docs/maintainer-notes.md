@@ -15,7 +15,7 @@ Installation repository: https://github.com/fedor-jpg/coach-content
 5. Run `/coach-content:start` with a permitted recording and programme context.
 
 The main task installed through version0.2.2 in Claude web and exercised real provided-file rendering and fresh-session revision.
-Public plugin-code distribution was authorized on 2026-10-30. Reviewed version0.2.3 is approved for publication; full product acceptance remains open.
+Version0.2.3 was published to https://github.com/fedor-jpg/coach-content on 2026-10-30 after review and explicit authorization. Full product acceptance remains open.
 Do not use the private development repository as the coach's distribution.
 Distribute only the allowlisted marketplace, plugin, documentation and tests.
 Exclude `docs/artifacts`, `_system`, runtime caches and private campaign media from distribution.
