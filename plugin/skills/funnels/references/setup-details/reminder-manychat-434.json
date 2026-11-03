@@ -1,0 +1,5447 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "reminder-manychat-434",
+    "name": "Brands campaign: no click after 23 hours",
+    "source_ids": [
+      "manychat-434"
+    ],
+    "entry": "Comment in a Brands campaign",
+    "mandatory_conditions": [
+      "Opening button and link",
+      "Tag the link click",
+      "Check the tag after 23 hours"
+    ],
+    "outcome": "A reminder only if the link was not clicked",
+    "timing": [
+      "Delay: 23 hours."
+    ],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "comment",
+      "buttons",
+      "click",
+      "timers",
+      "graph"
+    ],
+    "assessment": {
+      "status": "insufficient_data",
+      "reason": "The click tag is empty and the positive exit is unset. Ordinary MCP also lacks the exact timer and no-click branch.",
+      "missing_source_behavior": [
+        "The click tag and positive condition exit are unset."
+      ],
+      "replacement": null
+    },
+    "source_notes": {
+      "manychat-434": "The click tag is empty and the positive exit is unset. This is an incomplete campaign component."
+    },
+    "client_inputs": [
+      "campaign",
+      "creator",
+      "keywords",
+      "link",
+      "click tag",
+      "branch policy"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "blocked_original",
+      "analogue_ids": [],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [],
+      "binding_review": {
+        "source_entry": "Comment in a Brands campaign",
+        "source_outcome": "A reminder only if the link was not clicked",
+        "mandatory_conditions": [
+          "Opening button and link",
+          "Tag the link click",
+          "Check the tag after 23 hours"
+        ],
+        "source_contact_policy": [
+          "Tag the link click",
+          "Check the tag after 23 hours"
+        ],
+        "plan_count": 0,
+        "decision": "No complete adaptation; stop at the named dependencies."
+      },
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The primary result is a reminder only after a verified non-click and exact delay. Ordinary MCP cannot observe that condition or configure that timer. Generic silence follow-ups are not a substitute.",
+        "primary_result": "A reminder only if the link was not clicked",
+        "source_requirements": [
+          "Opening button and link",
+          "Tag the link click",
+          "Check the tag after 23 hours"
+        ],
+        "source_timing": [
+          "Delay: 23 hours."
+        ],
+        "blocking_dependencies": [
+          "click",
+          "timers"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Follow up with interested people who have not opened the offer.",
+  "fit": "Brands adding a conditional reminder to an existing campaign.",
+  "preparation_status": "waiting_for_chatfuel",
+  "function_review": {
+    "status": "waiting_for_chatfuel",
+    "reason": "The primary result is a reminder only after a verified non-click and exact delay. Ordinary MCP cannot observe that condition or configure that timer. Generic silence follow-ups are not a substitute.",
+    "primary_result": "A reminder only if the link was not clicked",
+    "source_requirements": [
+      "Opening button and link",
+      "Tag the link click",
+      "Check the tag after 23 hours"
+    ],
+    "source_timing": [
+      "Delay: 23 hours."
+    ],
+    "blocking_dependencies": [
+      "click",
+      "timers"
+    ],
+    "retained": [],
+    "omitted": [],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "buttons",
+    "click",
+    "timers",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "manychat-434",
+      "source_file": "source-records/manychat-434.json",
+      "source_title": "*Follow-up (Manychat for Brands)",
+      "start": "trigger",
+      "nodes": [
+        {
+          "id": "trigger",
+          "source_type": "trigger",
+          "content": {
+            "text": "",
+            "preview": "Post or Reel Comments #7\n\nSelected values were not captured",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/panels/2/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "replies.0.reply",
+                "label": null,
+                "type": null,
+                "value": "Done! Details in your inbox 📩",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/2/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "replies.1.reply",
+                "label": null,
+                "type": null,
+                "value": "Info sent! Check your DMs 📬",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/2/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": "replies.2.reply",
+                "label": null,
+                "type": null,
+                "value": "Done! Your DMs have the details 📌",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "893b69764b96e584026344e3eee3cef9093c634c275ebee33101b814910e49a9",
+          "settings_leaf_count": 123
+        },
+        {
+          "id": "node-0",
+          "source_type": "message",
+          "content": {
+            "text": "Thanks for your comment! Want the link? Tap below and I'll send it ",
+            "preview": "Thanks for your comment! Want the link? Tap below and I'll send it ",
+            "buttons": [
+              " Send me the link"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Thanks for your comment! Want the link? Tap below and I'll send it ",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": " Send me the link",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "f9a58d2a8d5d27ac921246d5eb081047a64fa75285bf02981b0b9af41a4c34cb",
+          "settings_leaf_count": 157
+        },
+        {
+          "id": "node-1",
+          "source_type": "message",
+          "content": {
+            "text": "Here you go! 👇",
+            "preview": "Here you go! 👇",
+            "buttons": [
+              "Get the link"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Here you go! 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Get the link",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "yourlink.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Additional actions",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "cb2a612543c3c5de9a025d91b6744b8d603fa1afa1b6500cfaa67bf5945e7d9c",
+          "settings_leaf_count": 228
+        },
+        {
+          "id": "node-2",
+          "source_type": "delay",
+          "content": {
+            "text": "",
+            "preview": "Duration\nDate\nWait for\n23\nSeconds\nMinutes\nHours\nDays\nEnter a number or a numeric contact field formula. Max 365 days.\nSend within specific hours\nSends when the contact's local time is within the hours you set. Your account timezone is used if theirs is unknown.\nCondition\nCondition",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved timing change"
+          ],
+          "reason": "Retain the exact captured delay; no numeric per-step timer in ordinary MCP.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "23",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "delayUnits",
+                "label": null,
+                "type": null,
+                "value": "hours",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": [
+                  {
+                    "selected": false,
+                    "text": "Seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Days",
+                    "value": "days"
+                  }
+                ],
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/1/options_exact/0",
+              "phase": "captured_default",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/default_panel/fields/1/options_exact/1",
+              "phase": "captured_default",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/default_panel/fields/1/options_exact/2",
+              "phase": "captured_default",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/default_panel/fields/1/options_exact/3",
+              "phase": "captured_default",
+              "fields": {
+                "value": "days"
+              }
+            },
+            {
+              "path": "/default_panel/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "23",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "delayUnits",
+                "label": null,
+                "type": null,
+                "value": "hours",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": [
+                  {
+                    "selected": false,
+                    "text": "Seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Days",
+                    "value": "days"
+                  }
+                ],
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1/options_exact/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1/options_exact/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1/options_exact/2",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1/options_exact/3",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "days"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "from",
+                "label": null,
+                "type": null,
+                "value": "8",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": [
+                  {
+                    "selected": false,
+                    "text": "0:00",
+                    "value": "0"
+                  },
+                  {
+                    "selected": false,
+                    "text": "1:00",
+                    "value": "1"
+                  },
+                  {
+                    "selected": false,
+                    "text": "2:00",
+                    "value": "2"
+                  },
+                  {
+                    "selected": false,
+                    "text": "3:00",
+                    "value": "3"
+                  },
+                  {
+                    "selected": false,
+                    "text": "4:00",
+                    "value": "4"
+                  },
+                  {
+                    "selected": false,
+                    "text": "5:00",
+                    "value": "5"
+                  },
+                  {
+                    "selected": false,
+                    "text": "6:00",
+                    "value": "6"
+                  },
+                  {
+                    "selected": false,
+                    "text": "7:00",
+                    "value": "7"
+                  },
+                  {
+                    "selected": true,
+                    "text": "8:00",
+                    "value": "8"
+                  },
+                  {
+                    "selected": false,
+                    "text": "9:00",
+                    "value": "9"
+                  },
+                  {
+                    "selected": false,
+                    "text": "10:00",
+                    "value": "10"
+                  },
+                  {
+                    "selected": false,
+                    "text": "11:00",
+                    "value": "11"
+                  },
+                  {
+                    "selected": false,
+                    "text": "12:00",
+                    "value": "12"
+                  },
+                  {
+                    "selected": false,
+                    "text": "13:00",
+                    "value": "13"
+                  },
+                  {
+                    "selected": false,
+                    "text": "14:00",
+                    "value": "14"
+                  },
+                  {
+                    "selected": false,
+                    "text": "15:00",
+                    "value": "15"
+                  },
+                  {
+                    "selected": false,
+                    "text": "16:00",
+                    "value": "16"
+                  },
+                  {
+                    "selected": false,
+                    "text": "17:00",
+                    "value": "17"
+                  },
+                  {
+                    "selected": false,
+                    "text": "18:00",
+                    "value": "18"
+                  },
+                  {
+                    "selected": false,
+                    "text": "19:00",
+                    "value": "19"
+                  },
+                  {
+                    "selected": false,
+                    "text": "20:00",
+                    "value": "20"
+                  },
+                  {
+                    "selected": false,
+                    "text": "21:00",
+                    "value": "21"
+                  },
+                  {
+                    "selected": false,
+                    "text": "22:00",
+                    "value": "22"
+                  },
+                  {
+                    "selected": false,
+                    "text": "23:00",
+                    "value": "23"
+                  }
+                ],
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "0"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "1"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/2",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "2"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/3",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "3"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/4",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "4"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/5",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "5"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/6",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "6"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/7",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "7"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/8",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "8"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/9",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "9"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/10",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "10"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/11",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "11"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/12",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "12"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/13",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "13"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/14",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "14"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/15",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "15"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/16",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "16"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/17",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "17"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/18",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "18"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/19",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "19"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/20",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "20"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/21",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "21"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/22",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "22"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3/options_exact/23",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "23"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "to",
+                "label": null,
+                "type": null,
+                "value": "22",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": [
+                  {
+                    "selected": false,
+                    "text": "1:00",
+                    "value": "1"
+                  },
+                  {
+                    "selected": false,
+                    "text": "2:00",
+                    "value": "2"
+                  },
+                  {
+                    "selected": false,
+                    "text": "3:00",
+                    "value": "3"
+                  },
+                  {
+                    "selected": false,
+                    "text": "4:00",
+                    "value": "4"
+                  },
+                  {
+                    "selected": false,
+                    "text": "5:00",
+                    "value": "5"
+                  },
+                  {
+                    "selected": false,
+                    "text": "6:00",
+                    "value": "6"
+                  },
+                  {
+                    "selected": false,
+                    "text": "7:00",
+                    "value": "7"
+                  },
+                  {
+                    "selected": false,
+                    "text": "8:00",
+                    "value": "8"
+                  },
+                  {
+                    "selected": false,
+                    "text": "9:00",
+                    "value": "9"
+                  },
+                  {
+                    "selected": false,
+                    "text": "10:00",
+                    "value": "10"
+                  },
+                  {
+                    "selected": false,
+                    "text": "11:00",
+                    "value": "11"
+                  },
+                  {
+                    "selected": false,
+                    "text": "12:00",
+                    "value": "12"
+                  },
+                  {
+                    "selected": false,
+                    "text": "13:00",
+                    "value": "13"
+                  },
+                  {
+                    "selected": false,
+                    "text": "14:00",
+                    "value": "14"
+                  },
+                  {
+                    "selected": false,
+                    "text": "15:00",
+                    "value": "15"
+                  },
+                  {
+                    "selected": false,
+                    "text": "16:00",
+                    "value": "16"
+                  },
+                  {
+                    "selected": false,
+                    "text": "17:00",
+                    "value": "17"
+                  },
+                  {
+                    "selected": false,
+                    "text": "18:00",
+                    "value": "18"
+                  },
+                  {
+                    "selected": false,
+                    "text": "19:00",
+                    "value": "19"
+                  },
+                  {
+                    "selected": false,
+                    "text": "20:00",
+                    "value": "20"
+                  },
+                  {
+                    "selected": false,
+                    "text": "21:00",
+                    "value": "21"
+                  },
+                  {
+                    "selected": true,
+                    "text": "22:00",
+                    "value": "22"
+                  },
+                  {
+                    "selected": false,
+                    "text": "23:00",
+                    "value": "23"
+                  },
+                  {
+                    "selected": false,
+                    "text": "0:00",
+                    "value": "0"
+                  }
+                ],
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "1"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "2"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/2",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "3"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/3",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "4"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/4",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "5"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/5",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "6"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/6",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "7"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/7",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "8"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/8",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "9"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/9",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "10"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/10",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "11"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/11",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "12"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/12",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "13"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/13",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "14"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/14",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "15"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/15",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "16"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/16",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "17"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/17",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "18"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/18",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "19"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/19",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "20"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/20",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "21"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/21",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "22"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/22",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "23"
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4/options_exact/23",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "0"
+              }
+            },
+            {
+              "path": "/nested_panels/1/fields/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "SET_TO_SPECIFIC_DATE",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": [
+                  {
+                    "selected": true,
+                    "text": "Specific date",
+                    "value": "SET_TO_SPECIFIC_DATE"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Dynamic date",
+                    "value": "SET_TO_CUF"
+                  }
+                ],
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/1/fields/0/options_exact/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "SET_TO_SPECIFIC_DATE"
+              }
+            },
+            {
+              "path": "/nested_panels/1/fields/0/options_exact/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "SET_TO_CUF"
+              }
+            },
+            {
+              "path": "/nested_panels/1/fields/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "waitUntil",
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "Smart Delay",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "SET_TO_CUF",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": [
+                  {
+                    "selected": false,
+                    "text": "Specific date",
+                    "value": "SET_TO_SPECIFIC_DATE"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Dynamic date",
+                    "value": "SET_TO_CUF"
+                  }
+                ],
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/1/options_exact/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "SET_TO_SPECIFIC_DATE"
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/1/options_exact/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "SET_TO_CUF"
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/2",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "waitUntil",
+                "label": "Date time picker",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/3",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "SET_TO_CUF",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": [
+                  {
+                    "selected": false,
+                    "text": "Specific date",
+                    "value": "SET_TO_SPECIFIC_DATE"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Dynamic date",
+                    "value": "SET_TO_CUF"
+                  }
+                ],
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/0/options_exact/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "SET_TO_SPECIFIC_DATE"
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/0/options_exact/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "SET_TO_CUF"
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "waitUntil",
+                "label": "Date time picker",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/2",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/3",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "value",
+                "label": "Delay time",
+                "type": "text",
+                "value": "1",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": "99999",
+                  "maxlength": null,
+                  "min": "0",
+                  "pattern": "[0-9]*",
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/4",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "unit",
+                "label": null,
+                "type": null,
+                "value": "days",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": [
+                  {
+                    "selected": false,
+                    "text": "Minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Days",
+                    "value": "days"
+                  }
+                ],
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/4/options_exact/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/4/options_exact/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/4/options_exact/2",
+              "phase": "inspection_variant",
+              "fields": {
+                "value": "days"
+              }
+            },
+            {
+              "path": "/nested_panels/4/fields/0",
+              "phase": "restoration_check",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "23",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/4/fields/1",
+              "phase": "restoration_check",
+              "fields": {
+                "name": "delayUnits",
+                "label": null,
+                "type": null,
+                "value": "hours",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": [
+                  {
+                    "selected": false,
+                    "text": "Seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Days",
+                    "value": "days"
+                  }
+                ],
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/4/fields/1/options_exact/0",
+              "phase": "restoration_check",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/nested_panels/4/fields/1/options_exact/1",
+              "phase": "restoration_check",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/nested_panels/4/fields/1/options_exact/2",
+              "phase": "restoration_check",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/nested_panels/4/fields/1/options_exact/3",
+              "phase": "restoration_check",
+              "fields": {
+                "value": "days"
+              }
+            },
+            {
+              "path": "/nested_panels/4/fields/2",
+              "phase": "restoration_check",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "1e7a9a3a57f6282d29dedd77796381ca27e703efeec617e516117bc12cc40723",
+          "settings_leaf_count": 1000
+        },
+        {
+          "id": "node-3",
+          "source_type": "condition",
+          "content": {
+            "text": "",
+            "preview": "Tag\nisn`t",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "mandatory business condition"
+          ],
+          "reason": "Preserve true/false exits, field values and retry loops. No deterministic condition import.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "a8c4169f2763512d6067fe3a0aa484eb61d76220976785464cc4647ad36a3c1d",
+          "settings_leaf_count": 93
+        },
+        {
+          "id": "node-4",
+          "source_type": "message",
+          "content": {
+            "text": "Still thinking about it? Your link is right here 👇",
+            "preview": "Still thinking about it? Your link is right here 👇",
+            "buttons": [
+              "Get the link"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Still thinking about it? Your link is right here 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Get the link",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "yourlink.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Additional actions",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "c81a8a2da8933701fe7c382793ab6fae5c5f4fe0ed3a270832f1e367a1a7750e",
+          "settings_leaf_count": 233
+        },
+        {
+          "id": "node-5",
+          "source_type": "actions",
+          "content": {
+            "text": "",
+            "preview": "Perform following actions:\nAdd Tag\n+ Action",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "required tag/field action"
+          ],
+          "reason": "Preserve every actual action. A tag alone is not a URL navigation, purchase or channel transfer.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Tag picker",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/6/settings",
+          "settings_sha256": "27af9d3482933a3a73103ce455a2fb8aae5f3ea6bc0e5f9b817bd0cb75be142b",
+          "settings_leaf_count": 111
+        }
+      ],
+      "transitions": [
+        {
+          "id": "edge-0",
+          "from": "node-0",
+          "to": "node-1",
+          "label": " Send me the link",
+          "settings": {
+            "from": "node-0",
+            "to": "node-1",
+            "port_exact": "button-0",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [
+              "71eb9b41-0acc-4124-9b46-5455d3843fc0"
+            ],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-0.button-0.target",
+            "evidence": {
+              "file": "evidence/434-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/0"
+          }
+        },
+        {
+          "id": "edge-1",
+          "from": "node-3",
+          "to": "node-4",
+          "label": "If not",
+          "settings": {
+            "from": "node-3",
+            "to": "node-4",
+            "port_exact": "If not",
+            "source_branch_id": "d0e1b96c-9699-45f9-b98a-ff15c9e8d0f4",
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-3.bl-id-d0e1b96c-9699-45f9-b98a-ff15c9e8d0f4.target",
+            "evidence": {
+              "file": "evidence/434-editor.json",
+              "pointer": "/graph/edges/1"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/1"
+          }
+        },
+        {
+          "id": "edge-2",
+          "from": "trigger",
+          "to": "node-0",
+          "label": "Starting Step",
+          "settings": {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/434-editor.json",
+              "pointer": "/graph/edges/2"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/2"
+          }
+        },
+        {
+          "id": "edge-3",
+          "from": "node-1",
+          "to": "node-5",
+          "label": "button-0.additional-actions",
+          "settings": {
+            "from": "node-1",
+            "to": "node-5",
+            "port_exact": "button-0.additional-actions",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-1.button-0.additional-actions.target",
+            "evidence": {
+              "file": "evidence/434-editor.json",
+              "pointer": "/graph/edges/3"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/3"
+          }
+        },
+        {
+          "id": "edge-4",
+          "from": "node-1",
+          "to": "node-2",
+          "label": "Next Step",
+          "settings": {
+            "from": "node-1",
+            "to": "node-2",
+            "port_exact": "Next Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-1.next.target",
+            "evidence": {
+              "file": "evidence/434-editor.json",
+              "pointer": "/graph/edges/4"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/4"
+          }
+        },
+        {
+          "id": "edge-5",
+          "from": "node-2",
+          "to": "node-3",
+          "label": "Next Step",
+          "settings": {
+            "from": "node-2",
+            "to": "node-3",
+            "port_exact": "Next Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-2.next.target",
+            "evidence": {
+              "file": "evidence/434-editor.json",
+              "pointer": "/graph/edges/5"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/5"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/instance/nodes/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Thanks for your comment! Want the link? Tap below and I'll send it ",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": " Send me the link",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Here you go! 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Get the link",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourlink.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "23",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "delayUnits",
+            "label": null,
+            "type": null,
+            "value": "hours",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/1/options_exact/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/1/options_exact/1",
+          "phase": "captured_default",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/1/options_exact/2",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/1/options_exact/3",
+          "phase": "captured_default",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "23",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "delayUnits",
+            "label": null,
+            "type": null,
+            "value": "hours",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/1/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/1/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/1/options_exact/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/1/options_exact/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "from",
+            "label": null,
+            "type": null,
+            "value": "8",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "0:00",
+                "value": "0"
+              },
+              {
+                "selected": false,
+                "text": "1:00",
+                "value": "1"
+              },
+              {
+                "selected": false,
+                "text": "2:00",
+                "value": "2"
+              },
+              {
+                "selected": false,
+                "text": "3:00",
+                "value": "3"
+              },
+              {
+                "selected": false,
+                "text": "4:00",
+                "value": "4"
+              },
+              {
+                "selected": false,
+                "text": "5:00",
+                "value": "5"
+              },
+              {
+                "selected": false,
+                "text": "6:00",
+                "value": "6"
+              },
+              {
+                "selected": false,
+                "text": "7:00",
+                "value": "7"
+              },
+              {
+                "selected": true,
+                "text": "8:00",
+                "value": "8"
+              },
+              {
+                "selected": false,
+                "text": "9:00",
+                "value": "9"
+              },
+              {
+                "selected": false,
+                "text": "10:00",
+                "value": "10"
+              },
+              {
+                "selected": false,
+                "text": "11:00",
+                "value": "11"
+              },
+              {
+                "selected": false,
+                "text": "12:00",
+                "value": "12"
+              },
+              {
+                "selected": false,
+                "text": "13:00",
+                "value": "13"
+              },
+              {
+                "selected": false,
+                "text": "14:00",
+                "value": "14"
+              },
+              {
+                "selected": false,
+                "text": "15:00",
+                "value": "15"
+              },
+              {
+                "selected": false,
+                "text": "16:00",
+                "value": "16"
+              },
+              {
+                "selected": false,
+                "text": "17:00",
+                "value": "17"
+              },
+              {
+                "selected": false,
+                "text": "18:00",
+                "value": "18"
+              },
+              {
+                "selected": false,
+                "text": "19:00",
+                "value": "19"
+              },
+              {
+                "selected": false,
+                "text": "20:00",
+                "value": "20"
+              },
+              {
+                "selected": false,
+                "text": "21:00",
+                "value": "21"
+              },
+              {
+                "selected": false,
+                "text": "22:00",
+                "value": "22"
+              },
+              {
+                "selected": false,
+                "text": "23:00",
+                "value": "23"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "0"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "1"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "2"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "3"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/4",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "4"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/5",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "5"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/6",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "6"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/7",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "7"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/8",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "8"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/9",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "9"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/10",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "10"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/11",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "11"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/12",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "12"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/13",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "13"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/14",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "14"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/15",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "15"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/16",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "16"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/17",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "17"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/18",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "18"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/19",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "19"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/20",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "20"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/21",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "21"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/22",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "22"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3/options_exact/23",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "to",
+            "label": null,
+            "type": null,
+            "value": "22",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "1:00",
+                "value": "1"
+              },
+              {
+                "selected": false,
+                "text": "2:00",
+                "value": "2"
+              },
+              {
+                "selected": false,
+                "text": "3:00",
+                "value": "3"
+              },
+              {
+                "selected": false,
+                "text": "4:00",
+                "value": "4"
+              },
+              {
+                "selected": false,
+                "text": "5:00",
+                "value": "5"
+              },
+              {
+                "selected": false,
+                "text": "6:00",
+                "value": "6"
+              },
+              {
+                "selected": false,
+                "text": "7:00",
+                "value": "7"
+              },
+              {
+                "selected": false,
+                "text": "8:00",
+                "value": "8"
+              },
+              {
+                "selected": false,
+                "text": "9:00",
+                "value": "9"
+              },
+              {
+                "selected": false,
+                "text": "10:00",
+                "value": "10"
+              },
+              {
+                "selected": false,
+                "text": "11:00",
+                "value": "11"
+              },
+              {
+                "selected": false,
+                "text": "12:00",
+                "value": "12"
+              },
+              {
+                "selected": false,
+                "text": "13:00",
+                "value": "13"
+              },
+              {
+                "selected": false,
+                "text": "14:00",
+                "value": "14"
+              },
+              {
+                "selected": false,
+                "text": "15:00",
+                "value": "15"
+              },
+              {
+                "selected": false,
+                "text": "16:00",
+                "value": "16"
+              },
+              {
+                "selected": false,
+                "text": "17:00",
+                "value": "17"
+              },
+              {
+                "selected": false,
+                "text": "18:00",
+                "value": "18"
+              },
+              {
+                "selected": false,
+                "text": "19:00",
+                "value": "19"
+              },
+              {
+                "selected": false,
+                "text": "20:00",
+                "value": "20"
+              },
+              {
+                "selected": false,
+                "text": "21:00",
+                "value": "21"
+              },
+              {
+                "selected": true,
+                "text": "22:00",
+                "value": "22"
+              },
+              {
+                "selected": false,
+                "text": "23:00",
+                "value": "23"
+              },
+              {
+                "selected": false,
+                "text": "0:00",
+                "value": "0"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "1"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "2"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "3"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "4"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/4",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "5"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/5",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "6"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/6",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "7"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/7",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "8"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/8",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "9"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/9",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "10"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/10",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "11"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/11",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "12"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/12",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "13"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/13",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "14"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/14",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "15"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/15",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "16"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/16",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "17"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/17",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "18"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/18",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "19"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/19",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "20"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/20",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "21"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/21",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "22"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/22",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4/options_exact/23",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "0"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "SET_TO_SPECIFIC_DATE",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": true,
+                "text": "Specific date",
+                "value": "SET_TO_SPECIFIC_DATE"
+              },
+              {
+                "selected": false,
+                "text": "Dynamic date",
+                "value": "SET_TO_CUF"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/fields/0/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "SET_TO_SPECIFIC_DATE"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/fields/0/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "SET_TO_CUF"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "waitUntil",
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/2/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "Smart Delay",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/2/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "SET_TO_CUF",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "Specific date",
+                "value": "SET_TO_SPECIFIC_DATE"
+              },
+              {
+                "selected": true,
+                "text": "Dynamic date",
+                "value": "SET_TO_CUF"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/2/fields/1/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "SET_TO_SPECIFIC_DATE"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/2/fields/1/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "SET_TO_CUF"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/2/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "waitUntil",
+            "label": "Date time picker",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/2/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "SET_TO_CUF",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "Specific date",
+                "value": "SET_TO_SPECIFIC_DATE"
+              },
+              {
+                "selected": true,
+                "text": "Dynamic date",
+                "value": "SET_TO_CUF"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/0/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "SET_TO_SPECIFIC_DATE"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/0/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "SET_TO_CUF"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "waitUntil",
+            "label": "Date time picker",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "value",
+            "label": "Delay time",
+            "type": "text",
+            "value": "1",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "99999",
+              "maxlength": null,
+              "min": "0",
+              "pattern": "[0-9]*",
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/4",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "unit",
+            "label": null,
+            "type": null,
+            "value": "days",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": false,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": true,
+                "text": "Days",
+                "value": "days"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/4/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/4/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/4/options_exact/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/4/fields/0",
+          "phase": "restoration_check",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "23",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/4/fields/1",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "delayUnits",
+            "label": null,
+            "type": null,
+            "value": "hours",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/4/fields/1/options_exact/0",
+          "phase": "restoration_check",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/4/fields/1/options_exact/1",
+          "phase": "restoration_check",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/4/fields/1/options_exact/2",
+          "phase": "restoration_check",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/4/fields/1/options_exact/3",
+          "phase": "restoration_check",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/4/fields/2",
+          "phase": "restoration_check",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/4/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Still thinking about it? Your link is right here 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/4/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Get the link",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/4/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourlink.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/4/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/5/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Tag picker",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Update this Add Tag per Automation per campaign: \n\nlink-clicked-campaign-name-1",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Update this Add Tag per Automation per campaign: \n\nlink-clicked-campaign-name-1",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Keyword trigger is defined in \nManychat for Brands",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "replies.0.reply",
+            "label": null,
+            "type": null,
+            "value": "Done! Details in your inbox 📩",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "replies.1.reply",
+            "label": null,
+            "type": null,
+            "value": "Info sent! Check your DMs 📬",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "replies.2.reply",
+            "label": null,
+            "type": null,
+            "value": "Done! Your DMs have the details 📌",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "23",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "delayUnits",
+            "label": null,
+            "type": null,
+            "value": "hours",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/1/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/1/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/1/options_exact/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/1/options_exact/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "from",
+            "label": null,
+            "type": null,
+            "value": "8",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "0:00",
+                "value": "0"
+              },
+              {
+                "selected": false,
+                "text": "1:00",
+                "value": "1"
+              },
+              {
+                "selected": false,
+                "text": "2:00",
+                "value": "2"
+              },
+              {
+                "selected": false,
+                "text": "3:00",
+                "value": "3"
+              },
+              {
+                "selected": false,
+                "text": "4:00",
+                "value": "4"
+              },
+              {
+                "selected": false,
+                "text": "5:00",
+                "value": "5"
+              },
+              {
+                "selected": false,
+                "text": "6:00",
+                "value": "6"
+              },
+              {
+                "selected": false,
+                "text": "7:00",
+                "value": "7"
+              },
+              {
+                "selected": true,
+                "text": "8:00",
+                "value": "8"
+              },
+              {
+                "selected": false,
+                "text": "9:00",
+                "value": "9"
+              },
+              {
+                "selected": false,
+                "text": "10:00",
+                "value": "10"
+              },
+              {
+                "selected": false,
+                "text": "11:00",
+                "value": "11"
+              },
+              {
+                "selected": false,
+                "text": "12:00",
+                "value": "12"
+              },
+              {
+                "selected": false,
+                "text": "13:00",
+                "value": "13"
+              },
+              {
+                "selected": false,
+                "text": "14:00",
+                "value": "14"
+              },
+              {
+                "selected": false,
+                "text": "15:00",
+                "value": "15"
+              },
+              {
+                "selected": false,
+                "text": "16:00",
+                "value": "16"
+              },
+              {
+                "selected": false,
+                "text": "17:00",
+                "value": "17"
+              },
+              {
+                "selected": false,
+                "text": "18:00",
+                "value": "18"
+              },
+              {
+                "selected": false,
+                "text": "19:00",
+                "value": "19"
+              },
+              {
+                "selected": false,
+                "text": "20:00",
+                "value": "20"
+              },
+              {
+                "selected": false,
+                "text": "21:00",
+                "value": "21"
+              },
+              {
+                "selected": false,
+                "text": "22:00",
+                "value": "22"
+              },
+              {
+                "selected": false,
+                "text": "23:00",
+                "value": "23"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "0"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "1"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "2"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "3"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/4",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "4"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/5",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "5"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/6",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "6"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/7",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "7"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/8",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "8"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/9",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "9"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/10",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "10"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/11",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "11"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/12",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "12"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/13",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "13"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/14",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "14"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/15",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "15"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/16",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "16"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/17",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "17"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/18",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "18"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/19",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "19"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/20",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "20"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/21",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "21"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/22",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "22"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3/options_exact/23",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "to",
+            "label": null,
+            "type": null,
+            "value": "22",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "1:00",
+                "value": "1"
+              },
+              {
+                "selected": false,
+                "text": "2:00",
+                "value": "2"
+              },
+              {
+                "selected": false,
+                "text": "3:00",
+                "value": "3"
+              },
+              {
+                "selected": false,
+                "text": "4:00",
+                "value": "4"
+              },
+              {
+                "selected": false,
+                "text": "5:00",
+                "value": "5"
+              },
+              {
+                "selected": false,
+                "text": "6:00",
+                "value": "6"
+              },
+              {
+                "selected": false,
+                "text": "7:00",
+                "value": "7"
+              },
+              {
+                "selected": false,
+                "text": "8:00",
+                "value": "8"
+              },
+              {
+                "selected": false,
+                "text": "9:00",
+                "value": "9"
+              },
+              {
+                "selected": false,
+                "text": "10:00",
+                "value": "10"
+              },
+              {
+                "selected": false,
+                "text": "11:00",
+                "value": "11"
+              },
+              {
+                "selected": false,
+                "text": "12:00",
+                "value": "12"
+              },
+              {
+                "selected": false,
+                "text": "13:00",
+                "value": "13"
+              },
+              {
+                "selected": false,
+                "text": "14:00",
+                "value": "14"
+              },
+              {
+                "selected": false,
+                "text": "15:00",
+                "value": "15"
+              },
+              {
+                "selected": false,
+                "text": "16:00",
+                "value": "16"
+              },
+              {
+                "selected": false,
+                "text": "17:00",
+                "value": "17"
+              },
+              {
+                "selected": false,
+                "text": "18:00",
+                "value": "18"
+              },
+              {
+                "selected": false,
+                "text": "19:00",
+                "value": "19"
+              },
+              {
+                "selected": false,
+                "text": "20:00",
+                "value": "20"
+              },
+              {
+                "selected": false,
+                "text": "21:00",
+                "value": "21"
+              },
+              {
+                "selected": true,
+                "text": "22:00",
+                "value": "22"
+              },
+              {
+                "selected": false,
+                "text": "23:00",
+                "value": "23"
+              },
+              {
+                "selected": false,
+                "text": "0:00",
+                "value": "0"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "1"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "2"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "3"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "4"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/4",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "5"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/5",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "6"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/6",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "7"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/7",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "8"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/8",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "9"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/9",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "10"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/10",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "11"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/11",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "12"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/12",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "13"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/13",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "14"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/14",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "15"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/15",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "16"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/16",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "17"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/17",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "18"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/18",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "19"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/19",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "20"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/20",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "21"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/21",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "22"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/22",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/4/options_exact/23",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "0"
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "SET_TO_SPECIFIC_DATE",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": true,
+                "text": "Specific date",
+                "value": "SET_TO_SPECIFIC_DATE"
+              },
+              {
+                "selected": false,
+                "text": "Dynamic date",
+                "value": "SET_TO_CUF"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/0/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "SET_TO_SPECIFIC_DATE"
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/0/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "SET_TO_CUF"
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "waitUntil",
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "Smart Delay",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "SET_TO_CUF",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "Specific date",
+                "value": "SET_TO_SPECIFIC_DATE"
+              },
+              {
+                "selected": true,
+                "text": "Dynamic date",
+                "value": "SET_TO_CUF"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/1/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "SET_TO_SPECIFIC_DATE"
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/1/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "SET_TO_CUF"
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "waitUntil",
+            "label": "Date time picker",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "SET_TO_CUF",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "Specific date",
+                "value": "SET_TO_SPECIFIC_DATE"
+              },
+              {
+                "selected": true,
+                "text": "Dynamic date",
+                "value": "SET_TO_CUF"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/0/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "SET_TO_SPECIFIC_DATE"
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/0/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "SET_TO_CUF"
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "waitUntil",
+            "label": "Date time picker",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "value",
+            "label": "Delay time",
+            "type": "text",
+            "value": "1",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "99999",
+              "maxlength": null,
+              "min": "0",
+              "pattern": "[0-9]*",
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/4",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "unit",
+            "label": null,
+            "type": null,
+            "value": "days",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": false,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": true,
+                "text": "Days",
+                "value": "days"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/4/options_exact/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/4/options_exact/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/4/options_exact/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/0",
+          "phase": "restoration_check",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "23",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/1",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "delayUnits",
+            "label": null,
+            "type": null,
+            "value": "hours",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/1/options_exact/0",
+          "phase": "restoration_check",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/1/options_exact/1",
+          "phase": "restoration_check",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/1/options_exact/2",
+          "phase": "restoration_check",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/1/options_exact/3",
+          "phase": "restoration_check",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/2",
+          "phase": "restoration_check",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/8/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": " Send me the link",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/9/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Here you go! 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Get the link",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourlink.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/11/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Get the link",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/11/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourlink.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/11/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/12/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": null,
+            "label": "Tag picker",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/13/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "23",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/13/fields/1",
+          "phase": "navigation",
+          "fields": {
+            "name": "delayUnits",
+            "label": null,
+            "type": null,
+            "value": "hours",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ],
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/13/fields/1/options_exact/0",
+          "phase": "navigation",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/observations/13/fields/1/options_exact/1",
+          "phase": "navigation",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/observations/13/fields/1/options_exact/2",
+          "phase": "navigation",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/observations/13/fields/1/options_exact/3",
+          "phase": "navigation",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/observations/13/fields/2",
+          "phase": "navigation",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/15/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Still thinking about it? Your link is right here 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/1/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Tag picker",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/supporting_evidence/4/json_exact/search",
+          "phase": "captured",
+          "fields": {
+            "value": ""
+          }
+        },
+        {
+          "path": "/followup/supporting_evidence/5/json_exact/name",
+          "phase": "captured",
+          "fields": {
+            "value": ""
+          }
+        },
+        {
+          "path": "/followup/supporting_evidence/5/json_exact/folder",
+          "phase": "captured",
+          "fields": {
+            "value": "Tags"
+          }
+        }
+      ],
+      "source_settings_sha256": "4a5a8263bf5fda37e6e15d24826c60c71ccbb82197f2932780fa5a78c9a92663",
+      "source_leaf_count": 4095,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [],
+  "continuations": {
+    "manychat-434": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-434.json": "8a73dd5c3c6a537d8e053838273a1a94986fb9767560b560e1e904cfeaf4a8d3"
+  }
+}

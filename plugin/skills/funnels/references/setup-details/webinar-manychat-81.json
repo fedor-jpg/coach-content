@@ -1,0 +1,4062 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "webinar-manychat-81",
+    "name": "Turn comments into RSVPs: email and phone required",
+    "source_ids": [
+      "manychat-81"
+    ],
+    "entry": "Keyword comment",
+    "mandatory_conditions": [
+      "Press the opening button",
+      "Email is required",
+      "Phone is required after email"
+    ],
+    "outcome": "A webinar link after both contacts",
+    "timing": [
+      "Two unset no-response exits: 23 hours each."
+    ],
+    "consent": "State the purposes of email and phone collection. The invitation does not prove external subscription consent.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "comment",
+      "contact",
+      "buttons",
+      "timers",
+      "graph"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "The existing event analogue sends the link before optional email. It does not preserve required email plus phone, or either unset no-response exit.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "The existing event analogue sends the link before optional email. It does not preserve required email plus phone, or either unset no-response exit.",
+        "result": "An event link first, followed by optional email. Required phone capture is lost; a confirmed RSVP needs the event service.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "manychat-81": "Two 23-hour exits are unset. Webinar registration is not confirmed."
+    },
+    "client_inputs": [
+      "post",
+      "keywords",
+      "webinar URL",
+      "email purpose",
+      "phone purpose",
+      "consent basis"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6054"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "inro-6054-owned_comment",
+          "label": "Selected-post comment entry",
+          "target": "owned_comment",
+          "allowed_targets": [
+            "owned_comment"
+          ],
+          "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Ask for email and then phone; deliver the webinar URL only after both answers pass conversational checks.",
+          "output_bindings": [
+            "webinar_title",
+            "webinar_url",
+            "contact_purpose"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Press the opening button",
+            "Email is required",
+            "Phone is required after email"
+          ],
+          "approval_required": true,
+          "source_id": "manychat-81",
+          "draft": {
+            "modes": [
+              "C",
+              "D",
+              "E",
+              "T"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "webinar_title",
+              "webinar_url",
+              "contact_purpose",
+              "public_text"
+            ],
+            "initial": "Want {webinar_title}? Reply YES to continue.",
+            "messages": {
+              "initial": "Want {webinar_title}? Reply YES to continue.",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "delivery": "Here is {webinar_title}: {webinar_url}",
+              "invalid": "That looks incomplete or incorrectly formatted. Please try again.",
+              "email": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.",
+              "phone": "For {contact_purpose}, please send your phone number with country code. You can refuse; the link requires this contact."
+            },
+            "instruction": "Every requested contact is required before delivery: email and phone. Refusal does not release the gated link. Explain {contact_purpose} before collection; use only new answers after this purpose is clear. Ask: For {contact_purpose}, please send your email address. You can refuse; the link requires this contact. Then, after a valid answer, Ask: For {contact_purpose}, please send your phone number with country code. You can refuse; the link requires this contact. Check email conversationally for a nonempty name, @ and a plausible domain; check phone for country code and plausible digits. Reject missing or obviously malformed answers and ask correction without showing the resource URL. These are AI conversational checks, NOT deterministic validation. Do not release the link on SKIP, refusal, partial answers or malformed contact. Require all email and phone answers before delivery. Deliver: Here is {webinar_title}: {webinar_url} Preserve refusal and silence. HELP asks for the problem; do not bypass any pending contact gate. Configure separate capture additions for email and phone with the explicit purpose; merge them into the complete existing captures list, never overwrite it. Contact persistence is unverified: do not claim saved data or external subscription. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+            "contact_requirement": "Every requested contact is required before delivery: email and phone. Refusal does not release the gated link.",
+            "contact_fields": [
+              "email",
+              "phone"
+            ],
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Wait for actual confirmation.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "email",
+                  "action": "Request email; wait for an actual answer.",
+                  "message_ids": [
+                    "email"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "invalid-email",
+                  "action": "Ask for email correction without a resource URL.",
+                  "message_ids": [
+                    "invalid"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "phone",
+                  "action": "Request phone; wait for an actual answer.",
+                  "message_ids": [
+                    "phone"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "invalid-phone",
+                  "action": "Ask for phone correction without a resource URL.",
+                  "message_ids": [
+                    "invalid"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "delivery",
+                  "action": "Deliver only after the required contact answers, or explicit SKIP when optional.",
+                  "message_ids": [
+                    "delivery"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "refusal",
+                  "action": "End this request without delivering gated content.",
+                  "message_ids": [
+                    "refusal"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                },
+                {
+                  "from": "first",
+                  "to": "email",
+                  "condition": "Actual affirmative reply"
+                },
+                {
+                  "from": "email",
+                  "to": "phone",
+                  "condition": "New consented email passes AI conversational check"
+                },
+                {
+                  "from": "email",
+                  "to": "invalid-email",
+                  "condition": "Missing or obviously malformed email"
+                },
+                {
+                  "from": "email",
+                  "to": "refusal",
+                  "condition": "Actual refusal or STOP"
+                },
+                {
+                  "from": "email",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                },
+                {
+                  "from": "invalid-email",
+                  "to": "email",
+                  "condition": "Actual new correction reply"
+                },
+                {
+                  "from": "phone",
+                  "to": "delivery",
+                  "condition": "New consented phone passes AI conversational check and prior required contact remains present in this run"
+                },
+                {
+                  "from": "phone",
+                  "to": "invalid-phone",
+                  "condition": "Missing or obviously malformed phone"
+                },
+                {
+                  "from": "phone",
+                  "to": "refusal",
+                  "condition": "Actual refusal or STOP"
+                },
+                {
+                  "from": "phone",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                },
+                {
+                  "from": "invalid-phone",
+                  "to": "phone",
+                  "condition": "Actual new correction reply"
+                },
+                {
+                  "from": "first",
+                  "to": "refusal",
+                  "condition": "Actual refusal"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "binding_review": {
+        "source_entry": "Keyword comment",
+        "source_outcome": "A webinar link after both contacts",
+        "mandatory_conditions": [
+          "Press the opening button",
+          "Email is required",
+          "Phone is required after email"
+        ],
+        "source_contact_policy": [
+          "Email is required",
+          "Phone is required after email"
+        ],
+        "plan_count": 1,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Ask for email and then phone; deliver the webinar URL only after both answers pass conversational checks.",
+        "source_requirements": [
+          "Press the opening button",
+          "Email is required",
+          "Phone is required after email"
+        ],
+        "source_timing": [
+          "Two unset no-response exits: 23 hours each."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Ask for email and then phone; deliver the webinar URL only after both answers pass conversational checks.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Two unset no-response exits: 23 hours each.. No timed unsolicited message is configured.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [
+          "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+          "Every requested contact is required before delivery: email and phone. Refusal does not release the gated link."
+        ],
+        "examples": [
+          {
+            "source_id": "manychat-81",
+            "node_id": "node-0",
+            "source_text": "Hey! I'm so happy you'd like to join my free webinar \"How to make real money from social media\". 💅\n\nTap below to get access! ",
+            "adapted_text": "Want {webinar_title}? Reply YES to continue.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      }
+    }
+  },
+  "goal": "Turn Instagram interest into event sign-ups and access.",
+  "fit": "Hosts promoting a webinar, workshop or event.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Ask for email and then phone; deliver the webinar URL only after both answers pass conversational checks.",
+    "source_requirements": [
+      "Press the opening button",
+      "Email is required",
+      "Phone is required after email"
+    ],
+    "source_timing": [
+      "Two unset no-response exits: 23 hours each."
+    ],
+    "blocking_dependencies": [],
+    "retained": [
+      "Ask for email and then phone; deliver the webinar URL only after both answers pass conversational checks.",
+      "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+    ],
+    "omitted": [
+      "Exact source timing is not retained: Two unset no-response exits: 23 hours each.. No timed unsolicited message is configured.",
+      "No imported deterministic graph or source folder/tag tracking."
+    ],
+    "limitations": [
+      "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+      "Every requested contact is required before delivery: email and phone. Refusal does not release the gated link."
+    ],
+    "examples": [
+      {
+        "source_id": "manychat-81",
+        "node_id": "node-0",
+        "source_text": "Hey! I'm so happy you'd like to join my free webinar \"How to make real money from social media\". 💅\n\nTap below to get access! ",
+        "adapted_text": "Want {webinar_title}? Reply YES to continue.",
+        "provenance": "authored_adaptation_not_captured"
+      }
+    ]
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "buttons",
+    "timers",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "manychat-81",
+      "source_file": "source-records/manychat-81.json",
+      "source_title": "Turn comments into RSVPs",
+      "start": "trigger",
+      "nodes": [
+        {
+          "id": "trigger",
+          "source_type": "trigger",
+          "content": {
+            "text": "",
+            "preview": "Post or Reel Comments #11\n\nSelected values were not captured",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/panels/2/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "replies.0.reply",
+                "label": null,
+                "type": null,
+                "value": "Sent the secret link to your DMs 🔐",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/2/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "replies.1.reply",
+                "label": null,
+                "type": null,
+                "value": "Details sent, see your inbox 📬",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/2/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": "replies.2.reply",
+                "label": null,
+                "type": null,
+                "value": "Done! Check your inbox for info 📫",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "c0ccb9f48cc726fb6579ef7997ee9366ddfc1817cefb98152176057c5dd7bd31",
+          "settings_leaf_count": 117
+        },
+        {
+          "id": "node-0",
+          "source_type": "message",
+          "content": {
+            "text": "Hey! I'm so happy you'd like to join my free webinar \"How to make real money from social media\". 💅\n\nTap below to get access! ",
+            "preview": "Hey! I'm so happy you'd like to join my free webinar \"How to make real money from social media\". 💅\n\nTap below to get access! ",
+            "buttons": [
+              "Sign Me Up! 🔥"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Hey! I'm so happy you'd like to join my free webinar \"How to make real money from social media\". 💅\n\nTap below to get access! ",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Sign Me Up! 🔥",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "3b6dbaeae4b91f93149e1a952df82c14b85bad256f5eb45502bad7d2cfbe8bb6",
+          "settings_leaf_count": 169
+        },
+        {
+          "id": "node-1",
+          "source_type": "message",
+          "content": {
+            "text": "Oh yeah! To reserve your spot, please gimme your email below 👇\n\nThanks! I've got it. 😉 I promise to only send you the good stuff (no spam, ever!) Just one more thing...",
+            "preview": "Oh yeah! To reserve your spot, please gimme your email below 👇\n\nThanks! I've got it. 😉 I promise to only send you the good stuff (no spam, ever!) Just one more thing...",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Oh yeah! To reserve your spot, please gimme your email below 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Thanks! I've got it. 😉 I promise to only send you the good stuff (no spam, ever!) Just one more thing...",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "saveEmailToSystemField",
+                "label": "Save Email to System Field",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "setEmailOptIn",
+                "label": "Set Email Opt-In ",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": "validationErrorMessage",
+                "label": "No retry message",
+                "type": null,
+                "value": "Please enter a correct email address, e.g. me@mail.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3",
+              "phase": "captured_default",
+              "fields": {
+                "name": "skipButtonCaption",
+                "label": "\"Skip\" button text",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/field",
+              "phase": "captured_default",
+              "fields": {
+                "value": "23"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0",
+              "phase": "captured_default",
+              "fields": {
+                "value": "hours",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "Seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Days",
+                    "value": "days"
+                  }
+                ]
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/0",
+              "phase": "captured_default",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/1",
+              "phase": "captured_default",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/2",
+              "phase": "captured_default",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/3",
+              "phase": "captured_default",
+              "fields": {
+                "value": "days"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "2653206771f63249b6721d3b660d940c26e6718611f88da8fd7081464685e654",
+          "settings_leaf_count": 307
+        },
+        {
+          "id": "node-2",
+          "source_type": "message",
+          "content": {
+            "text": "I'd love your phone number! Gimme it below so you're in the loop for all of my masterclasses 👇\n\nYou're the best. Thank you! ❤️",
+            "preview": "I'd love your phone number! Gimme it below so you're in the loop for all of my masterclasses 👇\n\nYou're the best. Thank you! ❤️",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "I'd love your phone number! Gimme it below so you're in the loop for all of my masterclasses 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "You're the best. Thank you! ❤️",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "savePhoneToWhatsAppIdSystemField",
+                "label": "Save Phone as WhatsApp ID",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "savePhoneToSystemField",
+                "label": "Save Phone to System Field",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": "setSmsOptIn",
+                "label": "Set SMS Opt-In ",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3",
+              "phase": "captured_default",
+              "fields": {
+                "name": "validationErrorMessage",
+                "label": "No retry message",
+                "type": null,
+                "value": "Your phone number must contain the country and city code and be in the following format: +15417543010",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4",
+              "phase": "captured_default",
+              "fields": {
+                "name": "skipButtonCaption",
+                "label": "\"Skip\" button text",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/field",
+              "phase": "captured_default",
+              "fields": {
+                "value": "23"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0",
+              "phase": "captured_default",
+              "fields": {
+                "value": "hours",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "Seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Days",
+                    "value": "days"
+                  }
+                ]
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/0",
+              "phase": "captured_default",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/1",
+              "phase": "captured_default",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/2",
+              "phase": "captured_default",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/3",
+              "phase": "captured_default",
+              "fields": {
+                "value": "days"
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "savePhoneToWhatsAppIdSystemField",
+                "label": "Save Phone as WhatsApp ID",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "savePhoneToSystemField",
+                "label": "Save Phone to System Field",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/2",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "customFieldId",
+                "label": "Add Response to a Custom Field",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/3",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "validationErrorMessage",
+                "label": "No retry message",
+                "type": null,
+                "value": "Your phone number must contain the country and city code and be in the following format: +15417543010",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/4",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "skipButtonCaption",
+                "label": "\"Skip\" button text",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/0",
+              "phase": "restoration_check",
+              "fields": {
+                "name": "savePhoneToWhatsAppIdSystemField",
+                "label": "Save Phone as WhatsApp ID",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/1",
+              "phase": "restoration_check",
+              "fields": {
+                "name": "savePhoneToSystemField",
+                "label": "Save Phone to System Field",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/2",
+              "phase": "restoration_check",
+              "fields": {
+                "name": "setSmsOptIn",
+                "label": "Set SMS Opt-In ",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/3",
+              "phase": "restoration_check",
+              "fields": {
+                "name": "validationErrorMessage",
+                "label": "No retry message",
+                "type": null,
+                "value": "Your phone number must contain the country and city code and be in the following format: +15417543010",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/4",
+              "phase": "restoration_check",
+              "fields": {
+                "name": "skipButtonCaption",
+                "label": "\"Skip\" button text",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "b2cf1dd027a784e1a1098419e9423382a5f0e8af3919bc1fe0f29f0573bb7074",
+          "settings_leaf_count": 628
+        },
+        {
+          "id": "node-3",
+          "source_type": "message",
+          "content": {
+            "text": "You're IN! \n\nGrab your pen and paper (and your fave energy drink!) and settle in to watch my \"How to make real money from social media\" webinar now! 👇",
+            "preview": "You're IN! \n\nGrab your pen and paper (and your fave energy drink!) and settle in to watch my \"How to make real money from social media\" webinar now! 👇",
+            "buttons": [
+              "Watch Webinar 📺"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "You're IN! \n\nGrab your pen and paper (and your fave energy drink!) and settle in to watch my \"How to make real money from social media\" webinar now! 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Watch Webinar 📺",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "yourwebinarpage.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Additional actions",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "91d5aa0d435487cf6d0334bc9f90bd7faba7748f7f53a6c849cf4252fbc5b318",
+          "settings_leaf_count": 245
+        }
+      ],
+      "transitions": [
+        {
+          "id": "edge-0",
+          "from": "node-0",
+          "to": "node-1",
+          "label": "Sign Me Up! 🔥",
+          "settings": {
+            "from": "node-0",
+            "to": "node-1",
+            "port_exact": "button-0",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [
+              "8b81012b-fd0d-46af-930c-c347c6775a2f"
+            ],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-0.button-0.target",
+            "evidence": {
+              "file": "evidence/81-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/0"
+          }
+        },
+        {
+          "id": "edge-1",
+          "from": "node-1",
+          "to": "node-2",
+          "label": "Next Step",
+          "settings": {
+            "from": "node-1",
+            "to": "node-2",
+            "port_exact": "Next Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-1.Next Step.target",
+            "evidence": {
+              "file": "evidence/81-editor.json",
+              "pointer": "/graph/edges/1"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/1"
+          }
+        },
+        {
+          "id": "edge-2",
+          "from": "node-2",
+          "to": "node-3",
+          "label": "Next Step",
+          "settings": {
+            "from": "node-2",
+            "to": "node-3",
+            "port_exact": "Next Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-2.Next Step.target",
+            "evidence": {
+              "file": "evidence/81-editor.json",
+              "pointer": "/graph/edges/2"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/2"
+          }
+        },
+        {
+          "id": "edge-3",
+          "from": "trigger",
+          "to": "node-0",
+          "label": "Starting Step",
+          "settings": {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/81-editor.json",
+              "pointer": "/graph/edges/3"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/3"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/instance/nodes/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Hey! I'm so happy you'd like to join my free webinar \"How to make real money from social media\". 💅\n\nTap below to get access! ",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Sign Me Up! 🔥",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Oh yeah! To reserve your spot, please gimme your email below 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/default_panel/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Thanks! I've got it. 😉 I promise to only send you the good stuff (no spam, ever!) Just one more thing...",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "saveEmailToSystemField",
+            "label": "Save Email to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "setEmailOptIn",
+            "label": "Set Email Opt-In ",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Please enter a correct email address, e.g. me@mail.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/1/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/1/identity_evidence_exact/units/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours",
+            "options": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ]
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/1/identity_evidence_exact/units/0/options/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/1/identity_evidence_exact/units/0/options/1",
+          "phase": "captured_default",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/1/identity_evidence_exact/units/0/options/2",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/1/identity_evidence_exact/units/0/options/3",
+          "phase": "captured_default",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "I'd love your phone number! Gimme it below so you're in the loop for all of my masterclasses 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "You're the best. Thank you! ❤️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "savePhoneToWhatsAppIdSystemField",
+            "label": "Save Phone as WhatsApp ID",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "savePhoneToSystemField",
+            "label": "Save Phone to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "setSmsOptIn",
+            "label": "Set SMS Opt-In ",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Your phone number must contain the country and city code and be in the following format: +15417543010",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/identity_evidence_exact/units/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours",
+            "options": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ]
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/identity_evidence_exact/units/0/options/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/identity_evidence_exact/units/0/options/1",
+          "phase": "captured_default",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/identity_evidence_exact/units/0/options/2",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/identity_evidence_exact/units/0/options/3",
+          "phase": "captured_default",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/2/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "savePhoneToWhatsAppIdSystemField",
+            "label": "Save Phone as WhatsApp ID",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/2/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "savePhoneToSystemField",
+            "label": "Save Phone to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/2/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "customFieldId",
+            "label": "Add Response to a Custom Field",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/2/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Your phone number must contain the country and city code and be in the following format: +15417543010",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/2/fields/4",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/0",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "savePhoneToWhatsAppIdSystemField",
+            "label": "Save Phone as WhatsApp ID",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/1",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "savePhoneToSystemField",
+            "label": "Save Phone to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/2",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "setSmsOptIn",
+            "label": "Set SMS Opt-In ",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/3",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Your phone number must contain the country and city code and be in the following format: +15417543010",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/3/fields/4",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "You're IN! \n\nGrab your pen and paper (and your fave energy drink!) and settle in to watch my \"How to make real money from social media\" webinar now! 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Watch Webinar 📺",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebinarpage.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Lastly, you send the link to your webinar!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "We capture your follower's phone here, which automatically saves the number to your customer's system field.\n\nYou will see it saved under their name when you click on Contacts.\n\nBe sure to save the reply type as phone.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Here's a list of Manychat Email Integrations and how to set them up: \nhttps://manychat.com/integrations\n\nIf you use Zapier, here's how to set it up: https://zapier.com/apps/manychat/integrations",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/3/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "We capture your follower's email address  here, which automatically saves the email to your customer's Contact Profile as a system field.\n\n You will see it saved under their name when you click on Contacts.\n\nBe sure to save the reply type as email and let your customers know that by giving your their email, they give you permission to legally email them.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/4/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "This step allows you to capture your follower's email address and send it to your email software.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/5/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Make sure you update this button URL so it opens to your website!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/6/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "This is the first message a follower sees in their DMs. Personalize this message so your follower is excited to click to the next step. We use a button here.\n\n(This is necessary as the first message of a comment reply message can only have text and buttons.)",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/7/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Your trigger here will be \"User comments on your Post or Reel\". Be sure to select which post or Reel you'd like this automation connected to.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "replies.0.reply",
+            "label": null,
+            "type": null,
+            "value": "Sent the secret link to your DMs 🔐",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "replies.1.reply",
+            "label": null,
+            "type": null,
+            "value": "Details sent, see your inbox 📬",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "replies.2.reply",
+            "label": null,
+            "type": null,
+            "value": "Done! Check your inbox for info 📫",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "saveEmailToSystemField",
+            "label": "Save Email to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "setEmailOptIn",
+            "label": "Set Email Opt-In ",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Please enter a correct email address, e.g. me@mail.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/observations/4/identity_evidence_exact/units/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours",
+            "options": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ]
+          }
+        },
+        {
+          "path": "/instance/observations/4/identity_evidence_exact/units/0/options/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/observations/4/identity_evidence_exact/units/0/options/1",
+          "phase": "captured_default",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/observations/4/identity_evidence_exact/units/0/options/2",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/observations/4/identity_evidence_exact/units/0/options/3",
+          "phase": "captured_default",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "savePhoneToWhatsAppIdSystemField",
+            "label": "Save Phone as WhatsApp ID",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "savePhoneToSystemField",
+            "label": "Save Phone to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "setSmsOptIn",
+            "label": "Set SMS Opt-In ",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Your phone number must contain the country and city code and be in the following format: +15417543010",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/observations/6/identity_evidence_exact/units/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours",
+            "options": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ]
+          }
+        },
+        {
+          "path": "/instance/observations/6/identity_evidence_exact/units/0/options/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/observations/6/identity_evidence_exact/units/0/options/1",
+          "phase": "captured_default",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/observations/6/identity_evidence_exact/units/0/options/2",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/observations/6/identity_evidence_exact/units/0/options/3",
+          "phase": "captured_default",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "savePhoneToWhatsAppIdSystemField",
+            "label": "Save Phone as WhatsApp ID",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "savePhoneToSystemField",
+            "label": "Save Phone to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "customFieldId",
+            "label": "Add Response to a Custom Field",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Your phone number must contain the country and city code and be in the following format: +15417543010",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/4",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/8/fields/0",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "savePhoneToWhatsAppIdSystemField",
+            "label": "Save Phone as WhatsApp ID",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/8/fields/1",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "savePhoneToSystemField",
+            "label": "Save Phone to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/8/fields/2",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "setSmsOptIn",
+            "label": "Set SMS Opt-In ",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/8/fields/3",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Your phone number must contain the country and city code and be in the following format: +15417543010",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/8/fields/4",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/9/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Sign Me Up! 🔥",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Oh yeah! To reserve your spot, please gimme your email below 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/1",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Thanks! I've got it. 😉 I promise to only send you the good stuff (no spam, ever!) Just one more thing...",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/11/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Watch Webinar 📺",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/11/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebinarpage.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/11/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/12/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "I'd love your phone number! Gimme it below so you're in the loop for all of my masterclasses 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/12/fields/1",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "You're the best. Thank you! ❤️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/13/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "You're IN! \n\nGrab your pen and paper (and your fave energy drink!) and settle in to watch my \"How to make real money from social media\" webinar now! 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "1623b4ed150bab5bf1a9d1133fece648295de9e2c12bcb03bda0f5ac5d2e5288",
+      "source_leaf_count": 3508,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "inro-6054-owned_comment",
+        "label": "Selected-post comment entry",
+        "target": "owned_comment",
+        "allowed_targets": [
+          "owned_comment"
+        ],
+        "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Ask for email and then phone; deliver the webinar URL only after both answers pass conversational checks.",
+        "output_bindings": [
+          "webinar_title",
+          "webinar_url",
+          "contact_purpose"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Press the opening button",
+          "Email is required",
+          "Phone is required after email"
+        ],
+        "approval_required": true,
+        "source_id": "manychat-81",
+        "draft": {
+          "modes": [
+            "C",
+            "D",
+            "E",
+            "T"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "webinar_title",
+            "webinar_url",
+            "contact_purpose",
+            "public_text"
+          ],
+          "initial": "Want {webinar_title}? Reply YES to continue.",
+          "messages": {
+            "initial": "Want {webinar_title}? Reply YES to continue.",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "delivery": "Here is {webinar_title}: {webinar_url}",
+            "invalid": "That looks incomplete or incorrectly formatted. Please try again.",
+            "email": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.",
+            "phone": "For {contact_purpose}, please send your phone number with country code. You can refuse; the link requires this contact."
+          },
+          "instruction": "Every requested contact is required before delivery: email and phone. Refusal does not release the gated link. Explain {contact_purpose} before collection; use only new answers after this purpose is clear. Ask: For {contact_purpose}, please send your email address. You can refuse; the link requires this contact. Then, after a valid answer, Ask: For {contact_purpose}, please send your phone number with country code. You can refuse; the link requires this contact. Check email conversationally for a nonempty name, @ and a plausible domain; check phone for country code and plausible digits. Reject missing or obviously malformed answers and ask correction without showing the resource URL. These are AI conversational checks, NOT deterministic validation. Do not release the link on SKIP, refusal, partial answers or malformed contact. Require all email and phone answers before delivery. Deliver: Here is {webinar_title}: {webinar_url} Preserve refusal and silence. HELP asks for the problem; do not bypass any pending contact gate. Configure separate capture additions for email and phone with the explicit purpose; merge them into the complete existing captures list, never overwrite it. Contact persistence is unverified: do not claim saved data or external subscription. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+          "contact_requirement": "Every requested contact is required before delivery: email and phone. Refusal does not release the gated link.",
+          "contact_fields": [
+            "email",
+            "phone"
+          ],
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Wait for actual confirmation.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "email",
+                "action": "Request email; wait for an actual answer.",
+                "message_ids": [
+                  "email"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "invalid-email",
+                "action": "Ask for email correction without a resource URL.",
+                "message_ids": [
+                  "invalid"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "phone",
+                "action": "Request phone; wait for an actual answer.",
+                "message_ids": [
+                  "phone"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "invalid-phone",
+                "action": "Ask for phone correction without a resource URL.",
+                "message_ids": [
+                  "invalid"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "delivery",
+                "action": "Deliver only after the required contact answers, or explicit SKIP when optional.",
+                "message_ids": [
+                  "delivery"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "refusal",
+                "action": "End this request without delivering gated content.",
+                "message_ids": [
+                  "refusal"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              },
+              {
+                "from": "first",
+                "to": "email",
+                "condition": "Actual affirmative reply"
+              },
+              {
+                "from": "email",
+                "to": "phone",
+                "condition": "New consented email passes AI conversational check"
+              },
+              {
+                "from": "email",
+                "to": "invalid-email",
+                "condition": "Missing or obviously malformed email"
+              },
+              {
+                "from": "email",
+                "to": "refusal",
+                "condition": "Actual refusal or STOP"
+              },
+              {
+                "from": "email",
+                "to": "silence",
+                "condition": "No actual reply"
+              },
+              {
+                "from": "invalid-email",
+                "to": "email",
+                "condition": "Actual new correction reply"
+              },
+              {
+                "from": "phone",
+                "to": "delivery",
+                "condition": "New consented phone passes AI conversational check and prior required contact remains present in this run"
+              },
+              {
+                "from": "phone",
+                "to": "invalid-phone",
+                "condition": "Missing or obviously malformed phone"
+              },
+              {
+                "from": "phone",
+                "to": "refusal",
+                "condition": "Actual refusal or STOP"
+              },
+              {
+                "from": "phone",
+                "to": "silence",
+                "condition": "No actual reply"
+              },
+              {
+                "from": "invalid-phone",
+                "to": "phone",
+                "condition": "Actual new correction reply"
+              },
+              {
+                "from": "first",
+                "to": "refusal",
+                "condition": "Actual refusal"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No actual reply"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [],
+      "entry_readback_fields": [
+        "post_ids",
+        "keywords",
+        "match_mode"
+      ],
+      "preparation_gates": [
+        "Before staging an owned OFF custom, complete readback must equal approved posts, keywords and match mode. Reply-setting updates cannot change filters. A mismatch blocks staging; setup_comment_replies needs separate immediate-enabled approval.",
+        "Normal MCP has no contact-attribute-value reader. Capture configuration readback and chat text do not prove saved email/phone, joined membership or withdrawal. Keep value-dependent confirmation or handoff unresolved; simple preparation remains available."
+      ],
+      "missing_readback": [
+        "contact_attribute_values"
+      ],
+      "target": "owned_comment",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "webinar_title",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "webinar_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "contact_purpose",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Want {webinar_title}? Reply YES to continue.",
+        "public": "{public_text}",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "delivery": "Here is {webinar_title}: {webinar_url}",
+        "invalid": "That looks incomplete or incorrectly formatted. Please try again.",
+        "email": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.",
+        "phone": "For {contact_purpose}, please send your phone number with country code. You can refuse; the link requires this contact."
+      },
+      "instruction": "Every requested contact is required before delivery: email and phone. Refusal does not release the gated link. Explain {contact_purpose} before collection; use only new answers after this purpose is clear. Ask: For {contact_purpose}, please send your email address. You can refuse; the link requires this contact. Then, after a valid answer, Ask: For {contact_purpose}, please send your phone number with country code. You can refuse; the link requires this contact. Check email conversationally for a nonempty name, @ and a plausible domain; check phone for country code and plausible digits. Reject missing or obviously malformed answers and ask correction without showing the resource URL. These are AI conversational checks, NOT deterministic validation. Do not release the link on SKIP, refusal, partial answers or malformed contact. Require all email and phone answers before delivery. Deliver: Here is {webinar_title}: {webinar_url} Preserve refusal and silence. HELP asks for the problem; do not bypass any pending contact gate. Configure separate capture additions for email and phone with the explicit purpose; merge them into the complete existing captures list, never overwrite it. Contact persistence is unverified: do not claim saved data or external subscription. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Wait for actual confirmation.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "email",
+            "action": "Request email; wait for an actual answer.",
+            "message_ids": [
+              "email"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "invalid-email",
+            "action": "Ask for email correction without a resource URL.",
+            "message_ids": [
+              "invalid"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "phone",
+            "action": "Request phone; wait for an actual answer.",
+            "message_ids": [
+              "phone"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "invalid-phone",
+            "action": "Ask for phone correction without a resource URL.",
+            "message_ids": [
+              "invalid"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "delivery",
+            "action": "Deliver only after the required contact answers, or explicit SKIP when optional.",
+            "message_ids": [
+              "delivery"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "refusal",
+            "action": "End this request without delivering gated content.",
+            "message_ids": [
+              "refusal"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          },
+          {
+            "from": "first",
+            "to": "email",
+            "condition": "Actual affirmative reply"
+          },
+          {
+            "from": "email",
+            "to": "phone",
+            "condition": "New consented email passes AI conversational check"
+          },
+          {
+            "from": "email",
+            "to": "invalid-email",
+            "condition": "Missing or obviously malformed email"
+          },
+          {
+            "from": "email",
+            "to": "refusal",
+            "condition": "Actual refusal or STOP"
+          },
+          {
+            "from": "email",
+            "to": "silence",
+            "condition": "No actual reply"
+          },
+          {
+            "from": "invalid-email",
+            "to": "email",
+            "condition": "Actual new correction reply"
+          },
+          {
+            "from": "phone",
+            "to": "delivery",
+            "condition": "New consented phone passes AI conversational check and prior required contact remains present in this run"
+          },
+          {
+            "from": "phone",
+            "to": "invalid-phone",
+            "condition": "Missing or obviously malformed phone"
+          },
+          {
+            "from": "phone",
+            "to": "refusal",
+            "condition": "Actual refusal or STOP"
+          },
+          {
+            "from": "phone",
+            "to": "silence",
+            "condition": "No actual reply"
+          },
+          {
+            "from": "invalid-phone",
+            "to": "phone",
+            "condition": "Actual new correction reply"
+          },
+          {
+            "from": "first",
+            "to": "refusal",
+            "condition": "Actual refusal"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No actual reply"
+          }
+        ]
+      },
+      "contact_requirement": "Every requested contact is required before delivery: email and phone. Refusal does not release the gated link.",
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "publicReply": {
+              "publicReplyHowToReply": "ExactText",
+              "exactTextReply": "{public_text}"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "privateReply": {
+              "privateReplyHowToReply": "ExactText",
+              "exactTextReply": "Want {webinar_title}? Reply YES to continue."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.. First message: Want {webinar_title}? Reply YES to continue.\nEvery requested contact is required before delivery: email and phone. Refusal does not release the gated link. Explain {contact_purpose} before collection; use only new answers after this purpose is clear. Ask: For {contact_purpose}, please send your email address. You can refuse; the link requires this contact. Then, after a valid answer, Ask: For {contact_purpose}, please send your phone number with country code. You can refuse; the link requires this contact. Check email conversationally for a nonempty name, @ and a plausible domain; check phone for country code and plausible digits. Reject missing or obviously malformed answers and ask correction without showing the resource URL. These are AI conversational checks, NOT deterministic validation. Do not release the link on SKIP, refusal, partial answers or malformed contact. Require all email and phone answers before delivery. Deliver: Here is {webinar_title}: {webinar_url} Preserve refusal and silence. HELP asks for the problem; do not bypass any pending contact gate. Configure separate capture additions for email and phone with the explicit purpose; merge them into the complete existing captures list, never overwrite it. Contact persistence is unverified: do not claim saved data or external subscription. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\ndelivery: Here is {webinar_title}: {webinar_url}\ninvalid: That looks incomplete or incorrectly formatted. Please try again.\nemail: For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.\nphone: For {contact_purpose}, please send your phone number with country code. You can refuse; the link requires this contact. The one private comment reply has already sent the opener. Wait for the person's actual linked reply; do not resend the opener or send a second unsolicited DM. Continue only within the permitted messaging window."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "whenAIReplies": {
+              "option": "Always"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "followUps": {
+              "howToSend": "DontSend"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "collectContactInfo": {
+              "howToCollect": "CollectInfo",
+              "captures": "$resolved.safe_captures"
+            }
+          }
+        }
+      ],
+      "list_additions": {
+        "collectContactInfo": [
+          {
+            "attribute": "$resolved.verified_email_attribute",
+            "description": "Campaign {campaign}; email for {contact_purpose}: Every requested contact is required before delivery: email and phone. Refusal does not release the gated link."
+          },
+          {
+            "attribute": "$resolved.verified_phone_attribute",
+            "description": "Campaign {campaign}; phone for {contact_purpose}: Every requested contact is required before delivery: email and phone. Refusal does not release the gated link."
+          }
+        ]
+      },
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "owned_comment",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "manychat-81": [
+      {
+        "id": "event",
+        "title": "Finish event registration",
+        "scope": "Use to finish registration in the existing event service. Do not add a marketing subscription unless separately requested.",
+        "inputs": [
+          "Event service, form and URL",
+          "Event date and time zone",
+          "Required registration fields and consent",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish event registration.\nSelected source: manychat-81 - Turn comments into RSVPs.\nGoal: Turn Instagram interest into event sign-ups and access.\nVariant: Turn comments into RSVPs: email and phone required\nScope: Use to finish registration in the existing event service. Do not add a marketing subscription unless separately requested.\nSource entry: Keyword comment\nSource requirements: Press the opening button; Email is required; Phone is required after email\nSource timing: Two unset no-response exits: 23 hours each.\nSource outcome: A webinar link after both contacts\nCaptured text (node-0, not approved campaign copy):\nHey! I'm so happy you'd like to join my free webinar \"How to make real money from social media\". 💅\n\nTap below to get access! \nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Ask for email and then phone; deliver the webinar URL only after both answers pass conversational checks.\nUse the existing form or webinar service and the selected event.\nAsk me for: Event service, form and URL; Event date and time zone; Required registration fields and consent; Existing authorized access.\n1. Confirm the event and authorized access. Draft the registration form and map only its required fields. Event registration consent does not imply email or SMS marketing consent.\n2. Retain required versus optional email/phone distinctions. If the Chatfuel variant delivers the link before optional email, disclose that change; do not claim the original contact gate remains.\n3. Define success as a registration record in the event service, separately from delivery or clicks. If reminders depend on external completion or exact timing, identify a verified existing connection and its semantics or leave that dependency unresolved. Return draft settings and next access steps; do not register attendees or send reminders.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ]
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-81.json": "f7251692de55403a80e7cc06767522e5f8fed7d332f58ce47ec3c92ab8ff1ada",
+    "described-recipes/inro-6054.json": "8fbcf5bdd823fd350474e223eda629ba29e6c94792573702619a3d2fab48ee64"
+  }
+}

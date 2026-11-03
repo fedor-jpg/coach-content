@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "id": "inro-6082",
+  "version": "0.1.0",
+  "source": {
+    "id": "inro-6082",
+    "title": "Thank fans who love your posts",
+    "url": "https://app.inro.social/public/scenarios/6082",
+    "observed_at": "2026-10-30",
+    "original_goal": "Thank fans who love your posts",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "status": "candidate",
+  "family": "acknowledgment",
+  "goal": "Thank matching positive public comments without sending a private reply.",
+  "entry": "public",
+  "platforms": [
+    "Instagram"
+  ],
+  "conversation": false,
+  "design_changes": [],
+  "unsupported_requirements": [
+    "private-sales-dm",
+    "random-delay"
+  ],
+  "blockers": [],
+  "required_inputs": [
+    "post_ids",
+    "keyword",
+    "thanks_text",
+    "language",
+    "public_text"
+  ],
+  "allowed_parameters": {
+    "post_ids": {
+      "type": "post_ids",
+      "description": "1-50 actual selected Instagram post IDs read from this account."
+    },
+    "keyword": {
+      "type": "text",
+      "description": "One agreed positive comment keyword; use a separate rule for another scope."
+    },
+    "thanks_text": {
+      "type": "text",
+      "description": "Coach-supplied thanks text, preserved without invented claims."
+    },
+    "language": {
+      "type": "text",
+      "description": "Coach's message language; provide the exact approved copy in this language."
+    },
+    "public_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved public text in language, within this recipe's unchanged promise and transitions."
+    }
+  },
+  "messages": {
+    "public": "{thanks_text}",
+    "initial": "",
+    "continuation": "Use only the configured positive keywords. Do not claim semantic hate detection.",
+    "refusal": "Understood. I will not continue this campaign. You can ask our team for help.",
+    "handoff": "Our team will handle your request.",
+    "placement": ""
+  },
+  "transitions": [
+    {
+      "event": "Coach supplies approved business facts and selects the existing account.",
+      "actor": "Claude",
+      "action": "Prepare exact messages and native payloads locally; obtain scoped approvals and save private intent.",
+      "evidence": "Preview, recipe digest and private card readback."
+    },
+    {
+      "event": "The contact posts the agreed positive keyword under an approved post.",
+      "actor": "Contact",
+      "action": "Provide the real entry event; an external click is not a reply.",
+      "evidence": "Actual account, recipient, media/word and entry event IDs."
+    },
+    {
+      "event": "The approved native automation receives that entry.",
+      "actor": "Chatfuel",
+      "action": "Send public thanks only; private reply remains DontReply.",
+      "evidence": "Public comment and no private message."
+    }
+  ],
+  "native_operations": [
+    "get_bot",
+    "get_automation",
+    "list_posts",
+    "fuelyAutomationCreate",
+    "fuelyAutomationUpdateSetting",
+    "fuelyAutomationSetEnabled"
+  ],
+  "outcome": "A matching comment gets only the approved public thanks.",
+  "negative_cases": [
+    "Private reply must be DontReply before enable.",
+    "A complaint or unmatched comment gets no campaign thanks."
+  ],
+  "runtime_checks": [
+    "content",
+    "return",
+    "stop",
+    "refusal",
+    "repeat",
+    "unknown_action",
+    "wrong_account",
+    "two_campaigns",
+    "source_attribution",
+    "public_only",
+    "unmatched_comment",
+    "public_thanks_received"
+  ],
+  "resume": {
+    "actor": "Claude",
+    "action": "Restore the private card, confirm this recipe digest and account, then read current owned and shared settings. Reconcile unknown results without retry.",
+    "campaign_match": "Require the actual media, commentID and linked private reply; do not infer campaign from lead stage."
+  },
+  "stop": {
+    "actor": "Claude with scoped native approval",
+    "action": "Disable only the campaign-owned comment rule, if present. Remove only campaign additions from shared DM text, captures and handoff; retain other campaigns and support.",
+    "proof": "Read back changes. Test late entry, late DM, the second campaign and ordinary support before accepting complete stop."
+  },
+  "execution_reference": "../chatfuel-execution.md",
+  "initial_required_parameters": [],
+  "supported_requirements": [
+    "instagram",
+    "local-preview",
+    "comment-keyword",
+    "scoped-posts",
+    "public-only"
+  ],
+  "business_outcomes": {
+    "public_thanks_received": {
+      "origin": "recipient-observation",
+      "description": "The matching public comment receives only the approved thanks.",
+      "min_native_refs": 1
+    }
+  }
+}

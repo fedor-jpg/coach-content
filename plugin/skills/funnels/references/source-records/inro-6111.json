@@ -1,0 +1,1013 @@
+{
+  "id": "inro-6111",
+  "source": {
+    "vendor": "inro",
+    "file": "templates/inro-6111.json",
+    "title": "Keep hate out of your comments",
+    "category": "Engage your audience",
+    "facets": [
+      "Engage your audience",
+      "moderation",
+      "Comments"
+    ],
+    "job": "moderation",
+    "model": "source_graph",
+    "document": {
+      "schema_version": "0.1.0",
+      "id": "inro-6111",
+      "ordinal": 4,
+      "title": "Keep hate out of your comments",
+      "source_category": "Engage your audience",
+      "source": {
+        "catalog_url": "https://app.inro.social/automation",
+        "preview_url": "https://app.inro.social/public/scenarios/6111",
+        "public_template_id": "6111",
+        "observed_at": "2026-10-30",
+        "source_version": null,
+        "capture_sha256": "f98f1ff879a73756f4dd5844deca855f74c6dff90560fe38960422b8c0125025",
+        "editor_url": "https://app.inro.social/automation/scenarios/38330",
+        "editor_inactive_verified": true,
+        "official_export": false
+      },
+      "classification": {
+        "basis": "product_interpretation",
+        "job_family": "moderation",
+        "route": "hide_hate_spam",
+        "desired_business_event": "comment_hidden",
+        "trigger_classes": [
+          "comment"
+        ]
+      },
+      "selection": {
+        "basis": "product_interpretation",
+        "use_when": [
+          "Continuously hide AI-detected hate and spam across the chosen post scope."
+        ],
+        "avoid_when": [
+          "Do not choose when every removal needs prior human approval or false positives are unacceptable.",
+          "Do not silently drop an essential unsupported gate."
+        ],
+        "required_facts": [
+          "Moderation policy and a person who reviews hidden comments.",
+          "Confirm account scope, messaging permission and the real outcome measurement."
+        ]
+      },
+      "trigger_labels": [
+        "Comments"
+      ],
+      "triggers": [
+        {
+          "node_id": "n000",
+          "exact_visible_text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nautomation.scenarios.steps.select_comments.hate_spam",
+          "settings_panels": [
+            {
+              "name": null,
+              "text": "Select the posts\nAutomation will only trigger on these posts\nWhich posts do you want to use?\nAll posts\nEdit\nThe automation will trigger on all your posts, including future ones\nAll posts\na hateful or spam comment\n18\na hateful or spam reply\n18\nContinue\nStep 1 of 2",
+              "fields": [
+                {
+                  "context": "All posts",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                }
+              ]
+            },
+            {
+              "name": null,
+              "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should trigger the automation?\nAll comments\nComments with keyword(s)\nAI-detected intent\nAI\nComments that tag someone\nAlso trigger on replies to comments\nInstagram only allows public replies on top-level comments, so a comment reply action will be skipped for these — a DM can still be sent to them.\nExclude hateful and negative comments\nAI\nAll posts\na hateful or spam comment\n18\na hateful or spam reply\n18\nSave\nBack\nStep 2 of 2",
+              "fields": [
+                {
+                  "context": "All comments",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Comments with keyword(s)",
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "AI-detected intent",
+                  "index": 2,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Comments that tag someone",
+                  "index": 3,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Also trigger on replies to comments",
+                  "index": 4,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "checkbox",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Exclude hateful and negative comments",
+                  "index": 5,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "checkbox",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                }
+              ]
+            }
+          ],
+          "matching_complete": true
+        }
+      ],
+      "graph": {
+        "entry_node": "n000",
+        "nodes": [
+          {
+            "id": "n000",
+            "source_id": "trigger",
+            "editor_source_id": "trigger",
+            "source_type": "trigger",
+            "observed": {
+              "level": "public_graph",
+              "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nautomation.scenarios.steps.select_comments.hate_spam",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nautomation.scenarios.steps.select_comments.hate_spam\nAdd trigger",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "Close",
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Add trigger",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "inline_settings",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "hate_spam source filter: Trigger displays untranslated automation.scenarios.steps.select_comments.hate_spam. Opening its editor shows four alternatives with none selected; the source hate/spam mode is not an available option. Preserve this source/editor mismatch."
+              ],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "hate_spam source filter",
+                  "status": "unavailable",
+                  "reason": "Trigger displays untranslated automation.scenarios.steps.select_comments.hate_spam. Opening its editor shows four alternatives with none selected; the source hate/spam mode is not an available option. Preserve this source/editor mismatch."
+                }
+              ],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/comment_trigger",
+                  "signature": "sha256:482ec9ad5ef7f124491ad377c416cb1114d0908864bc3e3f93740208d1fcff9f",
+                  "matched": true
+                },
+                {
+                  "definition": "evidence/shared-control-options.json#/post_scope",
+                  "signature": "sha256:f26cc02e172c42a90f2d37351602a5cfcd6db620321451faa19756e878efb2e1",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "trigger",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n001",
+            "source_id": "438551",
+            "editor_source_id": "455000",
+            "source_type": "hide_comment",
+            "observed": {
+              "level": "public_graph",
+              "text": "Hide comment\nHide the comment from your post. You will still be able to see it in the hidden comments section.",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Hide comment\nHide the comment from your post. You will still be able to see it in the hidden comments section.",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": []
+            },
+            "outcome_type": "hide_comment",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": true,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n002",
+            "source_id": "438552",
+            "editor_source_id": "455001",
+            "source_type": "folder",
+            "observed": {
+              "level": "public_graph",
+              "text": "Add contact to folder(s)\nModeration: hidden",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+              "fields": [
+                {
+                  "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                  "index": 0,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": true,
+                      "text": "Add contact to folder(s)",
+                      "value": "add"
+                    },
+                    {
+                      "selected": false,
+                      "text": "Remove contact from folder(s)",
+                      "value": "remove"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "value": "add",
+                  "value_state": "observed_value",
+                  "validation": null
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Pick a folder",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/folder_picker",
+                  "signature": "sha256:bd02667d1f1fd6ba346c2aafba56296f08bcedce1b867441f387a4f14aa07311",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "folder",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [
+              "dep-n002"
+            ],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": {
+              "source_action": "Add contact to folder(s)",
+              "source_labels": [
+                "Moderation: hidden"
+              ],
+              "source_labels_state": "observed_full",
+              "source_resource_ids": [],
+              "source_binding_state": "unknown_not_exposed",
+              "clone_labels": [],
+              "clone_binding_state": "observed_unset",
+              "required_client_binding": "client.folder_binding.n002",
+              "recovery_evidence": null
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 438551",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 438551 to 438552",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          }
+        ],
+        "graph_source_complete": true,
+        "capture_audit": {
+          "rendered_node_count": 3,
+          "rendered_edge_count": 2,
+          "saved_node_count": 3,
+          "saved_edge_count": 2,
+          "counts_equal": true,
+          "reachable_nodes": 3,
+          "dangling_edges": 0,
+          "duplicate_node_ids": 0,
+          "limitations": [
+            "Complete relative to saved rendered DOM, not an official export or hidden server graph.",
+            "No outgoing rendered edge means an observed graph end, not proof of delivery or successful business outcome.",
+            "In the editor, Add a step placeholders were excluded from source-node matching; original public edges were retained."
+          ]
+        }
+      },
+      "scenario_settings": {
+        "panels": [
+          {
+            "name": "Limit frequency per contact",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nLimit how often this scenario can run for each contact\nLimit how often this scenario can run for each contact\nInterrupt on message replies\nExclude specific folders\nUnsaved changes\nCancel changes\nSave scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "value": "Keep hate out of your comments",
+                "value_state": "observed_value",
+                "validation": null
+              }
+            ]
+          },
+          {
+            "name": "Interrupt on message replies",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nInterrupt on message replies\nInterrupt when you reply manually\nInterrupt when you reply manually\nInterrupt when contact replies\nInterrupt when contact replies\nExclude specific folders\nUnsaved changes\nCancel changes\nSave scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "value": "Keep hate out of your comments",
+                "value_state": "observed_value",
+                "validation": null
+              }
+            ]
+          },
+          {
+            "name": "Exclude specific folders",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nInterrupt on message replies\nExclude specific folders\nThis scenario will not run for contacts in the selected folders\nPick a folder\nUnsaved changes\nCancel changes\nSave scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "value": "Keep hate out of your comments",
+                "value_state": "observed_value",
+                "validation": null
+              }
+            ]
+          }
+        ],
+        "defaults_complete": true,
+        "inheritance": "Observed account opt-out, menu and global exclusions apply separately. These are not template defaults. No account setting changed.",
+        "global_settings_source": "evidence/shared-control-options.json#/global_options",
+        "shared_control_refs": [
+          "evidence/6024-editor.json#/scenario_panels"
+        ]
+      },
+      "rules": {
+        "refusal": "Source stop, negative-answer, no-response and expiry ports are retained. Account opt-out is a separate inherited control.",
+        "reentry": "Per-template Limit frequency per contact defaults and shared enabled options are preserved in scenario settings.",
+        "duplicates": "No idempotency guarantee established. Frequency control is not proof of cross-scenario deduplication.",
+        "retry_and_timeout_evidence": [],
+        "failure_semantics": "UI retry/expiry values are preserved per node. Transport/runtime failures were not tested; lack of runtime proof is not counted as an unopened setting."
+      },
+      "dependencies": [
+        {
+          "id": "dep-n002",
+          "node_id": "n002",
+          "kind": "folder",
+          "source_reference": null,
+          "observed_values": [
+            "Add contact to folder(s)\nModeration: hidden"
+          ],
+          "required_coach_input": "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "status": "partial"
+        }
+      ],
+      "placeholders": [],
+      "outcomes": {
+        "observed_events": [],
+        "desired_event_verified": false,
+        "attribution_gap": "UI branch labels are observable mechanisms, not confirmation of the desired business event."
+      },
+      "gaps": [
+        {
+          "id": "runtime-not-tested",
+          "scope": "execution",
+          "field": "runtime_tested",
+          "reason": "No customer or test execution is authorized. Static observations do not prove delivery or outcome.",
+          "blocks_exact_reconstruction": false
+        },
+        {
+          "id": "n000-control-0",
+          "scope": "n000",
+          "field": "hate_spam source filter",
+          "reason": "unavailable: Trigger displays untranslated automation.scenarios.steps.select_comments.hate_spam. Opening its editor shows four alternatives with none selected; the source hate/spam mode is not an available option. Preserve this source/editor mismatch.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n002-source-folder-binding",
+          "scope": "n002",
+          "field": "source folder configuration",
+          "reason": "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default.",
+          "blocks_exact_reconstruction": true
+        }
+      ],
+      "reconstruction": {
+        "record_schema_valid": true,
+        "graph_integrity_valid": true,
+        "source_settings_complete": false,
+        "status": "partially_reconstructable",
+        "runtime_tested": false,
+        "blockers": [
+          "unavailable: Trigger displays untranslated automation.scenarios.steps.select_comments.hate_spam. Opening its editor shows four alternatives with none selected; the source hate/spam mode is not an available option. Preserve this source/editor mismatch.",
+          "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default."
+        ],
+        "coverage": {
+          "source_nodes": 3,
+          "source_edges": 2,
+          "editor_nodes_matched": 3,
+          "nodes_with_editor_panels": 0,
+          "nodes_all_controls_opened": 2,
+          "terminal_nodes": 1,
+          "timeout_nodes": 0
+        },
+        "client_data_ready": false,
+        "external_binding_blockers": [
+          "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "Authorized client channel, real offer and account scope have not been configured."
+        ]
+      },
+      "evidence_files": [
+        "evidence/6111-editor.json",
+        "evidence/6111-public.json",
+        "evidence/shared-control-options.json",
+        "evidence/shared-variable-options.json",
+        "draft-manifest.json",
+        "evidence/final-reconciliation.json"
+      ],
+      "wizard_settings": [],
+      "access_evidence": {
+        "state": "editor_opened",
+        "attempts": 1,
+        "visible_error": null,
+        "cause_proven": false,
+        "delayed_reconciliation": "23 list rows: 21 owned inactive drafts and 2 pre-existing. No additional draft matched the nine unresolved attempts. Original creation exception/render was not retained; app refusal is unproven."
+      }
+    }
+  },
+  "graph": {
+    "start": "n000",
+    "steps": [
+      {
+        "id": "n000",
+        "type": "entry",
+        "sourceType": "trigger",
+        "title": "trigger",
+        "content": {
+          "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nautomation.scenarios.steps.select_comments.hate_spam",
+          "preview": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nautomation.scenarios.steps.select_comments.hate_spam",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n000",
+          "source_id": "trigger",
+          "editor_source_id": "trigger",
+          "source_type": "trigger",
+          "observed": {
+            "level": "public_graph",
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nautomation.scenarios.steps.select_comments.hate_spam",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nautomation.scenarios.steps.select_comments.hate_spam\nAdd trigger",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": "Close",
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Add trigger",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "inline_settings",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "hate_spam source filter: Trigger displays untranslated automation.scenarios.steps.select_comments.hate_spam. Opening its editor shows four alternatives with none selected; the source hate/spam mode is not an available option. Preserve this source/editor mismatch."
+            ],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "hate_spam source filter",
+                "status": "unavailable",
+                "reason": "Trigger displays untranslated automation.scenarios.steps.select_comments.hate_spam. Opening its editor shows four alternatives with none selected; the source hate/spam mode is not an available option. Preserve this source/editor mismatch."
+              }
+            ],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/comment_trigger",
+                "signature": "sha256:482ec9ad5ef7f124491ad377c416cb1114d0908864bc3e3f93740208d1fcff9f",
+                "matched": true
+              },
+              {
+                "definition": "evidence/shared-control-options.json#/post_scope",
+                "signature": "sha256:f26cc02e172c42a90f2d37351602a5cfcd6db620321451faa19756e878efb2e1",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "trigger",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/0",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n001",
+        "type": "action",
+        "sourceType": "hide_comment",
+        "title": "hide_comment",
+        "content": {
+          "text": "Hide comment\nHide the comment from your post. You will still be able to see it in the hidden comments section.",
+          "preview": "Hide comment\nHide the comment from your post. You will still be able to see it in the hidden comments section.",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n001",
+          "source_id": "438551",
+          "editor_source_id": "455000",
+          "source_type": "hide_comment",
+          "observed": {
+            "level": "public_graph",
+            "text": "Hide comment\nHide the comment from your post. You will still be able to see it in the hidden comments section.",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Hide comment\nHide the comment from your post. You will still be able to see it in the hidden comments section.",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": []
+          },
+          "outcome_type": "hide_comment",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": true,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/1",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n002",
+        "type": "group",
+        "sourceType": "folder",
+        "title": "folder",
+        "content": {
+          "text": "Add contact to folder(s)\nModeration: hidden",
+          "preview": "Add contact to folder(s)\nModeration: hidden",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n002",
+          "source_id": "438552",
+          "editor_source_id": "455001",
+          "source_type": "folder",
+          "observed": {
+            "level": "public_graph",
+            "text": "Add contact to folder(s)\nModeration: hidden",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+            "fields": [
+              {
+                "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                "index": 0,
+                "label": null,
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "value": "add",
+                "value_state": "observed_value",
+                "validation": null
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Pick a folder",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/folder_picker",
+                "signature": "sha256:bd02667d1f1fd6ba346c2aafba56296f08bcedce1b867441f387a4f14aa07311",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "folder",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [
+            "dep-n002"
+          ],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": {
+            "source_action": "Add contact to folder(s)",
+            "source_labels": [
+              "Moderation: hidden"
+            ],
+            "source_labels_state": "observed_full",
+            "source_resource_ids": [],
+            "source_binding_state": "unknown_not_exposed",
+            "clone_labels": [],
+            "clone_binding_state": "observed_unset",
+            "required_client_binding": "client.folder_binding.n002",
+            "recovery_evidence": null
+          }
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/2",
+          "derived": null,
+          "evidence": []
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "e000",
+        "from": "n000",
+        "to": "n001",
+        "label": "",
+        "settings": {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "source_label": "Edge from trigger to 438551",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/0"
+        }
+      },
+      {
+        "id": "e001",
+        "from": "n001",
+        "to": "n002",
+        "label": "",
+        "settings": {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "source_label": "Edge from 438551 to 438552",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/1"
+        }
+      }
+    ]
+  },
+  "setup": [],
+  "annotations": []
+}

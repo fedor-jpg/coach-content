@@ -1,0 +1,3887 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "community-inro-6081",
+    "name": "Launch waitlist: optional email",
+    "source_ids": [
+      "inro-6081"
+    ],
+    "entry": "WAITLIST comment or Story reply",
+    "mandatory_conditions": [
+      "Confirm joining",
+      "Ask for optional email after joining"
+    ],
+    "outcome": "Waitlist participation without requiring email",
+    "timing": [
+      "Email: 20 hours; opening button: 6 hours."
+    ],
+    "consent": "Waitlist participation and email consent are distinct. A saved contact is not an external subscription.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "comment",
+      "story",
+      "dm-ai",
+      "contact",
+      "buttons",
+      "timers",
+      "graph"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "Replace the Story entry with DM and the membership folder/button with an explicit conversation. This is not an external list subscription.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Replace the Story entry with DM and the membership folder/button with an explicit conversation. This is not an external list subscription.",
+        "result": "Agree how membership will be recorded. Email stays optional; leaving an email does not itself subscribe someone externally.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "inro-6081": "The source folder binding is unknown. Missing email does not cancel participation."
+    },
+    "client_inputs": [],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6081"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "inro-6081-owned_comment",
+          "label": "Selected-post comment entry",
+          "target": "owned_comment",
+          "allowed_targets": [
+            "owned_comment"
+          ],
+          "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+          "entry_change": "Only the comment entry is prepared. Story replies remain dashboard-only; owner must approve the narrowed entry.",
+          "output": "Collect consented waitlist join or STOP intent and optional email; saved membership remains unverified.",
+          "output_bindings": [
+            "launch_name",
+            "consent_text",
+            "contact_purpose",
+            "launch_purpose"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Confirm joining",
+            "Ask for optional email after joining"
+          ],
+          "approval_required": true,
+          "source_id": "inro-6081",
+          "draft": {
+            "modes": [
+              "C",
+              "D",
+              "E"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "launch_name",
+              "launch_purpose",
+              "consent_text",
+              "contact_purpose",
+              "public_text"
+            ],
+            "initial": "Want to join the waitlist for {launch_name}? {consent_text} Reply YES to request joining, or STOP.",
+            "messages": {
+              "initial": "Want to join the waitlist for {launch_name}? {consent_text} Reply YES to request joining, or STOP.",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "joined": "Thanks, I received your request. You may also share an email for {contact_purpose}, or reply SKIP.",
+              "withdrawn": "Understood. I will stop this conversation.",
+              "email": "Thanks for your reply."
+            },
+            "instruction": "Collect only current consented join intent for {launch_purpose}. YES requests joined; STOP requests withdrawn and stops this conversation. Configure membership and optional email captures for {contact_purpose}, preserving all existing captures. Never say joined, on the list, saved or withdrawn as a completed outcome without actual saved-value readback. Normal MCP cannot read contact attribute values. Chat text and capture configuration are not proof. Optional email or SKIP never controls join intent. No external list, launch alert or saved-state-dependent handoff is configured. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+            "contact_requirement": "Join/STOP intent and optional email can be drafted. Saved membership/withdrawal confirmation is BLOCKED pending actual persistence proof.",
+            "contact_fields": [
+              "membership",
+              "email"
+            ],
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Ask for actual join intent.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "joined",
+                  "action": "Record a join request; do not confirm saved membership.",
+                  "message_ids": [
+                    "joined"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "withdrawn",
+                  "action": "Record STOP intent; do not confirm saved withdrawal.",
+                  "message_ids": [
+                    "withdrawn"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "email",
+                  "action": "Optional email or SKIP; persistence remains unverified.",
+                  "message_ids": [
+                    "email"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Matching comment"
+                },
+                {
+                  "from": "first",
+                  "to": "joined",
+                  "condition": "Actual YES reply"
+                },
+                {
+                  "from": "first",
+                  "to": "withdrawn",
+                  "condition": "Actual STOP reply"
+                },
+                {
+                  "from": "joined",
+                  "to": "withdrawn",
+                  "condition": "Actual STOP reply"
+                },
+                {
+                  "from": "joined",
+                  "to": "email",
+                  "condition": "New optional consented email or SKIP"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "binding_review": {
+        "source_entry": "WAITLIST comment or Story reply",
+        "source_outcome": "Waitlist participation without requiring email",
+        "mandatory_conditions": [
+          "Confirm joining",
+          "Ask for optional email after joining"
+        ],
+        "source_contact_policy": [
+          "Confirm joining",
+          "Ask for optional email after joining"
+        ],
+        "plan_count": 1,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Collect consented waitlist join or STOP intent and optional email; saved membership remains unverified.",
+        "source_requirements": [
+          "Confirm joining",
+          "Ask for optional email after joining"
+        ],
+        "source_timing": [
+          "Email: 20 hours; opening button: 6 hours."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Collect consented waitlist join or STOP intent and optional email; saved membership remains unverified.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Email: 20 hours; opening button: 6 hours.. No timed unsolicited message is configured.",
+          "No imported deterministic graph or source folder/tag tracking.",
+          "Only comment entry is prepared; Story-specific entry remains unavailable through ordinary MCP."
+        ],
+        "limitations": [
+          "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+          "Join/STOP intent and optional email can be drafted. Saved membership/withdrawal confirmation is BLOCKED pending actual persistence proof."
+        ],
+        "examples": [
+          {
+            "source_id": "inro-6081",
+            "node_id": "n002",
+            "source_text": "Want to join the waitlist for the spring drop? Tap below.\nJoin the list",
+            "adapted_text": "Want to join the waitlist for {launch_name}? {consent_text} Reply YES to request joining, or STOP.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      }
+    }
+  },
+  "goal": "Invite interested people into your next launch or a shared community.",
+  "fit": "Creators launching an offer or welcoming members.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Collect consented waitlist join or STOP intent and optional email; saved membership remains unverified.",
+    "source_requirements": [
+      "Confirm joining",
+      "Ask for optional email after joining"
+    ],
+    "source_timing": [
+      "Email: 20 hours; opening button: 6 hours."
+    ],
+    "blocking_dependencies": [],
+    "retained": [
+      "Collect consented waitlist join or STOP intent and optional email; saved membership remains unverified.",
+      "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+    ],
+    "omitted": [
+      "Exact source timing is not retained: Email: 20 hours; opening button: 6 hours.. No timed unsolicited message is configured.",
+      "No imported deterministic graph or source folder/tag tracking.",
+      "Only comment entry is prepared; Story-specific entry remains unavailable through ordinary MCP."
+    ],
+    "limitations": [
+      "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+      "Join/STOP intent and optional email can be drafted. Saved membership/withdrawal confirmation is BLOCKED pending actual persistence proof."
+    ],
+    "examples": [
+      {
+        "source_id": "inro-6081",
+        "node_id": "n002",
+        "source_text": "Want to join the waitlist for the spring drop? Tap below.\nJoin the list",
+        "adapted_text": "Want to join the waitlist for {launch_name}? {consent_text} Reply YES to request joining, or STOP.",
+        "provenance": "authored_adaptation_not_captured"
+      }
+    ]
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "story",
+    "buttons",
+    "timers",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "inro-6081",
+      "source_file": "source-records/inro-6081.json",
+      "source_title": "Build a waitlist for your next launch",
+      "start": "n000",
+      "nodes": [
+        {
+          "id": "n000",
+          "source_type": "trigger",
+          "content": {
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nNext post only\nFILTER THE COMMENTS\nComments with keyword(s)\nWAITLIST\nWhen\nSomeone replies to your story\nFILTER REPLIES\nContains a keyword\nWAITLIST",
+            "preview": "When\nSomeone comments on your post\nSELECT THE POSTS\nNext post only\nFILTER THE COMMENTS\nComments with keyword(s)\nWAITLIST\nWhen\nSomeone replies to your story\nFILTER REPLIES\nContains a keyword\nWAITLIST",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment",
+            "dm-ai",
+            "story"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [
+            "story"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "87dcc8fe254627854b05077095a1409f54ac94e3cf2464709cc54aa2f0c546d7",
+          "settings_leaf_count": 51
+        },
+        {
+          "id": "n001",
+          "source_type": "comment",
+          "content": {
+            "text": "Check your DMs to join the list\nSent you a DM 🙂\nJust sent you the details",
+            "preview": "Check your DMs to join the list\nSent you a DM 🙂\nJust sent you the details",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "publicReply"
+          ],
+          "business_inputs": [
+            "approved public reply"
+          ],
+          "reason": "A fixed public reply is a documented primitive, not proof of captured random text choice or downstream routing.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Check your DMs to join the list",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Sent you a DM 🙂",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Just sent you the details",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "checkbox",
+                "value": false,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": "",
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/4",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "checkbox",
+                "value": true,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": "",
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "1cb180f9e3b192fbcbfcd6548c1b3be5e9149251bf6169489bc9163f08dce01a",
+          "settings_leaf_count": 143
+        },
+        {
+          "id": "n002",
+          "source_type": "button_template",
+          "content": {
+            "text": "Want to join the waitlist for the spring drop? Tap below.\nJoin the list",
+            "preview": "Want to join the waitlist for the spring drop? Tap below.\nJoin the list",
+            "buttons": [
+              "Join the list"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved alternative text or choice words"
+          ],
+          "reason": "Rich buttons/callbacks are not normal MCP fields. A text-choice adaptation needs approval; never treat it as the captured button event.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/settings_panels/0/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "Want to join the waitlist for the spring drop? Tap below.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Join the list",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "Want to join the waitlist for the spring drop? Tap below.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Join the list",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "url",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "switch",
+                "value": false,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "Want to join the waitlist for the spring drop? Tap below.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Join the list",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "url",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "switch",
+                "value": false,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/4",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "97cc148993176546b60787e875a8b09ef56d8b4270dfb2b0892b6232ed3e04c3",
+          "settings_leaf_count": 261
+        },
+        {
+          "id": "n003",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN BUTTON IS CLICKED\nJoin the list",
+            "preview": "WHEN BUTTON IS CLICKED\nJoin the list",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "41442649293825a0e475ab04e252e1d4435228623fd8d0d6274c141a617f86ca",
+          "settings_leaf_count": 35
+        },
+        {
+          "id": "n004",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nSpring drop waitli…",
+            "preview": "Add contact to folder(s)\nSpring drop waitli…",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "add",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "add"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "remove"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "014212fa5e3839931107dc48201785ab72e154d43230e98d5ced24cc774a70ff",
+          "settings_leaf_count": 74
+        },
+        {
+          "id": "n005",
+          "source_type": "collect_property",
+          "content": {
+            "text": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nYou're on the list. Want to leave your email too?\nMessage without the information\nYou're on the list either way. If you meant to send an email, check it and send it again.\nEmail",
+            "preview": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nYou're on the list. Want to leave your email too?\nMessage without the information\nYou're on the list either way. If you meant to send an email, check it and send it again.\nEmail",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "contact",
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "collectContactInfo"
+          ],
+          "business_inputs": [
+            "purpose, required versus optional contact, channel consent"
+          ],
+          "reason": "Contact storage is documented. Exact validation gates, retries and external subscriptions are separate dependencies.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [
+            {
+              "path": "/settings_panels/0/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "You're on the list. Want to leave your email too?",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "button",
+                "value": true,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "You're on the list either way. If you meant to send an email, check it and send it again.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "number",
+                "value": "2",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": "0",
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/4",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "expire",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "Go to next automation step",
+                    "value": "continue"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Mark step as expired",
+                    "value": "expire"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/4/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "continue"
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/4/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "expire"
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/5",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "button",
+                "value": false,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "You're on the list. Want to leave your email too?",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "switch",
+                "value": false,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "switch",
+                "value": false,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "You're on the list. Want to leave your email too?",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "switch",
+                "value": true,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "You're on the list either way. If you meant to send an email, check it and send it again.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "number",
+                "value": "2",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": "0",
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/4",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "select-one",
+                "value": "expire",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "Go to next automation step",
+                    "value": "continue"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Mark step as expired",
+                    "value": "expire"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/4/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "continue"
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/4/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "expire"
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/5",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "switch",
+                "value": true,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/6",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "number",
+                "value": "1",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/7",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "select-one",
+                "value": "hours",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/7/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/7/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/7/options/2",
+              "phase": "captured",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/7/options/3",
+              "phase": "captured",
+              "fields": {
+                "value": "days"
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/8",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "08e39110bf48a102073c1cf17ba5adac821bb3898de125e69779f94f77e48a29",
+          "settings_leaf_count": 400
+        },
+        {
+          "id": "n006",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN INFORMATION IS COLLECTED",
+            "preview": "WHEN INFORMATION IS COLLECTED",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/6/settings",
+          "settings_sha256": "82b6f86ca8f1cdc1b6acc8d05ba0b2d529300b2e177a2c5c2052759bc699c08c",
+          "settings_leaf_count": 35
+        },
+        {
+          "id": "n007",
+          "source_type": "message",
+          "content": {
+            "text": "Thanks, got it. You're all set.",
+            "preview": "Thanks, got it. You're all set.",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Thanks, got it. You're all set.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/7/settings",
+          "settings_sha256": "8ff1a2eaaa6a952eeb17f760773960ca242fcfb29e91c386b5ce43a03c530c18",
+          "settings_leaf_count": 61
+        },
+        {
+          "id": "n008",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF INFORMATION HAS NOT BEEN RECEIVED AFTER\n20 hours",
+            "preview": "IF INFORMATION HAS NOT BEEN RECEIVED AFTER\n20 hours",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "number",
+                "value": "20",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "hours",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/2",
+              "phase": "captured",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/3",
+              "phase": "captured",
+              "fields": {
+                "value": "days"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/8/settings",
+          "settings_sha256": "9dfcf613b79c4e6c5a489ea27d1ed7eec40e478a89405b06f794921f7cc51a7f",
+          "settings_leaf_count": 81
+        },
+        {
+          "id": "n009",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n6 hours",
+            "preview": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n6 hours",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "number",
+                "value": "6",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "hours",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/2",
+              "phase": "captured",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/3",
+              "phase": "captured",
+              "fields": {
+                "value": "days"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/9/settings",
+          "settings_sha256": "ce86ff788f487544d0c261228dc4229af6773c0a76e5faabe46d29be6db6513f",
+          "settings_leaf_count": 81
+        }
+      ],
+      "transitions": [
+        {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "label": "",
+          "settings": {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 438593",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/0"
+          }
+        },
+        {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "label": "",
+          "settings": {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 438593 to 438594",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/1"
+          }
+        },
+        {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "label": "",
+          "settings": {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 438594 to 438594_option_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/2"
+          }
+        },
+        {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "label": "WHEN BUTTON IS CLICKED\nJoin the list",
+          "settings": {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 438594_option_0 to 438595",
+            "source_port": "438594_option_0",
+            "condition_text": "WHEN BUTTON IS CLICKED\nJoin the list",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/3"
+          }
+        },
+        {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "label": "",
+          "settings": {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 438595 to 438596",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/4"
+          }
+        },
+        {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "label": "",
+          "settings": {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 438596 to 438596_option_property",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/5"
+          }
+        },
+        {
+          "id": "e006",
+          "from": "n006",
+          "to": "n007",
+          "label": "WHEN INFORMATION IS COLLECTED",
+          "settings": {
+            "id": "e006",
+            "from": "n006",
+            "to": "n007",
+            "source_label": "Edge from 438596_option_property to 438597",
+            "source_port": "438596_option_property",
+            "condition_text": "WHEN INFORMATION IS COLLECTED",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/6"
+          }
+        },
+        {
+          "id": "e007",
+          "from": "n005",
+          "to": "n008",
+          "label": "",
+          "settings": {
+            "id": "e007",
+            "from": "n005",
+            "to": "n008",
+            "source_label": "Edge from 438596 to 438596_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/7"
+          }
+        },
+        {
+          "id": "e008",
+          "from": "n002",
+          "to": "n009",
+          "label": "",
+          "settings": {
+            "id": "e008",
+            "from": "n002",
+            "to": "n009",
+            "source_label": "Edge from 438594 to 438594_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/8"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/triggers/0/settings_panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "WAITLIST",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "checkbox",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "checkbox",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/2/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/2/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/2/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/2/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/2/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/2/fields/5",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/2/fields/6",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "WAITLIST",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/2/fields/7",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/2/fields/8",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Check your DMs to join the list",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/editor_observed/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Sent you a DM 🙂",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/editor_observed/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Just sent you the details",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/editor_observed/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "checkbox",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/editor_observed/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "checkbox",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/settings_panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "Want to join the waitlist for the spring drop? Tap below.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/settings_panels/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Join the list",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/variant_panels/0/panel/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "Want to join the waitlist for the spring drop? Tap below.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/variant_panels/0/panel/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Join the list",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/variant_panels/0/panel/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "url",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/variant_panels/0/panel/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "switch",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/variant_panels/1/panel/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "Want to join the waitlist for the spring drop? Tap below.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/variant_panels/1/panel/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Join the list",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/variant_panels/1/panel/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "url",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/variant_panels/1/panel/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "switch",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/variant_panels/1/panel/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "add",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": true,
+                "text": "Add contact to folder(s)",
+                "value": "add"
+              },
+              {
+                "selected": false,
+                "text": "Remove contact from folder(s)",
+                "value": "remove"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/0/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "add"
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/0/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "remove"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "You're on the list. Want to leave your email too?",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "You're on the list either way. If you meant to send an email, check it and send it again.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "2",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": "0",
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "expire",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "Go to next automation step",
+                "value": "continue"
+              },
+              {
+                "selected": true,
+                "text": "Mark step as expired",
+                "value": "expire"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/4/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "continue"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/4/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "expire"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/5",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/0/panel/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "You're on the list. Want to leave your email too?",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/0/panel/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "switch",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/0/panel/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "switch",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "You're on the list. Want to leave your email too?",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "switch",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "You're on the list either way. If you meant to send an email, check it and send it again.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "2",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": "0",
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "select-one",
+            "value": "expire",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "Go to next automation step",
+                "value": "continue"
+              },
+              {
+                "selected": true,
+                "text": "Mark step as expired",
+                "value": "expire"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/4/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "continue"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/4/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "expire"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/5",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "switch",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/6",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "1",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/7",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "select-one",
+            "value": "hours",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "days",
+                "value": "days"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/7/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/7/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/7/options/2",
+          "phase": "captured",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/7/options/3",
+          "phase": "captured",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/1/panel/fields/8",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Thanks, got it. You're all set.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/8/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "20",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/8/editor_observed/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "hours",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "days",
+                "value": "days"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/8/editor_observed/fields/1/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/graph/nodes/8/editor_observed/fields/1/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/graph/nodes/8/editor_observed/fields/1/options/2",
+          "phase": "captured",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/graph/nodes/8/editor_observed/fields/1/options/3",
+          "phase": "captured",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/graph/nodes/9/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "6",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/9/editor_observed/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "hours",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "days",
+                "value": "days"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/9/editor_observed/fields/1/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/graph/nodes/9/editor_observed/fields/1/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/graph/nodes/9/editor_observed/fields/1/options/2",
+          "phase": "captured",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/graph/nodes/9/editor_observed/fields/1/options/3",
+          "phase": "captured",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Build a waitlist for your next launch",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "once",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": true,
+                "text": "once",
+                "value": "once"
+              },
+              {
+                "selected": false,
+                "text": "once every",
+                "value": "once_every"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/2/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "once"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/2/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "once_every"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Build a waitlist for your next launch",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/2/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Build a waitlist for your next launch",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "3b6a01b700bdda871e3d265f76aa12a6f5d06901e1c6fb973a5f6862f1c4b286",
+      "source_leaf_count": 1793,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "inro-6081-owned_comment",
+        "label": "Selected-post comment entry",
+        "target": "owned_comment",
+        "allowed_targets": [
+          "owned_comment"
+        ],
+        "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+        "entry_change": "Only the comment entry is prepared. Story replies remain dashboard-only; owner must approve the narrowed entry.",
+        "output": "Collect consented waitlist join or STOP intent and optional email; saved membership remains unverified.",
+        "output_bindings": [
+          "launch_name",
+          "consent_text",
+          "contact_purpose",
+          "launch_purpose"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Confirm joining",
+          "Ask for optional email after joining"
+        ],
+        "approval_required": true,
+        "source_id": "inro-6081",
+        "draft": {
+          "modes": [
+            "C",
+            "D",
+            "E"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "launch_name",
+            "launch_purpose",
+            "consent_text",
+            "contact_purpose",
+            "public_text"
+          ],
+          "initial": "Want to join the waitlist for {launch_name}? {consent_text} Reply YES to request joining, or STOP.",
+          "messages": {
+            "initial": "Want to join the waitlist for {launch_name}? {consent_text} Reply YES to request joining, or STOP.",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "joined": "Thanks, I received your request. You may also share an email for {contact_purpose}, or reply SKIP.",
+            "withdrawn": "Understood. I will stop this conversation.",
+            "email": "Thanks for your reply."
+          },
+          "instruction": "Collect only current consented join intent for {launch_purpose}. YES requests joined; STOP requests withdrawn and stops this conversation. Configure membership and optional email captures for {contact_purpose}, preserving all existing captures. Never say joined, on the list, saved or withdrawn as a completed outcome without actual saved-value readback. Normal MCP cannot read contact attribute values. Chat text and capture configuration are not proof. Optional email or SKIP never controls join intent. No external list, launch alert or saved-state-dependent handoff is configured. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+          "contact_requirement": "Join/STOP intent and optional email can be drafted. Saved membership/withdrawal confirmation is BLOCKED pending actual persistence proof.",
+          "contact_fields": [
+            "membership",
+            "email"
+          ],
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Ask for actual join intent.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "joined",
+                "action": "Record a join request; do not confirm saved membership.",
+                "message_ids": [
+                  "joined"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "withdrawn",
+                "action": "Record STOP intent; do not confirm saved withdrawal.",
+                "message_ids": [
+                  "withdrawn"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "email",
+                "action": "Optional email or SKIP; persistence remains unverified.",
+                "message_ids": [
+                  "email"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Matching comment"
+              },
+              {
+                "from": "first",
+                "to": "joined",
+                "condition": "Actual YES reply"
+              },
+              {
+                "from": "first",
+                "to": "withdrawn",
+                "condition": "Actual STOP reply"
+              },
+              {
+                "from": "joined",
+                "to": "withdrawn",
+                "condition": "Actual STOP reply"
+              },
+              {
+                "from": "joined",
+                "to": "email",
+                "condition": "New optional consented email or SKIP"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No actual reply"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [],
+      "entry_readback_fields": [
+        "post_ids",
+        "keywords",
+        "match_mode"
+      ],
+      "preparation_gates": [
+        "Before staging an owned OFF custom, complete readback must equal approved posts, keywords and match mode. Reply-setting updates cannot change filters. A mismatch blocks staging; setup_comment_replies needs separate immediate-enabled approval.",
+        "Normal MCP has no contact-attribute-value reader. Capture configuration readback and chat text do not prove saved email/phone, joined membership or withdrawal. Keep value-dependent confirmation or handoff unresolved; simple preparation remains available."
+      ],
+      "missing_readback": [
+        "contact_attribute_values"
+      ],
+      "target": "owned_comment",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "launch_name",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "launch_purpose",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "consent_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "contact_purpose",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Want to join the waitlist for {launch_name}? {consent_text} Reply YES to request joining, or STOP.",
+        "public": "{public_text}",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "joined": "Thanks, I received your request. You may also share an email for {contact_purpose}, or reply SKIP.",
+        "withdrawn": "Understood. I will stop this conversation.",
+        "email": "Thanks for your reply."
+      },
+      "instruction": "Collect only current consented join intent for {launch_purpose}. YES requests joined; STOP requests withdrawn and stops this conversation. Configure membership and optional email captures for {contact_purpose}, preserving all existing captures. Never say joined, on the list, saved or withdrawn as a completed outcome without actual saved-value readback. Normal MCP cannot read contact attribute values. Chat text and capture configuration are not proof. Optional email or SKIP never controls join intent. No external list, launch alert or saved-state-dependent handoff is configured. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Ask for actual join intent.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "joined",
+            "action": "Record a join request; do not confirm saved membership.",
+            "message_ids": [
+              "joined"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "withdrawn",
+            "action": "Record STOP intent; do not confirm saved withdrawal.",
+            "message_ids": [
+              "withdrawn"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "email",
+            "action": "Optional email or SKIP; persistence remains unverified.",
+            "message_ids": [
+              "email"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Matching comment"
+          },
+          {
+            "from": "first",
+            "to": "joined",
+            "condition": "Actual YES reply"
+          },
+          {
+            "from": "first",
+            "to": "withdrawn",
+            "condition": "Actual STOP reply"
+          },
+          {
+            "from": "joined",
+            "to": "withdrawn",
+            "condition": "Actual STOP reply"
+          },
+          {
+            "from": "joined",
+            "to": "email",
+            "condition": "New optional consented email or SKIP"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No actual reply"
+          }
+        ]
+      },
+      "contact_requirement": "Join/STOP intent and optional email can be drafted. Saved membership/withdrawal confirmation is BLOCKED pending actual persistence proof.",
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "publicReply": {
+              "publicReplyHowToReply": "ExactText",
+              "exactTextReply": "{public_text}"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "privateReply": {
+              "privateReplyHowToReply": "ExactText",
+              "exactTextReply": "Want to join the waitlist for {launch_name}? {consent_text} Reply YES to request joining, or STOP."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.. First message: Want to join the waitlist for {launch_name}? {consent_text} Reply YES to request joining, or STOP.\nCollect only current consented join intent for {launch_purpose}. YES requests joined; STOP requests withdrawn and stops this conversation. Configure membership and optional email captures for {contact_purpose}, preserving all existing captures. Never say joined, on the list, saved or withdrawn as a completed outcome without actual saved-value readback. Normal MCP cannot read contact attribute values. Chat text and capture configuration are not proof. Optional email or SKIP never controls join intent. No external list, launch alert or saved-state-dependent handoff is configured. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\njoined: Thanks, I received your request. You may also share an email for {contact_purpose}, or reply SKIP.\nwithdrawn: Understood. I will stop this conversation.\nemail: Thanks for your reply. The one private comment reply has already sent the opener. Wait for the person's actual linked reply; do not resend the opener or send a second unsolicited DM. Continue only within the permitted messaging window."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "whenAIReplies": {
+              "option": "Always"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "followUps": {
+              "howToSend": "DontSend"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "collectContactInfo": {
+              "howToCollect": "CollectInfo",
+              "captures": "$resolved.safe_captures"
+            }
+          }
+        }
+      ],
+      "list_additions": {
+        "collectContactInfo": [
+          {
+            "attribute": "$resolved.verified_membership_attribute",
+            "description": "Campaign {campaign}; membership for {contact_purpose}: Join/STOP intent and optional email can be drafted. Saved membership/withdrawal confirmation is BLOCKED pending actual persistence proof."
+          },
+          {
+            "attribute": "$resolved.verified_email_attribute",
+            "description": "Campaign {campaign}; email for {contact_purpose}: Join/STOP intent and optional email can be drafted. Saved membership/withdrawal confirmation is BLOCKED pending actual persistence proof."
+          }
+        ]
+      },
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "owned_comment",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "inro-6081": [
+      {
+        "id": "email-list",
+        "title": "Finish email-list signup",
+        "scope": "Optional: only if the owner also wants email marketing signup. Resource delivery or waitlist participation alone does not require it.",
+        "inputs": [
+          "Provider and target list",
+          "Email consent wording and proof",
+          "Resource URL; welcome email only if separately requested",
+          "Existing authorized access or connection"
+        ],
+        "citations": [
+          {
+            "title": "Brevo signup forms",
+            "url": "https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo"
+          },
+          {
+            "title": "Authorized contact and list mapping",
+            "url": "https://developers.brevo.com/docs/synchronise-contact-lists"
+          },
+          {
+            "title": "Consent records",
+            "url": "https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance"
+          },
+          {
+            "title": "Email and SMS automation actions",
+            "url": "https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation"
+          },
+          {
+            "title": "Optional email sender and message settings",
+            "url": "https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+          }
+        ],
+        "prompt": "Help me prepare: Finish email-list signup.\nSelected source: inro-6081 - Build a waitlist for your next launch.\nGoal: Invite interested people into your next launch or a shared community.\nVariant: Launch waitlist: optional email\nScope: Optional: only if the owner also wants email marketing signup. Resource delivery or waitlist participation alone does not require it.\nSource entry: WAITLIST comment or Story reply\nSource requirements: Confirm joining; Ask for optional email after joining\nSource timing: Email: 20 hours; opening button: 6 hours.\nSource outcome: Waitlist participation without requiring email\nCaptured text (n001, not approved campaign copy):\nCheck your DMs to join the list\nSent you a DM 🙂\nJust sent you the details\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Collect consented waitlist join or STOP intent and optional email; saved membership remains unverified.\nUse the existing email provider. If none exists, propose Brevo for approval; it is not connected.\nAsk me for: Provider and target list; Email consent wording and proof; Resource URL; welcome email only if separately requested; Existing authorized access or connection.\n1. Inspect existing authorized connections. Chatfuel contact collection alone does not subscribe anyone to an external list. Use a sync only after verifying its field mapping, authorization and readback.\n2. If no sync is verified, propose a hosted signup form link in the DM. A Brevo form can collect EMAIL and add the contact to the selected list. Disclose the extra form step and ask for approval before changing the source journey. If DM collection must remain, leave the ongoing bridge unverified and prepare the exact mapping and next access action only.\n3. Draft the email-to-list mapping and channel-specific consent record. Preserve opt-outs; prevent duplicate contacts and repeated welcome sends. Keep optional signup optional and do not withhold a resource that the selected Chatfuel variant delivers first.\n4. Verify actual membership in the intended list; this can complete the list-growth goal. A saved Chatfuel email or a link click does not prove membership. Only if the owner requests a welcome email or series, draft sender, reply-to and unsubscribe settings and a separate consented delivery check before any later approved send. Return draft form/list settings, unresolved access and the next authorized action.\n5. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n6. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n7. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend.\nOfficial guidance checked 2026-11-02:\nBrevo signup forms: https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo\nAuthorized contact and list mapping: https://developers.brevo.com/docs/synchronise-contact-lists\nConsent records: https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance\nEmail and SMS automation actions: https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation\nOptional email sender and message settings: https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+      }
+    ]
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/inro-6081.json": "192efcc131828ab3a350da4220e0e8e18bbb1a23bfb2be9866d474938c99597b",
+    "described-recipes/inro-6081.json": "b50c8355be06db3ba49e90e2a2b7e6fe43bc4e654ccfa2501ac0be23e860ff0e"
+  }
+}

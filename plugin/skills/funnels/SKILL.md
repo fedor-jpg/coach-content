@@ -1,0 +1,20 @@
+---
+name: funnels
+description: Prepare or revise an Instagram funnel from 57 library variants through existing Chatfuel MCP. Produce concrete copy and scoped setting drafts, explain changed or unsupported steps, and guide separately approved readback and stop. No installation or video required.
+---
+
+# Funnels
+
+Setup revision 1.1.0; scenario library 1.2.0. Repository availability does not establish installation or live acceptance.
+
+1. Read [the compact setup index](references/setup-index.md), [normal-MCP setup policy](references/setup-policy.md), and only the selected `references/setup-details/<variant>.md`. Match the user's named funnel or described goal; do not build a selector or require a technical ID. The index covers all57 variants/all60 originals, including sources without an older analogue. Do not load all 60 raw graphs or run a helper.
+2. Check the selected functional decision before preparing settings. Waiting for Chatfuel and source-incomplete/reference-only variants have no active setup: explain the exact dependency and retain the original for inspection. Never bypass this decision through an older recipe, unconditional delivery or a silently substituted DM entry. Draft-available preserves only the stated primary function; show retained substitutions, omitted extras and unverified persistence separately. Keep exact source messages, alternative edges and known settings intact. Ask approval for consequential changes.
+3. Collect only missing business facts. Derive a campaign name, propose entry words and draft all message copy from supplied facts; infer language from the request. Ask for final approval, not ASCII IDs or hand-typed message templates. Resolve account/post/automation IDs through available read tools. Without tools, produce a bounded preparation and identify the exact unresolved read. Never ask the user to install a CLI, transport settings or copy private chat state.
+4. Prepare the selected setting drafts without writes. Use [the dated capability observation](references/capability-observation.json), then verify actual current tools and scope before the first write. `setup_comment_replies` enables immediately and can change Main/base; it is not create-OFF. No Main enable, account writes, preview or send is authorized by preparation. Do not add a connection or switch tools after a rejection.
+5. Follow setup-policy for later read/approve/configure/readback/edit/return/stop. Record exact ownership, baselines, inheritance and approvals in this conversation. Preserve concurrent changes, dormant lists and unrelated support. An empty accepted registry does not prevent useful preparation; an old digest or partial preview does not accept a new version. Report draft, configured, sandbox and live results separately.
+
+Reply with the business result, first message, actual branch choices, material changes, missing business facts and exact next gate. Keep payloads/IDs in technical details unless asked. Use the selected external continuation prompt for requested email/SMS or other provider work; it is a draft, not an installed bridge. Sending is optional and separately authorized.
+
+The existing 30 analogues remain available through `references/native-recipes/<id>.md` and the historical [native guide](references/chatgpt-funnels.md). They supply copy and intended behavior, not a bypass of the selected57-variant setup assessment. Ordinary MCP follows setup-policy first; historical GraphQL procedures are not automatically available.
+
+Maintainers: `scenarios.json` owns variant setup bindings, source-based adaptations and shared step dispositions; `described-recipes/*.json` still owns the30 older analogue versions. `setup_library.py` generates selected setup references through `funnel_library.py`. Portable source records retain original values; the viewer build checks donor hashes. Capability, source, policy and analogue changes invalidate bound references, never live campaigns. Legacy `recipes/*.json`, `funnels.py`, runtime evidence and `catalog.json` remain separate and unchanged. No selector/executor service or cross-chat state is added.

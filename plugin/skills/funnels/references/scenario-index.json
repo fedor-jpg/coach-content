@@ -1,0 +1,606 @@
+{
+  "schema_version": 1,
+  "profile": "normal-mcp",
+  "version": "1.2.0",
+  "scenarios_sha256": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+  "capability_sha256": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+  "coverage_sha256": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+  "family_count": 20,
+  "variant_count": 57,
+  "source_count": 60,
+  "continuation_prompts": {
+    "inro-6022": [
+      {
+        "id": "email-list",
+        "title": "Finish email-list signup",
+        "scope": "For the email-list goal. Contact capture is not external subscription.",
+        "inputs": [
+          "Provider and target list",
+          "Email consent wording and proof",
+          "Resource URL; welcome email only if separately requested",
+          "Existing authorized access or connection"
+        ],
+        "citations": [
+          {
+            "title": "Brevo signup forms",
+            "url": "https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo"
+          },
+          {
+            "title": "Authorized contact and list mapping",
+            "url": "https://developers.brevo.com/docs/synchronise-contact-lists"
+          },
+          {
+            "title": "Consent records",
+            "url": "https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance"
+          },
+          {
+            "title": "Email and SMS automation actions",
+            "url": "https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation"
+          },
+          {
+            "title": "Optional email sender and message settings",
+            "url": "https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+          }
+        ],
+        "prompt": "Help me prepare: Finish email-list signup.\nSelected source: inro-6022 - Grow your email list from comments.\nGoal: Use a useful resource to start a direct relationship with interested people.\nVariant: Grow your email list: email is optional\nScope: For the email-list goal. Contact capture is not external subscription.\nSource entry: CHECKLIST comment\nSource requirements: Ask for email; Allow SKIP and delivery without email\nSource timing: No email: 2 hours; link click: 2 hours; opening button: 6 hours.\nSource outcome: A checklist without a mandatory email gate\nCaptured text (n001, not approved campaign copy):\nSent, check your DMs\nJust sent it to your DMs\nIt's in your DMs now 🙂\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Ask for optional email, then deliver the checklist on a valid answer or SKIP.\nUse the existing email provider. If none exists, propose Brevo for approval; it is not connected.\nAsk me for: Provider and target list; Email consent wording and proof; Resource URL; welcome email only if separately requested; Existing authorized access or connection.\n1. Inspect existing authorized connections. Chatfuel contact collection alone does not subscribe anyone to an external list. Use a sync only after verifying its field mapping, authorization and readback.\n2. If no sync is verified, propose a hosted signup form link in the DM. A Brevo form can collect EMAIL and add the contact to the selected list. Disclose the extra form step and ask for approval before changing the source journey. If DM collection must remain, leave the ongoing bridge unverified and prepare the exact mapping and next access action only.\n3. Draft the email-to-list mapping and channel-specific consent record. Preserve opt-outs; prevent duplicate contacts and repeated welcome sends. Keep optional signup optional and do not withhold a resource that the selected Chatfuel variant delivers first.\n4. Verify actual membership in the intended list; this can complete the list-growth goal. A saved Chatfuel email or a link click does not prove membership. Only if the owner requests a welcome email or series, draft sender, reply-to and unsubscribe settings and a separate consented delivery check before any later approved send. Return draft form/list settings, unresolved access and the next authorized action.\n5. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n6. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n7. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend.\nOfficial guidance checked 2026-11-02:\nBrevo signup forms: https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo\nAuthorized contact and list mapping: https://developers.brevo.com/docs/synchronise-contact-lists\nConsent records: https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance\nEmail and SMS automation actions: https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation\nOptional email sender and message settings: https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+      }
+    ],
+    "inro-6026": [
+      {
+        "id": "email-list",
+        "title": "Finish email-list signup",
+        "scope": "For the email-list goal. Contact capture is not external subscription.",
+        "inputs": [
+          "Provider and target list",
+          "Email consent wording and proof",
+          "Resource URL; welcome email only if separately requested",
+          "Existing authorized access or connection"
+        ],
+        "citations": [
+          {
+            "title": "Brevo signup forms",
+            "url": "https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo"
+          },
+          {
+            "title": "Authorized contact and list mapping",
+            "url": "https://developers.brevo.com/docs/synchronise-contact-lists"
+          },
+          {
+            "title": "Consent records",
+            "url": "https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance"
+          },
+          {
+            "title": "Email and SMS automation actions",
+            "url": "https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation"
+          },
+          {
+            "title": "Optional email sender and message settings",
+            "url": "https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+          }
+        ],
+        "prompt": "Help me prepare: Finish email-list signup.\nSelected source: inro-6026 - Grow Your Email List.\nGoal: Use a useful resource to start a direct relationship with interested people.\nVariant: Grow your email list: required email before the freebie\nScope: For the email-list goal. Contact capture is not external subscription.\nSource entry: Freebie comment\nSource requirements: Press the opening button; Provide a valid email before delivery; Repeat the request after silence\nSource timing: Link click: 3 hours; email: 3 days; opening button: 2 days.\nSource outcome: A resource after email capture\nCaptured text (n001, not approved campaign copy):\nThanks for your comment 💛\nCheck your DMs 🔥\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Ask for email before sending the guide; refuse delivery if the email is missing or obviously malformed.\nUse the existing email provider. If none exists, propose Brevo for approval; it is not connected.\nAsk me for: Provider and target list; Email consent wording and proof; Resource URL; welcome email only if separately requested; Existing authorized access or connection.\n1. Inspect existing authorized connections. Chatfuel contact collection alone does not subscribe anyone to an external list. Use a sync only after verifying its field mapping, authorization and readback.\n2. If no sync is verified, propose a hosted signup form link in the DM. A Brevo form can collect EMAIL and add the contact to the selected list. Disclose the extra form step and ask for approval before changing the source journey. If DM collection must remain, leave the ongoing bridge unverified and prepare the exact mapping and next access action only.\n3. Draft the email-to-list mapping and channel-specific consent record. Preserve opt-outs; prevent duplicate contacts and repeated welcome sends. Keep optional signup optional and do not withhold a resource that the selected Chatfuel variant delivers first.\n4. Verify actual membership in the intended list; this can complete the list-growth goal. A saved Chatfuel email or a link click does not prove membership. Only if the owner requests a welcome email or series, draft sender, reply-to and unsubscribe settings and a separate consented delivery check before any later approved send. Return draft form/list settings, unresolved access and the next authorized action.\n5. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n6. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n7. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend.\nOfficial guidance checked 2026-11-02:\nBrevo signup forms: https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo\nAuthorized contact and list mapping: https://developers.brevo.com/docs/synchronise-contact-lists\nConsent records: https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance\nEmail and SMS automation actions: https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation\nOptional email sender and message settings: https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+      }
+    ],
+    "manychat-20": [
+      {
+        "id": "email-list",
+        "title": "Finish email-list signup",
+        "scope": "For the email-list goal. Contact capture is not external subscription.",
+        "inputs": [
+          "Provider and target list",
+          "Email consent wording and proof",
+          "Resource URL; welcome email only if separately requested",
+          "Existing authorized access or connection"
+        ],
+        "citations": [
+          {
+            "title": "Brevo signup forms",
+            "url": "https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo"
+          },
+          {
+            "title": "Authorized contact and list mapping",
+            "url": "https://developers.brevo.com/docs/synchronise-contact-lists"
+          },
+          {
+            "title": "Consent records",
+            "url": "https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance"
+          },
+          {
+            "title": "Email and SMS automation actions",
+            "url": "https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation"
+          },
+          {
+            "title": "Optional email sender and message settings",
+            "url": "https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+          }
+        ],
+        "prompt": "Help me prepare: Finish email-list signup.\nSelected source: manychat-20 - Grow your email list.\nGoal: Use a useful resource to start a direct relationship with interested people.\nVariant: Grow your email list: ebook and 23-hour retry\nScope: For the email-list goal. Contact capture is not external subscription.\nSource entry: Keyword in a direct message\nSource requirements: Email is required; Repeat email collection after no reply\nSource timing: No reply: 23 hours; the reminder contains a second email collection step.\nSource outcome: An ebook after email capture\nCaptured text (node-0, not approved campaign copy):\nHi! Thanks for reaching out 💌\n\nWe are excited you are interested in our content and the ebook, and we would LOVE to send you more!\n\nTo get a free ebook, please leave us your email below 👇\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Ask for email before delivering the ebook.\nUse the existing email provider. If none exists, propose Brevo for approval; it is not connected.\nAsk me for: Provider and target list; Email consent wording and proof; Resource URL; welcome email only if separately requested; Existing authorized access or connection.\n1. Inspect existing authorized connections. Chatfuel contact collection alone does not subscribe anyone to an external list. Use a sync only after verifying its field mapping, authorization and readback.\n2. If no sync is verified, propose a hosted signup form link in the DM. A Brevo form can collect EMAIL and add the contact to the selected list. Disclose the extra form step and ask for approval before changing the source journey. If DM collection must remain, leave the ongoing bridge unverified and prepare the exact mapping and next access action only.\n3. Draft the email-to-list mapping and channel-specific consent record. Preserve opt-outs; prevent duplicate contacts and repeated welcome sends. Keep optional signup optional and do not withhold a resource that the selected Chatfuel variant delivers first.\n4. Verify actual membership in the intended list; this can complete the list-growth goal. A saved Chatfuel email or a link click does not prove membership. Only if the owner requests a welcome email or series, draft sender, reply-to and unsubscribe settings and a separate consented delivery check before any later approved send. Return draft form/list settings, unresolved access and the next authorized action.\n5. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n6. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n7. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend.\nOfficial guidance checked 2026-11-02:\nBrevo signup forms: https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo\nAuthorized contact and list mapping: https://developers.brevo.com/docs/synchronise-contact-lists\nConsent records: https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance\nEmail and SMS automation actions: https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation\nOptional email sender and message settings: https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+      }
+    ],
+    "inro-6024": [
+      {
+        "id": "email-list",
+        "title": "Finish email-list signup",
+        "scope": "Optional: only if the owner also wants email marketing signup. Resource delivery or waitlist participation alone does not require it.",
+        "inputs": [
+          "Provider and target list",
+          "Email consent wording and proof",
+          "Resource URL; welcome email only if separately requested",
+          "Existing authorized access or connection"
+        ],
+        "citations": [
+          {
+            "title": "Brevo signup forms",
+            "url": "https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo"
+          },
+          {
+            "title": "Authorized contact and list mapping",
+            "url": "https://developers.brevo.com/docs/synchronise-contact-lists"
+          },
+          {
+            "title": "Consent records",
+            "url": "https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance"
+          },
+          {
+            "title": "Email and SMS automation actions",
+            "url": "https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation"
+          },
+          {
+            "title": "Optional email sender and message settings",
+            "url": "https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+          }
+        ],
+        "prompt": "Help me prepare: Finish email-list signup.\nSelected source: inro-6024 - Get Leads With Freebies.\nGoal: Offer a useful resource in exchange for a verified follow.\nVariant: Freebie: different gates for existing and new followers\nScope: Optional: only if the owner also wants email marketing signup. Resource delivery or waitlist participation alone does not require it.\nSource entry: Freebie comment\nSource requirements: Check current follower status; Existing followers provide email; new followers verify a follow\nSource timing: Clicks: 3 hours and 3 days; email: 3 days; button: 2 days; follow: 1 day and 3 days.\nSource outcome: A resource after the conditions of the matching branch\nCaptured text (n001, not approved campaign copy):\nThanks for your comment 💛\nCheck your DMs 🔥\nCurrent setup decision: waiting_for_chatfuel. The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.\nPrimary Chatfuel result: A resource after the conditions of the matching branch\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing email provider. If none exists, propose Brevo for approval; it is not connected.\nAsk me for: Provider and target list; Email consent wording and proof; Resource URL; welcome email only if separately requested; Existing authorized access or connection.\n1. Inspect existing authorized connections. Chatfuel contact collection alone does not subscribe anyone to an external list. Use a sync only after verifying its field mapping, authorization and readback.\n2. If no sync is verified, propose a hosted signup form link in the DM. A Brevo form can collect EMAIL and add the contact to the selected list. Disclose the extra form step and ask for approval before changing the source journey. If DM collection must remain, leave the ongoing bridge unverified and prepare the exact mapping and next access action only.\n3. Draft the email-to-list mapping and channel-specific consent record. Preserve opt-outs; prevent duplicate contacts and repeated welcome sends. Keep optional signup optional and do not withhold a resource that the selected Chatfuel variant delivers first.\n4. Verify actual membership in the intended list; this can complete the list-growth goal. A saved Chatfuel email or a link click does not prove membership. Only if the owner requests a welcome email or series, draft sender, reply-to and unsubscribe settings and a separate consented delivery check before any later approved send. Return draft form/list settings, unresolved access and the next authorized action.\n5. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n6. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n7. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend.\nOfficial guidance checked 2026-11-02:\nBrevo signup forms: https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo\nAuthorized contact and list mapping: https://developers.brevo.com/docs/synchronise-contact-lists\nConsent records: https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance\nEmail and SMS automation actions: https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation\nOptional email sender and message settings: https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+      }
+    ],
+    "inro-6081": [
+      {
+        "id": "email-list",
+        "title": "Finish email-list signup",
+        "scope": "Optional: only if the owner also wants email marketing signup. Resource delivery or waitlist participation alone does not require it.",
+        "inputs": [
+          "Provider and target list",
+          "Email consent wording and proof",
+          "Resource URL; welcome email only if separately requested",
+          "Existing authorized access or connection"
+        ],
+        "citations": [
+          {
+            "title": "Brevo signup forms",
+            "url": "https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo"
+          },
+          {
+            "title": "Authorized contact and list mapping",
+            "url": "https://developers.brevo.com/docs/synchronise-contact-lists"
+          },
+          {
+            "title": "Consent records",
+            "url": "https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance"
+          },
+          {
+            "title": "Email and SMS automation actions",
+            "url": "https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation"
+          },
+          {
+            "title": "Optional email sender and message settings",
+            "url": "https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+          }
+        ],
+        "prompt": "Help me prepare: Finish email-list signup.\nSelected source: inro-6081 - Build a waitlist for your next launch.\nGoal: Invite interested people into your next launch or a shared community.\nVariant: Launch waitlist: optional email\nScope: Optional: only if the owner also wants email marketing signup. Resource delivery or waitlist participation alone does not require it.\nSource entry: WAITLIST comment or Story reply\nSource requirements: Confirm joining; Ask for optional email after joining\nSource timing: Email: 20 hours; opening button: 6 hours.\nSource outcome: Waitlist participation without requiring email\nCaptured text (n001, not approved campaign copy):\nCheck your DMs to join the list\nSent you a DM 🙂\nJust sent you the details\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Collect consented waitlist join or STOP intent and optional email; saved membership remains unverified.\nUse the existing email provider. If none exists, propose Brevo for approval; it is not connected.\nAsk me for: Provider and target list; Email consent wording and proof; Resource URL; welcome email only if separately requested; Existing authorized access or connection.\n1. Inspect existing authorized connections. Chatfuel contact collection alone does not subscribe anyone to an external list. Use a sync only after verifying its field mapping, authorization and readback.\n2. If no sync is verified, propose a hosted signup form link in the DM. A Brevo form can collect EMAIL and add the contact to the selected list. Disclose the extra form step and ask for approval before changing the source journey. If DM collection must remain, leave the ongoing bridge unverified and prepare the exact mapping and next access action only.\n3. Draft the email-to-list mapping and channel-specific consent record. Preserve opt-outs; prevent duplicate contacts and repeated welcome sends. Keep optional signup optional and do not withhold a resource that the selected Chatfuel variant delivers first.\n4. Verify actual membership in the intended list; this can complete the list-growth goal. A saved Chatfuel email or a link click does not prove membership. Only if the owner requests a welcome email or series, draft sender, reply-to and unsubscribe settings and a separate consented delivery check before any later approved send. Return draft form/list settings, unresolved access and the next authorized action.\n5. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n6. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n7. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend.\nOfficial guidance checked 2026-11-02:\nBrevo signup forms: https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo\nAuthorized contact and list mapping: https://developers.brevo.com/docs/synchronise-contact-lists\nConsent records: https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance\nEmail and SMS automation actions: https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation\nOptional email sender and message settings: https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+      }
+    ],
+    "manychat-84": [
+      {
+        "id": "sms-list",
+        "title": "Finish SMS-list signup",
+        "scope": "For the SMS-list goal. Captured phone collection does not send SMS.",
+        "inputs": [
+          "Provider and target list",
+          "SMS-specific consent and opt-out wording",
+          "Phone country and country code",
+          "Only for a later owner-requested send: sender approval, credits and SMS text",
+          "Existing authorized access or connection"
+        ],
+        "citations": [
+          {
+            "title": "Brevo signup forms",
+            "url": "https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo"
+          },
+          {
+            "title": "SMS automation and reentry",
+            "url": "https://help.brevo.com/hc/en-us/articles/4424283046418-Send-SMS-messages-through-an-automation"
+          },
+          {
+            "title": "Sender and country prerequisites",
+            "url": "https://help.brevo.com/hc/en-us/articles/28255350696466-Register-a-Sender-ID-to-send-SMS-messages"
+          },
+          {
+            "title": "Consent records",
+            "url": "https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance"
+          },
+          {
+            "title": "Authorized contact and list mapping",
+            "url": "https://developers.brevo.com/docs/synchronise-contact-lists"
+          }
+        ],
+        "prompt": "Help me prepare: Finish SMS-list signup.\nSelected source: manychat-84 - Grow an SMS list.\nGoal: Give your Instagram audience a direct line to your business through an opt-in SMS list.\nVariant: Grow an SMS list: phone and 23-hour reminder\nScope: For the SMS-list goal. Captured phone collection does not send SMS.\nSource entry: Direct message matching a VIP keyword\nSource requirements: Collect the phone number; Remind after silence without a second collection block\nSource timing: No reply: 23 hours; the reminder does not contain another collection block.\nSource outcome: A stored phone number toward an opt-in SMS audience\nCaptured text (node-0, not approved campaign copy):\nOMG! I'm so excited you'd like to join my VIP-only hotline (aka my Text Besties community)! 🤭\n\nI drop the best content, tools, tricks and more via text, so gimme your phone number so I can add you 👇\n\nYes! Got it. You’re added to my Text Besties community! 😉\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Request a consented phone number; keep SMS-provider signup and sending as separate unimplemented continuation.\nUse the existing SMS provider. If none exists, propose Brevo for approval; it is not connected.\nAsk me for: Provider and target list; SMS-specific consent and opt-out wording; Phone country and country code; Only for a later owner-requested send: sender approval, credits and SMS text; Existing authorized access or connection.\n1. Inspect existing authorized connections. A phone saved in Chatfuel is not an SMS subscription. Use an existing sync only after verifying authorization, field mapping and readback.\n2. If no sync is verified, propose a native hosted SMS signup form linked from the DM. Brevo forms can collect SMS and add the contact to a selected list. Disclose the extra form step and obtain approval. If DM phone collection must remain, leave the bridge unverified and prepare the exact mapping and next access action only.\n3. Normalize the phone country code and retain SMS-specific consent proof and opt-outs. Prevent duplicate list entries. Only if the owner separately requests SMS delivery, draft a list-added automation with plain-text SMS and reentry protection, then check sender approval and credits, including US/Canada toll-free prerequisites. Do not register a sender or spend credits.\n4. Verify list membership; this can complete the SMS-list goal. SMS delivery is a separate optional later check, never an assumed source action. The captured 23-hour DM reminder is not an SMS action or a verified timer in ordinary MCP. Return draft form/list settings, unresolved access and the next authorized action.\n5. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n6. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n7. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend.\nOfficial guidance checked 2026-11-02:\nBrevo signup forms: https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo\nSMS automation and reentry: https://help.brevo.com/hc/en-us/articles/4424283046418-Send-SMS-messages-through-an-automation\nSender and country prerequisites: https://help.brevo.com/hc/en-us/articles/28255350696466-Register-a-Sender-ID-to-send-SMS-messages\nConsent records: https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance\nAuthorized contact and list mapping: https://developers.brevo.com/docs/synchronise-contact-lists"
+      }
+    ],
+    "inro-6021": [
+      {
+        "id": "booking",
+        "title": "Finish booking setup",
+        "scope": "Use when the booking page or external confirmation needs setup. An already configured booking link needs no new integration.",
+        "inputs": [
+          "Booking service and URL",
+          "Service, availability and time zone",
+          "Qualification criteria",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish booking setup.\nSelected source: inro-6021 - Qualify DM leads with AI and book calls.\nGoal: Understand what a person needs and help them take the next step toward a call.\nVariant: Qualify DM leads with AI\nScope: Use when the booking page or external confirmation needs setup. An already configured booking link needs no new integration.\nSource entry: COACHME direct message\nSource requirements: Answer a question about the request; AI distinguishes readiness from browsing\nSource timing: Reply: 20 hours; link click: 2 hours.\nSource outcome: A booking link or starter resource\nCaptured text (n001, not approved campaign copy):\nThanks for your message! What would you like help with?\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Use the actual reply to route suitable consultation interest to booking and browsing/later replies to a starter guide.\nUse the booking service already named by the owner or source. Do not replace it silently with native Chatfuel booking.\nAsk me for: Booking service and URL; Service, availability and time zone; Qualification criteria; Existing authorized access.\n1. Confirm the destination service and authorized access. Draft its booking page and required fields using approved availability and time zone. Keep the captured qualification and refusal branches explicit.\n2. Verify the page and define confirmation evidence in that service. A link click is not a booking. Native Chatfuel booking statuses do not prove completion in Calendly or another external service. If an automated status bridge is needed, identify a verified existing connection or leave it unresolved.\n3. Return draft settings, field mapping, access gaps and separate checks for link delivery and confirmed booking. Do not create a live booking.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      },
+      {
+        "id": "team-email",
+        "title": "Retain the source team-email notification",
+        "scope": "Optional: retain the captured external email notification instead of replacing it with Chatfuel handoff.",
+        "inputs": [
+          "Team recipient and service",
+          "Permitted lead fields",
+          "Notification condition and approved text",
+          "Existing authorized connection"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Retain the source team-email notification.\nSelected source: inro-6021 - Qualify DM leads with AI and book calls.\nGoal: Understand what a person needs and help them take the next step toward a call.\nVariant: Qualify DM leads with AI\nScope: Optional: retain the captured external email notification instead of replacing it with Chatfuel handoff.\nSource entry: COACHME direct message\nSource requirements: Answer a question about the request; AI distinguishes readiness from browsing\nSource timing: Reply: 20 hours; link click: 2 hours.\nSource outcome: A booking link or starter resource\nCaptured text (n001, not approved campaign copy):\nThanks for your message! What would you like help with?\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Use the actual reply to route suitable consultation interest to booking and browsing/later replies to a starter guide.\nUse the existing authorized team mailbox or notification service.\nAsk me for: Team recipient and service; Permitted lead fields; Notification condition and approved text; Existing authorized connection.\n1. This step is optional if the owner chooses Chatfuel team handoff instead. If the original email notification must remain, verify an existing authorized connection and draft recipient, field mapping and trigger conditions.\n2. Do not invent an email-sending bridge. If none is verified, list the missing access and exact next action. Preserve consent and data minimization; prevent duplicate notifications. Verify the recipient and delivery separately from the Chatfuel handoff. Return draft settings only.\n3. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n4. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n5. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "inro-6025": [
+      {
+        "id": "booking",
+        "title": "Finish booking setup",
+        "scope": "Use when the booking page or external confirmation needs setup. An already configured booking link needs no new integration.",
+        "inputs": [
+          "Booking service and URL",
+          "Service, availability and time zone",
+          "Qualification criteria",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish booking setup.\nSelected source: inro-6025 - Book more calls from your comments.\nGoal: Understand what a person needs and help them take the next step toward a call.\nVariant: Book calls from comments: readiness question\nScope: Use when the booking page or external confirmation needs setup. An already configured booking link needs no new integration.\nSource entry: APPLY comment\nSource requirements: Agree to a question; Ready now leads to booking; not yet leads to starter material\nSource timing: Link click: 2 hours; reply: 20 hours; opening button: 6 hours.\nSource outcome: A consultation link or starter resource\nCaptured text (n001, not approved campaign copy):\nSent, check your DMs\nJust sent it to your DMs\nIt's in your DMs now 🙂\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: After confirmation, route ready-soon replies to booking and not-yet replies to the starter guide.\nUse the booking service already named by the owner or source. Do not replace it silently with native Chatfuel booking.\nAsk me for: Booking service and URL; Service, availability and time zone; Qualification criteria; Existing authorized access.\n1. Confirm the destination service and authorized access. Draft its booking page and required fields using approved availability and time zone. Keep the captured qualification and refusal branches explicit.\n2. Verify the page and define confirmation evidence in that service. A link click is not a booking. Native Chatfuel booking statuses do not prove completion in Calendly or another external service. If an automated status bridge is needed, identify a verified existing connection or leave it unresolved.\n3. Return draft settings, field mapping, access gaps and separate checks for link delivery and confirmed booking. Do not create a live booking.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      },
+      {
+        "id": "team-email",
+        "title": "Retain the source team-email notification",
+        "scope": "Optional: retain the captured external email notification instead of replacing it with Chatfuel handoff.",
+        "inputs": [
+          "Team recipient and service",
+          "Permitted lead fields",
+          "Notification condition and approved text",
+          "Existing authorized connection"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Retain the source team-email notification.\nSelected source: inro-6025 - Book more calls from your comments.\nGoal: Understand what a person needs and help them take the next step toward a call.\nVariant: Book calls from comments: readiness question\nScope: Optional: retain the captured external email notification instead of replacing it with Chatfuel handoff.\nSource entry: APPLY comment\nSource requirements: Agree to a question; Ready now leads to booking; not yet leads to starter material\nSource timing: Link click: 2 hours; reply: 20 hours; opening button: 6 hours.\nSource outcome: A consultation link or starter resource\nCaptured text (n001, not approved campaign copy):\nSent, check your DMs\nJust sent it to your DMs\nIt's in your DMs now 🙂\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: After confirmation, route ready-soon replies to booking and not-yet replies to the starter guide.\nUse the existing authorized team mailbox or notification service.\nAsk me for: Team recipient and service; Permitted lead fields; Notification condition and approved text; Existing authorized connection.\n1. This step is optional if the owner chooses Chatfuel team handoff instead. If the original email notification must remain, verify an existing authorized connection and draft recipient, field mapping and trigger conditions.\n2. Do not invent an email-sending bridge. If none is verified, list the missing access and exact next action. Preserve consent and data minimization; prevent duplicate notifications. Verify the recipient and delivery separately from the Chatfuel handoff. Return draft settings only.\n3. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n4. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n5. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "inro-6222": [
+      {
+        "id": "booking",
+        "title": "Finish booking setup",
+        "scope": "Use when the booking page or external confirmation needs setup. An already configured booking link needs no new integration.",
+        "inputs": [
+          "Booking service and URL",
+          "Service, availability and time zone",
+          "Qualification criteria",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish booking setup.\nSelected source: inro-6222 - Turn ad clicks into booked calls.\nGoal: Understand what a person needs and help them take the next step toward a call.\nVariant: Ad enquiry: readiness and optional email\nScope: Use when the booking page or external confirmation needs setup. An already configured booking link needs no new integration.\nSource entry: Reply to a specific ad\nSource requirements: Ask about readiness; Ready: ask for email with SKIP; Not ready: offer a resource\nSource timing: Reply: 20 hours; email and link click: 2 hours.\nSource outcome: A booking link or resource\nCaptured text (n001, not approved campaign copy):\nThanks for your message about the starter plan! Are you looking to start soon?\nYes, soon\nJust looking\nCurrent setup decision: waiting_for_chatfuel. This scenario starts from a specific ad reply. Ordinary MCP cannot configure that entry. An ordinary DM conversation would not preserve the selected entry.\nPrimary Chatfuel result: A booking link or resource\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the booking service already named by the owner or source. Do not replace it silently with native Chatfuel booking.\nAsk me for: Booking service and URL; Service, availability and time zone; Qualification criteria; Existing authorized access.\n1. Confirm the destination service and authorized access. Draft its booking page and required fields using approved availability and time zone. Keep the captured qualification and refusal branches explicit.\n2. Verify the page and define confirmation evidence in that service. A link click is not a booking. Native Chatfuel booking statuses do not prove completion in Calendly or another external service. If an automated status bridge is needed, identify a verified existing connection or leave it unresolved.\n3. Return draft settings, field mapping, access gaps and separate checks for link delivery and confirmed booking. Do not create a live booking.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "inro-6049": [
+      {
+        "id": "event",
+        "title": "Finish event registration",
+        "scope": "Use to finish registration in the existing event service. Do not add a marketing subscription unless separately requested.",
+        "inputs": [
+          "Event service, form and URL",
+          "Event date and time zone",
+          "Required registration fields and consent",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish event registration.\nSelected source: inro-6049 - Get Webinar Sign-Ups.\nGoal: Turn Instagram interest into event sign-ups and access.\nVariant: Webinar access after a completed survey\nScope: Use to finish registration in the existing event service. Do not add a marketing subscription unless separately requested.\nSource entry: webinar comment or DM\nSource requirements: Press the opening button; Complete the survey before access; Remind after the link click\nSource timing: After click: 6 days; no click or survey: 3 days; opening button: 2 hours.\nSource outcome: Webinar access after survey completion\nCaptured text (n001, not approved campaign copy):\nHey! So happy to see you here 🔥 Do you want to join my webinar?\nSign me up 🙌🏻\nCurrent setup decision: waiting_for_chatfuel. Webinar access requires verified completion of an external survey. Two AI questions cannot prove that completion; a verified completion integration is missing.\nPrimary Chatfuel result: Webinar access after survey completion\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing form or webinar service and the selected event.\nAsk me for: Event service, form and URL; Event date and time zone; Required registration fields and consent; Existing authorized access.\n1. Confirm the event and authorized access. Draft the registration form and map only its required fields. Event registration consent does not imply email or SMS marketing consent.\n2. Retain required versus optional email/phone distinctions. If the Chatfuel variant delivers the link before optional email, disclose that change; do not claim the original contact gate remains.\n3. Define success as a registration record in the event service, separately from delivery or clicks. If reminders depend on external completion or exact timing, identify a verified existing connection and its semantics or leave that dependency unresolved. Return draft settings and next access steps; do not register attendees or send reminders.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "inro-6054": [
+      {
+        "id": "event",
+        "title": "Finish event registration",
+        "scope": "Use to finish registration in the existing event service. Do not add a marketing subscription unless separately requested.",
+        "inputs": [
+          "Event service, form and URL",
+          "Event date and time zone",
+          "Required registration fields and consent",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish event registration.\nSelected source: inro-6054 - Get sign-ups for your event or webinar.\nGoal: Turn Instagram interest into event sign-ups and access.\nVariant: Event sign-up link: optional email\nScope: Use to finish registration in the existing event service. Do not add a marketing subscription unless separately requested.\nSource entry: WEBINAR comment\nSource requirements: Ask for email; Allow SKIP before the link\nSource timing: No email and no click: 2 hours; opening button: 6 hours.\nSource outcome: A registration link, not a confirmed registration\nCaptured text (n001, not approved campaign copy):\nSent you the details by DM\nCheck your DMs for the link\nJust sent it to your DMs 🙂\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Ask for optional email, then give the registration URL on a valid answer or SKIP.\nUse the existing form or webinar service and the selected event.\nAsk me for: Event service, form and URL; Event date and time zone; Required registration fields and consent; Existing authorized access.\n1. Confirm the event and authorized access. Draft the registration form and map only its required fields. Event registration consent does not imply email or SMS marketing consent.\n2. Retain required versus optional email/phone distinctions. If the Chatfuel variant delivers the link before optional email, disclose that change; do not claim the original contact gate remains.\n3. Define success as a registration record in the event service, separately from delivery or clicks. If reminders depend on external completion or exact timing, identify a verified existing connection and its semantics or leave that dependency unresolved. Return draft settings and next access steps; do not register attendees or send reminders.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "manychat-81": [
+      {
+        "id": "event",
+        "title": "Finish event registration",
+        "scope": "Use to finish registration in the existing event service. Do not add a marketing subscription unless separately requested.",
+        "inputs": [
+          "Event service, form and URL",
+          "Event date and time zone",
+          "Required registration fields and consent",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish event registration.\nSelected source: manychat-81 - Turn comments into RSVPs.\nGoal: Turn Instagram interest into event sign-ups and access.\nVariant: Turn comments into RSVPs: email and phone required\nScope: Use to finish registration in the existing event service. Do not add a marketing subscription unless separately requested.\nSource entry: Keyword comment\nSource requirements: Press the opening button; Email is required; Phone is required after email\nSource timing: Two unset no-response exits: 23 hours each.\nSource outcome: A webinar link after both contacts\nCaptured text (node-0, not approved campaign copy):\nHey! I'm so happy you'd like to join my free webinar \"How to make real money from social media\". 💅\n\nTap below to get access! \nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Ask for email and then phone; deliver the webinar URL only after both answers pass conversational checks.\nUse the existing form or webinar service and the selected event.\nAsk me for: Event service, form and URL; Event date and time zone; Required registration fields and consent; Existing authorized access.\n1. Confirm the event and authorized access. Draft the registration form and map only its required fields. Event registration consent does not imply email or SMS marketing consent.\n2. Retain required versus optional email/phone distinctions. If the Chatfuel variant delivers the link before optional email, disclose that change; do not claim the original contact gate remains.\n3. Define success as a registration record in the event service, separately from delivery or clicks. If reminders depend on external completion or exact timing, identify a verified existing connection and its semantics or leave that dependency unresolved. Return draft settings and next access steps; do not register attendees or send reminders.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "inro-6080": [
+      {
+        "id": "checkout",
+        "title": "Finish the offer destination",
+        "scope": "Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.",
+        "inputs": [
+          "Offer and destination URL",
+          "Price or coupon terms",
+          "Access or fulfillment rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the offer destination.\nSelected source: inro-6080 - Sell Your Courses.\nGoal: Present the right course and help interested learners reach the offer.\nVariant: Sell one course from comments or DMs\nScope: Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.\nSource entry: Course comment or direct message\nSource requirements: Press a button before the offer; Remind when the link is not clicked\nSource timing: No link click or opening-button click: 3 days.\nSource outcome: A link to one course\nCaptured text (n002, not approved campaign copy):\nHey! Thanks for being here 🙌🏻  Do you want to join my course?\nYes 👀\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Send the course URL after confirmation and retain help.\nUse the existing store, course platform or checkout named by the owner.\nAsk me for: Offer and destination URL; Price or coupon terms; Access or fulfillment rules; Existing authorized access.\n1. Confirm the existing destination and approved offer. Draft the product, coupon or course-access configuration only where it is needed; merely sharing an existing link needs no new integration.\n2. Check the page and define separate evidence for payment, coupon redemption and access delivery. Neither a DM link nor a source message promising expiry proves these outcomes. Keep unverified expiry or completion callbacks unresolved.\n3. Return draft settings, authorization gaps and exact success checks. Do not publish an offer, create a purchase, charge money or grant access.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "inro-4393": [
+      {
+        "id": "checkout",
+        "title": "Finish the offer destination",
+        "scope": "Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.",
+        "inputs": [
+          "Offer and destination URL",
+          "Price or coupon terms",
+          "Access or fulfillment rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the offer destination.\nSelected source: inro-4393 - Sell your products during a live.\nGoal: Deliver a relevant product offer or coupon while interest is high.\nVariant: Sell products during a Live\nScope: Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.\nSource entry: Comment during a Live\nSource requirements: Press the opening button; Click the product link\nSource timing: No link click: 2 hours; opening button: 6 hours.\nSource outcome: A product offer\nCaptured text (n001, not approved campaign copy):\nThanks for joining the live! Want the product picks? Tap below.\nYes, send it\nCurrent setup decision: waiting_for_chatfuel. This scenario starts from a Live comment. Ordinary MCP cannot configure that Live-specific entry. An ordinary post comment or DM would be a different scenario.\nPrimary Chatfuel result: A product offer\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing store, course platform or checkout named by the owner.\nAsk me for: Offer and destination URL; Price or coupon terms; Access or fulfillment rules; Existing authorized access.\n1. Confirm the existing destination and approved offer. Draft the product, coupon or course-access configuration only where it is needed; merely sharing an existing link needs no new integration.\n2. Check the page and define separate evidence for payment, coupon redemption and access delivery. Neither a DM link nor a source message promising expiry proves these outcomes. Keep unverified expiry or completion callbacks unresolved.\n3. Return draft settings, authorization gaps and exact success checks. Do not publish an offer, create a purchase, charge money or grant access.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "inro-6019": [
+      {
+        "id": "checkout",
+        "title": "Finish the offer destination",
+        "scope": "Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.",
+        "inputs": [
+          "Offer and destination URL",
+          "Price or coupon terms",
+          "Access or fulfillment rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the offer destination.\nSelected source: inro-6019 - Welcome new customers from a QR code.\nGoal: Deliver a relevant product offer or coupon while interest is high.\nVariant: Welcome offer from a QR or referral link\nScope: Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.\nSource entry: Referral-link click or QR entry\nSource requirements: Press the confirmation button\nSource timing: Opening button: 6 hours.\nSource outcome: A welcome coupon\nCaptured text (n001, not approved campaign copy):\nWelcome! Want 10% off? Tap below for your code.\nGet my code\nCurrent setup decision: waiting_for_chatfuel. The referral-link or QR entry is not configurable through ordinary MCP. A manually configured scope or an ordinary DM keyword is not a new-account setup for this scenario.\nPrimary Chatfuel result: A welcome coupon\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing store, course platform or checkout named by the owner.\nAsk me for: Offer and destination URL; Price or coupon terms; Access or fulfillment rules; Existing authorized access.\n1. Confirm the existing destination and approved offer. Draft the product, coupon or course-access configuration only where it is needed; merely sharing an existing link needs no new integration.\n2. Check the page and define separate evidence for payment, coupon redemption and access delivery. Neither a DM link nor a source message promising expiry proves these outcomes. Keep unverified expiry or completion callbacks unresolved.\n3. Return draft settings, authorization gaps and exact success checks. Do not publish an offer, create a purchase, charge money or grant access.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "manychat-111": [
+      {
+        "id": "checkout",
+        "title": "Finish the offer destination",
+        "scope": "Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.",
+        "inputs": [
+          "Offer and destination URL",
+          "Price or coupon terms",
+          "Access or fulfillment rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the offer destination.\nSelected source: manychat-111 - DM your course like a closer.\nGoal: Present the right course and help interested learners reach the offer.\nVariant: Sell courses: three cards and help\nScope: Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.\nSource entry: Keyword direct message\nSource requirements: Three-course gallery; Separate card and purchase URLs; A following help message\nSource timing: No exact timer captured.\nSource outcome: A choice of three courses\nCaptured text (node-0, not approved campaign copy):\nLet me show you my new drop! My courses are designed to help you get more dream clients from Instagram ☁️\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Offer three named courses with all six detail/purchase URLs and a help branch.\nUse the existing store, course platform or checkout named by the owner.\nAsk me for: Offer and destination URL; Price or coupon terms; Access or fulfillment rules; Existing authorized access.\n1. Confirm the existing destination and approved offer. Draft the product, coupon or course-access configuration only where it is needed; merely sharing an existing link needs no new integration.\n2. Check the page and define separate evidence for payment, coupon redemption and access delivery. Neither a DM link nor a source message promising expiry proves these outcomes. Keep unverified expiry or completion callbacks unresolved.\n3. Return draft settings, authorization gaps and exact success checks. Do not publish an offer, create a purchase, charge money or grant access.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "manychat-66": [
+      {
+        "id": "checkout",
+        "title": "Finish the offer destination",
+        "scope": "Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.",
+        "inputs": [
+          "Offer and destination URL",
+          "Price or coupon terms",
+          "Access or fulfillment rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the offer destination.\nSelected source: manychat-66 - Give coupons in stories.\nGoal: Deliver a relevant product offer or coupon while interest is high.\nVariant: Story offer: reveal a coupon\nScope: Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.\nSource entry: Keyword reply to a Story\nSource requirements: Press the coupon-reveal button\nSource timing: No exact timer captured.\nSource outcome: The MYBDAYGIFT coupon\nCaptured text (node-0, not approved campaign copy):\nGuess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!\nCurrent setup decision: waiting_for_chatfuel. This scenario starts from a Story reply. Ordinary MCP cannot configure the Story-specific entry. An ordinary DM keyword would be a different entry, not this setup.\nPrimary Chatfuel result: The MYBDAYGIFT coupon\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing store, course platform or checkout named by the owner.\nAsk me for: Offer and destination URL; Price or coupon terms; Access or fulfillment rules; Existing authorized access.\n1. Confirm the existing destination and approved offer. Draft the product, coupon or course-access configuration only where it is needed; merely sharing an existing link needs no new integration.\n2. Check the page and define separate evidence for payment, coupon redemption and access delivery. Neither a DM link nor a source message promising expiry proves these outcomes. Keep unverified expiry or completion callbacks unresolved.\n3. Return draft settings, authorization gaps and exact success checks. Do not publish an offer, create a purchase, charge money or grant access.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "manychat-57": [
+      {
+        "id": "checkout",
+        "title": "Finish the offer destination",
+        "scope": "Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.",
+        "inputs": [
+          "Offer and destination URL",
+          "Price or coupon terms",
+          "Access or fulfillment rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the offer destination.\nSelected source: manychat-57 - Gamify Instagram live.\nGoal: Use a quiz or prize reveal to make participation rewarding.\nVariant: Live game: three coupons at 33/33/34\nScope: Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.\nSource entry: Keyword comment during a Live\nSource requirements: Press the button; Randomly distribute outcomes at 33%, 33%, 34%\nSource timing: No exact timer captured.\nSource outcome: One of three coupons\nCaptured text (node-0, not approved campaign copy):\nOooh are you ready to test your luck and reveal your discount?  Press the magic button👇\nCurrent setup decision: waiting_for_chatfuel. The selected outcome requires random selection or allocation. Ordinary MCP cannot implement that selection; giving everyone the same reward is a different result.\nPrimary Chatfuel result: One of three coupons\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing store, course platform or checkout named by the owner.\nAsk me for: Offer and destination URL; Price or coupon terms; Access or fulfillment rules; Existing authorized access.\n1. Confirm the existing destination and approved offer. Draft the product, coupon or course-access configuration only where it is needed; merely sharing an existing link needs no new integration.\n2. Check the page and define separate evidence for payment, coupon redemption and access delivery. Neither a DM link nor a source message promising expiry proves these outcomes. Keep unverified expiry or completion callbacks unresolved.\n3. Return draft settings, authorization gaps and exact success checks. Do not publish an offer, create a purchase, charge money or grant access.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "manychat-63": [
+      {
+        "id": "checkout",
+        "title": "Finish the offer destination",
+        "scope": "Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.",
+        "inputs": [
+          "Offer and destination URL",
+          "Price or coupon terms",
+          "Access or fulfillment rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the offer destination.\nSelected source: manychat-63 - Send offers in DMs during Live.\nGoal: Deliver a relevant product offer or coupon while interest is high.\nVariant: Live offer: reveal one coupon\nScope: Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.\nSource entry: Keyword comment during a Live\nSource requirements: Press the coupon-reveal button\nSource timing: No exact timer captured.\nSource outcome: The SECRET10 coupon\nCaptured text (node-0, not approved campaign copy):\nI'm so excited you want my VIP-only secret coupon code. 🤫\n\nTap below to get it 👇\nCurrent setup decision: waiting_for_chatfuel. This scenario starts from a Live comment. Ordinary MCP cannot configure that Live-specific entry. An ordinary post comment or DM would be a different scenario.\nPrimary Chatfuel result: The SECRET10 coupon\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing store, course platform or checkout named by the owner.\nAsk me for: Offer and destination URL; Price or coupon terms; Access or fulfillment rules; Existing authorized access.\n1. Confirm the existing destination and approved offer. Draft the product, coupon or course-access configuration only where it is needed; merely sharing an existing link needs no new integration.\n2. Check the page and define separate evidence for payment, coupon redemption and access delivery. Neither a DM link nor a source message promising expiry proves these outcomes. Keep unverified expiry or completion callbacks unresolved.\n3. Return draft settings, authorization gaps and exact success checks. Do not publish an offer, create a purchase, charge money or grant access.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "manychat-72": [
+      {
+        "id": "checkout",
+        "title": "Finish the offer destination",
+        "scope": "Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.",
+        "inputs": [
+          "Offer and destination URL",
+          "Price or coupon terms",
+          "Access or fulfillment rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the offer destination.\nSelected source: manychat-72 - Sell from Reel comments.\nGoal: Deliver a relevant product offer or coupon while interest is high.\nVariant: Reel coupon: help after 2 minutes\nScope: Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.\nSource entry: Comment on a Reel\nSource requirements: Press the opening button; Receive unconditional help after 2 minutes\nSource timing: Unconditional delay: 2 minutes. The 48-hour validity appears only in copy.\nSource outcome: The HAPPY10 coupon and a help message\nCaptured text (node-0, not approved campaign copy):\nHey! Tap below to get your coupon code for 10% off your first purchase of Happy Beans Vitamins 👇 \nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Send the coupon, store URL and captured help copy together after confirmation.\nUse the existing store, course platform or checkout named by the owner.\nAsk me for: Offer and destination URL; Price or coupon terms; Access or fulfillment rules; Existing authorized access.\n1. Confirm the existing destination and approved offer. Draft the product, coupon or course-access configuration only where it is needed; merely sharing an existing link needs no new integration.\n2. Check the page and define separate evidence for payment, coupon redemption and access delivery. Neither a DM link nor a source message promising expiry proves these outcomes. Keep unverified expiry or completion callbacks unresolved.\n3. Return draft settings, authorization gaps and exact success checks. Do not publish an offer, create a purchase, charge money or grant access.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "manychat-73": [
+      {
+        "id": "checkout",
+        "title": "Finish the offer destination",
+        "scope": "Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.",
+        "inputs": [
+          "Offer and destination URL",
+          "Price or coupon terms",
+          "Access or fulfillment rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the offer destination.\nSelected source: manychat-73 - Grow followers from comments.\nGoal: Deliver a relevant product offer or coupon while interest is high.\nVariant: Follower-only coupon: check and retry\nScope: Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.\nSource entry: Keyword comment\nSource requirements: Check follower status; Offer another check after a negative result\nSource timing: No exact timer captured.\nSource outcome: A coupon only for a follower\nCaptured text (node-0, not approved campaign copy):\nI can't wait to share this special code with you! \nTap below to get it (but make sure you're following me first!) 💛\nCurrent setup decision: waiting_for_chatfuel. The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.\nPrimary Chatfuel result: A coupon only for a follower\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing store, course platform or checkout named by the owner.\nAsk me for: Offer and destination URL; Price or coupon terms; Access or fulfillment rules; Existing authorized access.\n1. Confirm the existing destination and approved offer. Draft the product, coupon or course-access configuration only where it is needed; merely sharing an existing link needs no new integration.\n2. Check the page and define separate evidence for payment, coupon redemption and access delivery. Neither a DM link nor a source message promising expiry proves these outcomes. Keep unverified expiry or completion callbacks unresolved.\n3. Return draft settings, authorization gaps and exact success checks. Do not publish an offer, create a purchase, charge money or grant access.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "inro-6051": [
+      {
+        "id": "community",
+        "title": "Finish community access",
+        "scope": "Optional destination setup. The Chatfuel variant delivers an invitation, not verified membership.",
+        "inputs": [
+          "Community and invitation URL",
+          "Membership or access rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish community access.\nSelected source: inro-6051 - Grow Your Community.\nGoal: Invite interested people into your next launch or a shared community.\nVariant: Grow your community: follow-gated invitation\nScope: Optional destination setup. The Chatfuel variant delivers an invitation, not verified membership.\nSource entry: Community comment or DM\nSource requirements: Press the opening button; Verify a follow before the invitation\nSource timing: Link click: 3 days; follow and opening button: 2 days.\nSource outcome: An invitation to an external community\nCaptured text (n001, not approved campaign copy):\nHey {{contact.name}} ❤️ Do you want to join my community?\nYesss 👀\nCurrent setup decision: waiting_for_chatfuel. The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.\nPrimary Chatfuel result: An invitation to an external community\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing community and invitation service.\nAsk me for: Community and invitation URL; Membership or access rules; Existing authorized access.\n1. Confirm the destination and owner authorization. Draft invitation settings and check the intended membership rules without issuing invitations.\n2. Distinguish link delivery, link clicks and actual membership. Do not claim automatic admission, membership verification or expiry without evidence from the service. Return the destination check, draft settings and unresolved access.\n3. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n4. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n5. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "manychat-101": [
+      {
+        "id": "whatsapp",
+        "title": "Finish the WhatsApp destination",
+        "scope": "A proposed destination change, not a captured channel transfer.",
+        "inputs": [
+          "Approved WhatsApp number or contact link",
+          "Destination owner",
+          "Consent and approved opening text"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the WhatsApp destination.\nSelected source: manychat-101 - Go from Instagram to WhatsApp.\nGoal: Help interested people continue the conversation on WhatsApp.\nVariant: Go to WhatsApp: captured button only adds a tag\nScope: A proposed destination change, not a captured channel transfer.\nSource entry: Keyword direct message\nSource requirements: Press the button; Add contactedbywhatsapp\nSource timing: No exact timer captured.\nSource outcome: A tag, not a confirmed channel transfer\nCaptured text (node-0, not approved campaign copy):\nWe'd love to help you! We're available on WhatsApp. ❤️ \n Tap the button below to start a conversation with us there 👇\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Offer a verified business WhatsApp URL in an actual DM reply; do not claim a transfer or tag success.\nUse the owner's existing WhatsApp contact or business account.\nAsk me for: Approved WhatsApp number or contact link; Destination owner; Consent and approved opening text.\n1. The captured source button only adds a contact tag; it has no verified WhatsApp URL action. Request the actual destination and authorization.\n2. Prepare the contact link and opening text as an explicit proposed change. Obtain approval before replacing the tag-only source step. Distinguish opening WhatsApp from a sent message or conversation. Do not assume contacts or context transfer across channels. Return the draft link and success check; do not send a message.\n3. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n4. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n5. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ],
+    "inro-6085": [
+      {
+        "id": "team-email",
+        "title": "Retain the source team-email notification",
+        "scope": "Optional: retain the captured external email notification instead of replacing it with Chatfuel handoff.",
+        "inputs": [
+          "Team recipient and service",
+          "Permitted lead fields",
+          "Notification condition and approved text",
+          "Existing authorized connection"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Retain the source team-email notification.\nSelected source: inro-6085 - Answer every DM with AI, team as backup.\nGoal: Help people find an answer and involve the team when needed.\nVariant: AI support: team backup after 24 hours\nScope: Optional: retain the captured external email notification instead of replacing it with Chatfuel handoff.\nSource entry: Direct message asking a question or requesting help\nSource requirements: AI answers; If unresolved after 24 hours, email the team\nSource timing: AI handover expiration: 24 hours.\nSource outcome: A resolved question or a team notification\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Answer from approved facts and hand unresolved questions or explicit requests to the Chatfuel team.\nUse the existing authorized team mailbox or notification service.\nAsk me for: Team recipient and service; Permitted lead fields; Notification condition and approved text; Existing authorized connection.\n1. This step is optional if the owner chooses Chatfuel team handoff instead. If the original email notification must remain, verify an existing authorized connection and draft recipient, field mapping and trigger conditions.\n2. Do not invent an email-sending bridge. If none is verified, list the missing access and exact next action. Preserve consent and data minimization; prevent duplicate notifications. Verify the recipient and delivery separately from the Chatfuel handoff. Return draft settings only.\n3. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n4. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n5. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ]
+  },
+  "families": [
+    {
+      "id": "link-delivery",
+      "file": "scenario-details/link-delivery.md"
+    },
+    {
+      "id": "follower-material",
+      "file": "scenario-details/follower-material.md"
+    },
+    {
+      "id": "contact-material",
+      "file": "scenario-details/contact-material.md"
+    },
+    {
+      "id": "webinar",
+      "file": "scenario-details/webinar.md"
+    },
+    {
+      "id": "booking",
+      "file": "scenario-details/booking.md"
+    },
+    {
+      "id": "community",
+      "file": "scenario-details/community.md"
+    },
+    {
+      "id": "content",
+      "file": "scenario-details/content.md"
+    },
+    {
+      "id": "affiliate",
+      "file": "scenario-details/affiliate.md"
+    },
+    {
+      "id": "courses",
+      "file": "scenario-details/courses.md"
+    },
+    {
+      "id": "offers",
+      "file": "scenario-details/offers.md"
+    },
+    {
+      "id": "giveaway",
+      "file": "scenario-details/giveaway.md"
+    },
+    {
+      "id": "games",
+      "file": "scenario-details/games.md"
+    },
+    {
+      "id": "moderation",
+      "file": "scenario-details/moderation.md"
+    },
+    {
+      "id": "thanks",
+      "file": "scenario-details/thanks.md"
+    },
+    {
+      "id": "support",
+      "file": "scenario-details/support.md"
+    },
+    {
+      "id": "collaboration",
+      "file": "scenario-details/collaboration.md"
+    },
+    {
+      "id": "phone-community",
+      "file": "scenario-details/phone-community.md"
+    },
+    {
+      "id": "channel-transfer",
+      "file": "scenario-details/channel-transfer.md"
+    },
+    {
+      "id": "reminder",
+      "file": "scenario-details/reminder.md"
+    },
+    {
+      "id": "conversation-builder",
+      "file": "scenario-details/conversation-builder.md"
+    }
+  ]
+}

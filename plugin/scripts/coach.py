@@ -26,6 +26,39 @@ RELEASE_FILES = (
     "plugin/.claude-plugin/plugin.json", "plugin/commands/start.md", "plugin/scripts/coach.py",
     "plugin/skills/campaign/SKILL.md", "plugin/skills/video/SKILL.md",
     "plugin/skills/video/references/criteria.md", "plugin/skills/delivery/SKILL.md", "tests/test_coach.py",
+    "plugin/scripts/funnels.py", "plugin/skills/funnels/SKILL.md",
+    "plugin/skills/funnels/references/catalog.json", "plugin/skills/funnels/references/research.json",
+    "plugin/skills/funnels/references/chatfuel-execution.md", "plugin/skills/funnels/references/local-checks.md",
+    "plugin/skills/funnels/references/chatgpt-funnels.md", "tests/test_funnel_handoff.py",
+    "tests/test_funnels.py", "tests/funnel-prompts.json", "tests/fixtures/funnel-contract.json",
+    *(f"plugin/skills/funnels/references/recipes/inro-{identifier}.json" for identifier in (
+        "comment-moderation", "6085", "4530", "6111", "6018", "6082", "6086", "6025", "6220", "6028",
+        "6223", "6023", "6081", "4484", "6024", "6049", "6051", "6026", "6022", "6027", "6054",
+        "6021", "6080", "4393", "6053", "6222", "6047", "6046", "6045", "6019",
+    )),
+)
+RELEASE_FILES += (
+    "plugin/scripts/funnel_library.py", "plugin/scripts/scenario_library.py", "tests/test_funnel_library.py", "tests/test_scenario_library.py",
+    *(f"plugin/skills/funnels/references/{name}" for name in (
+        "native-policy.md", "source-coverage.json", "capability-observation.json",
+        "described-index.json", "described-index.md", "scenarios.json", "scenario-index.json", "scenario-index.md",
+    )),
+    *(f"plugin/skills/funnels/references/{folder}/{Path(name).stem}{suffix}"
+      for name in RELEASE_FILES if "/references/recipes/" in name
+      for folder, suffix in (("described-recipes", ".json"), ("native-recipes", ".md"))),
+)
+RELEASE_FILES += tuple(f"plugin/skills/funnels/references/scenario-details/{name}.md" for name in (
+    "link-delivery", "follower-material", "contact-material", "webinar", "booking", "community", "content",
+    "affiliate", "courses", "offers", "giveaway", "games", "moderation", "thanks", "support", "collaboration",
+    "phone-community", "channel-transfer", "reminder", "conversation-builder",
+))
+_FUNNEL_REFERENCES = Path(__file__).resolve().parents[1] / "skills/funnels/references"
+_SETUP_VARIANTS = [variant for family in json.loads((_FUNNEL_REFERENCES / "scenarios.json").read_text())["families"] for variant in family["variants"]]
+RELEASE_FILES += (
+    "plugin/scripts/setup_library.py", "tests/test_setup_library.py", "tests/test_funnel_publication.py", "docs/funnel-setup-audit.md",
+    *(f"plugin/skills/funnels/references/{name}" for name in ("setup-policy.md", "setup-index.md", "setup-index.json", "setup-source-index.json")),
+    *(f"plugin/skills/funnels/references/setup-details/{variant['id']}.{suffix}" for variant in _SETUP_VARIANTS for suffix in ("md", "json")),
+    *(f"plugin/skills/funnels/references/source-records/{source}.json" for variant in _SETUP_VARIANTS for source in variant["source_ids"]),
 )
 
 
@@ -79,7 +112,9 @@ def resources():
     root = Path(__file__).resolve().parents[1]
     names = {"manifest": ".claude-plugin/plugin.json", "helper": "scripts/coach.py",
              "campaign": "skills/campaign/SKILL.md", "video": "skills/video/SKILL.md",
-             "delivery": "skills/delivery/SKILL.md", "criteria": "skills/video/references/criteria.md"}
+             "delivery": "skills/delivery/SKILL.md", "criteria": "skills/video/references/criteria.md",
+             "funnels": "skills/funnels/SKILL.md", "funnel_helper": "scripts/funnels.py",
+             "funnel_catalog": "skills/funnels/references/catalog.json"}
     paths = {key: (root / name).resolve() for key, name in names.items()}
     for path in paths.values():
         if not path.is_relative_to(root) or not path.is_file():
@@ -235,6 +270,7 @@ def release(output):
     for name in RELEASE_FILES:
         if not (root / name).is_file() or (root / name).is_symlink():
             raise ValueError(f"Missing or unsafe release file: {name}")
+    run([sys.executable, str(root / "plugin/scripts/funnel_library.py"), "--check"])
     output.mkdir(parents=True)
     files = []
     for name in RELEASE_FILES:

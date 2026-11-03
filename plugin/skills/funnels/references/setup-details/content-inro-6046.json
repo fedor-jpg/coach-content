@@ -1,0 +1,1402 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "content-inro-6046",
+    "name": "Grow your TikTok: link without a help branch",
+    "source_ids": [
+      "inro-6046"
+    ],
+    "entry": "tiktok comment or direct message",
+    "mandatory_conditions": [
+      "Press the opening button",
+      "Wait 3 seconds",
+      "Remind if the link is not clicked"
+    ],
+    "outcome": "A TikTok link without verifying a follow",
+    "timing": [
+      "Before link: 3 seconds; no click or opening button: 3 days."
+    ],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "comment",
+      "dm-ai",
+      "buttons",
+      "timers",
+      "click",
+      "graph"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "Replace the button with a text link; remove the delay, folder and reminder.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Replace the button with a text link; remove the delay, folder and reminder.",
+        "result": "A TikTok link; visits and follows are not verified.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "inro-6046": "A link visit does not confirm a TikTok follow."
+    },
+    "client_inputs": [],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6046"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "inro-6046-owned_comment",
+          "label": "Selected-post comment entry",
+          "target": "owned_comment",
+          "allowed_targets": [
+            "owned_comment",
+            "dm_base"
+          ],
+          "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Deliver the TikTok playlist link after confirmation.",
+          "output_bindings": [
+            "playlist_title",
+            "playlist_url"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Press the opening button",
+            "Wait 3 seconds",
+            "Remind if the link is not clicked"
+          ],
+          "approval_required": true,
+          "source_id": "inro-6046",
+          "draft": {
+            "modes": [
+              "C",
+              "D"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "playlist_title",
+              "playlist_url",
+              "public_text"
+            ],
+            "initial": "Want {playlist_title}? Reply YES and I will send it.",
+            "messages": {
+              "initial": "Want {playlist_title}? Reply YES and I will send it.",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "delivery": "Here is {playlist_title}: {playlist_url}"
+            },
+            "instruction": "Wait for an actual affirmative reply before delivering: Here is {playlist_title}: {playlist_url} On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener.",
+            "contact_requirement": null,
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Ask for an actual affirmative reply; no link yet.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "delivery",
+                  "action": "Deliver the approved destination and included help together.",
+                  "message_ids": [
+                    "delivery"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "refusal",
+                  "action": "End this request without delivering gated content.",
+                  "message_ids": [
+                    "refusal"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                },
+                {
+                  "from": "first",
+                  "to": "delivery",
+                  "condition": "Actual affirmative reply in this conversation"
+                },
+                {
+                  "from": "first",
+                  "to": "refusal",
+                  "condition": "Actual refusal"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "inro-6046-dm_base",
+          "label": "Direct-message entry",
+          "target": "dm_base",
+          "allowed_targets": [
+            "owned_comment",
+            "dm_base"
+          ],
+          "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Deliver the TikTok playlist link after confirmation.",
+          "output_bindings": [
+            "playlist_title",
+            "playlist_url"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Press the opening button",
+            "Wait 3 seconds",
+            "Remind if the link is not clicked"
+          ],
+          "approval_required": true,
+          "source_id": "inro-6046",
+          "draft": {
+            "modes": [
+              "D"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "playlist_title",
+              "playlist_url",
+              "public_text"
+            ],
+            "initial": "Want {playlist_title}? Reply YES and I will send it.",
+            "messages": {
+              "initial": "Want {playlist_title}? Reply YES and I will send it.",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "delivery": "Here is {playlist_title}: {playlist_url}"
+            },
+            "instruction": "Wait for an actual affirmative reply before delivering: Here is {playlist_title}: {playlist_url} On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener.",
+            "contact_requirement": null,
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Ask for an actual affirmative reply; no link yet.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "delivery",
+                  "action": "Deliver the approved destination and included help together.",
+                  "message_ids": [
+                    "delivery"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "refusal",
+                  "action": "End this request without delivering gated content.",
+                  "message_ids": [
+                    "refusal"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                },
+                {
+                  "from": "first",
+                  "to": "delivery",
+                  "condition": "Actual affirmative reply in this conversation"
+                },
+                {
+                  "from": "first",
+                  "to": "refusal",
+                  "condition": "Actual refusal"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "binding_review": {
+        "source_entry": "tiktok comment or direct message",
+        "source_outcome": "A TikTok link without verifying a follow",
+        "mandatory_conditions": [
+          "Press the opening button",
+          "Wait 3 seconds",
+          "Remind if the link is not clicked"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 2,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Deliver the TikTok playlist link after confirmation.",
+        "source_requirements": [
+          "Press the opening button",
+          "Wait 3 seconds",
+          "Remind if the link is not clicked"
+        ],
+        "source_timing": [
+          "Before link: 3 seconds; no click or opening button: 3 days."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Deliver the TikTok playlist link after confirmation.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Before link: 3 seconds; no click or opening button: 3 days.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "inro-6046",
+            "node_id": "n001",
+            "source_text": "Hi {{contact.name}}! ❤️ Do you want to see the full video?\nYes 👀",
+            "adapted_text": "Want {playlist_title}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      }
+    }
+  },
+  "goal": "Bring Instagram interest to your video, podcast or another channel.",
+  "fit": "Creators distributing existing YouTube, TikTok or podcast content.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Deliver the TikTok playlist link after confirmation.",
+    "source_requirements": [
+      "Press the opening button",
+      "Wait 3 seconds",
+      "Remind if the link is not clicked"
+    ],
+    "source_timing": [
+      "Before link: 3 seconds; no click or opening button: 3 days."
+    ],
+    "blocking_dependencies": [],
+    "retained": [
+      "Deliver the TikTok playlist link after confirmation.",
+      "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+    ],
+    "omitted": [
+      "Exact source timing is not retained: Before link: 3 seconds; no click or opening button: 3 days.. No timed unsolicited message is configured.",
+      "No click tracking, click-dependent branch or no-click reminder.",
+      "No imported deterministic graph or source folder/tag tracking."
+    ],
+    "limitations": [],
+    "examples": [
+      {
+        "source_id": "inro-6046",
+        "node_id": "n001",
+        "source_text": "Hi {{contact.name}}! ❤️ Do you want to see the full video?\nYes 👀",
+        "adapted_text": "Want {playlist_title}? Reply YES and I will send it.",
+        "provenance": "authored_adaptation_not_captured"
+      }
+    ]
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "buttons",
+    "timers",
+    "click",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "inro-6046",
+      "source_file": "source-records/inro-6046.json",
+      "source_title": "Grow Your TikTok",
+      "start": "n000",
+      "nodes": [
+        {
+          "id": "n000",
+          "source_type": "trigger",
+          "content": {
+            "text": "When\nSomeone sends you a DM\nFILTER MESSAGES\nContains keyword(s)\ntiktok\nWhen\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\nTiktok",
+            "preview": "When\nSomeone sends you a DM\nFILTER MESSAGES\nContains keyword(s)\ntiktok\nWhen\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\nTiktok",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment",
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "3e671f4416a8a7ced3176817319c4b2c505a9a25fdd354a1be86017f098ca894",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n001",
+          "source_type": "button_template",
+          "content": {
+            "text": "Hi {{contact.name}}! ❤️ Do you want to see the full video?\nYes 👀",
+            "preview": "Hi {{contact.name}}! ❤️ Do you want to see the full video?\nYes 👀",
+            "buttons": [
+              "Yes 👀"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved alternative text or choice words"
+          ],
+          "reason": "Rich buttons/callbacks are not normal MCP fields. A text-choice adaptation needs approval; never treat it as the captured button event.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "851cc0f872a47d217a00f58047bd1de9f64b223d88a52b3e80fadc4d06875dc1",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n002",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN BUTTON IS CLICKED\nYes 👀",
+            "preview": "WHEN BUTTON IS CLICKED\nYes 👀",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "5256ab7c5b9a0945e234004094f7eb76210d8818c5b0c0c4b21abe5c37072544",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n003",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\ntiktok leads",
+            "preview": "Add contact to folder(s)\ntiktok leads",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "77e7e25b7b1bf790adf322e20307c1734af916f8ee08e2df41baefc856c2005f",
+          "settings_leaf_count": 40
+        },
+        {
+          "id": "n004",
+          "source_type": "delay",
+          "content": {
+            "text": "Wait 3 seconds",
+            "preview": "Wait 3 seconds",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved timing change"
+          ],
+          "reason": "Retain the exact captured delay; no numeric per-step timer in ordinary MCP.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "922197628b4b3f1b862dd42a3b3e61a70b83313497348dda0a08cec66bedcc50",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n005",
+          "source_type": "conversion_link",
+          "content": {
+            "text": "Check my Playlist on TikTok\nFollow my account to be up to date!\nCheck it out 🔗",
+            "preview": "Check my Playlist on TikTok\nFollow my account to be up to date!\nCheck it out 🔗",
+            "buttons": [],
+            "media": [
+              "https://app.inro.social/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMTNBUEE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--79a3e8e6e78293bcd34db4bc82f354c14de75ba0/Join%20Now%20(2).png"
+            ],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved URL and recipient access"
+          ],
+          "reason": "Delivering a text URL is possible; click/no-click events and external completion are not established.",
+          "unsupported": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "6f3b0f800ce28578260dda9cc8b991011d7747f7883645a2b95ca1702662b752",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n006",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN LINK IS CLICKED",
+            "preview": "WHEN LINK IS CLICKED",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/6/settings",
+          "settings_sha256": "59b902d1fb5d7919a8edd75057f683d84b6d3a6c932c49eff6cbc3be2c7ad91f",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n007",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "preview": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/7/settings",
+          "settings_sha256": "3d79ff45fc382d5650129a11f7d32354fd80e3dd29e8b864026cb2eb99b06b39",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n008",
+          "source_type": "message",
+          "content": {
+            "text": "Have you checked it out yet?",
+            "preview": "Have you checked it out yet?",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/8/settings",
+          "settings_sha256": "ebf4af389d27491a121f10a58dee0022a2220215438a5396b981456dfae76bb0",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n009",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n3 days",
+            "preview": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n3 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/9/settings",
+          "settings_sha256": "eba3c9def696806ac2809ea25956d0120640b5f122f6cdeed0e09c4551a1ab98",
+          "settings_leaf_count": 32
+        }
+      ],
+      "transitions": [
+        {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "label": "",
+          "settings": {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 60016",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/0"
+          }
+        },
+        {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "label": "",
+          "settings": {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 60016 to 60016_option_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/1"
+          }
+        },
+        {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "label": "WHEN BUTTON IS CLICKED\nYes 👀",
+          "settings": {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 60016_option_0 to 60023",
+            "source_port": "60016_option_0",
+            "condition_text": "WHEN BUTTON IS CLICKED\nYes 👀",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/2"
+          }
+        },
+        {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "label": "",
+          "settings": {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 60023 to 60013",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/3"
+          }
+        },
+        {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "label": "",
+          "settings": {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 60013 to 60014",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/4"
+          }
+        },
+        {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "label": "",
+          "settings": {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 60014 to 60014_option_clicked",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/5"
+          }
+        },
+        {
+          "id": "e006",
+          "from": "n005",
+          "to": "n007",
+          "label": "",
+          "settings": {
+            "id": "e006",
+            "from": "n005",
+            "to": "n007",
+            "source_label": "Edge from 60014 to 60014_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/6"
+          }
+        },
+        {
+          "id": "e007",
+          "from": "n007",
+          "to": "n008",
+          "label": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+          "settings": {
+            "id": "e007",
+            "from": "n007",
+            "to": "n008",
+            "source_label": "Edge from 60014_option_expired to 60385",
+            "source_port": "60014_option_expired",
+            "condition_text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/7"
+          }
+        },
+        {
+          "id": "e008",
+          "from": "n001",
+          "to": "n009",
+          "label": "",
+          "settings": {
+            "id": "e008",
+            "from": "n001",
+            "to": "n009",
+            "source_label": "Edge from 60016 to 60016_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/8"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [],
+      "source_settings_sha256": "6cf7472fcaea4d53ab057550889d7bb40853edb3454207390c2388c0216f57ad",
+      "source_leaf_count": 575,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "inro-6046-owned_comment",
+        "label": "Selected-post comment entry",
+        "target": "owned_comment",
+        "allowed_targets": [
+          "owned_comment",
+          "dm_base"
+        ],
+        "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Deliver the TikTok playlist link after confirmation.",
+        "output_bindings": [
+          "playlist_title",
+          "playlist_url"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Press the opening button",
+          "Wait 3 seconds",
+          "Remind if the link is not clicked"
+        ],
+        "approval_required": true,
+        "source_id": "inro-6046",
+        "draft": {
+          "modes": [
+            "C",
+            "D"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "playlist_title",
+            "playlist_url",
+            "public_text"
+          ],
+          "initial": "Want {playlist_title}? Reply YES and I will send it.",
+          "messages": {
+            "initial": "Want {playlist_title}? Reply YES and I will send it.",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "delivery": "Here is {playlist_title}: {playlist_url}"
+          },
+          "instruction": "Wait for an actual affirmative reply before delivering: Here is {playlist_title}: {playlist_url} On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener.",
+          "contact_requirement": null,
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Ask for an actual affirmative reply; no link yet.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "delivery",
+                "action": "Deliver the approved destination and included help together.",
+                "message_ids": [
+                  "delivery"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "refusal",
+                "action": "End this request without delivering gated content.",
+                "message_ids": [
+                  "refusal"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              },
+              {
+                "from": "first",
+                "to": "delivery",
+                "condition": "Actual affirmative reply in this conversation"
+              },
+              {
+                "from": "first",
+                "to": "refusal",
+                "condition": "Actual refusal"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No actual reply"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [],
+      "entry_readback_fields": [
+        "post_ids",
+        "keywords",
+        "match_mode"
+      ],
+      "preparation_gates": [
+        "Before staging an owned OFF custom, complete readback must equal approved posts, keywords and match mode. Reply-setting updates cannot change filters. A mismatch blocks staging; setup_comment_replies needs separate immediate-enabled approval."
+      ],
+      "missing_readback": [],
+      "target": "owned_comment",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "playlist_title",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "playlist_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Want {playlist_title}? Reply YES and I will send it.",
+        "public": "{public_text}",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "delivery": "Here is {playlist_title}: {playlist_url}"
+      },
+      "instruction": "Wait for an actual affirmative reply before delivering: Here is {playlist_title}: {playlist_url} On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Ask for an actual affirmative reply; no link yet.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "delivery",
+            "action": "Deliver the approved destination and included help together.",
+            "message_ids": [
+              "delivery"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "refusal",
+            "action": "End this request without delivering gated content.",
+            "message_ids": [
+              "refusal"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          },
+          {
+            "from": "first",
+            "to": "delivery",
+            "condition": "Actual affirmative reply in this conversation"
+          },
+          {
+            "from": "first",
+            "to": "refusal",
+            "condition": "Actual refusal"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No actual reply"
+          }
+        ]
+      },
+      "contact_requirement": null,
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "publicReply": {
+              "publicReplyHowToReply": "ExactText",
+              "exactTextReply": "{public_text}"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "privateReply": {
+              "privateReplyHowToReply": "ExactText",
+              "exactTextReply": "Want {playlist_title}? Reply YES and I will send it."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.. First message: Want {playlist_title}? Reply YES and I will send it.\nWait for an actual affirmative reply before delivering: Here is {playlist_title}: {playlist_url} On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\ndelivery: Here is {playlist_title}: {playlist_url} The one private comment reply has already sent the opener. Wait for the person's actual linked reply; do not resend the opener or send a second unsolicited DM. Continue only within the permitted messaging window."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "whenAIReplies": {
+              "option": "Always"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "followUps": {
+              "howToSend": "DontSend"
+            }
+          }
+        }
+      ],
+      "list_additions": {},
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "owned_comment",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    },
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "inro-6046-dm_base",
+        "label": "Direct-message entry",
+        "target": "dm_base",
+        "allowed_targets": [
+          "owned_comment",
+          "dm_base"
+        ],
+        "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Deliver the TikTok playlist link after confirmation.",
+        "output_bindings": [
+          "playlist_title",
+          "playlist_url"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Press the opening button",
+          "Wait 3 seconds",
+          "Remind if the link is not clicked"
+        ],
+        "approval_required": true,
+        "source_id": "inro-6046",
+        "draft": {
+          "modes": [
+            "D"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "playlist_title",
+            "playlist_url",
+            "public_text"
+          ],
+          "initial": "Want {playlist_title}? Reply YES and I will send it.",
+          "messages": {
+            "initial": "Want {playlist_title}? Reply YES and I will send it.",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "delivery": "Here is {playlist_title}: {playlist_url}"
+          },
+          "instruction": "Wait for an actual affirmative reply before delivering: Here is {playlist_title}: {playlist_url} On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener.",
+          "contact_requirement": null,
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Ask for an actual affirmative reply; no link yet.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "delivery",
+                "action": "Deliver the approved destination and included help together.",
+                "message_ids": [
+                  "delivery"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "refusal",
+                "action": "End this request without delivering gated content.",
+                "message_ids": [
+                  "refusal"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              },
+              {
+                "from": "first",
+                "to": "delivery",
+                "condition": "Actual affirmative reply in this conversation"
+              },
+              {
+                "from": "first",
+                "to": "refusal",
+                "condition": "Actual refusal"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No actual reply"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [
+        "whenAIReplies",
+        "followUps"
+      ],
+      "entry_readback_fields": [],
+      "preparation_gates": [
+        "Preserve current whenAIReplies and followUps values, including inheritance, on the shared DM base. If its schedule or active follow-ups conflict with the proposed behavior, hold affected configuration or obtain separate approval for the exact base-wide change. No schedule/follow-up write is a default draft operation."
+      ],
+      "missing_readback": [],
+      "target": "dm_base",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "playlist_title",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "playlist_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Want {playlist_title}? Reply YES and I will send it.",
+        "public": "",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "delivery": "Here is {playlist_title}: {playlist_url}",
+        "placement": "DM {keyword}."
+      },
+      "instruction": "Wait for an actual affirmative reply before delivering: Here is {playlist_title}: {playlist_url} On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Ask for an actual affirmative reply; no link yet.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "delivery",
+            "action": "Deliver the approved destination and included help together.",
+            "message_ids": [
+              "delivery"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "refusal",
+            "action": "End this request without delivering gated content.",
+            "message_ids": [
+              "refusal"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          },
+          {
+            "from": "first",
+            "to": "delivery",
+            "condition": "Actual affirmative reply in this conversation"
+          },
+          {
+            "from": "first",
+            "to": "refusal",
+            "condition": "Actual refusal"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No actual reply"
+          }
+        ]
+      },
+      "contact_requirement": null,
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.. First message: Want {playlist_title}? Reply YES and I will send it.\nWait for an actual affirmative reply before delivering: Here is {playlist_title}: {playlist_url} On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\ndelivery: Here is {playlist_title}: {playlist_url}"
+            }
+          }
+        }
+      ],
+      "list_additions": {},
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "dm_base",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "inro-6046": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/inro-6046.json": "87e9e4ab5552e41e1e08e7b25dd70369157464cb0d5eedaa943566d2f3610fc3",
+    "described-recipes/inro-6046.json": "182e4e8d58e5ca931354a299a485c5d75029ea7fbc40c792544d34663de5d51d"
+  }
+}

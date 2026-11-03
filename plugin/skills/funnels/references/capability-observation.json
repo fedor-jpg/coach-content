@@ -1,0 +1,615 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-11-02",
+  "observation": "Parent read-only review of normal mcp__chatfuel tool metadata and comments-autoreply, automation-settings, reply-to-chats and booking playbooks. Docs/schema only. No account queries or mutations. This date is not the source capture date or build timestamp.",
+  "profile": "normal-mcp",
+  "runtime_tested": false,
+  "account_checked": false,
+  "messaging_limits": {
+    "source_url": "https://chatfuel.com/docs/instagram/instagram-comment-autoreply#messaging-limits",
+    "checked_at": "2026-11-02",
+    "source_updated_at_reported": "2026-10-12",
+    "basis": "Official documentation; not an account or delivery test.",
+    "new_contacts": "One private DM after a comment; wait for the person's actual reply before continuing.",
+    "existing_contacts": "Messaging window is 24 hours after the person's last message.",
+    "substitution_boundary": "Combine approved link/coupon and help copy in one response after an actual confirmation reply. No second unsolicited comment DM, fake timer or no-click inference; generic silence followUps do not preserve exact timing."
+  },
+  "operations": [
+    {
+      "name": "setup_comment_replies",
+      "availability": "normal-tool",
+      "effect": "Creates/enables rules and may change Main/base. NOT draft or OFF preparation."
+    },
+    {
+      "name": "update_automation_setting",
+      "availability": "normal-tool",
+      "effect": "One explicit setting per call. List settings replace the full list. Does not restore inheritance."
+    },
+    {
+      "name": "set_automation_enabled",
+      "availability": "normal-tool",
+      "effect": "Enables/disables an automation, not Main."
+    },
+    {
+      "name": "test_reply",
+      "availability": "normal-tool",
+      "effect": "Saved single-DM sandbox; active plan and Main must already be ON even for an OFF rule. No test call in preparation; not continuing comment dispatch."
+    }
+  ],
+  "gaps": [
+    "Create-OFF is not exposed by normal tools.",
+    "Exact inheritance restoration is not exposed by normal tools.",
+    "Continuing multi-turn comment preview is not exposed by normal tools.",
+    "GraphQL alternatives in playbooks require an actually available host executor; documentation is not availability.",
+    "Full flow-builder graphs remain dashboard-only; these are business analogues, not imported deterministic graphs.",
+    "Fixed public and private reply text is documented. Rich buttons, follower conditions and exact timed graph branches are not normal-tool inputs."
+  ],
+  "setting_keys": [
+    "incomingMessages",
+    "whenAIReplies",
+    "followUps",
+    "switchToHuman",
+    "collectContactInfo",
+    "bookingRules",
+    "publicReply",
+    "privateReply"
+  ],
+  "capabilities": {
+    "comment": {
+      "label": "Comment replies",
+      "state": "documented",
+      "basis": "tool_schema_and_playbook",
+      "tools": [
+        "setup_comment_replies",
+        "update_automation_setting"
+      ],
+      "fields": [
+        "publicReply.publicReplyHowToReply",
+        "publicReply.exactTextReply",
+        "privateReply.privateReplyHowToReply",
+        "privateReply.exactTextReply"
+      ],
+      "claim": "Scoped post/keyword comments with fixed public and private text; inline URLs can be text. setup_comment_replies enables rules, not drafts.",
+      "summary": "Scoped post/keyword comments with fixed public and private text; inline URLs can be text. setup_comment_replies enables rules, not drafts."
+    },
+    "dm-ai": {
+      "label": "AI conversations",
+      "state": "documented",
+      "basis": "tool_schema_and_playbook",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [
+        "incomingMessages",
+        "whenAIReplies"
+      ],
+      "claim": "AI replies to incoming messages with instructions; not a deterministic imported graph or an exact-text guarantee for every AI response.",
+      "summary": "AI replies to incoming messages with instructions; not a deterministic imported graph or an exact-text guarantee for every AI response."
+    },
+    "contact": {
+      "label": "Contact collection",
+      "state": "documented",
+      "basis": "tool_schema_and_playbook",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [
+        "collectContactInfo"
+      ],
+      "claim": "Collect and save contact attributes. Not external mailing/SMS subscription or deterministic field-gated branching.",
+      "summary": "Collect and save contact attributes. Not external mailing/SMS subscription or deterministic field-gated branching."
+    },
+    "human": {
+      "label": "Team handoff",
+      "state": "documented",
+      "basis": "tool_schema_and_playbook",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [
+        "switchToHuman"
+      ],
+      "claim": "Configure AI-to-human handoff; not an arbitrary email notification action.",
+      "summary": "Configure AI-to-human handoff; not an arbitrary email notification action."
+    },
+    "booking": {
+      "label": "Native bookings",
+      "state": "documented",
+      "basis": "tool_schema_and_playbook",
+      "tools": [
+        "setup_booking",
+        "update_automation_setting",
+        "list_bookings"
+      ],
+      "fields": [
+        "bookingRules"
+      ],
+      "claim": "Native services/specialists, booking autonomy and native booking statuses. Not Calendly, webinar or payment completion.",
+      "summary": "Native services/specialists, booking autonomy and native booking statuses. Not Calendly, webinar or payment completion."
+    },
+    "read-pause": {
+      "label": "Readback and pause",
+      "state": "documented",
+      "basis": "tool_schema_and_playbook",
+      "tools": [
+        "get_automation",
+        "set_automation_enabled",
+        "test_reply"
+      ],
+      "fields": [],
+      "claim": "Readback and pause an automation, not Main; test_reply previews DM only. No create-OFF, exact inheritance restoration or continuing comment preview.",
+      "summary": "Readback and pause an automation, not Main; test_reply previews DM only. No create-OFF, exact inheritance restoration or continuing comment preview."
+    },
+    "buttons": {
+      "label": "Buttons and galleries",
+      "state": "not_exposed",
+      "basis": "inference_from_tool_inputs",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [
+        "publicReply",
+        "privateReply"
+      ],
+      "claim": "Normal reply inputs expose text modes, not rich buttons, callbacks, quick replies or galleries.",
+      "summary": "Normal reply inputs expose text modes, not rich buttons, callbacks, quick replies or galleries."
+    },
+    "follower": {
+      "label": "Follower checks",
+      "state": "not_exposed",
+      "basis": "inference_from_tool_inputs",
+      "tools": [
+        "setup_comment_replies",
+        "update_automation_setting"
+      ],
+      "fields": [],
+      "claim": "No Instagram follower condition or follow/check/retry gate in normal tool inputs.",
+      "summary": "No Instagram follower condition or follow/check/retry gate in normal tool inputs."
+    },
+    "timers": {
+      "label": "Exact delays",
+      "state": "dashboard_only",
+      "basis": "automation-settings_playbook",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [
+        "messageDelays"
+      ],
+      "claim": "messageDelays is dashboard-only for the normal profile; exact per-step delays and expiration branches are not exposed. Generic followUps is not an exact timer.",
+      "summary": "messageDelays is dashboard-only for the normal profile; exact per-step delays and expiration branches are not exposed. Generic followUps is not an exact timer."
+    },
+    "click": {
+      "label": "Click conditions",
+      "state": "not_exposed",
+      "basis": "inference_from_tool_inputs",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [],
+      "claim": "No URL-click/no-click conditions or click-triggered actions in normal inputs.",
+      "summary": "No URL-click/no-click conditions or click-triggered actions in normal inputs."
+    },
+    "graph": {
+      "label": "Deterministic graphs and tags",
+      "state": "dashboard_only",
+      "basis": "playbook_and_tool_inputs",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [],
+      "claim": "Full deterministic flow-builder graphs and arbitrary folder/tag/field branches are dashboard-only, not graph import through normal MCP.",
+      "summary": "Full deterministic flow-builder graphs and arbitrary folder/tag/field branches are dashboard-only, not graph import through normal MCP."
+    },
+    "random": {
+      "label": "Random outcomes",
+      "state": "not_exposed",
+      "basis": "inference_from_tool_inputs",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [],
+      "claim": "No weighted random prize distribution in normal tool inputs.",
+      "summary": "No weighted random prize distribution in normal tool inputs."
+    },
+    "score": {
+      "label": "Quiz scoring",
+      "state": "not_exposed",
+      "basis": "inference_from_tool_inputs",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [],
+      "claim": "No deterministic score arithmetic, thresholds or quiz-attempt guard in normal inputs.",
+      "summary": "No deterministic score arithmetic, thresholds or quiz-attempt guard in normal inputs."
+    },
+    "story": {
+      "label": "Story entry",
+      "state": "dashboard_only",
+      "basis": "automation-settings_playbook",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [
+        "listOfStories"
+      ],
+      "claim": "Story-specific configuration is dashboard-only for normal MCP. Ordinary DM does not verify a Story reply or mention.",
+      "summary": "Story-specific configuration is dashboard-only for normal MCP. Ordinary DM does not verify a Story reply or mention."
+    },
+    "live": {
+      "label": "Live entry",
+      "state": "not_exposed",
+      "basis": "inference_from_tool_inputs",
+      "tools": [
+        "setup_comment_replies"
+      ],
+      "fields": [],
+      "claim": "Post/comment configuration does not establish a Live-comment entry tool.",
+      "summary": "Post/comment configuration does not establish a Live-comment entry tool."
+    },
+    "ad": {
+      "label": "Ad entry",
+      "state": "dashboard_only",
+      "basis": "automation-settings_playbook",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [
+        "listOfAds"
+      ],
+      "claim": "Ad-specific configuration is dashboard-only for normal MCP; ordinary DM loses ad attribution.",
+      "summary": "Ad-specific configuration is dashboard-only for normal MCP; ordinary DM loses ad attribution."
+    },
+    "ref-link": {
+      "label": "QR or referral entry",
+      "state": "dashboard_only",
+      "basis": "automation-settings_playbook",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [
+        "refLinks"
+      ],
+      "claim": "Referral-link configuration is dashboard-only for normal MCP; ordinary DM loses the referral/QR entry.",
+      "summary": "Referral-link configuration is dashboard-only for normal MCP; ordinary DM loses the referral/QR entry."
+    },
+    "moderation": {
+      "label": "Hiding and moderation",
+      "state": "not_exposed",
+      "basis": "inference_from_tool_inputs",
+      "tools": [
+        "setup_comment_replies",
+        "update_automation_setting"
+      ],
+      "fields": [],
+      "claim": "No Instagram hide/delete comment action or dedicated hate/spam detection input. Replying to named words is not moderation.",
+      "summary": "No Instagram hide/delete comment action or dedicated hate/spam detection input. Replying to named words is not moderation."
+    },
+    "ig-like": {
+      "label": "Instagram Like",
+      "state": "not_exposed",
+      "basis": "tool_schema_and_playbook",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [
+        "publicReply",
+        "privateReply"
+      ],
+      "claim": "Documented Like applies to Facebook, not Instagram.",
+      "summary": "Documented Like applies to Facebook, not Instagram."
+    },
+    "email-send": {
+      "label": "Email notification",
+      "state": "not_exposed",
+      "basis": "inference_from_tool_inputs",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [
+        "switchToHuman"
+      ],
+      "claim": "No arbitrary outbound email action; handoff does not reproduce source email notifications.",
+      "summary": "No arbitrary outbound email action; handoff does not reproduce source email notifications."
+    },
+    "external": {
+      "label": "External completion",
+      "state": "not_exposed",
+      "basis": "tool_schema_and_playbook",
+      "tools": [
+        "setup_booking",
+        "list_bookings",
+        "update_automation_setting"
+      ],
+      "fields": [
+        "collectContactInfo",
+        "bookingRules"
+      ],
+      "claim": "No external survey, webinar, Calendly, payment, mailing/SMS subscription or cross-channel completion event. Native booking status applies only to native bookings.",
+      "summary": "No external survey, webinar, Calendly, payment, mailing/SMS subscription or cross-channel completion event. Native booking status applies only to native bookings."
+    },
+    "generation": {
+      "label": "Graph generation",
+      "state": "not_exposed",
+      "basis": "inference_from_tool_inputs",
+      "tools": [
+        "update_automation_setting"
+      ],
+      "fields": [],
+      "claim": "No deterministic flow generation/import tool. Caption/reel listing is not video production or publishing.",
+      "summary": "No deterministic flow generation/import tool. Caption/reel listing is not video production or publishing."
+    }
+  },
+  "public_api_note": {
+    "profile": "chatfuel-public-api",
+    "observed_at": "2026-11-02",
+    "basis": "parent_read_only_schema_observation",
+    "tools": [
+      "execute_query",
+      "execute_mutation"
+    ],
+    "type": "FuelySettingUpdateInput",
+    "field_count": 16,
+    "additional_fields": [
+      "listOfStories",
+      "listOfAds",
+      "refLinks",
+      "messageDelays",
+      "catalogImages"
+    ],
+    "claim": "Separate Public API exposes additional schema fields. Field presence does not establish exact timers or Story-mention semantics. No account or recipe test; not selected automatically. InstagramContact follow-filter inspection found 0/20; Public/PrivateReply fields remain mode/exactText/messagePrompt plus Facebook Like, not rich buttons or follower gates.",
+    "runtime_tested": false
+  },
+  "before_writes": "Read actual host tools, documented inputs and current account state. Stop before writes when a required lifecycle action is unavailable. Never switch executors after rejection.",
+  "revision": "2026-11-02.3",
+  "normal_tool_contract": {
+    "revision": "2026-11-02.3",
+    "readback_boundaries": {
+      "contact_attribute_values": {
+        "available": false,
+        "basis": "review_of_normal_tool_declarations; no account query",
+        "claim": "Normal MCP has no contact-attribute-value reader. Capture configuration readback and chat text do not prove saved email/phone, joined membership or withdrawal. Keep value-dependent confirmation or handoff unresolved; simple preparation remains available."
+      }
+    },
+    "observed_at": "2026-11-02",
+    "review_after": "2026-11-09",
+    "review_window_basis": "Local seven-day review ceiling, not a provider guarantee. Recheck current declarations before every write.",
+    "provenance": {
+      "tool_declarations_sha256": "96383dcc91956f6b060e2b12263874547c62632efdad2664aec7b474d6f5ef97",
+      "comments_playbook_sha256": "5dd53da87e0deb2b7fe7c68e107cdf5ebef7eb49516ee5669698f089a7d02282",
+      "scope": "Tool declarations and playbooks only; no account or runtime tests."
+    },
+    "common": {
+      "botID": "resolved_id",
+      "automationID": "resolved_id",
+      "context": "abstract_usage_context_15_to_25_words"
+    },
+    "settings": {
+      "incomingMessages": {
+        "fields": {
+          "howToReply": [
+            "UsingAI",
+            "DontReply"
+          ],
+          "messagePrompt": "nonempty_text"
+        },
+        "limits": {
+          "messagePrompt": 5000
+        },
+        "scope_rule": "DontReply only on comment automations; disable a DM automation to stop it."
+      },
+      "whenAIReplies": {
+        "fields": {
+          "option": [
+            "Always",
+            "OutsideOfWorkingHours"
+          ]
+        }
+      },
+      "followUps": {
+        "fields": {
+          "howToSend": [
+            "Send",
+            "DontSend"
+          ],
+          "messagePrompt": "nonempty_text"
+        },
+        "limits": {
+          "messagePrompt": 3000
+        }
+      },
+      "switchToHuman": {
+        "fields": {
+          "howToSwitch": [
+            "SwitchToTeammates",
+            "DontSwitch"
+          ],
+          "rules": "list"
+        },
+        "item_fields": {
+          "switchingConditions": "nonempty_text",
+          "messagePrompt": "nonempty_text"
+        },
+        "limits": {
+          "messagePrompt": 3000
+        },
+        "list_semantics": "Full replacement; preserve active foreign rules and do not awaken dormant inherited rules."
+      },
+      "collectContactInfo": {
+        "fields": {
+          "howToCollect": [
+            "CollectInfo",
+            "DoNotCollectInfo"
+          ],
+          "captures": "list"
+        },
+        "item_fields": {
+          "attribute": "verified_attribute",
+          "description": "nonempty_text"
+        },
+        "list_semantics": "Full replacement. Attribute availability/collision-free creation is not proven by an incomplete namespace; hold unresolved capture writes."
+      },
+      "bookingRules": {
+        "fields": {
+          "autonomyLevel": [
+            "CollectIntents",
+            "BookWithTeammatesApproval",
+            "BookWithTeammatesReview",
+            "BookWithFullAutonomy",
+            "DontBook"
+          ]
+        },
+        "scope_rule": "Changes Main booking autonomy globally; never needed merely to share an external URL."
+      },
+      "publicReply": {
+        "fields": {
+          "publicReplyHowToReply": [
+            "UsingAI",
+            "ExactText",
+            "DontReply"
+          ],
+          "exactTextReply": "nonempty_text",
+          "messagePrompt": "nonempty_text",
+          "likeContactComment": "boolean"
+        },
+        "limits": {
+          "exactTextReply": 1000,
+          "messagePrompt": 3000
+        },
+        "scope_rule": "Comments only. likeContactComment is Facebook-only, never Instagram."
+      },
+      "privateReply": {
+        "fields": {
+          "privateReplyHowToReply": [
+            "UsingAI",
+            "ExactText",
+            "DontReply"
+          ],
+          "exactTextReply": "nonempty_text",
+          "messagePrompt": "nonempty_text"
+        },
+        "limits": {
+          "exactTextReply": 1000,
+          "messagePrompt": 3000
+        },
+        "scope_rule": "Instagram and Facebook comments only."
+      }
+    },
+    "tools": {
+      "list_bots": {
+        "effect": "read",
+        "required": [
+          "context"
+        ]
+      },
+      "get_bot": {
+        "effect": "read",
+        "required": [
+          "botID",
+          "context"
+        ]
+      },
+      "get_automation": {
+        "effect": "read",
+        "required": [
+          "botID",
+          "automationID",
+          "context"
+        ]
+      },
+      "list_posts": {
+        "effect": "read",
+        "required": [
+          "botID",
+          "context"
+        ],
+        "optional": [
+          "platform",
+          "instagramAfter",
+          "facebookAfter"
+        ]
+      },
+      "update_automation_setting": {
+        "effect": "write_explicit_setting",
+        "required": [
+          "botID",
+          "automationID",
+          "context"
+        ],
+        "setting_count": 1,
+        "inheritance": "Writing breaks inheritance; exact restoration is dashboard-only."
+      },
+      "setup_comment_replies": {
+        "effect": "creates_or_updates_and_enables",
+        "required": [
+          "botID",
+          "context",
+          "platform"
+        ],
+        "optional": [
+          "automationID",
+          "name",
+          "keywords",
+          "match",
+          "postIDs",
+          "privatePrompt",
+          "privateText",
+          "publicPrompt",
+          "publicText",
+          "reply"
+        ],
+        "enums": {
+          "platform": [
+            "instagram",
+            "facebook",
+            "tiktok"
+          ],
+          "match": [
+            "contains",
+            "exact",
+            "not_contains",
+            "any"
+          ],
+          "reply": [
+            "ai",
+            "fixed",
+            "none"
+          ]
+        },
+        "limits": {
+          "keywords": 50,
+          "keyword_length": 50,
+          "privateText": 1000,
+          "publicText": 1000,
+          "privatePrompt": 3000,
+          "publicPrompt": 3000
+        },
+        "side_effects": "Always enables; new custom may turn Main ON and comment base OFF. No normal create-OFF command."
+      },
+      "set_automation_enabled": {
+        "effect": "switch",
+        "required": [
+          "botID",
+          "automationID",
+          "context",
+          "enabled"
+        ],
+        "excluded_scopes": [
+          "All"
+        ]
+      },
+      "test_reply": {
+        "effect": "saved_dm_sandbox",
+        "gate": "Active plan and Main already ON even if tested automation is OFF; no enable or sandbox call during preparation. Not continuing comment preview."
+      },
+      "setup_booking": {
+        "effect": "changes_services_and_specialists",
+        "gate": "Not used for external booking URLs or without separate approval."
+      },
+      "get_chat": {
+        "effect": "read",
+        "limit": "Last20 messages/truncated; not complete lifecycle or lead attribution evidence."
+      }
+    }
+  }
+}

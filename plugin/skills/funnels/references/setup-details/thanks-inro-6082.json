@@ -1,0 +1,1713 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "thanks-inro-6082",
+    "name": "Thank fans publicly after a minute",
+    "source_ids": [
+      "inro-6082"
+    ],
+    "entry": "Comment matching specified words or emoji",
+    "mandatory_conditions": [
+      "Wait 1 minute",
+      "Thank the person publicly without a DM"
+    ],
+    "outcome": "A public thank-you reply",
+    "timing": [
+      "Delay: 1 minute."
+    ],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "comment",
+      "timers",
+      "graph"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "Fixed public text is documented. Remove the exact one-minute delay and folder; do not open general DM replies.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Fixed public text is documented. Remove the exact one-minute delay and folder; do not open general DM replies.",
+        "result": "One fixed public thank-you reply without a delay.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "inro-6082": "The original steps retain the delay and reply variants."
+    },
+    "client_inputs": [],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6082"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "inro-6082-owned_comment",
+          "label": "Selected-post comment entry",
+          "analogue_id": "inro-6082",
+          "target": "owned_comment",
+          "allowed_targets": [
+            "owned_comment"
+          ],
+          "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+          "entry_change": "Entry type retained; configure only the owner-selected scope.",
+          "output": "Send a public thank-you reply for the selected comments.",
+          "output_bindings": [
+            "thanks_text"
+          ],
+          "instruction": "The approved public reply is exactly {thanks_text}; public_text must equal thanks_text. No private message.",
+          "source_requirements": [
+            "Wait 1 minute",
+            "Thank the person publicly without a DM"
+          ],
+          "approval_required": true,
+          "source_id": "inro-6082"
+        }
+      ],
+      "binding_review": {
+        "source_entry": "Comment matching specified words or emoji",
+        "source_outcome": "A public thank-you reply",
+        "mandatory_conditions": [
+          "Wait 1 minute",
+          "Thank the person publicly without a DM"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 1,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Send a public thank-you reply for the selected comments.",
+        "source_requirements": [
+          "Wait 1 minute",
+          "Thank the person publicly without a DM"
+        ],
+        "source_timing": [
+          "Delay: 1 minute."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Send a public thank-you reply for the selected comments."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Delay: 1 minute.. No timed unsolicited message is configured.",
+          "No imported deterministic graph or source folder/tag tracking.",
+          "No exact one-minute delay or folder update."
+        ],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Acknowledge kind comments, messages and shared Stories.",
+  "fit": "Creators and teams who want to respond to audience appreciation.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Send a public thank-you reply for the selected comments.",
+    "source_requirements": [
+      "Wait 1 minute",
+      "Thank the person publicly without a DM"
+    ],
+    "source_timing": [
+      "Delay: 1 minute."
+    ],
+    "blocking_dependencies": [],
+    "retained": [
+      "Send a public thank-you reply for the selected comments."
+    ],
+    "omitted": [
+      "Exact source timing is not retained: Delay: 1 minute.. No timed unsolicited message is configured.",
+      "No imported deterministic graph or source folder/tag tracking.",
+      "No exact one-minute delay or folder update."
+    ],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "timers",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "inro-6082",
+      "source_file": "source-records/inro-6082.json",
+      "source_title": "Thank fans who love your posts",
+      "start": "n000",
+      "nodes": [
+        {
+          "id": "n000",
+          "source_type": "trigger",
+          "content": {
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\n❤️\n😍\n🔥\n+7",
+            "preview": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\n❤️\n😍\n🔥\n+7",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "7b3befcbbcecf108548f2abada8f5db1a0654c6585cf61dd09e7208f75855f89",
+          "settings_leaf_count": 45
+        },
+        {
+          "id": "n001",
+          "source_type": "delay",
+          "content": {
+            "text": "Wait 1 minutes",
+            "preview": "Wait 1 minutes",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved timing change"
+          ],
+          "reason": "Retain the exact captured delay; no numeric per-step timer in ordinary MCP.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "number",
+                "value": "1",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "minutes",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": true,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": false,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/2",
+              "phase": "captured",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/3",
+              "phase": "captured",
+              "fields": {
+                "value": "days"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "ff6e341e7811739c24dfeff2603f61128ff84c1aabccb60979634f6be5d02997",
+          "settings_leaf_count": 85
+        },
+        {
+          "id": "n002",
+          "source_type": "comment",
+          "content": {
+            "text": "Thank you so much!\nThanks, really appreciate it\nThank you! 🙂\nSo glad you liked it, thank you\nThanks for the kind words",
+            "preview": "Thank you so much!\nThanks, really appreciate it\nThank you! 🙂\nSo glad you liked it, thank you\nThanks for the kind words",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "publicReply"
+          ],
+          "business_inputs": [
+            "approved public reply"
+          ],
+          "reason": "A fixed public reply is a documented primitive, not proof of captured random text choice or downstream routing.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Thank you so much!",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Thanks, really appreciate it",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Thank you! 🙂",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "So glad you liked it, thank you",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/4",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Thanks for the kind words",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/5",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "checkbox",
+                "value": false,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": "",
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/6",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "checkbox",
+                "value": true,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": "",
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "b48836c52c2cb284c87fbbb1e1220f99c65b76ac506da432b91870d9499a744c",
+          "settings_leaf_count": 185
+        },
+        {
+          "id": "n003",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nThanks: praised us",
+            "preview": "Add contact to folder(s)\nThanks: praised us",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "add",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "add"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "remove"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "0b6dde6598a850e9a46dbffbcae719013d32743ecc5185d0b98477da302c467c",
+          "settings_leaf_count": 74
+        }
+      ],
+      "transitions": [
+        {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "label": "",
+          "settings": {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 438675",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/0"
+          }
+        },
+        {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "label": "",
+          "settings": {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 438675 to 438676",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/1"
+          }
+        },
+        {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "label": "",
+          "settings": {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 438676 to 438677",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/2"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/triggers/0/settings_panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "❤️",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "😍",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "🔥",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "👏",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/5",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "🙌",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/6",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "love this",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/7",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "love it",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/8",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "amazing",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/9",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "beautiful",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/10",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "so good",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/11",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "checkbox",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/1/fields/12",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "checkbox",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "1",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/editor_observed/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "minutes",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": true,
+                "text": "minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": false,
+                "text": "hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "days",
+                "value": "days"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/editor_observed/fields/1/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/graph/nodes/1/editor_observed/fields/1/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/graph/nodes/1/editor_observed/fields/1/options/2",
+          "phase": "captured",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/graph/nodes/1/editor_observed/fields/1/options/3",
+          "phase": "captured",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/graph/nodes/2/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Thank you so much!",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/editor_observed/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Thanks, really appreciate it",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/editor_observed/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Thank you! 🙂",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/editor_observed/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "So glad you liked it, thank you",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/editor_observed/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Thanks for the kind words",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/editor_observed/fields/5",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "checkbox",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/2/editor_observed/fields/6",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "checkbox",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/3/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "add",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": true,
+                "text": "Add contact to folder(s)",
+                "value": "add"
+              },
+              {
+                "selected": false,
+                "text": "Remove contact from folder(s)",
+                "value": "remove"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/3/editor_observed/fields/0/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "add"
+          }
+        },
+        {
+          "path": "/graph/nodes/3/editor_observed/fields/0/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "remove"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Thank fans who love your posts",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "once_every",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "once",
+                "value": "once"
+              },
+              {
+                "selected": true,
+                "text": "once every",
+                "value": "once_every"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/2/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "once"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/2/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "once_every"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "7",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "days",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": false,
+                "text": "hours",
+                "value": "hours"
+              },
+              {
+                "selected": true,
+                "text": "days",
+                "value": "days"
+              },
+              {
+                "selected": false,
+                "text": "weeks",
+                "value": "weeks"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/4/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/4/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/4/options/2",
+          "phase": "captured",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/4/options/3",
+          "phase": "captured",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/4/options/4",
+          "phase": "captured",
+          "fields": {
+            "value": "weeks"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Thank fans who love your posts",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/2/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Thank fans who love your posts",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "95669e1759d26145544d49d56eb1b7a9ca23d0d6ce84c9b66c2e9a4a5cec4b5c",
+      "source_leaf_count": 953,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "existing_described_analogue",
+      "analogue_id": "inro-6082",
+      "selection": {
+        "id": "inro-6082-owned_comment",
+        "label": "Selected-post comment entry",
+        "analogue_id": "inro-6082",
+        "target": "owned_comment",
+        "allowed_targets": [
+          "owned_comment"
+        ],
+        "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+        "entry_change": "Entry type retained; configure only the owner-selected scope.",
+        "output": "Send a public thank-you reply for the selected comments.",
+        "output_bindings": [
+          "thanks_text"
+        ],
+        "instruction": "The approved public reply is exactly {thanks_text}; public_text must equal thanks_text. No private message.",
+        "source_requirements": [
+          "Wait 1 minute",
+          "Thank the person publicly without a DM"
+        ],
+        "approval_required": true,
+        "source_id": "inro-6082"
+      },
+      "preserve_settings": [],
+      "entry_readback_fields": [
+        "post_ids",
+        "keywords",
+        "match_mode"
+      ],
+      "preparation_gates": [
+        "Before staging an owned OFF custom, complete readback must equal approved posts, keywords and match mode. Reply-setting updates cannot change filters. A mismatch blocks staging; setup_comment_replies needs separate immediate-enabled approval."
+      ],
+      "missing_readback": [],
+      "target": "owned_comment",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Unique ASCII campaign name, at most 48 characters. Journal belongs to this conversation only.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Language for the exact approved messages.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Approved entry word; read actual host matching rules.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Exact approved public copy, or nonempty inactive copy when public replies are disabled.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "thanks_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Coach-supplied thanks text, preserved without invented claims.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "public": "{thanks_text}",
+        "initial": "",
+        "placement": "",
+        "continuation": "",
+        "refusal": "",
+        "handoff": ""
+      },
+      "instruction": "public_text equals thanks_text. No private message.\nThe approved public reply is exactly {thanks_text}; public_text must equal thanks_text. No private message.",
+      "intended_branches": {
+        "origin": "derived_native_instructions",
+        "deterministic": false,
+        "start": "entry",
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+            "message_ids": [
+              "placement"
+            ],
+            "provenance": {
+              "origin": "derived_native_instructions",
+              "section": "inro-6082"
+            }
+          },
+          {
+            "id": "first",
+            "action": "Send approved public thanks only. No DM.",
+            "message_ids": [
+              "public"
+            ],
+            "provenance": {
+              "origin": "derived_native_instructions",
+              "section": "inro-6082"
+            }
+          },
+          {
+            "id": "end",
+            "action": "One-shot campaign finished. Keep incomingMessages.howToReply:DontReply; send no further campaign message.",
+            "message_ids": [],
+            "provenance": {
+              "origin": "derived_native_instructions",
+              "section": "inro-6082"
+            },
+            "response_mode": "silent"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "New matching source event; current account, permission and delivery window verified.",
+            "provenance": {
+              "origin": "derived_native_instructions",
+              "section": "inro-6082"
+            }
+          },
+          {
+            "from": "first",
+            "to": "end",
+            "condition": "One approved response; no follow-up for silence or clicks.",
+            "provenance": {
+              "origin": "derived_native_instructions",
+              "section": "inro-6082"
+            }
+          }
+        ]
+      },
+      "contact_requirement": "No contact capture.",
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "publicReply": {
+              "publicReplyHowToReply": "ExactText",
+              "exactTextReply": "{thanks_text}"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "privateReply": {
+              "privateReplyHowToReply": "DontReply"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "DontReply"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "followUps": {
+              "howToSend": "DontSend"
+            }
+          }
+        }
+      ],
+      "list_additions": {},
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "owned_comment",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "inro-6082": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/inro-6082.json": "c16c6ff4eb61904408f695881036183acdd15fdd17ebf5509bddaa25d652d813",
+    "described-recipes/inro-6082.json": "b4224b5ef886ff7ef14344d30b19af2b687056724f549b3cc9274a70050ff9a4"
+  }
+}

@@ -1,0 +1,242 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "conversation-builder-manychat-3",
+    "name": "AI conversation generator: initial screen only",
+    "source_ids": [
+      "manychat-3"
+    ],
+    "entry": "Entry to be defined by the owner",
+    "mandatory_conditions": [
+      "Supply a goal and context",
+      "Generation has not been run"
+    ],
+    "outcome": "No generated graph or result is known",
+    "timing": [],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "generation",
+      "dm-ai"
+    ],
+    "assessment": {
+      "status": "insufficient_data",
+      "reason": "No generated conversation exists to compare. AI incomingMessages accepts instructions but does not import an unknown graph.",
+      "missing_source_behavior": [
+        "Only the initial screen was captured. Entry, steps and mandatory conditions were not generated."
+      ],
+      "replacement": null
+    },
+    "source_notes": {
+      "manychat-3": "Only the initial screen was captured. Generation was not run; there is no graph."
+    },
+    "client_inputs": [
+      "goal",
+      "business context"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "blocked_original",
+      "analogue_ids": [],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [],
+      "binding_review": {
+        "source_entry": "Entry to be defined by the owner",
+        "source_outcome": "No generated graph or result is known",
+        "mandatory_conditions": [
+          "Supply a goal and context",
+          "Generation has not been run"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 0,
+        "decision": "No complete adaptation; stop at the named dependencies."
+      },
+      "function_review": {
+        "status": "source_incomplete_reference_only",
+        "reason": "No generated conversation, entry or runnable result was captured. Keep this as a source reference until the missing source behavior is supplied.",
+        "primary_result": "No generated graph or result is known",
+        "source_requirements": [
+          "Supply a goal and context",
+          "Generation has not been run"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Start from a business goal and define the conversation you need.",
+  "fit": "Businesses exploring a conversation that has not yet been captured as a fixed flow.",
+  "preparation_status": "source_incomplete_reference_only",
+  "function_review": {
+    "status": "source_incomplete_reference_only",
+    "reason": "No generated conversation, entry or runnable result was captured. Keep this as a source reference until the missing source behavior is supplied.",
+    "primary_result": "No generated graph or result is known",
+    "source_requirements": [
+      "Supply a goal and context",
+      "Generation has not been run"
+    ],
+    "source_timing": [],
+    "blocking_dependencies": [],
+    "retained": [],
+    "omitted": [],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "generation"
+  ],
+  "sources": [
+    {
+      "source_id": "manychat-3",
+      "source_file": "source-records/manychat-3.json",
+      "source_title": "Automate conversations with AI",
+      "start": null,
+      "nodes": [],
+      "transitions": [],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [
+        {
+          "label": "generator.initial",
+          "scope": "visible_ui",
+          "phase": "captured_default",
+          "text_exact": "Automate with AI\n\nAI can handle FAQs, gather user information, ask questions and send links.\n\nTell AI what to do\nThink about the conversations you have with your audience. Tell AI what to handle for you specifically.\nGive AI context\nShare all the info AI needs to talk to your audience. Include business or product details, relevant links or promotional info.\nGenerate\nPreview\nContinue\n[account display name excluded]\nBusiness chat\n\nChat preview will display here",
+          "fields": [
+            {
+              "name": "goal",
+              "label": null,
+              "tag": "textarea",
+              "type": null,
+              "placeholder": "Set a goal for the conversation",
+              "value": "",
+              "value_state": "unset_client_input_required",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "disabled": false,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "pattern": null,
+                "required": false
+              },
+              "evidence": {
+                "file": "evidence/3-setup.json",
+                "pointer": "/capture/fields/0"
+              }
+            },
+            {
+              "name": "context",
+              "label": null,
+              "tag": "textarea",
+              "type": null,
+              "placeholder": "Share all the info",
+              "value": "",
+              "value_state": "unset_client_input_required",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "disabled": false,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "pattern": null,
+                "required": false
+              },
+              "evidence": {
+                "file": "evidence/3-setup.json",
+                "pointer": "/capture/fields/1"
+              }
+            }
+          ],
+          "buttons_exact": [
+            {
+              "disabled": false,
+              "label": null,
+              "text": "Generate"
+            },
+            {
+              "disabled": true,
+              "label": null,
+              "text": "Continue"
+            }
+          ],
+          "evidence": {
+            "file": "evidence/3-setup.json",
+            "pointer": "/capture"
+          },
+          "identity_evidence_exact": {},
+          "source_hash": "ebe0594ca6f8f0b1ef3605ddd07d271b05189c41f0828debe4581e43d436a015"
+        }
+      ],
+      "global_fields": [
+        {
+          "path": "/native_setup/ordered_observations/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "goal",
+            "label": null,
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "context",
+            "label": null,
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "f9499d4efaf9dca0c1336dd5f8d4153c1c620576e9bd840789fb6f05a2b3ef35",
+      "source_leaf_count": 123,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [],
+  "continuations": {
+    "manychat-3": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-3.json": "a73ac9e02b17812f0fc0af8de2a0b51ad765ab120b506a200e5026540be901a5"
+  }
+}

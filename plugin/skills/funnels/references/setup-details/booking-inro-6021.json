@@ -1,0 +1,3497 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "booking-inro-6021",
+    "name": "Qualify DM leads with AI",
+    "source_ids": [
+      "inro-6021"
+    ],
+    "entry": "COACHME direct message",
+    "mandatory_conditions": [
+      "Answer a question about the request",
+      "AI distinguishes readiness from browsing"
+    ],
+    "outcome": "A booking link or starter resource",
+    "timing": [
+      "Reply: 20 hours; link click: 2 hours."
+    ],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "dm-ai",
+      "human",
+      "email-send",
+      "timers",
+      "click",
+      "graph"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "Keep AI qualification; replace the email notification with team handoff. Folders, exact branches and timers are not transferred.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Keep AI qualification; replace the email notification with team handoff. Folders, exact branches and timers are not transferred.",
+        "result": "AI discusses the request and offers the relevant next link.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "inro-6021": "AI replies do not establish exact execution of every source condition."
+    },
+    "client_inputs": [],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6021"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "inro-6021-dm_base",
+          "label": "Direct-message entry",
+          "target": "dm_base",
+          "allowed_targets": [
+            "dm_base"
+          ],
+          "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Use the actual reply to route suitable consultation interest to booking and browsing/later replies to a starter guide.",
+          "output_bindings": [
+            "booking_url",
+            "starter_url",
+            "program_name",
+            "known_facts"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Answer a question about the request",
+            "AI distinguishes readiness from browsing"
+          ],
+          "approval_required": true,
+          "source_id": "inro-6021",
+          "draft": {
+            "modes": [
+              "D",
+              "H"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "program_name",
+              "known_facts",
+              "booking_url",
+              "starter_url",
+              "public_text",
+              "handoff_text"
+            ],
+            "initial": "Thanks for your message! What would you like help with?",
+            "messages": {
+              "initial": "Thanks for your message! What would you like help with?",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "question": "Thanks for your message! What would you like help with?",
+              "qualified": "Book a call: {booking_url}",
+              "starter": "Free starter guide: {starter_url}",
+              "help": "What would you like to know about {program_name}?",
+              "handoff": "{handoff_text}"
+            },
+            "instruction": "Use {program_name} and {known_facts}. Ask what they need; evaluate only their actual answer using the captured ready-soon versus browsing/later criteria. Ready soon -> {booking_url}; not yet -> {starter_url}. These are mutually exclusive alternatives, never both links in sequence. No booking, payment or external completion confirmation. Unresolved questions or a team request use {handoff_text}; no outbound email. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+            "contact_requirement": null,
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Wait for the actual reply.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "qualified",
+                  "action": "Offer only the booking destination.",
+                  "message_ids": [
+                    "qualified"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "starter",
+                  "action": "Offer only the starter resource.",
+                  "message_ids": [
+                    "starter"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "refusal",
+                  "action": "End this request without delivering gated content.",
+                  "message_ids": [
+                    "refusal"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                },
+                {
+                  "from": "first",
+                  "to": "qualified",
+                  "condition": "Actual reply indicates starting soon, price, availability, a call or a relevant problem"
+                },
+                {
+                  "from": "first",
+                  "to": "starter",
+                  "condition": "Actual reply indicates browsing, later, off-topic or no budget"
+                },
+                {
+                  "from": "first",
+                  "to": "refusal",
+                  "condition": "Actual refusal or STOP"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "binding_review": {
+        "source_entry": "COACHME direct message",
+        "source_outcome": "A booking link or starter resource",
+        "mandatory_conditions": [
+          "Answer a question about the request",
+          "AI distinguishes readiness from browsing"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 1,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Use the actual reply to route suitable consultation interest to booking and browsing/later replies to a starter guide.",
+        "source_requirements": [
+          "Answer a question about the request",
+          "AI distinguishes readiness from browsing"
+        ],
+        "source_timing": [
+          "Reply: 20 hours; link click: 2 hours."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Use the actual reply to route suitable consultation interest to booking and browsing/later replies to a starter guide."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Reply: 20 hours; link click: 2 hours.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking.",
+          "No outbound escalation email or external booking-completion check."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "inro-6021",
+            "node_id": "n001",
+            "source_text": "Thanks for your message! What would you like help with?",
+            "adapted_text": "Thanks for your message! What would you like help with?",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      }
+    }
+  },
+  "goal": "Understand what a person needs and help them take the next step toward a call.",
+  "fit": "Coaches, consultants and service businesses offering an appointment.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Use the actual reply to route suitable consultation interest to booking and browsing/later replies to a starter guide.",
+    "source_requirements": [
+      "Answer a question about the request",
+      "AI distinguishes readiness from browsing"
+    ],
+    "source_timing": [
+      "Reply: 20 hours; link click: 2 hours."
+    ],
+    "blocking_dependencies": [],
+    "retained": [
+      "Use the actual reply to route suitable consultation interest to booking and browsing/later replies to a starter guide."
+    ],
+    "omitted": [
+      "Exact source timing is not retained: Reply: 20 hours; link click: 2 hours.. No timed unsolicited message is configured.",
+      "No click tracking, click-dependent branch or no-click reminder.",
+      "No imported deterministic graph or source folder/tag tracking.",
+      "No outbound escalation email or external booking-completion check."
+    ],
+    "limitations": [],
+    "examples": [
+      {
+        "source_id": "inro-6021",
+        "node_id": "n001",
+        "source_text": "Thanks for your message! What would you like help with?",
+        "adapted_text": "Thanks for your message! What would you like help with?",
+        "provenance": "authored_adaptation_not_captured"
+      }
+    ]
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "email-send",
+    "timers",
+    "click",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "inro-6021",
+      "source_file": "source-records/inro-6021.json",
+      "source_title": "Qualify DM leads with AI and book calls",
+      "start": "n000",
+      "nodes": [
+        {
+          "id": "n000",
+          "source_type": "trigger",
+          "content": {
+            "text": "When\nSomeone sends you a DM\nFILTER MESSAGES\nContains keyword(s)\nCOACHME",
+            "preview": "When\nSomeone sends you a DM\nFILTER MESSAGES\nContains keyword(s)\nCOACHME",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "e07ca8dd1970872c33b990b5140c2b38074ae868e3fb687c4c10f6023d22e0a5",
+          "settings_leaf_count": 44
+        },
+        {
+          "id": "n001",
+          "source_type": "message",
+          "content": {
+            "text": "Thanks for your message! What would you like help with?",
+            "preview": "Thanks for your message! What would you like help with?",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Thanks for your message! What would you like help with?",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "ab0cb56c4f2f3e2788c18a748c539b8a4789eb955e1fa7fa5fd66bfedc33e713",
+          "settings_leaf_count": 61
+        },
+        {
+          "id": "n002",
+          "source_type": "wait_for_reply",
+          "content": {
+            "text": "Wait for reply\nThe scenario will pause and wait until the contact replies to proceed.",
+            "preview": "Wait for reply\nThe scenario will pause and wait until the contact replies to proceed.",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai",
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved question and refusal behavior"
+          ],
+          "reason": "AI instructions can wait for a real reply. Exact flow state and timeout semantics are not imported.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "24b3f01e1de02ca5a8f93eb3555339c7a45be9eb82567d224c30dc1121ebf1c0",
+          "settings_leaf_count": 44
+        },
+        {
+          "id": "n003",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN CONTACT REPLIES",
+            "preview": "WHEN CONTACT REPLIES",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "b080e1d0f3efc6a61c7ca1329a7161451ce7aa7786cdb8849fa139bace2d4568",
+          "settings_leaf_count": 35
+        },
+        {
+          "id": "n004",
+          "source_type": "ai_condition",
+          "content": {
+            "text": "AI-detected condition\nUse AI to evaluate if a custom condition is true or false\nTrue when they want to start soon, ask about the price, availability or a call, or describe a problem the program solves. False when they are only browsing, off topic, or say later or no budget.",
+            "preview": "AI-detected condition\nUse AI to evaluate if a custom condition is true or false\nTrue when they want to start soon, ask about the price, availability or a call, or describe a problem the program solves. False when they are only browsing, off topic, or say later or no budget.",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai",
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "qualification policy and exact questions"
+          ],
+          "reason": "AI judgment may be an explicit adaptation; it does not reproduce an imported deterministic gate.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "True when they want to start soon, ask about the price, availability or a call, or describe a problem the program solves. False when they are only browsing, off topic, or say later or no budget.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "85e26aa409a89088c8083a7fbb76ae683eaf36139517adce9d93a401cbbf63f5",
+          "settings_leaf_count": 56
+        },
+        {
+          "id": "n005",
+          "source_type": "branch_option",
+          "content": {
+            "text": "IF CONDITION IS TRUE",
+            "preview": "IF CONDITION IS TRUE",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "8eb998ccf7f0bada9b28202bcea80e1754df7a54d552ab33bad54162f8052729",
+          "settings_leaf_count": 35
+        },
+        {
+          "id": "n006",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nCoaching program:…",
+            "preview": "Add contact to folder(s)\nCoaching program:…",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "add",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "add"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "remove"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/6/settings",
+          "settings_sha256": "3e2ca7aea282e1ae7283310c9645a47dbacfab095948441c6e55634f0c449865",
+          "settings_leaf_count": 74
+        },
+        {
+          "id": "n007",
+          "source_type": "send_email",
+          "content": {
+            "text": "Send email\nSend an email to a specified email address.\nFrom\tcontact@inroapp.com\nTo\t\nNew lead: @{{contact.username}} | @{{organization.username}}\n@{{contact.username}} asked about the coaching program, and the AI judged them a fit. Their answer: \"{{conversation.last_message_received}}\". Your booking link is on its way to them. Reply in the Inrō inbox or on Instagram. Instagram only lets you reply within 24 hours of their last message. Next step: check whether they booked, and follow up if not.",
+            "preview": "Send email\nSend an email to a specified email address.\nFrom\tcontact@inroapp.com\nTo\t\nNew lead: @{{contact.username}} | @{{organization.username}}\n@{{contact.username}} asked about the coaching program, and the AI judged them a fit. Their answer: \"{{conversation.last_message_received}}\". Your booking link is on its way to them. Reply in the Inrō inbox or on Instagram. Instagram only lets you reply within 24 hours of their last message. Next step: check whether they booked, and follow up if not.",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "email-send"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "recipient, purpose and existing authorized provider"
+          ],
+          "reason": "External notification remains a separate continuation; switchToHuman is not an email send.",
+          "unsupported": [
+            "email-send"
+          ],
+          "known_fields": [
+            {
+              "path": "/settings_panels/0/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "contact@inroapp.com (Default email)",
+                    "value": ""
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/0/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": ""
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/4",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "<redacted>",
+                "value_state": "unknown",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/5",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "<redacted>",
+                "value_state": "unknown",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/6",
+              "phase": "captured",
+              "fields": {
+                "label": "Select a file",
+                "type": "file",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "select-one",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "contact@inroapp.com (Default email)",
+                    "value": ""
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/0/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": ""
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/4",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/5",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "<redacted>",
+                "value_state": "unknown",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/6",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "<redacted>",
+                "value_state": "unknown",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/7",
+              "phase": "captured",
+              "fields": {
+                "label": "Select a file",
+                "type": "file",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/7/settings",
+          "settings_sha256": "0624a2ee5239e5092cb710c38afd2d763e537b1e8dbeb7942464d58114ea72d0",
+          "settings_leaf_count": 322
+        },
+        {
+          "id": "n008",
+          "source_type": "conversion_link",
+          "content": {
+            "text": "Book a call\nPick a time",
+            "preview": "Book a call\nPick a time",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "click",
+            "external"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved URL and recipient access"
+          ],
+          "reason": "Delivering a text URL is possible; click/no-click events and external completion are not established.",
+          "unsupported": [
+            "click",
+            "external"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/8/settings",
+          "settings_sha256": "1859ac0d259ac4aeb5f94934a2e75044af6a4f3f05aedeb9389674a90269fa09",
+          "settings_leaf_count": 48
+        },
+        {
+          "id": "n009",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN LINK IS CLICKED",
+            "preview": "WHEN LINK IS CLICKED",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/9/settings",
+          "settings_sha256": "94cde0930295bf5aa666e9e7b70cb60682191d4797b9dd2a25da1d905b96c748",
+          "settings_leaf_count": 35
+        },
+        {
+          "id": "n010",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF LINK HASN'T BEEN CLICKED AFTER\n2 hours",
+            "preview": "IF LINK HASN'T BEEN CLICKED AFTER\n2 hours",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "number",
+                "value": "2",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "hours",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/2",
+              "phase": "captured",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/3",
+              "phase": "captured",
+              "fields": {
+                "value": "days"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/10/settings",
+          "settings_sha256": "8713dd8274f23b7f8bfa0209188fd96c53aa6550ac8d80f7c83d69828c5c74ad",
+          "settings_leaf_count": 81
+        },
+        {
+          "id": "n011",
+          "source_type": "message",
+          "content": {
+            "text": "Have you checked the link yet?",
+            "preview": "Have you checked the link yet?",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Have you checked the link yet?",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/11/settings",
+          "settings_sha256": "89d39f45ce32df5eed6881a537e71c3279e8d9758e51e403292ee817a0222ce5",
+          "settings_leaf_count": 61
+        },
+        {
+          "id": "n012",
+          "source_type": "branch_option",
+          "content": {
+            "text": "IF CONDITION IS FALSE",
+            "preview": "IF CONDITION IS FALSE",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/12/settings",
+          "settings_sha256": "2094d3d662a649bb4607dd25b37dcf1ab277501c941b73be1658bd50d26db446",
+          "settings_leaf_count": 35
+        },
+        {
+          "id": "n013",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nCoaching program:…",
+            "preview": "Add contact to folder(s)\nCoaching program:…",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "add",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "add"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "remove"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/13/settings",
+          "settings_sha256": "8a3d8c658fa7eeebc1c4d960dd20cd1c287328787704ead3b06efd1822d2a89a",
+          "settings_leaf_count": 74
+        },
+        {
+          "id": "n014",
+          "source_type": "conversion_link",
+          "content": {
+            "text": "Free starter guide\nOpen it",
+            "preview": "Free starter guide\nOpen it",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "click",
+            "external"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved URL and recipient access"
+          ],
+          "reason": "Delivering a text URL is possible; click/no-click events and external completion are not established.",
+          "unsupported": [
+            "click",
+            "external"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/14/settings",
+          "settings_sha256": "933033fcdbdca487f075496733ff33135c0710f84eee037b8ab8565677dcff72",
+          "settings_leaf_count": 48
+        },
+        {
+          "id": "n015",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN LINK IS CLICKED",
+            "preview": "WHEN LINK IS CLICKED",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/15/settings",
+          "settings_sha256": "ab8af06e1f96a2c76073e23f20beaaf9ebc9c00ceddbff9dd6dbfe8e688af529",
+          "settings_leaf_count": 35
+        },
+        {
+          "id": "n016",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF LINK HASN'T BEEN CLICKED AFTER\n2 hours",
+            "preview": "IF LINK HASN'T BEEN CLICKED AFTER\n2 hours",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "number",
+                "value": "2",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "hours",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/2",
+              "phase": "captured",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/3",
+              "phase": "captured",
+              "fields": {
+                "value": "days"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/16/settings",
+          "settings_sha256": "908666bbbaec0023d7d5ef2a1473e5354e152c8ffb411475d1ab6110c4043a4c",
+          "settings_leaf_count": 81
+        },
+        {
+          "id": "n017",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF CONTACT HASN'T REPLIED AFTER\n20 hours",
+            "preview": "IF CONTACT HASN'T REPLIED AFTER\n20 hours",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "number",
+                "value": "20",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "hours",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/2",
+              "phase": "captured",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/3",
+              "phase": "captured",
+              "fields": {
+                "value": "days"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/17/settings",
+          "settings_sha256": "5d83c547e34b0b7f69be9739ebda50f2f426e511d51c44a50363500f40bdfddd",
+          "settings_leaf_count": 81
+        }
+      ],
+      "transitions": [
+        {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "label": "",
+          "settings": {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 438657",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/0"
+          }
+        },
+        {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "label": "",
+          "settings": {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 438657 to 438658",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/1"
+          }
+        },
+        {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "label": "",
+          "settings": {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 438658 to 438658_option_replied",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/2"
+          }
+        },
+        {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "label": "WHEN CONTACT REPLIES",
+          "settings": {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 438658_option_replied to 438659",
+            "source_port": "438658_option_replied",
+            "condition_text": "WHEN CONTACT REPLIES",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/3"
+          }
+        },
+        {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "label": "",
+          "settings": {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 438659 to 438659_option_true",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/4"
+          }
+        },
+        {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "label": "IF CONDITION IS TRUE",
+          "settings": {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 438659_option_true to 438660",
+            "source_port": "438659_option_true",
+            "condition_text": "IF CONDITION IS TRUE",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/5"
+          }
+        },
+        {
+          "id": "e006",
+          "from": "n006",
+          "to": "n007",
+          "label": "",
+          "settings": {
+            "id": "e006",
+            "from": "n006",
+            "to": "n007",
+            "source_label": "Edge from 438660 to 438661",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/6"
+          }
+        },
+        {
+          "id": "e007",
+          "from": "n007",
+          "to": "n008",
+          "label": "",
+          "settings": {
+            "id": "e007",
+            "from": "n007",
+            "to": "n008",
+            "source_label": "Edge from 438661 to 438662",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/7"
+          }
+        },
+        {
+          "id": "e008",
+          "from": "n008",
+          "to": "n009",
+          "label": "",
+          "settings": {
+            "id": "e008",
+            "from": "n008",
+            "to": "n009",
+            "source_label": "Edge from 438662 to 438662_option_clicked",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/8"
+          }
+        },
+        {
+          "id": "e009",
+          "from": "n008",
+          "to": "n010",
+          "label": "",
+          "settings": {
+            "id": "e009",
+            "from": "n008",
+            "to": "n010",
+            "source_label": "Edge from 438662 to 438662_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/9"
+          }
+        },
+        {
+          "id": "e010",
+          "from": "n010",
+          "to": "n011",
+          "label": "IF LINK HASN'T BEEN CLICKED AFTER\n2 hours",
+          "settings": {
+            "id": "e010",
+            "from": "n010",
+            "to": "n011",
+            "source_label": "Edge from 438662_option_expired to 438663",
+            "source_port": "438662_option_expired",
+            "condition_text": "IF LINK HASN'T BEEN CLICKED AFTER\n2 hours",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/10"
+          }
+        },
+        {
+          "id": "e011",
+          "from": "n004",
+          "to": "n012",
+          "label": "",
+          "settings": {
+            "id": "e011",
+            "from": "n004",
+            "to": "n012",
+            "source_label": "Edge from 438659 to 438659_option_false",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/11"
+          }
+        },
+        {
+          "id": "e012",
+          "from": "n012",
+          "to": "n013",
+          "label": "IF CONDITION IS FALSE",
+          "settings": {
+            "id": "e012",
+            "from": "n012",
+            "to": "n013",
+            "source_label": "Edge from 438659_option_false to 438664",
+            "source_port": "438659_option_false",
+            "condition_text": "IF CONDITION IS FALSE",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/12"
+          }
+        },
+        {
+          "id": "e013",
+          "from": "n013",
+          "to": "n014",
+          "label": "",
+          "settings": {
+            "id": "e013",
+            "from": "n013",
+            "to": "n014",
+            "source_label": "Edge from 438664 to 438665",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/13"
+          }
+        },
+        {
+          "id": "e014",
+          "from": "n014",
+          "to": "n015",
+          "label": "",
+          "settings": {
+            "id": "e014",
+            "from": "n014",
+            "to": "n015",
+            "source_label": "Edge from 438665 to 438665_option_clicked",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/14"
+          }
+        },
+        {
+          "id": "e015",
+          "from": "n014",
+          "to": "n016",
+          "label": "",
+          "settings": {
+            "id": "e015",
+            "from": "n014",
+            "to": "n016",
+            "source_label": "Edge from 438665 to 438665_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/15"
+          }
+        },
+        {
+          "id": "e016",
+          "from": "n002",
+          "to": "n017",
+          "label": "",
+          "settings": {
+            "id": "e016",
+            "from": "n002",
+            "to": "n017",
+            "source_label": "Edge from 438658 to 438658_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/16"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/triggers/0/settings_panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/0/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "COACHME",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/0/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "checkbox",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/0/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/0/fields/5",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Thanks for your message! What would you like help with?",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "True when they want to start soon, ask about the price, availability or a call, or describe a problem the program solves. False when they are only browsing, off topic, or say later or no budget.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/6/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "add",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": true,
+                "text": "Add contact to folder(s)",
+                "value": "add"
+              },
+              {
+                "selected": false,
+                "text": "Remove contact from folder(s)",
+                "value": "remove"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/6/editor_observed/fields/0/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "add"
+          }
+        },
+        {
+          "path": "/graph/nodes/6/editor_observed/fields/0/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "remove"
+          }
+        },
+        {
+          "path": "/graph/nodes/7/settings_panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": [
+              {
+                "selected": true,
+                "text": "contact@inroapp.com (Default email)",
+                "value": ""
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/settings_panels/0/fields/0/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": ""
+          }
+        },
+        {
+          "path": "/graph/nodes/7/settings_panels/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/settings_panels/0/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/settings_panels/0/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/settings_panels/0/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "<redacted>",
+            "value_state": "unknown",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/settings_panels/0/fields/5",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "<redacted>",
+            "value_state": "unknown",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/settings_panels/0/fields/6",
+          "phase": "captured",
+          "fields": {
+            "label": "Select a file",
+            "type": "file",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/variant_panels/0/panel/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "select-one",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": [
+              {
+                "selected": true,
+                "text": "contact@inroapp.com (Default email)",
+                "value": ""
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/variant_panels/0/panel/fields/0/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": ""
+          }
+        },
+        {
+          "path": "/graph/nodes/7/variant_panels/0/panel/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/variant_panels/0/panel/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/variant_panels/0/panel/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/variant_panels/0/panel/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/variant_panels/0/panel/fields/5",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "<redacted>",
+            "value_state": "unknown",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/variant_panels/0/panel/fields/6",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "<redacted>",
+            "value_state": "unknown",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/7/variant_panels/0/panel/fields/7",
+          "phase": "captured",
+          "fields": {
+            "label": "Select a file",
+            "type": "file",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/10/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "2",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/10/editor_observed/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "hours",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "days",
+                "value": "days"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/10/editor_observed/fields/1/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/graph/nodes/10/editor_observed/fields/1/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/graph/nodes/10/editor_observed/fields/1/options/2",
+          "phase": "captured",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/graph/nodes/10/editor_observed/fields/1/options/3",
+          "phase": "captured",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/graph/nodes/11/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Have you checked the link yet?",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/13/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "add",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": true,
+                "text": "Add contact to folder(s)",
+                "value": "add"
+              },
+              {
+                "selected": false,
+                "text": "Remove contact from folder(s)",
+                "value": "remove"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/13/editor_observed/fields/0/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "add"
+          }
+        },
+        {
+          "path": "/graph/nodes/13/editor_observed/fields/0/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "remove"
+          }
+        },
+        {
+          "path": "/graph/nodes/16/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "2",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/16/editor_observed/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "hours",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "days",
+                "value": "days"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/16/editor_observed/fields/1/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/graph/nodes/16/editor_observed/fields/1/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/graph/nodes/16/editor_observed/fields/1/options/2",
+          "phase": "captured",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/graph/nodes/16/editor_observed/fields/1/options/3",
+          "phase": "captured",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/graph/nodes/17/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "20",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/17/editor_observed/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "hours",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "days",
+                "value": "days"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/17/editor_observed/fields/1/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/graph/nodes/17/editor_observed/fields/1/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/graph/nodes/17/editor_observed/fields/1/options/2",
+          "phase": "captured",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/graph/nodes/17/editor_observed/fields/1/options/3",
+          "phase": "captured",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Qualify DM leads with AI and book calls",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "once_every",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "once",
+                "value": "once"
+              },
+              {
+                "selected": true,
+                "text": "once every",
+                "value": "once_every"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/2/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "once"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/2/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "once_every"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "7",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "days",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": false,
+                "text": "hours",
+                "value": "hours"
+              },
+              {
+                "selected": true,
+                "text": "days",
+                "value": "days"
+              },
+              {
+                "selected": false,
+                "text": "weeks",
+                "value": "weeks"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/4/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/4/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/4/options/2",
+          "phase": "captured",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/4/options/3",
+          "phase": "captured",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/4/options/4",
+          "phase": "captured",
+          "fields": {
+            "value": "weeks"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Qualify DM leads with AI and book calls",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/2/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Qualify DM leads with AI and book calls",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "a3d58fd8423096794a4d5b93a38ac2db189c3298b237734a2937fbdb657f96f9",
+      "source_leaf_count": 1829,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "inro-6021-dm_base",
+        "label": "Direct-message entry",
+        "target": "dm_base",
+        "allowed_targets": [
+          "dm_base"
+        ],
+        "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Use the actual reply to route suitable consultation interest to booking and browsing/later replies to a starter guide.",
+        "output_bindings": [
+          "booking_url",
+          "starter_url",
+          "program_name",
+          "known_facts"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Answer a question about the request",
+          "AI distinguishes readiness from browsing"
+        ],
+        "approval_required": true,
+        "source_id": "inro-6021",
+        "draft": {
+          "modes": [
+            "D",
+            "H"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "program_name",
+            "known_facts",
+            "booking_url",
+            "starter_url",
+            "public_text",
+            "handoff_text"
+          ],
+          "initial": "Thanks for your message! What would you like help with?",
+          "messages": {
+            "initial": "Thanks for your message! What would you like help with?",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "question": "Thanks for your message! What would you like help with?",
+            "qualified": "Book a call: {booking_url}",
+            "starter": "Free starter guide: {starter_url}",
+            "help": "What would you like to know about {program_name}?",
+            "handoff": "{handoff_text}"
+          },
+          "instruction": "Use {program_name} and {known_facts}. Ask what they need; evaluate only their actual answer using the captured ready-soon versus browsing/later criteria. Ready soon -> {booking_url}; not yet -> {starter_url}. These are mutually exclusive alternatives, never both links in sequence. No booking, payment or external completion confirmation. Unresolved questions or a team request use {handoff_text}; no outbound email. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+          "contact_requirement": null,
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Wait for the actual reply.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "qualified",
+                "action": "Offer only the booking destination.",
+                "message_ids": [
+                  "qualified"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "starter",
+                "action": "Offer only the starter resource.",
+                "message_ids": [
+                  "starter"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "refusal",
+                "action": "End this request without delivering gated content.",
+                "message_ids": [
+                  "refusal"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              },
+              {
+                "from": "first",
+                "to": "qualified",
+                "condition": "Actual reply indicates starting soon, price, availability, a call or a relevant problem"
+              },
+              {
+                "from": "first",
+                "to": "starter",
+                "condition": "Actual reply indicates browsing, later, off-topic or no budget"
+              },
+              {
+                "from": "first",
+                "to": "refusal",
+                "condition": "Actual refusal or STOP"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No actual reply"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [
+        "whenAIReplies",
+        "followUps"
+      ],
+      "entry_readback_fields": [],
+      "preparation_gates": [
+        "Preserve current whenAIReplies and followUps values, including inheritance, on the shared DM base. If its schedule or active follow-ups conflict with the proposed behavior, hold affected configuration or obtain separate approval for the exact base-wide change. No schedule/follow-up write is a default draft operation."
+      ],
+      "missing_readback": [],
+      "target": "dm_base",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "program_name",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "known_facts",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "booking_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "starter_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "handoff_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Thanks for your message! What would you like help with?",
+        "public": "",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "{handoff_text}",
+        "question": "Thanks for your message! What would you like help with?",
+        "qualified": "Book a call: {booking_url}",
+        "starter": "Free starter guide: {starter_url}",
+        "help": "What would you like to know about {program_name}?",
+        "placement": "DM {keyword}."
+      },
+      "instruction": "Use {program_name} and {known_facts}. Ask what they need; evaluate only their actual answer using the captured ready-soon versus browsing/later criteria. Ready soon -> {booking_url}; not yet -> {starter_url}. These are mutually exclusive alternatives, never both links in sequence. No booking, payment or external completion confirmation. Unresolved questions or a team request use {handoff_text}; no outbound email. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Wait for the actual reply.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "qualified",
+            "action": "Offer only the booking destination.",
+            "message_ids": [
+              "qualified"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "starter",
+            "action": "Offer only the starter resource.",
+            "message_ids": [
+              "starter"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "refusal",
+            "action": "End this request without delivering gated content.",
+            "message_ids": [
+              "refusal"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          },
+          {
+            "from": "first",
+            "to": "qualified",
+            "condition": "Actual reply indicates starting soon, price, availability, a call or a relevant problem"
+          },
+          {
+            "from": "first",
+            "to": "starter",
+            "condition": "Actual reply indicates browsing, later, off-topic or no budget"
+          },
+          {
+            "from": "first",
+            "to": "refusal",
+            "condition": "Actual refusal or STOP"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No actual reply"
+          }
+        ]
+      },
+      "contact_requirement": null,
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.. First message: Thanks for your message! What would you like help with?\nUse {program_name} and {known_facts}. Ask what they need; evaluate only their actual answer using the captured ready-soon versus browsing/later criteria. Ready soon -> {booking_url}; not yet -> {starter_url}. These are mutually exclusive alternatives, never both links in sequence. No booking, payment or external completion confirmation. Unresolved questions or a team request use {handoff_text}; no outbound email. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\nhandoff: {handoff_text}\nquestion: Thanks for your message! What would you like help with?\nqualified: Book a call: {booking_url}\nstarter: Free starter guide: {starter_url}\nhelp: What would you like to know about {program_name}?"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "switchToHuman": {
+              "howToSwitch": "SwitchToTeammates",
+              "rules": "$resolved.safe_handoff_rules"
+            }
+          }
+        }
+      ],
+      "list_additions": {
+        "switchToHuman": {
+          "switchingConditions": "Campaign {campaign}: the person requests the team or facts are unresolved.",
+          "messagePrompt": "{handoff_text}"
+        }
+      },
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "dm_base",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "inro-6021": [
+      {
+        "id": "booking",
+        "title": "Finish booking setup",
+        "scope": "Use when the booking page or external confirmation needs setup. An already configured booking link needs no new integration.",
+        "inputs": [
+          "Booking service and URL",
+          "Service, availability and time zone",
+          "Qualification criteria",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish booking setup.\nSelected source: inro-6021 - Qualify DM leads with AI and book calls.\nGoal: Understand what a person needs and help them take the next step toward a call.\nVariant: Qualify DM leads with AI\nScope: Use when the booking page or external confirmation needs setup. An already configured booking link needs no new integration.\nSource entry: COACHME direct message\nSource requirements: Answer a question about the request; AI distinguishes readiness from browsing\nSource timing: Reply: 20 hours; link click: 2 hours.\nSource outcome: A booking link or starter resource\nCaptured text (n001, not approved campaign copy):\nThanks for your message! What would you like help with?\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Use the actual reply to route suitable consultation interest to booking and browsing/later replies to a starter guide.\nUse the booking service already named by the owner or source. Do not replace it silently with native Chatfuel booking.\nAsk me for: Booking service and URL; Service, availability and time zone; Qualification criteria; Existing authorized access.\n1. Confirm the destination service and authorized access. Draft its booking page and required fields using approved availability and time zone. Keep the captured qualification and refusal branches explicit.\n2. Verify the page and define confirmation evidence in that service. A link click is not a booking. Native Chatfuel booking statuses do not prove completion in Calendly or another external service. If an automated status bridge is needed, identify a verified existing connection or leave it unresolved.\n3. Return draft settings, field mapping, access gaps and separate checks for link delivery and confirmed booking. Do not create a live booking.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      },
+      {
+        "id": "team-email",
+        "title": "Retain the source team-email notification",
+        "scope": "Optional: retain the captured external email notification instead of replacing it with Chatfuel handoff.",
+        "inputs": [
+          "Team recipient and service",
+          "Permitted lead fields",
+          "Notification condition and approved text",
+          "Existing authorized connection"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Retain the source team-email notification.\nSelected source: inro-6021 - Qualify DM leads with AI and book calls.\nGoal: Understand what a person needs and help them take the next step toward a call.\nVariant: Qualify DM leads with AI\nScope: Optional: retain the captured external email notification instead of replacing it with Chatfuel handoff.\nSource entry: COACHME direct message\nSource requirements: Answer a question about the request; AI distinguishes readiness from browsing\nSource timing: Reply: 20 hours; link click: 2 hours.\nSource outcome: A booking link or starter resource\nCaptured text (n001, not approved campaign copy):\nThanks for your message! What would you like help with?\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Use the actual reply to route suitable consultation interest to booking and browsing/later replies to a starter guide.\nUse the existing authorized team mailbox or notification service.\nAsk me for: Team recipient and service; Permitted lead fields; Notification condition and approved text; Existing authorized connection.\n1. This step is optional if the owner chooses Chatfuel team handoff instead. If the original email notification must remain, verify an existing authorized connection and draft recipient, field mapping and trigger conditions.\n2. Do not invent an email-sending bridge. If none is verified, list the missing access and exact next action. Preserve consent and data minimization; prevent duplicate notifications. Verify the recipient and delivery separately from the Chatfuel handoff. Return draft settings only.\n3. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n4. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n5. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ]
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/inro-6021.json": "4bc910a8e702cc9b7d9eeb677ab704ca12727bb33c9ea7cad5c5b733f1f6efca",
+    "described-recipes/inro-6021.json": "ece2aa73a33e568b79fde1ab59c245d83a5b081d133862c509cdf94043739c11"
+  }
+}

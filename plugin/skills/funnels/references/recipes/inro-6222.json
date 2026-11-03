@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "id": "inro-6222",
+  "version": "0.1.0",
+  "source": {
+    "id": "inro-6222",
+    "title": "Turn ad clicks into booked calls",
+    "url": "https://app.inro.social/public/scenarios/6222",
+    "observed_at": "2026-10-30",
+    "original_goal": "Turn ad clicks into booked calls",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "status": "changed",
+  "family": "qualification",
+  "goal": "Qualify an ordinary campaign-word DM invited by an existing ad and provide a booking link.",
+  "entry": "dm",
+  "platforms": [
+    "Instagram"
+  ],
+  "conversation": true,
+  "design_changes": [
+    "ordinary-dm-not-ad-click-trigger",
+    "coach-changes-existing-ad-cta",
+    "no-ad-attribution"
+  ],
+  "unsupported_requirements": [
+    "ad-click-trigger",
+    "ad-specific-routing",
+    "confirmed-booking"
+  ],
+  "blockers": [],
+  "required_inputs": [
+    "keyword",
+    "question_one",
+    "question_two",
+    "qualification_policy",
+    "language",
+    "initial_text",
+    "refusal_text",
+    "handoff_text",
+    "next_step"
+  ],
+  "allowed_parameters": {
+    "keyword": {
+      "type": "text",
+      "description": "Exact comment or inbound DM campaign word, at most 50 characters."
+    },
+    "question_one": {
+      "type": "text",
+      "description": "First approved question; no diagnosis or guaranteed outcome."
+    },
+    "question_two": {
+      "type": "text",
+      "description": "Second approved question, asked only after an actual first answer."
+    },
+    "qualification_policy": {
+      "type": "text",
+      "description": "Approved appropriate, inappropriate and unclear enquiry criteria."
+    },
+    "booking_url": {
+      "type": "url",
+      "description": "Coach-supplied booking url, preserved without invented claims."
+    },
+    "language": {
+      "type": "text",
+      "description": "Coach's message language; provide the exact approved copy in this language."
+    },
+    "initial_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved initial text in language, within this recipe's unchanged promise and transitions."
+    },
+    "refusal_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved refusal text in language, within this recipe's unchanged promise and transitions."
+    },
+    "handoff_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved handoff text in language, within this recipe's unchanged promise and transitions."
+    },
+    "next_step": {
+      "type": "text",
+      "values": [
+        "handoff",
+        "booking_link"
+      ],
+      "description": "Choose team handoff or an existing booking destination. Neither confirms an appointment."
+    }
+  },
+  "messages": {
+    "public": "",
+    "initial": "Would you like to answer two questions about your situation?",
+    "continuation": "After new explicit affirmative consent matching the presented opt-in, ask question_one and question_two separately, waiting for each actual answer. Apply qualification_policy and use the approved next_step; handoff needs no URL. Do not attribute the chat to an ad without independent evidence.",
+    "refusal": "Understood. I will not continue this campaign. You can ask our team for help.",
+    "handoff": "Our team will handle your request.",
+    "placement": "Open Instagram messages and send {keyword}."
+  },
+  "transitions": [
+    {
+      "event": "Coach supplies approved business facts and selects the existing account.",
+      "actor": "Claude",
+      "action": "Prepare exact messages and native payloads locally; obtain scoped approvals and save private intent.",
+      "evidence": "Preview, recipe digest and private card readback."
+    },
+    {
+      "event": "Before any real entry test.",
+      "actor": "Coach",
+      "action": "Place the approved campaign-word invitation on the stated existing Story, Live or ad surface.",
+      "evidence": "Actual placement; no publishing operation is assumed."
+    },
+    {
+      "event": "The contact sends the campaign word in an ordinary Instagram DM.",
+      "actor": "Contact",
+      "action": "Act on the coach-placed invitation and write first.",
+      "evidence": "Actual account, recipient, media/word and entry event IDs."
+    },
+    {
+      "event": "The approved native automation receives that entry.",
+      "actor": "Chatfuel",
+      "action": "Send exactly one initial message containing the approved value or question.",
+      "evidence": "Recipient-side first message and linked source."
+    },
+    {
+      "event": "The contact actually replies within the permitted window.",
+      "actor": "Chatfuel AI",
+      "action": "After new explicit affirmative consent matching the presented opt-in, ask question_one and question_two separately, waiting for each actual answer. Apply qualification_policy and the approved next_step. Do not attribute the chat to an ad without independent evidence.",
+      "evidence": "The actual campaign-word DM and qualifying answers lead to a destination or handoff, not a booked call."
+    },
+    {
+      "event": "The contact opens the supplied external destination.",
+      "actor": "External destination",
+      "action": "Handle any actual booking, registration, join or purchase outside this skill.",
+      "evidence": "An external confirmation is required before claiming that external result."
+    }
+  ],
+  "native_operations": [
+    "get_bot",
+    "get_automation",
+    "get_knowledge_base",
+    "fuelyAutomationUpdateSetting",
+    "test_reply",
+    "take_over_chat"
+  ],
+  "outcome": "The actual campaign-word DM and qualifying answers lead to a destination or handoff, not a booked call.",
+  "negative_cases": [
+    "A click without an inbound message starts nothing.",
+    "Ad edits and ad spend are outside this skill."
+  ],
+  "runtime_checks": [
+    "content",
+    "return",
+    "stop",
+    "refusal",
+    "repeat",
+    "unknown_action",
+    "wrong_account",
+    "two_campaigns",
+    "source_attribution",
+    "expired_window",
+    "late_ambiguous_reply",
+    "destination",
+    "two_actual_answers"
+  ],
+  "resume": {
+    "actor": "Claude",
+    "action": "Restore the private card, confirm this recipe digest and account, then read current owned and shared settings. Reconcile unknown results without retry.",
+    "campaign_match": "Require an actual unambiguous campaign-word inbound event and the same recipient's linked answers."
+  },
+  "stop": {
+    "actor": "Claude with scoped native approval",
+    "action": "Disable only the campaign-owned comment rule, if present. Remove only campaign additions from shared DM text, captures and handoff; retain other campaigns and support.",
+    "proof": "Read back changes. Test late entry, late DM, the second campaign and ordinary support before accepting complete stop."
+  },
+  "execution_reference": "../chatfuel-execution.md",
+  "initial_required_parameters": [],
+  "supported_requirements": [
+    "instagram",
+    "local-preview",
+    "ordinary-dm",
+    "team-handoff",
+    "two-question-qualification",
+    "booking-link",
+    "handoff-only"
+  ],
+  "business_outcomes": {
+    "two_actual_answers": {
+      "origin": "native-readback",
+      "description": "An actual ordinary campaign-word DM receives two questions with actual answers.",
+      "min_native_refs": 2
+    }
+  },
+  "outcome_variants": {
+    "handoff": {
+      "handoff_confirmed": {
+        "origin": "native-readback",
+        "description": "The same recipient's actual request reaches confirmed team handoff after the two answers.",
+        "min_native_refs": 1
+      }
+    },
+    "booking_link": {
+      "booking_link_received": {
+        "origin": "recipient-observation",
+        "description": "The qualified recipient receives the approved existing booking link.",
+        "min_native_refs": 1,
+        "parameter": "booking_url"
+      },
+      "no_false_booking_confirmation": {
+        "origin": "human-review",
+        "description": "The conversation does not claim a booking or automatically hand off successful qualification.",
+        "min_native_refs": 1
+      }
+    }
+  }
+}

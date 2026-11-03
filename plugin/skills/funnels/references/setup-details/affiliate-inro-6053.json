@@ -1,0 +1,1025 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "affiliate-inro-6053",
+    "name": "Share an affiliate link with a reminder",
+    "source_ids": [
+      "inro-6053"
+    ],
+    "entry": "Link comment",
+    "mandatory_conditions": [
+      "Press the opening button",
+      "Check the destination click"
+    ],
+    "outcome": "An affiliate link",
+    "timing": [
+      "No link click or opening-button click: 3 days."
+    ],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "comment",
+      "buttons",
+      "timers",
+      "click",
+      "graph"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "Send the URL in a fixed DM without the button, folder, click tracking or reminder.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Send the URL in a fixed DM without the button, folder, click tracking or reminder.",
+        "result": "An affiliate link; commission is not confirmed.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "inro-6053": "A click and affiliate commission are not confirmed."
+    },
+    "client_inputs": [],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6053"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "inro-6053-owned_comment",
+          "label": "Selected-post comment entry",
+          "target": "owned_comment",
+          "allowed_targets": [
+            "owned_comment"
+          ],
+          "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Send the affiliate URL after confirmation.",
+          "output_bindings": [
+            "product_name",
+            "affiliate_url"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Press the opening button",
+            "Check the destination click"
+          ],
+          "approval_required": true,
+          "source_id": "inro-6053",
+          "draft": {
+            "modes": [
+              "C",
+              "D"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "product_name",
+              "affiliate_url",
+              "public_text"
+            ],
+            "initial": "Want {product_name}? Reply YES and I will send it.",
+            "messages": {
+              "initial": "Want {product_name}? Reply YES and I will send it.",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "delivery": "Here is {product_name}: {affiliate_url}"
+            },
+            "instruction": "Wait for an actual affirmative reply before delivering: Here is {product_name}: {affiliate_url} On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener.",
+            "contact_requirement": null,
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Ask for an actual affirmative reply; no link yet.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "delivery",
+                  "action": "Deliver the approved destination and included help together.",
+                  "message_ids": [
+                    "delivery"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "refusal",
+                  "action": "End this request without delivering gated content.",
+                  "message_ids": [
+                    "refusal"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                },
+                {
+                  "from": "first",
+                  "to": "delivery",
+                  "condition": "Actual affirmative reply in this conversation"
+                },
+                {
+                  "from": "first",
+                  "to": "refusal",
+                  "condition": "Actual refusal"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "binding_review": {
+        "source_entry": "Link comment",
+        "source_outcome": "An affiliate link",
+        "mandatory_conditions": [
+          "Press the opening button",
+          "Check the destination click"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 1,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Send the affiliate URL after confirmation.",
+        "source_requirements": [
+          "Press the opening button",
+          "Check the destination click"
+        ],
+        "source_timing": [
+          "No link click or opening-button click: 3 days."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Send the affiliate URL after confirmation.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: No link click or opening-button click: 3 days.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "inro-6053",
+            "node_id": "n002",
+            "source_text": "Hey there! I’m so happy you’re here. Do you want to receive the link? 😊\nYes ❤️",
+            "adapted_text": "Want {product_name}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      }
+    }
+  },
+  "goal": "Help interested followers find the product you recommend.",
+  "fit": "Creators and partners promoting a product with an affiliate destination.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Send the affiliate URL after confirmation.",
+    "source_requirements": [
+      "Press the opening button",
+      "Check the destination click"
+    ],
+    "source_timing": [
+      "No link click or opening-button click: 3 days."
+    ],
+    "blocking_dependencies": [],
+    "retained": [
+      "Send the affiliate URL after confirmation.",
+      "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+    ],
+    "omitted": [
+      "Exact source timing is not retained: No link click or opening-button click: 3 days.. No timed unsolicited message is configured.",
+      "No click tracking, click-dependent branch or no-click reminder.",
+      "No imported deterministic graph or source folder/tag tracking."
+    ],
+    "limitations": [],
+    "examples": [
+      {
+        "source_id": "inro-6053",
+        "node_id": "n002",
+        "source_text": "Hey there! I’m so happy you’re here. Do you want to receive the link? 😊\nYes ❤️",
+        "adapted_text": "Want {product_name}? Reply YES and I will send it.",
+        "provenance": "authored_adaptation_not_captured"
+      }
+    ]
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "buttons",
+    "timers",
+    "click",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "inro-6053",
+      "source_file": "source-records/inro-6053.json",
+      "source_title": "Share Affiliate Links",
+      "start": "n000",
+      "nodes": [
+        {
+          "id": "n000",
+          "source_type": "trigger",
+          "content": {
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\nLink",
+            "preview": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\nLink",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "eee0b9cf6ae60c70d218dfb4d03b72f43261c3ef877c333aba030b40d971c6a1",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n001",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nComment leads",
+            "preview": "Add contact to folder(s)\nComment leads",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "0a8602a73c516f89562d4fa0fd94b8de5785ba0efc5ae64c7c5bb457323d5634",
+          "settings_leaf_count": 40
+        },
+        {
+          "id": "n002",
+          "source_type": "button_template",
+          "content": {
+            "text": "Hey there! I’m so happy you’re here. Do you want to receive the link? 😊\nYes ❤️",
+            "preview": "Hey there! I’m so happy you’re here. Do you want to receive the link? 😊\nYes ❤️",
+            "buttons": [
+              "Yes ❤️"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved alternative text or choice words"
+          ],
+          "reason": "Rich buttons/callbacks are not normal MCP fields. A text-choice adaptation needs approval; never treat it as the captured button event.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "766d3425f27c314cecdf04ce94850f68f33f6a37be5cda922f53aa5fa738fc87",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n003",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN BUTTON IS CLICKED\nYes ❤️",
+            "preview": "WHEN BUTTON IS CLICKED\nYes ❤️",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "1a0ef868491296e93253eaf6baf431248fe382878111ca79e69a5d9f26b28eae",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n004",
+          "source_type": "conversion_link",
+          "content": {
+            "text": "Your Affiliate Products ❤️\nVisit website 🔗",
+            "preview": "Your Affiliate Products ❤️\nVisit website 🔗",
+            "buttons": [],
+            "media": [
+              "https://app.inro.social/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNFcxUVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--63ae35f26bd94cfff0d70a16c1a564da4d90354f/200+%20Affiliate%20Sales%20from%201%20Post.png"
+            ],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved URL and recipient access"
+          ],
+          "reason": "Delivering a text URL is possible; click/no-click events and external completion are not established.",
+          "unsupported": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "8d00e45872088d629eaf3a68ff3b17040b7ca3f12a825c37de353b591d88e904",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n005",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN LINK IS CLICKED",
+            "preview": "WHEN LINK IS CLICKED",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "7fb6c38a8fe46a0e1d0e39f9ed3777c1e0519fa8a1adbe6edde83662a1efc783",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n006",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\naffiliate lead",
+            "preview": "Add contact to folder(s)\naffiliate lead",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/6/settings",
+          "settings_sha256": "c6756322ed218edba8a85c641ae81f9e3c40adbd4b026c727a4bbd6d5b7baa7d",
+          "settings_leaf_count": 40
+        },
+        {
+          "id": "n007",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "preview": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/7/settings",
+          "settings_sha256": "d869b747a4dea8bfc4bf9e05ac3064f4c583b575b64739caaf6e810ba5bde417",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n008",
+          "source_type": "message",
+          "content": {
+            "text": "Have you checked the link? 😃",
+            "preview": "Have you checked the link? 😃",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/8/settings",
+          "settings_sha256": "dd68db09a51d16d4841ea22a1d984f7228b1280f234ed79b2438478be2f41865",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n009",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n3 days",
+            "preview": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n3 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/9/settings",
+          "settings_sha256": "42cecb0cf574cc6a25f3d7fe525f2e9c24231f82f5454c13ed51df7cad2273f0",
+          "settings_leaf_count": 32
+        }
+      ],
+      "transitions": [
+        {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "label": "",
+          "settings": {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 60410",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/0"
+          }
+        },
+        {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "label": "",
+          "settings": {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 60410 to 60081",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/1"
+          }
+        },
+        {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "label": "",
+          "settings": {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 60081 to 60081_option_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/2"
+          }
+        },
+        {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "label": "WHEN BUTTON IS CLICKED\nYes ❤️",
+          "settings": {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 60081_option_0 to 60082",
+            "source_port": "60081_option_0",
+            "condition_text": "WHEN BUTTON IS CLICKED\nYes ❤️",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/3"
+          }
+        },
+        {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "label": "",
+          "settings": {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 60082 to 60082_option_clicked",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/4"
+          }
+        },
+        {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "label": "WHEN LINK IS CLICKED",
+          "settings": {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 60082_option_clicked to 60083",
+            "source_port": "60082_option_clicked",
+            "condition_text": "WHEN LINK IS CLICKED",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/5"
+          }
+        },
+        {
+          "id": "e006",
+          "from": "n004",
+          "to": "n007",
+          "label": "",
+          "settings": {
+            "id": "e006",
+            "from": "n004",
+            "to": "n007",
+            "source_label": "Edge from 60082 to 60082_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/6"
+          }
+        },
+        {
+          "id": "e007",
+          "from": "n007",
+          "to": "n008",
+          "label": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+          "settings": {
+            "id": "e007",
+            "from": "n007",
+            "to": "n008",
+            "source_label": "Edge from 60082_option_expired to 60084",
+            "source_port": "60082_option_expired",
+            "condition_text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/7"
+          }
+        },
+        {
+          "id": "e008",
+          "from": "n002",
+          "to": "n009",
+          "label": "",
+          "settings": {
+            "id": "e008",
+            "from": "n002",
+            "to": "n009",
+            "source_label": "Edge from 60081 to 60081_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/8"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [],
+      "source_settings_sha256": "8a73e1343bae33ccbb903d7d0ac63303e5b39cd0eacfe42c23f267cd312a354f",
+      "source_leaf_count": 594,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "inro-6053-owned_comment",
+        "label": "Selected-post comment entry",
+        "target": "owned_comment",
+        "allowed_targets": [
+          "owned_comment"
+        ],
+        "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Send the affiliate URL after confirmation.",
+        "output_bindings": [
+          "product_name",
+          "affiliate_url"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Press the opening button",
+          "Check the destination click"
+        ],
+        "approval_required": true,
+        "source_id": "inro-6053",
+        "draft": {
+          "modes": [
+            "C",
+            "D"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "product_name",
+            "affiliate_url",
+            "public_text"
+          ],
+          "initial": "Want {product_name}? Reply YES and I will send it.",
+          "messages": {
+            "initial": "Want {product_name}? Reply YES and I will send it.",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "delivery": "Here is {product_name}: {affiliate_url}"
+          },
+          "instruction": "Wait for an actual affirmative reply before delivering: Here is {product_name}: {affiliate_url} On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener.",
+          "contact_requirement": null,
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Ask for an actual affirmative reply; no link yet.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "delivery",
+                "action": "Deliver the approved destination and included help together.",
+                "message_ids": [
+                  "delivery"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "refusal",
+                "action": "End this request without delivering gated content.",
+                "message_ids": [
+                  "refusal"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              },
+              {
+                "from": "first",
+                "to": "delivery",
+                "condition": "Actual affirmative reply in this conversation"
+              },
+              {
+                "from": "first",
+                "to": "refusal",
+                "condition": "Actual refusal"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No actual reply"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [],
+      "entry_readback_fields": [
+        "post_ids",
+        "keywords",
+        "match_mode"
+      ],
+      "preparation_gates": [
+        "Before staging an owned OFF custom, complete readback must equal approved posts, keywords and match mode. Reply-setting updates cannot change filters. A mismatch blocks staging; setup_comment_replies needs separate immediate-enabled approval."
+      ],
+      "missing_readback": [],
+      "target": "owned_comment",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "product_name",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "affiliate_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Want {product_name}? Reply YES and I will send it.",
+        "public": "{public_text}",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "delivery": "Here is {product_name}: {affiliate_url}"
+      },
+      "instruction": "Wait for an actual affirmative reply before delivering: Here is {product_name}: {affiliate_url} On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Ask for an actual affirmative reply; no link yet.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "delivery",
+            "action": "Deliver the approved destination and included help together.",
+            "message_ids": [
+              "delivery"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "refusal",
+            "action": "End this request without delivering gated content.",
+            "message_ids": [
+              "refusal"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          },
+          {
+            "from": "first",
+            "to": "delivery",
+            "condition": "Actual affirmative reply in this conversation"
+          },
+          {
+            "from": "first",
+            "to": "refusal",
+            "condition": "Actual refusal"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No actual reply"
+          }
+        ]
+      },
+      "contact_requirement": null,
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "publicReply": {
+              "publicReplyHowToReply": "ExactText",
+              "exactTextReply": "{public_text}"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "privateReply": {
+              "privateReplyHowToReply": "ExactText",
+              "exactTextReply": "Want {product_name}? Reply YES and I will send it."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.. First message: Want {product_name}? Reply YES and I will send it.\nWait for an actual affirmative reply before delivering: Here is {product_name}: {affiliate_url} On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\ndelivery: Here is {product_name}: {affiliate_url} The one private comment reply has already sent the opener. Wait for the person's actual linked reply; do not resend the opener or send a second unsolicited DM. Continue only within the permitted messaging window."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "whenAIReplies": {
+              "option": "Always"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "followUps": {
+              "howToSend": "DontSend"
+            }
+          }
+        }
+      ],
+      "list_additions": {},
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "owned_comment",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "inro-6053": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/inro-6053.json": "c0c9b7ecfd4cb52711a32c9f26be0727aa20431c9824962f722b9d7b2b639993",
+    "described-recipes/inro-6053.json": "4ba4635a14c301b78a4106e21371cbdfc3d85f1c416d9bdded50adf17f9bcd77"
+  }
+}

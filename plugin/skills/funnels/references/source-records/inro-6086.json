@@ -1,0 +1,1401 @@
+{
+  "id": "inro-6086",
+  "source": {
+    "vendor": "inro",
+    "file": "templates/inro-6086.json",
+    "title": "Thank people who share you in their story",
+    "category": "Engage your audience",
+    "facets": [
+      "Engage your audience",
+      "acknowledgment",
+      "Story mentions"
+    ],
+    "job": "acknowledgment",
+    "model": "source_graph",
+    "document": {
+      "schema_version": "0.1.0",
+      "id": "inro-6086",
+      "ordinal": 7,
+      "title": "Thank people who share you in their story",
+      "source_category": "Engage your audience",
+      "source": {
+        "catalog_url": "https://app.inro.social/automation",
+        "preview_url": "https://app.inro.social/public/scenarios/6086",
+        "public_template_id": "6086",
+        "observed_at": "2026-10-30",
+        "source_version": null,
+        "capture_sha256": "39da498d3ccd99b9345af2d1d91d44e9c5a5fe50cc4f708faa8867577501579d",
+        "editor_url": "https://app.inro.social/automation/scenarios/38334",
+        "editor_inactive_verified": true,
+        "official_export": false
+      },
+      "classification": {
+        "basis": "product_interpretation",
+        "job_family": "acknowledgment",
+        "route": "story_like",
+        "desired_business_event": "supporter_acknowledged",
+        "trigger_classes": [
+          "story_mention"
+        ]
+      },
+      "selection": {
+        "basis": "product_interpretation",
+        "use_when": [
+          "Acknowledge people who mention the account in stories with a message like."
+        ],
+        "avoid_when": [
+          "Do not interpret the like or folder as a lead or sale.",
+          "Do not silently drop an essential unsupported gate."
+        ],
+        "required_facts": [
+          "Story-mention scope and acknowledgment policy.",
+          "Confirm account scope, messaging permission and the real outcome measurement."
+        ]
+      },
+      "trigger_labels": [
+        "Story mentions"
+      ],
+      "triggers": [
+        {
+          "node_id": "n000",
+          "exact_visible_text": "When\nSomeone mentions you in a story\nFILTER STORIES\nAny story that mentions you",
+          "settings_panels": [
+            {
+              "name": null,
+              "text": "Someone mentions you in a story\nSet up filters to trigger the scenario only on specific story mentions\nFILTER STORIES\nAny story that mentions you\nNo filter on the story you were mentioned in\nStories with visible keyword(s)\nOnly stories where a keyword is legible\nStories showing something\nOnly stories whose visual matches your description\nAI\n[account username]\nSave",
+              "fields": [
+                {
+                  "context": "Any story that mentions you\nNo filter on the story you were mentioned in",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Stories with visible keyword(s)\nOnly stories where a keyword is legible",
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Stories showing something\nOnly stories whose visual matches your description\nAI",
+                  "index": 2,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                }
+              ]
+            }
+          ],
+          "matching_complete": true
+        }
+      ],
+      "graph": {
+        "entry_node": "n000",
+        "nodes": [
+          {
+            "id": "n000",
+            "source_id": "trigger",
+            "editor_source_id": "trigger",
+            "source_type": "trigger",
+            "observed": {
+              "level": "public_graph",
+              "text": "When\nSomeone mentions you in a story\nFILTER STORIES\nAny story that mentions you",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "When\nSomeone mentions you in a story\nFILTER STORIES\nAny story that mentions you\nAdd trigger",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "Close",
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Add trigger",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/story_mention",
+                  "signature": "sha256:1e0711002b786c7834d91045da5c2916ba5fe1fd02be8a4d26cf5a29e0c2723b",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "trigger",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n001",
+            "source_id": "438678",
+            "editor_source_id": "455013",
+            "source_type": "delay",
+            "observed": {
+              "level": "public_graph",
+              "text": "Wait 1 minutes",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Wait\nWait\nseconds\nminutes\nhours\ndays",
+              "fields": [
+                {
+                  "context": null,
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "number",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "1",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "seconds\nminutes\nhours\ndays",
+                  "index": 1,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": false,
+                      "text": "seconds",
+                      "value": "seconds"
+                    },
+                    {
+                      "selected": true,
+                      "text": "minutes",
+                      "value": "minutes"
+                    },
+                    {
+                      "selected": false,
+                      "text": "hours",
+                      "value": "hours"
+                    },
+                    {
+                      "selected": false,
+                      "text": "days",
+                      "value": "days"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "minutes",
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": []
+            },
+            "outcome_type": "delay",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n002",
+            "source_id": "438679",
+            "editor_source_id": "455014",
+            "source_type": "like",
+            "observed": {
+              "level": "public_graph",
+              "text": "❤️\nLike message",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "❤️\nLike message",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": []
+            },
+            "outcome_type": "like",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": true,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n003",
+            "source_id": "438680",
+            "editor_source_id": "455015",
+            "source_type": "folder",
+            "observed": {
+              "level": "public_graph",
+              "text": "Add contact to folder(s)\nThanks: mentioned…",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+              "fields": [
+                {
+                  "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                  "index": 0,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": true,
+                      "text": "Add contact to folder(s)",
+                      "value": "add"
+                    },
+                    {
+                      "selected": false,
+                      "text": "Remove contact from folder(s)",
+                      "value": "remove"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "add",
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Pick a folder",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/folder_picker",
+                  "signature": "sha256:09ff0cb835bbc779821737be4a998679f0a18aa44e867dcbc9c77e09f827da15",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "folder",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [
+              "dep-n003"
+            ],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": {
+              "source_action": "Add contact to folder(s)",
+              "source_labels": [
+                "Thanks: mentioned…"
+              ],
+              "source_labels_state": "observed_truncated",
+              "source_resource_ids": [],
+              "source_binding_state": "unknown_not_exposed",
+              "clone_labels": [],
+              "clone_binding_state": "observed_unset",
+              "required_client_binding": "client.folder_binding.n003",
+              "recovery_evidence": "evidence/folder-label-recovery.json#/nodes/2"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 438678",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 438678 to 438679",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 438679 to 438680",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          }
+        ],
+        "graph_source_complete": true,
+        "capture_audit": {
+          "rendered_node_count": 4,
+          "rendered_edge_count": 3,
+          "saved_node_count": 4,
+          "saved_edge_count": 3,
+          "counts_equal": true,
+          "reachable_nodes": 4,
+          "dangling_edges": 0,
+          "duplicate_node_ids": 0,
+          "limitations": [
+            "Complete relative to saved rendered DOM, not an official export or hidden server graph.",
+            "No outgoing rendered edge means an observed graph end, not proof of delivery or successful business outcome.",
+            "In the editor, Add a step placeholders were excluded from source-node matching; original public edges were retained."
+          ]
+        }
+      },
+      "scenario_settings": {
+        "panels": [
+          {
+            "name": "Limit frequency per contact",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nLimit how often this scenario can run for each contact\nLimit how often this scenario can run for each contact\nRun scenario only\nonce\nonce every\nseconds\nminutes\nhours\ndays\nweeks\nper contact\nInterrupt on message replies\nExclude specific folders\nTest scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Thank people who share you in their story",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Limit how often this scenario can run for each contact\nLimit how often this scenario can run for each contact",
+                "index": 1,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "button",
+                "type": "button",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": true,
+                "value_state": "observed_value"
+              },
+              {
+                "context": "once\nonce every",
+                "index": 2,
+                "label": null,
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "once",
+                    "value": "once"
+                  },
+                  {
+                    "selected": true,
+                    "text": "once every",
+                    "value": "once_every"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "once_every",
+                "value_state": "observed_value"
+              },
+              {
+                "context": null,
+                "index": 3,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "number",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "1",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "seconds\nminutes\nhours\ndays\nweeks",
+                "index": 4,
+                "label": null,
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": false,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": true,
+                    "text": "days",
+                    "value": "days"
+                  },
+                  {
+                    "selected": false,
+                    "text": "weeks",
+                    "value": "weeks"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "days",
+                "value_state": "observed_value"
+              }
+            ]
+          },
+          {
+            "name": "Interrupt on message replies",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nInterrupt on message replies\nInterrupt when you reply manually\nInterrupt when you reply manually\nInterrupt when contact replies\nInterrupt when contact replies\nExclude specific folders\nTest scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Thank people who share you in their story",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Interrupt when you reply manually\nInterrupt when you reply manually",
+                "index": 1,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "button",
+                "type": "button",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": false,
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Interrupt when contact replies\nInterrupt when contact replies",
+                "index": 2,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "button",
+                "type": "button",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": false,
+                "value_state": "observed_value"
+              }
+            ]
+          },
+          {
+            "name": "Exclude specific folders",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nInterrupt on message replies\nExclude specific folders\nThis scenario will not run for contacts in the selected folders\nPick a folder\nTest scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Thank people who share you in their story",
+                "value_state": "observed_value"
+              }
+            ]
+          }
+        ],
+        "defaults_complete": true,
+        "inheritance": "Observed account opt-out, menu and global exclusions apply separately. These are not template defaults. No account setting changed.",
+        "global_settings_source": "evidence/shared-control-options.json#/global_options",
+        "shared_control_refs": [
+          "evidence/6024-editor.json#/scenario_panels"
+        ]
+      },
+      "rules": {
+        "refusal": "Source stop, negative-answer, no-response and expiry ports are retained. Account opt-out is a separate inherited control.",
+        "reentry": "Per-template Limit frequency per contact defaults and shared enabled options are preserved in scenario settings.",
+        "duplicates": "No idempotency guarantee established. Frequency control is not proof of cross-scenario deduplication.",
+        "retry_and_timeout_evidence": [
+          "n001"
+        ],
+        "failure_semantics": "UI retry/expiry values are preserved per node. Transport/runtime failures were not tested; lack of runtime proof is not counted as an unopened setting."
+      },
+      "dependencies": [
+        {
+          "id": "dep-n003",
+          "node_id": "n003",
+          "kind": "folder",
+          "source_reference": null,
+          "observed_values": [
+            "Add contact to folder(s)\nThanks: mentioned…"
+          ],
+          "required_coach_input": "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "status": "partial"
+        }
+      ],
+      "placeholders": [],
+      "outcomes": {
+        "observed_events": [],
+        "desired_event_verified": false,
+        "attribution_gap": "UI branch labels are observable mechanisms, not confirmation of the desired business event."
+      },
+      "gaps": [
+        {
+          "id": "runtime-not-tested",
+          "scope": "execution",
+          "field": "runtime_tested",
+          "reason": "No customer or test execution is authorized. Static observations do not prove delivery or outcome.",
+          "blocks_exact_reconstruction": false
+        },
+        {
+          "id": "n003-source-folder-binding",
+          "scope": "n003",
+          "field": "source folder configuration",
+          "reason": "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default. Original label is literally truncated; the missing text was not recovered or guessed.",
+          "blocks_exact_reconstruction": true
+        }
+      ],
+      "reconstruction": {
+        "record_schema_valid": true,
+        "graph_integrity_valid": true,
+        "source_settings_complete": false,
+        "status": "partially_reconstructable",
+        "runtime_tested": false,
+        "blockers": [
+          "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default. Original label is literally truncated; the missing text was not recovered or guessed."
+        ],
+        "coverage": {
+          "source_nodes": 4,
+          "source_edges": 3,
+          "editor_nodes_matched": 4,
+          "nodes_with_editor_panels": 0,
+          "nodes_all_controls_opened": 4,
+          "terminal_nodes": 1,
+          "timeout_nodes": 0
+        },
+        "client_data_ready": false,
+        "external_binding_blockers": [
+          "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "Authorized client channel, real offer and account scope have not been configured."
+        ]
+      },
+      "evidence_files": [
+        "evidence/6086-editor.json",
+        "evidence/6086-public.json",
+        "evidence/shared-control-options.json",
+        "evidence/shared-variable-options.json",
+        "draft-manifest.json",
+        "evidence/final-reconciliation.json"
+      ],
+      "wizard_settings": [],
+      "access_evidence": {
+        "state": "editor_opened",
+        "attempts": 1,
+        "visible_error": null,
+        "cause_proven": false,
+        "delayed_reconciliation": "23 list rows: 21 owned inactive drafts and 2 pre-existing. No additional draft matched the nine unresolved attempts. Original creation exception/render was not retained; app refusal is unproven."
+      }
+    }
+  },
+  "graph": {
+    "start": "n000",
+    "steps": [
+      {
+        "id": "n000",
+        "type": "entry",
+        "sourceType": "trigger",
+        "title": "trigger",
+        "content": {
+          "text": "When\nSomeone mentions you in a story\nFILTER STORIES\nAny story that mentions you",
+          "preview": "When\nSomeone mentions you in a story\nFILTER STORIES\nAny story that mentions you",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n000",
+          "source_id": "trigger",
+          "editor_source_id": "trigger",
+          "source_type": "trigger",
+          "observed": {
+            "level": "public_graph",
+            "text": "When\nSomeone mentions you in a story\nFILTER STORIES\nAny story that mentions you",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "When\nSomeone mentions you in a story\nFILTER STORIES\nAny story that mentions you\nAdd trigger",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": "Close",
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Add trigger",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/story_mention",
+                "signature": "sha256:1e0711002b786c7834d91045da5c2916ba5fe1fd02be8a4d26cf5a29e0c2723b",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "trigger",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/0",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n001",
+        "type": "delay",
+        "sourceType": "delay",
+        "title": "delay",
+        "content": {
+          "text": "Wait 1 minutes",
+          "preview": "Wait 1 minutes",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n001",
+          "source_id": "438678",
+          "editor_source_id": "455013",
+          "source_type": "delay",
+          "observed": {
+            "level": "public_graph",
+            "text": "Wait 1 minutes",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Wait\nWait\nseconds\nminutes\nhours\ndays",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "number",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "1",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "seconds\nminutes\nhours\ndays",
+                "index": 1,
+                "label": null,
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": true,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": false,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "minutes",
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": []
+          },
+          "outcome_type": "delay",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/1",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n002",
+        "type": "action",
+        "sourceType": "like",
+        "title": "like",
+        "content": {
+          "text": "❤️\nLike message",
+          "preview": "❤️\nLike message",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n002",
+          "source_id": "438679",
+          "editor_source_id": "455014",
+          "source_type": "like",
+          "observed": {
+            "level": "public_graph",
+            "text": "❤️\nLike message",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "❤️\nLike message",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": []
+          },
+          "outcome_type": "like",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": true,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/2",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n003",
+        "type": "group",
+        "sourceType": "folder",
+        "title": "folder",
+        "content": {
+          "text": "Add contact to folder(s)\nThanks: mentioned…",
+          "preview": "Add contact to folder(s)\nThanks: mentioned…",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n003",
+          "source_id": "438680",
+          "editor_source_id": "455015",
+          "source_type": "folder",
+          "observed": {
+            "level": "public_graph",
+            "text": "Add contact to folder(s)\nThanks: mentioned…",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+            "fields": [
+              {
+                "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                "index": 0,
+                "label": null,
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "add",
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Pick a folder",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/folder_picker",
+                "signature": "sha256:09ff0cb835bbc779821737be4a998679f0a18aa44e867dcbc9c77e09f827da15",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "folder",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [
+            "dep-n003"
+          ],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": {
+            "source_action": "Add contact to folder(s)",
+            "source_labels": [
+              "Thanks: mentioned…"
+            ],
+            "source_labels_state": "observed_truncated",
+            "source_resource_ids": [],
+            "source_binding_state": "unknown_not_exposed",
+            "clone_labels": [],
+            "clone_binding_state": "observed_unset",
+            "required_client_binding": "client.folder_binding.n003",
+            "recovery_evidence": "evidence/folder-label-recovery.json#/nodes/2"
+          }
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/3",
+          "derived": null,
+          "evidence": []
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "e000",
+        "from": "n000",
+        "to": "n001",
+        "label": "",
+        "settings": {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "source_label": "Edge from trigger to 438678",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/0"
+        }
+      },
+      {
+        "id": "e001",
+        "from": "n001",
+        "to": "n002",
+        "label": "",
+        "settings": {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "source_label": "Edge from 438678 to 438679",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/1"
+        }
+      },
+      {
+        "id": "e002",
+        "from": "n002",
+        "to": "n003",
+        "label": "",
+        "settings": {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "source_label": "Edge from 438679 to 438680",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/2"
+        }
+      }
+    ]
+  },
+  "setup": [],
+  "annotations": []
+}

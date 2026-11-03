@@ -1,0 +1,942 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "webinar-inro-6049",
+    "name": "Webinar access after a completed survey",
+    "source_ids": [
+      "inro-6049"
+    ],
+    "entry": "webinar comment or DM",
+    "mandatory_conditions": [
+      "Press the opening button",
+      "Complete the survey before access",
+      "Remind after the link click"
+    ],
+    "outcome": "Webinar access after survey completion",
+    "timing": [
+      "After click: 6 days; no click or survey: 3 days; opening button: 2 hours."
+    ],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "comment",
+      "dm-ai",
+      "buttons",
+      "external",
+      "timers",
+      "click",
+      "graph"
+    ],
+    "assessment": {
+      "status": "unavailable",
+      "reason": "No external survey-completion event or exact timers are exposed. Sending a registration link does not establish a completed survey.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "No external survey-completion event or exact timers are exposed. Sending a registration link does not establish a completed survey.",
+        "result": "With owner approval: send the registration link without confirming completion. Continue survey/access setup in the existing event service.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "inro-6049": "A registration link does not establish survey completion."
+    },
+    "client_inputs": [],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6049"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [],
+      "binding_review": {
+        "source_entry": "webinar comment or DM",
+        "source_outcome": "Webinar access after survey completion",
+        "mandatory_conditions": [
+          "Press the opening button",
+          "Complete the survey before access",
+          "Remind after the link click"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 0,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "Webinar access requires verified completion of an external survey. Two AI questions cannot prove that completion; a verified completion integration is missing.",
+        "primary_result": "Webinar access after survey completion",
+        "source_requirements": [
+          "Press the opening button",
+          "Complete the survey before access",
+          "Remind after the link click"
+        ],
+        "source_timing": [
+          "After click: 6 days; no click or survey: 3 days; opening button: 2 hours."
+        ],
+        "blocking_dependencies": [
+          "external"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Turn Instagram interest into event sign-ups and access.",
+  "fit": "Hosts promoting a webinar, workshop or event.",
+  "preparation_status": "waiting_for_chatfuel",
+  "function_review": {
+    "status": "waiting_for_chatfuel",
+    "reason": "Webinar access requires verified completion of an external survey. Two AI questions cannot prove that completion; a verified completion integration is missing.",
+    "primary_result": "Webinar access after survey completion",
+    "source_requirements": [
+      "Press the opening button",
+      "Complete the survey before access",
+      "Remind after the link click"
+    ],
+    "source_timing": [
+      "After click: 6 days; no click or survey: 3 days; opening button: 2 hours."
+    ],
+    "blocking_dependencies": [
+      "external"
+    ],
+    "retained": [],
+    "omitted": [],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "buttons",
+    "external",
+    "timers",
+    "click",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "inro-6049",
+      "source_file": "source-records/inro-6049.json",
+      "source_title": "Get Webinar Sign-Ups",
+      "start": "n000",
+      "nodes": [
+        {
+          "id": "n000",
+          "source_type": "trigger",
+          "content": {
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\nwebinar\nWhen\nSomeone sends you a DM\nFILTER MESSAGES\nContains keyword(s)\nwebinar",
+            "preview": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\nwebinar\nWhen\nSomeone sends you a DM\nFILTER MESSAGES\nContains keyword(s)\nwebinar",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment",
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "7c8da9ff8659e1d85df03098b65412faac132b71583dfa8843db91bd73ef0b72",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n001",
+          "source_type": "button_template",
+          "content": {
+            "text": "Hey! So happy to see you here 🔥 Do you want to join my webinar?\nSign me up 🙌🏻",
+            "preview": "Hey! So happy to see you here 🔥 Do you want to join my webinar?\nSign me up 🙌🏻",
+            "buttons": [
+              "Sign me up 🙌🏻"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved alternative text or choice words"
+          ],
+          "reason": "Rich buttons/callbacks are not normal MCP fields. A text-choice adaptation needs approval; never treat it as the captured button event.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "70731c76ea1ac6ae3fbba55fb56a222b178c25c6268fc87edfaddcda69e317e1",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n002",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN BUTTON IS CLICKED\nSign me up 🙌🏻",
+            "preview": "WHEN BUTTON IS CLICKED\nSign me up 🙌🏻",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "cccc50043ab7ecec2ef500f8ca89527e13c85782f01c72aaacf6370d14f9aa6f",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n003",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nwebinar leads",
+            "preview": "Add contact to folder(s)\nwebinar leads",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "220fc18e302fbbbdf5187a59127168ef06caec9fe9ddb441c97790a62688de98",
+          "settings_leaf_count": 40
+        },
+        {
+          "id": "n004",
+          "source_type": "survey",
+          "content": {
+            "text": "Webinar 10.10 💫\nFill this survey to access the webinar\nFill it",
+            "preview": "Webinar 10.10 💫\nFill this survey to access the webinar\nFill it",
+            "buttons": [
+              "Fill it"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "external"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "survey destination and completion evidence"
+          ],
+          "reason": "A link does not prove external form completion. Keep access-after-completion as an unresolved mandatory dependency.",
+          "unsupported": [
+            "buttons",
+            "external"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "918950693ca6f3328ba18abb144aae12846ccc73798d66f70b16af1c4db05ee1",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n005",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN SURVEY IS FILLED",
+            "preview": "WHEN SURVEY IS FILLED",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "deb2c00875a9f3f43d6230760414c885834201e640a712072b039a75eb3941be",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n006",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nwebinar attendee",
+            "preview": "Add contact to folder(s)\nwebinar attendee",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/6/settings",
+          "settings_sha256": "7d063c649ceeb5f17bc9124f39e9fbcfd795f8b22a0437c5fb4290e4bc0cecc0",
+          "settings_leaf_count": 40
+        },
+        {
+          "id": "n007",
+          "source_type": "message",
+          "content": {
+            "text": "Amazing! Here it comes...",
+            "preview": "Amazing! Here it comes...",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/7/settings",
+          "settings_sha256": "c67eb1018dfba42f64cd5e96682cf531cabd3b0f649c5897ed102a2415469b59",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n008",
+          "source_type": "conversion_link",
+          "content": {
+            "text": "Watch my Webinar here ✨\nLearn how to grow your IG.\nWatch it now 🔗",
+            "preview": "Watch my Webinar here ✨\nLearn how to grow your IG.\nWatch it now 🔗",
+            "buttons": [],
+            "media": [
+              "https://app.inro.social/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOGo5TUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--dcef1ec4a311a010f271d289a5505ae5c9d0cc8b/Instagram%20post%20-%202.png"
+            ],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved URL and recipient access"
+          ],
+          "reason": "Delivering a text URL is possible; click/no-click events and external completion are not established.",
+          "unsupported": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/8/settings",
+          "settings_sha256": "ece78730f6466d6fe55ca02f478ed7dad3a879ff25055184289ed9c5c06eba50",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n009",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN LINK IS CLICKED",
+            "preview": "WHEN LINK IS CLICKED",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/9/settings",
+          "settings_sha256": "f19f91afe8ee7be6b61a9a9ec4fd3e9776fec66fda5cd5de135e982321ec8aa6",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n010",
+          "source_type": "delay",
+          "content": {
+            "text": "Wait 6 days",
+            "preview": "Wait 6 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved timing change"
+          ],
+          "reason": "Retain the exact captured delay; no numeric per-step timer in ordinary MCP.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/10/settings",
+          "settings_sha256": "729586b6bd367ba975223d3406f673082ba1caa233e3cbc2bce0343d17816051",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n011",
+          "source_type": "message",
+          "content": {
+            "text": "Hey! The webinar is happening soon. You can access through the link above",
+            "preview": "Hey! The webinar is happening soon. You can access through the link above",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/11/settings",
+          "settings_sha256": "9b9a84b93d580f009424718aed1b5b29de70999994f9873e00171ba34c93fb5b",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n012",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "preview": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/12/settings",
+          "settings_sha256": "77727a598a85045b514d5bd5292e7ad3bd5c2eba9f949b7cf4bebff176d07cfd",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n013",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF SURVEY HASN'T BEEN FILLED AFTER\n3 days",
+            "preview": "IF SURVEY HASN'T BEEN FILLED AFTER\n3 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/13/settings",
+          "settings_sha256": "7818e0167298a285cc212f351602bab01c007e2575ca97be82c3c1473840c9b7",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n014",
+          "source_type": "message",
+          "content": {
+            "text": "Hey! The webinar is happening soon! Don't forget to sign up",
+            "preview": "Hey! The webinar is happening soon! Don't forget to sign up",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/14/settings",
+          "settings_sha256": "4feb7a752911c05d3295e5de202607b99ab9fc824a040474497014612c1478c0",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n015",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n2 hours",
+            "preview": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n2 hours",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/15/settings",
+          "settings_sha256": "6e160bd20a7c979f825018fcb8db35ac1dc8156fb5d7f410f78da90cd90f0ea9",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n016",
+          "source_type": "message",
+          "content": {
+            "text": "Hey! Don't forget to click on the button to access my webinar! It's only available for 3 more days.",
+            "preview": "Hey! Don't forget to click on the button to access my webinar! It's only available for 3 more days.",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/16/settings",
+          "settings_sha256": "1be83d5047f987b8d253b31cf536a45b44a0e42f0542a32d24a9f4432a4770bb",
+          "settings_leaf_count": 32
+        }
+      ],
+      "transitions": [
+        {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "label": "",
+          "settings": {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 60049",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/0"
+          }
+        },
+        {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "label": "",
+          "settings": {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 60049 to 60049_option_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/1"
+          }
+        },
+        {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "label": "WHEN BUTTON IS CLICKED\nSign me up 🙌🏻",
+          "settings": {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 60049_option_0 to 60050",
+            "source_port": "60049_option_0",
+            "condition_text": "WHEN BUTTON IS CLICKED\nSign me up 🙌🏻",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/2"
+          }
+        },
+        {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "label": "",
+          "settings": {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 60050 to 60395",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/3"
+          }
+        },
+        {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "label": "",
+          "settings": {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 60395 to 60395_option_filled",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/4"
+          }
+        },
+        {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "label": "WHEN SURVEY IS FILLED",
+          "settings": {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 60395_option_filled to 60397",
+            "source_port": "60395_option_filled",
+            "condition_text": "WHEN SURVEY IS FILLED",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/5"
+          }
+        },
+        {
+          "id": "e006",
+          "from": "n006",
+          "to": "n007",
+          "label": "",
+          "settings": {
+            "id": "e006",
+            "from": "n006",
+            "to": "n007",
+            "source_label": "Edge from 60397 to 60054",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/6"
+          }
+        },
+        {
+          "id": "e007",
+          "from": "n007",
+          "to": "n008",
+          "label": "",
+          "settings": {
+            "id": "e007",
+            "from": "n007",
+            "to": "n008",
+            "source_label": "Edge from 60054 to 60055",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/7"
+          }
+        },
+        {
+          "id": "e008",
+          "from": "n008",
+          "to": "n009",
+          "label": "",
+          "settings": {
+            "id": "e008",
+            "from": "n008",
+            "to": "n009",
+            "source_label": "Edge from 60055 to 60055_option_clicked",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/8"
+          }
+        },
+        {
+          "id": "e009",
+          "from": "n009",
+          "to": "n010",
+          "label": "WHEN LINK IS CLICKED",
+          "settings": {
+            "id": "e009",
+            "from": "n009",
+            "to": "n010",
+            "source_label": "Edge from 60055_option_clicked to 60398",
+            "source_port": "60055_option_clicked",
+            "condition_text": "WHEN LINK IS CLICKED",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/9"
+          }
+        },
+        {
+          "id": "e010",
+          "from": "n010",
+          "to": "n011",
+          "label": "",
+          "settings": {
+            "id": "e010",
+            "from": "n010",
+            "to": "n011",
+            "source_label": "Edge from 60398 to 60399",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/10"
+          }
+        },
+        {
+          "id": "e011",
+          "from": "n008",
+          "to": "n012",
+          "label": "",
+          "settings": {
+            "id": "e011",
+            "from": "n008",
+            "to": "n012",
+            "source_label": "Edge from 60055 to 60055_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/11"
+          }
+        },
+        {
+          "id": "e012",
+          "from": "n004",
+          "to": "n013",
+          "label": "",
+          "settings": {
+            "id": "e012",
+            "from": "n004",
+            "to": "n013",
+            "source_label": "Edge from 60395 to 60395_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/12"
+          }
+        },
+        {
+          "id": "e013",
+          "from": "n013",
+          "to": "n014",
+          "label": "IF SURVEY HASN'T BEEN FILLED AFTER\n3 days",
+          "settings": {
+            "id": "e013",
+            "from": "n013",
+            "to": "n014",
+            "source_label": "Edge from 60395_option_expired to 60396",
+            "source_port": "60395_option_expired",
+            "condition_text": "IF SURVEY HASN'T BEEN FILLED AFTER\n3 days",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/13"
+          }
+        },
+        {
+          "id": "e014",
+          "from": "n001",
+          "to": "n015",
+          "label": "",
+          "settings": {
+            "id": "e014",
+            "from": "n001",
+            "to": "n015",
+            "source_label": "Edge from 60049 to 60049_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/14"
+          }
+        },
+        {
+          "id": "e015",
+          "from": "n015",
+          "to": "n016",
+          "label": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n2 hours",
+          "settings": {
+            "id": "e015",
+            "from": "n015",
+            "to": "n016",
+            "source_label": "Edge from 60049_option_expired to 60058",
+            "source_port": "60049_option_expired",
+            "condition_text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n2 hours",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/15"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [],
+      "source_settings_sha256": "15afe19352d52a8c1a89836129270279af90839ee1f77e8cf81e37f575004d3a",
+      "source_leaf_count": 925,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [],
+  "continuations": {
+    "inro-6049": [
+      {
+        "id": "event",
+        "title": "Finish event registration",
+        "scope": "Use to finish registration in the existing event service. Do not add a marketing subscription unless separately requested.",
+        "inputs": [
+          "Event service, form and URL",
+          "Event date and time zone",
+          "Required registration fields and consent",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish event registration.\nSelected source: inro-6049 - Get Webinar Sign-Ups.\nGoal: Turn Instagram interest into event sign-ups and access.\nVariant: Webinar access after a completed survey\nScope: Use to finish registration in the existing event service. Do not add a marketing subscription unless separately requested.\nSource entry: webinar comment or DM\nSource requirements: Press the opening button; Complete the survey before access; Remind after the link click\nSource timing: After click: 6 days; no click or survey: 3 days; opening button: 2 hours.\nSource outcome: Webinar access after survey completion\nCaptured text (n001, not approved campaign copy):\nHey! So happy to see you here 🔥 Do you want to join my webinar?\nSign me up 🙌🏻\nCurrent setup decision: waiting_for_chatfuel. Webinar access requires verified completion of an external survey. Two AI questions cannot prove that completion; a verified completion integration is missing.\nPrimary Chatfuel result: Webinar access after survey completion\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing form or webinar service and the selected event.\nAsk me for: Event service, form and URL; Event date and time zone; Required registration fields and consent; Existing authorized access.\n1. Confirm the event and authorized access. Draft the registration form and map only its required fields. Event registration consent does not imply email or SMS marketing consent.\n2. Retain required versus optional email/phone distinctions. If the Chatfuel variant delivers the link before optional email, disclose that change; do not claim the original contact gate remains.\n3. Define success as a registration record in the event service, separately from delivery or clicks. If reminders depend on external completion or exact timing, identify a verified existing connection and its semantics or leave that dependency unresolved. Return draft settings and next access steps; do not register attendees or send reminders.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ]
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/inro-6049.json": "e5953f97080dbd72c414850b5d3dcc849f447647c2565393594c02322ec56b17",
+    "described-recipes/inro-6049.json": "4571115c1c61f5e4b720486a5f4cbe58d2e04fd54c872682182ffa72f2949977"
+  }
+}

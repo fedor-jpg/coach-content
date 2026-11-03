@@ -1,0 +1,1070 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "offers-manychat-66",
+    "name": "Story offer: reveal a coupon",
+    "source_ids": [
+      "manychat-66"
+    ],
+    "entry": "Keyword reply to a Story",
+    "mandatory_conditions": [
+      "Press the coupon-reveal button"
+    ],
+    "outcome": "The MYBDAYGIFT coupon",
+    "timing": [],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "story",
+      "dm-ai",
+      "buttons"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "Replace Story entry with DM and a text request for the code. The button and verified Story origin are lost.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Replace Story entry with DM and a text request for the code. The button and verified Story origin are lost.",
+        "result": "AI replies with the code. A date in copy does not establish automatic expiration.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "manychat-66": "No specific Story was selected. All Stories was restored; a date in copy is not an expiration timer."
+    },
+    "client_inputs": [
+      "story",
+      "keyword",
+      "coupon",
+      "validity policy",
+      "destination"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "source_based_draft",
+      "analogue_ids": [],
+      "draft": {
+        "modes": [
+          "D"
+        ],
+        "inputs": [
+          "campaign",
+          "language",
+          "keyword",
+          "coupon_code",
+          "coupon_terms",
+          "refusal_text"
+        ],
+        "initial": "Your code is {coupon_code}. {coupon_terms}",
+        "instruction": "After the actual approved DM keyword, give the approved code and terms. Do not claim a verified Story reply, button callback or automatic expiry. On refusal send {refusal_text} and stop.",
+        "contact_requirement": null
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [],
+      "binding_review": {
+        "source_entry": "Keyword reply to a Story",
+        "source_outcome": "The MYBDAYGIFT coupon",
+        "mandatory_conditions": [
+          "Press the coupon-reveal button"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 0,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "This scenario starts from a Story reply. Ordinary MCP cannot configure the Story-specific entry. An ordinary DM keyword would be a different entry, not this setup.",
+        "primary_result": "The MYBDAYGIFT coupon",
+        "source_requirements": [
+          "Press the coupon-reveal button"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "story"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Deliver a relevant product offer or coupon while interest is high.",
+  "fit": "Shops and creators using comments, Stories or Lives to promote an offer.",
+  "preparation_status": "waiting_for_chatfuel",
+  "function_review": {
+    "status": "waiting_for_chatfuel",
+    "reason": "This scenario starts from a Story reply. Ordinary MCP cannot configure the Story-specific entry. An ordinary DM keyword would be a different entry, not this setup.",
+    "primary_result": "The MYBDAYGIFT coupon",
+    "source_requirements": [
+      "Press the coupon-reveal button"
+    ],
+    "source_timing": [],
+    "blocking_dependencies": [
+      "story"
+    ],
+    "retained": [],
+    "omitted": [],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "story",
+    "buttons"
+  ],
+  "sources": [
+    {
+      "source_id": "manychat-66",
+      "source_file": "source-records/manychat-66.json",
+      "source_title": "Give coupons in stories",
+      "start": "trigger",
+      "nodes": [
+        {
+          "id": "trigger",
+          "source_type": "trigger",
+          "content": {
+            "text": "",
+            "preview": "Story Reply #1\n\nAdd text: coupon\n\nValue: on",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai",
+            "story"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [
+            "story"
+          ],
+          "known_fields": [
+            {
+              "path": "/panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "coupon",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/1/fields/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "1039595a32996658561dc31051a76bd67441264c975b0bd7f2b649325d4d96b8",
+          "settings_leaf_count": 157
+        },
+        {
+          "id": "node-0",
+          "source_type": "message",
+          "content": {
+            "text": "Guess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!",
+            "preview": "Guess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!",
+            "buttons": [
+              "Reveal Code 👀"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Guess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Reveal Code 👀",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "90ee5d361416badce64f5b819d729f8d671b4875baed77b9ae5fa5534719d44f",
+          "settings_leaf_count": 141
+        },
+        {
+          "id": "node-1",
+          "source_type": "message",
+          "content": {
+            "text": "Use coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!",
+            "preview": "Use coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!",
+            "buttons": [
+              "Shop Now 🛍"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Use coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Shop Now 🛍",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "yourwebsite.comm",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Additional actions",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "9fae84dd91efa0085d8e069898b5adddb2c11d3655b1a82ca60265dc5d98d3b5",
+          "settings_leaf_count": 187
+        }
+      ],
+      "transitions": [
+        {
+          "id": "edge-0",
+          "from": "node-0",
+          "to": "node-1",
+          "label": "Reveal Code 👀",
+          "settings": {
+            "from": "node-0",
+            "to": "node-1",
+            "port_exact": "button-0",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [
+              "0a4cf342-4c87-49c9-a92c-822cc9a3bfe5"
+            ],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-0.button-0.target",
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/0"
+          }
+        },
+        {
+          "id": "edge-1",
+          "from": "trigger",
+          "to": "node-0",
+          "label": "Starting Step",
+          "settings": {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/graph/edges/1"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/1"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/instance/nodes/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Guess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Reveal Code 👀",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Use coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Shop Now 🛍",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.comm",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Make sure you update this button URL so it opens to your website!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "This is the first message a follower sees in their DMs. Personalize this message so your follower is excited to click to the next step. We use a button here.\n",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Your trigger here will be \"User replies to your Story\". You can change this to be any keyword you'd like!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "coupon",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Reveal Code 👀",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Use coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Shop Now 🛍",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.comm",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "coupon",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "React with ❤️ in response",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": "false",
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/1/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "coupon",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/1/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": "React with ❤️ in response",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": "false",
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/2/fields/0",
+          "phase": "restoration_check",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "coupon",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/2/fields/1",
+          "phase": "restoration_check",
+          "fields": {
+            "name": null,
+            "label": "React with ❤️ in response",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": "false",
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "6962fba80615d34e00d33bc35a3479e4ca0d2824c362d2187232add553255de9",
+      "source_leaf_count": 1299,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [],
+  "continuations": {
+    "manychat-66": [
+      {
+        "id": "checkout",
+        "title": "Finish the offer destination",
+        "scope": "Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.",
+        "inputs": [
+          "Offer and destination URL",
+          "Price or coupon terms",
+          "Access or fulfillment rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the offer destination.\nSelected source: manychat-66 - Give coupons in stories.\nGoal: Deliver a relevant product offer or coupon while interest is high.\nVariant: Story offer: reveal a coupon\nScope: Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.\nSource entry: Keyword reply to a Story\nSource requirements: Press the coupon-reveal button\nSource timing: No exact timer captured.\nSource outcome: The MYBDAYGIFT coupon\nCaptured text (node-0, not approved campaign copy):\nGuess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!\nCurrent setup decision: waiting_for_chatfuel. This scenario starts from a Story reply. Ordinary MCP cannot configure the Story-specific entry. An ordinary DM keyword would be a different entry, not this setup.\nPrimary Chatfuel result: The MYBDAYGIFT coupon\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing store, course platform or checkout named by the owner.\nAsk me for: Offer and destination URL; Price or coupon terms; Access or fulfillment rules; Existing authorized access.\n1. Confirm the existing destination and approved offer. Draft the product, coupon or course-access configuration only where it is needed; merely sharing an existing link needs no new integration.\n2. Check the page and define separate evidence for payment, coupon redemption and access delivery. Neither a DM link nor a source message promising expiry proves these outcomes. Keep unverified expiry or completion callbacks unresolved.\n3. Return draft settings, authorization gaps and exact success checks. Do not publish an offer, create a purchase, charge money or grant access.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ]
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-66.json": "5810354af62aa581d4e42055738ca744cc0ac2fe8e8745d260b124be7cec49af"
+  }
+}

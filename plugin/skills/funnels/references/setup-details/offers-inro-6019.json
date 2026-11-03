@@ -1,0 +1,1456 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "offers-inro-6019",
+    "name": "Welcome offer from a QR or referral link",
+    "source_ids": [
+      "inro-6019"
+    ],
+    "entry": "Referral-link click or QR entry",
+    "mandatory_conditions": [
+      "Press the confirmation button"
+    ],
+    "outcome": "A welcome coupon",
+    "timing": [
+      "Opening button: 6 hours."
+    ],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "ref-link",
+      "dm-ai",
+      "buttons",
+      "timers",
+      "graph"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "Replace QR/referral entry with an ordinary DM; remove the button, folder and wait. Visit attribution is lost.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Replace QR/referral entry with an ordinary DM; remove the button, folder and wait. Visit attribution is lost.",
+        "result": "AI shares a coupon on request without confirming a visit or redemption.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "inro-6019": "QR scanning and coupon redemption need separate confirmation."
+    },
+    "client_inputs": [],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6019"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [],
+      "binding_review": {
+        "source_entry": "Referral-link click or QR entry",
+        "source_outcome": "A welcome coupon",
+        "mandatory_conditions": [
+          "Press the confirmation button"
+        ],
+        "source_contact_policy": [
+          "Press the confirmation button"
+        ],
+        "plan_count": 0,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The referral-link or QR entry is not configurable through ordinary MCP. A manually configured scope or an ordinary DM keyword is not a new-account setup for this scenario.",
+        "primary_result": "A welcome coupon",
+        "source_requirements": [
+          "Press the confirmation button"
+        ],
+        "source_timing": [
+          "Opening button: 6 hours."
+        ],
+        "blocking_dependencies": [
+          "ref-link"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Deliver a relevant product offer or coupon while interest is high.",
+  "fit": "Shops and creators using comments, Stories or Lives to promote an offer.",
+  "preparation_status": "waiting_for_chatfuel",
+  "function_review": {
+    "status": "waiting_for_chatfuel",
+    "reason": "The referral-link or QR entry is not configurable through ordinary MCP. A manually configured scope or an ordinary DM keyword is not a new-account setup for this scenario.",
+    "primary_result": "A welcome coupon",
+    "source_requirements": [
+      "Press the confirmation button"
+    ],
+    "source_timing": [
+      "Opening button: 6 hours."
+    ],
+    "blocking_dependencies": [
+      "ref-link"
+    ],
+    "retained": [],
+    "omitted": [],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "ref-link",
+    "buttons",
+    "timers",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "inro-6019",
+      "source_file": "source-records/inro-6019.json",
+      "source_title": "Welcome new customers from a QR code",
+      "start": "n000",
+      "nodes": [
+        {
+          "id": "n000",
+          "source_type": "trigger",
+          "content": {
+            "text": "When\nSomeone clicks a referral link",
+            "preview": "When\nSomeone clicks a referral link",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai",
+            "ref-link"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [
+            "ref-link"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "WELCOME",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "51b16120f7b5b9b2fdeb79210e8f7c662f1dc9ee02ed1a5476dd388a444ccec8",
+          "settings_leaf_count": 71
+        },
+        {
+          "id": "n001",
+          "source_type": "button_template",
+          "content": {
+            "text": "Welcome! Want 10% off? Tap below for your code.\nGet my code",
+            "preview": "Welcome! Want 10% off? Tap below for your code.\nGet my code",
+            "buttons": [
+              "Get my code"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved alternative text or choice words"
+          ],
+          "reason": "Rich buttons/callbacks are not normal MCP fields. A text-choice adaptation needs approval; never treat it as the captured button event.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/settings_panels/0/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "Welcome! Want 10% off? Tap below for your code.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Get my code",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "Welcome! Want 10% off? Tap below for your code.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Get my code",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "url",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "switch",
+                "value": false,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "Welcome! Want 10% off? Tap below for your code.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Get my code",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "url",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "switch",
+                "value": false,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/1/panel/fields/4",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "2be44b05d693885d1bc0bf78d95eb735d6a1594adc82100e17ffc8caba233e27",
+          "settings_leaf_count": 261
+        },
+        {
+          "id": "n002",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN BUTTON IS CLICKED\nGet my code",
+            "preview": "WHEN BUTTON IS CLICKED\nGet my code",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "dc1e6aca25a00fb6cdefb0edac64fa1d1220d257073db1bed417e83badf51515",
+          "settings_leaf_count": 35
+        },
+        {
+          "id": "n003",
+          "source_type": "message",
+          "content": {
+            "text": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+            "preview": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "1fd329591d7b440f74b2c7e86671790b95f3c360dea47b503aca7e381902db77",
+          "settings_leaf_count": 61
+        },
+        {
+          "id": "n004",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nWelcome offer: sen…",
+            "preview": "Add contact to folder(s)\nWelcome offer: sen…",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "add",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "add"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "remove"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "8f5e1e9e5c5a16c4a2e38a34e14e94aff29f96287a350d14e401d83915c81b94",
+          "settings_leaf_count": 74
+        },
+        {
+          "id": "n005",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n6 hours",
+            "preview": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n6 hours",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "number",
+                "value": "6",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "hours",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/2",
+              "phase": "captured",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/3",
+              "phase": "captured",
+              "fields": {
+                "value": "days"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "1c0578b71724dac284c9facca3246f18859a9f5cdc93a0fcd9a1df5dc5c5f949",
+          "settings_leaf_count": 81
+        }
+      ],
+      "transitions": [
+        {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "label": "",
+          "settings": {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 438614",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/0"
+          }
+        },
+        {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "label": "",
+          "settings": {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 438614 to 438614_option_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/1"
+          }
+        },
+        {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "label": "WHEN BUTTON IS CLICKED\nGet my code",
+          "settings": {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 438614_option_0 to 438615",
+            "source_port": "438614_option_0",
+            "condition_text": "WHEN BUTTON IS CLICKED\nGet my code",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/2"
+          }
+        },
+        {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "label": "",
+          "settings": {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 438615 to 438616",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/3"
+          }
+        },
+        {
+          "id": "e004",
+          "from": "n001",
+          "to": "n005",
+          "label": "",
+          "settings": {
+            "id": "e004",
+            "from": "n001",
+            "to": "n005",
+            "source_label": "Edge from 438614 to 438614_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/4"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/graph/nodes/0/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "WELCOME",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/settings_panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "Welcome! Want 10% off? Tap below for your code.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/settings_panels/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Get my code",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/0/panel/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "Welcome! Want 10% off? Tap below for your code.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/0/panel/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Get my code",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/0/panel/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "url",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/0/panel/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "switch",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/1/panel/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "Welcome! Want 10% off? Tap below for your code.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/1/panel/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Get my code",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/1/panel/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "url",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/1/panel/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "switch",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/1/panel/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/3/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "add",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": true,
+                "text": "Add contact to folder(s)",
+                "value": "add"
+              },
+              {
+                "selected": false,
+                "text": "Remove contact from folder(s)",
+                "value": "remove"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/0/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "add"
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/0/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "remove"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "6",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/editor_observed/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "hours",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "days",
+                "value": "days"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/editor_observed/fields/1/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/editor_observed/fields/1/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/editor_observed/fields/1/options/2",
+          "phase": "captured",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/editor_observed/fields/1/options/3",
+          "phase": "captured",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Welcome new customers from a QR code",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "once",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": true,
+                "text": "once",
+                "value": "once"
+              },
+              {
+                "selected": false,
+                "text": "once every",
+                "value": "once_every"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/2/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "once"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/2/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "once_every"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Welcome new customers from a QR code",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/2/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Welcome new customers from a QR code",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "44ee9b6db82809e283af40c86d4badcbbf6c33bbb8e61558810711bf2dd42ed9",
+      "source_leaf_count": 856,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [],
+  "continuations": {
+    "inro-6019": [
+      {
+        "id": "checkout",
+        "title": "Finish the offer destination",
+        "scope": "Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.",
+        "inputs": [
+          "Offer and destination URL",
+          "Price or coupon terms",
+          "Access or fulfillment rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the offer destination.\nSelected source: inro-6019 - Welcome new customers from a QR code.\nGoal: Deliver a relevant product offer or coupon while interest is high.\nVariant: Welcome offer from a QR or referral link\nScope: Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.\nSource entry: Referral-link click or QR entry\nSource requirements: Press the confirmation button\nSource timing: Opening button: 6 hours.\nSource outcome: A welcome coupon\nCaptured text (n001, not approved campaign copy):\nWelcome! Want 10% off? Tap below for your code.\nGet my code\nCurrent setup decision: waiting_for_chatfuel. The referral-link or QR entry is not configurable through ordinary MCP. A manually configured scope or an ordinary DM keyword is not a new-account setup for this scenario.\nPrimary Chatfuel result: A welcome coupon\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing store, course platform or checkout named by the owner.\nAsk me for: Offer and destination URL; Price or coupon terms; Access or fulfillment rules; Existing authorized access.\n1. Confirm the existing destination and approved offer. Draft the product, coupon or course-access configuration only where it is needed; merely sharing an existing link needs no new integration.\n2. Check the page and define separate evidence for payment, coupon redemption and access delivery. Neither a DM link nor a source message promising expiry proves these outcomes. Keep unverified expiry or completion callbacks unresolved.\n3. Return draft settings, authorization gaps and exact success checks. Do not publish an offer, create a purchase, charge money or grant access.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ]
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/inro-6019.json": "b9e87a10886bec0b85f7594f8e0a19a2d3fa138ee48ba4b586a7b63420cf6484",
+    "described-recipes/inro-6019.json": "24fba558e2d45df7dab8e06691e709464e59e70a9c744aacebd49504c7924912"
+  }
+}

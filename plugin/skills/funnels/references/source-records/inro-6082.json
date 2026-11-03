@@ -1,0 +1,2055 @@
+{
+  "id": "inro-6082",
+  "source": {
+    "vendor": "inro",
+    "file": "templates/inro-6082.json",
+    "title": "Thank fans who love your posts",
+    "category": "Engage your audience",
+    "facets": [
+      "Engage your audience",
+      "acknowledgment",
+      "Comments"
+    ],
+    "job": "acknowledgment",
+    "model": "source_graph",
+    "document": {
+      "schema_version": "0.1.0",
+      "id": "inro-6082",
+      "ordinal": 6,
+      "title": "Thank fans who love your posts",
+      "source_category": "Engage your audience",
+      "source": {
+        "catalog_url": "https://app.inro.social/automation",
+        "preview_url": "https://app.inro.social/public/scenarios/6082",
+        "public_template_id": "6082",
+        "observed_at": "2026-10-30",
+        "source_version": null,
+        "capture_sha256": "26e8b622812dac2f5beb8057ca3d1990521ae599ad71308b950451d34911a889",
+        "editor_url": "https://app.inro.social/automation/scenarios/38333",
+        "editor_inactive_verified": true,
+        "official_export": false
+      },
+      "classification": {
+        "basis": "product_interpretation",
+        "job_family": "acknowledgment",
+        "route": "public_thanks",
+        "desired_business_event": "fan_acknowledged",
+        "trigger_classes": [
+          "comment"
+        ]
+      },
+      "selection": {
+        "basis": "product_interpretation",
+        "use_when": [
+          "Acknowledge positive public comments with a delayed public reply."
+        ],
+        "avoid_when": [
+          "Do not add a sales DM when the job is only acknowledgment.",
+          "Do not silently drop an essential unsupported gate."
+        ],
+        "required_facts": [
+          "Positive keyword set, reply variants and anti-spam policy.",
+          "Confirm account scope, messaging permission and the real outcome measurement."
+        ]
+      },
+      "trigger_labels": [
+        "Comments"
+      ],
+      "triggers": [
+        {
+          "node_id": "n000",
+          "exact_visible_text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\n❤️\n😍\n🔥\n+7",
+          "settings_panels": [
+            {
+              "name": null,
+              "text": "Select the posts\nAutomation will only trigger on these posts\nWhich posts do you want to use?\nAll posts\nEdit\nThe automation will trigger on all your posts, including future ones\nAll posts\ncomment with keyword ❤️ or 😍 or 🔥 or 👏 or 🙌 or love this or love it or amazing or beautiful or so good\n18\nContinue\nStep 1 of 2",
+              "fields": [
+                {
+                  "context": "All posts",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                }
+              ]
+            },
+            {
+              "name": null,
+              "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should trigger the automation?\nComments with keyword(s)\nEdit\nUppercase and accents are ignored and you can use emojis.\nNo recent comments match your keywords on the selected posts\nAlso trigger on replies to comments\nExclude hateful and negative comments\nAI\nAll posts\ncomment with keyword ❤️ or 😍 or 🔥 or 👏 or 🙌 or love this or love it or amazing or beautiful or so good\n18\nSave\nBack\nStep 2 of 2",
+              "fields": [
+                {
+                  "context": "Comments with keyword(s)",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "❤️",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 2,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "😍",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 3,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "🔥",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 4,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "👏",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 5,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "🙌",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 6,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "love this",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 7,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "love it",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 8,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "amazing",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 9,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "beautiful",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 10,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "so good",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Also trigger on replies to comments",
+                  "index": 11,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "checkbox",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Exclude hateful and negative comments",
+                  "index": 12,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "checkbox",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                }
+              ]
+            }
+          ],
+          "matching_complete": true
+        }
+      ],
+      "graph": {
+        "entry_node": "n000",
+        "nodes": [
+          {
+            "id": "n000",
+            "source_id": "trigger",
+            "editor_source_id": "trigger",
+            "source_type": "trigger",
+            "observed": {
+              "level": "public_graph",
+              "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\n❤️\n😍\n🔥\n+7",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\n❤️\n😍\n🔥\n+7\nAdd trigger",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "Close",
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Add trigger",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/comment_trigger",
+                  "signature": "sha256:ad3b6dd2dd041ad974102a0b2e218383303904fe495c26f515e4142e7f61ffe3",
+                  "matched": true
+                },
+                {
+                  "definition": "evidence/shared-control-options.json#/post_scope",
+                  "signature": "sha256:d634177ff53e0d7ddb6bd6c09187078c2ebe1745760a002d224f12d92b0c891a",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "trigger",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n001",
+            "source_id": "438675",
+            "editor_source_id": "455010",
+            "source_type": "delay",
+            "observed": {
+              "level": "public_graph",
+              "text": "Wait 1 minutes",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Wait\nWait\nseconds\nminutes\nhours\ndays",
+              "fields": [
+                {
+                  "context": null,
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "number",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "1",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "seconds\nminutes\nhours\ndays",
+                  "index": 1,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": false,
+                      "text": "seconds",
+                      "value": "seconds"
+                    },
+                    {
+                      "selected": true,
+                      "text": "minutes",
+                      "value": "minutes"
+                    },
+                    {
+                      "selected": false,
+                      "text": "hours",
+                      "value": "hours"
+                    },
+                    {
+                      "selected": false,
+                      "text": "days",
+                      "value": "days"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "minutes",
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": []
+            },
+            "outcome_type": "delay",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n002",
+            "source_id": "438676",
+            "editor_source_id": "455011",
+            "source_type": "comment",
+            "observed": {
+              "level": "public_graph",
+              "text": "Thank you so much!\nThanks, really appreciate it\nThank you! 🙂\nSo glad you liked it, thank you\nThanks for the kind words",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Reply to comment\nAdd comment variant\nA variant will be selected at random to avoid repetition\nRewrite comment automatically\nAI\nAvoid spam detection",
+              "fields": [
+                {
+                  "context": null,
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Type your comment",
+                  "tag": "textarea",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Thank you so much!",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Type your comment",
+                  "tag": "textarea",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Thanks, really appreciate it",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 2,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Type your comment",
+                  "tag": "textarea",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Thank you! 🙂",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 3,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Type your comment",
+                  "tag": "textarea",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "So glad you liked it, thank you",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 4,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Type your comment",
+                  "tag": "textarea",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Thanks for the kind words",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Rewrite comment automatically\nAI",
+                  "index": 5,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "checkbox",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Avoid spam detection",
+                  "index": 6,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "checkbox",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [
+                {
+                  "text": "",
+                  "url": "https://help.inro.social/en/articles/13770654-how-to-avoid-spam-detection"
+                }
+              ],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Add comment variant",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/comment_behavior",
+                  "signature": "sha256:5bed13d871919b1b8b36ccfd0c6754ca264833e8a49c09c667981c9d713d5be8",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "comment",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n003",
+            "source_id": "438677",
+            "editor_source_id": "455012",
+            "source_type": "folder",
+            "observed": {
+              "level": "public_graph",
+              "text": "Add contact to folder(s)\nThanks: praised us",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+              "fields": [
+                {
+                  "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                  "index": 0,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": true,
+                      "text": "Add contact to folder(s)",
+                      "value": "add"
+                    },
+                    {
+                      "selected": false,
+                      "text": "Remove contact from folder(s)",
+                      "value": "remove"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "add",
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Pick a folder",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/folder_picker",
+                  "signature": "sha256:58d23c0116ccc4de243099684003705bd2ebe68352539f052f63832c228b05e9",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "folder",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [
+              "dep-n003"
+            ],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": {
+              "source_action": "Add contact to folder(s)",
+              "source_labels": [
+                "Thanks: praised us"
+              ],
+              "source_labels_state": "observed_full",
+              "source_resource_ids": [],
+              "source_binding_state": "unknown_not_exposed",
+              "clone_labels": [],
+              "clone_binding_state": "observed_unset",
+              "required_client_binding": "client.folder_binding.n003",
+              "recovery_evidence": "evidence/folder-label-recovery.json#/nodes/1"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 438675",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 438675 to 438676",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 438676 to 438677",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          }
+        ],
+        "graph_source_complete": true,
+        "capture_audit": {
+          "rendered_node_count": 4,
+          "rendered_edge_count": 3,
+          "saved_node_count": 4,
+          "saved_edge_count": 3,
+          "counts_equal": true,
+          "reachable_nodes": 4,
+          "dangling_edges": 0,
+          "duplicate_node_ids": 0,
+          "limitations": [
+            "Complete relative to saved rendered DOM, not an official export or hidden server graph.",
+            "No outgoing rendered edge means an observed graph end, not proof of delivery or successful business outcome.",
+            "In the editor, Add a step placeholders were excluded from source-node matching; original public edges were retained."
+          ]
+        }
+      },
+      "scenario_settings": {
+        "panels": [
+          {
+            "name": "Limit frequency per contact",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nLimit how often this scenario can run for each contact\nLimit how often this scenario can run for each contact\nRun scenario only\nonce\nonce every\nseconds\nminutes\nhours\ndays\nweeks\nper contact\nInterrupt on message replies\nExclude specific folders\nTest scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Thank fans who love your posts",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Limit how often this scenario can run for each contact\nLimit how often this scenario can run for each contact",
+                "index": 1,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "button",
+                "type": "button",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": true,
+                "value_state": "observed_value"
+              },
+              {
+                "context": "once\nonce every",
+                "index": 2,
+                "label": null,
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "once",
+                    "value": "once"
+                  },
+                  {
+                    "selected": true,
+                    "text": "once every",
+                    "value": "once_every"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "once_every",
+                "value_state": "observed_value"
+              },
+              {
+                "context": null,
+                "index": 3,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "number",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "7",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "seconds\nminutes\nhours\ndays\nweeks",
+                "index": 4,
+                "label": null,
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": false,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": true,
+                    "text": "days",
+                    "value": "days"
+                  },
+                  {
+                    "selected": false,
+                    "text": "weeks",
+                    "value": "weeks"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "days",
+                "value_state": "observed_value"
+              }
+            ]
+          },
+          {
+            "name": "Interrupt on message replies",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nInterrupt on message replies\nInterrupt when you reply manually\nInterrupt when you reply manually\nInterrupt when contact replies\nInterrupt when contact replies\nExclude specific folders\nTest scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Thank fans who love your posts",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Interrupt when you reply manually\nInterrupt when you reply manually",
+                "index": 1,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "button",
+                "type": "button",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": false,
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Interrupt when contact replies\nInterrupt when contact replies",
+                "index": 2,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "button",
+                "type": "button",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": false,
+                "value_state": "observed_value"
+              }
+            ]
+          },
+          {
+            "name": "Exclude specific folders",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nInterrupt on message replies\nExclude specific folders\nThis scenario will not run for contacts in the selected folders\nPick a folder\nTest scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Thank fans who love your posts",
+                "value_state": "observed_value"
+              }
+            ]
+          }
+        ],
+        "defaults_complete": true,
+        "inheritance": "Observed account opt-out, menu and global exclusions apply separately. These are not template defaults. No account setting changed.",
+        "global_settings_source": "evidence/shared-control-options.json#/global_options",
+        "shared_control_refs": [
+          "evidence/6024-editor.json#/scenario_panels"
+        ]
+      },
+      "rules": {
+        "refusal": "Source stop, negative-answer, no-response and expiry ports are retained. Account opt-out is a separate inherited control.",
+        "reentry": "Per-template Limit frequency per contact defaults and shared enabled options are preserved in scenario settings.",
+        "duplicates": "No idempotency guarantee established. Frequency control is not proof of cross-scenario deduplication.",
+        "retry_and_timeout_evidence": [
+          "n001"
+        ],
+        "failure_semantics": "UI retry/expiry values are preserved per node. Transport/runtime failures were not tested; lack of runtime proof is not counted as an unopened setting."
+      },
+      "dependencies": [
+        {
+          "id": "dep-n003",
+          "node_id": "n003",
+          "kind": "folder",
+          "source_reference": null,
+          "observed_values": [
+            "Add contact to folder(s)\nThanks: praised us"
+          ],
+          "required_coach_input": "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "status": "partial"
+        }
+      ],
+      "placeholders": [],
+      "outcomes": {
+        "observed_events": [],
+        "desired_event_verified": false,
+        "attribution_gap": "UI branch labels are observable mechanisms, not confirmation of the desired business event."
+      },
+      "gaps": [
+        {
+          "id": "runtime-not-tested",
+          "scope": "execution",
+          "field": "runtime_tested",
+          "reason": "No customer or test execution is authorized. Static observations do not prove delivery or outcome.",
+          "blocks_exact_reconstruction": false
+        },
+        {
+          "id": "n003-source-folder-binding",
+          "scope": "n003",
+          "field": "source folder configuration",
+          "reason": "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default.",
+          "blocks_exact_reconstruction": true
+        }
+      ],
+      "reconstruction": {
+        "record_schema_valid": true,
+        "graph_integrity_valid": true,
+        "source_settings_complete": false,
+        "status": "partially_reconstructable",
+        "runtime_tested": false,
+        "blockers": [
+          "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default."
+        ],
+        "coverage": {
+          "source_nodes": 4,
+          "source_edges": 3,
+          "editor_nodes_matched": 4,
+          "nodes_with_editor_panels": 0,
+          "nodes_all_controls_opened": 4,
+          "terminal_nodes": 1,
+          "timeout_nodes": 0
+        },
+        "client_data_ready": false,
+        "external_binding_blockers": [
+          "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "Authorized client channel, real offer and account scope have not been configured."
+        ]
+      },
+      "evidence_files": [
+        "evidence/6082-editor.json",
+        "evidence/6082-public.json",
+        "evidence/shared-control-options.json",
+        "evidence/shared-variable-options.json",
+        "draft-manifest.json",
+        "evidence/final-reconciliation.json"
+      ],
+      "wizard_settings": [],
+      "access_evidence": {
+        "state": "editor_opened",
+        "attempts": 1,
+        "visible_error": null,
+        "cause_proven": false,
+        "delayed_reconciliation": "23 list rows: 21 owned inactive drafts and 2 pre-existing. No additional draft matched the nine unresolved attempts. Original creation exception/render was not retained; app refusal is unproven."
+      }
+    }
+  },
+  "graph": {
+    "start": "n000",
+    "steps": [
+      {
+        "id": "n000",
+        "type": "entry",
+        "sourceType": "trigger",
+        "title": "trigger",
+        "content": {
+          "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\n❤️\n😍\n🔥\n+7",
+          "preview": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\n❤️\n😍\n🔥\n+7",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n000",
+          "source_id": "trigger",
+          "editor_source_id": "trigger",
+          "source_type": "trigger",
+          "observed": {
+            "level": "public_graph",
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\n❤️\n😍\n🔥\n+7",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\n❤️\n😍\n🔥\n+7\nAdd trigger",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": "Close",
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Add trigger",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/comment_trigger",
+                "signature": "sha256:ad3b6dd2dd041ad974102a0b2e218383303904fe495c26f515e4142e7f61ffe3",
+                "matched": true
+              },
+              {
+                "definition": "evidence/shared-control-options.json#/post_scope",
+                "signature": "sha256:d634177ff53e0d7ddb6bd6c09187078c2ebe1745760a002d224f12d92b0c891a",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "trigger",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/0",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n001",
+        "type": "delay",
+        "sourceType": "delay",
+        "title": "delay",
+        "content": {
+          "text": "Wait 1 minutes",
+          "preview": "Wait 1 minutes",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n001",
+          "source_id": "438675",
+          "editor_source_id": "455010",
+          "source_type": "delay",
+          "observed": {
+            "level": "public_graph",
+            "text": "Wait 1 minutes",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Wait\nWait\nseconds\nminutes\nhours\ndays",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "number",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "1",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "seconds\nminutes\nhours\ndays",
+                "index": 1,
+                "label": null,
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": true,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": false,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "minutes",
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": []
+          },
+          "outcome_type": "delay",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/1",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n002",
+        "type": "message",
+        "sourceType": "comment",
+        "title": "comment",
+        "content": {
+          "text": "Thank you so much!\nThanks, really appreciate it\nThank you! 🙂\nSo glad you liked it, thank you\nThanks for the kind words",
+          "preview": "Thank you so much!\nThanks, really appreciate it\nThank you! 🙂\nSo glad you liked it, thank you\nThanks for the kind words",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n002",
+          "source_id": "438676",
+          "editor_source_id": "455011",
+          "source_type": "comment",
+          "observed": {
+            "level": "public_graph",
+            "text": "Thank you so much!\nThanks, really appreciate it\nThank you! 🙂\nSo glad you liked it, thank you\nThanks for the kind words",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Reply to comment\nAdd comment variant\nA variant will be selected at random to avoid repetition\nRewrite comment automatically\nAI\nAvoid spam detection",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "Type your comment",
+                "tag": "textarea",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Thank you so much!",
+                "value_state": "observed_value"
+              },
+              {
+                "context": null,
+                "index": 1,
+                "label": null,
+                "options": null,
+                "placeholder": "Type your comment",
+                "tag": "textarea",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Thanks, really appreciate it",
+                "value_state": "observed_value"
+              },
+              {
+                "context": null,
+                "index": 2,
+                "label": null,
+                "options": null,
+                "placeholder": "Type your comment",
+                "tag": "textarea",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Thank you! 🙂",
+                "value_state": "observed_value"
+              },
+              {
+                "context": null,
+                "index": 3,
+                "label": null,
+                "options": null,
+                "placeholder": "Type your comment",
+                "tag": "textarea",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "So glad you liked it, thank you",
+                "value_state": "observed_value"
+              },
+              {
+                "context": null,
+                "index": 4,
+                "label": null,
+                "options": null,
+                "placeholder": "Type your comment",
+                "tag": "textarea",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Thanks for the kind words",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Rewrite comment automatically\nAI",
+                "index": 5,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "checkbox",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": "",
+                  "required": null
+                },
+                "value": false,
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Avoid spam detection",
+                "index": 6,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "checkbox",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": "",
+                  "required": null
+                },
+                "value": true,
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [
+              {
+                "text": "",
+                "url": "https://help.inro.social/en/articles/13770654-how-to-avoid-spam-detection"
+              }
+            ],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Add comment variant",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/comment_behavior",
+                "signature": "sha256:5bed13d871919b1b8b36ccfd0c6754ca264833e8a49c09c667981c9d713d5be8",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "comment",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/2",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n003",
+        "type": "group",
+        "sourceType": "folder",
+        "title": "folder",
+        "content": {
+          "text": "Add contact to folder(s)\nThanks: praised us",
+          "preview": "Add contact to folder(s)\nThanks: praised us",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n003",
+          "source_id": "438677",
+          "editor_source_id": "455012",
+          "source_type": "folder",
+          "observed": {
+            "level": "public_graph",
+            "text": "Add contact to folder(s)\nThanks: praised us",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+            "fields": [
+              {
+                "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                "index": 0,
+                "label": null,
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "add",
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Pick a folder",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/folder_picker",
+                "signature": "sha256:58d23c0116ccc4de243099684003705bd2ebe68352539f052f63832c228b05e9",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "folder",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [
+            "dep-n003"
+          ],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": {
+            "source_action": "Add contact to folder(s)",
+            "source_labels": [
+              "Thanks: praised us"
+            ],
+            "source_labels_state": "observed_full",
+            "source_resource_ids": [],
+            "source_binding_state": "unknown_not_exposed",
+            "clone_labels": [],
+            "clone_binding_state": "observed_unset",
+            "required_client_binding": "client.folder_binding.n003",
+            "recovery_evidence": "evidence/folder-label-recovery.json#/nodes/1"
+          }
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/3",
+          "derived": null,
+          "evidence": []
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "e000",
+        "from": "n000",
+        "to": "n001",
+        "label": "",
+        "settings": {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "source_label": "Edge from trigger to 438675",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/0"
+        }
+      },
+      {
+        "id": "e001",
+        "from": "n001",
+        "to": "n002",
+        "label": "",
+        "settings": {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "source_label": "Edge from 438675 to 438676",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/1"
+        }
+      },
+      {
+        "id": "e002",
+        "from": "n002",
+        "to": "n003",
+        "label": "",
+        "settings": {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "source_label": "Edge from 438676 to 438677",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/2"
+        }
+      }
+    ]
+  },
+  "setup": [],
+  "annotations": []
+}

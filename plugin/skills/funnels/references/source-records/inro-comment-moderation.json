@@ -1,0 +1,830 @@
+{
+  "id": "inro-comment-moderation",
+  "source": {
+    "vendor": "inro",
+    "file": "templates/inro-comment-moderation.json",
+    "title": "Comment moderation",
+    "category": "Engage your audience",
+    "facets": [
+      "Engage your audience",
+      "moderation",
+      "Comments"
+    ],
+    "job": "moderation",
+    "model": "partial_wizard",
+    "document": {
+      "schema_version": "0.1.0",
+      "id": "inro-comment-moderation",
+      "ordinal": 1,
+      "title": "Comment moderation",
+      "source_category": "Engage your audience",
+      "source": {
+        "catalog_url": "https://app.inro.social/automation",
+        "preview_url": null,
+        "public_template_id": null,
+        "observed_at": "2026-10-30",
+        "source_version": null,
+        "capture_sha256": null,
+        "editor_url": "https://app.inro.social/automation/scenarios/38357",
+        "editor_inactive_verified": true,
+        "official_export": false
+      },
+      "classification": {
+        "basis": "product_interpretation",
+        "job_family": "moderation",
+        "route": "hide_unwanted_comments",
+        "desired_business_event": "comment_hidden",
+        "trigger_classes": [
+          "comment"
+        ]
+      },
+      "selection": {
+        "basis": "product_interpretation",
+        "use_when": [
+          "Hide unwanted comments using an explicit keyword, intent, or hate/spam policy."
+        ],
+        "avoid_when": [
+          "Do not select for lead collection or private sales conversations.",
+          "Do not silently drop an essential unsupported gate."
+        ],
+        "required_facts": [
+          "Moderation policy, false-positive tolerance, post scope and review owner.",
+          "Confirm account scope, messaging permission and the real outcome measurement."
+        ]
+      },
+      "trigger_labels": [
+        "Comments"
+      ],
+      "triggers": [],
+      "graph": {
+        "entry_node": null,
+        "nodes": [],
+        "edges": [],
+        "graph_source_complete": false,
+        "capture_audit": {
+          "rendered_node_count": 0,
+          "rendered_edge_count": 0,
+          "saved_node_count": 0,
+          "saved_edge_count": 0,
+          "counts_equal": true,
+          "reachable_nodes": 0,
+          "dangling_edges": 0,
+          "duplicate_node_ids": 0,
+          "limitations": [
+            "Complete relative to saved rendered DOM, not an official export or hidden server graph.",
+            "No outgoing rendered edge means an observed graph end, not proof of delivery or successful business outcome.",
+            "In the editor, Add a step placeholders were excluded from source-node matching; original public edges were retained."
+          ]
+        }
+      },
+      "scenario_settings": {
+        "panels": [],
+        "defaults_complete": false,
+        "inheritance": "Observed account opt-out, menu and global exclusions apply separately. These are not template defaults. No account setting changed.",
+        "global_settings_source": "evidence/shared-control-options.json#/global_options",
+        "shared_control_refs": []
+      },
+      "rules": {
+        "refusal": "Source stop, negative-answer, no-response and expiry ports are retained. Account opt-out is a separate inherited control.",
+        "reentry": "Per-template Limit frequency per contact defaults and shared enabled options are preserved in scenario settings.",
+        "duplicates": "No idempotency guarantee established. Frequency control is not proof of cross-scenario deduplication.",
+        "retry_and_timeout_evidence": [],
+        "failure_semantics": "UI retry/expiry values are preserved per node. Transport/runtime failures were not tested; lack of runtime proof is not counted as an unopened setting."
+      },
+      "dependencies": [],
+      "placeholders": [],
+      "outcomes": {
+        "observed_events": [],
+        "desired_event_verified": false,
+        "attribution_gap": "UI branch labels are observable mechanisms, not confirmation of the desired business event."
+      },
+      "gaps": [
+        {
+          "id": "runtime-not-tested",
+          "scope": "execution",
+          "field": "runtime_tested",
+          "reason": "No customer or test execution is authorized. Static observations do not prove delivery or outcome.",
+          "blocks_exact_reconstruction": false
+        },
+        {
+          "id": "wizard-continue",
+          "scope": "wizard",
+          "field": "steps 2 and 3",
+          "reason": "Enabled Continue did not advance after Enter and click. No visible error or captured console error. Step 1 variants captured; initial choice was unset.",
+          "blocks_exact_reconstruction": true
+        }
+      ],
+      "reconstruction": {
+        "record_schema_valid": true,
+        "graph_integrity_valid": false,
+        "source_settings_complete": false,
+        "status": "partially_reconstructable",
+        "runtime_tested": false,
+        "blockers": [
+          "Enabled Continue did not advance after Enter and click. No visible error or captured console error. Step 1 variants captured; initial choice was unset."
+        ],
+        "coverage": {
+          "source_nodes": 0,
+          "source_edges": 0,
+          "editor_nodes_matched": 0,
+          "nodes_with_editor_panels": 0,
+          "nodes_all_controls_opened": 0,
+          "terminal_nodes": 0,
+          "timeout_nodes": 0
+        },
+        "client_data_ready": false,
+        "external_binding_blockers": [
+          "Authorized client channel, real offer and account scope have not been configured."
+        ]
+      },
+      "evidence_files": [
+        "evidence/comment-moderation-editor.json",
+        "evidence/shared-control-options.json",
+        "evidence/shared-variable-options.json",
+        "draft-manifest.json",
+        "evidence/final-reconciliation.json"
+      ],
+      "wizard_settings": [
+        {
+          "name": "Original Step 1: no moderation filter selected",
+          "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should be moderated?\nAll hateful and spam comments\nAI\nComments with a specific intent\nAI\nComments with specific keywords\nNo comments selected\nHIDDEN\na comment\nContinue\nStep 1 of 3",
+          "fields": [
+            {
+              "context": "All hateful and spam comments",
+              "index": 0,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with a specific intent",
+              "index": 1,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with specific keywords",
+              "index": 2,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            }
+          ]
+        },
+        {
+          "name": "Inspection variant: specific intent",
+          "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should be moderated?\nAll hateful and spam comments\nAI\nComments with a specific intent\nAI\nDescribe comment intent\nHate speech or slurs\nSpam or self-promotion\nThreats or harassment\nOffensive insults or attacks\nBe as precise and specific as possible to get better results.\nAI-detected intents may not always be accurate.\nComments with specific keywords\ncomment with AI-detected intent\n18\nHIDDEN\ncomment with AI-detected intent\nContinue\nStep 1 of 3",
+          "fields": [
+            {
+              "context": "All hateful and spam comments",
+              "index": 0,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with a specific intent",
+              "index": 1,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": true,
+              "value_state": "observed_value"
+            },
+            {
+              "context": null,
+              "index": 2,
+              "label": null,
+              "options": null,
+              "placeholder": "e.g. the comment is insulting me, is racist, etc.",
+              "tag": "textarea",
+              "type": "textarea",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": null,
+                "required": null
+              },
+              "value": "",
+              "value_state": "observed_unset"
+            },
+            {
+              "context": "Comments with specific keywords",
+              "index": 3,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            }
+          ]
+        },
+        {
+          "name": "Inspection variant: specific keywords",
+          "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should be moderated?\nAll hateful and spam comments\nAI\nComments with a specific intent\nAI\nComments with specific keywords\nAdd keyword\nUppercase and accents are ignored and you can use emojis.\nEnter at least one keyword to filter the comments.\ncomment with keyword\n18\nHIDDEN\ncomment with keyword\nContinue\nStep 1 of 3",
+          "fields": [
+            {
+              "context": "All hateful and spam comments",
+              "index": 0,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with a specific intent",
+              "index": 1,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with specific keywords",
+              "index": 2,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": true,
+              "value_state": "observed_value"
+            },
+            {
+              "context": null,
+              "index": 3,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "text",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": null,
+                "required": null
+              },
+              "value": "",
+              "value_state": "observed_unset"
+            }
+          ]
+        },
+        {
+          "name": "Inspection variant: hateful/spam filter",
+          "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should be moderated?\nAll hateful and spam comments\nAI\nHateful and spam detection\nAI automatically detects hateful, offensive and spam comments — no setup needed.\nAI detection may not always be accurate.\nComments with a specific intent\nAI\nComments with specific keywords\na hateful or spam comment\n18\nHIDDEN\na hateful or spam comment\nContinue\nStep 1 of 3",
+          "fields": [
+            {
+              "context": "All hateful and spam comments",
+              "index": 0,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": true,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with a specific intent",
+              "index": 1,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with specific keywords",
+              "index": 2,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            }
+          ]
+        }
+      ],
+      "access_evidence": {
+        "state": "wizard_only",
+        "attempts": 1,
+        "visible_error": null,
+        "cause_proven": false,
+        "delayed_reconciliation": "23 list rows: 21 owned inactive drafts and 2 pre-existing. No additional draft matched the nine unresolved attempts. Original creation exception/render was not retained; app refusal is unproven."
+      }
+    }
+  },
+  "graph": {
+    "start": null,
+    "steps": [],
+    "transitions": []
+  },
+  "setup": [
+    {
+      "name": "Original Step 1: no moderation filter selected",
+      "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should be moderated?\nAll hateful and spam comments\nAI\nComments with a specific intent\nAI\nComments with specific keywords\nNo comments selected\nHIDDEN\na comment\nContinue\nStep 1 of 3",
+      "fields": [
+        {
+          "context": "All hateful and spam comments",
+          "index": 0,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "radio",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": "",
+            "required": null
+          },
+          "value": false,
+          "value_state": "observed_value"
+        },
+        {
+          "context": "Comments with a specific intent",
+          "index": 1,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "radio",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": "",
+            "required": null
+          },
+          "value": false,
+          "value_state": "observed_value"
+        },
+        {
+          "context": "Comments with specific keywords",
+          "index": 2,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "radio",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": "",
+            "required": null
+          },
+          "value": false,
+          "value_state": "observed_value"
+        }
+      ]
+    },
+    {
+      "name": "Inspection variant: specific intent",
+      "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should be moderated?\nAll hateful and spam comments\nAI\nComments with a specific intent\nAI\nDescribe comment intent\nHate speech or slurs\nSpam or self-promotion\nThreats or harassment\nOffensive insults or attacks\nBe as precise and specific as possible to get better results.\nAI-detected intents may not always be accurate.\nComments with specific keywords\ncomment with AI-detected intent\n18\nHIDDEN\ncomment with AI-detected intent\nContinue\nStep 1 of 3",
+      "fields": [
+        {
+          "context": "All hateful and spam comments",
+          "index": 0,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "radio",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": "",
+            "required": null
+          },
+          "value": false,
+          "value_state": "observed_value"
+        },
+        {
+          "context": "Comments with a specific intent",
+          "index": 1,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "radio",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": "",
+            "required": null
+          },
+          "value": true,
+          "value_state": "observed_value"
+        },
+        {
+          "context": null,
+          "index": 2,
+          "label": null,
+          "options": null,
+          "placeholder": "e.g. the comment is insulting me, is racist, etc.",
+          "tag": "textarea",
+          "type": "textarea",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": null,
+            "required": null
+          },
+          "value": "",
+          "value_state": "observed_unset"
+        },
+        {
+          "context": "Comments with specific keywords",
+          "index": 3,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "radio",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": "",
+            "required": null
+          },
+          "value": false,
+          "value_state": "observed_value"
+        }
+      ]
+    },
+    {
+      "name": "Inspection variant: specific keywords",
+      "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should be moderated?\nAll hateful and spam comments\nAI\nComments with a specific intent\nAI\nComments with specific keywords\nAdd keyword\nUppercase and accents are ignored and you can use emojis.\nEnter at least one keyword to filter the comments.\ncomment with keyword\n18\nHIDDEN\ncomment with keyword\nContinue\nStep 1 of 3",
+      "fields": [
+        {
+          "context": "All hateful and spam comments",
+          "index": 0,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "radio",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": "",
+            "required": null
+          },
+          "value": false,
+          "value_state": "observed_value"
+        },
+        {
+          "context": "Comments with a specific intent",
+          "index": 1,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "radio",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": "",
+            "required": null
+          },
+          "value": false,
+          "value_state": "observed_value"
+        },
+        {
+          "context": "Comments with specific keywords",
+          "index": 2,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "radio",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": "",
+            "required": null
+          },
+          "value": true,
+          "value_state": "observed_value"
+        },
+        {
+          "context": null,
+          "index": 3,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "text",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": null,
+            "required": null
+          },
+          "value": "",
+          "value_state": "observed_unset"
+        }
+      ]
+    },
+    {
+      "name": "Inspection variant: hateful/spam filter",
+      "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should be moderated?\nAll hateful and spam comments\nAI\nHateful and spam detection\nAI automatically detects hateful, offensive and spam comments — no setup needed.\nAI detection may not always be accurate.\nComments with a specific intent\nAI\nComments with specific keywords\na hateful or spam comment\n18\nHIDDEN\na hateful or spam comment\nContinue\nStep 1 of 3",
+      "fields": [
+        {
+          "context": "All hateful and spam comments",
+          "index": 0,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "radio",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": "",
+            "required": null
+          },
+          "value": true,
+          "value_state": "observed_value"
+        },
+        {
+          "context": "Comments with a specific intent",
+          "index": 1,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "radio",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": "",
+            "required": null
+          },
+          "value": false,
+          "value_state": "observed_value"
+        },
+        {
+          "context": "Comments with specific keywords",
+          "index": 2,
+          "label": null,
+          "options": null,
+          "placeholder": null,
+          "tag": "input",
+          "type": "radio",
+          "validation": {
+            "disabled": null,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "readonly": "",
+            "required": null
+          },
+          "value": false,
+          "value_state": "observed_value"
+        }
+      ]
+    }
+  ],
+  "annotations": []
+}

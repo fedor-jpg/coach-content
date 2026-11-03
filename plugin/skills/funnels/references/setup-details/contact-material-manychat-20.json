@@ -1,0 +1,3169 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "contact-material-manychat-20",
+    "name": "Grow your email list: ebook and 23-hour retry",
+    "source_ids": [
+      "manychat-20"
+    ],
+    "entry": "Keyword in a direct message",
+    "mandatory_conditions": [
+      "Email is required",
+      "Repeat email collection after no reply"
+    ],
+    "outcome": "An ebook after email capture",
+    "timing": [
+      "No reply: 23 hours; the reminder contains a second email collection step."
+    ],
+    "consent": "The default opt-in does not establish consent to an external mailing list.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "dm-ai",
+      "contact",
+      "timers",
+      "graph"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "AI instructions can ask for email, but they do not reproduce the exact 23-hour retry or a deterministic delivery gate. Default opt-in is not evidence of channel consent.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "AI instructions can ask for email, but they do not reproduce the exact 23-hour retry or a deterministic delivery gate. Default opt-in is not evidence of channel consent.",
+        "result": "Prepare email capture and ebook delivery instructions, with the changed gate and timing approved. The provider-list step remains separate.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "manychat-20": "The clone trigger was removed for safety. Its original entry was a direct message."
+    },
+    "client_inputs": [
+      "keywords",
+      "ebook URL",
+      "email purpose",
+      "consent basis"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "source_based_draft",
+      "analogue_ids": [],
+      "draft": {
+        "modes": [
+          "D",
+          "E"
+        ],
+        "inputs": [
+          "campaign",
+          "language",
+          "keyword",
+          "resource_title",
+          "resource_url",
+          "contact_purpose",
+          "email_request",
+          "refusal_text"
+        ],
+        "initial": "{email_request}",
+        "instruction": "On the approved DM keyword, explain {contact_purpose} and ask permission to collect email. Ask: {email_request}. Do not deliver {resource_title} at {resource_url} until the person supplies a new email for this purpose in this conversation. On refusal, send {refusal_text} and stop. Do not use a historical email or old consent. This is an AI instruction, not deterministic validation; no 23-hour retry or external subscription is configured.",
+        "contact_requirement": "New email required before delivery in the proposed conversation; deterministic validation/gating remains unverified."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "manychat-20-dm_base",
+          "label": "Direct-message entry",
+          "draft": {
+            "modes": [
+              "D",
+              "E"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "ebook_title",
+              "ebook_url",
+              "contact_purpose",
+              "public_text"
+            ],
+            "initial": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.",
+            "messages": {
+              "initial": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "delivery": "Here is {ebook_title}: {ebook_url}",
+              "invalid": "That looks incomplete or incorrectly formatted. Please try again.",
+              "email": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact."
+            },
+            "instruction": "Every requested contact is required before delivery: email. Refusal does not release the gated link. Explain {contact_purpose} before collection; use only new answers after this purpose is clear. Ask: For {contact_purpose}, please send your email address. You can refuse; the link requires this contact. Check email conversationally for a nonempty name, @ and a plausible domain; check phone for country code and plausible digits. Reject missing or obviously malformed answers and ask correction without showing the resource URL. These are AI conversational checks, NOT deterministic validation. Do not release the link on SKIP, refusal, partial answers or malformed contact. Require all email answers before delivery. Deliver: Here is {ebook_title}: {ebook_url} Preserve refusal and silence. HELP asks for the problem; do not bypass any pending contact gate. Configure separate capture additions for email with the explicit purpose; merge them into the complete existing captures list, never overwrite it. Contact persistence is unverified: do not claim saved data or external subscription. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+            "contact_requirement": "Every requested contact is required before delivery: email. Refusal does not release the gated link.",
+            "contact_fields": [
+              "email"
+            ],
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Request the first contact for the stated purpose.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "invalid-email",
+                  "action": "Ask for email correction without a resource URL.",
+                  "message_ids": [
+                    "invalid"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "delivery",
+                  "action": "Deliver only after the required contact answers, or explicit SKIP when optional.",
+                  "message_ids": [
+                    "delivery"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "refusal",
+                  "action": "End this request without delivering gated content.",
+                  "message_ids": [
+                    "refusal"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                },
+                {
+                  "from": "first",
+                  "to": "delivery",
+                  "condition": "New consented email passes AI conversational check"
+                },
+                {
+                  "from": "first",
+                  "to": "invalid-email",
+                  "condition": "Missing or obviously malformed email"
+                },
+                {
+                  "from": "first",
+                  "to": "refusal",
+                  "condition": "Actual refusal or STOP"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                },
+                {
+                  "from": "invalid-email",
+                  "to": "first",
+                  "condition": "Actual new correction reply"
+                }
+              ]
+            }
+          },
+          "target": "dm_base",
+          "allowed_targets": [
+            "dm_base"
+          ],
+          "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Ask for email before delivering the ebook.",
+          "output_bindings": [
+            "contact_purpose",
+            "ebook_title",
+            "ebook_url"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Email is required",
+            "Repeat email collection after no reply"
+          ],
+          "approval_required": true,
+          "source_id": "manychat-20"
+        }
+      ],
+      "binding_review": {
+        "source_entry": "Keyword in a direct message",
+        "source_outcome": "An ebook after email capture",
+        "mandatory_conditions": [
+          "Email is required",
+          "Repeat email collection after no reply"
+        ],
+        "source_contact_policy": [
+          "Email is required",
+          "Repeat email collection after no reply"
+        ],
+        "plan_count": 1,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Ask for email before delivering the ebook.",
+        "source_requirements": [
+          "Email is required",
+          "Repeat email collection after no reply"
+        ],
+        "source_timing": [
+          "No reply: 23 hours; the reminder contains a second email collection step."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Ask for email before delivering the ebook."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: No reply: 23 hours; the reminder contains a second email collection step.. No timed unsolicited message is configured.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [
+          "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+          "Every requested contact is required before delivery: email. Refusal does not release the gated link."
+        ],
+        "examples": [
+          {
+            "source_id": "manychat-20",
+            "node_id": "node-0",
+            "source_text": "Hi! Thanks for reaching out 💌\n\nWe are excited you are interested in our content and the ebook, and we would LOVE to send you more!\n\nTo get a free ebook, please leave us your email below 👇",
+            "adapted_text": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      }
+    }
+  },
+  "goal": "Use a useful resource to start a direct relationship with interested people.",
+  "fit": "Creators and businesses building an owned audience; choose required or optional contact capture.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Ask for email before delivering the ebook.",
+    "source_requirements": [
+      "Email is required",
+      "Repeat email collection after no reply"
+    ],
+    "source_timing": [
+      "No reply: 23 hours; the reminder contains a second email collection step."
+    ],
+    "blocking_dependencies": [],
+    "retained": [
+      "Ask for email before delivering the ebook."
+    ],
+    "omitted": [
+      "Exact source timing is not retained: No reply: 23 hours; the reminder contains a second email collection step.. No timed unsolicited message is configured.",
+      "No imported deterministic graph or source folder/tag tracking."
+    ],
+    "limitations": [
+      "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+      "Every requested contact is required before delivery: email. Refusal does not release the gated link."
+    ],
+    "examples": [
+      {
+        "source_id": "manychat-20",
+        "node_id": "node-0",
+        "source_text": "Hi! Thanks for reaching out 💌\n\nWe are excited you are interested in our content and the ebook, and we would LOVE to send you more!\n\nTo get a free ebook, please leave us your email below 👇",
+        "adapted_text": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.",
+        "provenance": "authored_adaptation_not_captured"
+      }
+    ]
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "timers",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "manychat-20",
+      "source_file": "source-records/manychat-20.json",
+      "source_title": "Grow your email list",
+      "start": "trigger",
+      "nodes": [
+        {
+          "id": "trigger",
+          "source_type": "trigger",
+          "content": {
+            "text": "",
+            "preview": "Go To Basic Builder\n\nAdd text: ebook",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "ebook",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "8b1880724e6ea940f32197d442971450e3b26c9ee14ab96874e9fc5faa795ca5",
+          "settings_leaf_count": 60
+        },
+        {
+          "id": "node-0",
+          "source_type": "message",
+          "content": {
+            "text": "Hi! Thanks for reaching out 💌\n\nWe are excited you are interested in our content and the ebook, and we would LOVE to send you more!\n\nTo get a free ebook, please leave us your email below 👇",
+            "preview": "Hi! Thanks for reaching out 💌\n\nWe are excited you are interested in our content and the ebook, and we would LOVE to send you more!\n\nTo get a free ebook, please leave us your email below 👇",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Hi! Thanks for reaching out 💌\n\nWe are excited you are interested in our content and the ebook, and we would LOVE to send you more!",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "To get a free ebook, please leave us your email below 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "saveEmailToSystemField",
+                "label": "Save Email to System Field",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "setEmailOptIn",
+                "label": "Set Email Opt-In ",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": "validationErrorMessage",
+                "label": "No retry message",
+                "type": null,
+                "value": "Please enter a correct email address, e.g. me@mail.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3",
+              "phase": "captured_default",
+              "fields": {
+                "name": "skipButtonCaption",
+                "label": "\"Skip\" button text",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/field",
+              "phase": "captured_default",
+              "fields": {
+                "value": "23"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0",
+              "phase": "captured_default",
+              "fields": {
+                "value": "hours",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "Seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Days",
+                    "value": "days"
+                  }
+                ]
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/0",
+              "phase": "captured_default",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/1",
+              "phase": "captured_default",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/2",
+              "phase": "captured_default",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/3",
+              "phase": "captured_default",
+              "fields": {
+                "value": "days"
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "saveEmailToSystemField",
+                "label": "Save Email to System Field",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "customFieldId",
+                "label": "Add Response to a Custom Field",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/2",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "validationErrorMessage",
+                "label": "No retry message",
+                "type": null,
+                "value": "Please enter a correct email address, e.g. me@mail.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/3",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "skipButtonCaption",
+                "label": "\"Skip\" button text",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/0",
+              "phase": "restoration_check",
+              "fields": {
+                "name": "saveEmailToSystemField",
+                "label": "Save Email to System Field",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/1",
+              "phase": "restoration_check",
+              "fields": {
+                "name": "setEmailOptIn",
+                "label": "Set Email Opt-In ",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/2",
+              "phase": "restoration_check",
+              "fields": {
+                "name": "validationErrorMessage",
+                "label": "No retry message",
+                "type": null,
+                "value": "Please enter a correct email address, e.g. me@mail.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/fields/3",
+              "phase": "restoration_check",
+              "fields": {
+                "name": "skipButtonCaption",
+                "label": "\"Skip\" button text",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "4753d459edf0a7aa4804fd695f49f57ea8b87d77fc24aad399d856cbac2d32c0",
+          "settings_leaf_count": 505
+        },
+        {
+          "id": "node-1",
+          "source_type": "message",
+          "content": {
+            "text": "Awesome!\n\nYou are all set.\n\nClick the link to grab your ebook 👇🚀",
+            "preview": "Awesome!\n\nYou are all set.\n\nClick the link to grab your ebook 👇🚀",
+            "buttons": [
+              "Grab the book! 💌"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Awesome!\n\nYou are all set.\n\nClick the link to grab your ebook 👇🚀",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Grab the book! 💌",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "https://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Additional actions",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "6f46228479ef6072feb955330e80ecb7c0adb18810c7f28b1b147b9ca7770d11",
+          "settings_leaf_count": 207
+        },
+        {
+          "id": "node-2",
+          "source_type": "message",
+          "content": {
+            "text": "Hi! Are you still here? 💙\n\nIf you are still interested in getting a free ebook, please leave us your email below 👇",
+            "preview": "Hi! Are you still here? 💙\n\nIf you are still interested in getting a free ebook, please leave us your email below 👇",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Hi! Are you still here? 💙",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "If you are still interested in getting a free ebook, please leave us your email below 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "saveEmailToSystemField",
+                "label": "Save Email to System Field",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "setEmailOptIn",
+                "label": "Set Email Opt-In ",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": "validationErrorMessage",
+                "label": "No retry message",
+                "type": null,
+                "value": "Please enter a correct email address, e.g. me@mail.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3",
+              "phase": "captured_default",
+              "fields": {
+                "name": "skipButtonCaption",
+                "label": "\"Skip\" button text",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/field",
+              "phase": "captured_default",
+              "fields": {
+                "value": "23"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0",
+              "phase": "captured_default",
+              "fields": {
+                "value": "hours",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "Seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Days",
+                    "value": "days"
+                  }
+                ]
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/0",
+              "phase": "captured_default",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/1",
+              "phase": "captured_default",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/2",
+              "phase": "captured_default",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/3",
+              "phase": "captured_default",
+              "fields": {
+                "value": "days"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "bef58b9836f1a452d46272b2ee39036a72de3be469392c4fcc643ea6f7857bd4",
+          "settings_leaf_count": 271
+        }
+      ],
+      "transitions": [
+        {
+          "id": "edge-0",
+          "from": "trigger",
+          "to": "node-0",
+          "label": "Starting Step",
+          "settings": {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/20-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/0"
+          }
+        },
+        {
+          "id": "edge-1",
+          "from": "node-0",
+          "to": "node-1",
+          "label": "successful input/Next Step",
+          "settings": {
+            "from": "node-0",
+            "to": "node-1",
+            "port_exact": "successful input/Next Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-0.next.target",
+            "evidence": {
+              "file": "evidence/20-editor.json",
+              "pointer": "/graph/edges/1"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/1"
+          }
+        },
+        {
+          "id": "edge-2",
+          "from": "node-0",
+          "to": "node-2",
+          "label": "no response expiration",
+          "settings": {
+            "from": "node-0",
+            "to": "node-2",
+            "port_exact": "no response expiration",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-0.expiration.target",
+            "evidence": {
+              "file": "evidence/20-editor.json",
+              "pointer": "/graph/edges/2"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/2"
+          }
+        },
+        {
+          "id": "edge-3",
+          "from": "node-2",
+          "to": "node-1",
+          "label": "successful input/Next Step",
+          "settings": {
+            "from": "node-2",
+            "to": "node-1",
+            "port_exact": "successful input/Next Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-2.next.target",
+            "evidence": {
+              "file": "evidence/20-editor.json",
+              "pointer": "/graph/edges/3"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/3"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/instance/nodes/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Hi! Thanks for reaching out 💌\n\nWe are excited you are interested in our content and the ebook, and we would LOVE to send you more!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/default_panel/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "To get a free ebook, please leave us your email below 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "saveEmailToSystemField",
+            "label": "Save Email to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "setEmailOptIn",
+            "label": "Set Email Opt-In ",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Please enter a correct email address, e.g. me@mail.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/units/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours",
+            "options": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ]
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/units/0/options/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/units/0/options/1",
+          "phase": "captured_default",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/units/0/options/2",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/units/0/options/3",
+          "phase": "captured_default",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/2/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "saveEmailToSystemField",
+            "label": "Save Email to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/2/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "customFieldId",
+            "label": "Add Response to a Custom Field",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/2/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Please enter a correct email address, e.g. me@mail.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/2/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/3/fields/0",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "saveEmailToSystemField",
+            "label": "Save Email to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/3/fields/1",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "setEmailOptIn",
+            "label": "Set Email Opt-In ",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/3/fields/2",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Please enter a correct email address, e.g. me@mail.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/3/fields/3",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Awesome!\n\nYou are all set.\n\nClick the link to grab your ebook 👇🚀",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Grab the book! 💌",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "https://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Hi! Are you still here? 💙",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "If you are still interested in getting a free ebook, please leave us your email below 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "saveEmailToSystemField",
+            "label": "Save Email to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "setEmailOptIn",
+            "label": "Set Email Opt-In ",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Please enter a correct email address, e.g. me@mail.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/identity_evidence_exact/units/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours",
+            "options": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ]
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/identity_evidence_exact/units/0/options/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/identity_evidence_exact/units/0/options/1",
+          "phase": "captured_default",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/identity_evidence_exact/units/0/options/2",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/1/identity_evidence_exact/units/0/options/3",
+          "phase": "captured_default",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/observations/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "ebook",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "saveEmailToSystemField",
+            "label": "Save Email to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "setEmailOptIn",
+            "label": "Set Email Opt-In ",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Please enter a correct email address, e.g. me@mail.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/units/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours",
+            "options": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ]
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/units/0/options/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/units/0/options/1",
+          "phase": "captured_default",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/units/0/options/2",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/units/0/options/3",
+          "phase": "captured_default",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "saveEmailToSystemField",
+            "label": "Save Email to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "customFieldId",
+            "label": "Add Response to a Custom Field",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Please enter a correct email address, e.g. me@mail.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/0",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "saveEmailToSystemField",
+            "label": "Save Email to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/1",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "setEmailOptIn",
+            "label": "Set Email Opt-In ",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/2",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Please enter a correct email address, e.g. me@mail.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/3",
+          "phase": "restoration_check",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Hi! Are you still here? 💙",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/1",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "If you are still interested in getting a free ebook, please leave us your email below 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "saveEmailToSystemField",
+            "label": "Save Email to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "setEmailOptIn",
+            "label": "Set Email Opt-In ",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Please enter a correct email address, e.g. me@mail.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/7/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/observations/7/identity_evidence_exact/units/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours",
+            "options": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ]
+          }
+        },
+        {
+          "path": "/instance/observations/7/identity_evidence_exact/units/0/options/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/observations/7/identity_evidence_exact/units/0/options/1",
+          "phase": "captured_default",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/observations/7/identity_evidence_exact/units/0/options/2",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/observations/7/identity_evidence_exact/units/0/options/3",
+          "phase": "captured_default",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/observations/8/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Awesome!\n\nYou are all set.\n\nClick the link to grab your ebook 👇🚀",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/9/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Grab the book! 💌",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/9/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "https://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/9/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Awesome!\n\nYou are all set.\n\nClick the link to grab your ebook 👇🚀",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "3627de352dc0609e98aa17c751bc1f11ad5d632137d1349a31025812277e5d2b",
+      "source_leaf_count": 1988,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "manychat-20-dm_base",
+        "label": "Direct-message entry",
+        "draft": {
+          "modes": [
+            "D",
+            "E"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "ebook_title",
+            "ebook_url",
+            "contact_purpose",
+            "public_text"
+          ],
+          "initial": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.",
+          "messages": {
+            "initial": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "delivery": "Here is {ebook_title}: {ebook_url}",
+            "invalid": "That looks incomplete or incorrectly formatted. Please try again.",
+            "email": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact."
+          },
+          "instruction": "Every requested contact is required before delivery: email. Refusal does not release the gated link. Explain {contact_purpose} before collection; use only new answers after this purpose is clear. Ask: For {contact_purpose}, please send your email address. You can refuse; the link requires this contact. Check email conversationally for a nonempty name, @ and a plausible domain; check phone for country code and plausible digits. Reject missing or obviously malformed answers and ask correction without showing the resource URL. These are AI conversational checks, NOT deterministic validation. Do not release the link on SKIP, refusal, partial answers or malformed contact. Require all email answers before delivery. Deliver: Here is {ebook_title}: {ebook_url} Preserve refusal and silence. HELP asks for the problem; do not bypass any pending contact gate. Configure separate capture additions for email with the explicit purpose; merge them into the complete existing captures list, never overwrite it. Contact persistence is unverified: do not claim saved data or external subscription. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+          "contact_requirement": "Every requested contact is required before delivery: email. Refusal does not release the gated link.",
+          "contact_fields": [
+            "email"
+          ],
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Request the first contact for the stated purpose.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "invalid-email",
+                "action": "Ask for email correction without a resource URL.",
+                "message_ids": [
+                  "invalid"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "delivery",
+                "action": "Deliver only after the required contact answers, or explicit SKIP when optional.",
+                "message_ids": [
+                  "delivery"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "refusal",
+                "action": "End this request without delivering gated content.",
+                "message_ids": [
+                  "refusal"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              },
+              {
+                "from": "first",
+                "to": "delivery",
+                "condition": "New consented email passes AI conversational check"
+              },
+              {
+                "from": "first",
+                "to": "invalid-email",
+                "condition": "Missing or obviously malformed email"
+              },
+              {
+                "from": "first",
+                "to": "refusal",
+                "condition": "Actual refusal or STOP"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No actual reply"
+              },
+              {
+                "from": "invalid-email",
+                "to": "first",
+                "condition": "Actual new correction reply"
+              }
+            ]
+          }
+        },
+        "target": "dm_base",
+        "allowed_targets": [
+          "dm_base"
+        ],
+        "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Ask for email before delivering the ebook.",
+        "output_bindings": [
+          "contact_purpose",
+          "ebook_title",
+          "ebook_url"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Email is required",
+          "Repeat email collection after no reply"
+        ],
+        "approval_required": true,
+        "source_id": "manychat-20"
+      },
+      "preserve_settings": [
+        "whenAIReplies",
+        "followUps"
+      ],
+      "entry_readback_fields": [],
+      "preparation_gates": [
+        "Preserve current whenAIReplies and followUps values, including inheritance, on the shared DM base. If its schedule or active follow-ups conflict with the proposed behavior, hold affected configuration or obtain separate approval for the exact base-wide change. No schedule/follow-up write is a default draft operation.",
+        "Normal MCP has no contact-attribute-value reader. Capture configuration readback and chat text do not prove saved email/phone, joined membership or withdrawal. Keep value-dependent confirmation or handoff unresolved; simple preparation remains available."
+      ],
+      "missing_readback": [
+        "contact_attribute_values"
+      ],
+      "target": "dm_base",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "ebook_title",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "ebook_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "contact_purpose",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.",
+        "public": "",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "delivery": "Here is {ebook_title}: {ebook_url}",
+        "invalid": "That looks incomplete or incorrectly formatted. Please try again.",
+        "email": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.",
+        "placement": "DM {keyword}."
+      },
+      "instruction": "Every requested contact is required before delivery: email. Refusal does not release the gated link. Explain {contact_purpose} before collection; use only new answers after this purpose is clear. Ask: For {contact_purpose}, please send your email address. You can refuse; the link requires this contact. Check email conversationally for a nonempty name, @ and a plausible domain; check phone for country code and plausible digits. Reject missing or obviously malformed answers and ask correction without showing the resource URL. These are AI conversational checks, NOT deterministic validation. Do not release the link on SKIP, refusal, partial answers or malformed contact. Require all email answers before delivery. Deliver: Here is {ebook_title}: {ebook_url} Preserve refusal and silence. HELP asks for the problem; do not bypass any pending contact gate. Configure separate capture additions for email with the explicit purpose; merge them into the complete existing captures list, never overwrite it. Contact persistence is unverified: do not claim saved data or external subscription. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Request the first contact for the stated purpose.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "invalid-email",
+            "action": "Ask for email correction without a resource URL.",
+            "message_ids": [
+              "invalid"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "delivery",
+            "action": "Deliver only after the required contact answers, or explicit SKIP when optional.",
+            "message_ids": [
+              "delivery"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "refusal",
+            "action": "End this request without delivering gated content.",
+            "message_ids": [
+              "refusal"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          },
+          {
+            "from": "first",
+            "to": "delivery",
+            "condition": "New consented email passes AI conversational check"
+          },
+          {
+            "from": "first",
+            "to": "invalid-email",
+            "condition": "Missing or obviously malformed email"
+          },
+          {
+            "from": "first",
+            "to": "refusal",
+            "condition": "Actual refusal or STOP"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No actual reply"
+          },
+          {
+            "from": "invalid-email",
+            "to": "first",
+            "condition": "Actual new correction reply"
+          }
+        ]
+      },
+      "contact_requirement": "Every requested contact is required before delivery: email. Refusal does not release the gated link.",
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.. First message: For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.\nEvery requested contact is required before delivery: email. Refusal does not release the gated link. Explain {contact_purpose} before collection; use only new answers after this purpose is clear. Ask: For {contact_purpose}, please send your email address. You can refuse; the link requires this contact. Check email conversationally for a nonempty name, @ and a plausible domain; check phone for country code and plausible digits. Reject missing or obviously malformed answers and ask correction without showing the resource URL. These are AI conversational checks, NOT deterministic validation. Do not release the link on SKIP, refusal, partial answers or malformed contact. Require all email answers before delivery. Deliver: Here is {ebook_title}: {ebook_url} Preserve refusal and silence. HELP asks for the problem; do not bypass any pending contact gate. Configure separate capture additions for email with the explicit purpose; merge them into the complete existing captures list, never overwrite it. Contact persistence is unverified: do not claim saved data or external subscription. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\ndelivery: Here is {ebook_title}: {ebook_url}\ninvalid: That looks incomplete or incorrectly formatted. Please try again.\nemail: For {contact_purpose}, please send your email address. You can refuse; the link requires this contact."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "collectContactInfo": {
+              "howToCollect": "CollectInfo",
+              "captures": "$resolved.safe_captures"
+            }
+          }
+        }
+      ],
+      "list_additions": {
+        "collectContactInfo": [
+          {
+            "attribute": "$resolved.verified_email_attribute",
+            "description": "Campaign {campaign}; email for {contact_purpose}: Every requested contact is required before delivery: email. Refusal does not release the gated link."
+          }
+        ]
+      },
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "dm_base",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "manychat-20": [
+      {
+        "id": "email-list",
+        "title": "Finish email-list signup",
+        "scope": "For the email-list goal. Contact capture is not external subscription.",
+        "inputs": [
+          "Provider and target list",
+          "Email consent wording and proof",
+          "Resource URL; welcome email only if separately requested",
+          "Existing authorized access or connection"
+        ],
+        "citations": [
+          {
+            "title": "Brevo signup forms",
+            "url": "https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo"
+          },
+          {
+            "title": "Authorized contact and list mapping",
+            "url": "https://developers.brevo.com/docs/synchronise-contact-lists"
+          },
+          {
+            "title": "Consent records",
+            "url": "https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance"
+          },
+          {
+            "title": "Email and SMS automation actions",
+            "url": "https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation"
+          },
+          {
+            "title": "Optional email sender and message settings",
+            "url": "https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+          }
+        ],
+        "prompt": "Help me prepare: Finish email-list signup.\nSelected source: manychat-20 - Grow your email list.\nGoal: Use a useful resource to start a direct relationship with interested people.\nVariant: Grow your email list: ebook and 23-hour retry\nScope: For the email-list goal. Contact capture is not external subscription.\nSource entry: Keyword in a direct message\nSource requirements: Email is required; Repeat email collection after no reply\nSource timing: No reply: 23 hours; the reminder contains a second email collection step.\nSource outcome: An ebook after email capture\nCaptured text (node-0, not approved campaign copy):\nHi! Thanks for reaching out 💌\n\nWe are excited you are interested in our content and the ebook, and we would LOVE to send you more!\n\nTo get a free ebook, please leave us your email below 👇\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Ask for email before delivering the ebook.\nUse the existing email provider. If none exists, propose Brevo for approval; it is not connected.\nAsk me for: Provider and target list; Email consent wording and proof; Resource URL; welcome email only if separately requested; Existing authorized access or connection.\n1. Inspect existing authorized connections. Chatfuel contact collection alone does not subscribe anyone to an external list. Use a sync only after verifying its field mapping, authorization and readback.\n2. If no sync is verified, propose a hosted signup form link in the DM. A Brevo form can collect EMAIL and add the contact to the selected list. Disclose the extra form step and ask for approval before changing the source journey. If DM collection must remain, leave the ongoing bridge unverified and prepare the exact mapping and next access action only.\n3. Draft the email-to-list mapping and channel-specific consent record. Preserve opt-outs; prevent duplicate contacts and repeated welcome sends. Keep optional signup optional and do not withhold a resource that the selected Chatfuel variant delivers first.\n4. Verify actual membership in the intended list; this can complete the list-growth goal. A saved Chatfuel email or a link click does not prove membership. Only if the owner requests a welcome email or series, draft sender, reply-to and unsubscribe settings and a separate consented delivery check before any later approved send. Return draft form/list settings, unresolved access and the next authorized action.\n5. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n6. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n7. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend.\nOfficial guidance checked 2026-11-02:\nBrevo signup forms: https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo\nAuthorized contact and list mapping: https://developers.brevo.com/docs/synchronise-contact-lists\nConsent records: https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance\nEmail and SMS automation actions: https://help.brevo.com/hc/en-us/articles/15445989568402-Available-triggers-actions-and-rules-in-an-automation\nOptional email sender and message settings: https://help.brevo.com/hc/en-us/articles/24257124386066-Send-an-email-from-an-automation"
+      }
+    ]
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-20.json": "d5f1ab8adccf68e0ef1771326bb63b8c47ed6af69148814a4e959d7eaff1e1d5"
+  }
+}

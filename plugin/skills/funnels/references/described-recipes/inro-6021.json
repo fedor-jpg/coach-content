@@ -1,0 +1,679 @@
+{
+  "schema_version": 1,
+  "id": "inro-6021",
+  "version": "1.0.0",
+  "description_status": "described_not_accepted",
+  "title": "Two-question DM qualification",
+  "source": {
+    "id": "inro-6021",
+    "title": "Qualify DM leads with AI and book calls",
+    "url": "https://app.inro.social/public/scenarios/6021",
+    "observed_at": "2026-10-30",
+    "original_goal": "Qualify DM leads with AI and book calls",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "native": {
+    "inputs_text": "question_one, question_two, qualification_policy, next_step; booking_url only for booking_link.",
+    "messages_text": "\"Would you like to answer two questions about your situation?\" Ask Q only after new consent.",
+    "modes": [
+      "D",
+      "Q",
+      "H"
+    ],
+    "end_stop": "Actual answers and the agreed next step; S. No fabricated booking.",
+    "difference": ""
+  },
+  "applicability": {
+    "use_when": [
+      "People send a campaign word in ordinary DMs and may agree to two intake questions."
+    ],
+    "prerequisites": [
+      "Prepare two questions, qualification criteria and the approved handoff or booking-link next step."
+    ],
+    "exclude_when": [
+      "Do not treat existing answers, the entry word or consent as the two new answers.",
+      "Do not configure when required lifecycle operations are unavailable on the actual host."
+    ]
+  },
+  "inputs": [
+    {
+      "name": "campaign",
+      "type": "text",
+      "requirement": "required",
+      "description": "Unique ASCII campaign name, at most 48 characters. Journal belongs to this conversation only."
+    },
+    {
+      "name": "language",
+      "type": "text",
+      "requirement": "required",
+      "description": "Language for the exact approved messages."
+    },
+    {
+      "name": "initial_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved first message; promised value must be in that message."
+    },
+    {
+      "name": "refusal_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved refusal reply. Ends this campaign before keyword matching."
+    },
+    {
+      "name": "handoff_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved team reply; native handoff needs separate readback."
+    },
+    {
+      "name": "keyword",
+      "type": "text",
+      "requirement": "required",
+      "description": "Approved entry word; read actual host matching rules."
+    },
+    {
+      "name": "question_one",
+      "type": "text",
+      "requirement": "required",
+      "description": "First approved question; no diagnosis or guaranteed outcome."
+    },
+    {
+      "name": "question_two",
+      "type": "text",
+      "requirement": "required",
+      "description": "Second approved question, asked only after an actual first answer."
+    },
+    {
+      "name": "qualification_policy",
+      "type": "text",
+      "requirement": "required",
+      "description": "Approved appropriate, inappropriate and unclear enquiry criteria."
+    },
+    {
+      "name": "next_step",
+      "type": "text",
+      "requirement": "required",
+      "description": "Choose team handoff or an existing booking destination. Neither confirms an appointment."
+    },
+    {
+      "name": "booking_url",
+      "type": "url",
+      "requirement": "when next_step=booking_link",
+      "description": "Coach-supplied booking url, preserved without invented claims."
+    }
+  ],
+  "messages": [
+    {
+      "id": "public",
+      "kind": "template",
+      "text": "",
+      "availability": "not_sent",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6021",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "initial",
+      "kind": "template",
+      "text": "Would you like to answer two questions about your situation?",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6021",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "placement",
+      "kind": "template",
+      "text": "",
+      "availability": "not_required",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6021",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "continuation",
+      "kind": "instruction",
+      "text": "\"Would you like to answer two questions about your situation?\" Ask Q only after new consent.",
+      "availability": "instruction_not_sent_text",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6021",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "refusal",
+      "kind": "template",
+      "text": "Understood. I will not continue this campaign.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6021",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "handoff",
+      "kind": "template",
+      "text": "Our team will handle your request.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6021",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "question_one",
+      "kind": "template",
+      "text": "{question_one}",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6021"
+      }
+    },
+    {
+      "id": "question_two",
+      "kind": "template",
+      "text": "{question_two}",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6021"
+      }
+    },
+    {
+      "id": "destination",
+      "kind": "template",
+      "text": "{booking_url}",
+      "availability": "conditional_on_next_step",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6021"
+      }
+    }
+  ],
+  "route": {
+    "origin": "derived_native_instructions",
+    "deterministic": false,
+    "start": "entry",
+    "steps": [
+      {
+        "id": "entry",
+        "action": "Actual new inbound campaign word in an ordinary Instagram DM. Placement is a coach action, not a trigger.",
+        "message_ids": [
+          "placement"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "id": "first",
+        "action": "Send the exact approved first message. Deliver any promised value now.",
+        "message_ids": [
+          "initial"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "id": "end",
+        "action": "Stated outcome only. No inferred booking, registration, purchase, verified follow or verified share.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "id": "consent",
+        "action": "Require new affirmative consent for this run. Entry word and consent do not count as answers.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "id": "question-one",
+        "action": "Ask exactly the approved first question; wait for its actual answer.",
+        "message_ids": [
+          "question_one"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "id": "question-two",
+        "action": "Ask exactly the approved second question; wait for a distinct actual answer.",
+        "message_ids": [
+          "question_two"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "id": "qualified",
+        "action": "Apply qualification_policy: appropriate, inappropriate and unclear. Do not invent answers.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "id": "destination",
+        "action": "Provide approved booking_url only for next_step=booking_link. Do not claim completed booking.",
+        "message_ids": [
+          "destination"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "id": "refusal",
+        "action": "End this campaign on refusal. Do not restart from a keyword in the refusal.",
+        "message_ids": [
+          "refusal"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "id": "silence",
+        "action": "Send nothing for silence or external clicks; enforce current delivery windows.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "id": "repeat",
+        "action": "Same-run repeat does not restart intake, resend a bonus or duplicate capture. Ambiguous late replies need clarification.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "id": "handoff",
+        "action": "Use native team handoff on person request, unresolved facts or approved handoff criteria. Text alone is not handoff proof.",
+        "message_ids": [
+          "handoff"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "from": "entry",
+        "to": "first",
+        "condition": "New matching source event; current account, permission and delivery window verified.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "first",
+        "to": "consent",
+        "condition": "First message delivered; wait for fresh consent. Silence does nothing.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "consent",
+        "to": "question-one",
+        "condition": "Fresh localized affirmative consent.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "question-one",
+        "to": "question-two",
+        "condition": "Actual first answer, not repeated consent.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "question-two",
+        "to": "qualified",
+        "condition": "Distinct actual second answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "qualified",
+        "to": "destination",
+        "condition": "Appropriate and next_step=booking_link; no qualification-only handoff.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "destination",
+        "to": "end",
+        "condition": "Link delivered; external completion remains unverified.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "first",
+        "to": "refusal",
+        "condition": "Actual refusal.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "consent",
+        "to": "refusal",
+        "condition": "Actual refusal.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "question-one",
+        "to": "refusal",
+        "condition": "Actual refusal.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "question-two",
+        "to": "refusal",
+        "condition": "Actual refusal.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "qualified",
+        "to": "refusal",
+        "condition": "Actual refusal.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "destination",
+        "to": "refusal",
+        "condition": "Actual refusal.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "first",
+        "to": "silence",
+        "condition": "No inbound reply, or only an external click.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "first",
+        "to": "repeat",
+        "condition": "Same-run repeated word.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "refusal",
+        "to": "end",
+        "condition": "Refusal completed. No permanent cross-source suppression claimed.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "first",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "consent",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "question-one",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "question-two",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "qualified",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "qualified",
+        "to": "handoff",
+        "condition": "Both actual answers and next_step=handoff, or unresolved qualification.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      },
+      {
+        "from": "handoff",
+        "to": "end",
+        "condition": "Actual native team control readback.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6021"
+        }
+      }
+    ]
+  },
+  "source_differences": [
+    "Not preserved from the source: confirmed-booking, deterministic-qualification-graph. A business analogue is not an equivalent graph."
+  ],
+  "reconciliation": {
+    "legacy_file": "recipes/inro-6021.json",
+    "legacy_sha256": "04f3bdb3fdf35dd9ee3b78abc6754d5726d6ef8758a5c26b3cd82b025d22b962",
+    "legacy_version": "0.1.0",
+    "legacy_status": "candidate",
+    "legacy_goal": "Qualify an inbound DM enquiry with two questions and provide a booking link or handoff.",
+    "relationship": "native_guide_revision_not_literal_equivalence",
+    "explanation": "The native guide defines this business outcome. Legacy inputs, messages and transitions remain available for exact-source audit, not as a second authority for this analogue.",
+    "required_input_changes": {
+      "legacy": [
+        "keyword",
+        "question_one",
+        "question_two",
+        "qualification_policy",
+        "language",
+        "initial_text",
+        "refusal_text",
+        "handoff_text",
+        "next_step"
+      ],
+      "legacy_initial": [],
+      "canonical": [
+        {
+          "name": "campaign",
+          "requirement": "required"
+        },
+        {
+          "name": "language",
+          "requirement": "required"
+        },
+        {
+          "name": "initial_text",
+          "requirement": "required"
+        },
+        {
+          "name": "refusal_text",
+          "requirement": "required"
+        },
+        {
+          "name": "handoff_text",
+          "requirement": "required"
+        },
+        {
+          "name": "keyword",
+          "requirement": "required"
+        },
+        {
+          "name": "question_one",
+          "requirement": "required"
+        },
+        {
+          "name": "question_two",
+          "requirement": "required"
+        },
+        {
+          "name": "qualification_policy",
+          "requirement": "required"
+        },
+        {
+          "name": "next_step",
+          "requirement": "required"
+        },
+        {
+          "name": "booking_url",
+          "requirement": "when next_step=booking_link"
+        }
+      ]
+    }
+  },
+  "configuration": {
+    "policy": "native-policy.md",
+    "capability_observation": "capability-observation.json",
+    "operations": [
+      "Read actual host tools and get_playbook for this recipe.",
+      "Read/stage general InstagramDirectMessages only under explicit OFF/ON shared-state branches.",
+      "Apply native policy mode D; inspect actual inputs before writes.",
+      "Apply native policy mode Q; inspect actual inputs before writes.",
+      "Apply native policy mode H; inspect actual inputs before writes.",
+      "Read back each exact setting and inheritance before continuing."
+    ],
+    "normal_connector_gate": "Required OFF creation, exact inheritance restoration or continuing comment preview may be unavailable. Stop before writes; a documented GraphQL alternative is not an available normal tool."
+  },
+  "lifecycle": {
+    "checks": [
+      "content",
+      "return",
+      "stop",
+      "refusal",
+      "repeat",
+      "unknown_action",
+      "wrong_account",
+      "two_campaigns",
+      "source_attribution",
+      "expired_window",
+      "late_ambiguous_reply",
+      "destination",
+      "two_actual_answers",
+      "normal_host_capabilities",
+      "fresh_account_state",
+      "exact_restoration",
+      "live_suppression"
+    ],
+    "return": "Use this conversation journal and fresh native readback. No cross-chat state or user settings transfer. If the journal is missing, read-only reconciliation only.",
+    "stop": "Apply S from native-policy.md: safe owned disable; exact campaign additions only; preserve concurrent changes and inheritance. Restore dormant Send only after original OFF DM is OFF. Read back every stop; live silence is separate.",
+    "restart": "Fresh source and consent, same verified ownership. Waitlist membership stays joined/withdrawn; no old consent reuse."
+  },
+  "evidence": {
+    "source_capture": {
+      "observed_at": "2026-10-30",
+      "status": "captured_research_not_runtime"
+    },
+    "canonical_version": {
+      "status": "described_not_runtime_tested"
+    },
+    "capability": {
+      "observed_at": "2026-11-01",
+      "status": "dated_document_and_tool_observation_not_account_check"
+    },
+    "preview": {
+      "status": "not_tested_for_canonical_version",
+      "note": "Older previews do not establish unchanged behavior after prompt changes."
+    },
+    "live": {
+      "status": "historical_partial_not_accepted",
+      "observed_at": "2026-10-31",
+      "note": "No individual live acceptance for this canonical version.",
+      "reference": "inro-business-analogues-live.json; checked_at=2026-10-31T06:52:44Z"
+    },
+    "acceptance": {
+      "status": "not_accepted",
+      "registry": "catalog.json",
+      "note": "Zero versions qualify. Local checks, previews and partial live paths are not acceptance."
+    }
+  }
+}

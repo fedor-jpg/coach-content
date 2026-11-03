@@ -1,0 +1,776 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "moderation-inro-comment-moderation",
+    "name": "Comment moderation wizard: later steps missing",
+    "source_ids": [
+      "inro-comment-moderation"
+    ],
+    "entry": "Comment on a post",
+    "mandatory_conditions": [
+      "Choose a word, meaning or spam rule",
+      "Apply the intended moderation action"
+    ],
+    "outcome": "The later wizard actions are not established",
+    "timing": [],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "moderation",
+      "comment"
+    ],
+    "assessment": {
+      "status": "insufficient_data",
+      "reason": "Only the first part of the wizard was captured. Ordinary MCP does not provide hide/delete actions.",
+      "missing_source_behavior": [
+        "The next two wizard steps did not open; the exact action and branches are unknown."
+      ],
+      "replacement": {
+        "changes": "Only the first part of the wizard was captured. Ordinary MCP does not provide hide/delete actions.",
+        "result": "A different business result: respond to named words and move a complaint into DM without moderating the comment.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "inro-comment-moderation": "Only the first screen and its options were captured. The next two steps did not open."
+    },
+    "client_inputs": [],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-comment-moderation"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [],
+      "binding_review": {
+        "source_entry": "Comment on a post",
+        "source_outcome": "The later wizard actions are not established",
+        "mandatory_conditions": [
+          "Choose a word, meaning or spam rule",
+          "Apply the intended moderation action"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 0,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "source_incomplete_reference_only",
+        "reason": "The moderation wizard capture does not establish downstream actions or a runnable graph. Ordinary MCP also lacks moderation operations; do not invent the missing source behavior.",
+        "primary_result": "The later wizard actions are not established",
+        "source_requirements": [
+          "Choose a word, meaning or spam rule",
+          "Apply the intended moderation action"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "moderation"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Handle unwanted comments and make space for genuine questions.",
+  "fit": "Teams with a defined moderation policy or a private complaint process.",
+  "preparation_status": "source_incomplete_reference_only",
+  "function_review": {
+    "status": "source_incomplete_reference_only",
+    "reason": "The moderation wizard capture does not establish downstream actions or a runnable graph. Ordinary MCP also lacks moderation operations; do not invent the missing source behavior.",
+    "primary_result": "The later wizard actions are not established",
+    "source_requirements": [
+      "Choose a word, meaning or spam rule",
+      "Apply the intended moderation action"
+    ],
+    "source_timing": [],
+    "blocking_dependencies": [
+      "moderation"
+    ],
+    "retained": [],
+    "omitted": [],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "moderation"
+  ],
+  "sources": [
+    {
+      "source_id": "inro-comment-moderation",
+      "source_file": "source-records/inro-comment-moderation.json",
+      "source_title": "Comment moderation",
+      "start": null,
+      "nodes": [],
+      "transitions": [],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [
+        {
+          "name": "Original Step 1: no moderation filter selected",
+          "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should be moderated?\nAll hateful and spam comments\nAI\nComments with a specific intent\nAI\nComments with specific keywords\nNo comments selected\nHIDDEN\na comment\nContinue\nStep 1 of 3",
+          "fields": [
+            {
+              "context": "All hateful and spam comments",
+              "index": 0,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with a specific intent",
+              "index": 1,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with specific keywords",
+              "index": 2,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            }
+          ]
+        },
+        {
+          "name": "Inspection variant: specific intent",
+          "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should be moderated?\nAll hateful and spam comments\nAI\nComments with a specific intent\nAI\nDescribe comment intent\nHate speech or slurs\nSpam or self-promotion\nThreats or harassment\nOffensive insults or attacks\nBe as precise and specific as possible to get better results.\nAI-detected intents may not always be accurate.\nComments with specific keywords\ncomment with AI-detected intent\n18\nHIDDEN\ncomment with AI-detected intent\nContinue\nStep 1 of 3",
+          "fields": [
+            {
+              "context": "All hateful and spam comments",
+              "index": 0,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with a specific intent",
+              "index": 1,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": true,
+              "value_state": "observed_value"
+            },
+            {
+              "context": null,
+              "index": 2,
+              "label": null,
+              "options": null,
+              "placeholder": "e.g. the comment is insulting me, is racist, etc.",
+              "tag": "textarea",
+              "type": "textarea",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": null,
+                "required": null
+              },
+              "value": "",
+              "value_state": "observed_unset"
+            },
+            {
+              "context": "Comments with specific keywords",
+              "index": 3,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            }
+          ]
+        },
+        {
+          "name": "Inspection variant: specific keywords",
+          "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should be moderated?\nAll hateful and spam comments\nAI\nComments with a specific intent\nAI\nComments with specific keywords\nAdd keyword\nUppercase and accents are ignored and you can use emojis.\nEnter at least one keyword to filter the comments.\ncomment with keyword\n18\nHIDDEN\ncomment with keyword\nContinue\nStep 1 of 3",
+          "fields": [
+            {
+              "context": "All hateful and spam comments",
+              "index": 0,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with a specific intent",
+              "index": 1,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with specific keywords",
+              "index": 2,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": true,
+              "value_state": "observed_value"
+            },
+            {
+              "context": null,
+              "index": 3,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "text",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": null,
+                "required": null
+              },
+              "value": "",
+              "value_state": "observed_unset"
+            }
+          ]
+        },
+        {
+          "name": "Inspection variant: hateful/spam filter",
+          "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should be moderated?\nAll hateful and spam comments\nAI\nHateful and spam detection\nAI automatically detects hateful, offensive and spam comments — no setup needed.\nAI detection may not always be accurate.\nComments with a specific intent\nAI\nComments with specific keywords\na hateful or spam comment\n18\nHIDDEN\na hateful or spam comment\nContinue\nStep 1 of 3",
+          "fields": [
+            {
+              "context": "All hateful and spam comments",
+              "index": 0,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": true,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with a specific intent",
+              "index": 1,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            },
+            {
+              "context": "Comments with specific keywords",
+              "index": 2,
+              "label": null,
+              "options": null,
+              "placeholder": null,
+              "tag": "input",
+              "type": "radio",
+              "validation": {
+                "disabled": null,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "readonly": "",
+                "required": null
+              },
+              "value": false,
+              "value_state": "observed_value"
+            }
+          ]
+        }
+      ],
+      "global_fields": [
+        {
+          "path": "/wizard_settings/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/0/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/1/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/1/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/1/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/1/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/2/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/2/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/2/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/2/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/3/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/3/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/wizard_settings/3/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "6984561b33cdd832df83e319c24c7ffd2b7410840f710b77c7131ae04d8f1edc",
+      "source_leaf_count": 352,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [],
+  "continuations": {
+    "inro-comment-moderation": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/inro-comment-moderation.json": "e795715b15d9651699d236c3a7a8332b738912f8fc1f10421a27910d34ba7aec",
+    "described-recipes/inro-comment-moderation.json": "6a746ede1a5f2bf9940eafed55c91a87b1706ad76008847ad38c970f47dd8ec0"
+  }
+}

@@ -1,0 +1,522 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "link-delivery-manychat-60",
+    "name": "Live comment to one private link",
+    "source_ids": [
+      "manychat-60"
+    ],
+    "entry": "Keyword comment during a Live",
+    "mandatory_conditions": [
+      "Enter through the Live-comment trigger"
+    ],
+    "outcome": "One private message with a link",
+    "timing": [],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "live",
+      "comment",
+      "buttons"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "Replace the Live comment with a comment on a selected post and the URL button with a text link.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Replace the Live comment with a comment on a selected post and the URL button with a text link.",
+        "result": "A fixed DM after a post comment; the entry changes.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "manychat-60": "The clone keyword list is unset. Keywords cannot be inferred from message copy."
+    },
+    "client_inputs": [
+      "Live keyword",
+      "message",
+      "destination"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "source_based_draft",
+      "analogue_ids": [],
+      "draft": {
+        "modes": [
+          "C"
+        ],
+        "inputs": [
+          "campaign",
+          "language",
+          "keyword",
+          "resource_title",
+          "resource_url",
+          "public_text"
+        ],
+        "initial": "Here is {resource_title}: {resource_url}.",
+        "instruction": "Deliver the requested link only. No second message, callback or Live trigger is promised.",
+        "contact_requirement": null
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [],
+      "binding_review": {
+        "source_entry": "Keyword comment during a Live",
+        "source_outcome": "One private message with a link",
+        "mandatory_conditions": [
+          "Enter through the Live-comment trigger"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 0,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "This scenario starts from a Live comment. Ordinary MCP cannot configure that Live-specific entry. An ordinary post comment or DM would be a different scenario.",
+        "primary_result": "One private message with a link",
+        "source_requirements": [
+          "Enter through the Live-comment trigger"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "live"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Put the requested guide, resource or destination in the conversation.",
+  "fit": "Creators and businesses offering a useful next step without a required contact or follow.",
+  "preparation_status": "waiting_for_chatfuel",
+  "function_review": {
+    "status": "waiting_for_chatfuel",
+    "reason": "This scenario starts from a Live comment. Ordinary MCP cannot configure that Live-specific entry. An ordinary post comment or DM would be a different scenario.",
+    "primary_result": "One private message with a link",
+    "source_requirements": [
+      "Enter through the Live-comment trigger"
+    ],
+    "source_timing": [],
+    "blocking_dependencies": [
+      "live"
+    ],
+    "retained": [],
+    "omitted": [],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "live",
+    "buttons"
+  ],
+  "sources": [
+    {
+      "source_id": "manychat-60",
+      "source_file": "source-records/manychat-60.json",
+      "source_title": "Trigger DMs during IG Live",
+      "start": "trigger",
+      "nodes": [
+        {
+          "id": "trigger",
+          "source_type": "trigger",
+          "content": {
+            "text": "",
+            "preview": "Live Comments #3\n\nSelected values were not captured",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment",
+            "live"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [
+            "live"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "0912896f519bbfcd5a980c86ecca2713ef273a6060e138f67ae789bb6f7a9d70",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "node-0",
+          "source_type": "message",
+          "content": {
+            "text": "You made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇",
+            "preview": "You made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇",
+            "buttons": [
+              "CLICK HERE 🔥"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "You made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "CLICK HERE 🔥",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "https://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Additional actions",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "6fb5441924cc6324c18ade5e028b6d55844731065f51e4caab7cbbb33184ae86",
+          "settings_leaf_count": 164
+        }
+      ],
+      "transitions": [
+        {
+          "id": "edge-0",
+          "from": "trigger",
+          "to": "node-0",
+          "label": "Starting Step",
+          "settings": {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/60-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/0"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/instance/nodes/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "You made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "CLICK HERE 🔥",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "https://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "CLICK HERE 🔥",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "https://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "22010568e75ed5872bfb6fa0eca5aeb8a225512d47eb3e41dd821e5f79794e15",
+      "source_leaf_count": 383,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [],
+  "continuations": {
+    "manychat-60": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-60.json": "c42b83a29946ef8eeec3b04430423d4b4d302610df87e1c75b5480fcedfb59d9"
+  }
+}

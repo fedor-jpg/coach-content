@@ -1,0 +1,492 @@
+{
+  "schema_version": 1,
+  "id": "inro-6111",
+  "version": "1.0.0",
+  "description_status": "described_not_accepted",
+  "title": "Private resolution for flagged feedback",
+  "source": {
+    "id": "inro-6111",
+    "title": "Keep hate out of your comments",
+    "url": "https://app.inro.social/public/scenarios/6111",
+    "observed_at": "2026-10-30",
+    "original_goal": "Keep hate out of your comments",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "native": {
+    "inputs_text": "feedback_terms, resolution_policy, issue_prompt. Use feedback_terms for N's approved contains-list.",
+    "messages_text": "No public response or like. DM: \"{issue_prompt}\" After an actual reply, answer from resolution_policy or use team handoff. No argument, abuse quotation or repeated outreach.",
+    "modes": [
+      "N",
+      "D",
+      "H"
+    ],
+    "end_stop": "Flagged feedback receives a private invitation and, after reply, resolution/handoff; S.",
+    "difference": "No-amplification response and triage, not hate removal or semantic hate detection. Comments remain visible."
+  },
+  "applicability": {
+    "use_when": [
+      "Comments on selected posts contain explicitly approved feedback terms and need a private resolution invitation."
+    ],
+    "prerequisites": [
+      "Approve a contains-list, private issue question and resolution policy. Send no public reply or like; continue only after the contact replies."
+    ],
+    "exclude_when": [
+      "Do not choose for hide/delete, automatic hate/sentiment detection or repeated unsolicited outreach. Comments remain visible.",
+      "Do not configure when required lifecycle operations are unavailable on the actual host."
+    ]
+  },
+  "inputs": [
+    {
+      "name": "campaign",
+      "type": "text",
+      "requirement": "required",
+      "description": "Unique ASCII campaign name, at most 48 characters. Journal belongs to this conversation only."
+    },
+    {
+      "name": "language",
+      "type": "text",
+      "requirement": "required",
+      "description": "Language for the exact approved messages."
+    },
+    {
+      "name": "initial_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved first message; promised value must be in that message."
+    },
+    {
+      "name": "refusal_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved refusal reply. Ends this campaign before keyword matching."
+    },
+    {
+      "name": "handoff_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved team reply; native handoff needs separate readback."
+    },
+    {
+      "name": "post_ids",
+      "type": "ids",
+      "requirement": "required",
+      "description": "Actual owned Instagram posts; inspect overlap before preparation."
+    },
+    {
+      "name": "keyword",
+      "type": "text",
+      "requirement": "required",
+      "description": "Approved entry word; read actual host matching rules."
+    },
+    {
+      "name": "public_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved public copy, or nonempty inactive copy when public replies are disabled."
+    },
+    {
+      "name": "feedback_terms",
+      "type": "text",
+      "requirement": "required",
+      "description": "Explicit approved contains-list; not semantic hate detection."
+    },
+    {
+      "name": "resolution_policy",
+      "type": "text",
+      "requirement": "required",
+      "description": "Approved facts and resolution boundaries. Unknown facts go to the team."
+    },
+    {
+      "name": "issue_prompt",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved private invitation to explain the issue."
+    }
+  ],
+  "messages": [
+    {
+      "id": "public",
+      "kind": "template",
+      "text": "",
+      "availability": "not_sent",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6111",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "initial",
+      "kind": "template",
+      "text": "{issue_prompt}",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6111",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "placement",
+      "kind": "template",
+      "text": "",
+      "availability": "not_required",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6111",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "continuation",
+      "kind": "instruction",
+      "text": "No public response or like. DM: \"{issue_prompt}\" After an actual reply, answer from resolution_policy or use team handoff. No argument, abuse quotation or repeated outreach.",
+      "availability": "instruction_not_sent_text",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6111",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "refusal",
+      "kind": "template",
+      "text": "Understood. I will not continue this campaign.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6111",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "handoff",
+      "kind": "template",
+      "text": "Our team will handle your request.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6111",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    }
+  ],
+  "route": {
+    "origin": "derived_native_instructions",
+    "deterministic": false,
+    "start": "entry",
+    "steps": [
+      {
+        "id": "entry",
+        "action": "Actual matching post comment. Use explicit feedback contains-list for N; no semantic detector.",
+        "message_ids": [
+          "placement"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "id": "first",
+        "action": "Send private invitation only. No public reply or like.",
+        "message_ids": [
+          "public",
+          "initial"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "id": "end",
+        "action": "Stated outcome only. No inferred booking, registration, purchase, verified follow or verified share.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "id": "reply",
+        "action": "No public response or like. DM: \"{issue_prompt}\" After an actual reply, answer from resolution_policy or use team handoff. No argument, abuse quotation or repeated outreach.",
+        "message_ids": [
+          "continuation"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "id": "refusal",
+        "action": "End this campaign on refusal. Do not restart from a keyword in the refusal.",
+        "message_ids": [
+          "refusal"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "id": "silence",
+        "action": "Send nothing for silence or external clicks; enforce current delivery windows.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "id": "repeat",
+        "action": "Same-run repeat does not restart intake, resend a bonus or duplicate capture. Ambiguous late replies need clarification.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "id": "handoff",
+        "action": "Use native team handoff on person request, unresolved facts or approved handoff criteria. Text alone is not handoff proof.",
+        "message_ids": [
+          "handoff"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "from": "entry",
+        "to": "first",
+        "condition": "New matching source event; current account, permission and delivery window verified.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "from": "first",
+        "to": "reply",
+        "condition": "Actual contact reply within the current window. No silent continuation.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "from": "reply",
+        "to": "end",
+        "condition": "Approved factual resolution or appropriate contextual thanks.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "from": "first",
+        "to": "refusal",
+        "condition": "Actual refusal.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "from": "reply",
+        "to": "refusal",
+        "condition": "Actual refusal.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "from": "first",
+        "to": "silence",
+        "condition": "No inbound reply, or only an external click.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "from": "first",
+        "to": "repeat",
+        "condition": "Same-run repeated word.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "from": "refusal",
+        "to": "end",
+        "condition": "Refusal completed. No permanent cross-source suppression claimed.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "from": "first",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "from": "reply",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      },
+      {
+        "from": "handoff",
+        "to": "end",
+        "condition": "Actual native team control readback.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6111"
+        }
+      }
+    ]
+  },
+  "source_differences": [
+    "No-amplification response and triage, not hate removal or semantic hate detection. Comments remain visible."
+  ],
+  "reconciliation": {
+    "legacy_file": "recipes/inro-6111.json",
+    "legacy_sha256": "f8ea6de8ed88f00501276712163291c84d9ca5b9207dc1dcf987ee367b8ac83f",
+    "legacy_version": "0.1.0",
+    "legacy_status": "unavailable",
+    "legacy_goal": "Hide hate and spam automatically.",
+    "relationship": "deliberate_business_replacement",
+    "explanation": "Keep the older literal-source contract and its unavailable/unverified status unchanged. This described outcome replaces its mechanism and does not inherit its evidence.",
+    "required_input_changes": {
+      "legacy": [
+        "moderation_policy"
+      ],
+      "legacy_initial": [],
+      "canonical": [
+        {
+          "name": "campaign",
+          "requirement": "required"
+        },
+        {
+          "name": "language",
+          "requirement": "required"
+        },
+        {
+          "name": "initial_text",
+          "requirement": "required"
+        },
+        {
+          "name": "refusal_text",
+          "requirement": "required"
+        },
+        {
+          "name": "handoff_text",
+          "requirement": "required"
+        },
+        {
+          "name": "post_ids",
+          "requirement": "required"
+        },
+        {
+          "name": "keyword",
+          "requirement": "required"
+        },
+        {
+          "name": "public_text",
+          "requirement": "required"
+        },
+        {
+          "name": "feedback_terms",
+          "requirement": "required"
+        },
+        {
+          "name": "resolution_policy",
+          "requirement": "required"
+        },
+        {
+          "name": "issue_prompt",
+          "requirement": "required"
+        }
+      ]
+    }
+  },
+  "configuration": {
+    "policy": "native-policy.md",
+    "capability_observation": "capability-observation.json",
+    "operations": [
+      "Read actual host tools and get_playbook for this recipe.",
+      "Create/bind only an approved owned OFF rule. Normal setup_comment_replies is not draft preparation.",
+      "Read/stage general InstagramDirectMessages only under explicit OFF/ON shared-state branches.",
+      "Apply native policy mode N; inspect actual inputs before writes.",
+      "Apply native policy mode D; inspect actual inputs before writes.",
+      "Apply native policy mode H; inspect actual inputs before writes.",
+      "Read back each exact setting and inheritance before continuing."
+    ],
+    "normal_connector_gate": "Required OFF creation, exact inheritance restoration or continuing comment preview may be unavailable. Stop before writes; a documented GraphQL alternative is not an available normal tool."
+  },
+  "lifecycle": {
+    "checks": [
+      "content",
+      "return",
+      "stop",
+      "refusal",
+      "repeat",
+      "unknown_action",
+      "wrong_account",
+      "two_campaigns",
+      "source_attribution",
+      "unavailable_hate_removal_declined",
+      "normal_host_capabilities",
+      "fresh_account_state",
+      "exact_restoration",
+      "live_suppression"
+    ],
+    "return": "Use this conversation journal and fresh native readback. No cross-chat state or user settings transfer. If the journal is missing, read-only reconciliation only.",
+    "stop": "Apply S from native-policy.md: safe owned disable; exact campaign additions only; preserve concurrent changes and inheritance. Restore dormant Send only after original OFF DM is OFF. Read back every stop; live silence is separate.",
+    "restart": "Fresh source and consent, same verified ownership. Waitlist membership stays joined/withdrawn; no old consent reuse."
+  },
+  "evidence": {
+    "source_capture": {
+      "observed_at": "2026-10-30",
+      "status": "captured_research_not_runtime"
+    },
+    "canonical_version": {
+      "status": "described_not_runtime_tested"
+    },
+    "capability": {
+      "observed_at": "2026-11-01",
+      "status": "dated_document_and_tool_observation_not_account_check"
+    },
+    "preview": {
+      "status": "not_tested_for_canonical_version",
+      "note": "Older previews do not establish unchanged behavior after prompt changes."
+    },
+    "live": {
+      "status": "historical_partial_not_accepted",
+      "observed_at": "2026-10-31",
+      "note": "Earlier core delivery/handoff reported separately; full lifecycle and exact current recipe revision not accepted.",
+      "reference": "inro-business-analogues-live.json; checked_at=2026-10-31T06:52:44Z"
+    },
+    "acceptance": {
+      "status": "not_accepted",
+      "registry": "catalog.json",
+      "note": "Zero versions qualify. Local checks, previews and partial live paths are not acceptance."
+    }
+  }
+}

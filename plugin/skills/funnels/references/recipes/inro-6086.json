@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "id": "inro-6086",
+  "version": "0.1.0",
+  "source": {
+    "id": "inro-6086",
+    "title": "Thank people who share you in their story",
+    "url": "https://app.inro.social/public/scenarios/6086",
+    "observed_at": "2026-10-30",
+    "original_goal": "Thank people who share you in their story",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "status": "unverified",
+  "family": "acknowledgment",
+  "goal": "Automatically thank people who mention the coach in their story.",
+  "entry": "none",
+  "platforms": [
+    "Instagram"
+  ],
+  "conversation": false,
+  "design_changes": [],
+  "unsupported_requirements": [
+    "automatic-story-mention-acknowledgment",
+    "story-mention-reaction"
+  ],
+  "blockers": [
+    "Automatic story-mention acknowledgment is unverified: the actual mention trigger and automatic reply need native verification."
+  ],
+  "required_inputs": [
+    "acknowledgment_policy"
+  ],
+  "allowed_parameters": {
+    "acknowledgment_policy": {
+      "type": "text",
+      "description": "Approved thanks for a genuine story mention and handling of unrelated messages. No automatic trigger is verified."
+    }
+  },
+  "messages": {
+    "public": "",
+    "initial": "",
+    "continuation": "Automatic thanks for a story mention remains unverified. Asking the person to DM first or manually sending thanks does not verify automatic mention acknowledgment. Absence of a reaction operation does not prove that automatic text acknowledgment is impossible.",
+    "refusal": "Understood. I will not continue this campaign. You can ask our team for help.",
+    "handoff": "Our team will handle your request.",
+    "placement": ""
+  },
+  "transitions": [
+    {
+      "event": "The coach requests automatic thanks for a story mention.",
+      "actor": "Claude",
+      "action": "Report the unverified mention trigger and automatic reply; do not create a generic DM rule or require a reaction as the business goal.",
+      "evidence": "Actual mention-triggered automatic acknowledgment has not been verified. A StoryMention message type alone is not automation evidence."
+    }
+  ],
+  "native_operations": [],
+  "outcome": "Automatic story-mention acknowledgment remains blocked pending actual trigger and reply verification.",
+  "negative_cases": [
+    "Do not call a manually sent text or a DM-first invitation automatic story-mention acknowledgment.",
+    "No reaction operation does not prove that automatic text acknowledgment is impossible."
+  ],
+  "runtime_checks": [
+    "content",
+    "return",
+    "stop",
+    "refusal",
+    "repeat",
+    "unknown_action",
+    "wrong_account",
+    "two_campaigns",
+    "source_attribution",
+    "unverified_story_acknowledgment_declined"
+  ],
+  "resume": {
+    "actor": "Claude",
+    "action": "Recheck native mention-trigger and automatic-reply evidence before proposing any preparation. This recipe remains blocked without it.",
+    "campaign_match": "Require an actual story mention linked to the same account, recipient and automatic reply; do not infer a working trigger from a message type."
+  },
+  "stop": {
+    "actor": "Claude with scoped native approval",
+    "action": "No automation is created; there is nothing to disable.",
+    "proof": "Honest rejection is tested, not a released funnel."
+  },
+  "execution_reference": "../chatfuel-execution.md",
+  "initial_required_parameters": [],
+  "supported_requirements": [
+    "instagram",
+    "local-preview"
+  ],
+  "business_outcomes": {
+    "unverified_story_acknowledgment_declined": {
+      "origin": "human-review",
+      "description": "The assistant reports automatic mention acknowledgment as unverified, preserves the thanks goal and does not claim a text alternative impossible from missing reaction support alone.",
+      "min_native_refs": 1
+    }
+  }
+}

@@ -1,0 +1,1391 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "follower-material-manychat-107",
+    "name": "Follow first, then freebie: check and retry",
+    "source_ids": [
+      "manychat-107"
+    ],
+    "entry": "Keyword comment",
+    "mandatory_conditions": [
+      "Ask the person to follow",
+      "Check: true delivers the guide; false offers another check"
+    ],
+    "outcome": "A guide only after the follower check succeeds",
+    "timing": [],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "comment",
+      "follower",
+      "buttons",
+      "graph"
+    ],
+    "assessment": {
+      "status": "unavailable",
+      "reason": "No follower condition is exposed. A follow request does not replace the true/false gate or its retry loop.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "No follower condition is exposed. A follow request does not replace the true/false gate or its retry loop.",
+        "result": "Only with owner approval: send the guide unconditionally. Follower verification is lost.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "manychat-107": "The source verifies a follow and offers another check when the result is false."
+    },
+    "client_inputs": [
+      "post",
+      "keywords",
+      "guide",
+      "destination"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6028"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [],
+      "binding_review": {
+        "source_entry": "Keyword comment",
+        "source_outcome": "A guide only after the follower check succeeds",
+        "mandatory_conditions": [
+          "Ask the person to follow",
+          "Check: true delivers the guide; false offers another check"
+        ],
+        "source_contact_policy": [
+          "Ask the person to follow"
+        ],
+        "plan_count": 0,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+        "primary_result": "A guide only after the follower check succeeds",
+        "source_requirements": [
+          "Ask the person to follow",
+          "Check: true delivers the guide; false offers another check"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "follower"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Offer a useful resource in exchange for a verified follow.",
+  "fit": "Creators who want access to depend on following, not just an invitation to follow.",
+  "preparation_status": "waiting_for_chatfuel",
+  "function_review": {
+    "status": "waiting_for_chatfuel",
+    "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+    "primary_result": "A guide only after the follower check succeeds",
+    "source_requirements": [
+      "Ask the person to follow",
+      "Check: true delivers the guide; false offers another check"
+    ],
+    "source_timing": [],
+    "blocking_dependencies": [
+      "follower"
+    ],
+    "retained": [],
+    "omitted": [],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "follower",
+    "buttons",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "manychat-107",
+      "source_file": "source-records/manychat-107.json",
+      "source_title": "Follow first, then freebie",
+      "start": "trigger",
+      "nodes": [
+        {
+          "id": "trigger",
+          "source_type": "trigger",
+          "content": {
+            "text": "",
+            "preview": "Post or Reel Comments #3\n\nSelected values were not captured",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/panels/2/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "replies.0.reply",
+                "label": null,
+                "type": null,
+                "value": "Link's in your DMs 📥",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/2/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "replies.1.reply",
+                "label": null,
+                "type": null,
+                "value": "Sent! The link is with you now 💌",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/2/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": "replies.2.reply",
+                "label": null,
+                "type": null,
+                "value": "Done! Kindly check your DMs 🌟",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/4/fields/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "replies.0.reply",
+                "label": null,
+                "type": null,
+                "value": "Link's in your DMs 📥",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/4/fields/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "replies.1.reply",
+                "label": null,
+                "type": null,
+                "value": "Sent! The link is with you now 💌",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/4/fields/2",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "replies.2.reply",
+                "label": null,
+                "type": null,
+                "value": "Done! Kindly check your DMs 🌟",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/4/fields/3",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "replies.3.reply",
+                "label": null,
+                "type": null,
+                "value": "Sent the info! Check messages 📨",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "a90e80850243cabea51e384e7d5a9e70089ad4834bd01629f8b3e9f84f6894ab",
+          "settings_leaf_count": 241
+        },
+        {
+          "id": "node-0",
+          "source_type": "message",
+          "content": {
+            "text": "Hey, I'm so glad you want my Ultimate Luxury Guide to the Amalfi Coast. \n\nThis is exclusive to my followers, so follow my account and I'll DM you the guide! La Dolce Vita ❤️️",
+            "preview": "Hey, I'm so glad you want my Ultimate Luxury Guide to the Amalfi Coast. \n\nThis is exclusive to my followers, so follow my account and I'll DM you the guide! La Dolce Vita ❤️️",
+            "buttons": [
+              "I'm following you✅"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Hey, I'm so glad you want my Ultimate Luxury Guide to the Amalfi Coast. \n\nThis is exclusive to my followers, so follow my account and I'll DM you the guide! La Dolce Vita ❤️️",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "inspection_observation",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Hey, I'm so glad you want my Ultimate Luxury Guide to the Amalfi Coast. \n\nThis is exclusive to my followers, so follow my account and I'll DM you the guide! La Dolce Vita ❤️️",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/1/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "I'm following you✅",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "78ab48f1480d003444484eb8a1decd3f61ca86f6408703a818c6869f5b73c9d7",
+          "settings_leaf_count": 225
+        },
+        {
+          "id": "node-1",
+          "source_type": "condition",
+          "content": {
+            "text": "",
+            "preview": "Follows your account\nis true",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "follower",
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "mandatory business condition"
+          ],
+          "reason": "Preserve true/false exits, field values and retry loops. No deterministic condition import.",
+          "unsupported": [
+            "follower",
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "d00ee940d227fae8f60dc3449127b9fdb2544014ccc188588dade6887e5a5a4e",
+          "settings_leaf_count": 84
+        },
+        {
+          "id": "node-2",
+          "source_type": "message",
+          "content": {
+            "text": "Oh yeah! I'm so happy you're following me! 💅\n\nHere's your followers-only access to my guide! 👇 ",
+            "preview": "Oh yeah! I'm so happy you're following me! 💅\n\nHere's your followers-only access to my guide! 👇 ",
+            "buttons": [
+              "Get Guide📖"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Oh yeah! I'm so happy you're following me! 💅\n\nHere's your followers-only access to my guide! 👇 ",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Get Guide📖",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "yourwebsite.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "80e785c12cf91e9afc730c8b153c10184afc3fd3c89be530140763861c4f6a35",
+          "settings_leaf_count": 210
+        },
+        {
+          "id": "node-3",
+          "source_type": "message",
+          "content": {
+            "text": "Well, this is embarrassing... 😳\n\nIt says you're not following me. Would you mind trying again? \n\nHit the button below when you're done 👇",
+            "preview": "Well, this is embarrassing... 😳\n\nIt says you're not following me. Would you mind trying again? \n\nHit the button below when you're done 👇",
+            "buttons": [
+              "I'm following! ✅"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Well, this is embarrassing... 😳\n\nIt says you're not following me. Would you mind trying again? \n\nHit the button below when you're done 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "I'm following! ✅",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "53429929370016e57fb4089fbb2b2361d382da2fb7cea94136807ce20574e78b",
+          "settings_leaf_count": 176
+        }
+      ],
+      "transitions": [
+        {
+          "id": "edge-0",
+          "from": "trigger",
+          "to": "node-0",
+          "label": "Starting Step",
+          "settings": {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/107-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/0"
+          }
+        },
+        {
+          "id": "edge-1",
+          "from": "node-3",
+          "to": "node-1",
+          "label": "I'm following! ✅",
+          "settings": {
+            "from": "node-3",
+            "to": "node-1",
+            "port_exact": "button-0",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-3.button-0.target",
+            "evidence": {
+              "file": "evidence/107-editor.json",
+              "pointer": "/graph/edges/1"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/1"
+          }
+        },
+        {
+          "id": "edge-2",
+          "from": "node-0",
+          "to": "node-1",
+          "label": "I'm following you✅",
+          "settings": {
+            "from": "node-0",
+            "to": "node-1",
+            "port_exact": "button-0",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-0.button-0.target",
+            "evidence": {
+              "file": "evidence/107-editor.json",
+              "pointer": "/graph/edges/2"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/2"
+          }
+        },
+        {
+          "id": "edge-3",
+          "from": "node-1",
+          "to": "node-2",
+          "label": "Yes, the contact matches",
+          "settings": {
+            "from": "node-1",
+            "to": "node-2",
+            "port_exact": "Yes, the contact matches",
+            "source_branch_id": "0407f48f-236c-407f-8326-69b3c338a75a",
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-1.bl-id-0407f48f-236c-407f-8326-69b3c338a75a.target",
+            "evidence": {
+              "file": "evidence/107-editor.json",
+              "pointer": "/graph/edges/3"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/3"
+          }
+        },
+        {
+          "id": "edge-4",
+          "from": "node-1",
+          "to": "node-3",
+          "label": "If not",
+          "settings": {
+            "from": "node-1",
+            "to": "node-3",
+            "port_exact": "If not",
+            "source_branch_id": "fb0005f4-4ef8-472f-a389-e5d82fed2b8c",
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-1.bl-id-fb0005f4-4ef8-472f-a389-e5d82fed2b8c.target",
+            "evidence": {
+              "file": "evidence/107-editor.json",
+              "pointer": "/graph/edges/4"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/4"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/instance/nodes/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Hey, I'm so glad you want my Ultimate Luxury Guide to the Amalfi Coast. \n\nThis is exclusive to my followers, so follow my account and I'll DM you the guide! La Dolce Vita ❤️️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/0",
+          "phase": "inspection_observation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Hey, I'm so glad you want my Ultimate Luxury Guide to the Amalfi Coast. \n\nThis is exclusive to my followers, so follow my account and I'll DM you the guide! La Dolce Vita ❤️️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "I'm following you✅",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Oh yeah! I'm so happy you're following me! 💅\n\nHere's your followers-only access to my guide! 👇 ",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Get Guide📖",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Well, this is embarrassing... 😳\n\nIt says you're not following me. Would you mind trying again? \n\nHit the button below when you're done 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "I'm following! ✅",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Make sure you update this button URL so it opens to your freebie PDF link!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Once we've confirmed that they follow you, we'll send them this message with exclusive access to your freebie!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "If they don't follow you, we'll ask them to follow you before they receive the freebie!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/3/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "This is the first message a follower sees in their DMs. Personalize this message so your follower is excited to click to the next step. We use a button here.\n\n(This is necessary as the first message of a comment reply message can only have text and buttons.)",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/4/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "This is where the magic happens! ✨\n\nIn this Condition, we'll check if the person is following you! \n\nIf yes, we'll send them your message with your offer.\n\nIf not, we'll ask them to follow you! ",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/5/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Your trigger here will be \"User comments on your Post or Reel\". Be sure to select the Reel you'd like this automation connected to.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "replies.0.reply",
+            "label": null,
+            "type": null,
+            "value": "Link's in your DMs 📥",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "replies.1.reply",
+            "label": null,
+            "type": null,
+            "value": "Sent! The link is with you now 💌",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "replies.2.reply",
+            "label": null,
+            "type": null,
+            "value": "Done! Kindly check your DMs 🌟",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "replies.0.reply",
+            "label": null,
+            "type": null,
+            "value": "Link's in your DMs 📥",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "replies.1.reply",
+            "label": null,
+            "type": null,
+            "value": "Sent! The link is with you now 💌",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "replies.2.reply",
+            "label": null,
+            "type": null,
+            "value": "Done! Kindly check your DMs 🌟",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "replies.3.reply",
+            "label": null,
+            "type": null,
+            "value": "Sent the info! Check messages 📨",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "I'm following! ✅",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/0",
+          "phase": "inspection_observation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Hey, I'm so glad you want my Ultimate Luxury Guide to the Amalfi Coast. \n\nThis is exclusive to my followers, so follow my account and I'll DM you the guide! La Dolce Vita ❤️️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/8/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "I'm following you✅",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Get Guide📖",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/12/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Oh yeah! I'm so happy you're following me! 💅\n\nHere's your followers-only access to my guide! 👇 ",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/13/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Well, this is embarrassing... 😳\n\nIt says you're not following me. Would you mind trying again? \n\nHit the button below when you're done 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "56366113893f72dfb104e8dfca5ef3703bd2f6db184e106299dceb1f01abed83",
+      "source_leaf_count": 2258,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [],
+  "continuations": {
+    "manychat-107": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-107.json": "011d5b0dab007100e1b2e0086a8c6b62b18130572bbe7ac28bcba5f00d07d884",
+    "described-recipes/inro-6028.json": "059f931c66b3358c9836adebd80909eabb852b440fa86bdd7f6f116f4a327716"
+  }
+}

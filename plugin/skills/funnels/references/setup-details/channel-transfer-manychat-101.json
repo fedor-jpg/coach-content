@@ -1,0 +1,864 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "channel-transfer-manychat-101",
+    "name": "Go to WhatsApp: captured button only adds a tag",
+    "source_ids": [
+      "manychat-101"
+    ],
+    "entry": "Keyword direct message",
+    "mandatory_conditions": [
+      "Press the button",
+      "Add contactedbywhatsapp"
+    ],
+    "outcome": "A tag, not a confirmed channel transfer",
+    "timing": [],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "dm-ai",
+      "buttons",
+      "graph"
+    ],
+    "assessment": {
+      "status": "insufficient_data",
+      "reason": "The button adds a tag rather than opening a URL. This is a missing source action, not evidence that a text link cannot be sent.",
+      "missing_source_behavior": [
+        "No WhatsApp navigation action was captured; the button title conflicts with its action."
+      ],
+      "replacement": null
+    },
+    "source_notes": {
+      "manychat-101": "The button only adds contactedbywhatsapp. No WhatsApp URL or channel-navigation action is present."
+    },
+    "client_inputs": [
+      "keywords",
+      "WhatsApp destination",
+      "tag",
+      "consent basis"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "blocked_original",
+      "analogue_ids": [],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "manychat-101-dm_base",
+          "label": "Direct-message entry",
+          "target": "dm_base",
+          "allowed_targets": [
+            "dm_base"
+          ],
+          "entry": "New ordinary DM matching {keyword}; continuation only from actual replies in this conversation.",
+          "entry_change": "DM entry retained. Navigation is an authored addition; the captured button action only tags the contact.",
+          "output_bindings": [
+            "whatsapp_url"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Press the button",
+            "Add contactedbywhatsapp"
+          ],
+          "approval_required": true,
+          "source_id": "manychat-101",
+          "output": "Offer a verified business WhatsApp URL in an actual DM reply; do not claim a transfer or tag success.",
+          "draft": {
+            "modes": [
+              "D"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "whatsapp_url",
+              "public_text"
+            ],
+            "initial": "We'd love to help you on WhatsApp. Open our verified business link: {whatsapp_url}",
+            "messages": {
+              "initial": "We'd love to help you on WhatsApp. Open our verified business link: {whatsapp_url}",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request."
+            },
+            "instruction": "On the actual DM request, offer {whatsapp_url}. Before preparation approve a verified business wa.me URL or owner-approved WhatsApp destination. This navigation link is authored, not present in the captured button action. Do not apply contactedbywhatsapp, infer a click, claim successful transfer, or send a WhatsApp message.",
+            "contact_requirement": null,
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Send the requested response.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "binding_review": {
+        "source_entry": "Keyword direct message",
+        "source_outcome": "A tag, not a confirmed channel transfer",
+        "mandatory_conditions": [
+          "Press the button",
+          "Add contactedbywhatsapp"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 1,
+        "decision": "No complete adaptation; stop at the named dependencies."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Offer a verified business WhatsApp URL in an actual DM reply; do not claim a transfer or tag success.",
+        "source_requirements": [
+          "Press the button",
+          "Add contactedbywhatsapp"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [
+          "Offer a verified business WhatsApp URL in an actual DM reply; do not claim a transfer or tag success.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "manychat-101",
+            "node_id": "node-0",
+            "source_text": "We'd love to help you! We're available on WhatsApp. ❤️ \n Tap the button below to start a conversation with us there 👇",
+            "adapted_text": "We'd love to help you on WhatsApp. Open our verified business link: {whatsapp_url}",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      }
+    }
+  },
+  "goal": "Help interested people continue the conversation on WhatsApp.",
+  "fit": "Businesses with an existing WhatsApp destination and clear ownership of replies.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Offer a verified business WhatsApp URL in an actual DM reply; do not claim a transfer or tag success.",
+    "source_requirements": [
+      "Press the button",
+      "Add contactedbywhatsapp"
+    ],
+    "source_timing": [],
+    "blocking_dependencies": [],
+    "retained": [
+      "Offer a verified business WhatsApp URL in an actual DM reply; do not claim a transfer or tag success.",
+      "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+    ],
+    "omitted": [
+      "No imported deterministic graph or source folder/tag tracking."
+    ],
+    "limitations": [],
+    "examples": [
+      {
+        "source_id": "manychat-101",
+        "node_id": "node-0",
+        "source_text": "We'd love to help you! We're available on WhatsApp. ❤️ \n Tap the button below to start a conversation with us there 👇",
+        "adapted_text": "We'd love to help you on WhatsApp. Open our verified business link: {whatsapp_url}",
+        "provenance": "authored_adaptation_not_captured"
+      }
+    ]
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "buttons",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "manychat-101",
+      "source_file": "source-records/manychat-101.json",
+      "source_title": "Go from Instagram to WhatsApp",
+      "start": "trigger",
+      "nodes": [
+        {
+          "id": "trigger",
+          "source_type": "trigger",
+          "content": {
+            "text": "",
+            "preview": "User sends a message\n\nAdd text: whatsapp",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "whatsapp",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "9fa567761838664d5796face98cffe7b17851b543b7920ece6bbb67772ede5ed",
+          "settings_leaf_count": 66
+        },
+        {
+          "id": "node-0",
+          "source_type": "message",
+          "content": {
+            "text": "We'd love to help you! We're available on WhatsApp. ❤️ \n Tap the button below to start a conversation with us there 👇",
+            "preview": "We'd love to help you! We're available on WhatsApp. ❤️ \n Tap the button below to start a conversation with us there 👇",
+            "buttons": [
+              "Connect on Whatsapp📱"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "We'd love to help you! We're available on WhatsApp. ❤️ \n Tap the button below to start a conversation with us there 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Connect on Whatsapp📱",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "fb30542b597676ffd90022efaf001315926faaf1afa1d321b4375c0757f683d5",
+          "settings_leaf_count": 175
+        },
+        {
+          "id": "node-1",
+          "source_type": "actions",
+          "content": {
+            "text": "",
+            "preview": "Perform following actions:\nAdd Tag\n+ Action",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "required tag/field action"
+          ],
+          "reason": "Preserve every actual action. A tag alone is not a URL navigation, purchase or channel transfer.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Tag picker",
+                "type": null,
+                "value": "contactedbywhatsapp",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "25e1c4cc605ac0297fb94b7b71b7cfc59d94fd47159865827982b7448983e435",
+          "settings_leaf_count": 99
+        }
+      ],
+      "transitions": [
+        {
+          "id": "edge-0",
+          "from": "node-0",
+          "to": "node-1",
+          "label": "Connect on Whatsapp📱",
+          "settings": {
+            "from": "node-0",
+            "to": "node-1",
+            "port_exact": "button-0",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [
+              "2684afb0-6e09-45c7-b8a8-9f3b1739159c"
+            ],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-0.button-0.target",
+            "evidence": {
+              "file": "evidence/101-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/0"
+          }
+        },
+        {
+          "id": "edge-1",
+          "from": "trigger",
+          "to": "node-0",
+          "label": "Starting Step",
+          "settings": {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/101-editor.json",
+              "pointer": "/graph/edges/1"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/1"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/instance/nodes/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "We'd love to help you! We're available on WhatsApp. ❤️ \n Tap the button below to start a conversation with us there 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Connect on Whatsapp📱",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Tag picker",
+            "type": null,
+            "value": "contactedbywhatsapp",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "This Tag tracks how many folks click the button.\n\nThese Tags are also added to their Contact Profile in Manychat, so you can segment your audience for future promotions and marketing using Tags.\n",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "In this button, there is a URL link, which you'll need to change to your WhatsApp number and the text of your default message.\n\nYou change the telephone number in this part: (1XXXXX)\n\n🚨 Don't include zeros, parentheses, or hyphens when adding the phone number into this format.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "For more info on using WhatsApp and Manychat, check out these resources👇\n\nhttps://manychat.com/product/whatsapp\nhttps://manychat.com/blog/guide-to-manychat-whatsapp/",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/3/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Your trigger here will be \"User sends a message\". You can change the keyword to be a word of your choice!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "whatsapp",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Connect on Whatsapp📱",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": null,
+            "label": "Tag picker",
+            "type": null,
+            "value": "contactedbywhatsapp",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "a7a9ddbe290cec38560600e0b80e86f6b93cd185c475b94560ed04e369ef2fa3",
+      "source_leaf_count": 883,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "manychat-101-dm_base",
+        "label": "Direct-message entry",
+        "target": "dm_base",
+        "allowed_targets": [
+          "dm_base"
+        ],
+        "entry": "New ordinary DM matching {keyword}; continuation only from actual replies in this conversation.",
+        "entry_change": "DM entry retained. Navigation is an authored addition; the captured button action only tags the contact.",
+        "output_bindings": [
+          "whatsapp_url"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Press the button",
+          "Add contactedbywhatsapp"
+        ],
+        "approval_required": true,
+        "source_id": "manychat-101",
+        "output": "Offer a verified business WhatsApp URL in an actual DM reply; do not claim a transfer or tag success.",
+        "draft": {
+          "modes": [
+            "D"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "whatsapp_url",
+            "public_text"
+          ],
+          "initial": "We'd love to help you on WhatsApp. Open our verified business link: {whatsapp_url}",
+          "messages": {
+            "initial": "We'd love to help you on WhatsApp. Open our verified business link: {whatsapp_url}",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request."
+          },
+          "instruction": "On the actual DM request, offer {whatsapp_url}. Before preparation approve a verified business wa.me URL or owner-approved WhatsApp destination. This navigation link is authored, not present in the captured button action. Do not apply contactedbywhatsapp, infer a click, claim successful transfer, or send a WhatsApp message.",
+          "contact_requirement": null,
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Send the requested response.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [
+        "whenAIReplies",
+        "followUps"
+      ],
+      "entry_readback_fields": [],
+      "preparation_gates": [
+        "Preserve current whenAIReplies and followUps values, including inheritance, on the shared DM base. If its schedule or active follow-ups conflict with the proposed behavior, hold affected configuration or obtain separate approval for the exact base-wide change. No schedule/follow-up write is a default draft operation."
+      ],
+      "missing_readback": [],
+      "target": "dm_base",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "whatsapp_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "We'd love to help you on WhatsApp. Open our verified business link: {whatsapp_url}",
+        "public": "",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "placement": "DM {keyword}."
+      },
+      "instruction": "On the actual DM request, offer {whatsapp_url}. Before preparation approve a verified business wa.me URL or owner-approved WhatsApp destination. This navigation link is authored, not present in the captured button action. Do not apply contactedbywhatsapp, infer a click, claim successful transfer, or send a WhatsApp message.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New ordinary DM matching {keyword}; continuation only from actual replies in this conversation.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Send the requested response.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          }
+        ]
+      },
+      "contact_requirement": null,
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New ordinary DM matching {keyword}; continuation only from actual replies in this conversation.. First message: We'd love to help you on WhatsApp. Open our verified business link: {whatsapp_url}\nOn the actual DM request, offer {whatsapp_url}. Before preparation approve a verified business wa.me URL or owner-approved WhatsApp destination. This navigation link is authored, not present in the captured button action. Do not apply contactedbywhatsapp, infer a click, claim successful transfer, or send a WhatsApp message.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request."
+            }
+          }
+        }
+      ],
+      "list_additions": {},
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "dm_base",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "manychat-101": [
+      {
+        "id": "whatsapp",
+        "title": "Finish the WhatsApp destination",
+        "scope": "A proposed destination change, not a captured channel transfer.",
+        "inputs": [
+          "Approved WhatsApp number or contact link",
+          "Destination owner",
+          "Consent and approved opening text"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the WhatsApp destination.\nSelected source: manychat-101 - Go from Instagram to WhatsApp.\nGoal: Help interested people continue the conversation on WhatsApp.\nVariant: Go to WhatsApp: captured button only adds a tag\nScope: A proposed destination change, not a captured channel transfer.\nSource entry: Keyword direct message\nSource requirements: Press the button; Add contactedbywhatsapp\nSource timing: No exact timer captured.\nSource outcome: A tag, not a confirmed channel transfer\nCaptured text (node-0, not approved campaign copy):\nWe'd love to help you! We're available on WhatsApp. ❤️ \n Tap the button below to start a conversation with us there 👇\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Offer a verified business WhatsApp URL in an actual DM reply; do not claim a transfer or tag success.\nUse the owner's existing WhatsApp contact or business account.\nAsk me for: Approved WhatsApp number or contact link; Destination owner; Consent and approved opening text.\n1. The captured source button only adds a contact tag; it has no verified WhatsApp URL action. Request the actual destination and authorization.\n2. Prepare the contact link and opening text as an explicit proposed change. Obtain approval before replacing the tag-only source step. Distinguish opening WhatsApp from a sent message or conversation. Do not assume contacts or context transfer across channels. Return the draft link and success check; do not send a message.\n3. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n4. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n5. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ]
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-101.json": "1307014042e8d4be50386cb34bfac47f93099c69d139c0967a74334d9d51f2c5"
+  }
+}

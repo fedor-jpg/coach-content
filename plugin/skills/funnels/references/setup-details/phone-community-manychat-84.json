@@ -1,0 +1,1829 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "phone-community-manychat-84",
+    "name": "Grow an SMS list: phone and 23-hour reminder",
+    "source_ids": [
+      "manychat-84"
+    ],
+    "entry": "Direct message matching a VIP keyword",
+    "mandatory_conditions": [
+      "Collect the phone number",
+      "Remind after silence without a second collection block"
+    ],
+    "outcome": "A stored phone number toward an opt-in SMS audience",
+    "timing": [
+      "No reply: 23 hours; the reminder does not contain another collection block."
+    ],
+    "consent": "Obtain SMS-specific consent. Confirmation copy does not establish consent or external list membership.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "dm-ai",
+      "contact",
+      "timers",
+      "external"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "Keep phone collection with collectContactInfo but remove the exact 23-hour reminder. A separate provider-list step is needed before this becomes an SMS subscription.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Keep phone collection with collectContactInfo but remove the exact 23-hour reminder. A separate provider-list step is needed before this becomes an SMS subscription.",
+        "result": "Collect a phone in Chatfuel, then prepare the SMS-provider continuation. List membership and delivery are separate checks.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "manychat-84": "The graph contains no SMS send. Collecting a phone is not evidence of SMS-list membership."
+    },
+    "client_inputs": [
+      "keywords",
+      "phone purpose",
+      "consent basis",
+      "SMS provider outside this graph"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "source_based_draft",
+      "analogue_ids": [],
+      "draft": {
+        "modes": [
+          "D",
+          "T"
+        ],
+        "inputs": [
+          "campaign",
+          "language",
+          "keyword",
+          "sms_purpose",
+          "phone_request",
+          "refusal_text"
+        ],
+        "initial": "{phone_request}",
+        "instruction": "On the approved DM keyword, explain {sms_purpose} and obtain SMS-specific consent before requesting a phone with country code: {phone_request}. On refusal send {refusal_text} and stop. Save only the new consented number. Do not say the person is subscribed until the external provider confirms list membership. No SMS send or 23-hour DM reminder is configured.",
+        "contact_requirement": "New phone and SMS-specific consent required for proposed signup; provider membership is separate."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "manychat-84-dm_base",
+          "label": "Direct-message entry",
+          "draft": {
+            "modes": [
+              "D",
+              "T"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "sms_purpose",
+              "public_text"
+            ],
+            "initial": "Would you like to share your phone for {sms_purpose}? Please include the country code. You can say NO.",
+            "messages": {
+              "initial": "Would you like to share your phone for {sms_purpose}? Please include the country code. You can say NO.",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "received": "Thanks, I received your reply."
+            },
+            "instruction": "Explain {sms_purpose} and obtain channel-specific consent. Request a new phone with country code, reject missing or obviously malformed answers conversationally, then draft capture only. This is not deterministic validation or persistence proof. Never say added, subscribed or I will text you. External provider list membership and any later approved send remain separate continuation; no reminder after silence. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+            "contact_requirement": "Phone and SMS-specific consent are required for the requested signup; actual provider membership and delivery remain unimplemented.",
+            "contact_fields": [
+              "phone"
+            ],
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Explain purpose and request consented phone.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "received",
+                  "action": "Acknowledge the reply, not saved membership.",
+                  "message_ids": [
+                    "received"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "refusal",
+                  "action": "End this request without delivering gated content.",
+                  "message_ids": [
+                    "refusal"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Actual VIP keyword DM"
+                },
+                {
+                  "from": "first",
+                  "to": "received",
+                  "condition": "New consented phone passes AI conversational check"
+                },
+                {
+                  "from": "first",
+                  "to": "first",
+                  "condition": "Actual missing or malformed answer: request correction"
+                },
+                {
+                  "from": "first",
+                  "to": "refusal",
+                  "condition": "Actual refusal"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                }
+              ]
+            }
+          },
+          "target": "dm_base",
+          "allowed_targets": [
+            "dm_base"
+          ],
+          "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Request a consented phone number; keep SMS-provider signup and sending as separate unimplemented continuation.",
+          "output_bindings": [
+            "sms_purpose"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Collect the phone number",
+            "Remind after silence without a second collection block"
+          ],
+          "approval_required": true,
+          "source_id": "manychat-84"
+        }
+      ],
+      "binding_review": {
+        "source_entry": "Direct message matching a VIP keyword",
+        "source_outcome": "A stored phone number toward an opt-in SMS audience",
+        "mandatory_conditions": [
+          "Collect the phone number",
+          "Remind after silence without a second collection block"
+        ],
+        "source_contact_policy": [
+          "Collect the phone number"
+        ],
+        "plan_count": 1,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Request a consented phone number; keep SMS-provider signup and sending as separate unimplemented continuation.",
+        "source_requirements": [
+          "Collect the phone number",
+          "Remind after silence without a second collection block"
+        ],
+        "source_timing": [
+          "No reply: 23 hours; the reminder does not contain another collection block."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Request a consented phone number; keep SMS-provider signup and sending as separate unimplemented continuation."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: No reply: 23 hours; the reminder does not contain another collection block.. No timed unsolicited message is configured.",
+          "No external SMS subscription, SMS send or delivery confirmation."
+        ],
+        "limitations": [
+          "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+          "Phone and SMS-specific consent are required for the requested signup; actual provider membership and delivery remain unimplemented."
+        ],
+        "examples": [
+          {
+            "source_id": "manychat-84",
+            "node_id": "node-0",
+            "source_text": "OMG! I'm so excited you'd like to join my VIP-only hotline (aka my Text Besties community)! 🤭\n\nI drop the best content, tools, tricks and more via text, so gimme your phone number so I can add you 👇\n\nYes! Got it. You’re added to my Text Besties community! 😉",
+            "adapted_text": "Would you like to share your phone for {sms_purpose}? Please include the country code. You can say NO.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      }
+    }
+  },
+  "goal": "Give your Instagram audience a direct line to your business through an opt-in SMS list.",
+  "fit": "Creators and businesses building a private VIP audience beyond Instagram.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Request a consented phone number; keep SMS-provider signup and sending as separate unimplemented continuation.",
+    "source_requirements": [
+      "Collect the phone number",
+      "Remind after silence without a second collection block"
+    ],
+    "source_timing": [
+      "No reply: 23 hours; the reminder does not contain another collection block."
+    ],
+    "blocking_dependencies": [],
+    "retained": [
+      "Request a consented phone number; keep SMS-provider signup and sending as separate unimplemented continuation."
+    ],
+    "omitted": [
+      "Exact source timing is not retained: No reply: 23 hours; the reminder does not contain another collection block.. No timed unsolicited message is configured.",
+      "No external SMS subscription, SMS send or delivery confirmation."
+    ],
+    "limitations": [
+      "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+      "Phone and SMS-specific consent are required for the requested signup; actual provider membership and delivery remain unimplemented."
+    ],
+    "examples": [
+      {
+        "source_id": "manychat-84",
+        "node_id": "node-0",
+        "source_text": "OMG! I'm so excited you'd like to join my VIP-only hotline (aka my Text Besties community)! 🤭\n\nI drop the best content, tools, tricks and more via text, so gimme your phone number so I can add you 👇\n\nYes! Got it. You’re added to my Text Besties community! 😉",
+        "adapted_text": "Would you like to share your phone for {sms_purpose}? Please include the country code. You can say NO.",
+        "provenance": "authored_adaptation_not_captured"
+      }
+    ]
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "timers",
+    "external"
+  ],
+  "sources": [
+    {
+      "source_id": "manychat-84",
+      "source_file": "source-records/manychat-84.json",
+      "source_title": "Grow an SMS list",
+      "start": "trigger",
+      "nodes": [
+        {
+          "id": "trigger",
+          "source_type": "trigger",
+          "content": {
+            "text": "",
+            "preview": "User sends a message\n\nAdd text: VIP\n\nAdd text: VIP list",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "VIP",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "VIP list",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "5f55d84de57cf4387359093af69dba1f7ecda1660271a16c5ac5ccad558f3293",
+          "settings_leaf_count": 98
+        },
+        {
+          "id": "node-0",
+          "source_type": "message",
+          "content": {
+            "text": "OMG! I'm so excited you'd like to join my VIP-only hotline (aka my Text Besties community)! 🤭\n\nI drop the best content, tools, tricks and more via text, so gimme your phone number so I can add you 👇\n\nYes! Got it. You’re added to my Text Besties community! 😉",
+            "preview": "OMG! I'm so excited you'd like to join my VIP-only hotline (aka my Text Besties community)! 🤭\n\nI drop the best content, tools, tricks and more via text, so gimme your phone number so I can add you 👇\n\nYes! Got it. You’re added to my Text Besties community! 😉",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "OMG! I'm so excited you'd like to join my VIP-only hotline (aka my Text Besties community)! 🤭\n\nI drop the best content, tools, tricks and more via text, so gimme your phone number so I can add you 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Yes! Got it. You’re added to my Text Besties community! 😉",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "savePhoneToWhatsAppIdSystemField",
+                "label": "Save Phone as WhatsApp ID",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "savePhoneToSystemField",
+                "label": "Save Phone to System Field",
+                "type": "checkbox",
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": "setSmsOptIn",
+                "label": "Set SMS Opt-In ",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3",
+              "phase": "captured_default",
+              "fields": {
+                "name": "validationErrorMessage",
+                "label": "No retry message",
+                "type": null,
+                "value": "Your phone number must contain the country and city code and be in the following format: +15417543010",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4",
+              "phase": "captured_default",
+              "fields": {
+                "name": "skipButtonCaption",
+                "label": "\"Skip\" button text",
+                "type": null,
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/field",
+              "phase": "captured_default",
+              "fields": {
+                "value": "23"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0",
+              "phase": "captured_default",
+              "fields": {
+                "value": "hours",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "Seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "Hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Days",
+                    "value": "days"
+                  }
+                ]
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/0",
+              "phase": "captured_default",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/1",
+              "phase": "captured_default",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/2",
+              "phase": "captured_default",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/units/0/options/3",
+              "phase": "captured_default",
+              "fields": {
+                "value": "days"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "e78dca21db5bbac136c8021063ca0c8a541ebb7237c41fa74d6ca579fc01b411",
+          "settings_leaf_count": 324
+        },
+        {
+          "id": "node-1",
+          "source_type": "message",
+          "content": {
+            "text": "Stay tuned! I'll text you soon. Make sure you save the number so you don't miss a thing from me! ❤️",
+            "preview": "Stay tuned! I'll text you soon. Make sure you save the number so you don't miss a thing from me! ❤️",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Stay tuned! I'll text you soon. Make sure you save the number so you don't miss a thing from me! ❤️",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "3a6737c130ad0d122ee255ba0c811d2984c7a0e44e36d44bc48460c07fdfbac5",
+          "settings_leaf_count": 130
+        },
+        {
+          "id": "node-2",
+          "source_type": "message",
+          "content": {
+            "text": "Whoops! Looks like you got busy and forgot to leave your number. Got a moment to give it to me? 😉",
+            "preview": "Whoops! Looks like you got busy and forgot to leave your number. Got a moment to give it to me? 😉",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Whoops! Looks like you got busy and forgot to leave your number. Got a moment to give it to me? 😉",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "7597d99ceb408e48e1feebcd4b6cadf025ae2ef69dc5d79e195a033e883e16a4",
+          "settings_leaf_count": 130
+        }
+      ],
+      "transitions": [
+        {
+          "id": "edge-0",
+          "from": "node-0",
+          "to": "node-1",
+          "label": "Next Step",
+          "settings": {
+            "from": "node-0",
+            "to": "node-1",
+            "port_exact": "Next Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-0.Next Step.target",
+            "evidence": {
+              "file": "evidence/84-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/0"
+          }
+        },
+        {
+          "id": "edge-1",
+          "from": "trigger",
+          "to": "node-0",
+          "label": "Starting Step",
+          "settings": {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/84-editor.json",
+              "pointer": "/graph/edges/1"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/1"
+          }
+        },
+        {
+          "id": "edge-2",
+          "from": "node-0",
+          "to": "node-2",
+          "label": "no response expiration",
+          "settings": {
+            "from": "node-0",
+            "to": "node-2",
+            "port_exact": "no response expiration",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-0.expiration.target",
+            "evidence": {
+              "file": "evidence/84-editor.json",
+              "pointer": "/graph/edges/2"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/2"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/instance/nodes/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "OMG! I'm so excited you'd like to join my VIP-only hotline (aka my Text Besties community)! 🤭\n\nI drop the best content, tools, tricks and more via text, so gimme your phone number so I can add you 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/default_panel/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Yes! Got it. You’re added to my Text Besties community! 😉",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "savePhoneToWhatsAppIdSystemField",
+            "label": "Save Phone as WhatsApp ID",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "savePhoneToSystemField",
+            "label": "Save Phone to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "setSmsOptIn",
+            "label": "Set SMS Opt-In ",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Your phone number must contain the country and city code and be in the following format: +15417543010",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/units/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours",
+            "options": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ]
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/units/0/options/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/units/0/options/1",
+          "phase": "captured_default",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/units/0/options/2",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/units/0/options/3",
+          "phase": "captured_default",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/nodes/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Stay tuned! I'll text you soon. Make sure you save the number so you don't miss a thing from me! ❤️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Whoops! Looks like you got busy and forgot to leave your number. Got a moment to give it to me? 😉",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "We capture your follower's phone here, which automatically saves the number to your customer's system field.\n\nYou will see it saved under their name when you click on Contacts.\n\nBe sure to save the reply type as phone.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Send a boop! - aka a Reminder - to your follower if they don't hand over their phone number",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "You can connect your SMS platform via Zapier, or you can use the native integration within Manychat to send your SMS!*\n\n*Available in select countries only. Manychat uses the Twilio platform. Charges apply.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/3/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Here's more info on how to use the SMS channel within Manychat: \nhttps://manychat.com/resources/video-course/how-to-use-sms-with-manychat/how-to-use-sms-with-manychat\n\nIf you're country isn't eligible for native SMS within Manychat, don't worry! Here's how to set it up using SMS.to* and Manychat:\n\nhttps://support.sms.to/support/solutions/articles/43000608558-manychat\n\n*An SMS.to number and subscription apply.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/4/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "This message lets your follower know to expect an SMS from you!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/5/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Your trigger here will be \"User sends a message.\" You can make this keyword anything you'd like!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "VIP",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "VIP list",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "savePhoneToWhatsAppIdSystemField",
+            "label": "Save Phone as WhatsApp ID",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "savePhoneToSystemField",
+            "label": "Save Phone to System Field",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "setSmsOptIn",
+            "label": "Set SMS Opt-In ",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "validationErrorMessage",
+            "label": "No retry message",
+            "type": null,
+            "value": "Your phone number must contain the country and city code and be in the following format: +15417543010",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": "skipButtonCaption",
+            "label": "\"Skip\" button text",
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "value": "23"
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/units/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours",
+            "options": [
+              {
+                "selected": false,
+                "text": "Seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "Minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "Hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "Days",
+                "value": "days"
+              }
+            ]
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/units/0/options/0",
+          "phase": "captured_default",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/units/0/options/1",
+          "phase": "captured_default",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/units/0/options/2",
+          "phase": "captured_default",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/units/0/options/3",
+          "phase": "captured_default",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Whoops! Looks like you got busy and forgot to leave your number. Got a moment to give it to me? 😉",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Stay tuned! I'll text you soon. Make sure you save the number so you don't miss a thing from me! ❤️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "3f9f4edd427238a4e91b6a66093e69cc375ff60ce21ea3e4fcc427c70ee2f690",
+      "source_leaf_count": 1700,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "manychat-84-dm_base",
+        "label": "Direct-message entry",
+        "draft": {
+          "modes": [
+            "D",
+            "T"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "sms_purpose",
+            "public_text"
+          ],
+          "initial": "Would you like to share your phone for {sms_purpose}? Please include the country code. You can say NO.",
+          "messages": {
+            "initial": "Would you like to share your phone for {sms_purpose}? Please include the country code. You can say NO.",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "received": "Thanks, I received your reply."
+          },
+          "instruction": "Explain {sms_purpose} and obtain channel-specific consent. Request a new phone with country code, reject missing or obviously malformed answers conversationally, then draft capture only. This is not deterministic validation or persistence proof. Never say added, subscribed or I will text you. External provider list membership and any later approved send remain separate continuation; no reminder after silence. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+          "contact_requirement": "Phone and SMS-specific consent are required for the requested signup; actual provider membership and delivery remain unimplemented.",
+          "contact_fields": [
+            "phone"
+          ],
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Explain purpose and request consented phone.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "received",
+                "action": "Acknowledge the reply, not saved membership.",
+                "message_ids": [
+                  "received"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "refusal",
+                "action": "End this request without delivering gated content.",
+                "message_ids": [
+                  "refusal"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Actual VIP keyword DM"
+              },
+              {
+                "from": "first",
+                "to": "received",
+                "condition": "New consented phone passes AI conversational check"
+              },
+              {
+                "from": "first",
+                "to": "first",
+                "condition": "Actual missing or malformed answer: request correction"
+              },
+              {
+                "from": "first",
+                "to": "refusal",
+                "condition": "Actual refusal"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No actual reply"
+              }
+            ]
+          }
+        },
+        "target": "dm_base",
+        "allowed_targets": [
+          "dm_base"
+        ],
+        "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Request a consented phone number; keep SMS-provider signup and sending as separate unimplemented continuation.",
+        "output_bindings": [
+          "sms_purpose"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Collect the phone number",
+          "Remind after silence without a second collection block"
+        ],
+        "approval_required": true,
+        "source_id": "manychat-84"
+      },
+      "preserve_settings": [
+        "whenAIReplies",
+        "followUps"
+      ],
+      "entry_readback_fields": [],
+      "preparation_gates": [
+        "Preserve current whenAIReplies and followUps values, including inheritance, on the shared DM base. If its schedule or active follow-ups conflict with the proposed behavior, hold affected configuration or obtain separate approval for the exact base-wide change. No schedule/follow-up write is a default draft operation.",
+        "Normal MCP has no contact-attribute-value reader. Capture configuration readback and chat text do not prove saved email/phone, joined membership or withdrawal. Keep value-dependent confirmation or handoff unresolved; simple preparation remains available."
+      ],
+      "missing_readback": [
+        "contact_attribute_values"
+      ],
+      "target": "dm_base",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "sms_purpose",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Would you like to share your phone for {sms_purpose}? Please include the country code. You can say NO.",
+        "public": "",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "received": "Thanks, I received your reply.",
+        "placement": "DM {keyword}."
+      },
+      "instruction": "Explain {sms_purpose} and obtain channel-specific consent. Request a new phone with country code, reject missing or obviously malformed answers conversationally, then draft capture only. This is not deterministic validation or persistence proof. Never say added, subscribed or I will text you. External provider list membership and any later approved send remain separate continuation; no reminder after silence. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Explain purpose and request consented phone.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "received",
+            "action": "Acknowledge the reply, not saved membership.",
+            "message_ids": [
+              "received"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "refusal",
+            "action": "End this request without delivering gated content.",
+            "message_ids": [
+              "refusal"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Actual VIP keyword DM"
+          },
+          {
+            "from": "first",
+            "to": "received",
+            "condition": "New consented phone passes AI conversational check"
+          },
+          {
+            "from": "first",
+            "to": "first",
+            "condition": "Actual missing or malformed answer: request correction"
+          },
+          {
+            "from": "first",
+            "to": "refusal",
+            "condition": "Actual refusal"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No actual reply"
+          }
+        ]
+      },
+      "contact_requirement": "Phone and SMS-specific consent are required for the requested signup; actual provider membership and delivery remain unimplemented.",
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.. First message: Would you like to share your phone for {sms_purpose}? Please include the country code. You can say NO.\nExplain {sms_purpose} and obtain channel-specific consent. Request a new phone with country code, reject missing or obviously malformed answers conversationally, then draft capture only. This is not deterministic validation or persistence proof. Never say added, subscribed or I will text you. External provider list membership and any later approved send remain separate continuation; no reminder after silence. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\nreceived: Thanks, I received your reply."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "collectContactInfo": {
+              "howToCollect": "CollectInfo",
+              "captures": "$resolved.safe_captures"
+            }
+          }
+        }
+      ],
+      "list_additions": {
+        "collectContactInfo": [
+          {
+            "attribute": "$resolved.verified_phone_attribute",
+            "description": "Campaign {campaign}; phone for {sms_purpose}: Phone and SMS-specific consent are required for the requested signup; actual provider membership and delivery remain unimplemented."
+          }
+        ]
+      },
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "dm_base",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "manychat-84": [
+      {
+        "id": "sms-list",
+        "title": "Finish SMS-list signup",
+        "scope": "For the SMS-list goal. Captured phone collection does not send SMS.",
+        "inputs": [
+          "Provider and target list",
+          "SMS-specific consent and opt-out wording",
+          "Phone country and country code",
+          "Only for a later owner-requested send: sender approval, credits and SMS text",
+          "Existing authorized access or connection"
+        ],
+        "citations": [
+          {
+            "title": "Brevo signup forms",
+            "url": "https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo"
+          },
+          {
+            "title": "SMS automation and reentry",
+            "url": "https://help.brevo.com/hc/en-us/articles/4424283046418-Send-SMS-messages-through-an-automation"
+          },
+          {
+            "title": "Sender and country prerequisites",
+            "url": "https://help.brevo.com/hc/en-us/articles/28255350696466-Register-a-Sender-ID-to-send-SMS-messages"
+          },
+          {
+            "title": "Consent records",
+            "url": "https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance"
+          },
+          {
+            "title": "Authorized contact and list mapping",
+            "url": "https://developers.brevo.com/docs/synchronise-contact-lists"
+          }
+        ],
+        "prompt": "Help me prepare: Finish SMS-list signup.\nSelected source: manychat-84 - Grow an SMS list.\nGoal: Give your Instagram audience a direct line to your business through an opt-in SMS list.\nVariant: Grow an SMS list: phone and 23-hour reminder\nScope: For the SMS-list goal. Captured phone collection does not send SMS.\nSource entry: Direct message matching a VIP keyword\nSource requirements: Collect the phone number; Remind after silence without a second collection block\nSource timing: No reply: 23 hours; the reminder does not contain another collection block.\nSource outcome: A stored phone number toward an opt-in SMS audience\nCaptured text (node-0, not approved campaign copy):\nOMG! I'm so excited you'd like to join my VIP-only hotline (aka my Text Besties community)! 🤭\n\nI drop the best content, tools, tricks and more via text, so gimme your phone number so I can add you 👇\n\nYes! Got it. You’re added to my Text Besties community! 😉\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Request a consented phone number; keep SMS-provider signup and sending as separate unimplemented continuation.\nUse the existing SMS provider. If none exists, propose Brevo for approval; it is not connected.\nAsk me for: Provider and target list; SMS-specific consent and opt-out wording; Phone country and country code; Only for a later owner-requested send: sender approval, credits and SMS text; Existing authorized access or connection.\n1. Inspect existing authorized connections. A phone saved in Chatfuel is not an SMS subscription. Use an existing sync only after verifying authorization, field mapping and readback.\n2. If no sync is verified, propose a native hosted SMS signup form linked from the DM. Brevo forms can collect SMS and add the contact to a selected list. Disclose the extra form step and obtain approval. If DM phone collection must remain, leave the bridge unverified and prepare the exact mapping and next access action only.\n3. Normalize the phone country code and retain SMS-specific consent proof and opt-outs. Prevent duplicate list entries. Only if the owner separately requests SMS delivery, draft a list-added automation with plain-text SMS and reentry protection, then check sender approval and credits, including US/Canada toll-free prerequisites. Do not register a sender or spend credits.\n4. Verify list membership; this can complete the SMS-list goal. SMS delivery is a separate optional later check, never an assumed source action. The captured 23-hour DM reminder is not an SMS action or a verified timer in ordinary MCP. Return draft form/list settings, unresolved access and the next authorized action.\n5. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n6. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n7. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend.\nOfficial guidance checked 2026-11-02:\nBrevo signup forms: https://help.brevo.com/hc/en-us/articles/208771869-Create-a-sign-up-form-in-Brevo\nSMS automation and reentry: https://help.brevo.com/hc/en-us/articles/4424283046418-Send-SMS-messages-through-an-automation\nSender and country prerequisites: https://help.brevo.com/hc/en-us/articles/28255350696466-Register-a-Sender-ID-to-send-SMS-messages\nConsent records: https://help.brevo.com/hc/en-us/articles/213405965-Build-a-legitimate-contacts-database-for-optimal-deliverability-and-compliance\nAuthorized contact and list mapping: https://developers.brevo.com/docs/synchronise-contact-lists"
+      }
+    ]
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-84.json": "857b23cf60315fd2b7edb1f2a38ec66ee4db783aff22ac1d4068134303021ea3"
+  }
+}

@@ -1,8 +1,17 @@
 # Maintainer Notes
 
-Git marketplace package, version 0.2.3. One start command and three skills.
-This package creates and revises actual MP4 files when the host provides its required media tools.
+Git marketplace package, version0.3.0. One start command and four skills. The funnel setup addition leaves the three existing video/campaign/delivery skills unchanged.
+The existing video path creates and revises MP4 files when the host provides its required media tools.
 It does not install tools, publish Reels, send messages, or create services.
+
+## Funnel Source Release
+
+The [funnels skill](../plugin/skills/funnels/SKILL.md) reads its compact index, shared policy and one selected detail. Ordinary usage needs no Python helper or developer checkout.
+The repository includes the generator dependency closure: canonical scenarios, capability observation, historical analogue contracts,60 original source records, portable setup references and focused tests.
+The source release contains30 draft variants,25 waiting decisions, two incomplete-source decisions and35 entry plans. It does not establish installation, connector runtime or live acceptance.
+`coach.py release` validates generated-reference freshness before copying its explicit allowlist. The generators and legacy lifecycle helper use the standard library; legacy QR generation remains optional and is not needed for funnel preparation.
+Run `python3 plugin/scripts/funnel_library.py --check` and the focused setup/publication tests before a release. The [audit](funnel-setup-audit.md) separates current decisions from historical verification.
+Recorded fixture paths in the captured Manychat183 provenance are inert historical strings. They are not dependencies or instructions to read local files. No screenshots, private runtime exports, customer records or credentials are packaged.
 
 ## Coach entry
 

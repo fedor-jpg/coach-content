@@ -1,0 +1,2565 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "scenario_version": "1.2.0",
+  "capability_revision": "2026-11-02.3",
+  "runtime_accepted": 0,
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e"
+  },
+  "variants": [
+    {
+      "id": "link-delivery-inro-6220",
+      "name": "Comment to guide: confirm, then remind",
+      "file": "setup-details/link-delivery-inro-6220.md",
+      "audit_file": "setup-details/link-delivery-inro-6220.json",
+      "source_ids": [
+        "inro-6220"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Ask for confirmation, then send the guide URL.",
+        "source_requirements": [
+          "Press a button before receiving the link",
+          "Track whether the link was clicked"
+        ],
+        "source_timing": [
+          "No link click: 2 hours; no opening-button click: 6 hours."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Ask for confirmation, then send the guide URL.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: No link click: 2 hours; no opening-button click: 6 hours.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "inro-6220",
+            "node_id": "n002",
+            "source_text": "Want the free guide? Tap below and it's yours.\nYes, send it",
+            "adapted_text": "Want {resource_title}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "click",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 10,
+      "edges": 9,
+      "md_sha256": "cf6b17e288c4f6bbb82c42ee13dd63c9204a04e9030f087b8af42cccffb78b42",
+      "json_sha256": "57b3776aff4aaf6d5b95a7d2b06995245722f113f57a25e08b5e62287e34b228"
+    },
+    {
+      "id": "link-delivery-manychat-90",
+      "name": "Comment to link: 60-second follow-up",
+      "file": "setup-details/link-delivery-manychat-90.md",
+      "audit_file": "setup-details/link-delivery-manychat-90.json",
+      "source_ids": [
+        "manychat-90"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Send the product link and captured help copy together after confirmation.",
+        "source_requirements": [
+          "Press the opening button",
+          "Receive an unconditional follow-up after delivery"
+        ],
+        "source_timing": [
+          "Inline delay: 60 seconds. It is not a no-click condition."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Send the product link and captured help copy together after confirmation.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Inline delay: 60 seconds. It is not a no-click condition.. No timed unsolicited message is configured."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "manychat-90",
+            "node_id": "node-0",
+            "source_text": "I'm so excited you'd like to see what I've got on offer! ",
+            "adapted_text": "Want {resource_title}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          },
+          {
+            "source_id": "manychat-90",
+            "node_id": "node-1",
+            "source_text": "Tap below to check 'em out 👇\n\nDid you have any questions about the new drop? I'm here to help! ❤️",
+            "adapted_text": "Tap below to check 'em out 👇\n\nDid you have any questions about the new drop? I'm here to help! ❤️\n{resource_url}",
+            "provenance": "authored_same_response_not_a_timer"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "timers"
+      ],
+      "source_gaps": [],
+      "steps": 3,
+      "edges": 2,
+      "md_sha256": "4c8a9c5134c06cdff05e640bcd1a4f61788303560acb65529eeed146abd5662a",
+      "json_sha256": "96c544f4fe664c3f0c9b205489ce1ab41fb3121c8a456670798cdccf6634e9aa"
+    },
+    {
+      "id": "link-delivery-manychat-433",
+      "name": "Brands campaign: opening DM",
+      "file": "setup-details/link-delivery-manychat-433.md",
+      "audit_file": "setup-details/link-delivery-manychat-433.json",
+      "source_ids": [
+        "manychat-433"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Send the link only after an actual affirmative reply.",
+        "source_requirements": [
+          "Confirm the request with a button"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [
+          "Send the link only after an actual affirmative reply.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "manychat-433",
+            "node_id": "node-0",
+            "source_text": "Thanks for your comment! Want the link? Tap below and I'll send it 👇",
+            "adapted_text": "Want {resource_title}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons"
+      ],
+      "source_gaps": [],
+      "steps": 3,
+      "edges": 2,
+      "md_sha256": "32331d3ac364aeb447d62071d87a30ee9960294e54c4f249cc12ddce2df6800a",
+      "json_sha256": "beda1a07c76fdcf3498bace871d8e1a4e1f9d1e5acc896dfe9aa5daeeee17d5e"
+    },
+    {
+      "id": "link-delivery-manychat-432",
+      "name": "Brands campaign: one DM with a link",
+      "file": "setup-details/link-delivery-manychat-432.md",
+      "audit_file": "setup-details/link-delivery-manychat-432.json",
+      "source_ids": [
+        "manychat-432"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Send the requested link in the one initial private reply.",
+        "source_requirements": [
+          "Receive one private message with a URL button"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [
+          "Send the requested link in the one initial private reply.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "manychat-432",
+            "node_id": "node-0",
+            "source_text": "Hey! Here's the link you asked for 👇",
+            "adapted_text": "Here is {resource_title}: {resource_url}",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons"
+      ],
+      "source_gaps": [],
+      "steps": 2,
+      "edges": 1,
+      "md_sha256": "c9839ae19fd99519f0b50b1151accfdbdfff24fc40a69b4b9230630d1ff1d0fd",
+      "json_sha256": "0e1b4bb200a5dc44ad9546f1660759ddfb34f5e561b3e9cb1c9677023981b498"
+    },
+    {
+      "id": "link-delivery-manychat-12",
+      "name": "Auto-DM links from comments",
+      "file": "setup-details/link-delivery-manychat-12.md",
+      "audit_file": "setup-details/link-delivery-manychat-12.json",
+      "source_ids": [
+        "manychat-12"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Ask for confirmation, then send the requested link.",
+        "source_requirements": [
+          "Opening DM and confirmation button before the link"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [
+          "Ask for confirmation, then send the requested link.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "buttons"
+      ],
+      "source_gaps": [],
+      "steps": 0,
+      "edges": 0,
+      "md_sha256": "a2913042a391be370495adc3d1ff3a8b817865feec0da9dfac567dcdc8809936",
+      "json_sha256": "94fb00501c927cf119bc9742c61b7e0d64de251c9ad2c17629bd8a72a2ea5948"
+    },
+    {
+      "id": "link-delivery-manychat-8",
+      "name": "Keyword DM to link: shared setup wizard",
+      "file": "setup-details/link-delivery-manychat-8.md",
+      "audit_file": "setup-details/link-delivery-manychat-8.json",
+      "source_ids": [
+        "manychat-8",
+        "manychat-286"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Send the requested resource URL in response to the DM keyword.",
+        "source_requirements": [
+          "Match a specified keyword, not every incoming message"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [
+          "Send the requested resource URL in response to the DM keyword.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "buttons"
+      ],
+      "source_gaps": [],
+      "steps": 0,
+      "edges": 0,
+      "md_sha256": "f1a812cb5f0fef8aa24918d523b17da7a4fced723e5671cb7f9dca121f0812d6",
+      "json_sha256": "56d4ce8640878f5b7c8c080969af50533533ecbe78ee5b554cc3c77b7346ece9"
+    },
+    {
+      "id": "link-delivery-manychat-113",
+      "name": "Keyword DM: button and 60-second follow-up",
+      "file": "setup-details/link-delivery-manychat-113.md",
+      "audit_file": "setup-details/link-delivery-manychat-113.json",
+      "source_ids": [
+        "manychat-113"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Send the video-system link and captured help copy together after confirmation.",
+        "source_requirements": [
+          "Press a button before receiving the link",
+          "Receive an unconditional follow-up"
+        ],
+        "source_timing": [
+          "Inline delay: 60 seconds."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Send the video-system link and captured help copy together after confirmation.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Inline delay: 60 seconds.. No timed unsolicited message is configured."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "manychat-113",
+            "node_id": "node-0",
+            "source_text": "Hey! 👋\n\nHere's a link to the viral video system that will help you crack the code on your next IG Reel or TikTok video!\n\nWant to check it out?",
+            "adapted_text": "Want {resource_title}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          },
+          {
+            "source_id": "manychat-113",
+            "node_id": "node-1",
+            "source_text": "Here you go! Check out the link 👇\n\nDid you have any questions about the video system? I'm here to help! ❤️",
+            "adapted_text": "Here you go! Check out the link 👇\n\nDid you have any questions about the video system? I'm here to help! ❤️\n{resource_url}",
+            "provenance": "authored_same_response_not_a_timer"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "timers"
+      ],
+      "source_gaps": [],
+      "steps": 3,
+      "edges": 2,
+      "md_sha256": "a4f3116efea2e52a476a8f7dfc75dbe885ada84e296f25a43cf6f0553b71a360",
+      "json_sha256": "f5721c9640cde471d27575b1c5627a4758fb61988602928b56677053a7c65218"
+    },
+    {
+      "id": "link-delivery-inro-6023",
+      "name": "Story reply to webinar replay",
+      "file": "setup-details/link-delivery-inro-6023.md",
+      "audit_file": "setup-details/link-delivery-inro-6023.json",
+      "source_ids": [
+        "inro-6023"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "This scenario starts from a Story reply. Ordinary MCP cannot configure the Story-specific entry. An ordinary DM keyword would be a different entry, not this setup.",
+        "primary_result": "A webinar replay link",
+        "source_requirements": [
+          "Enter from a specific Story reply",
+          "Track the link click"
+        ],
+        "source_timing": [
+          "Wait for link click: 2 hours."
+        ],
+        "blocking_dependencies": [
+          "story"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "story",
+        "click",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 7,
+      "edges": 6,
+      "md_sha256": "073db8e6a0d282ad91e48b676af0ceae84826a58f9b6af6c52a6347f7a8a8b2f",
+      "json_sha256": "2a79fee2b9ee1c53ccc0b2d48ff2c15586867136177d1b390e4640d5457b1eab"
+    },
+    {
+      "id": "link-delivery-manychat-13",
+      "name": "Generate leads with Story replies",
+      "file": "setup-details/link-delivery-manychat-13.md",
+      "audit_file": "setup-details/link-delivery-manychat-13.json",
+      "source_ids": [
+        "manychat-13"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "This scenario starts from a Story reply. Ordinary MCP cannot configure the Story-specific entry. An ordinary DM keyword would be a different entry, not this setup.",
+        "primary_result": "A resource link",
+        "source_requirements": [
+          "Enter through the Story-specific trigger"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "story"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "story",
+        "buttons"
+      ],
+      "source_gaps": [],
+      "steps": 0,
+      "edges": 0,
+      "md_sha256": "63ab4acea211215046c2da86fabc036ecdf48c15ae1a51d625c4c7b72e8c03d8",
+      "json_sha256": "f8a830408a0b74c61ae5e6d9002294897e504bc036d0cb8180fdd8fbc5860616"
+    },
+    {
+      "id": "link-delivery-manychat-60",
+      "name": "Live comment to one private link",
+      "file": "setup-details/link-delivery-manychat-60.md",
+      "audit_file": "setup-details/link-delivery-manychat-60.json",
+      "source_ids": [
+        "manychat-60"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "This scenario starts from a Live comment. Ordinary MCP cannot configure that Live-specific entry. An ordinary post comment or DM would be a different scenario.",
+        "primary_result": "One private message with a link",
+        "source_requirements": [
+          "Enter through the Live-comment trigger"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "live"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "live",
+        "buttons"
+      ],
+      "source_gaps": [],
+      "steps": 2,
+      "edges": 1,
+      "md_sha256": "4ad02436e59920c0eabe1ace16f157632a2cfdbb14658065ef794f58e7034cf2",
+      "json_sha256": "315b3817404635b604078a4e5bec3a5553547d32770b96926755810bf9495b94"
+    },
+    {
+      "id": "follower-material-inro-6028",
+      "name": "Freebie after a verified follow",
+      "file": "setup-details/follower-material-inro-6028.md",
+      "audit_file": "setup-details/follower-material-inro-6028.json",
+      "source_ids": [
+        "inro-6028"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+        "primary_result": "A resource available to followers",
+        "source_requirements": [
+          "Press the opening button",
+          "Check follower status",
+          "Deliver only after a verified follow"
+        ],
+        "source_timing": [
+          "Link click: 2 hours; follow: 24 hours; opening button: 6 hours."
+        ],
+        "blocking_dependencies": [
+          "follower"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "follower",
+        "buttons",
+        "click",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 21,
+      "edges": 20,
+      "md_sha256": "c77a97c9394bd660e45c7f95a477106f49e9b3d7945b771c0ebd786384b74e2b",
+      "json_sha256": "64bdf8fb805771b6c204629c93e9a232ab1bf33aa7463fea734b6f0cb62eebdf"
+    },
+    {
+      "id": "follower-material-manychat-107",
+      "name": "Follow first, then freebie: check and retry",
+      "file": "setup-details/follower-material-manychat-107.md",
+      "audit_file": "setup-details/follower-material-manychat-107.json",
+      "source_ids": [
+        "manychat-107"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+        "primary_result": "A guide only after the follower check succeeds",
+        "source_requirements": [
+          "Ask the person to follow",
+          "Check: true delivers the guide; false offers another check"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "follower"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "follower",
+        "buttons",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 5,
+      "edges": 5,
+      "md_sha256": "607438c490d23bd97aba26ee89b66a1d4c78a8b4ef5f1a85e242e772c063b9eb",
+      "json_sha256": "87339f39ca0a4b1698f8bf9546c6f6c77e8944d5ad133db8954c41d9734ac4cb"
+    },
+    {
+      "id": "follower-material-inro-6024",
+      "name": "Freebie: different gates for existing and new followers",
+      "file": "setup-details/follower-material-inro-6024.md",
+      "audit_file": "setup-details/follower-material-inro-6024.json",
+      "source_ids": [
+        "inro-6024"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+        "primary_result": "A resource after the conditions of the matching branch",
+        "source_requirements": [
+          "Check current follower status",
+          "Existing followers provide email; new followers verify a follow"
+        ],
+        "source_timing": [
+          "Clicks: 3 hours and 3 days; email: 3 days; button: 2 days; follow: 1 day and 3 days."
+        ],
+        "blocking_dependencies": [
+          "follower"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "follower",
+        "buttons",
+        "click",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 42,
+      "edges": 41,
+      "md_sha256": "37c8ca5f4fb8c3787148546a5dd511b0978b769bfd310c840eafb8b4758952c5",
+      "json_sha256": "66b44c8ee9eef241d0e4e6bc4d76fd896be592ed97d22d94d9256045656995eb"
+    },
+    {
+      "id": "follower-material-manychat-17",
+      "name": "Grow followers: mandatory follow request wizard",
+      "file": "setup-details/follower-material-manychat-17.md",
+      "audit_file": "setup-details/follower-material-manychat-17.json",
+      "source_ids": [
+        "manychat-17"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+        "primary_result": "Intended link delivery after following",
+        "source_requirements": [
+          "Opening DM",
+          "Mandatory request to follow before the link"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "follower"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "follower",
+        "buttons"
+      ],
+      "source_gaps": [
+        "No graph establishes how a follow is checked or what the negative branch does."
+      ],
+      "steps": 0,
+      "edges": 0,
+      "md_sha256": "bcc5cb6747a9ee4f1c16ec98ff04b12520db96f58d767cab1a7703f63822630e",
+      "json_sha256": "71814f0280a6574b2c0fc47db4f78221ec9d52f9cc23d34047dfad49de6548d1"
+    },
+    {
+      "id": "contact-material-inro-6026",
+      "name": "Grow your email list: required email before the freebie",
+      "file": "setup-details/contact-material-inro-6026.md",
+      "audit_file": "setup-details/contact-material-inro-6026.json",
+      "source_ids": [
+        "inro-6026"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Ask for email before sending the guide; refuse delivery if the email is missing or obviously malformed.",
+        "source_requirements": [
+          "Press the opening button",
+          "Provide a valid email before delivery",
+          "Repeat the request after silence"
+        ],
+        "source_timing": [
+          "Link click: 3 hours; email: 3 days; opening button: 2 days."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Ask for email before sending the guide; refuse delivery if the email is missing or obviously malformed.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Link click: 3 hours; email: 3 days; opening button: 2 days.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [
+          "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+          "Every requested contact is required before delivery: email. Refusal does not release the gated link."
+        ],
+        "examples": [
+          {
+            "source_id": "inro-6026",
+            "node_id": "n003",
+            "source_text": "Hey {{contact.name}}! Do you want our guide?\nLet's go ✨",
+            "adapted_text": "Want {resource_title}? Reply YES to continue.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "click",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 23,
+      "edges": 22,
+      "md_sha256": "0c229012d26d51e83cbc67d2b6991d33e31a8e3e1978e7c15f3a4d5c312c469e",
+      "json_sha256": "6be1ec009b827853a8b6a934ddaf7b9aaa09cea7c9d7517216ae813aeb3c3ae6"
+    },
+    {
+      "id": "contact-material-inro-6022",
+      "name": "Grow your email list: email is optional",
+      "file": "setup-details/contact-material-inro-6022.md",
+      "audit_file": "setup-details/contact-material-inro-6022.json",
+      "source_ids": [
+        "inro-6022"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Ask for optional email, then deliver the checklist on a valid answer or SKIP.",
+        "source_requirements": [
+          "Ask for email",
+          "Allow SKIP and delivery without email"
+        ],
+        "source_timing": [
+          "No email: 2 hours; link click: 2 hours; opening button: 6 hours."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Ask for optional email, then deliver the checklist on a valid answer or SKIP.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: No email: 2 hours; link click: 2 hours; opening button: 6 hours.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [
+          "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+          "Optional contact before delivery: a new consented contact or explicit SKIP both lead to the link."
+        ],
+        "examples": [
+          {
+            "source_id": "inro-6022",
+            "node_id": "n002",
+            "source_text": "Want the checklist? Tap below and it's yours.\nYes, send it",
+            "adapted_text": "Want {checklist_title}? Reply YES to continue.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "click",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 17,
+      "edges": 16,
+      "md_sha256": "2b383c42bc98184c3776ca17ad08e57bfb35f294fb949d4884b7f6944a64ef6a",
+      "json_sha256": "24c1ffbfce4a1f213d9bdbe8214f77fbd499fd9fc1870a2dc81f6b76430d12cd"
+    },
+    {
+      "id": "contact-material-inro-6027",
+      "name": "Grow your phone list: required phone before the freebie",
+      "file": "setup-details/contact-material-inro-6027.md",
+      "audit_file": "setup-details/contact-material-inro-6027.json",
+      "source_ids": [
+        "inro-6027"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Ask for phone before sending the guide; refuse delivery if the phone is missing or obviously malformed.",
+        "source_requirements": [
+          "Press the opening button",
+          "Provide a valid phone number before delivery",
+          "Repeat the request"
+        ],
+        "source_timing": [
+          "Link click: 3 hours; phone and opening button: 3 days."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Ask for phone before sending the guide; refuse delivery if the phone is missing or obviously malformed.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Link click: 3 hours; phone and opening button: 3 days.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [
+          "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+          "Every requested contact is required before delivery: phone. Refusal does not release the gated link."
+        ],
+        "examples": [
+          {
+            "source_id": "inro-6027",
+            "node_id": "n003",
+            "source_text": "Hey {{contact.name}}! Do you want our guide?\nYes ✨",
+            "adapted_text": "Want {resource_title}? Reply YES to continue.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "click",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 22,
+      "edges": 21,
+      "md_sha256": "f8994c25de5f8381633f917fc586fc9f406fe82df703e066a3bd2fc91d5e2c3c",
+      "json_sha256": "b820762f374e97e4c8259c573d7f0aa9e17426d96ba0e87727cb3656ec0c7752"
+    },
+    {
+      "id": "contact-material-manychat-20",
+      "name": "Grow your email list: ebook and 23-hour retry",
+      "file": "setup-details/contact-material-manychat-20.md",
+      "audit_file": "setup-details/contact-material-manychat-20.json",
+      "source_ids": [
+        "manychat-20"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Ask for email before delivering the ebook.",
+        "source_requirements": [
+          "Email is required",
+          "Repeat email collection after no reply"
+        ],
+        "source_timing": [
+          "No reply: 23 hours; the reminder contains a second email collection step."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Ask for email before delivering the ebook."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: No reply: 23 hours; the reminder contains a second email collection step.. No timed unsolicited message is configured.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [
+          "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+          "Every requested contact is required before delivery: email. Refusal does not release the gated link."
+        ],
+        "examples": [
+          {
+            "source_id": "manychat-20",
+            "node_id": "node-0",
+            "source_text": "Hi! Thanks for reaching out 💌\n\nWe are excited you are interested in our content and the ebook, and we would LOVE to send you more!\n\nTo get a free ebook, please leave us your email below 👇",
+            "adapted_text": "For {contact_purpose}, please send your email address. You can refuse; the link requires this contact.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 4,
+      "edges": 4,
+      "md_sha256": "633fd340d6e8aa6d2d69a4c0486632edb1197bb2be5442af54117dcef6e0899e",
+      "json_sha256": "9e9f1a5535953e73be26b67967358fca8991fdfe73a8436d233c98c8845b75eb"
+    },
+    {
+      "id": "webinar-inro-6049",
+      "name": "Webinar access after a completed survey",
+      "file": "setup-details/webinar-inro-6049.md",
+      "audit_file": "setup-details/webinar-inro-6049.json",
+      "source_ids": [
+        "inro-6049"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "Webinar access requires verified completion of an external survey. Two AI questions cannot prove that completion; a verified completion integration is missing.",
+        "primary_result": "Webinar access after survey completion",
+        "source_requirements": [
+          "Press the opening button",
+          "Complete the survey before access",
+          "Remind after the link click"
+        ],
+        "source_timing": [
+          "After click: 6 days; no click or survey: 3 days; opening button: 2 hours."
+        ],
+        "blocking_dependencies": [
+          "external"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "external",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 17,
+      "edges": 16,
+      "md_sha256": "3c4e930158c43f9b5ef789193c7a5d4e94380708c49378181d32a039de0331b5",
+      "json_sha256": "42a0f2d025516200e11a1698b1d30352b5361485556768c753e755060115114c"
+    },
+    {
+      "id": "webinar-inro-6054",
+      "name": "Event sign-up link: optional email",
+      "file": "setup-details/webinar-inro-6054.md",
+      "audit_file": "setup-details/webinar-inro-6054.json",
+      "source_ids": [
+        "inro-6054"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Ask for optional email, then give the registration URL on a valid answer or SKIP.",
+        "source_requirements": [
+          "Ask for email",
+          "Allow SKIP before the link"
+        ],
+        "source_timing": [
+          "No email and no click: 2 hours; opening button: 6 hours."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Ask for optional email, then give the registration URL on a valid answer or SKIP.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: No email and no click: 2 hours; opening button: 6 hours.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [
+          "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+          "Optional contact before delivery: a new consented contact or explicit SKIP both lead to the link."
+        ],
+        "examples": [
+          {
+            "source_id": "inro-6054",
+            "node_id": "n002",
+            "source_text": "Want a spot at Spring Webinar on Thursday at 6 pm? Tap for the sign-up link.\nSend me the link",
+            "adapted_text": "Want {webinar_title}? Reply YES to continue.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 17,
+      "edges": 16,
+      "md_sha256": "a43341cee2b1886697788983b851fe2423d427623b1a03956025e890ac4e69dd",
+      "json_sha256": "d02aa0bf6c1e89e1b6edf376533bac75a267980819bb06de2792e014da2d7160"
+    },
+    {
+      "id": "webinar-manychat-81",
+      "name": "Turn comments into RSVPs: email and phone required",
+      "file": "setup-details/webinar-manychat-81.md",
+      "audit_file": "setup-details/webinar-manychat-81.json",
+      "source_ids": [
+        "manychat-81"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Ask for email and then phone; deliver the webinar URL only after both answers pass conversational checks.",
+        "source_requirements": [
+          "Press the opening button",
+          "Email is required",
+          "Phone is required after email"
+        ],
+        "source_timing": [
+          "Two unset no-response exits: 23 hours each."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Ask for email and then phone; deliver the webinar URL only after both answers pass conversational checks.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Two unset no-response exits: 23 hours each.. No timed unsolicited message is configured.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [
+          "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+          "Every requested contact is required before delivery: email and phone. Refusal does not release the gated link."
+        ],
+        "examples": [
+          {
+            "source_id": "manychat-81",
+            "node_id": "node-0",
+            "source_text": "Hey! I'm so happy you'd like to join my free webinar \"How to make real money from social media\". 💅\n\nTap below to get access! ",
+            "adapted_text": "Want {webinar_title}? Reply YES to continue.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 5,
+      "edges": 4,
+      "md_sha256": "4d3333a40227ebe10ff35a73bb95fb9d84333b1806e633c71a141d2eaf93617b",
+      "json_sha256": "a29009950e56112893a8a6c58f363c4a9b508a29a042bbf34b7d83c7cd8efb8c"
+    },
+    {
+      "id": "booking-inro-6025",
+      "name": "Book calls from comments: readiness question",
+      "file": "setup-details/booking-inro-6025.md",
+      "audit_file": "setup-details/booking-inro-6025.json",
+      "source_ids": [
+        "inro-6025"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "After confirmation, route ready-soon replies to booking and not-yet replies to the starter guide.",
+        "source_requirements": [
+          "Agree to a question",
+          "Ready now leads to booking; not yet leads to starter material"
+        ],
+        "source_timing": [
+          "Link click: 2 hours; reply: 20 hours; opening button: 6 hours."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "After confirmation, route ready-soon replies to booking and not-yet replies to the starter guide.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Link click: 2 hours; reply: 20 hours; opening button: 6 hours.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking.",
+          "No outbound escalation email or external booking-completion check."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "inro-6025",
+            "node_id": "n002",
+            "source_text": "Want to talk about the mentoring program? One quick question first.\nSure, ask me",
+            "adapted_text": "Want to talk about {program_name}? Reply YES for one quick question.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "email-send",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 19,
+      "edges": 18,
+      "md_sha256": "f0fcad1399b3ab271389aed7f4eb8e82629b3f1014643892e0110378f674f9cc",
+      "json_sha256": "15d021961adf59e680ec0d5a3dbb717c037cee2dd84dbe464aef7802c61e8781"
+    },
+    {
+      "id": "booking-inro-6021",
+      "name": "Qualify DM leads with AI",
+      "file": "setup-details/booking-inro-6021.md",
+      "audit_file": "setup-details/booking-inro-6021.json",
+      "source_ids": [
+        "inro-6021"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Use the actual reply to route suitable consultation interest to booking and browsing/later replies to a starter guide.",
+        "source_requirements": [
+          "Answer a question about the request",
+          "AI distinguishes readiness from browsing"
+        ],
+        "source_timing": [
+          "Reply: 20 hours; link click: 2 hours."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Use the actual reply to route suitable consultation interest to booking and browsing/later replies to a starter guide."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Reply: 20 hours; link click: 2 hours.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking.",
+          "No outbound escalation email or external booking-completion check."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "inro-6021",
+            "node_id": "n001",
+            "source_text": "Thanks for your message! What would you like help with?",
+            "adapted_text": "Thanks for your message! What would you like help with?",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "email-send",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 18,
+      "edges": 17,
+      "md_sha256": "6a243f81528d73ec3c6551a60ed80badffd6a1f1dcaf18ef7cbff0be673e5790",
+      "json_sha256": "835b840b1832c403ff482e5f0de35161ab7311a33ab052c32275da5c06d2b6a8"
+    },
+    {
+      "id": "booking-inro-6222",
+      "name": "Ad enquiry: readiness and optional email",
+      "file": "setup-details/booking-inro-6222.md",
+      "audit_file": "setup-details/booking-inro-6222.json",
+      "source_ids": [
+        "inro-6222"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "This scenario starts from a specific ad reply. Ordinary MCP cannot configure that entry. An ordinary DM conversation would not preserve the selected entry.",
+        "primary_result": "A booking link or resource",
+        "source_requirements": [
+          "Ask about readiness",
+          "Ready: ask for email with SKIP",
+          "Not ready: offer a resource"
+        ],
+        "source_timing": [
+          "Reply: 20 hours; email and link click: 2 hours."
+        ],
+        "blocking_dependencies": [
+          "ad"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "ad",
+        "buttons",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 20,
+      "edges": 19,
+      "md_sha256": "3cb7cbb560ed024d388e6b94f525a7d6a16edb1c63fd825ac840dd3e468d1cc2",
+      "json_sha256": "32d7e8f44481ca7b6909a51711a3636540479522d16a16f7c8e8c73fb53953da"
+    },
+    {
+      "id": "community-inro-6081",
+      "name": "Launch waitlist: optional email",
+      "file": "setup-details/community-inro-6081.md",
+      "audit_file": "setup-details/community-inro-6081.json",
+      "source_ids": [
+        "inro-6081"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Collect consented waitlist join or STOP intent and optional email; saved membership remains unverified.",
+        "source_requirements": [
+          "Confirm joining",
+          "Ask for optional email after joining"
+        ],
+        "source_timing": [
+          "Email: 20 hours; opening button: 6 hours."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Collect consented waitlist join or STOP intent and optional email; saved membership remains unverified.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Email: 20 hours; opening button: 6 hours.. No timed unsolicited message is configured.",
+          "No imported deterministic graph or source folder/tag tracking.",
+          "Only comment entry is prepared; Story-specific entry remains unavailable through ordinary MCP."
+        ],
+        "limitations": [
+          "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+          "Join/STOP intent and optional email can be drafted. Saved membership/withdrawal confirmation is BLOCKED pending actual persistence proof."
+        ],
+        "examples": [
+          {
+            "source_id": "inro-6081",
+            "node_id": "n002",
+            "source_text": "Want to join the waitlist for the spring drop? Tap below.\nJoin the list",
+            "adapted_text": "Want to join the waitlist for {launch_name}? {consent_text} Reply YES to request joining, or STOP.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "story",
+        "buttons",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 10,
+      "edges": 9,
+      "md_sha256": "b1caffe587f55c1e0b72420216f8b9b7bce650142784f25d67971d9ae18ba48a",
+      "json_sha256": "f987bdcf19efe81ea924c073aa1249cb0aee58d4bc5387062391d5f263f7703c"
+    },
+    {
+      "id": "community-inro-6051",
+      "name": "Grow your community: follow-gated invitation",
+      "file": "setup-details/community-inro-6051.md",
+      "audit_file": "setup-details/community-inro-6051.json",
+      "source_ids": [
+        "inro-6051"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+        "primary_result": "An invitation to an external community",
+        "source_requirements": [
+          "Press the opening button",
+          "Verify a follow before the invitation"
+        ],
+        "source_timing": [
+          "Link click: 3 days; follow and opening button: 2 days."
+        ],
+        "blocking_dependencies": [
+          "follower"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "follower",
+        "buttons",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 15,
+      "edges": 14,
+      "md_sha256": "e416725b95d6f8e117245cf273a760d0056e5db692aa1cfc87dc85f32d270f34",
+      "json_sha256": "8782c27a4235569af07dadeed0dc2cfd3ee65ced6c4ea32dd395341468eebdc1"
+    },
+    {
+      "id": "content-inro-6045",
+      "name": "Grow YouTube or podcast visits: help after a click",
+      "file": "setup-details/content-inro-6045.md",
+      "audit_file": "setup-details/content-inro-6045.json",
+      "source_ids": [
+        "inro-6045",
+        "inro-6047"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Deliver the selected video or podcast link after confirmation; retain help through actual replies.",
+        "source_requirements": [
+          "Press the opening button",
+          "Wait 3 seconds",
+          "Offer help after the click"
+        ],
+        "source_timing": [
+          "Before link: 3 seconds; no click or opening button: 3 days."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Deliver the selected video or podcast link after confirmation; retain help through actual replies.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Before link: 3 seconds; no click or opening button: 3 days.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "inro-6045",
+            "node_id": "n001",
+            "source_text": "Hi {{contact.name}}! ❤️\nDo you want the full video?\nYesss 👀",
+            "adapted_text": "Want {video_title}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          },
+          {
+            "source_id": "inro-6047",
+            "node_id": "n001",
+            "source_text": "Hi {{contact.name}}! ❤️ Do you want to see the full video?\nYes 👀",
+            "adapted_text": "Want {episode_title}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 22,
+      "edges": 20,
+      "md_sha256": "1e11796b85166eb0d456adfc4efd22a1917679c5a242560468ce52b24ea8e028",
+      "json_sha256": "a24eb121cdeaf2c977a97777d3ee768a8d9b55226264bd048ccc69b864afeb17"
+    },
+    {
+      "id": "content-inro-6046",
+      "name": "Grow your TikTok: link without a help branch",
+      "file": "setup-details/content-inro-6046.md",
+      "audit_file": "setup-details/content-inro-6046.json",
+      "source_ids": [
+        "inro-6046"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Deliver the TikTok playlist link after confirmation.",
+        "source_requirements": [
+          "Press the opening button",
+          "Wait 3 seconds",
+          "Remind if the link is not clicked"
+        ],
+        "source_timing": [
+          "Before link: 3 seconds; no click or opening button: 3 days."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Deliver the TikTok playlist link after confirmation.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Before link: 3 seconds; no click or opening button: 3 days.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "inro-6046",
+            "node_id": "n001",
+            "source_text": "Hi {{contact.name}}! ❤️ Do you want to see the full video?\nYes 👀",
+            "adapted_text": "Want {playlist_title}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 10,
+      "edges": 9,
+      "md_sha256": "4eeabf295c258b14ea08efb6a65fb9be551e909932d9374d62c8d2103e26a4aa",
+      "json_sha256": "2154bd6940d92b4b7ff6c74537d0d0668ba52f407309a90ce465c313c09220e3"
+    },
+    {
+      "id": "content-manychat-112",
+      "name": "Grow your YouTube: separate help choice",
+      "file": "setup-details/content-manychat-112.md",
+      "audit_file": "setup-details/content-manychat-112.json",
+      "source_ids": [
+        "manychat-112"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Offer the YouTube URL and a separate actual HELP-reply branch.",
+        "source_requirements": [
+          "Choose the YouTube link or a separate help button"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [
+          "Offer the YouTube URL and a separate actual HELP-reply branch.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "manychat-112",
+            "node_id": "node-0",
+            "source_text": "Hey! The full video is on my YouTube channel right now!\nTo watch it (and so you don't miss a new video drop), subscribe to my channel 👇",
+            "adapted_text": "The full video is here: {youtube_url}. Reply HELP if you need assistance.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons"
+      ],
+      "source_gaps": [],
+      "steps": 3,
+      "edges": 2,
+      "md_sha256": "751810b56aa8edf4ec65124d789b44c89da8ae25b8fb8ff929ca68c970c30002",
+      "json_sha256": "1651e750c3ea3b1b9a7706b23f919ed64ee393a0c7e3ae01deec031cc53f3c80"
+    },
+    {
+      "id": "affiliate-inro-6053",
+      "name": "Share an affiliate link with a reminder",
+      "file": "setup-details/affiliate-inro-6053.md",
+      "audit_file": "setup-details/affiliate-inro-6053.json",
+      "source_ids": [
+        "inro-6053"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Send the affiliate URL after confirmation.",
+        "source_requirements": [
+          "Press the opening button",
+          "Check the destination click"
+        ],
+        "source_timing": [
+          "No link click or opening-button click: 3 days."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Send the affiliate URL after confirmation.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: No link click or opening-button click: 3 days.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "inro-6053",
+            "node_id": "n002",
+            "source_text": "Hey there! I’m so happy you’re here. Do you want to receive the link? 😊\nYes ❤️",
+            "adapted_text": "Want {product_name}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 10,
+      "edges": 9,
+      "md_sha256": "d686edddf1630a63da9ea053fd9cc158495ae755369c641640a7be95a580d2f1",
+      "json_sha256": "78ffe6319d880c1dcdccb974ec1161f351464be04a9019508575b6af63cc9115"
+    },
+    {
+      "id": "affiliate-manychat-183",
+      "name": "Affiliate product card with an image",
+      "file": "setup-details/affiliate-manychat-183.md",
+      "audit_file": "setup-details/affiliate-manychat-183.json",
+      "source_ids": [
+        "manychat-183"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Offer the named product and its verified URL in text.",
+        "source_requirements": [
+          "Product image, title and subtitle",
+          "Affiliate URL button"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [
+          "Offer the named product and its verified URL in text.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "buttons"
+      ],
+      "source_gaps": [],
+      "steps": 0,
+      "edges": 0,
+      "md_sha256": "c973076bda9d9e3d552e4386a7a3c737635cbb02966540469ab9f589331681e4",
+      "json_sha256": "666dafa967b37a1aef63fd0a9474c08cfb636e1c00bd4afe4455ab5fb6f74a2f"
+    },
+    {
+      "id": "courses-inro-6080",
+      "name": "Sell one course from comments or DMs",
+      "file": "setup-details/courses-inro-6080.md",
+      "audit_file": "setup-details/courses-inro-6080.json",
+      "source_ids": [
+        "inro-6080"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Send the course URL after confirmation and retain help.",
+        "source_requirements": [
+          "Press a button before the offer",
+          "Remind when the link is not clicked"
+        ],
+        "source_timing": [
+          "No link click or opening-button click: 3 days."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Send the course URL after confirmation and retain help.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: No link click or opening-button click: 3 days.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "inro-6080",
+            "node_id": "n002",
+            "source_text": "Hey! Thanks for being here 🙌🏻  Do you want to join my course?\nYes 👀",
+            "adapted_text": "Want {course_name}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 11,
+      "edges": 10,
+      "md_sha256": "6bbbf77eab2b49b1273bd8479ab58d2fd37b9f0c62857cfb9ceb45f66df699dd",
+      "json_sha256": "4c5466f0b3f80ae18c875ff192df39c9cbe186bd08c4cdbe16c388dfec4530d9"
+    },
+    {
+      "id": "courses-manychat-111",
+      "name": "Sell courses: three cards and help",
+      "file": "setup-details/courses-manychat-111.md",
+      "audit_file": "setup-details/courses-manychat-111.json",
+      "source_ids": [
+        "manychat-111"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Offer three named courses with all six detail/purchase URLs and a help branch.",
+        "source_requirements": [
+          "Three-course gallery",
+          "Separate card and purchase URLs",
+          "A following help message"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [
+          "Offer three named courses with all six detail/purchase URLs and a help branch.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "manychat-111",
+            "node_id": "node-0",
+            "source_text": "Let me show you my new drop! My courses are designed to help you get more dream clients from Instagram ☁️",
+            "adapted_text": "Choose a course: 1. {course_one_title}: {course_one_terms}. Details: {course_one_card_url}. Buy: {course_one_purchase_url}. 2. {course_two_title}: {course_two_terms}. Details: {course_two_card_url}. Buy: {course_two_purchase_url}. 3. {course_three_title}: {course_three_terms}. Details: {course_three_card_url}. Buy: {course_three_purchase_url}. If you have any questions, I'm here to help 💛",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons"
+      ],
+      "source_gaps": [],
+      "steps": 3,
+      "edges": 2,
+      "md_sha256": "4b4348b7a2fc622b6d31ce8417cf2886343b6dfe1ed5702fcc0ebf962cdf1ce5",
+      "json_sha256": "ab85340edb191f6627490ccb2b0e3e1c4d51e8433d36645a2d289aa3822735f7"
+    },
+    {
+      "id": "offers-inro-4393",
+      "name": "Sell products during a Live",
+      "file": "setup-details/offers-inro-4393.md",
+      "audit_file": "setup-details/offers-inro-4393.json",
+      "source_ids": [
+        "inro-4393"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "This scenario starts from a Live comment. Ordinary MCP cannot configure that Live-specific entry. An ordinary post comment or DM would be a different scenario.",
+        "primary_result": "A product offer",
+        "source_requirements": [
+          "Press the opening button",
+          "Click the product link"
+        ],
+        "source_timing": [
+          "No link click: 2 hours; opening button: 6 hours."
+        ],
+        "blocking_dependencies": [
+          "live"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "live",
+        "buttons",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 9,
+      "edges": 8,
+      "md_sha256": "b0fd8e0f0670a922bf16a36915e02c83dbf209d1d0b2032409a455d1d8c062f4",
+      "json_sha256": "cfcd188342b7e0afa82433429f21865026a11368121ace6de7db7d0be8d05130"
+    },
+    {
+      "id": "offers-inro-4484",
+      "name": "Live leads: product or course by interest",
+      "file": "setup-details/offers-inro-4484.md",
+      "audit_file": "setup-details/offers-inro-4484.json",
+      "source_ids": [
+        "inro-4484"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "This scenario starts from a Live comment. Ordinary MCP cannot configure that Live-specific entry. An ordinary post comment or DM would be a different scenario.",
+        "primary_result": "An offer matching the chosen interest",
+        "source_requirements": [
+          "Choose an interest: products or course",
+          "Receive the matching offer"
+        ],
+        "source_timing": [
+          "Link clicks: 3 hours and 3 days; no reply: 3 days."
+        ],
+        "blocking_dependencies": [
+          "live"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "live",
+        "buttons",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 24,
+      "edges": 23,
+      "md_sha256": "79c7fda4b9d209236ca7c3990059efeb89ff0d5f7d6ff21355bbc71f49e155cd",
+      "json_sha256": "3db692a69ca649979027d62f2d2f91e3743f82174c579698fdb17a0af4b9930f"
+    },
+    {
+      "id": "offers-manychat-63",
+      "name": "Live offer: reveal one coupon",
+      "file": "setup-details/offers-manychat-63.md",
+      "audit_file": "setup-details/offers-manychat-63.json",
+      "source_ids": [
+        "manychat-63"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "This scenario starts from a Live comment. Ordinary MCP cannot configure that Live-specific entry. An ordinary post comment or DM would be a different scenario.",
+        "primary_result": "The SECRET10 coupon",
+        "source_requirements": [
+          "Press the coupon-reveal button"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "live"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "live",
+        "buttons"
+      ],
+      "source_gaps": [],
+      "steps": 3,
+      "edges": 2,
+      "md_sha256": "cc7167c259d96e14bef67244ae347bc203adcc60f0dda2c8d77c52c66df44ad9",
+      "json_sha256": "aa232bb1ea8b22e190e5ae1a8537d3bf357073af03ca5ffde2a694c1f3bc46fc"
+    },
+    {
+      "id": "offers-manychat-66",
+      "name": "Story offer: reveal a coupon",
+      "file": "setup-details/offers-manychat-66.md",
+      "audit_file": "setup-details/offers-manychat-66.json",
+      "source_ids": [
+        "manychat-66"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "This scenario starts from a Story reply. Ordinary MCP cannot configure the Story-specific entry. An ordinary DM keyword would be a different entry, not this setup.",
+        "primary_result": "The MYBDAYGIFT coupon",
+        "source_requirements": [
+          "Press the coupon-reveal button"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "story"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "story",
+        "buttons"
+      ],
+      "source_gaps": [],
+      "steps": 3,
+      "edges": 2,
+      "md_sha256": "1933dc06129e4c7aff78488d07fa6529d22e3c0b338a3764145d8dd18a294054",
+      "json_sha256": "48cc69fe10a697ef95ec89ef6e8a4e86b2de0d98772ef431702511279b67b305"
+    },
+    {
+      "id": "offers-manychat-72",
+      "name": "Reel coupon: help after 2 minutes",
+      "file": "setup-details/offers-manychat-72.md",
+      "audit_file": "setup-details/offers-manychat-72.json",
+      "source_ids": [
+        "manychat-72"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Send the coupon, store URL and captured help copy together after confirmation.",
+        "source_requirements": [
+          "Press the opening button",
+          "Receive unconditional help after 2 minutes"
+        ],
+        "source_timing": [
+          "Unconditional delay: 2 minutes. The 48-hour validity appears only in copy."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Send the coupon, store URL and captured help copy together after confirmation.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Unconditional delay: 2 minutes. The 48-hour validity appears only in copy.. No timed unsolicited message is configured."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "manychat-72",
+            "node_id": "node-0",
+            "source_text": "Hey! Tap below to get your coupon code for 10% off your first purchase of Happy Beans Vitamins 👇 ",
+            "adapted_text": "Want {offer_title}? Reply YES for the coupon.",
+            "provenance": "authored_adaptation_not_captured"
+          },
+          {
+            "source_id": "manychat-72",
+            "node_id": "node-3",
+            "source_text": "Is the code working for you? If you have any questions about the Happy Beans range, I'm happy to help ❤️",
+            "adapted_text": "Your code is {coupon_code}\n{offer_terms}\n{store_url}\n\nIs the code working for you? If you have any questions about the Happy Beans range, I'm happy to help ❤️",
+            "provenance": "authored_same_response_not_a_timer"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "timers"
+      ],
+      "source_gaps": [],
+      "steps": 5,
+      "edges": 4,
+      "md_sha256": "7b82f2fc03a946ccc3845ecd79cc0c52ceae1419e0adeb35b196b423836d93c6",
+      "json_sha256": "050325141b8e6562770c2e94de97a0f3767e9841b612a05b80f0ea87d68ade65"
+    },
+    {
+      "id": "offers-manychat-73",
+      "name": "Follower-only coupon: check and retry",
+      "file": "setup-details/offers-manychat-73.md",
+      "audit_file": "setup-details/offers-manychat-73.json",
+      "source_ids": [
+        "manychat-73"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+        "primary_result": "A coupon only for a follower",
+        "source_requirements": [
+          "Check follower status",
+          "Offer another check after a negative result"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "follower"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "follower",
+        "buttons",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 5,
+      "edges": 5,
+      "md_sha256": "e1a9d579d7095f729a23b20e881e93a5e24d64f272e6aaa8878a28fdc2cbb928",
+      "json_sha256": "3d5796ee105f01dfac53982796506d372e8e524df6b961bcaa1537fe41ddb3a6"
+    },
+    {
+      "id": "offers-inro-6019",
+      "name": "Welcome offer from a QR or referral link",
+      "file": "setup-details/offers-inro-6019.md",
+      "audit_file": "setup-details/offers-inro-6019.json",
+      "source_ids": [
+        "inro-6019"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The referral-link or QR entry is not configurable through ordinary MCP. A manually configured scope or an ordinary DM keyword is not a new-account setup for this scenario.",
+        "primary_result": "A welcome coupon",
+        "source_requirements": [
+          "Press the confirmation button"
+        ],
+        "source_timing": [
+          "Opening button: 6 hours."
+        ],
+        "blocking_dependencies": [
+          "ref-link"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "ref-link",
+        "buttons",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 6,
+      "edges": 5,
+      "md_sha256": "1efea64ae630718d23a6f5c38421852070314a09b0c14e3648dc5518b9ff350e",
+      "json_sha256": "03957f580b4f2d9c4b733a5a4b94d601c3b88261804999ce84fc59cd627d8935"
+    },
+    {
+      "id": "giveaway-inro-6018",
+      "name": "Giveaway entry: tag, follow and email",
+      "file": "setup-details/giveaway-inro-6018.md",
+      "audit_file": "setup-details/giveaway-inro-6018.json",
+      "source_ids": [
+        "inro-6018"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+        "primary_result": "An eligible entrant, not a selected winner",
+        "source_requirements": [
+          "Verify the tag",
+          "Verify a follow",
+          "Require email"
+        ],
+        "source_timing": [
+          "Email: 20 hours; follow: 24 hours."
+        ],
+        "blocking_dependencies": [
+          "follower"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "follower",
+        "buttons",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 10,
+      "edges": 9,
+      "md_sha256": "f1ab56c4e86e013aa2836f9fee4a76f41573397437684bc76663634eb4561aa0",
+      "json_sha256": "93c9b3c581770c971b282adbde1f8eeddbb55c2cc87028bf71c63615862d5ff6"
+    },
+    {
+      "id": "giveaway-manychat-105",
+      "name": "Giveaway: captured 95/5 random split",
+      "file": "setup-details/giveaway-manychat-105.md",
+      "audit_file": "setup-details/giveaway-manychat-105.json",
+      "source_ids": [
+        "manychat-105"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The selected outcome requires random selection or allocation. Ordinary MCP cannot implement that selection; giving everyone the same reward is a different result.",
+        "primary_result": "One of two giveaway outcomes",
+        "source_requirements": [
+          "Check started_giveaway",
+          "Choose between random outcomes with 95% and 5% weights"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "random"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "random",
+        "graph",
+        "buttons"
+      ],
+      "source_gaps": [
+        "Resolve the gate/notes and 95%/5% outcome conflict without correcting the original record."
+      ],
+      "steps": 8,
+      "edges": 7,
+      "md_sha256": "ce99269bd54318b5282a073d6478bf2672ef7e97ab2916ecd550841d2001a9da",
+      "json_sha256": "cefc8b1cd3a5584992cb0208ee2fb8d0afaf3b1093ab7c2425dfd9d1e62bb09b"
+    },
+    {
+      "id": "games-inro-4530",
+      "name": "Live quiz: correct answer and a 50% chance",
+      "file": "setup-details/games-inro-4530.md",
+      "audit_file": "setup-details/games-inro-4530.json",
+      "source_ids": [
+        "inro-4530"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The selected outcome requires random selection or allocation. Ordinary MCP cannot implement that selection; giving everyone the same reward is a different result.",
+        "primary_result": "A prize for some correct answers",
+        "source_requirements": [
+          "Answer a question",
+          "Correct answer: random 50/50 outcome; wrong answer: no prize"
+        ],
+        "source_timing": [
+          "Opening button: 1 hour; reply: 2 hours; link click: 3 days."
+        ],
+        "blocking_dependencies": [
+          "random"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "live",
+        "random",
+        "buttons",
+        "timers",
+        "click",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 23,
+      "edges": 22,
+      "md_sha256": "5a301ff22f76d555431a6018e5dc0eea4d29e2f05a1df576738a8ac19f1f8e60",
+      "json_sha256": "a67b5582ae1c2d3fe0c7ad379ef8361b477add3e12de1a219c5a8912cf747a48"
+    },
+    {
+      "id": "games-manychat-57",
+      "name": "Live game: three coupons at 33/33/34",
+      "file": "setup-details/games-manychat-57.md",
+      "audit_file": "setup-details/games-manychat-57.json",
+      "source_ids": [
+        "manychat-57"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The selected outcome requires random selection or allocation. Ordinary MCP cannot implement that selection; giving everyone the same reward is a different result.",
+        "primary_result": "One of three coupons",
+        "source_requirements": [
+          "Press the button",
+          "Randomly distribute outcomes at 33%, 33%, 34%"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "random"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "live",
+        "random",
+        "buttons"
+      ],
+      "source_gaps": [],
+      "steps": 6,
+      "edges": 5,
+      "md_sha256": "5d78ea8d3a615ed7e41358ce71a90938d5b4db9d1b787420a2d900f1044f859f",
+      "json_sha256": "c6b6d3584117004d0d751920e0a8a11158bd148d672ffcd1237844dc696e49e5"
+    },
+    {
+      "id": "games-manychat-108",
+      "name": "Qualify with a three-question scored quiz",
+      "file": "setup-details/games-manychat-108.md",
+      "audit_file": "setup-details/games-manychat-108.json",
+      "source_ids": [
+        "manychat-108"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The quiz requires persistent scoring and score-dependent outcomes. Ordinary MCP has no score updates or score conditions.",
+        "primary_result": "A score-based result and coupon",
+        "source_requirements": [
+          "Check whether the quiz was already taken",
+          "Ask three questions",
+          "Use score thresholds for different results"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "score"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "score",
+        "graph",
+        "buttons"
+      ],
+      "source_gaps": [
+        "Score fields, initial value, increments and thresholds are unknown. The inspected points is unknown condition is not the original rule."
+      ],
+      "steps": 23,
+      "edges": 29,
+      "md_sha256": "ed6ce12115540a0394825347272d3922fbfd1465f580bce7279815d9041f2ffe",
+      "json_sha256": "4db81635c96787019e4cb90d7163a95da525fe5a9674f85697db21bebe736e30"
+    },
+    {
+      "id": "moderation-inro-comment-moderation",
+      "name": "Comment moderation wizard: later steps missing",
+      "file": "setup-details/moderation-inro-comment-moderation.md",
+      "audit_file": "setup-details/moderation-inro-comment-moderation.json",
+      "source_ids": [
+        "inro-comment-moderation"
+      ],
+      "status": "source_incomplete_reference_only",
+      "function_review": {
+        "status": "source_incomplete_reference_only",
+        "reason": "The moderation wizard capture does not establish downstream actions or a runnable graph. Ordinary MCP also lacks moderation operations; do not invent the missing source behavior.",
+        "primary_result": "The later wizard actions are not established",
+        "source_requirements": [
+          "Choose a word, meaning or spam rule",
+          "Apply the intended moderation action"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "moderation"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "moderation"
+      ],
+      "source_gaps": [
+        "The next two wizard steps did not open; the exact action and branches are unknown."
+      ],
+      "steps": 0,
+      "edges": 0,
+      "md_sha256": "2e01b7863eb084d9529aba91c27f4fd4b607e1046b7da4d38de66e16bb53fb5c",
+      "json_sha256": "79fb71cfb759d0a9e15d8dc29d9a3a7efae8cb59894acd39334740ee48e8863b"
+    },
+    {
+      "id": "moderation-inro-6111",
+      "name": "Hide spam and hateful comments",
+      "file": "setup-details/moderation-inro-6111.md",
+      "audit_file": "setup-details/moderation-inro-6111.json",
+      "source_ids": [
+        "inro-6111"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "Hiding a hate/spam comment and applying the source moderation actions are unavailable through ordinary MCP. A complaint DM is not moderation.",
+        "primary_result": "A hidden comment and a tagged contact",
+        "source_requirements": [
+          "Recognize an unwanted comment",
+          "Hide the comment"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "moderation"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "moderation",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 3,
+      "edges": 2,
+      "md_sha256": "64a046879fffc03f6c656f285ba9dd79926dcf0cf02498298675a19b5a7b6d8c",
+      "json_sha256": "53ed0623ebcbdf934fb0699ca49b92a094d98c419bc57801018e173c1664c967"
+    },
+    {
+      "id": "thanks-inro-6082",
+      "name": "Thank fans publicly after a minute",
+      "file": "setup-details/thanks-inro-6082.md",
+      "audit_file": "setup-details/thanks-inro-6082.json",
+      "source_ids": [
+        "inro-6082"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Send a public thank-you reply for the selected comments.",
+        "source_requirements": [
+          "Wait 1 minute",
+          "Thank the person publicly without a DM"
+        ],
+        "source_timing": [
+          "Delay: 1 minute."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Send a public thank-you reply for the selected comments."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Delay: 1 minute.. No timed unsolicited message is configured.",
+          "No imported deterministic graph or source folder/tag tracking.",
+          "No exact one-minute delay or folder update."
+        ],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 4,
+      "edges": 3,
+      "md_sha256": "a87b30cd3d903e54df0cffc30c9bacea75b74051e5cc22a0dc11df84e1e78a0b",
+      "json_sha256": "9a3b4b30bfc824d952a7cd0babd2435c615b0384c362e478e932be684a51c0ef"
+    },
+    {
+      "id": "thanks-inro-6086",
+      "name": "Thank a verified Story mention with a Like",
+      "file": "setup-details/thanks-inro-6086.md",
+      "audit_file": "setup-details/thanks-inro-6086.json",
+      "source_ids": [
+        "inro-6086"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The entry requires a verified Story mention and the result is an Instagram Like reaction. Neither is configured by ordinary MCP; a self-reported mention is not equivalent.",
+        "primary_result": "A Like reaction to the mention",
+        "source_requirements": [
+          "Wait 1 minute",
+          "Like the message"
+        ],
+        "source_timing": [
+          "Delay: 1 minute."
+        ],
+        "blocking_dependencies": [
+          "story",
+          "ig-like"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "story",
+        "ig-like",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 4,
+      "edges": 3,
+      "md_sha256": "1e9e370830e609618c2d95cacb9a2576e40e7172c7cfef50d3c6201b57f1a944",
+      "json_sha256": "920c32e721cd1db01602d772bf2b5abb69707a5622f34cc03cddffd5c128c42f"
+    },
+    {
+      "id": "thanks-inro-6223",
+      "name": "Acknowledge a kind DM with a Like",
+      "file": "setup-details/thanks-inro-6223.md",
+      "audit_file": "setup-details/thanks-inro-6223.json",
+      "source_ids": [
+        "inro-6223"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Reply to appreciation with a short text thank-you instead of an Instagram Like.",
+        "source_requirements": [
+          "Wait 1 minute",
+          "Like the message"
+        ],
+        "source_timing": [
+          "Delay: 1 minute."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Reply to appreciation with a short text thank-you instead of an Instagram Like."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Delay: 1 minute.. No timed unsolicited message is configured.",
+          "No imported deterministic graph or source folder/tag tracking.",
+          "No Instagram Like reaction."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "inro-6223",
+            "node_id": "n002",
+            "source_text": "❤️\nLike message",
+            "adapted_text": "Thanks for the kind words!",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "ig-like",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 4,
+      "edges": 3,
+      "md_sha256": "b98de5add30e33004ddbca000f72c44b62ee33410100d998695093171161d3c7",
+      "json_sha256": "ecb8567bc1e1ccffd593508571bee164d597bd0311886f4dbd0a4f4cac9f5751"
+    },
+    {
+      "id": "support-inro-6085",
+      "name": "AI support: team backup after 24 hours",
+      "file": "setup-details/support-inro-6085.md",
+      "audit_file": "setup-details/support-inro-6085.json",
+      "source_ids": [
+        "inro-6085"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Answer from approved facts and hand unresolved questions or explicit requests to the Chatfuel team.",
+        "source_requirements": [
+          "AI answers",
+          "If unresolved after 24 hours, email the team"
+        ],
+        "source_timing": [
+          "AI handover expiration: 24 hours."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Answer from approved facts and hand unresolved questions or explicit requests to the Chatfuel team."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: AI handover expiration: 24 hours.. No timed unsolicited message is configured.",
+          "No imported deterministic graph or source folder/tag tracking.",
+          "No outbound escalation email or external booking-completion check."
+        ],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "email-send",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 7,
+      "edges": 6,
+      "md_sha256": "a4772075cdc5c970d4d4c2ebe537c2d4741b505ed4373ada0e9826018e543c87",
+      "json_sha256": "0711e81c85603a969581d03c3f7e77807aa6afaead0575d7caf00d72ec70cda5"
+    },
+    {
+      "id": "support-manychat-46",
+      "name": "Recognize a website question and reply",
+      "file": "setup-details/support-manychat-46.md",
+      "audit_file": "setup-details/support-manychat-46.json",
+      "source_ids": [
+        "manychat-46"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Answer website-interest DMs with the approved website URL.",
+        "source_requirements": [
+          "Recognize intent",
+          "Return fixed website copy and a link"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [
+          "Answer website-interest DMs with the approved website URL."
+        ],
+        "omitted": [],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "manychat-46",
+            "node_id": "node-0",
+            "source_text": "Thanks for your interest! 🌟 Here's our website: https://manychat.com/",
+            "adapted_text": "Thanks for your interest! Here is our website: {website_url}",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [],
+      "source_gaps": [],
+      "steps": 2,
+      "edges": 1,
+      "md_sha256": "bf89db440e5c422245310ca3fb361cc97fcf92fe2a802a7c66068ddce03bcd36",
+      "json_sha256": "94d30cda1668b97afa39cfa22600faa4052632b5654f0a75b5eb09563ba06ae2"
+    },
+    {
+      "id": "collaboration-manychat-69",
+      "name": "Collaboration enquiry: collect email only if missing",
+      "file": "setup-details/collaboration-manychat-69.md",
+      "audit_file": "setup-details/collaboration-manychat-69.json",
+      "source_ids": [
+        "manychat-69",
+        "manychat-251"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "This scenario starts from a Story reply. Ordinary MCP cannot configure the Story-specific entry. An ordinary DM keyword would be a different entry, not this setup.",
+        "primary_result": "A mailto link for collaboration",
+        "source_requirements": [
+          "Existing email: show the team contact",
+          "Missing email: collect it, then show the contact"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "story"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "story",
+        "buttons",
+        "graph"
+      ],
+      "source_gaps": [],
+      "steps": 10,
+      "edges": 8,
+      "md_sha256": "f3b704f8bc4e52c3d82984177e57836eed20bbb2ad82174ecdfbc5c487783f6a",
+      "json_sha256": "d969d40778d114ca00658cc52cf2569a2c16cb343ea96ed0b6f89e37e6dcb956"
+    },
+    {
+      "id": "phone-community-manychat-84",
+      "name": "Grow an SMS list: phone and 23-hour reminder",
+      "file": "setup-details/phone-community-manychat-84.md",
+      "audit_file": "setup-details/phone-community-manychat-84.json",
+      "source_ids": [
+        "manychat-84"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Request a consented phone number; keep SMS-provider signup and sending as separate unimplemented continuation.",
+        "source_requirements": [
+          "Collect the phone number",
+          "Remind after silence without a second collection block"
+        ],
+        "source_timing": [
+          "No reply: 23 hours; the reminder does not contain another collection block."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Request a consented phone number; keep SMS-provider signup and sending as separate unimplemented continuation."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: No reply: 23 hours; the reminder does not contain another collection block.. No timed unsolicited message is configured.",
+          "No external SMS subscription, SMS send or delivery confirmation."
+        ],
+        "limitations": [
+          "Contact-value persistence is unverified. Capture configuration and chat text do not prove a saved value or external list membership.",
+          "Phone and SMS-specific consent are required for the requested signup; actual provider membership and delivery remain unimplemented."
+        ],
+        "examples": [
+          {
+            "source_id": "manychat-84",
+            "node_id": "node-0",
+            "source_text": "OMG! I'm so excited you'd like to join my VIP-only hotline (aka my Text Besties community)! 🤭\n\nI drop the best content, tools, tricks and more via text, so gimme your phone number so I can add you 👇\n\nYes! Got it. You’re added to my Text Besties community! 😉",
+            "adapted_text": "Would you like to share your phone for {sms_purpose}? Please include the country code. You can say NO.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "timers",
+        "external"
+      ],
+      "source_gaps": [],
+      "steps": 4,
+      "edges": 3,
+      "md_sha256": "bd7c3f83e59a175b32a64ddf0d9a0015c81da25ecd87bde300c2c79492fd37b8",
+      "json_sha256": "80a45c79cf8cd721cbd30fb7e65d05c2173f77ccfb786513bbf010d0f14f840c"
+    },
+    {
+      "id": "channel-transfer-manychat-101",
+      "name": "Go to WhatsApp: captured button only adds a tag",
+      "file": "setup-details/channel-transfer-manychat-101.md",
+      "audit_file": "setup-details/channel-transfer-manychat-101.json",
+      "source_ids": [
+        "manychat-101"
+      ],
+      "status": "adaptation_draft_requires_consent",
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Offer a verified business WhatsApp URL in an actual DM reply; do not claim a transfer or tag success.",
+        "source_requirements": [
+          "Press the button",
+          "Add contactedbywhatsapp"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [
+          "Offer a verified business WhatsApp URL in an actual DM reply; do not claim a transfer or tag success.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "manychat-101",
+            "node_id": "node-0",
+            "source_text": "We'd love to help you! We're available on WhatsApp. ❤️ \n Tap the button below to start a conversation with us there 👇",
+            "adapted_text": "We'd love to help you on WhatsApp. Open our verified business link: {whatsapp_url}",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "graph"
+      ],
+      "source_gaps": [
+        "No WhatsApp navigation action was captured; the button title conflicts with its action."
+      ],
+      "steps": 3,
+      "edges": 2,
+      "md_sha256": "680f2deef7b3bd00c7afe4d51e9c14cff8edec160c43129200845e2e7db19dad",
+      "json_sha256": "b7fa3affb096aa763f2b666252e60b0c000d1ec13bdf53ffe8b3d6f80fe0537b"
+    },
+    {
+      "id": "reminder-manychat-434",
+      "name": "Brands campaign: no click after 23 hours",
+      "file": "setup-details/reminder-manychat-434.md",
+      "audit_file": "setup-details/reminder-manychat-434.json",
+      "source_ids": [
+        "manychat-434"
+      ],
+      "status": "waiting_for_chatfuel",
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The primary result is a reminder only after a verified non-click and exact delay. Ordinary MCP cannot observe that condition or configure that timer. Generic silence follow-ups are not a substitute.",
+        "primary_result": "A reminder only if the link was not clicked",
+        "source_requirements": [
+          "Opening button and link",
+          "Tag the link click",
+          "Check the tag after 23 hours"
+        ],
+        "source_timing": [
+          "Delay: 23 hours."
+        ],
+        "blocking_dependencies": [
+          "click",
+          "timers"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "buttons",
+        "click",
+        "timers",
+        "graph"
+      ],
+      "source_gaps": [
+        "The click tag and positive condition exit are unset."
+      ],
+      "steps": 7,
+      "edges": 6,
+      "md_sha256": "39fc0878fa91695a926c848d491d5ba92e39228190ab7fa070921cb217a38882",
+      "json_sha256": "3954e308c87b632795b20d78d67b942f1448975c3007c456339bb7d2e377c3ba"
+    },
+    {
+      "id": "conversation-builder-manychat-3",
+      "name": "AI conversation generator: initial screen only",
+      "file": "setup-details/conversation-builder-manychat-3.md",
+      "audit_file": "setup-details/conversation-builder-manychat-3.json",
+      "source_ids": [
+        "manychat-3"
+      ],
+      "status": "source_incomplete_reference_only",
+      "function_review": {
+        "status": "source_incomplete_reference_only",
+        "reason": "No generated conversation, entry or runnable result was captured. Keep this as a source reference until the missing source behavior is supplied.",
+        "primary_result": "No generated graph or result is known",
+        "source_requirements": [
+          "Supply a goal and context",
+          "Generation has not been run"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      },
+      "mandatory_dependencies": [
+        "generation"
+      ],
+      "source_gaps": [
+        "Only the initial screen was captured. Entry, steps and mandatory conditions were not generated."
+      ],
+      "steps": 0,
+      "edges": 0,
+      "md_sha256": "d58654e928c71c82c4b4d672293eccbf6288cda13baa36fc412b9d290eed40bf",
+      "json_sha256": "daf544e4162e0c0295f2600e484b6b8c66e2e234c896888608151c0e16c8c483"
+    }
+  ]
+}

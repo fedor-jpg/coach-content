@@ -1,0 +1,3317 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "follower-material-manychat-17",
+    "name": "Grow followers: mandatory follow request wizard",
+    "source_ids": [
+      "manychat-17"
+    ],
+    "entry": "Keyword comment",
+    "mandatory_conditions": [
+      "Opening DM",
+      "Mandatory request to follow before the link"
+    ],
+    "outcome": "Intended link delivery after following",
+    "timing": [],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "comment",
+      "follower",
+      "buttons"
+    ],
+    "assessment": {
+      "status": "insufficient_data",
+      "reason": "The wizard shows a follow request, but its verification and retry branches were not captured. Ordinary MCP does not expose a follower condition.",
+      "missing_source_behavior": [
+        "No graph establishes how a follow is checked or what the negative branch does."
+      ],
+      "replacement": null
+    },
+    "source_notes": {
+      "manychat-17": "The wizard was captured; the follower-verification graph was not."
+    },
+    "client_inputs": [
+      "post",
+      "keywords",
+      "destination",
+      "follow request"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6028"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [],
+      "binding_review": {
+        "source_entry": "Keyword comment",
+        "source_outcome": "Intended link delivery after following",
+        "mandatory_conditions": [
+          "Opening DM",
+          "Mandatory request to follow before the link"
+        ],
+        "source_contact_policy": [
+          "Mandatory request to follow before the link"
+        ],
+        "plan_count": 0,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+        "primary_result": "Intended link delivery after following",
+        "source_requirements": [
+          "Opening DM",
+          "Mandatory request to follow before the link"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "follower"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Offer a useful resource in exchange for a verified follow.",
+  "fit": "Creators who want access to depend on following, not just an invitation to follow.",
+  "preparation_status": "waiting_for_chatfuel",
+  "function_review": {
+    "status": "waiting_for_chatfuel",
+    "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+    "primary_result": "Intended link delivery after following",
+    "source_requirements": [
+      "Opening DM",
+      "Mandatory request to follow before the link"
+    ],
+    "source_timing": [],
+    "blocking_dependencies": [
+      "follower"
+    ],
+    "retained": [],
+    "omitted": [],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "follower",
+    "buttons"
+  ],
+  "sources": [
+    {
+      "source_id": "manychat-17",
+      "source_file": "source-records/manychat-17.json",
+      "source_title": "Grow followers from comments",
+      "start": null,
+      "nodes": [],
+      "transitions": [],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [
+        {
+          "label": "post_scope.default",
+          "scope": "native_setup_default",
+          "phase": "captured_default",
+          "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nNext",
+          "fields": [
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "a specific post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "specific_post",
+              "value_state": "observed",
+              "checked": true,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/0/panel/fields/0"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "any post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "all_posts",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/0/panel/fields/1"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "next post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "next_post",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/0/panel/fields/2"
+              }
+            }
+          ],
+          "buttons_exact": [
+            {
+              "disabled": false,
+              "label": null,
+              "text": ""
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": ""
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": "Next"
+            }
+          ],
+          "evidence": {
+            "file": "evidence/17-setup.json",
+            "pointer": "/captures/0"
+          },
+          "identity_evidence_exact": {},
+          "source_hash": "67aa048b287a7238b887460b59e3dba3b609ea56da047cb9a03d0777d8032f81"
+        },
+        {
+          "label": "comment_condition.default",
+          "scope": "native_setup_default",
+          "phase": "captured_default",
+          "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nany word\nNext",
+          "fields": [
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "a specific post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "specific_post",
+              "value_state": "observed",
+              "checked": true,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/1/panel/fields/0"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "any post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "all_posts",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/1/panel/fields/1"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "next post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "next_post",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/1/panel/fields/2"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+              "label": "a specific word or words",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "specific_words",
+              "value_state": "observed",
+              "checked": true,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/1/panel/fields/3"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.include_keywords_input",
+              "label": null,
+              "tag": "input",
+              "type": null,
+              "placeholder": "Enter a word or multiple",
+              "value": "",
+              "value_state": "unset_client_input_required",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": null,
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/1/panel/fields/4"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+              "label": "any word",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "any_words",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/1/panel/fields/5"
+              }
+            }
+          ],
+          "buttons_exact": [
+            {
+              "disabled": false,
+              "label": null,
+              "text": ""
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": ""
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": "Price"
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": "Link"
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": "Shop"
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": "Next"
+            }
+          ],
+          "evidence": {
+            "file": "evidence/17-setup.json",
+            "pointer": "/captures/1"
+          },
+          "identity_evidence_exact": {},
+          "source_hash": "fa6cbd10b0ba9cde020e4c7a7b2df996e778f2ee25d74f3650b5ebcc601cf619"
+        },
+        {
+          "label": "follow_gate.initial",
+          "scope": "native_setup_default",
+          "phase": "captured_default",
+          "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nany word\nThey will get\nan opening DM\n872\nWhy does an Opening DM matter?\nNext",
+          "fields": [
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "a specific post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "specific_post",
+              "value_state": "observed",
+              "checked": true,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/2/panel/fields/0"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "any post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "all_posts",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/2/panel/fields/1"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "next post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "next_post",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/2/panel/fields/2"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+              "label": "a specific word or words",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "specific_words",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/2/panel/fields/3"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+              "label": "any word",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "any_words",
+              "value_state": "observed",
+              "checked": true,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/2/panel/fields/4"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254039.blocks.30dd3f72-f250-40e8-afde-df8bb3ebe64e.text",
+              "label": null,
+              "tag": "textarea",
+              "type": null,
+              "placeholder": "Do a quick vibe check first - are you ready for the link?",
+              "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/2/panel/fields/5"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254039.blocks.ac7ef475-ba31-4d65-a3e3-04fa19dfc2d5.caption",
+              "label": null,
+              "tag": "input",
+              "type": null,
+              "placeholder": "Add a button label e.g Yes, send the link",
+              "value": "Send me the link",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": null,
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/2/panel/fields/6"
+              }
+            }
+          ],
+          "buttons_exact": [
+            {
+              "disabled": false,
+              "label": null,
+              "text": ""
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": ""
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": "Next"
+            }
+          ],
+          "evidence": {
+            "file": "evidence/17-setup.json",
+            "pointer": "/captures/2"
+          },
+          "identity_evidence_exact": {
+            "prerequisite_variant": "Any word temporarily selected to pass blank keyword."
+          },
+          "source_hash": "d30f36dcb316204ad1d40443a13320aca7a80d57a2598efa68e60c9f87f7c685"
+        },
+        {
+          "label": "follow_requirement.initial",
+          "scope": "native_setup_default",
+          "phase": "captured_default",
+          "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nany word\nThey will get\nan opening DM\n872\nWhy does an Opening DM matter?\nask for a follow\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\n863\nNext",
+          "fields": [
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "a specific post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "specific_post",
+              "value_state": "observed",
+              "checked": true,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/3/panel/fields/0"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "any post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "all_posts",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/3/panel/fields/1"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "next post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "next_post",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/3/panel/fields/2"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+              "label": "a specific word or words",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "specific_words",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/3/panel/fields/3"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+              "label": "any word",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "any_words",
+              "value_state": "observed",
+              "checked": true,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/3/panel/fields/4"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254039.blocks.30dd3f72-f250-40e8-afde-df8bb3ebe64e.text",
+              "label": null,
+              "tag": "textarea",
+              "type": null,
+              "placeholder": "Do a quick vibe check first - are you ready for the link?",
+              "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/3/panel/fields/5"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254039.blocks.ac7ef475-ba31-4d65-a3e3-04fa19dfc2d5.caption",
+              "label": null,
+              "tag": "input",
+              "type": null,
+              "placeholder": "Add a button label e.g Yes, send the link",
+              "value": "Send me the link",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": null,
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/3/panel/fields/6"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254049.blocks.c30d1575-21a1-455f-8fa8-bb3372597a26.text",
+              "label": null,
+              "tag": "textarea",
+              "type": null,
+              "placeholder": "Write a message",
+              "value": "Nearly there! The link is especially for my followers ✨\n\nRight after you follow me, I’ll send you the link so you can dive straight in! 🎉",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/3/panel/fields/7"
+              }
+            }
+          ],
+          "buttons_exact": [
+            {
+              "disabled": false,
+              "label": null,
+              "text": ""
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": ""
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": "Next"
+            }
+          ],
+          "evidence": {
+            "file": "evidence/17-setup.json",
+            "pointer": "/captures/3"
+          },
+          "identity_evidence_exact": {
+            "prerequisite_variant": "Any word temporarily selected."
+          },
+          "source_hash": "bb9090adf4af00a740187a83d8e91a431ad3dbea97ce1210c443b9921aea8c9e"
+        },
+        {
+          "label": "link_delivery.initial",
+          "scope": "native_setup_default",
+          "phase": "captured_default",
+          "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nany word\nThey will get\nan opening DM\n872\nWhy does an Opening DM matter?\nask for a follow\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\n863\na DM with a link\n916\nAdd A Link\nNext",
+          "fields": [
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "a specific post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "specific_post",
+              "value_state": "observed",
+              "checked": true,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/4/panel/fields/0"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "any post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "all_posts",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/4/panel/fields/1"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "next post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "next_post",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/4/panel/fields/2"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+              "label": "a specific word or words",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "specific_words",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/4/panel/fields/3"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+              "label": "any word",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "any_words",
+              "value_state": "observed",
+              "checked": true,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/4/panel/fields/4"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254039.blocks.30dd3f72-f250-40e8-afde-df8bb3ebe64e.text",
+              "label": null,
+              "tag": "textarea",
+              "type": null,
+              "placeholder": "Do a quick vibe check first - are you ready for the link?",
+              "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/4/panel/fields/5"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254039.blocks.ac7ef475-ba31-4d65-a3e3-04fa19dfc2d5.caption",
+              "label": null,
+              "tag": "input",
+              "type": null,
+              "placeholder": "Add a button label e.g Yes, send the link",
+              "value": "Send me the link",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": null,
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/4/panel/fields/6"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254049.blocks.c30d1575-21a1-455f-8fa8-bb3372597a26.text",
+              "label": null,
+              "tag": "textarea",
+              "type": null,
+              "placeholder": "Write a message",
+              "value": "Nearly there! The link is especially for my followers ✨\n\nRight after you follow me, I’ll send you the link so you can dive straight in! 🎉",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/4/panel/fields/7"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254054.blocks.26d110c3-dd56-4992-b4f2-b8c7f782cbfd.text",
+              "label": null,
+              "tag": "textarea",
+              "type": null,
+              "placeholder": "Write a message",
+              "value": "I'm so happy you're following me! \n\nHere's your followers-only access to my guide! 👇",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/4/panel/fields/8"
+              }
+            }
+          ],
+          "buttons_exact": [
+            {
+              "disabled": false,
+              "label": null,
+              "text": ""
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": ""
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": "Add A Link"
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": "Next"
+            }
+          ],
+          "evidence": {
+            "file": "evidence/17-setup.json",
+            "pointer": "/captures/4"
+          },
+          "identity_evidence_exact": {
+            "prerequisite_variant": "Any word temporarily selected."
+          },
+          "source_hash": "700a96cd36a11cacd3a03c9a3ea89c2b6d2093ba60ad67f1af691b3345f0853f"
+        },
+        {
+          "label": "other_automations.initial",
+          "scope": "native_setup_default",
+          "phase": "captured_default",
+          "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nany word\nThey will get\nan opening DM\n872\nWhy does an Opening DM matter?\nask for a follow\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\n863\na DM with a link\n916\nAdd A Link\nOther things to automate\nReply under the post so people feel seen and special\nFollow up to re-engage and build trust\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAsk for emails in DMs to keep in touch beyond social\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.",
+          "fields": [
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "a specific post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "specific_post",
+              "value_state": "observed",
+              "checked": true,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/5/panel/fields/0"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "any post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "all_posts",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/5/panel/fields/1"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+              "label": "next post or reel",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "next_post",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/5/panel/fields/2"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+              "label": "a specific word or words",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "specific_words",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/5/panel/fields/3"
+              }
+            },
+            {
+              "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+              "label": "any word",
+              "tag": "input",
+              "type": "radio",
+              "placeholder": null,
+              "value": "any_words",
+              "value_state": "observed",
+              "checked": true,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/5/panel/fields/4"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254039.blocks.30dd3f72-f250-40e8-afde-df8bb3ebe64e.text",
+              "label": null,
+              "tag": "textarea",
+              "type": null,
+              "placeholder": "Do a quick vibe check first - are you ready for the link?",
+              "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/5/panel/fields/5"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254039.blocks.ac7ef475-ba31-4d65-a3e3-04fa19dfc2d5.caption",
+              "label": null,
+              "tag": "input",
+              "type": null,
+              "placeholder": "Add a button label e.g Yes, send the link",
+              "value": "Send me the link",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": null,
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/5/panel/fields/6"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254049.blocks.c30d1575-21a1-455f-8fa8-bb3372597a26.text",
+              "label": null,
+              "tag": "textarea",
+              "type": null,
+              "placeholder": "Write a message",
+              "value": "Nearly there! The link is especially for my followers ✨\n\nRight after you follow me, I’ll send you the link so you can dive straight in! 🎉",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/5/panel/fields/7"
+              }
+            },
+            {
+              "name": "contents.content20250404084726_963327.1034254054.blocks.26d110c3-dd56-4992-b4f2-b8c7f782cbfd.text",
+              "label": null,
+              "tag": "textarea",
+              "type": null,
+              "placeholder": "Write a message",
+              "value": "I'm so happy you're following me! \n\nHere's your followers-only access to my guide! 👇",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": null,
+                "aria_invalid": "false",
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/5/panel/fields/8"
+              }
+            },
+            {
+              "name": "use_cases.publicly_reply_to_comment.enable",
+              "label": "Reply under the post so people feel seen and special",
+              "tag": "input",
+              "type": "checkbox",
+              "placeholder": null,
+              "value": "on",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": null,
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/5/panel/fields/9"
+              }
+            },
+            {
+              "name": "use_cases.follow_up.enable",
+              "label": "Follow up to re-engage and build trust",
+              "tag": "input",
+              "type": "checkbox",
+              "placeholder": null,
+              "value": "on",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": null,
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/5/panel/fields/10"
+              }
+            },
+            {
+              "name": "use_cases.collect_email.enable",
+              "label": "Ask for emails in DMs to keep in touch beyond social",
+              "tag": "input",
+              "type": "checkbox",
+              "placeholder": null,
+              "value": "<redacted>",
+              "value_state": "observed",
+              "checked": false,
+              "options_exact": null,
+              "validation_exact": {
+                "aria_disabled": "false",
+                "aria_invalid": null,
+                "aria_required": null,
+                "disabled": false,
+                "inputmode": null,
+                "max": null,
+                "maxlength": null,
+                "min": null,
+                "minlength": null,
+                "pattern": null,
+                "required": false,
+                "step": null
+              },
+              "evidence": {
+                "file": "evidence/17-setup.json",
+                "pointer": "/captures/5/panel/fields/11"
+              }
+            }
+          ],
+          "buttons_exact": [
+            {
+              "disabled": false,
+              "label": null,
+              "text": ""
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": ""
+            },
+            {
+              "disabled": false,
+              "label": null,
+              "text": "Add A Link"
+            }
+          ],
+          "evidence": {
+            "file": "evidence/17-setup.json",
+            "pointer": "/captures/5"
+          },
+          "identity_evidence_exact": {
+            "prerequisite_variant": "Any word temporarily selected."
+          },
+          "source_hash": "955a57de67f2e48521231e0406c297811485dd7927af34ec9114d0e7819f0a9a"
+        }
+      ],
+      "global_fields": [
+        {
+          "path": "/native_setup/ordered_observations/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "a specific post or reel",
+            "type": "radio",
+            "value": "specific_post",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "any post or reel",
+            "type": "radio",
+            "value": "all_posts",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "next post or reel",
+            "type": "radio",
+            "value": "next_post",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/1/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "a specific post or reel",
+            "type": "radio",
+            "value": "specific_post",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/1/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "any post or reel",
+            "type": "radio",
+            "value": "all_posts",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/1/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "next post or reel",
+            "type": "radio",
+            "value": "next_post",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/1/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+            "label": "a specific word or words",
+            "type": "radio",
+            "value": "specific_words",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/1/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.include_keywords_input",
+            "label": null,
+            "type": null,
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/1/fields/5",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+            "label": "any word",
+            "type": "radio",
+            "value": "any_words",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/2/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "a specific post or reel",
+            "type": "radio",
+            "value": "specific_post",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/2/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "any post or reel",
+            "type": "radio",
+            "value": "all_posts",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/2/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "next post or reel",
+            "type": "radio",
+            "value": "next_post",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/2/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+            "label": "a specific word or words",
+            "type": "radio",
+            "value": "specific_words",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/2/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+            "label": "any word",
+            "type": "radio",
+            "value": "any_words",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/2/fields/5",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254039.blocks.30dd3f72-f250-40e8-afde-df8bb3ebe64e.text",
+            "label": null,
+            "type": null,
+            "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/2/fields/6",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254039.blocks.ac7ef475-ba31-4d65-a3e3-04fa19dfc2d5.caption",
+            "label": null,
+            "type": null,
+            "value": "Send me the link",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/3/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "a specific post or reel",
+            "type": "radio",
+            "value": "specific_post",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/3/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "any post or reel",
+            "type": "radio",
+            "value": "all_posts",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/3/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "next post or reel",
+            "type": "radio",
+            "value": "next_post",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/3/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+            "label": "a specific word or words",
+            "type": "radio",
+            "value": "specific_words",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/3/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+            "label": "any word",
+            "type": "radio",
+            "value": "any_words",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/3/fields/5",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254039.blocks.30dd3f72-f250-40e8-afde-df8bb3ebe64e.text",
+            "label": null,
+            "type": null,
+            "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/3/fields/6",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254039.blocks.ac7ef475-ba31-4d65-a3e3-04fa19dfc2d5.caption",
+            "label": null,
+            "type": null,
+            "value": "Send me the link",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/3/fields/7",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254049.blocks.c30d1575-21a1-455f-8fa8-bb3372597a26.text",
+            "label": null,
+            "type": null,
+            "value": "Nearly there! The link is especially for my followers ✨\n\nRight after you follow me, I’ll send you the link so you can dive straight in! 🎉",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/4/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "a specific post or reel",
+            "type": "radio",
+            "value": "specific_post",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/4/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "any post or reel",
+            "type": "radio",
+            "value": "all_posts",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/4/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "next post or reel",
+            "type": "radio",
+            "value": "next_post",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/4/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+            "label": "a specific word or words",
+            "type": "radio",
+            "value": "specific_words",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/4/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+            "label": "any word",
+            "type": "radio",
+            "value": "any_words",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/4/fields/5",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254039.blocks.30dd3f72-f250-40e8-afde-df8bb3ebe64e.text",
+            "label": null,
+            "type": null,
+            "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/4/fields/6",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254039.blocks.ac7ef475-ba31-4d65-a3e3-04fa19dfc2d5.caption",
+            "label": null,
+            "type": null,
+            "value": "Send me the link",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/4/fields/7",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254049.blocks.c30d1575-21a1-455f-8fa8-bb3372597a26.text",
+            "label": null,
+            "type": null,
+            "value": "Nearly there! The link is especially for my followers ✨\n\nRight after you follow me, I’ll send you the link so you can dive straight in! 🎉",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/4/fields/8",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254054.blocks.26d110c3-dd56-4992-b4f2-b8c7f782cbfd.text",
+            "label": null,
+            "type": null,
+            "value": "I'm so happy you're following me! \n\nHere's your followers-only access to my guide! 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/5/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "a specific post or reel",
+            "type": "radio",
+            "value": "specific_post",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/5/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "any post or reel",
+            "type": "radio",
+            "value": "all_posts",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/5/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "next post or reel",
+            "type": "radio",
+            "value": "next_post",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/5/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+            "label": "a specific word or words",
+            "type": "radio",
+            "value": "specific_words",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/5/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+            "label": "any word",
+            "type": "radio",
+            "value": "any_words",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/5/fields/5",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254039.blocks.30dd3f72-f250-40e8-afde-df8bb3ebe64e.text",
+            "label": null,
+            "type": null,
+            "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/5/fields/6",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254039.blocks.ac7ef475-ba31-4d65-a3e3-04fa19dfc2d5.caption",
+            "label": null,
+            "type": null,
+            "value": "Send me the link",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/5/fields/7",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254049.blocks.c30d1575-21a1-455f-8fa8-bb3372597a26.text",
+            "label": null,
+            "type": null,
+            "value": "Nearly there! The link is especially for my followers ✨\n\nRight after you follow me, I’ll send you the link so you can dive straight in! 🎉",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/5/fields/8",
+          "phase": "captured_default",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254054.blocks.26d110c3-dd56-4992-b4f2-b8c7f782cbfd.text",
+            "label": null,
+            "type": null,
+            "value": "I'm so happy you're following me! \n\nHere's your followers-only access to my guide! 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/5/fields/9",
+          "phase": "captured_default",
+          "fields": {
+            "name": "use_cases.publicly_reply_to_comment.enable",
+            "label": "Reply under the post so people feel seen and special",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/5/fields/10",
+          "phase": "captured_default",
+          "fields": {
+            "name": "use_cases.follow_up.enable",
+            "label": "Follow up to re-engage and build trust",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/ordered_observations/5/fields/11",
+          "phase": "captured_default",
+          "fields": {
+            "name": "use_cases.collect_email.enable",
+            "label": "Ask for emails in DMs to keep in touch beyond social",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/0",
+          "phase": "captured",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "a specific post or reel",
+            "type": "radio",
+            "value": "specific_post",
+            "checked": true,
+            "options": null,
+            "validation": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/1",
+          "phase": "captured",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "any post or reel",
+            "type": "radio",
+            "value": "all_posts",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/2",
+          "phase": "captured",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.post_covered_area",
+            "label": "next post or reel",
+            "type": "radio",
+            "value": "next_post",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/3",
+          "phase": "captured",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+            "label": "a specific word or words",
+            "type": "radio",
+            "value": "specific_words",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/4",
+          "phase": "captured",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_settings.comment_contains",
+            "label": "any word",
+            "type": "radio",
+            "value": "any_words",
+            "checked": true,
+            "options": null,
+            "validation": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/5",
+          "phase": "captured",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254039.blocks.30dd3f72-f250-40e8-afde-df8bb3ebe64e.text",
+            "label": null,
+            "type": null,
+            "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/6",
+          "phase": "captured",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254039.blocks.ac7ef475-ba31-4d65-a3e3-04fa19dfc2d5.caption",
+            "label": null,
+            "type": null,
+            "value": "Send me the link",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/7",
+          "phase": "captured",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254049.blocks.c30d1575-21a1-455f-8fa8-bb3372597a26.text",
+            "label": null,
+            "type": null,
+            "value": "Nearly there! The link is especially for my followers ✨\n\nRight after you follow me, I’ll send you the link so you can dive straight in! 🎉",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/8",
+          "phase": "captured",
+          "fields": {
+            "name": "contents.content20250404084726_963327.1034254054.blocks.26d110c3-dd56-4992-b4f2-b8c7f782cbfd.text",
+            "label": null,
+            "type": null,
+            "value": "I'm so happy you're following me! \n\nHere's your followers-only access to my guide! 👇",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": null,
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/9",
+          "phase": "captured",
+          "fields": {
+            "name": "use_cases.publicly_reply_to_comment.enable",
+            "label": "Reply under the post so people feel seen and special",
+            "type": "checkbox",
+            "value": "on",
+            "checked": true,
+            "options": null,
+            "validation": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/10",
+          "phase": "captured",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_welcome.public_reply_messages.0",
+            "label": null,
+            "type": null,
+            "value": "Thanks! Please see DMs.",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/11",
+          "phase": "captured",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_welcome.public_reply_messages.1",
+            "label": null,
+            "type": null,
+            "value": "Sent you a message! Check it out!",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/12",
+          "phase": "captured",
+          "fields": {
+            "name": "triggers.widgets.38417239.feed_comment_welcome.public_reply_messages.2",
+            "label": null,
+            "type": null,
+            "value": "Nice! Check your DMs!",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/13",
+          "phase": "captured",
+          "fields": {
+            "name": "use_cases.follow_up.enable",
+            "label": "Follow up to re-engage and build trust",
+            "type": "checkbox",
+            "value": "on",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/0/panel/fields/14",
+          "phase": "captured",
+          "fields": {
+            "name": "use_cases.collect_email.enable",
+            "label": "Ask for emails in DMs to keep in touch beyond social",
+            "type": "checkbox",
+            "value": "<redacted>",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/1/panel/fields/0",
+          "phase": "captured",
+          "fields": {
+            "name": null,
+            "label": "Button label",
+            "type": null,
+            "value": "",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/native_setup/supporting_evidence/0/json_exact/1/panel/fields/1",
+          "phase": "captured",
+          "fields": {
+            "name": null,
+            "label": "Link",
+            "type": null,
+            "value": "",
+            "checked": false,
+            "options": null,
+            "validation": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "a5357b2951db0ef516ff0bf0c0109647b8c13172bf334301645b0a9ce5aa1988",
+      "source_leaf_count": 1652,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [],
+  "continuations": {
+    "manychat-17": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-17.json": "b8bf956449d8b9ce41f089dfa5495ba7bb66497abb40b3e42d86d1554d521775",
+    "described-recipes/inro-6028.json": "059f931c66b3358c9836adebd80909eabb852b440fa86bdd7f6f116f4a327716"
+  }
+}

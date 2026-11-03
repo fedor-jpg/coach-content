@@ -1,0 +1,4569 @@
+{
+  "id": "inro-6081",
+  "source": {
+    "vendor": "inro",
+    "file": "templates/inro-6081.json",
+    "title": "Build a waitlist for your next launch",
+    "category": "Get more leads",
+    "facets": [
+      "Get more leads",
+      "lead_capture",
+      "Comments",
+      "Story replies"
+    ],
+    "job": "lead_capture",
+    "model": "source_graph",
+    "document": {
+      "schema_version": "0.1.0",
+      "id": "inro-6081",
+      "ordinal": 13,
+      "title": "Build a waitlist for your next launch",
+      "source_category": "Get more leads",
+      "source": {
+        "catalog_url": "https://app.inro.social/automation",
+        "preview_url": "https://app.inro.social/public/scenarios/6081",
+        "public_template_id": "6081",
+        "observed_at": "2026-10-30",
+        "source_version": null,
+        "capture_sha256": "75be137ca09583ceee3974640d766d2f32767b67864da20136175d756746c04e",
+        "editor_url": "https://app.inro.social/automation/scenarios/38340",
+        "editor_inactive_verified": true,
+        "official_export": false
+      },
+      "classification": {
+        "basis": "product_interpretation",
+        "job_family": "lead_capture",
+        "route": "waitlist_then_optional_email",
+        "desired_business_event": "waitlist_joined",
+        "trigger_classes": [
+          "comment",
+          "story_reply"
+        ]
+      },
+      "selection": {
+        "basis": "product_interpretation",
+        "use_when": [
+          "Join a waitlist first, then optionally ask for email; absence of email must not undo membership."
+        ],
+        "avoid_when": [
+          "Do not choose for registration that legally or operationally requires an email.",
+          "Do not silently drop an essential unsupported gate."
+        ],
+        "required_facts": [
+          "Launch identity, waitlist membership definition and optional email purpose.",
+          "Confirm account scope, messaging permission and the real outcome measurement."
+        ]
+      },
+      "trigger_labels": [
+        "Comments",
+        "Story replies"
+      ],
+      "triggers": [
+        {
+          "node_id": "n000",
+          "exact_visible_text": "When\nSomeone comments on your post\nSELECT THE POSTS\nNext post only\nFILTER THE COMMENTS\nComments with keyword(s)\nWAITLIST\nWhen\nSomeone replies to your story\nFILTER REPLIES\nContains a keyword\nWAITLIST",
+          "settings_panels": [
+            {
+              "name": null,
+              "text": "Select the posts\nAutomation will only trigger on these posts\nWhich posts do you want to use?\nNext post only\nEdit\nAutomation will only trigger on the first post after:\nOctober 30, 2026 at 1:32:41 PM PDT\nReset date\nNext post only\ncomment with keyword WAITLIST\n18\nContinue\nStep 1 of 2",
+              "fields": [
+                {
+                  "context": "Next post only",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                }
+              ]
+            },
+            {
+              "name": null,
+              "text": "Filter the comments\nAutomation will only trigger on matching comments\nWhich comments should trigger the automation?\nComments with keyword(s)\nEdit\nAdd keyword\nUppercase and accents are ignored and you can use emojis.\nNo recent comments match your keywords on the selected posts\nAlso trigger on replies to comments\nExclude hateful and negative comments\nAI\nNext post only\ncomment with keyword WAITLIST\n18\nSave\nBack\nStep 2 of 2",
+              "fields": [
+                {
+                  "context": "Comments with keyword(s)",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "WAITLIST",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Also trigger on replies to comments",
+                  "index": 2,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "checkbox",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Exclude hateful and negative comments",
+                  "index": 3,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "checkbox",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                }
+              ]
+            },
+            {
+              "name": null,
+              "text": "Someone replies to your story\nSet up filters to trigger the scenario only on specific story replies\nWHICH STORY\nAny story\nNo filter on which story someone replied to\nStories with a keyword\nOnly stories whose text contains a keyword\nStories with a URL\nOnly stories that contain a URL as text or sticker\nStories showing something\nOnly stories whose visual matches your description\nAI\nWHICH REPLIES\nAny reply\nAll replies to the stories selected above\nContains a keyword\nOnly replies containing one of the keywords you define\nwith keyword\nAdd keyword\nKeywords ignore case and accents.\nOnly emojis\nOnly replies made up of a single emoji, with no text\nAI-detected intent\nOnly replies matching an intent you describe in your own words\nAI\nreply containing WAITLIST\nSave",
+              "fields": [
+                {
+                  "context": "Any story\nNo filter on which story someone replied to",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Stories with a keyword\nOnly stories whose text contains a keyword",
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Stories with a URL\nOnly stories that contain a URL as text or sticker",
+                  "index": 2,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Stories showing something\nOnly stories whose visual matches your description\nAI",
+                  "index": 3,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Any reply\nAll replies to the stories selected above",
+                  "index": 4,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Contains a keyword\nOnly replies containing one of the keywords you define",
+                  "index": 5,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 6,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Trigger keyword",
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "WAITLIST",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Only emojis\nOnly replies made up of a single emoji, with no text",
+                  "index": 7,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "AI-detected intent\nOnly replies matching an intent you describe in your own words\nAI",
+                  "index": 8,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                }
+              ]
+            }
+          ],
+          "matching_complete": true
+        }
+      ],
+      "graph": {
+        "entry_node": "n000",
+        "nodes": [
+          {
+            "id": "n000",
+            "source_id": "trigger",
+            "editor_source_id": "trigger",
+            "source_type": "trigger",
+            "observed": {
+              "level": "public_graph",
+              "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nNext post only\nFILTER THE COMMENTS\nComments with keyword(s)\nWAITLIST\nWhen\nSomeone replies to your story\nFILTER REPLIES\nContains a keyword\nWAITLIST",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nNext post only\nFILTER THE COMMENTS\nComments with keyword(s)\nWAITLIST\nWhen\nSomeone replies to your story\nFILTER REPLIES\nContains a keyword\nWAITLIST\nAdd trigger",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "Close",
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": "Close",
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Add trigger",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/comment_trigger",
+                  "signature": "sha256:19bf9903da151d61530fe9c848818e73fb9db9c58c9a1ac7760aaa37805640b5",
+                  "matched": true
+                },
+                {
+                  "definition": "evidence/shared-control-options.json#/story_reply",
+                  "signature": "sha256:c0416b387eb81362e549cfdb92dd238f8c21d8bae24e85c27d85ef649f20a385",
+                  "matched": true
+                },
+                {
+                  "definition": "evidence/shared-control-options.json#/post_scope",
+                  "signature": "sha256:cd4e60de80c43d2c9c286bf5765ae8287548008222b220669c8de98e81776ed7",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "trigger",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n001",
+            "source_id": "438593",
+            "editor_source_id": "455047",
+            "source_type": "comment",
+            "observed": {
+              "level": "public_graph",
+              "text": "Check your DMs to join the list\nSent you a DM 🙂\nJust sent you the details",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Reply to comment\nAdd comment variant\nA variant will be selected at random to avoid repetition\nRewrite comment automatically\nAI\nAvoid spam detection",
+              "fields": [
+                {
+                  "context": null,
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Type your comment",
+                  "tag": "textarea",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Check your DMs to join the list",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Type your comment",
+                  "tag": "textarea",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Sent you a DM 🙂",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 2,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Type your comment",
+                  "tag": "textarea",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Just sent you the details",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Rewrite comment automatically\nAI",
+                  "index": 3,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "checkbox",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Avoid spam detection",
+                  "index": 4,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "checkbox",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [
+                {
+                  "text": "",
+                  "url": "https://help.inro.social/en/articles/13770654-how-to-avoid-spam-detection"
+                }
+              ],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Add comment variant",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/comment_behavior",
+                  "signature": "sha256:e856277ead9fff315c6ff2d07856d449a3716c426ddbba242b4932c53444d72f",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "comment",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n002",
+            "source_id": "438594",
+            "editor_source_id": "455048",
+            "source_type": "button_template",
+            "observed": {
+              "level": "public_graph",
+              "text": "Want to join the waitlist for the spring drop? Tap below.\nJoin the list",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Join the list",
+                  "title": "Join the list"
+                }
+              ]
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Want to join the waitlist for the spring drop? Tap below.\nJoin the list",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Join the list",
+                  "title": "Join the list"
+                },
+                {
+                  "label": "Edit",
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [
+              {
+                "name": null,
+                "text": "Send message with button\nWant to join the waitlist for the spring drop? Tap below.\n57/640\nAdd image\nBUTTONS\nJoin the list\n13/20\nAdd a URL\nAdd button\nYou can trigger actions for each non-URL button in the automation flow.\nPREVIEW\nWant to join the waitlist for the spring drop? Tap below.\nJoin the list\nSave",
+                "fields": [
+                  {
+                    "context": "Want to join the waitlist for the spring drop? Tap below.",
+                    "index": 0,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Write your message",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Want to join the waitlist for the spring drop? Tap below.",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "Join the list",
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Button text",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Join the list",
+                    "value_state": "observed_value"
+                  }
+                ]
+              }
+            ],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/media",
+                  "signature": "sha256:1cef3783334f030133a016aa9a3cb281f5725d1cba15d843753a7cb54eae06f8",
+                  "matched": true
+                },
+                {
+                  "definition": "evidence/shared-control-options.json#/fetch_image_from_url",
+                  "signature": "sha256:343b8d5e2b951627ce5fbaf48185daeef8340a0ff113773938dd09e64a4afde1",
+                  "matched": true
+                },
+                {
+                  "definition": "evidence/shared-variable-options.json",
+                  "signature": "sha256:cc0d3383ffea49880cdbf152234e3863365b2fb48cd922f550d71dc57ddb76ed",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "button_template",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": true,
+              "notes": []
+            },
+            "variant_panels": [
+              {
+                "control": "Add a URL",
+                "is_source_default": false,
+                "panel": {
+                  "name": null,
+                  "text": "Send message with button\nWant to join the waitlist for the spring drop? Tap below.\n57/640\nAdd image\nBUTTONS\nJoin the list\n13/20\nFETCH IMAGE FROM WEBSITE URL\nUse setting\nAdd button\nPREVIEW\nWant to join the waitlist for the spring drop? Tap below.\nJoin the list\nSave",
+                  "fields": [
+                    {
+                      "context": "Want to join the waitlist for the spring drop? Tap below.",
+                      "index": 0,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Write your message",
+                      "tag": "textarea",
+                      "type": "textarea",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "Want to join the waitlist for the spring drop? Tap below.",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "Join the list",
+                      "index": 1,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Button text",
+                      "tag": "input",
+                      "type": "text",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "Join the list",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": null,
+                      "index": 2,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "https://example.com",
+                      "tag": "input",
+                      "type": "url",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    },
+                    {
+                      "context": "FETCH IMAGE FROM WEBSITE URL\nUse setting",
+                      "index": 3,
+                      "label": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "button",
+                      "type": "switch",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": false,
+                      "value_state": "observed_value"
+                    }
+                  ]
+                }
+              },
+              {
+                "control": "Add button",
+                "is_source_default": false,
+                "panel": {
+                  "name": null,
+                  "text": "Send message with button\nWant to join the waitlist for the spring drop? Tap below.\n57/640\nAdd image\nBUTTONS\nJoin the list\n13/20\nFETCH IMAGE FROM WEBSITE URL\nUse setting\nAdd a URL\nAdd button\nYou can trigger actions for each non-URL button in the automation flow.\nPREVIEW\nWant to join the waitlist for the spring drop? Tap below.\nJoin the list\nSave",
+                  "fields": [
+                    {
+                      "context": "Want to join the waitlist for the spring drop? Tap below.",
+                      "index": 0,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Write your message",
+                      "tag": "textarea",
+                      "type": "textarea",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "Want to join the waitlist for the spring drop? Tap below.",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "Join the list",
+                      "index": 1,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Button text",
+                      "tag": "input",
+                      "type": "text",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "Join the list",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": null,
+                      "index": 2,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "https://example.com",
+                      "tag": "input",
+                      "type": "url",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    },
+                    {
+                      "context": "FETCH IMAGE FROM WEBSITE URL\nUse setting",
+                      "index": 3,
+                      "label": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "button",
+                      "type": "switch",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": false,
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": null,
+                      "index": 4,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Button text",
+                      "tag": "input",
+                      "type": "text",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    }
+                  ]
+                }
+              }
+            ],
+            "folder_configuration": null
+          },
+          {
+            "id": "n003",
+            "source_id": "438594_option_0",
+            "editor_source_id": "455048_option_0",
+            "source_type": "branch_option",
+            "observed": {
+              "level": "public_graph",
+              "text": "WHEN BUTTON IS CLICKED\nJoin the list",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "WHEN BUTTON IS CLICKED\nJoin the list",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_option",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": true,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n004",
+            "source_id": "438595",
+            "editor_source_id": "455049",
+            "source_type": "folder",
+            "observed": {
+              "level": "public_graph",
+              "text": "Add contact to folder(s)\nSpring drop waitli…",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+              "fields": [
+                {
+                  "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                  "index": 0,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": true,
+                      "text": "Add contact to folder(s)",
+                      "value": "add"
+                    },
+                    {
+                      "selected": false,
+                      "text": "Remove contact from folder(s)",
+                      "value": "remove"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "add",
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Pick a folder",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/folder_picker",
+                  "signature": "sha256:dbc4a04bf1c60ffdb7fed16ac86d67791529bae562535d72c74575fe3ccefaf9",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "folder",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [
+              "dep-n004"
+            ],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": {
+              "source_action": "Add contact to folder(s)",
+              "source_labels": [
+                "Spring drop waitli…"
+              ],
+              "source_labels_state": "observed_truncated",
+              "source_resource_ids": [],
+              "source_binding_state": "unknown_not_exposed",
+              "clone_labels": [],
+              "clone_binding_state": "observed_unset",
+              "required_client_binding": "client.folder_binding.n004",
+              "recovery_evidence": "evidence/folder-label-recovery.json#/nodes/3"
+            }
+          },
+          {
+            "id": "n005",
+            "source_id": "438596",
+            "editor_source_id": "455050",
+            "source_type": "collect_property",
+            "observed": {
+              "level": "public_graph",
+              "text": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nYou're on the list. Want to leave your email too?\nMessage without the information\nYou're on the list either way. If you meant to send an email, check it and send it again.\nEmail",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nYou're on the list. Want to leave your email too?\nEmail\n1 credit",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "Edit",
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [
+              {
+                "name": null,
+                "text": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nContact property to collect\nEmail\nYour initial message\nYou're on the list. Want to leave your email too?\n49/640\n\nAsk people to send the information you want to collect\n\nASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting\nYou're on the list either way. If you meant to send an email, check it and send it again.\nMAXIMUM RETRIES\nAFTER LAST ATTEMPT\nGo to next automation step\nMark step as expired\nSEND FOLLOW-UP IF NO REPLY\nUse setting\nPREVIEW\nYou're on the list. Want to leave your email too?\nMessage without the information\nYou're on the list either way. If you meant to send an email, check it and send it again.\nSave",
+                "fields": [
+                  {
+                    "context": "You're on the list. Want to leave your email too?",
+                    "index": 0,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Type your message",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "You're on the list. Want to leave your email too?",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "ASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting",
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "button",
+                    "type": "button",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": true,
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "You're on the list either way. If you meant to send an email, check it and send it again.",
+                    "index": 2,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Ask people to send the information again",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "You're on the list either way. If you meant to send an email, check it and send it again.",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": null,
+                    "index": 3,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "input",
+                    "type": "number",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": "0",
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "2",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "Go to next automation step\nMark step as expired",
+                    "index": 4,
+                    "label": null,
+                    "options": [
+                      {
+                        "selected": false,
+                        "text": "Go to next automation step",
+                        "value": "continue"
+                      },
+                      {
+                        "selected": true,
+                        "text": "Mark step as expired",
+                        "value": "expire"
+                      }
+                    ],
+                    "placeholder": null,
+                    "tag": "select",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "expire",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "SEND FOLLOW-UP IF NO REPLY\nUse setting",
+                    "index": 5,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "button",
+                    "type": "button",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": false,
+                    "value_state": "observed_value"
+                  }
+                ]
+              }
+            ],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/collect_property",
+                  "signature": "sha256:f3f240cc2ebdc28e9221c1a455a43210385d9d1e286147e32e81d01a8c6c775c",
+                  "matched": true
+                },
+                {
+                  "definition": "evidence/shared-variable-options.json",
+                  "signature": "sha256:ca494bfabede124efdf0a7952c8f5a2f31ec9043c9e5ec75417acc91a7f176c9",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "collect_property",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [
+              "dep-n005"
+            ],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [
+              {
+                "control": "ASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting",
+                "is_source_default": false,
+                "panel": {
+                  "name": null,
+                  "text": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nContact property to collect\nEmail\nYour initial message\nYou're on the list. Want to leave your email too?\n49/640\n\nAsk people to send the information you want to collect\n\nASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting\nSEND FOLLOW-UP IF NO REPLY\nUse setting\nPREVIEW\nYou're on the list. Want to leave your email too?\nSave",
+                  "fields": [
+                    {
+                      "context": "You're on the list. Want to leave your email too?",
+                      "index": 0,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Type your message",
+                      "tag": "textarea",
+                      "type": "textarea",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "You're on the list. Want to leave your email too?",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "ASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting",
+                      "index": 1,
+                      "label": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "button",
+                      "type": "switch",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": false,
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "SEND FOLLOW-UP IF NO REPLY\nUse setting",
+                      "index": 2,
+                      "label": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "button",
+                      "type": "switch",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": false,
+                      "value_state": "observed_value"
+                    }
+                  ]
+                }
+              },
+              {
+                "control": "SEND FOLLOW-UP IF NO REPLY\nUse setting",
+                "is_source_default": false,
+                "panel": {
+                  "name": null,
+                  "text": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nContact property to collect\nEmail\nYour initial message\nYou're on the list. Want to leave your email too?\n49/640\n\nAsk people to send the information you want to collect\n\nASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting\nYou're on the list either way. If you meant to send an email, check it and send it again.\nMAXIMUM RETRIES\nAFTER LAST ATTEMPT\nGo to next automation step\nMark step as expired\nSEND FOLLOW-UP IF NO REPLY\nUse setting\nWAIT\nseconds\nminutes\nhours\ndays\nPREVIEW\nYou're on the list. Want to leave your email too?\nMessage without the information\nYou're on the list either way. If you meant to send an email, check it and send it again.\nSave",
+                  "fields": [
+                    {
+                      "context": "You're on the list. Want to leave your email too?",
+                      "index": 0,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Type your message",
+                      "tag": "textarea",
+                      "type": "textarea",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "You're on the list. Want to leave your email too?",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "ASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting",
+                      "index": 1,
+                      "label": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "button",
+                      "type": "switch",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": true,
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "You're on the list either way. If you meant to send an email, check it and send it again.",
+                      "index": 2,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Ask people to send the information again",
+                      "tag": "textarea",
+                      "type": "textarea",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "You're on the list either way. If you meant to send an email, check it and send it again.",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": null,
+                      "index": 3,
+                      "label": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "number",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": "0",
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "2",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "Go to next automation step\nMark step as expired",
+                      "index": 4,
+                      "label": null,
+                      "options": [
+                        {
+                          "selected": false,
+                          "text": "Go to next automation step",
+                          "value": "continue"
+                        },
+                        {
+                          "selected": true,
+                          "text": "Mark step as expired",
+                          "value": "expire"
+                        }
+                      ],
+                      "placeholder": null,
+                      "tag": "select",
+                      "type": "select-one",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "expire",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "SEND FOLLOW-UP IF NO REPLY\nUse setting",
+                      "index": 5,
+                      "label": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "button",
+                      "type": "switch",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": true,
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": null,
+                      "index": 6,
+                      "label": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "number",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "1",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "seconds\nminutes\nhours\ndays",
+                      "index": 7,
+                      "label": null,
+                      "options": [
+                        {
+                          "selected": false,
+                          "text": "seconds",
+                          "value": "seconds"
+                        },
+                        {
+                          "selected": false,
+                          "text": "minutes",
+                          "value": "minutes"
+                        },
+                        {
+                          "selected": true,
+                          "text": "hours",
+                          "value": "hours"
+                        },
+                        {
+                          "selected": false,
+                          "text": "days",
+                          "value": "days"
+                        }
+                      ],
+                      "placeholder": null,
+                      "tag": "select",
+                      "type": "select-one",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "hours",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": null,
+                      "index": 8,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Type your message",
+                      "tag": "textarea",
+                      "type": "textarea",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    }
+                  ]
+                }
+              }
+            ],
+            "folder_configuration": null
+          },
+          {
+            "id": "n006",
+            "source_id": "438596_option_property",
+            "editor_source_id": "455050_option_property",
+            "source_type": "branch_option",
+            "observed": {
+              "level": "public_graph",
+              "text": "WHEN INFORMATION IS COLLECTED",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "WHEN INFORMATION IS COLLECTED\n1 credit",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_option",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n007",
+            "source_id": "438597",
+            "editor_source_id": "455051",
+            "source_type": "message",
+            "observed": {
+              "level": "public_graph",
+              "text": "Thanks, got it. You're all set.",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Thanks, got it. You're all set.",
+              "fields": [
+                {
+                  "context": "Thanks, got it. You're all set.",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Type your message",
+                  "tag": "textarea",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Thanks, got it. You're all set.",
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/inline_message_variable",
+                  "signature": "sha256:49a9f352d9db362fe6805d1c41ca2e514f9fe1ce291176feb7093cf26bbda4de",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "message",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": true,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n008",
+            "source_id": "438596_option_expired",
+            "editor_source_id": "455050_option_expired",
+            "source_type": "branch_expiration",
+            "observed": {
+              "level": "public_graph",
+              "text": "IF INFORMATION HAS NOT BEEN RECEIVED AFTER\n20 hours",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "IF INFORMATION HAS NOT BEEN RECEIVED AFTER\nseconds\nminutes\nhours\ndays\n1 credit",
+              "fields": [
+                {
+                  "context": null,
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "number",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "20",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "seconds\nminutes\nhours\ndays",
+                  "index": 1,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": false,
+                      "text": "seconds",
+                      "value": "seconds"
+                    },
+                    {
+                      "selected": false,
+                      "text": "minutes",
+                      "value": "minutes"
+                    },
+                    {
+                      "selected": true,
+                      "text": "hours",
+                      "value": "hours"
+                    },
+                    {
+                      "selected": false,
+                      "text": "days",
+                      "value": "days"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "hours",
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_expiration",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n009",
+            "source_id": "438594_option_expired",
+            "editor_source_id": "455048_option_expired",
+            "source_type": "branch_expiration",
+            "observed": {
+              "level": "public_graph",
+              "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n6 hours",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\nseconds\nminutes\nhours\ndays",
+              "fields": [
+                {
+                  "context": null,
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "number",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "6",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "seconds\nminutes\nhours\ndays",
+                  "index": 1,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": false,
+                      "text": "seconds",
+                      "value": "seconds"
+                    },
+                    {
+                      "selected": false,
+                      "text": "minutes",
+                      "value": "minutes"
+                    },
+                    {
+                      "selected": true,
+                      "text": "hours",
+                      "value": "hours"
+                    },
+                    {
+                      "selected": false,
+                      "text": "days",
+                      "value": "days"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "hours",
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_expiration",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          }
+        ],
+        "edges": [
+          {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 438593",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 438593 to 438594",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 438594 to 438594_option_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 438594_option_0 to 438595",
+            "source_port": "438594_option_0",
+            "condition_text": "WHEN BUTTON IS CLICKED\nJoin the list",
+            "condition_basis": "source_branch_label"
+          },
+          {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 438595 to 438596",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 438596 to 438596_option_property",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e006",
+            "from": "n006",
+            "to": "n007",
+            "source_label": "Edge from 438596_option_property to 438597",
+            "source_port": "438596_option_property",
+            "condition_text": "WHEN INFORMATION IS COLLECTED",
+            "condition_basis": "source_branch_label"
+          },
+          {
+            "id": "e007",
+            "from": "n005",
+            "to": "n008",
+            "source_label": "Edge from 438596 to 438596_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e008",
+            "from": "n002",
+            "to": "n009",
+            "source_label": "Edge from 438594 to 438594_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          }
+        ],
+        "graph_source_complete": true,
+        "capture_audit": {
+          "rendered_node_count": 10,
+          "rendered_edge_count": 9,
+          "saved_node_count": 10,
+          "saved_edge_count": 9,
+          "counts_equal": true,
+          "reachable_nodes": 10,
+          "dangling_edges": 0,
+          "duplicate_node_ids": 0,
+          "limitations": [
+            "Complete relative to saved rendered DOM, not an official export or hidden server graph.",
+            "No outgoing rendered edge means an observed graph end, not proof of delivery or successful business outcome.",
+            "In the editor, Add a step placeholders were excluded from source-node matching; original public edges were retained."
+          ]
+        }
+      },
+      "scenario_settings": {
+        "panels": [
+          {
+            "name": "Limit frequency per contact",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nLimit how often this scenario can run for each contact\nLimit how often this scenario can run for each contact\nRun scenario only\nonce\nonce every\nper contact\nInterrupt on message replies\nExclude specific folders\nUnsaved changes\nCancel changes\nSave scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Build a waitlist for your next launch",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Limit how often this scenario can run for each contact\nLimit how often this scenario can run for each contact",
+                "index": 1,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "button",
+                "type": "button",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": true,
+                "value_state": "observed_value"
+              },
+              {
+                "context": "once\nonce every",
+                "index": 2,
+                "label": null,
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "once",
+                    "value": "once"
+                  },
+                  {
+                    "selected": false,
+                    "text": "once every",
+                    "value": "once_every"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "once",
+                "value_state": "observed_value"
+              }
+            ]
+          },
+          {
+            "name": "Interrupt on message replies",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nInterrupt on message replies\nInterrupt when you reply manually\nInterrupt when you reply manually\nInterrupt when contact replies\nInterrupt when contact replies\nExclude specific folders\nUnsaved changes\nCancel changes\nSave scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Build a waitlist for your next launch",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Interrupt when you reply manually\nInterrupt when you reply manually",
+                "index": 1,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "button",
+                "type": "button",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": false,
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Interrupt when contact replies\nInterrupt when contact replies",
+                "index": 2,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "button",
+                "type": "button",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": false,
+                "value_state": "observed_value"
+              }
+            ]
+          },
+          {
+            "name": "Exclude specific folders",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nInterrupt on message replies\nExclude specific folders\nThis scenario will not run for contacts in the selected folders\nPick a folder\nUnsaved changes\nCancel changes\nSave scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Build a waitlist for your next launch",
+                "value_state": "observed_value"
+              }
+            ]
+          }
+        ],
+        "defaults_complete": true,
+        "inheritance": "Observed account opt-out, menu and global exclusions apply separately. These are not template defaults. No account setting changed.",
+        "global_settings_source": "evidence/shared-control-options.json#/global_options",
+        "shared_control_refs": [
+          "evidence/6024-editor.json#/scenario_panels"
+        ]
+      },
+      "rules": {
+        "refusal": "Source stop, negative-answer, no-response and expiry ports are retained. Account opt-out is a separate inherited control.",
+        "reentry": "Per-template Limit frequency per contact defaults and shared enabled options are preserved in scenario settings.",
+        "duplicates": "No idempotency guarantee established. Frequency control is not proof of cross-scenario deduplication.",
+        "retry_and_timeout_evidence": [
+          "n005",
+          "n008",
+          "n009"
+        ],
+        "failure_semantics": "UI retry/expiry values are preserved per node. Transport/runtime failures were not tested; lack of runtime proof is not counted as an unopened setting."
+      },
+      "dependencies": [
+        {
+          "id": "dep-n004",
+          "node_id": "n004",
+          "kind": "folder",
+          "source_reference": null,
+          "observed_values": [
+            "Add contact to folder(s)\nSpring drop waitli…"
+          ],
+          "required_coach_input": "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "status": "partial"
+        },
+        {
+          "id": "dep-n005",
+          "node_id": "n005",
+          "kind": "collect_property",
+          "source_reference": null,
+          "observed_values": [
+            "Ask for information\nCollect email, phone or any contact property and save it automatically.\nYou're on the list. Want to leave your email too?\nMessage without the information\nYou're on the list either way. If you meant to send an email, check it and send it again.\nEmail"
+          ],
+          "required_coach_input": "Bind and verify the collect_property resource for this node; preserve the source value separately.",
+          "status": "partial"
+        }
+      ],
+      "placeholders": [],
+      "outcomes": {
+        "observed_events": [
+          "WHEN BUTTON IS CLICKED\nJoin the list",
+          "WHEN INFORMATION IS COLLECTED"
+        ],
+        "desired_event_verified": false,
+        "attribution_gap": "UI branch labels are observable mechanisms, not confirmation of the desired business event."
+      },
+      "gaps": [
+        {
+          "id": "runtime-not-tested",
+          "scope": "execution",
+          "field": "runtime_tested",
+          "reason": "No customer or test execution is authorized. Static observations do not prove delivery or outcome.",
+          "blocks_exact_reconstruction": false
+        },
+        {
+          "id": "n004-source-folder-binding",
+          "scope": "n004",
+          "field": "source folder configuration",
+          "reason": "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default. Original label is literally truncated; the missing text was not recovered or guessed.",
+          "blocks_exact_reconstruction": true
+        }
+      ],
+      "reconstruction": {
+        "record_schema_valid": true,
+        "graph_integrity_valid": true,
+        "source_settings_complete": false,
+        "status": "partially_reconstructable",
+        "runtime_tested": false,
+        "blockers": [
+          "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default. Original label is literally truncated; the missing text was not recovered or guessed."
+        ],
+        "coverage": {
+          "source_nodes": 10,
+          "source_edges": 9,
+          "editor_nodes_matched": 10,
+          "nodes_with_editor_panels": 2,
+          "nodes_all_controls_opened": 10,
+          "terminal_nodes": 3,
+          "timeout_nodes": 2
+        },
+        "client_data_ready": false,
+        "external_binding_blockers": [
+          "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "Bind and verify the collect_property resource for this node; preserve the source value separately.",
+          "Authorized client channel, real offer and account scope have not been configured."
+        ]
+      },
+      "evidence_files": [
+        "evidence/6081-editor.json",
+        "evidence/6081-public.json",
+        "evidence/shared-control-options.json",
+        "evidence/shared-variable-options.json",
+        "draft-manifest.json",
+        "evidence/final-reconciliation.json"
+      ],
+      "wizard_settings": [],
+      "access_evidence": {
+        "state": "editor_opened",
+        "attempts": 1,
+        "visible_error": null,
+        "cause_proven": false,
+        "delayed_reconciliation": "23 list rows: 21 owned inactive drafts and 2 pre-existing. No additional draft matched the nine unresolved attempts. Original creation exception/render was not retained; app refusal is unproven."
+      }
+    }
+  },
+  "graph": {
+    "start": "n000",
+    "steps": [
+      {
+        "id": "n000",
+        "type": "entry",
+        "sourceType": "trigger",
+        "title": "trigger",
+        "content": {
+          "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nNext post only\nFILTER THE COMMENTS\nComments with keyword(s)\nWAITLIST\nWhen\nSomeone replies to your story\nFILTER REPLIES\nContains a keyword\nWAITLIST",
+          "preview": "When\nSomeone comments on your post\nSELECT THE POSTS\nNext post only\nFILTER THE COMMENTS\nComments with keyword(s)\nWAITLIST\nWhen\nSomeone replies to your story\nFILTER REPLIES\nContains a keyword\nWAITLIST",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n000",
+          "source_id": "trigger",
+          "editor_source_id": "trigger",
+          "source_type": "trigger",
+          "observed": {
+            "level": "public_graph",
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nNext post only\nFILTER THE COMMENTS\nComments with keyword(s)\nWAITLIST\nWhen\nSomeone replies to your story\nFILTER REPLIES\nContains a keyword\nWAITLIST",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nNext post only\nFILTER THE COMMENTS\nComments with keyword(s)\nWAITLIST\nWhen\nSomeone replies to your story\nFILTER REPLIES\nContains a keyword\nWAITLIST\nAdd trigger",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": "Close",
+                "text": "",
+                "title": null
+              },
+              {
+                "label": "Close",
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Add trigger",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/comment_trigger",
+                "signature": "sha256:19bf9903da151d61530fe9c848818e73fb9db9c58c9a1ac7760aaa37805640b5",
+                "matched": true
+              },
+              {
+                "definition": "evidence/shared-control-options.json#/story_reply",
+                "signature": "sha256:c0416b387eb81362e549cfdb92dd238f8c21d8bae24e85c27d85ef649f20a385",
+                "matched": true
+              },
+              {
+                "definition": "evidence/shared-control-options.json#/post_scope",
+                "signature": "sha256:cd4e60de80c43d2c9c286bf5765ae8287548008222b220669c8de98e81776ed7",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "trigger",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/0",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n001",
+        "type": "message",
+        "sourceType": "comment",
+        "title": "comment",
+        "content": {
+          "text": "Check your DMs to join the list\nSent you a DM 🙂\nJust sent you the details",
+          "preview": "Check your DMs to join the list\nSent you a DM 🙂\nJust sent you the details",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n001",
+          "source_id": "438593",
+          "editor_source_id": "455047",
+          "source_type": "comment",
+          "observed": {
+            "level": "public_graph",
+            "text": "Check your DMs to join the list\nSent you a DM 🙂\nJust sent you the details",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Reply to comment\nAdd comment variant\nA variant will be selected at random to avoid repetition\nRewrite comment automatically\nAI\nAvoid spam detection",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "Type your comment",
+                "tag": "textarea",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Check your DMs to join the list",
+                "value_state": "observed_value"
+              },
+              {
+                "context": null,
+                "index": 1,
+                "label": null,
+                "options": null,
+                "placeholder": "Type your comment",
+                "tag": "textarea",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Sent you a DM 🙂",
+                "value_state": "observed_value"
+              },
+              {
+                "context": null,
+                "index": 2,
+                "label": null,
+                "options": null,
+                "placeholder": "Type your comment",
+                "tag": "textarea",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Just sent you the details",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Rewrite comment automatically\nAI",
+                "index": 3,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "checkbox",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": "",
+                  "required": null
+                },
+                "value": false,
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Avoid spam detection",
+                "index": 4,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "checkbox",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": "",
+                  "required": null
+                },
+                "value": true,
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [
+              {
+                "text": "",
+                "url": "https://help.inro.social/en/articles/13770654-how-to-avoid-spam-detection"
+              }
+            ],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Add comment variant",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/comment_behavior",
+                "signature": "sha256:e856277ead9fff315c6ff2d07856d449a3716c426ddbba242b4932c53444d72f",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "comment",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/1",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n002",
+        "type": "message",
+        "sourceType": "button_template",
+        "title": "button_template",
+        "content": {
+          "text": "Want to join the waitlist for the spring drop? Tap below.\nJoin the list",
+          "preview": "Want to join the waitlist for the spring drop? Tap below.\nJoin the list",
+          "buttons": [
+            "Join the list"
+          ],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n002",
+          "source_id": "438594",
+          "editor_source_id": "455048",
+          "source_type": "button_template",
+          "observed": {
+            "level": "public_graph",
+            "text": "Want to join the waitlist for the spring drop? Tap below.\nJoin the list",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Join the list",
+                "title": "Join the list"
+              }
+            ]
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Want to join the waitlist for the spring drop? Tap below.\nJoin the list",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Join the list",
+                "title": "Join the list"
+              },
+              {
+                "label": "Edit",
+                "text": "",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [
+            {
+              "name": null,
+              "text": "Send message with button\nWant to join the waitlist for the spring drop? Tap below.\n57/640\nAdd image\nBUTTONS\nJoin the list\n13/20\nAdd a URL\nAdd button\nYou can trigger actions for each non-URL button in the automation flow.\nPREVIEW\nWant to join the waitlist for the spring drop? Tap below.\nJoin the list\nSave",
+              "fields": [
+                {
+                  "context": "Want to join the waitlist for the spring drop? Tap below.",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Write your message",
+                  "tag": "textarea",
+                  "type": "textarea",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Want to join the waitlist for the spring drop? Tap below.",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Join the list",
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Button text",
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Join the list",
+                  "value_state": "observed_value"
+                }
+              ]
+            }
+          ],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/media",
+                "signature": "sha256:1cef3783334f030133a016aa9a3cb281f5725d1cba15d843753a7cb54eae06f8",
+                "matched": true
+              },
+              {
+                "definition": "evidence/shared-control-options.json#/fetch_image_from_url",
+                "signature": "sha256:343b8d5e2b951627ce5fbaf48185daeef8340a0ff113773938dd09e64a4afde1",
+                "matched": true
+              },
+              {
+                "definition": "evidence/shared-variable-options.json",
+                "signature": "sha256:cc0d3383ffea49880cdbf152234e3863365b2fb48cd922f550d71dc57ddb76ed",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "button_template",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": true,
+            "notes": []
+          },
+          "variant_panels": [
+            {
+              "control": "Add a URL",
+              "is_source_default": false,
+              "panel": {
+                "name": null,
+                "text": "Send message with button\nWant to join the waitlist for the spring drop? Tap below.\n57/640\nAdd image\nBUTTONS\nJoin the list\n13/20\nFETCH IMAGE FROM WEBSITE URL\nUse setting\nAdd button\nPREVIEW\nWant to join the waitlist for the spring drop? Tap below.\nJoin the list\nSave",
+                "fields": [
+                  {
+                    "context": "Want to join the waitlist for the spring drop? Tap below.",
+                    "index": 0,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Write your message",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Want to join the waitlist for the spring drop? Tap below.",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "Join the list",
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Button text",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Join the list",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": null,
+                    "index": 2,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "https://example.com",
+                    "tag": "input",
+                    "type": "url",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  },
+                  {
+                    "context": "FETCH IMAGE FROM WEBSITE URL\nUse setting",
+                    "index": 3,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "button",
+                    "type": "switch",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": false,
+                    "value_state": "observed_value"
+                  }
+                ]
+              }
+            },
+            {
+              "control": "Add button",
+              "is_source_default": false,
+              "panel": {
+                "name": null,
+                "text": "Send message with button\nWant to join the waitlist for the spring drop? Tap below.\n57/640\nAdd image\nBUTTONS\nJoin the list\n13/20\nFETCH IMAGE FROM WEBSITE URL\nUse setting\nAdd a URL\nAdd button\nYou can trigger actions for each non-URL button in the automation flow.\nPREVIEW\nWant to join the waitlist for the spring drop? Tap below.\nJoin the list\nSave",
+                "fields": [
+                  {
+                    "context": "Want to join the waitlist for the spring drop? Tap below.",
+                    "index": 0,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Write your message",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Want to join the waitlist for the spring drop? Tap below.",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "Join the list",
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Button text",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Join the list",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": null,
+                    "index": 2,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "https://example.com",
+                    "tag": "input",
+                    "type": "url",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  },
+                  {
+                    "context": "FETCH IMAGE FROM WEBSITE URL\nUse setting",
+                    "index": 3,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "button",
+                    "type": "switch",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": false,
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": null,
+                    "index": 4,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Button text",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  }
+                ]
+              }
+            }
+          ],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/2",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n003",
+        "type": "choice",
+        "sourceType": "branch_option",
+        "title": "branch_option",
+        "content": {
+          "text": "WHEN BUTTON IS CLICKED\nJoin the list",
+          "preview": "WHEN BUTTON IS CLICKED\nJoin the list",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n003",
+          "source_id": "438594_option_0",
+          "editor_source_id": "455048_option_0",
+          "source_type": "branch_option",
+          "observed": {
+            "level": "public_graph",
+            "text": "WHEN BUTTON IS CLICKED\nJoin the list",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "WHEN BUTTON IS CLICKED\nJoin the list",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_option",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": true,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/3",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n004",
+        "type": "group",
+        "sourceType": "folder",
+        "title": "folder",
+        "content": {
+          "text": "Add contact to folder(s)\nSpring drop waitli…",
+          "preview": "Add contact to folder(s)\nSpring drop waitli…",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n004",
+          "source_id": "438595",
+          "editor_source_id": "455049",
+          "source_type": "folder",
+          "observed": {
+            "level": "public_graph",
+            "text": "Add contact to folder(s)\nSpring drop waitli…",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+            "fields": [
+              {
+                "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                "index": 0,
+                "label": null,
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "add",
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Pick a folder",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/folder_picker",
+                "signature": "sha256:dbc4a04bf1c60ffdb7fed16ac86d67791529bae562535d72c74575fe3ccefaf9",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "folder",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [
+            "dep-n004"
+          ],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": {
+            "source_action": "Add contact to folder(s)",
+            "source_labels": [
+              "Spring drop waitli…"
+            ],
+            "source_labels_state": "observed_truncated",
+            "source_resource_ids": [],
+            "source_binding_state": "unknown_not_exposed",
+            "clone_labels": [],
+            "clone_binding_state": "observed_unset",
+            "required_client_binding": "client.folder_binding.n004",
+            "recovery_evidence": "evidence/folder-label-recovery.json#/nodes/3"
+          }
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/4",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n005",
+        "type": "question",
+        "sourceType": "collect_property",
+        "title": "collect_property",
+        "content": {
+          "text": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nYou're on the list. Want to leave your email too?\nMessage without the information\nYou're on the list either way. If you meant to send an email, check it and send it again.\nEmail",
+          "preview": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nYou're on the list. Want to leave your email too?\nMessage without the information\nYou're on the list either way. If you meant to send an email, check it and send it again.\nEmail",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n005",
+          "source_id": "438596",
+          "editor_source_id": "455050",
+          "source_type": "collect_property",
+          "observed": {
+            "level": "public_graph",
+            "text": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nYou're on the list. Want to leave your email too?\nMessage without the information\nYou're on the list either way. If you meant to send an email, check it and send it again.\nEmail",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nYou're on the list. Want to leave your email too?\nEmail\n1 credit",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": "Edit",
+                "text": "",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [
+            {
+              "name": null,
+              "text": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nContact property to collect\nEmail\nYour initial message\nYou're on the list. Want to leave your email too?\n49/640\n\nAsk people to send the information you want to collect\n\nASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting\nYou're on the list either way. If you meant to send an email, check it and send it again.\nMAXIMUM RETRIES\nAFTER LAST ATTEMPT\nGo to next automation step\nMark step as expired\nSEND FOLLOW-UP IF NO REPLY\nUse setting\nPREVIEW\nYou're on the list. Want to leave your email too?\nMessage without the information\nYou're on the list either way. If you meant to send an email, check it and send it again.\nSave",
+              "fields": [
+                {
+                  "context": "You're on the list. Want to leave your email too?",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Type your message",
+                  "tag": "textarea",
+                  "type": "textarea",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "You're on the list. Want to leave your email too?",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "ASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting",
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "button",
+                  "type": "button",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "You're on the list either way. If you meant to send an email, check it and send it again.",
+                  "index": 2,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Ask people to send the information again",
+                  "tag": "textarea",
+                  "type": "textarea",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "You're on the list either way. If you meant to send an email, check it and send it again.",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 3,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "number",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": "0",
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "2",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Go to next automation step\nMark step as expired",
+                  "index": 4,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": false,
+                      "text": "Go to next automation step",
+                      "value": "continue"
+                    },
+                    {
+                      "selected": true,
+                      "text": "Mark step as expired",
+                      "value": "expire"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "expire",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "SEND FOLLOW-UP IF NO REPLY\nUse setting",
+                  "index": 5,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "button",
+                  "type": "button",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                }
+              ]
+            }
+          ],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/collect_property",
+                "signature": "sha256:f3f240cc2ebdc28e9221c1a455a43210385d9d1e286147e32e81d01a8c6c775c",
+                "matched": true
+              },
+              {
+                "definition": "evidence/shared-variable-options.json",
+                "signature": "sha256:ca494bfabede124efdf0a7952c8f5a2f31ec9043c9e5ec75417acc91a7f176c9",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "collect_property",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [
+            "dep-n005"
+          ],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [
+            {
+              "control": "ASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting",
+              "is_source_default": false,
+              "panel": {
+                "name": null,
+                "text": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nContact property to collect\nEmail\nYour initial message\nYou're on the list. Want to leave your email too?\n49/640\n\nAsk people to send the information you want to collect\n\nASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting\nSEND FOLLOW-UP IF NO REPLY\nUse setting\nPREVIEW\nYou're on the list. Want to leave your email too?\nSave",
+                "fields": [
+                  {
+                    "context": "You're on the list. Want to leave your email too?",
+                    "index": 0,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Type your message",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "You're on the list. Want to leave your email too?",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "ASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting",
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "button",
+                    "type": "switch",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": false,
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "SEND FOLLOW-UP IF NO REPLY\nUse setting",
+                    "index": 2,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "button",
+                    "type": "switch",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": false,
+                    "value_state": "observed_value"
+                  }
+                ]
+              }
+            },
+            {
+              "control": "SEND FOLLOW-UP IF NO REPLY\nUse setting",
+              "is_source_default": false,
+              "panel": {
+                "name": null,
+                "text": "Ask for information\nCollect email, phone or any contact property and save it automatically.\nContact property to collect\nEmail\nYour initial message\nYou're on the list. Want to leave your email too?\n49/640\n\nAsk people to send the information you want to collect\n\nASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting\nYou're on the list either way. If you meant to send an email, check it and send it again.\nMAXIMUM RETRIES\nAFTER LAST ATTEMPT\nGo to next automation step\nMark step as expired\nSEND FOLLOW-UP IF NO REPLY\nUse setting\nWAIT\nseconds\nminutes\nhours\ndays\nPREVIEW\nYou're on the list. Want to leave your email too?\nMessage without the information\nYou're on the list either way. If you meant to send an email, check it and send it again.\nSave",
+                "fields": [
+                  {
+                    "context": "You're on the list. Want to leave your email too?",
+                    "index": 0,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Type your message",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "You're on the list. Want to leave your email too?",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "ASK AGAIN WHEN REPLY DOESN'T MATCH\nUse setting",
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "button",
+                    "type": "switch",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": true,
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "You're on the list either way. If you meant to send an email, check it and send it again.",
+                    "index": 2,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Ask people to send the information again",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "You're on the list either way. If you meant to send an email, check it and send it again.",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": null,
+                    "index": 3,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "input",
+                    "type": "number",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": "0",
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "2",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "Go to next automation step\nMark step as expired",
+                    "index": 4,
+                    "label": null,
+                    "options": [
+                      {
+                        "selected": false,
+                        "text": "Go to next automation step",
+                        "value": "continue"
+                      },
+                      {
+                        "selected": true,
+                        "text": "Mark step as expired",
+                        "value": "expire"
+                      }
+                    ],
+                    "placeholder": null,
+                    "tag": "select",
+                    "type": "select-one",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "expire",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "SEND FOLLOW-UP IF NO REPLY\nUse setting",
+                    "index": 5,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "button",
+                    "type": "switch",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": true,
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": null,
+                    "index": 6,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "input",
+                    "type": "number",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "1",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "seconds\nminutes\nhours\ndays",
+                    "index": 7,
+                    "label": null,
+                    "options": [
+                      {
+                        "selected": false,
+                        "text": "seconds",
+                        "value": "seconds"
+                      },
+                      {
+                        "selected": false,
+                        "text": "minutes",
+                        "value": "minutes"
+                      },
+                      {
+                        "selected": true,
+                        "text": "hours",
+                        "value": "hours"
+                      },
+                      {
+                        "selected": false,
+                        "text": "days",
+                        "value": "days"
+                      }
+                    ],
+                    "placeholder": null,
+                    "tag": "select",
+                    "type": "select-one",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "hours",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": null,
+                    "index": 8,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Type your message",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  }
+                ]
+              }
+            }
+          ],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/5",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n006",
+        "type": "choice",
+        "sourceType": "branch_option",
+        "title": "branch_option",
+        "content": {
+          "text": "WHEN INFORMATION IS COLLECTED",
+          "preview": "WHEN INFORMATION IS COLLECTED",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n006",
+          "source_id": "438596_option_property",
+          "editor_source_id": "455050_option_property",
+          "source_type": "branch_option",
+          "observed": {
+            "level": "public_graph",
+            "text": "WHEN INFORMATION IS COLLECTED",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "WHEN INFORMATION IS COLLECTED\n1 credit",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_option",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/6",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n007",
+        "type": "message",
+        "sourceType": "message",
+        "title": "message",
+        "content": {
+          "text": "Thanks, got it. You're all set.",
+          "preview": "Thanks, got it. You're all set.",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n007",
+          "source_id": "438597",
+          "editor_source_id": "455051",
+          "source_type": "message",
+          "observed": {
+            "level": "public_graph",
+            "text": "Thanks, got it. You're all set.",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Thanks, got it. You're all set.",
+            "fields": [
+              {
+                "context": "Thanks, got it. You're all set.",
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "Type your message",
+                "tag": "textarea",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Thanks, got it. You're all set.",
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/inline_message_variable",
+                "signature": "sha256:49a9f352d9db362fe6805d1c41ca2e514f9fe1ce291176feb7093cf26bbda4de",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "message",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": true,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/7",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n008",
+        "type": "timeout",
+        "sourceType": "branch_expiration",
+        "title": "branch_expiration",
+        "content": {
+          "text": "IF INFORMATION HAS NOT BEEN RECEIVED AFTER\n20 hours",
+          "preview": "IF INFORMATION HAS NOT BEEN RECEIVED AFTER\n20 hours",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n008",
+          "source_id": "438596_option_expired",
+          "editor_source_id": "455050_option_expired",
+          "source_type": "branch_expiration",
+          "observed": {
+            "level": "public_graph",
+            "text": "IF INFORMATION HAS NOT BEEN RECEIVED AFTER\n20 hours",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "IF INFORMATION HAS NOT BEEN RECEIVED AFTER\nseconds\nminutes\nhours\ndays\n1 credit",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "number",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "20",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "seconds\nminutes\nhours\ndays",
+                "index": 1,
+                "label": null,
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "hours",
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_expiration",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/8",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n009",
+        "type": "timeout",
+        "sourceType": "branch_expiration",
+        "title": "branch_expiration",
+        "content": {
+          "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n6 hours",
+          "preview": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n6 hours",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n009",
+          "source_id": "438594_option_expired",
+          "editor_source_id": "455048_option_expired",
+          "source_type": "branch_expiration",
+          "observed": {
+            "level": "public_graph",
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n6 hours",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\nseconds\nminutes\nhours\ndays",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "number",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "6",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "seconds\nminutes\nhours\ndays",
+                "index": 1,
+                "label": null,
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "hours",
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_expiration",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/9",
+          "derived": null,
+          "evidence": []
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "e000",
+        "from": "n000",
+        "to": "n001",
+        "label": "",
+        "settings": {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "source_label": "Edge from trigger to 438593",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/0"
+        }
+      },
+      {
+        "id": "e001",
+        "from": "n001",
+        "to": "n002",
+        "label": "",
+        "settings": {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "source_label": "Edge from 438593 to 438594",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/1"
+        }
+      },
+      {
+        "id": "e002",
+        "from": "n002",
+        "to": "n003",
+        "label": "",
+        "settings": {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "source_label": "Edge from 438594 to 438594_option_0",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/2"
+        }
+      },
+      {
+        "id": "e003",
+        "from": "n003",
+        "to": "n004",
+        "label": "WHEN BUTTON IS CLICKED\nJoin the list",
+        "settings": {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "source_label": "Edge from 438594_option_0 to 438595",
+          "source_port": "438594_option_0",
+          "condition_text": "WHEN BUTTON IS CLICKED\nJoin the list",
+          "condition_basis": "source_branch_label"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/3"
+        }
+      },
+      {
+        "id": "e004",
+        "from": "n004",
+        "to": "n005",
+        "label": "",
+        "settings": {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "source_label": "Edge from 438595 to 438596",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/4"
+        }
+      },
+      {
+        "id": "e005",
+        "from": "n005",
+        "to": "n006",
+        "label": "",
+        "settings": {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "source_label": "Edge from 438596 to 438596_option_property",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/5"
+        }
+      },
+      {
+        "id": "e006",
+        "from": "n006",
+        "to": "n007",
+        "label": "WHEN INFORMATION IS COLLECTED",
+        "settings": {
+          "id": "e006",
+          "from": "n006",
+          "to": "n007",
+          "source_label": "Edge from 438596_option_property to 438597",
+          "source_port": "438596_option_property",
+          "condition_text": "WHEN INFORMATION IS COLLECTED",
+          "condition_basis": "source_branch_label"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/6"
+        }
+      },
+      {
+        "id": "e007",
+        "from": "n005",
+        "to": "n008",
+        "label": "",
+        "settings": {
+          "id": "e007",
+          "from": "n005",
+          "to": "n008",
+          "source_label": "Edge from 438596 to 438596_option_expired",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/7"
+        }
+      },
+      {
+        "id": "e008",
+        "from": "n002",
+        "to": "n009",
+        "label": "",
+        "settings": {
+          "id": "e008",
+          "from": "n002",
+          "to": "n009",
+          "source_label": "Edge from 438594 to 438594_option_expired",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/8"
+        }
+      }
+    ]
+  },
+  "setup": [],
+  "annotations": []
+}

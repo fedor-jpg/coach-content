@@ -1,0 +1,291 @@
+{
+  "id": "manychat-3",
+  "source": {
+    "vendor": "manychat",
+    "file": "templates/manychat-3.json",
+    "title": "Automate conversations with AI",
+    "category": "Engage your audience",
+    "facets": [
+      "Engage your audience",
+      "conversation_generation",
+      "client_defined"
+    ],
+    "job": "conversation_generation",
+    "model": "ai_generator",
+    "document": {
+      "schema_version": "1.2",
+      "id": "manychat-3",
+      "ordinal": 7,
+      "title": "Automate conversations with AI",
+      "source_id": "campaign-card-3",
+      "observed_at": "2026-10-30",
+      "configuration_model": "ai_generator",
+      "entry_type": "generator",
+      "source": {
+        "url": "https://app.manychat.com/fb4213902/dashboard",
+        "catalog_evidence": {
+          "file": "evidence/inventory.json",
+          "pointer": "/items/6"
+        },
+        "catalog_mode": "Flow Builder",
+        "facets": [
+          "Engage your audience"
+        ],
+        "badge_text_exact": "",
+        "description_exact": "Let AI collect info, pitch your offer, and even recommend what to buy — without breaking a sweat",
+        "preview_evidence": null,
+        "preview_text_exact": null,
+        "original_graph_state": "not_generated",
+        "original_defaults": null,
+        "source_original_settings_complete": false
+      },
+      "instance": null,
+      "native_setup": {
+        "model": "ai_generator",
+        "url": "https://app.manychat.com/fb4213902/cms/ai-step-automation",
+        "ordered_observations": [
+          {
+            "label": "generator.initial",
+            "scope": "visible_ui",
+            "phase": "captured_default",
+            "text_exact": "Automate with AI\n\nAI can handle FAQs, gather user information, ask questions and send links.\n\nTell AI what to do\nThink about the conversations you have with your audience. Tell AI what to handle for you specifically.\nGive AI context\nShare all the info AI needs to talk to your audience. Include business or product details, relevant links or promotional info.\nGenerate\nPreview\nContinue\n[account display name excluded]\nBusiness chat\n\nChat preview will display here",
+            "fields": [
+              {
+                "name": "goal",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Set a goal for the conversation",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/3-setup.json",
+                  "pointer": "/capture/fields/0"
+                }
+              },
+              {
+                "name": "context",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Share all the info",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/3-setup.json",
+                  "pointer": "/capture/fields/1"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Generate"
+              },
+              {
+                "disabled": true,
+                "label": null,
+                "text": "Continue"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/3-setup.json",
+              "pointer": "/capture"
+            },
+            "identity_evidence_exact": {},
+            "source_hash": "ebe0594ca6f8f0b1ef3605ddd07d271b05189c41f0828debe4581e43d436a015"
+          }
+        ],
+        "graph_state": "not_generated",
+        "order_semantics": "Observed wizard visit order, including variants and validation checks; not an invented message graph.",
+        "supporting_evidence": [
+          {
+            "kind": "observed_at",
+            "evidence": {
+              "file": "evidence/3-setup.json",
+              "pointer": "/observed_at"
+            },
+            "json_exact": "2026-10-30"
+          },
+          {
+            "kind": "scope",
+            "evidence": {
+              "file": "evidence/3-setup.json",
+              "pointer": "/scope"
+            },
+            "json_exact": "native_setup_before_generation"
+          },
+          {
+            "kind": "generation_performed",
+            "evidence": {
+              "file": "evidence/3-setup.json",
+              "pointer": "/generation_performed"
+            },
+            "json_exact": false
+          },
+          {
+            "kind": "client_inputs_unset",
+            "evidence": {
+              "file": "evidence/3-setup.json",
+              "pointer": "/client_inputs_unset"
+            },
+            "json_exact": [
+              "Tell AI what to do",
+              "Give AI context"
+            ]
+          },
+          {
+            "kind": "boundary",
+            "evidence": {
+              "file": "evidence/3-setup.json",
+              "pointer": "/boundary"
+            },
+            "json_exact": "Generate would create new AI-derived content. No fixed graph is exposed before supplying client inputs; Generate was not pressed."
+          }
+        ]
+      },
+      "followup": null,
+      "selection": {
+        "basis": "product_interpretation",
+        "job_family": "conversation_generation",
+        "trigger": "client_defined",
+        "route": "generated_conversation",
+        "choose_when": "Use when a client supplies an AI conversation goal and context instead of choosing a fixed graph.",
+        "avoid_when": "Do not select as a reproducible prebuilt funnel: generation was not performed.",
+        "client_inputs": [
+          "goal",
+          "business context"
+        ]
+      },
+      "safety": {
+        "draft_evidence": {
+          "file": "evidence/native-setup-manifest.json",
+          "pointer": ""
+        },
+        "draft_publication_verified": false,
+        "all_configured_triggers_off": null,
+        "current_state": null,
+        "remediation_evidence": null,
+        "delivery_limit": "No Set Live or send action. Scoped 0 runs before trigger removal and n/a list metrics are not account-wide no-delivery proof.",
+        "set_live_pressed": false,
+        "runtime_tested": false,
+        "credential_values_collected": false
+      },
+      "reconstruction": {
+        "status": "partial",
+        "original_settings_complete": false,
+        "instance_default_panels_captured": false,
+        "instance_ui_inspection_complete": false,
+        "all_possible_variants_verified": false,
+        "client_ready": false,
+        "runtime_tested": false
+      },
+      "gaps": [
+        "Original server settings and IDs were not exported. Clone defaults are not asserted to equal source defaults.",
+        "Runtime was not tested because execution is forbidden; this is separate from settings completeness.",
+        "Generate would create new AI-derived content. No fixed graph is exposed before supplying client inputs; Generate was not pressed."
+      ]
+    }
+  },
+  "graph": {
+    "start": null,
+    "steps": [],
+    "transitions": []
+  },
+  "setup": [
+    {
+      "label": "generator.initial",
+      "scope": "visible_ui",
+      "phase": "captured_default",
+      "text_exact": "Automate with AI\n\nAI can handle FAQs, gather user information, ask questions and send links.\n\nTell AI what to do\nThink about the conversations you have with your audience. Tell AI what to handle for you specifically.\nGive AI context\nShare all the info AI needs to talk to your audience. Include business or product details, relevant links or promotional info.\nGenerate\nPreview\nContinue\n[account display name excluded]\nBusiness chat\n\nChat preview will display here",
+      "fields": [
+        {
+          "name": "goal",
+          "label": null,
+          "tag": "textarea",
+          "type": null,
+          "placeholder": "Set a goal for the conversation",
+          "value": "",
+          "value_state": "unset_client_input_required",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "disabled": false,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "pattern": null,
+            "required": false
+          },
+          "evidence": {
+            "file": "evidence/3-setup.json",
+            "pointer": "/capture/fields/0"
+          }
+        },
+        {
+          "name": "context",
+          "label": null,
+          "tag": "textarea",
+          "type": null,
+          "placeholder": "Share all the info",
+          "value": "",
+          "value_state": "unset_client_input_required",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "disabled": false,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "pattern": null,
+            "required": false
+          },
+          "evidence": {
+            "file": "evidence/3-setup.json",
+            "pointer": "/capture/fields/1"
+          }
+        }
+      ],
+      "buttons_exact": [
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Generate"
+        },
+        {
+          "disabled": true,
+          "label": null,
+          "text": "Continue"
+        }
+      ],
+      "evidence": {
+        "file": "evidence/3-setup.json",
+        "pointer": "/capture"
+      },
+      "identity_evidence_exact": {},
+      "source_hash": "ebe0594ca6f8f0b1ef3605ddd07d271b05189c41f0828debe4581e43d436a015"
+    }
+  ],
+  "annotations": []
+}

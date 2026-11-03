@@ -1,0 +1,597 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "support-manychat-46",
+    "name": "Recognize a website question and reply",
+    "source_ids": [
+      "manychat-46"
+    ],
+    "entry": "Direct message with AI-recognized website intent",
+    "mandatory_conditions": [
+      "Recognize intent",
+      "Return fixed website copy and a link"
+    ],
+    "outcome": "An answer about the website",
+    "timing": [],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "dm-ai"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "AI can be instructed to share the website, but ordinary incomingMessages does not guarantee the literal text of a deterministic message node.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "AI can be instructed to share the website, but ordinary incomingMessages does not guarantee the literal text of a deterministic message node.",
+        "result": "AI answers from supplied website information; exact wording is not guaranteed.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "manychat-46": "A fixed reply is not an open-ended AI conversation."
+    },
+    "client_inputs": [
+      "intent description",
+      "website"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6085"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "inro-6085-dm_base",
+          "label": "Direct-message entry",
+          "target": "dm_base",
+          "allowed_targets": [
+            "dm_base"
+          ],
+          "entry": "Actual incoming DM asking about the website. Answer only that intent from approved website facts and its verified URL; preserve unrelated support.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Answer website-interest DMs with the approved website URL.",
+          "output_bindings": [
+            "website_url"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Recognize intent",
+            "Return fixed website copy and a link"
+          ],
+          "approval_required": true,
+          "source_id": "manychat-46",
+          "draft": {
+            "modes": [
+              "D"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "website_url",
+              "public_text"
+            ],
+            "initial": "Thanks for your interest! Here is our website: {website_url}",
+            "messages": {
+              "initial": "Thanks for your interest! Here is our website: {website_url}",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request."
+            },
+            "instruction": "On a new message expressing website interest, offer the approved website URL. Do not invent website facts, subscription or visit proof.",
+            "contact_requirement": null,
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Send the requested response.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "binding_review": {
+        "source_entry": "Direct message with AI-recognized website intent",
+        "source_outcome": "An answer about the website",
+        "mandatory_conditions": [
+          "Recognize intent",
+          "Return fixed website copy and a link"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 1,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Answer website-interest DMs with the approved website URL.",
+        "source_requirements": [
+          "Recognize intent",
+          "Return fixed website copy and a link"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [
+          "Answer website-interest DMs with the approved website URL."
+        ],
+        "omitted": [],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "manychat-46",
+            "node_id": "node-0",
+            "source_text": "Thanks for your interest! 🌟 Here's our website: https://manychat.com/",
+            "adapted_text": "Thanks for your interest! Here is our website: {website_url}",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      }
+    }
+  },
+  "goal": "Help people find an answer and involve the team when needed.",
+  "fit": "Businesses receiving product, website or service questions in DMs.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Answer website-interest DMs with the approved website URL.",
+    "source_requirements": [
+      "Recognize intent",
+      "Return fixed website copy and a link"
+    ],
+    "source_timing": [],
+    "blocking_dependencies": [],
+    "retained": [
+      "Answer website-interest DMs with the approved website URL."
+    ],
+    "omitted": [],
+    "limitations": [],
+    "examples": [
+      {
+        "source_id": "manychat-46",
+        "node_id": "node-0",
+        "source_text": "Thanks for your interest! 🌟 Here's our website: https://manychat.com/",
+        "adapted_text": "Thanks for your interest! Here is our website: {website_url}",
+        "provenance": "authored_adaptation_not_captured"
+      }
+    ]
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [],
+  "sources": [
+    {
+      "source_id": "manychat-46",
+      "source_file": "source-records/manychat-46.json",
+      "source_title": "Recognize questions in DM with AI",
+      "start": "trigger",
+      "nodes": [
+        {
+          "id": "trigger",
+          "source_type": "trigger",
+          "content": {
+            "text": "",
+            "preview": "User sends a message\n\nPerson wants to...: Person asks for the website",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Person wants to...",
+                "type": null,
+                "value": "Person asks for the website",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "ac31a7045421a7ee321d6f5b968c9f01291e1df3a8f123661d2c8bffd6e7ec63",
+          "settings_leaf_count": 54
+        },
+        {
+          "id": "node-0",
+          "source_type": "message",
+          "content": {
+            "text": "Thanks for your interest! 🌟 Here's our website: https://manychat.com/",
+            "preview": "Thanks for your interest! 🌟 Here's our website: https://manychat.com/",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Thanks for your interest! 🌟 Here's our website: https://manychat.com/",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "e6a74f7c163649e2d0a63f3b4309d1f1b5bff2301665902b418c8f66f1fe0c60",
+          "settings_leaf_count": 103
+        }
+      ],
+      "transitions": [
+        {
+          "id": "edge-0",
+          "from": "trigger",
+          "to": "node-0",
+          "label": "Starting Step",
+          "settings": {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/46-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/0"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/instance/nodes/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Thanks for your interest! 🌟 Here's our website: https://manychat.com/",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Write the answer for the question, you can add images, videos and links. Explore more 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Specify the topic the user asks about. AI will detect both general and specific questions. ",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Person wants to...",
+            "type": null,
+            "value": "Person asks for the website",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "3739a699425520d2cb97c86f6fbe4c0722547e4af3788dc0a645a0aeffb14bb6",
+      "source_leaf_count": 392,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "inro-6085-dm_base",
+        "label": "Direct-message entry",
+        "target": "dm_base",
+        "allowed_targets": [
+          "dm_base"
+        ],
+        "entry": "Actual incoming DM asking about the website. Answer only that intent from approved website facts and its verified URL; preserve unrelated support.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Answer website-interest DMs with the approved website URL.",
+        "output_bindings": [
+          "website_url"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Recognize intent",
+          "Return fixed website copy and a link"
+        ],
+        "approval_required": true,
+        "source_id": "manychat-46",
+        "draft": {
+          "modes": [
+            "D"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "website_url",
+            "public_text"
+          ],
+          "initial": "Thanks for your interest! Here is our website: {website_url}",
+          "messages": {
+            "initial": "Thanks for your interest! Here is our website: {website_url}",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request."
+          },
+          "instruction": "On a new message expressing website interest, offer the approved website URL. Do not invent website facts, subscription or visit proof.",
+          "contact_requirement": null,
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Send the requested response.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [
+        "whenAIReplies",
+        "followUps"
+      ],
+      "entry_readback_fields": [],
+      "preparation_gates": [
+        "Preserve current whenAIReplies and followUps values, including inheritance, on the shared DM base. If its schedule or active follow-ups conflict with the proposed behavior, hold affected configuration or obtain separate approval for the exact base-wide change. No schedule/follow-up write is a default draft operation."
+      ],
+      "missing_readback": [],
+      "target": "dm_base",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "website_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Thanks for your interest! Here is our website: {website_url}",
+        "public": "",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "placement": "DM {keyword}."
+      },
+      "instruction": "On a new message expressing website interest, offer the approved website URL. Do not invent website facts, subscription or visit proof.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "Actual incoming DM asking about the website. Answer only that intent from approved website facts and its verified URL; preserve unrelated support.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Send the requested response.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          }
+        ]
+      },
+      "contact_requirement": null,
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: Actual incoming DM asking about the website. Answer only that intent from approved website facts and its verified URL; preserve unrelated support.. First message: Thanks for your interest! Here is our website: {website_url}\nOn a new message expressing website interest, offer the approved website URL. Do not invent website facts, subscription or visit proof.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request."
+            }
+          }
+        }
+      ],
+      "list_additions": {},
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "dm_base",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "manychat-46": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-46.json": "466735d02274034fce480d558c1d08c9c83fc9a26b930b294a488a64f830072b",
+    "described-recipes/inro-6085.json": "71a8ef2c6b62cc8bb2bfb1bf56143571dbf71bc12bb157fec457e98e852c0c91"
+  }
+}

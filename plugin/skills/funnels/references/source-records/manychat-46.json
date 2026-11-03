@@ -1,0 +1,1254 @@
+{
+  "id": "manychat-46",
+  "source": {
+    "vendor": "manychat",
+    "file": "templates/manychat-46.json",
+    "title": "Recognize questions in DM with AI",
+    "category": "Engage your audience",
+    "facets": [
+      "Engage your audience",
+      "Drive traffic",
+      "DM",
+      "support",
+      "direct_message_intent"
+    ],
+    "job": "support",
+    "model": "flow_builder",
+    "document": {
+      "schema_version": "1.2",
+      "id": "manychat-46",
+      "ordinal": 16,
+      "title": "Recognize questions in DM with AI",
+      "source_id": "campaign-card-46",
+      "observed_at": "2026-10-30",
+      "configuration_model": "flow_builder",
+      "entry_type": "template",
+      "source": {
+        "url": "https://app.manychat.com/fb4213902/dashboard",
+        "catalog_evidence": {
+          "file": "evidence/inventory.json",
+          "pointer": "/items/15"
+        },
+        "catalog_mode": "Flow Builder",
+        "facets": [
+          "Engage your audience",
+          "Drive traffic",
+          "DM"
+        ],
+        "badge_text_exact": "AIAI-powered feature: Enhanced functionality driven by artificial intelligence.UPGRADEUpgrade required: This feature requires upgrading your plan to access.",
+        "description_exact": "Identify and respond to common user inquiries",
+        "preview_evidence": {
+          "file": "evidence/46-preview.json",
+          "pointer": ""
+        },
+        "preview_text_exact": "Instagram\nRecognize questions in DM with AI\nHow does it work?\nDescribe the topic of user's question. The intention of the message will be automatically detected and compared to what you input.\nWrite the answer for the question, you can add images, videos and links.\nBack To List\nSet Up Template",
+        "original_graph_state": "not_exposed",
+        "original_defaults": null,
+        "source_original_settings_complete": false
+      },
+      "instance": {
+        "scope": "installed_draft_not_original",
+        "capture_semantics": "Baseline captured before follow-up changes; current safety and retained inspection variants are separate.",
+        "draft_id": "content20261031003718_229349",
+        "url": "https://app.manychat.com/fb4213902/cms/files/content20261031003718_229349/edit",
+        "title_exact": "Recognize questions in DM with AI",
+        "original_equivalence": "unverified",
+        "nodes": [
+          {
+            "id": "node-0",
+            "kind": "message",
+            "label_exact": "Send Message",
+            "identity": {
+              "position": 0,
+              "group": "builder-node-start",
+              "original_source_id": null,
+              "visible_ids_exact": null,
+              "active_sidebar_exact": [
+                {
+                  "active": true,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                }
+              ],
+              "header_exact": [
+                "Send Message"
+              ],
+              "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+            },
+            "default_panel": {
+              "label": "node.0.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nUnattached Steps\nnote\nnote\n+ Create New Step\nSend Message\nSend\nwithin 24 hour window\nThanks for your interest! 🌟 Here's our website: https://manychat.com/\n+ Add Button\n+ Add Quick Reply\nAdd one of the content blocks:\nText\nAdd simple text and buttons\nImage\nBoost engagement with visuals\nPDF\nAdd PDF files to your message\nDelay\nWait a few seconds in between texts\nData Collection\nCollect emails, phones and more\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nMore\nView all available options\nChoose Next Step\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your interest! 🌟 Here's our website: https://manychat.com/\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Enter your text...",
+                  "value": "Thanks for your interest! 🌟 Here's our website: https://manychat.com/",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/46-editor.json",
+                    "pointer": "/node_defaults/0/capture/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Text\nAdd simple text and buttons"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Image\nBoost engagement with visuals"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "PDF\nAdd PDF files to your message"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Delay\nWait a few seconds in between texts"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Data Collection\nCollect emails, phones and more\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access."
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "More\nView all available options"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Choose Next Step"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/46-editor.json",
+                "pointer": "/node_defaults/0/capture"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": true,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 1
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  }
+                ],
+                "header": [
+                  "Send Message"
+                ]
+              },
+              "source_hash": "00de5991ddb80da280c3dd813a66f9a902eb5d60f04c8964b5cfae39ecb0ca73",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/46-editor.json",
+                  "pointer": "/node_defaults/0/capture/scope"
+                }
+              }
+            },
+            "nested_panels": [],
+            "shared_options": [
+              {
+                "definition": "send_mode",
+                "panel": {
+                  "file": "evidence/46-editor.json",
+                  "pointer": "/node_defaults/0/capture"
+                },
+                "matched_tokens": [
+                  "Send",
+                  "within 24 hour window"
+                ],
+                "signature": "46327c2cfcbd80f93652b66488bf6cf99abca1b326dd6907286fd76264380534",
+                "scope": "Shared option choices only; instance values remain in this panel."
+              },
+              {
+                "definition": "message_personalization",
+                "panel": {
+                  "file": "evidence/46-editor.json",
+                  "pointer": "/node_defaults/0/capture"
+                },
+                "matched_tokens": [
+                  "textarea",
+                  "Enter your text..."
+                ],
+                "signature": "80b16fd296c5abd6956845ffd7460885f53e617030421172d410ee6785221c7e",
+                "scope": "Matched visible textarea and placeholder; hidden editor state was not read."
+              }
+            ],
+            "inspection": {
+              "default_opened": true,
+              "nested_panels_opened": 0,
+              "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+              "existing_block_controls_complete": true,
+              "all_variants_verified": false,
+              "gaps": []
+            },
+            "exit_semantics": [
+              {
+                "state": "unset_exit_visible",
+                "detail": "Choose Next Step is visible; no destination is inferred for that port."
+              },
+              {
+                "state": "no_connected_destination_observed",
+                "detail": "No captured outgoing graph edge; this is not proof of purchase, registration or runtime termination."
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "id": "node-1",
+            "kind": "note",
+            "label_exact": "note",
+            "identity": {
+              "position": 1,
+              "group": "builder-node-unattached",
+              "original_source_id": null,
+              "visible_ids_exact": {
+                "blocks": [],
+                "buttons": []
+              },
+              "active_sidebar_exact": [
+                {
+                  "active": true,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 1
+                }
+              ],
+              "header_exact": [],
+              "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+            },
+            "default_panel": {
+              "label": "node.1.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nUnattached Steps\nnote\nnote\n+ Create New Step\n552\nNote Size\nS\nM\nL\nFont Size\naA\naA\n[preview time excluded]\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": null,
+                  "value": "Write the answer for the question, you can add images, videos and links. Explore more 👇",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": "640",
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/46-editor.json",
+                    "pointer": "/node_defaults/1/capture/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/46-editor.json",
+                "pointer": "/node_defaults/1/capture"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": false,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": true,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 1
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  }
+                ],
+                "header": [],
+                "visible_identity": {
+                  "blocks": [],
+                  "buttons": []
+                }
+              },
+              "source_hash": "97cd52fbcff608835d88c110f24b99aa986ab36b588c3168bc066b1dedb82c3e",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/46-editor.json",
+                  "pointer": "/node_defaults/1/capture/scope"
+                }
+              }
+            },
+            "nested_panels": [],
+            "shared_options": [],
+            "inspection": {
+              "default_opened": true,
+              "nested_panels_opened": 0,
+              "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+              "existing_block_controls_complete": true,
+              "all_variants_verified": false,
+              "gaps": []
+            },
+            "exit_semantics": []
+          },
+          {
+            "id": "node-2",
+            "kind": "note",
+            "label_exact": "note",
+            "identity": {
+              "position": 2,
+              "group": "builder-node-unattached",
+              "original_source_id": null,
+              "visible_ids_exact": {
+                "blocks": [],
+                "buttons": []
+              },
+              "active_sidebar_exact": [
+                {
+                  "active": true,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 2
+                }
+              ],
+              "header_exact": [],
+              "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+            },
+            "default_panel": {
+              "label": "node.2.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nUnattached Steps\nnote\nnote\n+ Create New Step\n549\nNote Size\nS\nM\nL\nFont Size\naA\naA\n[preview time excluded]\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": null,
+                  "value": "Specify the topic the user asks about. AI will detect both general and specific questions. ",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": "640",
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/46-editor.json",
+                    "pointer": "/node_defaults/2/capture/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/46-editor.json",
+                "pointer": "/node_defaults/2/capture"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": false,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 1
+                  },
+                  {
+                    "active": true,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  }
+                ],
+                "header": [],
+                "visible_identity": {
+                  "blocks": [],
+                  "buttons": []
+                }
+              },
+              "source_hash": "df27e67b3058c510f78270d0b81a3c506afd678fedd7af40f91510130b54b751",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/46-editor.json",
+                  "pointer": "/node_defaults/2/capture/scope"
+                }
+              }
+            },
+            "nested_panels": [],
+            "shared_options": [],
+            "inspection": {
+              "default_opened": true,
+              "nested_panels_opened": 0,
+              "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+              "existing_block_controls_complete": true,
+              "all_variants_verified": false,
+              "gaps": []
+            },
+            "exit_semantics": []
+          }
+        ],
+        "edges": [
+          {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/46-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          }
+        ],
+        "observations": [
+          {
+            "label": "trigger.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nUnattached Steps\nnote\nnote\n+ Create New Step\nUser sends a message\nIf\nmessage is about\n\nDescribe user's intention starting with \"Person wants to...\" or \"Person asks about...\"\n\nAI Intention Recognition is available with a paid Manychat AI subscription.\n\nGet Manychat AI\nSave\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your interest! 🌟 Here's our website: https://manychat.com/\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": null,
+                "label": "Person wants to...",
+                "tag": "input",
+                "type": null,
+                "placeholder": "Person wants to...",
+                "value": "Person asks for the website",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/46-editor.json",
+                  "pointer": "/captures/0/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "message is about"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Get Manychat AI"
+              },
+              {
+                "disabled": true,
+                "label": null,
+                "text": "Save"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/46-editor.json",
+              "pointer": "/captures/0"
+            },
+            "identity_evidence_exact": {
+              "sidebar": [
+                {
+                  "active": true,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 1
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 2
+                }
+              ],
+              "header": [
+                "User sends a message"
+              ]
+            },
+            "source_hash": "6d17cd2d197c964c86030cd2df04c4b95ce09cd625206ad3c67429f995ddda57",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/46-editor.json",
+                "pointer": "/captures/0/scope"
+              }
+            }
+          }
+        ],
+        "trigger_shared_options": [],
+        "inspection_only_node_ids": [],
+        "graph_integrity": {
+          "captured_sidebar_items": 3,
+          "executable_nodes_including_trigger": 2,
+          "captured_edges": 1,
+          "rendered_totals_exact": null,
+          "all_original_nodes_and_edges_proven": false,
+          "limitation": "Original graph is not exposed. Draft edges use visible navigation identity; no hidden IDs or server export."
+        },
+        "supporting_evidence": [
+          {
+            "kind": "option_sets",
+            "evidence": {
+              "file": "evidence/46-editor.json",
+              "pointer": "/option_sets"
+            },
+            "json_exact": [
+              {
+                "control": "message is about",
+                "default": "AI Intention",
+                "opened_text_exact": "Create a new trigger if you want to recognize another intention or detect specific words of the message.",
+                "other_options_exposed": false
+              }
+            ]
+          },
+          {
+            "kind": "draft_changes",
+            "evidence": {
+              "file": "evidence/46-editor.json",
+              "pointer": "/draft_changes"
+            },
+            "json_exact": []
+          },
+          {
+            "kind": "capture_corrections",
+            "evidence": {
+              "file": "evidence/46-editor.json",
+              "pointer": "/capture_corrections"
+            },
+            "json_exact": [
+              {
+                "requested_node": 0,
+                "reason": "Previous capture retained the trigger panel despite active start row. Recaptured after both header and row identity verification."
+              }
+            ]
+          }
+        ]
+      },
+      "native_setup": null,
+      "followup": null,
+      "selection": {
+        "basis": "product_interpretation",
+        "job_family": "support",
+        "trigger": "direct_message_intent",
+        "route": "intent_answer",
+        "choose_when": "Use an AI intent trigger for website questions followed by a fixed website message.",
+        "avoid_when": "This is not a full AI response agent. Runtime requires the Manychat AI subscription.",
+        "client_inputs": [
+          "intent description",
+          "website"
+        ]
+      },
+      "safety": {
+        "draft_evidence": {
+          "file": "evidence/draft-manifest.json",
+          "pointer": "/8"
+        },
+        "draft_publication_verified": true,
+        "all_configured_triggers_off": true,
+        "current_state": {
+          "entry_trigger_state": "off",
+          "publication": "DRAFT",
+          "evidence": {
+            "file": "evidence/followup-reconciliation.json",
+            "pointer": "/after_representative1080_cleanup/rows/8"
+          },
+          "source_hash": "4abb7e2c3c1a398cd77210205823b3d2c543fae4afc16dc1f24d7ff6105f8601"
+        },
+        "remediation_evidence": null,
+        "delivery_limit": "No Set Live or send action. Scoped 0 runs before trigger removal and n/a list metrics are not account-wide no-delivery proof.",
+        "set_live_pressed": false,
+        "runtime_tested": false,
+        "credential_values_collected": false
+      },
+      "reconstruction": {
+        "status": "partial",
+        "original_settings_complete": false,
+        "instance_default_panels_captured": true,
+        "instance_ui_inspection_complete": true,
+        "all_possible_variants_verified": false,
+        "client_ready": false,
+        "runtime_tested": false
+      },
+      "gaps": [
+        "Original server settings and IDs were not exported. Clone defaults are not asserted to equal source defaults.",
+        "Runtime was not tested because execution is forbidden; this is separate from settings completeness.",
+        "All existing node defaults were opened. Shared options are evidence-matched; exhaustive alternative node-type conversion is not proven."
+      ]
+    }
+  },
+  "graph": {
+    "start": "trigger",
+    "steps": [
+      {
+        "id": "trigger",
+        "type": "entry",
+        "sourceType": "trigger",
+        "title": "Trigger",
+        "content": {
+          "text": "",
+          "preview": "User sends a message\n\nPerson wants to...: Person asks for the website",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "panels": [
+            {
+              "label": "trigger.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nUnattached Steps\nnote\nnote\n+ Create New Step\nUser sends a message\nIf\nmessage is about\n\nDescribe user's intention starting with \"Person wants to...\" or \"Person asks about...\"\n\nAI Intention Recognition is available with a paid Manychat AI subscription.\n\nGet Manychat AI\nSave\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your interest! 🌟 Here's our website: https://manychat.com/\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": null,
+                  "label": "Person wants to...",
+                  "tag": "input",
+                  "type": null,
+                  "placeholder": "Person wants to...",
+                  "value": "Person asks for the website",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/46-editor.json",
+                    "pointer": "/captures/0/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "message is about"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Get Manychat AI"
+                },
+                {
+                  "disabled": true,
+                  "label": null,
+                  "text": "Save"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/46-editor.json",
+                "pointer": "/captures/0"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": true,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 1
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  }
+                ],
+                "header": [
+                  "User sends a message"
+                ]
+              },
+              "source_hash": "6d17cd2d197c964c86030cd2df04c4b95ce09cd625206ad3c67429f995ddda57",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/46-editor.json",
+                  "pointer": "/captures/0/scope"
+                }
+              }
+            }
+          ],
+          "trigger_shared_options": []
+        },
+        "provenance": {
+          "pointer": null,
+          "derived": "implicit_trigger_endpoint",
+          "evidence": [
+            "/instance/edges",
+            "/instance/observations"
+          ]
+        }
+      },
+      {
+        "id": "node-0",
+        "type": "message",
+        "sourceType": "message",
+        "title": "Send Message",
+        "content": {
+          "text": "Thanks for your interest! 🌟 Here's our website: https://manychat.com/",
+          "preview": "Thanks for your interest! 🌟 Here's our website: https://manychat.com/",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "node-0",
+          "kind": "message",
+          "label_exact": "Send Message",
+          "identity": {
+            "position": 0,
+            "group": "builder-node-start",
+            "original_source_id": null,
+            "visible_ids_exact": null,
+            "active_sidebar_exact": [
+              {
+                "active": true,
+                "group": "builder-node-start",
+                "label": "Send Message",
+                "position": 0
+              }
+            ],
+            "header_exact": [
+              "Send Message"
+            ],
+            "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+          },
+          "default_panel": {
+            "label": "node.0.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nUnattached Steps\nnote\nnote\n+ Create New Step\nSend Message\nSend\nwithin 24 hour window\nThanks for your interest! 🌟 Here's our website: https://manychat.com/\n+ Add Button\n+ Add Quick Reply\nAdd one of the content blocks:\nText\nAdd simple text and buttons\nImage\nBoost engagement with visuals\nPDF\nAdd PDF files to your message\nDelay\nWait a few seconds in between texts\nData Collection\nCollect emails, phones and more\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nMore\nView all available options\nChoose Next Step\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your interest! 🌟 Here's our website: https://manychat.com/\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": "text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter your text...",
+                "value": "Thanks for your interest! 🌟 Here's our website: https://manychat.com/",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/46-editor.json",
+                  "pointer": "/node_defaults/0/capture/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Text\nAdd simple text and buttons"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Image\nBoost engagement with visuals"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "PDF\nAdd PDF files to your message"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Delay\nWait a few seconds in between texts"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Data Collection\nCollect emails, phones and more\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access."
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "More\nView all available options"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Choose Next Step"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/46-editor.json",
+              "pointer": "/node_defaults/0/capture"
+            },
+            "identity_evidence_exact": {
+              "sidebar": [
+                {
+                  "active": true,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 1
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 2
+                }
+              ],
+              "header": [
+                "Send Message"
+              ]
+            },
+            "source_hash": "00de5991ddb80da280c3dd813a66f9a902eb5d60f04c8964b5cfae39ecb0ca73",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/46-editor.json",
+                "pointer": "/node_defaults/0/capture/scope"
+              }
+            }
+          },
+          "nested_panels": [],
+          "shared_options": [
+            {
+              "definition": "send_mode",
+              "panel": {
+                "file": "evidence/46-editor.json",
+                "pointer": "/node_defaults/0/capture"
+              },
+              "matched_tokens": [
+                "Send",
+                "within 24 hour window"
+              ],
+              "signature": "46327c2cfcbd80f93652b66488bf6cf99abca1b326dd6907286fd76264380534",
+              "scope": "Shared option choices only; instance values remain in this panel."
+            },
+            {
+              "definition": "message_personalization",
+              "panel": {
+                "file": "evidence/46-editor.json",
+                "pointer": "/node_defaults/0/capture"
+              },
+              "matched_tokens": [
+                "textarea",
+                "Enter your text..."
+              ],
+              "signature": "80b16fd296c5abd6956845ffd7460885f53e617030421172d410ee6785221c7e",
+              "scope": "Matched visible textarea and placeholder; hidden editor state was not read."
+            }
+          ],
+          "inspection": {
+            "default_opened": true,
+            "nested_panels_opened": 0,
+            "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+            "existing_block_controls_complete": true,
+            "all_variants_verified": false,
+            "gaps": []
+          },
+          "exit_semantics": [
+            {
+              "state": "unset_exit_visible",
+              "detail": "Choose Next Step is visible; no destination is inferred for that port."
+            },
+            {
+              "state": "no_connected_destination_observed",
+              "detail": "No captured outgoing graph edge; this is not proof of purchase, registration or runtime termination."
+            }
+          ]
+        },
+        "provenance": {
+          "pointer": "/instance/nodes/0",
+          "derived": null,
+          "evidence": []
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "edge-0",
+        "from": "trigger",
+        "to": "node-0",
+        "label": "Starting Step",
+        "settings": {
+          "from": "trigger",
+          "to": "node-0",
+          "port_exact": "Starting Step",
+          "source_branch_id": null,
+          "source_reply_id": null,
+          "visible_button_ids": [],
+          "weight_percent": null,
+          "caption_exact": null,
+          "navigation_label": null,
+          "evidence": {
+            "file": "evidence/46-editor.json",
+            "pointer": "/graph/edges/0"
+          }
+        },
+        "provenance": {
+          "pointer": "/instance/edges/0"
+        }
+      }
+    ]
+  },
+  "setup": [],
+  "annotations": [
+    {
+      "id": "node-1",
+      "kind": "note",
+      "label_exact": "note",
+      "identity": {
+        "position": 1,
+        "group": "builder-node-unattached",
+        "original_source_id": null,
+        "visible_ids_exact": {
+          "blocks": [],
+          "buttons": []
+        },
+        "active_sidebar_exact": [
+          {
+            "active": true,
+            "group": "builder-node-unattached",
+            "label": "note",
+            "position": 1
+          }
+        ],
+        "header_exact": [],
+        "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+      },
+      "default_panel": {
+        "label": "node.1.default",
+        "scope": "publication_draft_clone",
+        "phase": "captured_default",
+        "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nUnattached Steps\nnote\nnote\n+ Create New Step\n552\nNote Size\nS\nM\nL\nFont Size\naA\naA\n[preview time excluded]\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+        "fields": [
+          {
+            "name": "text",
+            "label": null,
+            "tag": "textarea",
+            "type": null,
+            "placeholder": null,
+            "value": "Write the answer for the question, you can add images, videos and links. Explore more 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            },
+            "evidence": {
+              "file": "evidence/46-editor.json",
+              "pointer": "/node_defaults/1/capture/panel/fields/0"
+            }
+          }
+        ],
+        "buttons_exact": [
+          {
+            "disabled": false,
+            "label": null,
+            "text": "Go To Flow Builder"
+          }
+        ],
+        "evidence": {
+          "file": "evidence/46-editor.json",
+          "pointer": "/node_defaults/1/capture"
+        },
+        "identity_evidence_exact": {
+          "sidebar": [
+            {
+              "active": false,
+              "group": "builder-node-start",
+              "label": "Send Message",
+              "position": 0
+            },
+            {
+              "active": true,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 1
+            },
+            {
+              "active": false,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 2
+            }
+          ],
+          "header": [],
+          "visible_identity": {
+            "blocks": [],
+            "buttons": []
+          }
+        },
+        "source_hash": "97cd52fbcff608835d88c110f24b99aa986ab36b588c3168bc066b1dedb82c3e",
+        "scope_history": {
+          "label_exact": "inactive_clone",
+          "interpretation": "historical_label_not_inactivity_evidence",
+          "evidence": {
+            "file": "evidence/46-editor.json",
+            "pointer": "/node_defaults/1/capture/scope"
+          }
+        }
+      },
+      "nested_panels": [],
+      "shared_options": [],
+      "inspection": {
+        "default_opened": true,
+        "nested_panels_opened": 0,
+        "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+        "existing_block_controls_complete": true,
+        "all_variants_verified": false,
+        "gaps": []
+      },
+      "exit_semantics": []
+    },
+    {
+      "id": "node-2",
+      "kind": "note",
+      "label_exact": "note",
+      "identity": {
+        "position": 2,
+        "group": "builder-node-unattached",
+        "original_source_id": null,
+        "visible_ids_exact": {
+          "blocks": [],
+          "buttons": []
+        },
+        "active_sidebar_exact": [
+          {
+            "active": true,
+            "group": "builder-node-unattached",
+            "label": "note",
+            "position": 2
+          }
+        ],
+        "header_exact": [],
+        "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+      },
+      "default_panel": {
+        "label": "node.2.default",
+        "scope": "publication_draft_clone",
+        "phase": "captured_default",
+        "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nUnattached Steps\nnote\nnote\n+ Create New Step\n549\nNote Size\nS\nM\nL\nFont Size\naA\naA\n[preview time excluded]\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+        "fields": [
+          {
+            "name": "text",
+            "label": null,
+            "tag": "textarea",
+            "type": null,
+            "placeholder": null,
+            "value": "Specify the topic the user asks about. AI will detect both general and specific questions. ",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            },
+            "evidence": {
+              "file": "evidence/46-editor.json",
+              "pointer": "/node_defaults/2/capture/panel/fields/0"
+            }
+          }
+        ],
+        "buttons_exact": [
+          {
+            "disabled": false,
+            "label": null,
+            "text": "Go To Flow Builder"
+          }
+        ],
+        "evidence": {
+          "file": "evidence/46-editor.json",
+          "pointer": "/node_defaults/2/capture"
+        },
+        "identity_evidence_exact": {
+          "sidebar": [
+            {
+              "active": false,
+              "group": "builder-node-start",
+              "label": "Send Message",
+              "position": 0
+            },
+            {
+              "active": false,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 1
+            },
+            {
+              "active": true,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 2
+            }
+          ],
+          "header": [],
+          "visible_identity": {
+            "blocks": [],
+            "buttons": []
+          }
+        },
+        "source_hash": "df27e67b3058c510f78270d0b81a3c506afd678fedd7af40f91510130b54b751",
+        "scope_history": {
+          "label_exact": "inactive_clone",
+          "interpretation": "historical_label_not_inactivity_evidence",
+          "evidence": {
+            "file": "evidence/46-editor.json",
+            "pointer": "/node_defaults/2/capture/scope"
+          }
+        }
+      },
+      "nested_panels": [],
+      "shared_options": [],
+      "inspection": {
+        "default_opened": true,
+        "nested_panels_opened": 0,
+        "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+        "existing_block_controls_complete": true,
+        "all_variants_verified": false,
+        "gaps": []
+      },
+      "exit_semantics": []
+    }
+  ]
+}

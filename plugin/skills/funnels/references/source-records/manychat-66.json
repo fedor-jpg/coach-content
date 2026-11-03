@@ -1,0 +1,3483 @@
+{
+  "id": "manychat-66",
+  "source": {
+    "vendor": "manychat",
+    "file": "templates/manychat-66.json",
+    "title": "Give coupons in stories",
+    "category": "Drive traffic",
+    "facets": [
+      "Drive traffic",
+      "Story reply",
+      "promotion",
+      "story_reply"
+    ],
+    "job": "promotion",
+    "model": "flow_builder",
+    "document": {
+      "schema_version": "1.2",
+      "id": "manychat-66",
+      "ordinal": 19,
+      "title": "Give coupons in stories",
+      "source_id": "campaign-card-66",
+      "observed_at": "2026-10-30",
+      "configuration_model": "flow_builder",
+      "entry_type": "template",
+      "source": {
+        "url": "https://app.manychat.com/fb4213902/dashboard",
+        "catalog_evidence": {
+          "file": "evidence/inventory.json",
+          "pointer": "/items/18"
+        },
+        "catalog_mode": "Flow Builder",
+        "facets": [
+          "Drive traffic",
+          "Story reply"
+        ],
+        "badge_text_exact": "",
+        "description_exact": "Someone watched your story? Treat ‘em like a VIP with a secret DM coupon",
+        "preview_evidence": {
+          "file": "evidence/66-preview.json",
+          "pointer": ""
+        },
+        "preview_text_exact": "Instagram\nGive coupons in stories\nBusiness value\nMake your DMs feel like an exclusive club. More replies, more redemptions, fewer ghost-town Stories.\nHow does it work?\n\nWhen a follower replies to your story — or swipes up if you’re fancy — they trigger a flow that sends them a limited-time discount code or exclusive offer via DM. You can use this to test urgency, reward loyalty, or move inventory without blasting it to everyone.\n\nBack To List\nSet Up Template",
+        "original_graph_state": "not_exposed",
+        "original_defaults": null,
+        "source_original_settings_complete": false
+      },
+      "instance": {
+        "scope": "installed_draft_not_original",
+        "capture_semantics": "Baseline captured before follow-up changes; current safety and retained inspection variants are separate.",
+        "draft_id": "content20261031003910_422493",
+        "url": "https://app.manychat.com/fb4213902/cms/files/content20261031003910_422493/edit",
+        "title_exact": "Give coupons in stories",
+        "original_equivalence": "unverified",
+        "nodes": [
+          {
+            "id": "node-0",
+            "kind": "message",
+            "label_exact": "Send Message",
+            "identity": {
+              "position": 0,
+              "group": "builder-node-start",
+              "original_source_id": null,
+              "visible_ids_exact": {
+                "blocks": [],
+                "buttons": [
+                  {
+                    "ids": [
+                      "0a4cf342-4c87-49c9-a92c-822cc9a3bfe5"
+                    ],
+                    "position": 0,
+                    "text": "Reveal Code 👀"
+                  }
+                ]
+              },
+              "active_sidebar_exact": [
+                {
+                  "active": true,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                }
+              ],
+              "header_exact": [
+                "Send Message"
+              ],
+              "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+            },
+            "default_panel": {
+              "label": "node.0.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\nSend Message\nSend\nas Private Reply\nGuess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!\nReveal Code 👀\n+ Add Button\n+ Add Quick Reply\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nGuess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!\nReveal Code 👀\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Enter your text...",
+                  "value": "Guess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/node_defaults/0/capture/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/node_defaults/0/capture"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": true,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-attached",
+                    "label": "Send Message",
+                    "position": 1
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 3
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 4
+                  }
+                ],
+                "header": [
+                  "Send Message"
+                ],
+                "visible_identity": {
+                  "blocks": [],
+                  "buttons": [
+                    {
+                      "ids": [
+                        "0a4cf342-4c87-49c9-a92c-822cc9a3bfe5"
+                      ],
+                      "position": 0,
+                      "text": "Reveal Code 👀"
+                    }
+                  ]
+                }
+              },
+              "source_hash": "a3d75b5c16124acde36bca8af7538895ef6532c8f4f98aebca2ad9afae6387b8",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/node_defaults/0/capture/scope"
+                }
+              }
+            },
+            "nested_panels": [
+              {
+                "label": "node-0.button-0.default",
+                "scope": "publication_draft_clone",
+                "phase": "captured_default",
+                "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nReveal Code 👀\nWhen this button is pressed\nInstagram\nSend Message\nDelete button\nDone",
+                "fields": [
+                  {
+                    "name": "caption",
+                    "label": null,
+                    "tag": "textarea",
+                    "type": null,
+                    "placeholder": "Enter title...",
+                    "value": "Reveal Code 👀",
+                    "value_state": "observed",
+                    "checked": false,
+                    "options_exact": null,
+                    "validation_exact": {
+                      "aria_disabled": null,
+                      "aria_invalid": null,
+                      "aria_required": null,
+                      "disabled": false,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "required": false,
+                      "step": null
+                    },
+                    "evidence": {
+                      "file": "evidence/66-editor.json",
+                      "pointer": "/captures/3/panel/fields/0"
+                    }
+                  }
+                ],
+                "buttons_exact": [
+                  {
+                    "disabled": false,
+                    "label": "Close",
+                    "text": ""
+                  },
+                  {
+                    "disabled": false,
+                    "label": null,
+                    "text": "Delete button"
+                  },
+                  {
+                    "disabled": false,
+                    "label": null,
+                    "text": "Done"
+                  }
+                ],
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/3"
+                },
+                "identity_evidence_exact": {
+                  "visible_button_identity": {
+                    "ids": [
+                      "0a4cf342-4c87-49c9-a92c-822cc9a3bfe5"
+                    ],
+                    "position": 0,
+                    "text": "Reveal Code 👀"
+                  }
+                },
+                "source_hash": "be1c45573ff286f76abb0534d63bade480399eb20a4b6de732044f0f6a24610c",
+                "scope_history": {
+                  "label_exact": "inactive_clone",
+                  "interpretation": "historical_label_not_inactivity_evidence",
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/captures/3/scope"
+                  }
+                }
+              }
+            ],
+            "shared_options": [
+              {
+                "definition": "message_personalization",
+                "panel": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/node_defaults/0/capture"
+                },
+                "matched_tokens": [
+                  "textarea",
+                  "Enter your text..."
+                ],
+                "signature": "80b16fd296c5abd6956845ffd7460885f53e617030421172d410ee6785221c7e",
+                "scope": "Matched visible textarea and placeholder; hidden editor state was not read."
+              },
+              {
+                "definition": "button_action",
+                "panel": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/3"
+                },
+                "matched_tokens": [
+                  "Edit Button",
+                  "Button title",
+                  "When this button is pressed"
+                ],
+                "signature": "7c613d956a182137c9574e1fa61dff9684623998fff456c3928f87500d0ff4e9",
+                "scope": "Shared option choices only; instance values remain in this panel."
+              }
+            ],
+            "inspection": {
+              "default_opened": true,
+              "nested_panels_opened": 1,
+              "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+              "existing_block_controls_complete": true,
+              "all_variants_verified": false,
+              "gaps": []
+            },
+            "exit_semantics": [
+              {
+                "state": "no_click_unknown",
+                "detail": "No automatic timeout is inferred for a button. Only captured delay/expiration connections count."
+              }
+            ]
+          },
+          {
+            "id": "node-1",
+            "kind": "message",
+            "label_exact": "Send Message",
+            "identity": {
+              "position": 1,
+              "group": "builder-node-attached",
+              "original_source_id": null,
+              "visible_ids_exact": {
+                "blocks": [],
+                "buttons": [
+                  {
+                    "ids": [
+                      "ab4f6cb7-37a1-403d-88b8-3b5a89f00d85"
+                    ],
+                    "position": 0,
+                    "text": "Shop Now 🛍"
+                  }
+                ]
+              },
+              "active_sidebar_exact": [
+                {
+                  "active": true,
+                  "group": "builder-node-attached",
+                  "label": "Send Message",
+                  "position": 1
+                }
+              ],
+              "header_exact": [
+                "Send Message"
+              ],
+              "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+            },
+            "default_panel": {
+              "label": "node.1.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\nSend Message\nSend\nas Private Reply\nUse coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!\nShop Now 🛍\n+ Add Button\n+ Add Quick Reply\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nUse coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!\nShop Now 🛍\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Enter your text...",
+                  "value": "Use coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/node_defaults/1/capture/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/node_defaults/1/capture"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": false,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": true,
+                    "group": "builder-node-attached",
+                    "label": "Send Message",
+                    "position": 1
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 3
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 4
+                  }
+                ],
+                "header": [
+                  "Send Message"
+                ],
+                "visible_identity": {
+                  "blocks": [],
+                  "buttons": [
+                    {
+                      "ids": [
+                        "ab4f6cb7-37a1-403d-88b8-3b5a89f00d85"
+                      ],
+                      "position": 0,
+                      "text": "Shop Now 🛍"
+                    }
+                  ]
+                }
+              },
+              "source_hash": "5e3474e05f3503ac76ab5e1e53c3a0b0c2369f89164f243ce256d99b9173457e",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/node_defaults/1/capture/scope"
+                }
+              }
+            },
+            "nested_panels": [
+              {
+                "label": "node-1.button-0.default",
+                "scope": "publication_draft_clone",
+                "phase": "captured_default",
+                "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nShop Now 🛍\nWhen this button is pressed\nOpen website\nyourwebsite.comm\nWebsite URL\nyourwebsite.comm\nAdditional actions\nE.g. you can add a tag on a button click.\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nPeople will see a redirection page for 2 seconds. Upgrade to remove it.\nDelete button\nDone",
+                "fields": [
+                  {
+                    "name": "caption",
+                    "label": null,
+                    "tag": "textarea",
+                    "type": null,
+                    "placeholder": "Enter title...",
+                    "value": "Shop Now 🛍",
+                    "value_state": "observed",
+                    "checked": false,
+                    "options_exact": null,
+                    "validation_exact": {
+                      "aria_disabled": null,
+                      "aria_invalid": null,
+                      "aria_required": null,
+                      "disabled": false,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "required": false,
+                      "step": null
+                    },
+                    "evidence": {
+                      "file": "evidence/66-editor.json",
+                      "pointer": "/captures/5/panel/fields/0"
+                    }
+                  },
+                  {
+                    "name": "url",
+                    "label": null,
+                    "tag": "textarea",
+                    "type": null,
+                    "placeholder": "https://yourwebsite.com",
+                    "value": "yourwebsite.comm",
+                    "value_state": "observed",
+                    "checked": false,
+                    "options_exact": null,
+                    "validation_exact": {
+                      "aria_disabled": null,
+                      "aria_invalid": null,
+                      "aria_required": null,
+                      "disabled": false,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "required": false,
+                      "step": null
+                    },
+                    "evidence": {
+                      "file": "evidence/66-editor.json",
+                      "pointer": "/captures/5/panel/fields/1"
+                    }
+                  },
+                  {
+                    "name": null,
+                    "label": "Additional actions",
+                    "tag": "input",
+                    "type": "checkbox",
+                    "placeholder": null,
+                    "value": "on",
+                    "value_state": "observed",
+                    "checked": false,
+                    "options_exact": null,
+                    "validation_exact": {
+                      "aria_disabled": "false",
+                      "aria_invalid": null,
+                      "aria_required": null,
+                      "disabled": false,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "required": false,
+                      "step": null
+                    },
+                    "evidence": {
+                      "file": "evidence/66-editor.json",
+                      "pointer": "/captures/5/panel/fields/2"
+                    }
+                  }
+                ],
+                "buttons_exact": [
+                  {
+                    "disabled": false,
+                    "label": "Close",
+                    "text": ""
+                  },
+                  {
+                    "disabled": false,
+                    "label": null,
+                    "text": "Delete button"
+                  },
+                  {
+                    "disabled": false,
+                    "label": null,
+                    "text": "Done"
+                  }
+                ],
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/5"
+                },
+                "identity_evidence_exact": {
+                  "visible_button_identity": {
+                    "ids": [
+                      "ab4f6cb7-37a1-403d-88b8-3b5a89f00d85"
+                    ],
+                    "position": 0,
+                    "text": "Shop Now 🛍"
+                  }
+                },
+                "source_hash": "7f53594fc19265a064de2e3d6804e0714cfdeb383ca57ef0ee8e07477df04d05",
+                "scope_history": {
+                  "label_exact": "inactive_clone",
+                  "interpretation": "historical_label_not_inactivity_evidence",
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/captures/5/scope"
+                  }
+                }
+              }
+            ],
+            "shared_options": [
+              {
+                "definition": "message_personalization",
+                "panel": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/node_defaults/1/capture"
+                },
+                "matched_tokens": [
+                  "textarea",
+                  "Enter your text..."
+                ],
+                "signature": "80b16fd296c5abd6956845ffd7460885f53e617030421172d410ee6785221c7e",
+                "scope": "Matched visible textarea and placeholder; hidden editor state was not read."
+              },
+              {
+                "definition": "button_action",
+                "panel": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/5"
+                },
+                "matched_tokens": [
+                  "Edit Button",
+                  "Button title",
+                  "When this button is pressed"
+                ],
+                "signature": "7c613d956a182137c9574e1fa61dff9684623998fff456c3928f87500d0ff4e9",
+                "scope": "Shared option choices only; instance values remain in this panel."
+              }
+            ],
+            "inspection": {
+              "default_opened": true,
+              "nested_panels_opened": 1,
+              "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+              "existing_block_controls_complete": true,
+              "all_variants_verified": false,
+              "gaps": []
+            },
+            "exit_semantics": [
+              {
+                "state": "no_connected_destination_observed",
+                "detail": "No captured outgoing graph edge; this is not proof of purchase, registration or runtime termination."
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "id": "node-2",
+            "kind": "note",
+            "label_exact": "note",
+            "identity": {
+              "position": 2,
+              "group": "builder-node-unattached",
+              "original_source_id": null,
+              "visible_ids_exact": {
+                "blocks": [],
+                "buttons": []
+              },
+              "active_sidebar_exact": [
+                {
+                  "active": true,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 2
+                }
+              ],
+              "header_exact": [],
+              "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+            },
+            "default_panel": {
+              "label": "node.2.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\n575\nNote Size\nS\nM\nL\nFont Size\naA\naA\n[preview time excluded]\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": null,
+                  "value": "Make sure you update this button URL so it opens to your website!",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": "640",
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/node_defaults/2/capture/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/node_defaults/2/capture"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": false,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-attached",
+                    "label": "Send Message",
+                    "position": 1
+                  },
+                  {
+                    "active": true,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 3
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 4
+                  }
+                ],
+                "header": [],
+                "visible_identity": {
+                  "blocks": [],
+                  "buttons": []
+                }
+              },
+              "source_hash": "60f6466a7571596c636f098816bddb4b366d13ab1521f2bd4447cb11b0bf924d",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/node_defaults/2/capture/scope"
+                }
+              }
+            },
+            "nested_panels": [],
+            "shared_options": [],
+            "inspection": {
+              "default_opened": true,
+              "nested_panels_opened": 0,
+              "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+              "existing_block_controls_complete": true,
+              "all_variants_verified": false,
+              "gaps": []
+            },
+            "exit_semantics": []
+          },
+          {
+            "id": "node-3",
+            "kind": "note",
+            "label_exact": "note",
+            "identity": {
+              "position": 3,
+              "group": "builder-node-unattached",
+              "original_source_id": null,
+              "visible_ids_exact": {
+                "blocks": [],
+                "buttons": []
+              },
+              "active_sidebar_exact": [
+                {
+                  "active": true,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 3
+                }
+              ],
+              "header_exact": [],
+              "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+            },
+            "default_panel": {
+              "label": "node.3.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\n482\nNote Size\nS\nM\nL\nFont Size\naA\naA\n[preview time excluded]\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": null,
+                  "value": "This is the first message a follower sees in their DMs. Personalize this message so your follower is excited to click to the next step. We use a button here.\n",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": "640",
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/node_defaults/3/capture/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/node_defaults/3/capture"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": false,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-attached",
+                    "label": "Send Message",
+                    "position": 1
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  },
+                  {
+                    "active": true,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 3
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 4
+                  }
+                ],
+                "header": [],
+                "visible_identity": {
+                  "blocks": [],
+                  "buttons": []
+                }
+              },
+              "source_hash": "562625d65117c21fbb81144a96b40441892cb747e2d2953ff09e8a7b6f3a490e",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/node_defaults/3/capture/scope"
+                }
+              }
+            },
+            "nested_panels": [],
+            "shared_options": [],
+            "inspection": {
+              "default_opened": true,
+              "nested_panels_opened": 0,
+              "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+              "existing_block_controls_complete": true,
+              "all_variants_verified": false,
+              "gaps": []
+            },
+            "exit_semantics": []
+          },
+          {
+            "id": "node-4",
+            "kind": "note",
+            "label_exact": "note",
+            "identity": {
+              "position": 4,
+              "group": "builder-node-unattached",
+              "original_source_id": null,
+              "visible_ids_exact": {
+                "blocks": [],
+                "buttons": []
+              },
+              "active_sidebar_exact": [
+                {
+                  "active": true,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 4
+                }
+              ],
+              "header_exact": [],
+              "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+            },
+            "default_panel": {
+              "label": "node.4.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\n535\nNote Size\nS\nM\nL\nFont Size\naA\naA\n[preview time excluded]\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": null,
+                  "value": "Your trigger here will be \"User replies to your Story\". You can change this to be any keyword you'd like!",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": "640",
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/node_defaults/4/capture/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/node_defaults/4/capture"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": false,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-attached",
+                    "label": "Send Message",
+                    "position": 1
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 3
+                  },
+                  {
+                    "active": true,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 4
+                  }
+                ],
+                "header": [],
+                "visible_identity": {
+                  "blocks": [],
+                  "buttons": []
+                }
+              },
+              "source_hash": "6e8534c5f82d1ac8bd2a68c98ea83af7d979ec8b34e012e3e516c61188c44a83",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/node_defaults/4/capture/scope"
+                }
+              }
+            },
+            "nested_panels": [],
+            "shared_options": [],
+            "inspection": {
+              "default_opened": true,
+              "nested_panels_opened": 0,
+              "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+              "existing_block_controls_complete": true,
+              "all_variants_verified": false,
+              "gaps": []
+            },
+            "exit_semantics": []
+          }
+        ],
+        "edges": [
+          {
+            "from": "node-0",
+            "to": "node-1",
+            "port_exact": "button-0",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [
+              "0a4cf342-4c87-49c9-a92c-822cc9a3bfe5"
+            ],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-0.button-0.target",
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/graph/edges/1"
+            }
+          }
+        ],
+        "observations": [
+          {
+            "label": "trigger.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\nStory Reply #1\nMessage will be sent\nwhen a follower replies to:\nAll Stories\nand\nReply Contains Specific Words Or Reaction\nReply \nincludes\n Keywords or reaction:\ncoupon\n+ Keyword\nKeywords are not case-sensitive, e.g. \"Hello\" and \"hello\" are recognised as the same.\nDelay automation\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nWait\n0 sec\nand start next steps\nAutomatically like replies\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nReact with ❤️ in response\nSave\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nGuess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!\nReveal Code 👀\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": null,
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Add text",
+                "value": "coupon",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/0/panel/fields/0"
+                }
+              },
+              {
+                "name": null,
+                "label": null,
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/0/panel/fields/1"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "All Stories"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Reply Contains Specific Words Or Reaction"
+              },
+              {
+                "disabled": false,
+                "label": "Delay",
+                "text": "0 sec"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Save"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/captures/0"
+            },
+            "identity_evidence_exact": {
+              "sidebar": [
+                {
+                  "active": true,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-attached",
+                  "label": "Send Message",
+                  "position": 1
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 2
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 3
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 4
+                }
+              ],
+              "header": [
+                "Story Reply #1"
+              ]
+            },
+            "source_hash": "5c041275ee3bccac85d19a06201f8016fa1141a7e0c4e356349e9a7279bfe4a6",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/0/scope"
+              }
+            }
+          },
+          {
+            "label": "trigger.any-reply.variant",
+            "scope": "publication_draft_clone",
+            "phase": "inspection_variant",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\nStory Reply #1\nMessage will be sent\nwhen a follower replies to:\nAll Stories\nand\nReply Contains Any Words Or Reaction\nDelay automation\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nWait\n0 sec\nand start next steps\nAutomatically like replies\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nReact with ❤️ in response\nSave\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nGuess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!\nReveal Code 👀\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": null,
+                "label": null,
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/1/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "All Stories"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Reply Contains Any Words Or Reaction"
+              },
+              {
+                "disabled": false,
+                "label": "Delay",
+                "text": "0 sec"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Save"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/captures/1"
+            },
+            "identity_evidence_exact": {},
+            "source_hash": "ee298760ab030f2e137407ee9533f13c92f25da2d3bf0fd0fb48c4ac488450e8",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/1/scope"
+              }
+            }
+          },
+          {
+            "label": "trigger.specific-story.variant",
+            "scope": "publication_draft_clone_unsaved",
+            "phase": "inspection_variant",
+            "text_exact": "",
+            "fields": [],
+            "buttons_exact": [],
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/captures/2"
+            },
+            "identity_evidence_exact": {
+              "text_exact": "You haven't shared a story yet!",
+              "source": "visible screenshot",
+              "resource_selected": false
+            },
+            "source_hash": "93d709225df0d182aa76763f8fc542dbb22707a497a3875ab307a326449985c2",
+            "scope_history": {
+              "label_exact": "inactive_clone_unsaved",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/2/scope"
+              }
+            }
+          },
+          {
+            "label": "node-0.button-0.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nReveal Code 👀\nWhen this button is pressed\nInstagram\nSend Message\nDelete button\nDone",
+            "fields": [
+              {
+                "name": "caption",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter title...",
+                "value": "Reveal Code 👀",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/3/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": "Close",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Delete button"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Done"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/captures/3"
+            },
+            "identity_evidence_exact": {
+              "visible_button_identity": {
+                "ids": [
+                  "0a4cf342-4c87-49c9-a92c-822cc9a3bfe5"
+                ],
+                "position": 0,
+                "text": "Reveal Code 👀"
+              }
+            },
+            "source_hash": "be1c45573ff286f76abb0534d63bade480399eb20a4b6de732044f0f6a24610c",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/3/scope"
+              }
+            }
+          },
+          {
+            "label": "navigation.node-0.button-0.target",
+            "scope": "publication_draft_clone",
+            "phase": "navigation",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\nSend Message\nSend\nas Private Reply\nUse coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!\nShop Now 🛍\n+ Add Button\n+ Add Quick Reply\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nGuess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!\nReveal Code 👀\nReveal Code 👀\nUse coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!\nShop Now 🛍\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": "text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter your text...",
+                "value": "Use coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/4/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/captures/4"
+            },
+            "identity_evidence_exact": {
+              "sidebar": [
+                {
+                  "active": false,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                },
+                {
+                  "active": true,
+                  "group": "builder-node-attached",
+                  "label": "Send Message",
+                  "position": 1
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 2
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 3
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 4
+                }
+              ],
+              "header": [
+                "Send Message"
+              ]
+            },
+            "source_hash": "6be882f8d0ac1421e0da61284a34019eb7f3f8feed2284d062c6e6f9115c33aa",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/4/scope"
+              }
+            }
+          },
+          {
+            "label": "node-1.button-0.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nShop Now 🛍\nWhen this button is pressed\nOpen website\nyourwebsite.comm\nWebsite URL\nyourwebsite.comm\nAdditional actions\nE.g. you can add a tag on a button click.\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nPeople will see a redirection page for 2 seconds. Upgrade to remove it.\nDelete button\nDone",
+            "fields": [
+              {
+                "name": "caption",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter title...",
+                "value": "Shop Now 🛍",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/5/panel/fields/0"
+                }
+              },
+              {
+                "name": "url",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "https://yourwebsite.com",
+                "value": "yourwebsite.comm",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/5/panel/fields/1"
+                }
+              },
+              {
+                "name": null,
+                "label": "Additional actions",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/5/panel/fields/2"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": "Close",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Delete button"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Done"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/captures/5"
+            },
+            "identity_evidence_exact": {
+              "visible_button_identity": {
+                "ids": [
+                  "ab4f6cb7-37a1-403d-88b8-3b5a89f00d85"
+                ],
+                "position": 0,
+                "text": "Shop Now 🛍"
+              }
+            },
+            "source_hash": "7f53594fc19265a064de2e3d6804e0714cfdeb383ca57ef0ee8e07477df04d05",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/5/scope"
+              }
+            }
+          }
+        ],
+        "trigger_shared_options": [
+          {
+            "definition": "story_trigger",
+            "panel": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/captures/0"
+            },
+            "matched_tokens": [
+              "Message will be sent",
+              "Delay automation",
+              "Automatically like replies"
+            ],
+            "signature": "e7c4ff257167c64a60843fb33fef975a78a06ec85f9026dff4e997ad75379998",
+            "scope": "Shared option choices only; instance values remain in this panel."
+          },
+          {
+            "definition": "story_trigger",
+            "panel": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/captures/1"
+            },
+            "matched_tokens": [
+              "Message will be sent",
+              "Delay automation",
+              "Automatically like replies"
+            ],
+            "signature": "e7c4ff257167c64a60843fb33fef975a78a06ec85f9026dff4e997ad75379998",
+            "scope": "Shared option choices only; instance values remain in this panel."
+          }
+        ],
+        "inspection_only_node_ids": [],
+        "graph_integrity": {
+          "captured_sidebar_items": 5,
+          "executable_nodes_including_trigger": 3,
+          "captured_edges": 2,
+          "rendered_totals_exact": null,
+          "all_original_nodes_and_edges_proven": false,
+          "limitation": "Original graph is not exposed. Draft edges use visible navigation identity; no hidden IDs or server export."
+        },
+        "supporting_evidence": [
+          {
+            "kind": "option_sets",
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/option_sets"
+            },
+            "json_exact": [
+              {
+                "control": "trigger.delay",
+                "default": "0 sec",
+                "options": "0 sec\n30 sec\n1 minute\n5 minutes\n10 minutes",
+                "changed": false
+              },
+              {
+                "control": "trigger.reply_mode",
+                "default": "Reply contains specific words or reaction",
+                "options": [
+                  "Reply contains any words or reaction",
+                  "Reply contains specific words or reaction"
+                ]
+              },
+              {
+                "control": "trigger.story_scope",
+                "default": "All Stories",
+                "options": [
+                  "All Stories",
+                  "Specific Story"
+                ]
+              },
+              {
+                "control": "trigger.keyword predicate",
+                "default": "includes",
+                "other_options_exposed": false,
+                "inspection": "Clicked visible includes label; no alternate control exposed"
+              }
+            ]
+          },
+          {
+            "kind": "draft_changes",
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/draft_changes"
+            },
+            "json_exact": [
+              {
+                "control": "story trigger",
+                "before": "All Stories; specific keyword coupon; delay 0 sec; heart reaction on",
+                "inspection_value": "Any reply and Specific Story inspected",
+                "restored_by": "Reload without Save",
+                "save_pressed": false
+              }
+            ]
+          }
+        ]
+      },
+      "native_setup": null,
+      "followup": {
+        "evidence": {
+          "file": "evidence/settings-followup.json",
+          "pointer": "/templates/66"
+        },
+        "source_hash": "5e1755d38c092560e87f9263c8f272e993fe976bfb9f59598aa98ba98f09f401",
+        "baseline_preserved": true,
+        "original_equivalence": "unverified",
+        "panels": [
+          {
+            "label": "story-trigger.before",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Basic Builder\n👇 Tap some step to edit\nStory Reply #1\nMessage will be sent\nwhen a follower replies to:\nAll Stories\nand\nReply Contains Specific Words Or Reaction\nReply \nincludes\n Keywords or reaction:\ncoupon\n+ Keyword\nKeywords are not case-sensitive, e.g. \"Hello\" and \"hello\" are recognised as the same.\nDelay automation\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nWait\n0 sec\nand start next steps\nAutomatically like replies\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nReact with ❤️ in response\nSave\nPreview\nTest\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": null,
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Add text",
+                "value": "coupon",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/66/captures/0/panel/fields/0"
+                }
+              },
+              {
+                "name": null,
+                "label": "React with ❤️ in response",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": "false",
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/66/captures/0/panel/fields/1"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Basic Builder"
+              },
+              {
+                "disabled": false,
+                "label": "Auto Arrange Steps",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": "Zoom In",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": "Zoom Out",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": "Help option",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "All Stories"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Reply Contains Specific Words Or Reaction"
+              },
+              {
+                "disabled": false,
+                "label": "Delay",
+                "text": "0 sec"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Save"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Preview"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Test"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/66/captures/0"
+            },
+            "identity_evidence_exact": {
+              "phase": "captured_current_default",
+              "sidebar": [],
+              "header": [
+                "Story Reply #1"
+              ]
+            },
+            "source_hash": "6f5b3a3df51f75f2a5c563fe7170f28fedf4e1866c387566067436409a6ca2d6"
+          },
+          {
+            "label": "story-trigger.specific-story.no-resource",
+            "scope": "publication_draft_clone",
+            "phase": "inspection_variant",
+            "text_exact": "Go To Basic Builder\n👇 Tap some step to edit\nStory Reply #1\nMessage will be sent\nwhen a follower replies to:\nSpecific Story\nYou haven't shared a story yet!\nand\nReply Contains Specific Words Or Reaction\nReply \nincludes\n Keywords or reaction:\ncoupon\n+ Keyword\nKeywords are not case-sensitive, e.g. \"Hello\" and \"hello\" are recognised as the same.\nDelay automation\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nWait\n0 sec\nand start next steps\nAutomatically like replies\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nReact with ❤️ in response\nSave\nPreview\nTest\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": null,
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Add text",
+                "value": "coupon",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/66/captures/1/panel/fields/0"
+                }
+              },
+              {
+                "name": null,
+                "label": "React with ❤️ in response",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": "false",
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/66/captures/1/panel/fields/1"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Basic Builder"
+              },
+              {
+                "disabled": false,
+                "label": "Auto Arrange Steps",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": "Zoom In",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": "Zoom Out",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": "Help option",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Specific Story"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Reply Contains Specific Words Or Reaction"
+              },
+              {
+                "disabled": false,
+                "label": "Delay",
+                "text": "0 sec"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Save"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Preview"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Test"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/66/captures/1"
+            },
+            "identity_evidence_exact": {
+              "phase": "unsaved_inspection_variant",
+              "sidebar": [],
+              "header": [
+                "Story Reply #1"
+              ]
+            },
+            "source_hash": "27a9e0092c21ba328086852c6272ecd93610bcda70b5607fa01aff5ea0d310f2"
+          },
+          {
+            "label": "story-trigger.restored-all-stories",
+            "scope": "publication_draft_clone",
+            "phase": "restoration_check",
+            "text_exact": "Go To Basic Builder\n👇 Tap some step to edit\nStory Reply #1\nMessage will be sent\nwhen a follower replies to:\nAll Stories\nand\nReply Contains Specific Words Or Reaction\nReply \nincludes\n Keywords or reaction:\ncoupon\n+ Keyword\nKeywords are not case-sensitive, e.g. \"Hello\" and \"hello\" are recognised as the same.\nDelay automation\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nWait\n0 sec\nand start next steps\nAutomatically like replies\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nReact with ❤️ in response\nSave\nPreview\nTest\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": null,
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Add text",
+                "value": "coupon",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/66/captures/2/panel/fields/0"
+                }
+              },
+              {
+                "name": null,
+                "label": "React with ❤️ in response",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": "false",
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/66/captures/2/panel/fields/1"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Basic Builder"
+              },
+              {
+                "disabled": false,
+                "label": "Auto Arrange Steps",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": "Zoom In",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": "Zoom Out",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": "Help option",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "All Stories"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Reply Contains Specific Words Or Reaction"
+              },
+              {
+                "disabled": false,
+                "label": "Delay",
+                "text": "0 sec"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Save"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Preview"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Test"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/66/captures/2"
+            },
+            "identity_evidence_exact": {
+              "phase": "restoration_check",
+              "sidebar": [],
+              "header": [
+                "Story Reply #1"
+              ]
+            },
+            "source_hash": "b84b8d6f90b4cab120024f7b1d55e4483a32ea593586b6f75835efaaeb21634f"
+          }
+        ],
+        "supporting_evidence": [
+          {
+            "kind": "source_id",
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/66/source_id"
+            },
+            "json_exact": "campaign-card-66"
+          },
+          {
+            "kind": "draft_id",
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/66/draft_id"
+            },
+            "json_exact": "content20261031003910_422493"
+          },
+          {
+            "kind": "findings",
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/66/findings"
+            },
+            "json_exact": [
+              {
+                "field": "Specific Story resource selector",
+                "newly_captured": "Confirmed current empty resource message: You haven't shared a story yet!; All Stories restored without Save",
+                "remaining": "Actual Story ID and resource-specific controls",
+                "reason": "No active Story resource; publication of a Story is prohibited",
+                "no_safe_action": "Requires user-provided active Story, not additional editor clicking"
+              }
+            ]
+          },
+          {
+            "kind": "inspection_changes",
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/66/inspection_changes"
+            },
+            "json_exact": [
+              {
+                "field": "Story scope",
+                "before": "All Stories",
+                "variant": "Specific Story",
+                "after": "All Stories",
+                "save_clicked": false
+              }
+            ]
+          }
+        ]
+      },
+      "selection": {
+        "basis": "product_interpretation",
+        "job_family": "promotion",
+        "trigger": "story_reply",
+        "route": "reveal_coupon",
+        "choose_when": "Use a Story keyword and reveal button to deliver a coupon.",
+        "avoid_when": "The date in the message is copy, not an enforced expiration. Specific Story selection had no resource.",
+        "client_inputs": [
+          "story",
+          "keyword",
+          "coupon",
+          "validity policy",
+          "destination"
+        ]
+      },
+      "safety": {
+        "draft_evidence": {
+          "file": "evidence/draft-manifest.json",
+          "pointer": "/11"
+        },
+        "draft_publication_verified": true,
+        "all_configured_triggers_off": true,
+        "current_state": {
+          "entry_trigger_state": "off",
+          "publication": "DRAFT",
+          "evidence": {
+            "file": "evidence/followup-reconciliation.json",
+            "pointer": "/after_representative1080_cleanup/rows/11"
+          },
+          "source_hash": "9832c5719bde8c2abdb811dfe02056a03b79561525ac2dd1d9536a76fa2c1a44"
+        },
+        "remediation_evidence": null,
+        "delivery_limit": "No Set Live or send action. Scoped 0 runs before trigger removal and n/a list metrics are not account-wide no-delivery proof.",
+        "set_live_pressed": false,
+        "runtime_tested": false,
+        "credential_values_collected": false
+      },
+      "reconstruction": {
+        "status": "partial",
+        "original_settings_complete": false,
+        "instance_default_panels_captured": true,
+        "instance_ui_inspection_complete": true,
+        "all_possible_variants_verified": false,
+        "client_ready": false,
+        "runtime_tested": false
+      },
+      "gaps": [
+        "Original server settings and IDs were not exported. Clone defaults are not asserted to equal source defaults.",
+        "Runtime was not tested because execution is forbidden; this is separate from settings completeness.",
+        "All existing node defaults were opened. Shared options are evidence-matched; exhaustive alternative node-type conversion is not proven.",
+        "Specific Story resource selector: Actual Story ID and resource-specific controls. No active Story resource; publication of a Story is prohibited"
+      ]
+    }
+  },
+  "graph": {
+    "start": "trigger",
+    "steps": [
+      {
+        "id": "trigger",
+        "type": "entry",
+        "sourceType": "trigger",
+        "title": "Trigger",
+        "content": {
+          "text": "",
+          "preview": "Story Reply #1\n\nAdd text: coupon\n\nValue: on",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "panels": [
+            {
+              "label": "trigger.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\nStory Reply #1\nMessage will be sent\nwhen a follower replies to:\nAll Stories\nand\nReply Contains Specific Words Or Reaction\nReply \nincludes\n Keywords or reaction:\ncoupon\n+ Keyword\nKeywords are not case-sensitive, e.g. \"Hello\" and \"hello\" are recognised as the same.\nDelay automation\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nWait\n0 sec\nand start next steps\nAutomatically like replies\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nReact with ❤️ in response\nSave\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nGuess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!\nReveal Code 👀\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": null,
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Add text",
+                  "value": "coupon",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/captures/0/panel/fields/0"
+                  }
+                },
+                {
+                  "name": null,
+                  "label": null,
+                  "tag": "input",
+                  "type": "checkbox",
+                  "placeholder": null,
+                  "value": "on",
+                  "value_state": "observed",
+                  "checked": true,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/captures/0/panel/fields/1"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "All Stories"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Reply Contains Specific Words Or Reaction"
+                },
+                {
+                  "disabled": false,
+                  "label": "Delay",
+                  "text": "0 sec"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Save"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/0"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": true,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-attached",
+                    "label": "Send Message",
+                    "position": 1
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 3
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 4
+                  }
+                ],
+                "header": [
+                  "Story Reply #1"
+                ]
+              },
+              "source_hash": "5c041275ee3bccac85d19a06201f8016fa1141a7e0c4e356349e9a7279bfe4a6",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/0/scope"
+                }
+              }
+            },
+            {
+              "label": "trigger.any-reply.variant",
+              "scope": "publication_draft_clone",
+              "phase": "inspection_variant",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\nStory Reply #1\nMessage will be sent\nwhen a follower replies to:\nAll Stories\nand\nReply Contains Any Words Or Reaction\nDelay automation\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nWait\n0 sec\nand start next steps\nAutomatically like replies\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nReact with ❤️ in response\nSave\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nGuess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!\nReveal Code 👀\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": null,
+                  "label": null,
+                  "tag": "input",
+                  "type": "checkbox",
+                  "placeholder": null,
+                  "value": "on",
+                  "value_state": "observed",
+                  "checked": true,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/captures/1/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "All Stories"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Reply Contains Any Words Or Reaction"
+                },
+                {
+                  "disabled": false,
+                  "label": "Delay",
+                  "text": "0 sec"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Save"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/1"
+              },
+              "identity_evidence_exact": {},
+              "source_hash": "ee298760ab030f2e137407ee9533f13c92f25da2d3bf0fd0fb48c4ac488450e8",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/1/scope"
+                }
+              }
+            },
+            {
+              "label": "trigger.specific-story.variant",
+              "scope": "publication_draft_clone_unsaved",
+              "phase": "inspection_variant",
+              "text_exact": "",
+              "fields": [],
+              "buttons_exact": [],
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/2"
+              },
+              "identity_evidence_exact": {
+                "text_exact": "You haven't shared a story yet!",
+                "source": "visible screenshot",
+                "resource_selected": false
+              },
+              "source_hash": "93d709225df0d182aa76763f8fc542dbb22707a497a3875ab307a326449985c2",
+              "scope_history": {
+                "label_exact": "inactive_clone_unsaved",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/2/scope"
+                }
+              }
+            }
+          ],
+          "trigger_shared_options": [
+            {
+              "definition": "story_trigger",
+              "panel": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/0"
+              },
+              "matched_tokens": [
+                "Message will be sent",
+                "Delay automation",
+                "Automatically like replies"
+              ],
+              "signature": "e7c4ff257167c64a60843fb33fef975a78a06ec85f9026dff4e997ad75379998",
+              "scope": "Shared option choices only; instance values remain in this panel."
+            },
+            {
+              "definition": "story_trigger",
+              "panel": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/1"
+              },
+              "matched_tokens": [
+                "Message will be sent",
+                "Delay automation",
+                "Automatically like replies"
+              ],
+              "signature": "e7c4ff257167c64a60843fb33fef975a78a06ec85f9026dff4e997ad75379998",
+              "scope": "Shared option choices only; instance values remain in this panel."
+            }
+          ]
+        },
+        "provenance": {
+          "pointer": null,
+          "derived": "implicit_trigger_endpoint",
+          "evidence": [
+            "/instance/edges",
+            "/instance/observations"
+          ]
+        }
+      },
+      {
+        "id": "node-0",
+        "type": "message",
+        "sourceType": "message",
+        "title": "Send Message",
+        "content": {
+          "text": "Guess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!",
+          "preview": "Guess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!",
+          "buttons": [
+            "Reveal Code 👀"
+          ],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "node-0",
+          "kind": "message",
+          "label_exact": "Send Message",
+          "identity": {
+            "position": 0,
+            "group": "builder-node-start",
+            "original_source_id": null,
+            "visible_ids_exact": {
+              "blocks": [],
+              "buttons": [
+                {
+                  "ids": [
+                    "0a4cf342-4c87-49c9-a92c-822cc9a3bfe5"
+                  ],
+                  "position": 0,
+                  "text": "Reveal Code 👀"
+                }
+              ]
+            },
+            "active_sidebar_exact": [
+              {
+                "active": true,
+                "group": "builder-node-start",
+                "label": "Send Message",
+                "position": 0
+              }
+            ],
+            "header_exact": [
+              "Send Message"
+            ],
+            "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+          },
+          "default_panel": {
+            "label": "node.0.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\nSend Message\nSend\nas Private Reply\nGuess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!\nReveal Code 👀\n+ Add Button\n+ Add Quick Reply\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nGuess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!\nReveal Code 👀\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": "text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter your text...",
+                "value": "Guess what?! Until February 28th, you get 25% OFF storewide, plus FREE shipping! 🎁\n\nTap below to review your code!",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/node_defaults/0/capture/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/node_defaults/0/capture"
+            },
+            "identity_evidence_exact": {
+              "sidebar": [
+                {
+                  "active": true,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-attached",
+                  "label": "Send Message",
+                  "position": 1
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 2
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 3
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 4
+                }
+              ],
+              "header": [
+                "Send Message"
+              ],
+              "visible_identity": {
+                "blocks": [],
+                "buttons": [
+                  {
+                    "ids": [
+                      "0a4cf342-4c87-49c9-a92c-822cc9a3bfe5"
+                    ],
+                    "position": 0,
+                    "text": "Reveal Code 👀"
+                  }
+                ]
+              }
+            },
+            "source_hash": "a3d75b5c16124acde36bca8af7538895ef6532c8f4f98aebca2ad9afae6387b8",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/node_defaults/0/capture/scope"
+              }
+            }
+          },
+          "nested_panels": [
+            {
+              "label": "node-0.button-0.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nReveal Code 👀\nWhen this button is pressed\nInstagram\nSend Message\nDelete button\nDone",
+              "fields": [
+                {
+                  "name": "caption",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Enter title...",
+                  "value": "Reveal Code 👀",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "aria_disabled": null,
+                    "aria_invalid": null,
+                    "aria_required": null,
+                    "disabled": false,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "required": false,
+                    "step": null
+                  },
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/captures/3/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": "Close",
+                  "text": ""
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Delete button"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Done"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/3"
+              },
+              "identity_evidence_exact": {
+                "visible_button_identity": {
+                  "ids": [
+                    "0a4cf342-4c87-49c9-a92c-822cc9a3bfe5"
+                  ],
+                  "position": 0,
+                  "text": "Reveal Code 👀"
+                }
+              },
+              "source_hash": "be1c45573ff286f76abb0534d63bade480399eb20a4b6de732044f0f6a24610c",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/3/scope"
+                }
+              }
+            }
+          ],
+          "shared_options": [
+            {
+              "definition": "message_personalization",
+              "panel": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/node_defaults/0/capture"
+              },
+              "matched_tokens": [
+                "textarea",
+                "Enter your text..."
+              ],
+              "signature": "80b16fd296c5abd6956845ffd7460885f53e617030421172d410ee6785221c7e",
+              "scope": "Matched visible textarea and placeholder; hidden editor state was not read."
+            },
+            {
+              "definition": "button_action",
+              "panel": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/3"
+              },
+              "matched_tokens": [
+                "Edit Button",
+                "Button title",
+                "When this button is pressed"
+              ],
+              "signature": "7c613d956a182137c9574e1fa61dff9684623998fff456c3928f87500d0ff4e9",
+              "scope": "Shared option choices only; instance values remain in this panel."
+            }
+          ],
+          "inspection": {
+            "default_opened": true,
+            "nested_panels_opened": 1,
+            "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+            "existing_block_controls_complete": true,
+            "all_variants_verified": false,
+            "gaps": []
+          },
+          "exit_semantics": [
+            {
+              "state": "no_click_unknown",
+              "detail": "No automatic timeout is inferred for a button. Only captured delay/expiration connections count."
+            }
+          ]
+        },
+        "provenance": {
+          "pointer": "/instance/nodes/0",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "node-1",
+        "type": "message",
+        "sourceType": "message",
+        "title": "Send Message",
+        "content": {
+          "text": "Use coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!",
+          "preview": "Use coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!",
+          "buttons": [
+            "Shop Now 🛍"
+          ],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "node-1",
+          "kind": "message",
+          "label_exact": "Send Message",
+          "identity": {
+            "position": 1,
+            "group": "builder-node-attached",
+            "original_source_id": null,
+            "visible_ids_exact": {
+              "blocks": [],
+              "buttons": [
+                {
+                  "ids": [
+                    "ab4f6cb7-37a1-403d-88b8-3b5a89f00d85"
+                  ],
+                  "position": 0,
+                  "text": "Shop Now 🛍"
+                }
+              ]
+            },
+            "active_sidebar_exact": [
+              {
+                "active": true,
+                "group": "builder-node-attached",
+                "label": "Send Message",
+                "position": 1
+              }
+            ],
+            "header_exact": [
+              "Send Message"
+            ],
+            "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+          },
+          "default_panel": {
+            "label": "node.1.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\nSend Message\nSend\nas Private Reply\nUse coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!\nShop Now 🛍\n+ Add Button\n+ Add Quick Reply\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nUse coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!\nShop Now 🛍\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": "text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter your text...",
+                "value": "Use coupon code:\n\nMYBDAYGIFT\n\nat checkout and your 25% discount will be automatically applied. Get shopping!",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/node_defaults/1/capture/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/node_defaults/1/capture"
+            },
+            "identity_evidence_exact": {
+              "sidebar": [
+                {
+                  "active": false,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                },
+                {
+                  "active": true,
+                  "group": "builder-node-attached",
+                  "label": "Send Message",
+                  "position": 1
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 2
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 3
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 4
+                }
+              ],
+              "header": [
+                "Send Message"
+              ],
+              "visible_identity": {
+                "blocks": [],
+                "buttons": [
+                  {
+                    "ids": [
+                      "ab4f6cb7-37a1-403d-88b8-3b5a89f00d85"
+                    ],
+                    "position": 0,
+                    "text": "Shop Now 🛍"
+                  }
+                ]
+              }
+            },
+            "source_hash": "5e3474e05f3503ac76ab5e1e53c3a0b0c2369f89164f243ce256d99b9173457e",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/node_defaults/1/capture/scope"
+              }
+            }
+          },
+          "nested_panels": [
+            {
+              "label": "node-1.button-0.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nShop Now 🛍\nWhen this button is pressed\nOpen website\nyourwebsite.comm\nWebsite URL\nyourwebsite.comm\nAdditional actions\nE.g. you can add a tag on a button click.\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nPeople will see a redirection page for 2 seconds. Upgrade to remove it.\nDelete button\nDone",
+              "fields": [
+                {
+                  "name": "caption",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Enter title...",
+                  "value": "Shop Now 🛍",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "aria_disabled": null,
+                    "aria_invalid": null,
+                    "aria_required": null,
+                    "disabled": false,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "required": false,
+                    "step": null
+                  },
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/captures/5/panel/fields/0"
+                  }
+                },
+                {
+                  "name": "url",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "https://yourwebsite.com",
+                  "value": "yourwebsite.comm",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "aria_disabled": null,
+                    "aria_invalid": null,
+                    "aria_required": null,
+                    "disabled": false,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "required": false,
+                    "step": null
+                  },
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/captures/5/panel/fields/1"
+                  }
+                },
+                {
+                  "name": null,
+                  "label": "Additional actions",
+                  "tag": "input",
+                  "type": "checkbox",
+                  "placeholder": null,
+                  "value": "on",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "aria_disabled": "false",
+                    "aria_invalid": null,
+                    "aria_required": null,
+                    "disabled": false,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "required": false,
+                    "step": null
+                  },
+                  "evidence": {
+                    "file": "evidence/66-editor.json",
+                    "pointer": "/captures/5/panel/fields/2"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": "Close",
+                  "text": ""
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Delete button"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Done"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/5"
+              },
+              "identity_evidence_exact": {
+                "visible_button_identity": {
+                  "ids": [
+                    "ab4f6cb7-37a1-403d-88b8-3b5a89f00d85"
+                  ],
+                  "position": 0,
+                  "text": "Shop Now 🛍"
+                }
+              },
+              "source_hash": "7f53594fc19265a064de2e3d6804e0714cfdeb383ca57ef0ee8e07477df04d05",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/66-editor.json",
+                  "pointer": "/captures/5/scope"
+                }
+              }
+            }
+          ],
+          "shared_options": [
+            {
+              "definition": "message_personalization",
+              "panel": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/node_defaults/1/capture"
+              },
+              "matched_tokens": [
+                "textarea",
+                "Enter your text..."
+              ],
+              "signature": "80b16fd296c5abd6956845ffd7460885f53e617030421172d410ee6785221c7e",
+              "scope": "Matched visible textarea and placeholder; hidden editor state was not read."
+            },
+            {
+              "definition": "button_action",
+              "panel": {
+                "file": "evidence/66-editor.json",
+                "pointer": "/captures/5"
+              },
+              "matched_tokens": [
+                "Edit Button",
+                "Button title",
+                "When this button is pressed"
+              ],
+              "signature": "7c613d956a182137c9574e1fa61dff9684623998fff456c3928f87500d0ff4e9",
+              "scope": "Shared option choices only; instance values remain in this panel."
+            }
+          ],
+          "inspection": {
+            "default_opened": true,
+            "nested_panels_opened": 1,
+            "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+            "existing_block_controls_complete": true,
+            "all_variants_verified": false,
+            "gaps": []
+          },
+          "exit_semantics": [
+            {
+              "state": "no_connected_destination_observed",
+              "detail": "No captured outgoing graph edge; this is not proof of purchase, registration or runtime termination."
+            }
+          ]
+        },
+        "provenance": {
+          "pointer": "/instance/nodes/1",
+          "derived": null,
+          "evidence": []
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "edge-0",
+        "from": "node-0",
+        "to": "node-1",
+        "label": "Reveal Code 👀",
+        "settings": {
+          "from": "node-0",
+          "to": "node-1",
+          "port_exact": "button-0",
+          "source_branch_id": null,
+          "source_reply_id": null,
+          "visible_button_ids": [
+            "0a4cf342-4c87-49c9-a92c-822cc9a3bfe5"
+          ],
+          "weight_percent": null,
+          "caption_exact": null,
+          "navigation_label": "navigation.node-0.button-0.target",
+          "evidence": {
+            "file": "evidence/66-editor.json",
+            "pointer": "/graph/edges/0"
+          }
+        },
+        "provenance": {
+          "pointer": "/instance/edges/0"
+        }
+      },
+      {
+        "id": "edge-1",
+        "from": "trigger",
+        "to": "node-0",
+        "label": "Starting Step",
+        "settings": {
+          "from": "trigger",
+          "to": "node-0",
+          "port_exact": "Starting Step",
+          "source_branch_id": null,
+          "source_reply_id": null,
+          "visible_button_ids": [],
+          "weight_percent": null,
+          "caption_exact": null,
+          "navigation_label": null,
+          "evidence": {
+            "file": "evidence/66-editor.json",
+            "pointer": "/graph/edges/1"
+          }
+        },
+        "provenance": {
+          "pointer": "/instance/edges/1"
+        }
+      }
+    ]
+  },
+  "setup": [],
+  "annotations": [
+    {
+      "id": "node-2",
+      "kind": "note",
+      "label_exact": "note",
+      "identity": {
+        "position": 2,
+        "group": "builder-node-unattached",
+        "original_source_id": null,
+        "visible_ids_exact": {
+          "blocks": [],
+          "buttons": []
+        },
+        "active_sidebar_exact": [
+          {
+            "active": true,
+            "group": "builder-node-unattached",
+            "label": "note",
+            "position": 2
+          }
+        ],
+        "header_exact": [],
+        "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+      },
+      "default_panel": {
+        "label": "node.2.default",
+        "scope": "publication_draft_clone",
+        "phase": "captured_default",
+        "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\n575\nNote Size\nS\nM\nL\nFont Size\naA\naA\n[preview time excluded]\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+        "fields": [
+          {
+            "name": "text",
+            "label": null,
+            "tag": "textarea",
+            "type": null,
+            "placeholder": null,
+            "value": "Make sure you update this button URL so it opens to your website!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            },
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/node_defaults/2/capture/panel/fields/0"
+            }
+          }
+        ],
+        "buttons_exact": [
+          {
+            "disabled": false,
+            "label": null,
+            "text": "Go To Flow Builder"
+          }
+        ],
+        "evidence": {
+          "file": "evidence/66-editor.json",
+          "pointer": "/node_defaults/2/capture"
+        },
+        "identity_evidence_exact": {
+          "sidebar": [
+            {
+              "active": false,
+              "group": "builder-node-start",
+              "label": "Send Message",
+              "position": 0
+            },
+            {
+              "active": false,
+              "group": "builder-node-attached",
+              "label": "Send Message",
+              "position": 1
+            },
+            {
+              "active": true,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 2
+            },
+            {
+              "active": false,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 3
+            },
+            {
+              "active": false,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 4
+            }
+          ],
+          "header": [],
+          "visible_identity": {
+            "blocks": [],
+            "buttons": []
+          }
+        },
+        "source_hash": "60f6466a7571596c636f098816bddb4b366d13ab1521f2bd4447cb11b0bf924d",
+        "scope_history": {
+          "label_exact": "inactive_clone",
+          "interpretation": "historical_label_not_inactivity_evidence",
+          "evidence": {
+            "file": "evidence/66-editor.json",
+            "pointer": "/node_defaults/2/capture/scope"
+          }
+        }
+      },
+      "nested_panels": [],
+      "shared_options": [],
+      "inspection": {
+        "default_opened": true,
+        "nested_panels_opened": 0,
+        "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+        "existing_block_controls_complete": true,
+        "all_variants_verified": false,
+        "gaps": []
+      },
+      "exit_semantics": []
+    },
+    {
+      "id": "node-3",
+      "kind": "note",
+      "label_exact": "note",
+      "identity": {
+        "position": 3,
+        "group": "builder-node-unattached",
+        "original_source_id": null,
+        "visible_ids_exact": {
+          "blocks": [],
+          "buttons": []
+        },
+        "active_sidebar_exact": [
+          {
+            "active": true,
+            "group": "builder-node-unattached",
+            "label": "note",
+            "position": 3
+          }
+        ],
+        "header_exact": [],
+        "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+      },
+      "default_panel": {
+        "label": "node.3.default",
+        "scope": "publication_draft_clone",
+        "phase": "captured_default",
+        "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\n482\nNote Size\nS\nM\nL\nFont Size\naA\naA\n[preview time excluded]\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+        "fields": [
+          {
+            "name": "text",
+            "label": null,
+            "tag": "textarea",
+            "type": null,
+            "placeholder": null,
+            "value": "This is the first message a follower sees in their DMs. Personalize this message so your follower is excited to click to the next step. We use a button here.\n",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            },
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/node_defaults/3/capture/panel/fields/0"
+            }
+          }
+        ],
+        "buttons_exact": [
+          {
+            "disabled": false,
+            "label": null,
+            "text": "Go To Flow Builder"
+          }
+        ],
+        "evidence": {
+          "file": "evidence/66-editor.json",
+          "pointer": "/node_defaults/3/capture"
+        },
+        "identity_evidence_exact": {
+          "sidebar": [
+            {
+              "active": false,
+              "group": "builder-node-start",
+              "label": "Send Message",
+              "position": 0
+            },
+            {
+              "active": false,
+              "group": "builder-node-attached",
+              "label": "Send Message",
+              "position": 1
+            },
+            {
+              "active": false,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 2
+            },
+            {
+              "active": true,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 3
+            },
+            {
+              "active": false,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 4
+            }
+          ],
+          "header": [],
+          "visible_identity": {
+            "blocks": [],
+            "buttons": []
+          }
+        },
+        "source_hash": "562625d65117c21fbb81144a96b40441892cb747e2d2953ff09e8a7b6f3a490e",
+        "scope_history": {
+          "label_exact": "inactive_clone",
+          "interpretation": "historical_label_not_inactivity_evidence",
+          "evidence": {
+            "file": "evidence/66-editor.json",
+            "pointer": "/node_defaults/3/capture/scope"
+          }
+        }
+      },
+      "nested_panels": [],
+      "shared_options": [],
+      "inspection": {
+        "default_opened": true,
+        "nested_panels_opened": 0,
+        "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+        "existing_block_controls_complete": true,
+        "all_variants_verified": false,
+        "gaps": []
+      },
+      "exit_semantics": []
+    },
+    {
+      "id": "node-4",
+      "kind": "note",
+      "label_exact": "note",
+      "identity": {
+        "position": 4,
+        "group": "builder-node-unattached",
+        "original_source_id": null,
+        "visible_ids_exact": {
+          "blocks": [],
+          "buttons": []
+        },
+        "active_sidebar_exact": [
+          {
+            "active": true,
+            "group": "builder-node-unattached",
+            "label": "note",
+            "position": 4
+          }
+        ],
+        "header_exact": [],
+        "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+      },
+      "default_panel": {
+        "label": "node.4.default",
+        "scope": "publication_draft_clone",
+        "phase": "captured_default",
+        "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message\nUnattached Steps\nnote\nnote\nnote\n+ Create New Step\n535\nNote Size\nS\nM\nL\nFont Size\naA\naA\n[preview time excluded]\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+        "fields": [
+          {
+            "name": "text",
+            "label": null,
+            "tag": "textarea",
+            "type": null,
+            "placeholder": null,
+            "value": "Your trigger here will be \"User replies to your Story\". You can change this to be any keyword you'd like!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            },
+            "evidence": {
+              "file": "evidence/66-editor.json",
+              "pointer": "/node_defaults/4/capture/panel/fields/0"
+            }
+          }
+        ],
+        "buttons_exact": [
+          {
+            "disabled": false,
+            "label": null,
+            "text": "Go To Flow Builder"
+          }
+        ],
+        "evidence": {
+          "file": "evidence/66-editor.json",
+          "pointer": "/node_defaults/4/capture"
+        },
+        "identity_evidence_exact": {
+          "sidebar": [
+            {
+              "active": false,
+              "group": "builder-node-start",
+              "label": "Send Message",
+              "position": 0
+            },
+            {
+              "active": false,
+              "group": "builder-node-attached",
+              "label": "Send Message",
+              "position": 1
+            },
+            {
+              "active": false,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 2
+            },
+            {
+              "active": false,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 3
+            },
+            {
+              "active": true,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 4
+            }
+          ],
+          "header": [],
+          "visible_identity": {
+            "blocks": [],
+            "buttons": []
+          }
+        },
+        "source_hash": "6e8534c5f82d1ac8bd2a68c98ea83af7d979ec8b34e012e3e516c61188c44a83",
+        "scope_history": {
+          "label_exact": "inactive_clone",
+          "interpretation": "historical_label_not_inactivity_evidence",
+          "evidence": {
+            "file": "evidence/66-editor.json",
+            "pointer": "/node_defaults/4/capture/scope"
+          }
+        }
+      },
+      "nested_panels": [],
+      "shared_options": [],
+      "inspection": {
+        "default_opened": true,
+        "nested_panels_opened": 0,
+        "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+        "existing_block_controls_complete": true,
+        "all_variants_verified": false,
+        "gaps": []
+      },
+      "exit_semantics": []
+    }
+  ]
+}

@@ -1,0 +1,400 @@
+{
+  "schema_version": 1,
+  "id": "inro-6220",
+  "version": "1.0.0",
+  "description_status": "described_not_accepted",
+  "title": "Requested resource from a comment",
+  "source": {
+    "id": "inro-6220",
+    "title": "Drive traffic to your link from comments",
+    "url": "https://app.inro.social/public/scenarios/6220",
+    "observed_at": "2026-10-30",
+    "original_goal": "Drive traffic to your link from comments",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "native": {
+    "inputs_text": "resource_title, resource_url.",
+    "messages_text": "\"Here is {resource_title}: {resource_url}.\"",
+    "modes": [
+      "C"
+    ],
+    "end_stop": "Recipient receives and can open the actual destination; S. No click tracking or follow-up.",
+    "difference": ""
+  },
+  "applicability": {
+    "use_when": [
+      "People comment the approved word on selected posts to request one resource."
+    ],
+    "prerequisites": [
+      "Have an existing resource title and recipient-accessible URL ready for the first DM."
+    ],
+    "exclude_when": [
+      "Do not choose when permission buttons, click tracking or a timed no-click reminder are mandatory.",
+      "Do not configure when required lifecycle operations are unavailable on the actual host."
+    ]
+  },
+  "inputs": [
+    {
+      "name": "campaign",
+      "type": "text",
+      "requirement": "required",
+      "description": "Unique ASCII campaign name, at most 48 characters. Journal belongs to this conversation only."
+    },
+    {
+      "name": "language",
+      "type": "text",
+      "requirement": "required",
+      "description": "Language for the exact approved messages."
+    },
+    {
+      "name": "initial_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved first message; promised value must be in that message."
+    },
+    {
+      "name": "post_ids",
+      "type": "ids",
+      "requirement": "required",
+      "description": "Actual owned Instagram posts; inspect overlap before preparation."
+    },
+    {
+      "name": "keyword",
+      "type": "text",
+      "requirement": "required",
+      "description": "Approved entry word; read actual host matching rules."
+    },
+    {
+      "name": "public_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved public copy, or nonempty inactive copy when public replies are disabled."
+    },
+    {
+      "name": "resource_title",
+      "type": "text",
+      "requirement": "required",
+      "description": "Coach-supplied resource title, preserved without invented claims."
+    },
+    {
+      "name": "resource_url",
+      "type": "url",
+      "requirement": "required",
+      "description": "Coach-supplied resource url, preserved without invented claims."
+    }
+  ],
+  "messages": [
+    {
+      "id": "public",
+      "kind": "template",
+      "text": "Check DMs and message requests.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6220",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "initial",
+      "kind": "template",
+      "text": "Here is {resource_title}: {resource_url}.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6220",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "placement",
+      "kind": "template",
+      "text": "",
+      "availability": "not_required",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6220",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "continuation",
+      "kind": "instruction",
+      "text": "",
+      "availability": "not_sent",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6220",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "refusal",
+      "kind": "template",
+      "text": "",
+      "availability": "not_sent",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6220",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "handoff",
+      "kind": "template",
+      "text": "",
+      "availability": "not_sent",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6220",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    }
+  ],
+  "route": {
+    "origin": "derived_native_instructions",
+    "deterministic": false,
+    "start": "entry",
+    "steps": [
+      {
+        "id": "entry",
+        "action": "Actual matching keyword comment on the selected post.",
+        "message_ids": [
+          "placement"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6220"
+        }
+      },
+      {
+        "id": "first",
+        "action": "Send the exact approved first message. Deliver any promised value now.",
+        "message_ids": [
+          "public",
+          "initial"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6220"
+        }
+      },
+      {
+        "id": "end",
+        "action": "One-shot campaign finished. Keep incomingMessages.howToReply:DontReply; send no further campaign message.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6220"
+        },
+        "response_mode": "silent"
+      },
+      {
+        "id": "refusal",
+        "action": "Remain silent on refusal. Send no refusal reply and do not resume this campaign.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6220"
+        },
+        "response_mode": "silent"
+      },
+      {
+        "id": "silence",
+        "action": "Remain silent when there is no reply or only an external click.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6220"
+        },
+        "response_mode": "silent"
+      },
+      {
+        "id": "repeat",
+        "action": "Remain silent on repeated or ambiguous late DMs. Do not clarify, restart intake or resend the material.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6220"
+        },
+        "response_mode": "silent"
+      }
+    ],
+    "transitions": [
+      {
+        "from": "entry",
+        "to": "first",
+        "condition": "New matching source event; current account, permission and delivery window verified.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6220"
+        }
+      },
+      {
+        "from": "first",
+        "to": "end",
+        "condition": "One approved response; no follow-up for silence or clicks.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6220"
+        }
+      },
+      {
+        "from": "first",
+        "to": "refusal",
+        "condition": "Inbound refusal after the first message; no campaign reply.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6220"
+        }
+      },
+      {
+        "from": "first",
+        "to": "silence",
+        "condition": "No inbound reply, or only an external click.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6220"
+        }
+      },
+      {
+        "from": "first",
+        "to": "repeat",
+        "condition": "Repeated or ambiguous late DM after the first message.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6220"
+        }
+      }
+    ]
+  },
+  "source_differences": [
+    "Not preserved from the source: click-tracking, two-hour-no-click-reminder, arbitrary-buttons. A business analogue is not an equivalent graph."
+  ],
+  "reconciliation": {
+    "legacy_file": "recipes/inro-6220.json",
+    "legacy_sha256": "0ee40ada3e5cd6eaed24a2d3681bc3ca8263892776569887f6c9bed097fe5007",
+    "legacy_version": "0.1.0",
+    "legacy_status": "candidate",
+    "legacy_goal": "Deliver the promised accessible link in the first and only unsolicited DM.",
+    "relationship": "native_guide_revision_not_literal_equivalence",
+    "explanation": "The native guide defines this business outcome. Legacy inputs, messages and transitions remain available for exact-source audit, not as a second authority for this analogue.",
+    "required_input_changes": {
+      "legacy": [
+        "post_ids",
+        "keyword",
+        "resource_title",
+        "resource_url",
+        "language",
+        "public_text",
+        "initial_text"
+      ],
+      "legacy_initial": [
+        "resource_title",
+        "resource_url"
+      ],
+      "canonical": [
+        {
+          "name": "campaign",
+          "requirement": "required"
+        },
+        {
+          "name": "language",
+          "requirement": "required"
+        },
+        {
+          "name": "initial_text",
+          "requirement": "required"
+        },
+        {
+          "name": "post_ids",
+          "requirement": "required"
+        },
+        {
+          "name": "keyword",
+          "requirement": "required"
+        },
+        {
+          "name": "public_text",
+          "requirement": "required"
+        },
+        {
+          "name": "resource_title",
+          "requirement": "required"
+        },
+        {
+          "name": "resource_url",
+          "requirement": "required"
+        }
+      ]
+    }
+  },
+  "configuration": {
+    "policy": "native-policy.md",
+    "capability_observation": "capability-observation.json",
+    "operations": [
+      "Read actual host tools and get_playbook for this recipe.",
+      "Create/bind only an approved owned OFF rule. Normal setup_comment_replies is not draft preparation.",
+      "Apply native policy mode C; inspect actual inputs before writes.",
+      "Read back each exact setting and inheritance before continuing.",
+      "Keep owned incomingMessages.howToReply:DontReply and followUps:DontSend. Leave general DM unchanged; send no campaign refusal, clarification or continuation."
+    ],
+    "normal_connector_gate": "Required OFF creation, exact inheritance restoration or continuing comment preview may be unavailable. Stop before writes; a documented GraphQL alternative is not an available normal tool.",
+    "continuation_reply_mode": "DontReply"
+  },
+  "lifecycle": {
+    "checks": [
+      "content",
+      "return",
+      "stop",
+      "refusal",
+      "repeat",
+      "unknown_action",
+      "wrong_account",
+      "two_campaigns",
+      "source_attribution",
+      "new_contact_silence",
+      "old_contact_silence",
+      "non_follower",
+      "expired_window",
+      "recipient_access",
+      "destination",
+      "promised_link_received",
+      "normal_host_capabilities",
+      "fresh_account_state",
+      "exact_restoration",
+      "live_suppression"
+    ],
+    "return": "Use this conversation journal and fresh native readback. No cross-chat state or user settings transfer. If the journal is missing, read-only reconciliation only.",
+    "stop": "Apply S from native-policy.md: safe owned disable; exact campaign additions only; preserve concurrent changes and inheritance. Restore dormant Send only after original OFF DM is OFF. Read back every stop; live silence is separate.",
+    "restart": "Fresh source and consent, same verified ownership. Waitlist membership stays joined/withdrawn; no old consent reuse."
+  },
+  "evidence": {
+    "source_capture": {
+      "observed_at": "2026-10-30",
+      "status": "captured_research_not_runtime"
+    },
+    "canonical_version": {
+      "status": "described_not_runtime_tested"
+    },
+    "capability": {
+      "observed_at": "2026-11-01",
+      "status": "dated_document_and_tool_observation_not_account_check"
+    },
+    "preview": {
+      "status": "not_tested_for_canonical_version",
+      "note": "Older previews do not establish unchanged behavior after prompt changes."
+    },
+    "live": {
+      "status": "historical_partial_not_accepted",
+      "observed_at": "2026-10-31",
+      "note": "No individual live acceptance for this canonical version.",
+      "reference": "inro-business-analogues-live.json; checked_at=2026-10-31T06:52:44Z"
+    },
+    "acceptance": {
+      "status": "not_accepted",
+      "registry": "catalog.json",
+      "note": "Zero versions qualify. Local checks, previews and partial live paths are not acceptance."
+    }
+  }
+}

@@ -1,0 +1,444 @@
+{
+  "schema_version": 1,
+  "id": "inro-6019",
+  "version": "1.0.0",
+  "description_status": "described_not_accepted",
+  "title": "Profile or QR invitation with a coupon",
+  "source": {
+    "id": "inro-6019",
+    "title": "Welcome new customers from a QR code",
+    "url": "https://app.inro.social/public/scenarios/6019",
+    "observed_at": "2026-10-30",
+    "original_goal": "Welcome new customers from a QR code",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "native": {
+    "inputs_text": "profile_url, coupon_code, coupon_terms.",
+    "messages_text": "Placement: \"Open this Instagram profile and DM {keyword}.\" DM: \"Your code is {coupon_code}. {coupon_terms}\"",
+    "modes": [
+      "D",
+      "H"
+    ],
+    "end_stop": "Inbound word receives the exact code; S.",
+    "difference": "Native entry is the DM word, not a QR scan. Verify profile_url belongs to the connected account. Use an existing QR or the host's available QR/file tool with a proven encoder; decode it to that exact URL before delivering a printable file. Do not generate QR modules as an illustration. Without a verified image tool, deliver the profile invitation and state that a printable QR is not supplied. No scan attribution or redemption claim."
+  },
+  "applicability": {
+    "use_when": [
+      "A profile invitation or existing QR directs people to ordinary DMs for a coupon."
+    ],
+    "prerequisites": [
+      "Have the correct connected profile URL, coupon code and terms. A printable QR requires a proven encoder and exact decode verification."
+    ],
+    "exclude_when": [
+      "Do not choose for scan attribution, verified redemption or an unverified illustrated QR. Without a verified tool, no printable QR is supplied.",
+      "Do not configure when required lifecycle operations are unavailable on the actual host."
+    ]
+  },
+  "inputs": [
+    {
+      "name": "campaign",
+      "type": "text",
+      "requirement": "required",
+      "description": "Unique ASCII campaign name, at most 48 characters. Journal belongs to this conversation only."
+    },
+    {
+      "name": "language",
+      "type": "text",
+      "requirement": "required",
+      "description": "Language for the exact approved messages."
+    },
+    {
+      "name": "initial_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved first message; promised value must be in that message."
+    },
+    {
+      "name": "refusal_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved refusal reply. Ends this campaign before keyword matching."
+    },
+    {
+      "name": "handoff_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved team reply; native handoff needs separate readback."
+    },
+    {
+      "name": "keyword",
+      "type": "text",
+      "requirement": "required",
+      "description": "Approved entry word; read actual host matching rules."
+    },
+    {
+      "name": "profile_url",
+      "type": "url",
+      "requirement": "required",
+      "description": "Existing public Instagram profile URL; no hosted file is created."
+    },
+    {
+      "name": "coupon_code",
+      "type": "text",
+      "requirement": "required",
+      "description": "Coach-supplied coupon code, preserved without invented claims."
+    },
+    {
+      "name": "coupon_terms",
+      "type": "text",
+      "requirement": "required",
+      "description": "Coach-supplied coupon terms, preserved without invented claims."
+    }
+  ],
+  "messages": [
+    {
+      "id": "public",
+      "kind": "template",
+      "text": "",
+      "availability": "not_sent",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6019",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "initial",
+      "kind": "template",
+      "text": "Your code is {coupon_code}. {coupon_terms}",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6019",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "placement",
+      "kind": "template",
+      "text": "Open this Instagram profile and DM {keyword}.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6019",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "continuation",
+      "kind": "instruction",
+      "text": "Placement: \"Open this Instagram profile and DM {keyword}.\" DM: \"Your code is {coupon_code}. {coupon_terms}\"",
+      "availability": "instruction_not_sent_text",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6019",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "refusal",
+      "kind": "template",
+      "text": "Understood. I will not continue this campaign.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6019",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "handoff",
+      "kind": "template",
+      "text": "Our team will handle your request.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6019",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    }
+  ],
+  "route": {
+    "origin": "derived_native_instructions",
+    "deterministic": false,
+    "start": "entry",
+    "steps": [
+      {
+        "id": "entry",
+        "action": "Actual new inbound campaign word in an ordinary Instagram DM. Placement is a coach action, not a trigger.",
+        "message_ids": [
+          "placement"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "id": "first",
+        "action": "Send the exact approved first message. Deliver any promised value now.",
+        "message_ids": [
+          "initial"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "id": "end",
+        "action": "Stated outcome only. No inferred booking, registration, purchase, verified follow or verified share.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "id": "refusal",
+        "action": "End this campaign on refusal. Do not restart from a keyword in the refusal.",
+        "message_ids": [
+          "refusal"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "id": "silence",
+        "action": "Send nothing for silence or external clicks; enforce current delivery windows.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "id": "repeat",
+        "action": "Same-run repeat does not restart intake, resend a bonus or duplicate capture. Ambiguous late replies need clarification.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "id": "handoff",
+        "action": "Use native team handoff on person request, unresolved facts or approved handoff criteria. Text alone is not handoff proof.",
+        "message_ids": [
+          "handoff"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "from": "entry",
+        "to": "first",
+        "condition": "New matching source event; current account, permission and delivery window verified.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "from": "first",
+        "to": "end",
+        "condition": "One approved response; no follow-up for silence or clicks.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "from": "first",
+        "to": "refusal",
+        "condition": "Actual refusal.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "from": "first",
+        "to": "silence",
+        "condition": "No inbound reply, or only an external click.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "from": "first",
+        "to": "repeat",
+        "condition": "Same-run repeated word.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "from": "refusal",
+        "to": "end",
+        "condition": "Refusal completed. No permanent cross-source suppression claimed.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "from": "first",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      },
+      {
+        "from": "handoff",
+        "to": "end",
+        "condition": "Actual native team control readback.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6019"
+        }
+      }
+    ]
+  },
+  "source_differences": [
+    "Native entry is the DM word, not a QR scan. Verify profile_url belongs to the connected account. Use an existing QR or the host's available QR/file tool with a proven encoder; decode it to that exact URL before delivering a printable file. Do not generate QR modules as an illustration. Without a verified image tool, deliver the profile invitation and state that a printable QR is not supplied. No scan attribution or redemption claim."
+  ],
+  "reconciliation": {
+    "legacy_file": "recipes/inro-6019.json",
+    "legacy_sha256": "69671cfb57be9f6a5287333285cf73c7a3e253f2c87c2d2c98b2b6714a8ac7c3",
+    "legacy_version": "0.1.0",
+    "legacy_status": "changed",
+    "legacy_goal": "Give an approved coupon after an ordinary DM word invited by a QR pointing to the Instagram profile.",
+    "relationship": "native_guide_revision_not_literal_equivalence",
+    "explanation": "The native guide defines this business outcome. Legacy inputs, messages and transitions remain available for exact-source audit, not as a second authority for this analogue.",
+    "required_input_changes": {
+      "legacy": [
+        "keyword",
+        "profile_url",
+        "coupon_code",
+        "coupon_terms",
+        "language",
+        "initial_text",
+        "refusal_text",
+        "handoff_text"
+      ],
+      "legacy_initial": [
+        "coupon_code",
+        "coupon_terms"
+      ],
+      "canonical": [
+        {
+          "name": "campaign",
+          "requirement": "required"
+        },
+        {
+          "name": "language",
+          "requirement": "required"
+        },
+        {
+          "name": "initial_text",
+          "requirement": "required"
+        },
+        {
+          "name": "refusal_text",
+          "requirement": "required"
+        },
+        {
+          "name": "handoff_text",
+          "requirement": "required"
+        },
+        {
+          "name": "keyword",
+          "requirement": "required"
+        },
+        {
+          "name": "profile_url",
+          "requirement": "required"
+        },
+        {
+          "name": "coupon_code",
+          "requirement": "required"
+        },
+        {
+          "name": "coupon_terms",
+          "requirement": "required"
+        }
+      ]
+    }
+  },
+  "configuration": {
+    "policy": "native-policy.md",
+    "capability_observation": "capability-observation.json",
+    "operations": [
+      "Read actual host tools and get_playbook for this recipe.",
+      "Read/stage general InstagramDirectMessages only under explicit OFF/ON shared-state branches.",
+      "Apply native policy mode D; inspect actual inputs before writes.",
+      "Apply native policy mode H; inspect actual inputs before writes.",
+      "Read back each exact setting and inheritance before continuing."
+    ],
+    "normal_connector_gate": "Required OFF creation, exact inheritance restoration or continuing comment preview may be unavailable. Stop before writes; a documented GraphQL alternative is not an available normal tool."
+  },
+  "lifecycle": {
+    "checks": [
+      "content",
+      "return",
+      "stop",
+      "refusal",
+      "repeat",
+      "unknown_action",
+      "wrong_account",
+      "two_campaigns",
+      "source_attribution",
+      "expired_window",
+      "late_ambiguous_reply",
+      "destination",
+      "phone_qr_entry",
+      "phone_qr_coupon_received",
+      "normal_host_capabilities",
+      "fresh_account_state",
+      "exact_restoration",
+      "live_suppression"
+    ],
+    "return": "Use this conversation journal and fresh native readback. No cross-chat state or user settings transfer. If the journal is missing, read-only reconciliation only.",
+    "stop": "Apply S from native-policy.md: safe owned disable; exact campaign additions only; preserve concurrent changes and inheritance. Restore dormant Send only after original OFF DM is OFF. Read back every stop; live silence is separate.",
+    "restart": "Fresh source and consent, same verified ownership. Waitlist membership stays joined/withdrawn; no old consent reuse."
+  },
+  "evidence": {
+    "source_capture": {
+      "observed_at": "2026-10-30",
+      "status": "captured_research_not_runtime"
+    },
+    "canonical_version": {
+      "status": "described_not_runtime_tested"
+    },
+    "capability": {
+      "observed_at": "2026-11-01",
+      "status": "dated_document_and_tool_observation_not_account_check"
+    },
+    "preview": {
+      "status": "not_tested_for_canonical_version",
+      "note": "Older previews do not establish unchanged behavior after prompt changes."
+    },
+    "live": {
+      "status": "historical_partial_not_accepted",
+      "observed_at": "2026-10-31",
+      "note": "No individual live acceptance for this canonical version.",
+      "reference": "inro-business-analogues-live.json; checked_at=2026-10-31T06:52:44Z"
+    },
+    "acceptance": {
+      "status": "not_accepted",
+      "registry": "catalog.json",
+      "note": "Zero versions qualify. Local checks, previews and partial live paths are not acceptance."
+    }
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "id": "inro-6080",
+  "version": "0.1.0",
+  "source": {
+    "id": "inro-6080",
+    "title": "Sell Your Courses",
+    "url": "https://app.inro.social/public/scenarios/6080",
+    "observed_at": "2026-10-30",
+    "original_goal": "Sell Your Courses",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "status": "candidate",
+  "family": "sales",
+  "goal": "Discuss the stated course offer after an inbound answer and provide the existing course link.",
+  "entry": "comment",
+  "platforms": [
+    "Instagram"
+  ],
+  "conversation": true,
+  "design_changes": [],
+  "unsupported_requirements": [
+    "confirmed-purchase",
+    "course-access-provisioning",
+    "arbitrary-buttons"
+  ],
+  "blockers": [],
+  "required_inputs": [
+    "post_ids",
+    "keyword",
+    "course_name",
+    "offer_terms",
+    "course_url",
+    "language",
+    "public_text",
+    "initial_text",
+    "refusal_text",
+    "handoff_text"
+  ],
+  "allowed_parameters": {
+    "post_ids": {
+      "type": "post_ids",
+      "description": "1-50 actual selected Instagram post IDs read from this account."
+    },
+    "keyword": {
+      "type": "text",
+      "description": "Exact comment or inbound DM campaign word, at most 50 characters."
+    },
+    "course_name": {
+      "type": "text",
+      "description": "Coach-supplied course name, preserved without invented claims."
+    },
+    "offer_terms": {
+      "type": "text",
+      "description": "Approved price, currency and conditions, or an explicit absence of a price."
+    },
+    "course_url": {
+      "type": "url",
+      "description": "Coach-supplied course url, preserved without invented claims."
+    },
+    "language": {
+      "type": "text",
+      "description": "Coach's message language; provide the exact approved copy in this language."
+    },
+    "public_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved public text in language, within this recipe's unchanged promise and transitions."
+    },
+    "initial_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved initial text in language, within this recipe's unchanged promise and transitions."
+    },
+    "refusal_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved refusal text in language, within this recipe's unchanged promise and transitions."
+    },
+    "handoff_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved handoff text in language, within this recipe's unchanged promise and transitions."
+    }
+  },
+  "messages": {
+    "public": "Check DMs and message requests.",
+    "initial": "Here is {course_name}: {offer_terms}. Reply COURSE if you want to ask a question.",
+    "continuation": "After COURSE, answer only from offer_terms and share course_url. Hand off unknown prices or access questions.",
+    "refusal": "Understood. I will not continue this campaign. You can ask our team for help.",
+    "handoff": "Our team will handle your request.",
+    "placement": ""
+  },
+  "transitions": [
+    {
+      "event": "Coach supplies approved business facts and selects the existing account.",
+      "actor": "Claude",
+      "action": "Prepare exact messages and native payloads locally; obtain scoped approvals and save private intent.",
+      "evidence": "Preview, recipe digest and private card readback."
+    },
+    {
+      "event": "The contact comments the exact campaign word under an approved post.",
+      "actor": "Contact",
+      "action": "Provide the real entry event; an external click is not a reply.",
+      "evidence": "Actual account, recipient, media/word and entry event IDs."
+    },
+    {
+      "event": "The approved native automation receives that entry.",
+      "actor": "Chatfuel",
+      "action": "Send exactly one initial message containing the approved value or question.",
+      "evidence": "Recipient-side first message and linked source."
+    },
+    {
+      "event": "The contact actually replies within the permitted window.",
+      "actor": "Chatfuel AI",
+      "action": "After COURSE, answer only from offer_terms and share course_url. Hand off unknown prices or access questions.",
+      "evidence": "The correct approved offer and course URL appear in the conversation."
+    },
+    {
+      "event": "The contact opens the supplied external destination.",
+      "actor": "External destination",
+      "action": "Handle any actual booking, registration, join or purchase outside this skill.",
+      "evidence": "An external confirmation is required before claiming that external result."
+    }
+  ],
+  "native_operations": [
+    "get_bot",
+    "get_automation",
+    "list_posts",
+    "fuelyAutomationCreate",
+    "fuelyAutomationUpdateSetting",
+    "fuelyAutomationSetEnabled",
+    "get_knowledge_base",
+    "take_over_chat"
+  ],
+  "outcome": "The correct approved offer and course URL appear in the conversation.",
+  "negative_cases": [
+    "Do not invent discounts or testimonials.",
+    "An opened sales link is not payment or course access."
+  ],
+  "runtime_checks": [
+    "content",
+    "return",
+    "stop",
+    "refusal",
+    "repeat",
+    "unknown_action",
+    "wrong_account",
+    "two_campaigns",
+    "source_attribution",
+    "new_contact_silence",
+    "old_contact_silence",
+    "non_follower",
+    "expired_window",
+    "comment_context_return",
+    "dm_fallback_return",
+    "destination",
+    "approved_course_offer_received"
+  ],
+  "resume": {
+    "actor": "Claude",
+    "action": "Restore the private card, confirm this recipe digest and account, then read current owned and shared settings. Reconcile unknown results without retry.",
+    "campaign_match": "Require the actual media, commentID and linked private reply; do not infer campaign from lead stage."
+  },
+  "stop": {
+    "actor": "Claude with scoped native approval",
+    "action": "Disable only the campaign-owned comment rule, if present. Remove only campaign additions from shared DM text, captures and handoff; retain other campaigns and support.",
+    "proof": "Read back changes. Test late entry, late DM, the second campaign and ordinary support before accepting complete stop."
+  },
+  "execution_reference": "../chatfuel-execution.md",
+  "initial_required_parameters": [
+    "course_name",
+    "offer_terms"
+  ],
+  "supported_requirements": [
+    "instagram",
+    "local-preview",
+    "comment-keyword",
+    "scoped-posts",
+    "team-handoff"
+  ],
+  "business_outcomes": {
+    "approved_course_offer_received": {
+      "origin": "recipient-observation",
+      "description": "The approved course terms and existing course destination reach the recipient.",
+      "min_native_refs": 1,
+      "parameter": "course_url"
+    }
+  }
+}

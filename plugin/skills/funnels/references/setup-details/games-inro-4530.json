@@ -1,0 +1,1209 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "games-inro-4530",
+    "name": "Live quiz: correct answer and a 50% chance",
+    "source_ids": [
+      "inro-4530"
+    ],
+    "entry": "Comment during a Live",
+    "mandatory_conditions": [
+      "Answer a question",
+      "Correct answer: random 50/50 outcome; wrong answer: no prize"
+    ],
+    "outcome": "A prize for some correct answers",
+    "timing": [
+      "Opening button: 1 hour; reply: 2 hours; link click: 3 days."
+    ],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "live",
+      "random",
+      "buttons",
+      "timers",
+      "click",
+      "graph"
+    ],
+    "assessment": {
+      "status": "unavailable",
+      "reason": "Live entry and the random 50/50 choice are unavailable. An AI answer or equal bonus does not reproduce the game.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Live entry and the random 50/50 choice are unavailable. An AI answer or equal bonus does not reproduce the game.",
+        "result": "With owner approval: a DM quiz with the same bonus for everyone. Entry, odds and reward rules change.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "inro-4530": "The captured probabilities and prizes are source rules, not a promise of winning."
+    },
+    "client_inputs": [],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-4530"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [],
+      "binding_review": {
+        "source_entry": "Comment during a Live",
+        "source_outcome": "A prize for some correct answers",
+        "mandatory_conditions": [
+          "Answer a question",
+          "Correct answer: random 50/50 outcome; wrong answer: no prize"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 0,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The selected outcome requires random selection or allocation. Ordinary MCP cannot implement that selection; giving everyone the same reward is a different result.",
+        "primary_result": "A prize for some correct answers",
+        "source_requirements": [
+          "Answer a question",
+          "Correct answer: random 50/50 outcome; wrong answer: no prize"
+        ],
+        "source_timing": [
+          "Opening button: 1 hour; reply: 2 hours; link click: 3 days."
+        ],
+        "blocking_dependencies": [
+          "random"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Use a quiz or prize reveal to make participation rewarding.",
+  "fit": "Creators choosing between knowledge-based results and chance-based rewards.",
+  "preparation_status": "waiting_for_chatfuel",
+  "function_review": {
+    "status": "waiting_for_chatfuel",
+    "reason": "The selected outcome requires random selection or allocation. Ordinary MCP cannot implement that selection; giving everyone the same reward is a different result.",
+    "primary_result": "A prize for some correct answers",
+    "source_requirements": [
+      "Answer a question",
+      "Correct answer: random 50/50 outcome; wrong answer: no prize"
+    ],
+    "source_timing": [
+      "Opening button: 1 hour; reply: 2 hours; link click: 3 days."
+    ],
+    "blocking_dependencies": [
+      "random"
+    ],
+    "retained": [],
+    "omitted": [],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "live",
+    "random",
+    "buttons",
+    "timers",
+    "click",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "inro-4530",
+      "source_file": "source-records/inro-4530.json",
+      "source_title": "Gamify IG Lives",
+      "start": "n000",
+      "nodes": [
+        {
+          "id": "n000",
+          "source_type": "trigger",
+          "content": {
+            "text": "When\nSomeone comments on your Live",
+            "preview": "When\nSomeone comments on your Live",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "live"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [
+            "live"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "c87189103c251ce21026bd4934d46ff20822178539719ec70c32cb0801a0398e",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n001",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nIG Live Game Parti…",
+            "preview": "Add contact to folder(s)\nIG Live Game Parti…",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "1d60cd486b49987a6045696ef3f0412f0e6a6bf77c8b2f367cffdac04a34b4b4",
+          "settings_leaf_count": 40
+        },
+        {
+          "id": "n002",
+          "source_type": "button_template",
+          "content": {
+            "text": "Are you ready? Win and get a chance to get an exclusive prize \nLet's go!!!🔥",
+            "preview": "Are you ready? Win and get a chance to get an exclusive prize \nLet's go!!!🔥",
+            "buttons": [
+              "Let's go!!!🔥"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved alternative text or choice words"
+          ],
+          "reason": "Rich buttons/callbacks are not normal MCP fields. A text-choice adaptation needs approval; never treat it as the captured button event.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "9ba0e41da5908c38cb31ad929620d157a5cad96225cce0dcf4b0e932fc2bda5d",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n003",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN BUTTON IS CLICKED\nLet's go!!!🔥",
+            "preview": "WHEN BUTTON IS CLICKED\nLet's go!!!🔥",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "d53acb979333810ad12df177f6d4f5d86150fe4d09fc258cc2bab91134b6b182",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n004",
+          "source_type": "media_message",
+          "content": {
+            "text": "",
+            "preview": "",
+            "buttons": [],
+            "media": [
+              "https://app.inro.social/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBM0g5TUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--1da0e2b77e78f3b4d84036cdacdfea006b518ba2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9VY21WemFYcGxYM1J2WDJ4cGJXbDBXd2RwQWVBdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--77580adcb47c9209a9fc05070e60d13ba9bc109e/clap-clapping.mp4"
+            ],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved destination or image requirement"
+          ],
+          "reason": "Media/gallery delivery is not a normal reply setting. Do not silently turn required media into text.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "a8ba627654b78d24ba7727329c2b14661beadb99837a89bfa8ca34bb652e5693",
+          "settings_leaf_count": 33
+        },
+        {
+          "id": "n005",
+          "source_type": "message",
+          "content": {
+            "text": "Here are the rules:\n\nWatch for my next question in your DMs.\nReply with your best answer.\n\n✅ Got it right? Nice one! But heads-up: only 50 % of the correct answers will actually win, so luck still plays a part.\n\n🔴 Missed it? No stress! Just catch my next live and have another go.",
+            "preview": "Here are the rules:\n\nWatch for my next question in your DMs.\nReply with your best answer.\n\n✅ Got it right? Nice one! But heads-up: only 50 % of the correct answers will actually win, so luck still plays a part.\n\n🔴 Missed it? No stress! Just catch my next live and have another go.",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "ea59d4e02e524a4d54fb24871a21b15a2c12352c781471a0c2839ba9b387b7d2",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n006",
+          "source_type": "survey",
+          "content": {
+            "text": "Quiz\nWhich of these animals is physically incapable of jumping?\nKangaroo\nElephant\nGoat\nRabbit",
+            "preview": "Quiz\nWhich of these animals is physically incapable of jumping?\nKangaroo\nElephant\nGoat\nRabbit",
+            "buttons": [
+              "Kangaroo",
+              "Elephant",
+              "Goat",
+              "Rabbit"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "external"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "survey destination and completion evidence"
+          ],
+          "reason": "A link does not prove external form completion. Keep access-after-completion as an unresolved mandatory dependency.",
+          "unsupported": [
+            "buttons",
+            "external"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/6/settings",
+          "settings_sha256": "f475e7d0f914e3eb7bd87de61fdee78993f48c3508d4f0f1cdbcb089204e757d",
+          "settings_leaf_count": 43
+        },
+        {
+          "id": "n007",
+          "source_type": "wait_for_reply",
+          "content": {
+            "text": "Wait for reply\nThe scenario will pause and wait until the contact replies to proceed.",
+            "preview": "Wait for reply\nThe scenario will pause and wait until the contact replies to proceed.",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai",
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved question and refusal behavior"
+          ],
+          "reason": "AI instructions can wait for a real reply. Exact flow state and timeout semantics are not imported.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/7/settings",
+          "settings_sha256": "2f57811afe0fbe7761eda4ebaef8312b9a613b34bd66bee8ff3a5a69280c6bd3",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n008",
+          "source_type": "branch_option",
+          "content": {
+            "text": "IF MESSAGE CONTAINS\nElephant",
+            "preview": "IF MESSAGE CONTAINS\nElephant",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/8/settings",
+          "settings_sha256": "15bbc8f255b697286759b574d491c0ecead17989c466a1317d4777900aa18209",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n009",
+          "source_type": "ab_testing",
+          "content": {
+            "text": "A/B testing\nTest different flows randomly to see which one performs better.\nOption A: 50% - Option B: 50%",
+            "preview": "A/B testing\nTest different flows randomly to see which one performs better.\nOption A: 50% - Option B: 50%",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "random"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed outcome, if desired"
+          ],
+          "reason": "Preserve exact source weights and outcomes. Ordinary MCP has no random allocation primitive.",
+          "unsupported": [
+            "random"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/9/settings",
+          "settings_sha256": "99a4c28e915a9f8094b72f5b289e460f3a85ba71419580f8699257a716303f2d",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n010",
+          "source_type": "branch_option",
+          "content": {
+            "text": "50%",
+            "preview": "50%",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/10/settings",
+          "settings_sha256": "28e1f036bdc9f2cec0fc6eceb352d4aab4c99e5b62901d43467d3df4c22b542c",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n011",
+          "source_type": "message",
+          "content": {
+            "text": "Congratulations, you won!\nLuck was on your part after all 😃",
+            "preview": "Congratulations, you won!\nLuck was on your part after all 😃",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/11/settings",
+          "settings_sha256": "6d40e4fa426191d7cd19b3b6effa65258daa830b094a3da1a5420a457cc1a4cc",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n012",
+          "source_type": "conversion_link",
+          "content": {
+            "text": "Your prize!\nEnjoy\nGet it now 🥰",
+            "preview": "Your prize!\nEnjoy\nGet it now 🥰",
+            "buttons": [],
+            "media": [
+              "https://app.inro.social/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMk9YS0E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b4f3d77b21751e3d6dd475c245ff3115e970eb9f/Screen%20Shot%202025-06-24%20at%204.38.11%20PM.png"
+            ],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved URL and recipient access"
+          ],
+          "reason": "Delivering a text URL is possible; click/no-click events and external completion are not established.",
+          "unsupported": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/12/settings",
+          "settings_sha256": "8abef4e6759d39975ffa371422c7ee2772609b1127659a466edb75366b738ad6",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n013",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN LINK IS CLICKED",
+            "preview": "WHEN LINK IS CLICKED",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/13/settings",
+          "settings_sha256": "dfc5ef54d336fea558e551145387f4ceb19a21a82361e5349bf1690011436354",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n014",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "preview": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/14/settings",
+          "settings_sha256": "70645a5cdad667305bab69df090f3173a66bb6b40f787137ddeb4fd2ada6f676",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n015",
+          "source_type": "branch_option",
+          "content": {
+            "text": "50%",
+            "preview": "50%",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/15/settings",
+          "settings_sha256": "e924284a71d6fa417dd994e984f6477bb4212c375ce40359d742a5a2ba85e6d9",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n016",
+          "source_type": "message",
+          "content": {
+            "text": "Your answer was correct, however you're not part of the winners! Join my next live to try again ❤️",
+            "preview": "Your answer was correct, however you're not part of the winners! Join my next live to try again ❤️",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/16/settings",
+          "settings_sha256": "c953263185bbeb1acfc2d2da35a984a3063375244ba8611951a62d6cd5110a24",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n017",
+          "source_type": "branch_option",
+          "content": {
+            "text": "ELSE",
+            "preview": "ELSE",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/17/settings",
+          "settings_sha256": "e897daeb9cd9746d2994eef942a03d0fc4ca9648dd9d45fab06c870e87b00230",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n018",
+          "source_type": "message",
+          "content": {
+            "text": "Sorry... wrong answer!\nJoin my next live to try again ❤️",
+            "preview": "Sorry... wrong answer!\nJoin my next live to try again ❤️",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/18/settings",
+          "settings_sha256": "b50ed0efa1938996d1d65aedc85aad3fce5aa08e51c10c27f5d1609ad7ef6945",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n019",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF CONTACT HASN'T REPLIED AFTER\n2 hours",
+            "preview": "IF CONTACT HASN'T REPLIED AFTER\n2 hours",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/19/settings",
+          "settings_sha256": "988d8189a8d9dad9c8ece67cf531b19e2e20d3b467cf4c58a798ca3018efff6e",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n020",
+          "source_type": "message",
+          "content": {
+            "text": "Thank you for joining my live. The game is expired, but you will be able to play next time! ",
+            "preview": "Thank you for joining my live. The game is expired, but you will be able to play next time! ",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/20/settings",
+          "settings_sha256": "a1c1a6a70b35e0320dd2c039d8f6ea378389c759d877a3808c815f1e3f786a87",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n021",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n1 hours",
+            "preview": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n1 hours",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/21/settings",
+          "settings_sha256": "c536d3d3e26a5943fab0ac49d8572af81fd0c3de6479399901b135643be76527",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n022",
+          "source_type": "message",
+          "content": {
+            "text": "Thank you for joining my live. Even if you missed the game, you will be able to play next time! ",
+            "preview": "Thank you for joining my live. Even if you missed the game, you will be able to play next time! ",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/22/settings",
+          "settings_sha256": "64a198032017d5ca9f1f6c8e5f677d4c2f67e717feeab51deb2e729542554c47",
+          "settings_leaf_count": 32
+        }
+      ],
+      "transitions": [
+        {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "label": "",
+          "settings": {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 46456",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/0"
+          }
+        },
+        {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "label": "",
+          "settings": {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 46456 to 46457",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/1"
+          }
+        },
+        {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "label": "",
+          "settings": {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 46457 to 46457_option_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/2"
+          }
+        },
+        {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "label": "WHEN BUTTON IS CLICKED\nLet's go!!!🔥",
+          "settings": {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 46457_option_0 to 46459",
+            "source_port": "46457_option_0",
+            "condition_text": "WHEN BUTTON IS CLICKED\nLet's go!!!🔥",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/3"
+          }
+        },
+        {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "label": "",
+          "settings": {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 46459 to 46460",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/4"
+          }
+        },
+        {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "label": "",
+          "settings": {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 46460 to 46461",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/5"
+          }
+        },
+        {
+          "id": "e006",
+          "from": "n006",
+          "to": "n007",
+          "label": "",
+          "settings": {
+            "id": "e006",
+            "from": "n006",
+            "to": "n007",
+            "source_label": "Edge from 46461 to 46462",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/6"
+          }
+        },
+        {
+          "id": "e007",
+          "from": "n007",
+          "to": "n008",
+          "label": "",
+          "settings": {
+            "id": "e007",
+            "from": "n007",
+            "to": "n008",
+            "source_label": "Edge from 46462 to 46462_option_replied_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/7"
+          }
+        },
+        {
+          "id": "e008",
+          "from": "n008",
+          "to": "n009",
+          "label": "IF MESSAGE CONTAINS\nElephant",
+          "settings": {
+            "id": "e008",
+            "from": "n008",
+            "to": "n009",
+            "source_label": "Edge from 46462_option_replied_0 to 46465",
+            "source_port": "46462_option_replied_0",
+            "condition_text": "IF MESSAGE CONTAINS\nElephant",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/8"
+          }
+        },
+        {
+          "id": "e009",
+          "from": "n009",
+          "to": "n010",
+          "label": "",
+          "settings": {
+            "id": "e009",
+            "from": "n009",
+            "to": "n010",
+            "source_label": "Edge from 46465 to 46465_option_a",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/9"
+          }
+        },
+        {
+          "id": "e010",
+          "from": "n010",
+          "to": "n011",
+          "label": "50%",
+          "settings": {
+            "id": "e010",
+            "from": "n010",
+            "to": "n011",
+            "source_label": "Edge from 46465_option_a to 46467",
+            "source_port": "46465_option_a",
+            "condition_text": "50%",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/10"
+          }
+        },
+        {
+          "id": "e011",
+          "from": "n011",
+          "to": "n012",
+          "label": "",
+          "settings": {
+            "id": "e011",
+            "from": "n011",
+            "to": "n012",
+            "source_label": "Edge from 46467 to 46468",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/11"
+          }
+        },
+        {
+          "id": "e012",
+          "from": "n012",
+          "to": "n013",
+          "label": "",
+          "settings": {
+            "id": "e012",
+            "from": "n012",
+            "to": "n013",
+            "source_label": "Edge from 46468 to 46468_option_clicked",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/12"
+          }
+        },
+        {
+          "id": "e013",
+          "from": "n012",
+          "to": "n014",
+          "label": "",
+          "settings": {
+            "id": "e013",
+            "from": "n012",
+            "to": "n014",
+            "source_label": "Edge from 46468 to 46468_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/13"
+          }
+        },
+        {
+          "id": "e014",
+          "from": "n009",
+          "to": "n015",
+          "label": "",
+          "settings": {
+            "id": "e014",
+            "from": "n009",
+            "to": "n015",
+            "source_label": "Edge from 46465 to 46465_option_b",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/14"
+          }
+        },
+        {
+          "id": "e015",
+          "from": "n015",
+          "to": "n016",
+          "label": "50%",
+          "settings": {
+            "id": "e015",
+            "from": "n015",
+            "to": "n016",
+            "source_label": "Edge from 46465_option_b to 46466",
+            "source_port": "46465_option_b",
+            "condition_text": "50%",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/15"
+          }
+        },
+        {
+          "id": "e016",
+          "from": "n007",
+          "to": "n017",
+          "label": "",
+          "settings": {
+            "id": "e016",
+            "from": "n007",
+            "to": "n017",
+            "source_label": "Edge from 46462 to 46462_option_replied",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/16"
+          }
+        },
+        {
+          "id": "e017",
+          "from": "n017",
+          "to": "n018",
+          "label": "ELSE",
+          "settings": {
+            "id": "e017",
+            "from": "n017",
+            "to": "n018",
+            "source_label": "Edge from 46462_option_replied to 46464",
+            "source_port": "46462_option_replied",
+            "condition_text": "ELSE",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/17"
+          }
+        },
+        {
+          "id": "e018",
+          "from": "n007",
+          "to": "n019",
+          "label": "",
+          "settings": {
+            "id": "e018",
+            "from": "n007",
+            "to": "n019",
+            "source_label": "Edge from 46462 to 46462_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/18"
+          }
+        },
+        {
+          "id": "e019",
+          "from": "n019",
+          "to": "n020",
+          "label": "IF CONTACT HASN'T REPLIED AFTER\n2 hours",
+          "settings": {
+            "id": "e019",
+            "from": "n019",
+            "to": "n020",
+            "source_label": "Edge from 46462_option_expired to 46463",
+            "source_port": "46462_option_expired",
+            "condition_text": "IF CONTACT HASN'T REPLIED AFTER\n2 hours",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/19"
+          }
+        },
+        {
+          "id": "e020",
+          "from": "n002",
+          "to": "n021",
+          "label": "",
+          "settings": {
+            "id": "e020",
+            "from": "n002",
+            "to": "n021",
+            "source_label": "Edge from 46457 to 46457_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/20"
+          }
+        },
+        {
+          "id": "e021",
+          "from": "n021",
+          "to": "n022",
+          "label": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n1 hours",
+          "settings": {
+            "id": "e021",
+            "from": "n021",
+            "to": "n022",
+            "source_label": "Edge from 46457_option_expired to 46458",
+            "source_port": "46457_option_expired",
+            "condition_text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n1 hours",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/21"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [],
+      "source_settings_sha256": "159a267a622ba1eacd2b0f406dab1d1f206bbf674811ea1c2265597a17064c03",
+      "source_leaf_count": 1181,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [],
+  "continuations": {
+    "inro-4530": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/inro-4530.json": "11ebf5b34dd7afa96fe72aeb8da097228ca7b00d26162bcc4e1dff75d92e405b",
+    "described-recipes/inro-4530.json": "2ac7c53fd990e94d52d2df7f6a5bbabaede979c391d26555639095218870c218"
+  }
+}

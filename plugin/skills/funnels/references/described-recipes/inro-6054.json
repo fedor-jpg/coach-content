@@ -1,0 +1,583 @@
+{
+  "schema_version": 1,
+  "id": "inro-6054",
+  "version": "1.0.0",
+  "description_status": "described_not_accepted",
+  "title": "Event link and optional email",
+  "source": {
+    "id": "inro-6054",
+    "title": "Get sign-ups for your event or webinar",
+    "url": "https://app.inro.social/public/scenarios/6054",
+    "observed_at": "2026-10-30",
+    "original_goal": "Get sign-ups for your event or webinar",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "native": {
+    "inputs_text": "event_name, event_date, registration_url, contact_purpose.",
+    "messages_text": "\"Register for {event_name} on {event_date}: {registration_url}. Reply MORE for a question.\" Offer optional email after MORE and purpose disclosure.",
+    "modes": [
+      "C",
+      "D",
+      "E",
+      "H"
+    ],
+    "end_stop": "Registration link delivered and optional actual email; S. Neither proves registration.",
+    "difference": ""
+  },
+  "applicability": {
+    "use_when": [
+      "People request an event registration link through a post keyword and may volunteer email later."
+    ],
+    "prerequisites": [
+      "Have event name/date, current registration URL and the purpose of optional email capture."
+    ],
+    "exclude_when": [
+      "Do not choose for mandatory phone/email gates or confirmed event attendance.",
+      "Do not configure when required lifecycle operations are unavailable on the actual host."
+    ]
+  },
+  "inputs": [
+    {
+      "name": "campaign",
+      "type": "text",
+      "requirement": "required",
+      "description": "Unique ASCII campaign name, at most 48 characters. Journal belongs to this conversation only."
+    },
+    {
+      "name": "language",
+      "type": "text",
+      "requirement": "required",
+      "description": "Language for the exact approved messages."
+    },
+    {
+      "name": "initial_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved first message; promised value must be in that message."
+    },
+    {
+      "name": "refusal_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved refusal reply. Ends this campaign before keyword matching."
+    },
+    {
+      "name": "handoff_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved team reply; native handoff needs separate readback."
+    },
+    {
+      "name": "post_ids",
+      "type": "ids",
+      "requirement": "required",
+      "description": "Actual owned Instagram posts; inspect overlap before preparation."
+    },
+    {
+      "name": "keyword",
+      "type": "text",
+      "requirement": "required",
+      "description": "Approved entry word; read actual host matching rules."
+    },
+    {
+      "name": "public_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved public copy, or nonempty inactive copy when public replies are disabled."
+    },
+    {
+      "name": "event_name",
+      "type": "text",
+      "requirement": "required",
+      "description": "Coach-supplied event name, preserved without invented claims."
+    },
+    {
+      "name": "event_date",
+      "type": "text",
+      "requirement": "required",
+      "description": "Future event date in ISO 8601 form with timezone."
+    },
+    {
+      "name": "registration_url",
+      "type": "url",
+      "requirement": "required",
+      "description": "Coach-supplied registration url, preserved without invented claims."
+    },
+    {
+      "name": "contact_purpose",
+      "type": "text",
+      "requirement": "required",
+      "description": "Explicit voluntary contact purpose; not implicit marketing consent."
+    }
+  ],
+  "messages": [
+    {
+      "id": "public",
+      "kind": "template",
+      "text": "Check DMs and message requests.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6054",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "initial",
+      "kind": "template",
+      "text": "Register for {event_name} on {event_date}: {registration_url}. Reply MORE for a question.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6054",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "placement",
+      "kind": "template",
+      "text": "",
+      "availability": "not_required",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6054",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "continuation",
+      "kind": "instruction",
+      "text": "\"Register for {event_name} on {event_date}: {registration_url}. Reply MORE for a question.\" Offer optional email after MORE and purpose disclosure.",
+      "availability": "instruction_not_sent_text",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6054",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "refusal",
+      "kind": "template",
+      "text": "Understood. I will not continue this campaign.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6054",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "handoff",
+      "kind": "template",
+      "text": "Our team will handle your request.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6054",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "purpose",
+      "kind": "template",
+      "text": "{contact_purpose}",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6054"
+      }
+    }
+  ],
+  "route": {
+    "origin": "derived_native_instructions",
+    "deterministic": false,
+    "start": "entry",
+    "steps": [
+      {
+        "id": "entry",
+        "action": "Actual matching keyword comment on the selected post.",
+        "message_ids": [
+          "placement"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "id": "first",
+        "action": "Send the exact approved first message. Deliver any promised value now.",
+        "message_ids": [
+          "public",
+          "initial"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "id": "end",
+        "action": "Stated outcome only. No inferred booking, registration, purchase, verified follow or verified share.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "id": "purpose",
+        "action": "After the actual opt-in reply explain contact_purpose and offer optional email. Do not withhold the delivered material.",
+        "message_ids": [
+          "purpose"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "id": "capture",
+        "action": "Save only an actual new consented valid email in the owned campaign attribute. Invalid input needs correction, never reuse an old field.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "id": "refusal",
+        "action": "End this campaign on refusal. Do not restart from a keyword in the refusal.",
+        "message_ids": [
+          "refusal"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "id": "silence",
+        "action": "Send nothing for silence or external clicks; enforce current delivery windows.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "id": "repeat",
+        "action": "Same-run repeat does not restart intake, resend a bonus or duplicate capture. Ambiguous late replies need clarification.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "id": "handoff",
+        "action": "Use native team handoff on person request, unresolved facts or approved handoff criteria. Text alone is not handoff proof.",
+        "message_ids": [
+          "handoff"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "from": "entry",
+        "to": "first",
+        "condition": "New matching source event; current account, permission and delivery window verified.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "first",
+        "to": "purpose",
+        "condition": "Actual MORE, EMAIL, PHONE or ENTER as stated in this recipe; not silence or a click.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "purpose",
+        "to": "capture",
+        "condition": "Fresh explicit consent and actual valid contact value.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "capture",
+        "to": "capture",
+        "condition": "Invalid value: ask for correction; no invented success.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "capture",
+        "to": "end",
+        "condition": "Actual saved attribute readback; no external subscription or promised call.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "first",
+        "to": "refusal",
+        "condition": "Actual refusal.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "purpose",
+        "to": "refusal",
+        "condition": "Actual refusal.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "capture",
+        "to": "refusal",
+        "condition": "Actual refusal.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "first",
+        "to": "silence",
+        "condition": "No inbound reply, or only an external click.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "first",
+        "to": "repeat",
+        "condition": "Same-run repeated word.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "refusal",
+        "to": "end",
+        "condition": "Refusal completed. No permanent cross-source suppression claimed.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "first",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "purpose",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "capture",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      },
+      {
+        "from": "handoff",
+        "to": "end",
+        "condition": "Actual native team control readback.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6054"
+        }
+      }
+    ]
+  },
+  "source_differences": [
+    "Not preserved from the source: confirmed-registration, external-mailing-list-subscription. A business analogue is not an equivalent graph."
+  ],
+  "reconciliation": {
+    "legacy_file": "recipes/inro-6054.json",
+    "legacy_sha256": "bf86255d7b8b48dbc758e49d1bae6cf8769a51d3cded26f4b8a38bf23f185478",
+    "legacy_version": "0.1.0",
+    "legacy_status": "candidate",
+    "legacy_goal": "Send an event registration link first, then offer optional email collection.",
+    "relationship": "native_guide_revision_not_literal_equivalence",
+    "explanation": "The native guide defines this business outcome. Legacy inputs, messages and transitions remain available for exact-source audit, not as a second authority for this analogue.",
+    "required_input_changes": {
+      "legacy": [
+        "post_ids",
+        "keyword",
+        "event_name",
+        "event_date",
+        "registration_url",
+        "contact_purpose",
+        "language",
+        "public_text",
+        "initial_text",
+        "refusal_text",
+        "handoff_text"
+      ],
+      "legacy_initial": [
+        "event_name",
+        "event_date",
+        "registration_url"
+      ],
+      "canonical": [
+        {
+          "name": "campaign",
+          "requirement": "required"
+        },
+        {
+          "name": "language",
+          "requirement": "required"
+        },
+        {
+          "name": "initial_text",
+          "requirement": "required"
+        },
+        {
+          "name": "refusal_text",
+          "requirement": "required"
+        },
+        {
+          "name": "handoff_text",
+          "requirement": "required"
+        },
+        {
+          "name": "post_ids",
+          "requirement": "required"
+        },
+        {
+          "name": "keyword",
+          "requirement": "required"
+        },
+        {
+          "name": "public_text",
+          "requirement": "required"
+        },
+        {
+          "name": "event_name",
+          "requirement": "required"
+        },
+        {
+          "name": "event_date",
+          "requirement": "required"
+        },
+        {
+          "name": "registration_url",
+          "requirement": "required"
+        },
+        {
+          "name": "contact_purpose",
+          "requirement": "required"
+        }
+      ]
+    }
+  },
+  "configuration": {
+    "policy": "native-policy.md",
+    "capability_observation": "capability-observation.json",
+    "operations": [
+      "Read actual host tools and get_playbook for this recipe.",
+      "Create/bind only an approved owned OFF rule. Normal setup_comment_replies is not draft preparation.",
+      "Read/stage general InstagramDirectMessages only under explicit OFF/ON shared-state branches.",
+      "Apply native policy mode C; inspect actual inputs before writes.",
+      "Apply native policy mode D; inspect actual inputs before writes.",
+      "Apply native policy mode E; inspect actual inputs before writes.",
+      "Apply native policy mode H; inspect actual inputs before writes.",
+      "Read back each exact setting and inheritance before continuing."
+    ],
+    "normal_connector_gate": "Required OFF creation, exact inheritance restoration or continuing comment preview may be unavailable. Stop before writes; a documented GraphQL alternative is not an available normal tool."
+  },
+  "lifecycle": {
+    "checks": [
+      "content",
+      "return",
+      "stop",
+      "refusal",
+      "repeat",
+      "unknown_action",
+      "wrong_account",
+      "two_campaigns",
+      "source_attribution",
+      "new_contact_silence",
+      "old_contact_silence",
+      "non_follower",
+      "expired_window",
+      "comment_context_return",
+      "dm_fallback_return",
+      "destination",
+      "capture_validation",
+      "capture_refusal",
+      "event_registration_link_received",
+      "optional_event_email_saved",
+      "normal_host_capabilities",
+      "fresh_account_state",
+      "exact_restoration",
+      "live_suppression"
+    ],
+    "return": "Use this conversation journal and fresh native readback. No cross-chat state or user settings transfer. If the journal is missing, read-only reconciliation only.",
+    "stop": "Apply S from native-policy.md: safe owned disable; exact campaign additions only; preserve concurrent changes and inheritance. Restore dormant Send only after original OFF DM is OFF. Read back every stop; live silence is separate.",
+    "restart": "Fresh source and consent, same verified ownership. Waitlist membership stays joined/withdrawn; no old consent reuse."
+  },
+  "evidence": {
+    "source_capture": {
+      "observed_at": "2026-10-30",
+      "status": "captured_research_not_runtime"
+    },
+    "canonical_version": {
+      "status": "described_not_runtime_tested"
+    },
+    "capability": {
+      "observed_at": "2026-11-01",
+      "status": "dated_document_and_tool_observation_not_account_check"
+    },
+    "preview": {
+      "status": "not_tested_for_canonical_version",
+      "note": "Older previews do not establish unchanged behavior after prompt changes."
+    },
+    "live": {
+      "status": "historical_partial_not_accepted",
+      "observed_at": "2026-10-31",
+      "note": "No individual live acceptance for this canonical version.",
+      "reference": "inro-business-analogues-live.json; checked_at=2026-10-31T06:52:44Z"
+    },
+    "acceptance": {
+      "status": "not_accepted",
+      "registry": "catalog.json",
+      "note": "Zero versions qualify. Local checks, previews and partial live paths are not acceptance."
+    }
+  }
+}

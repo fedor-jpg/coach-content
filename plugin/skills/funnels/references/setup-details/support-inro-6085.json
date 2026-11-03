@@ -1,0 +1,2226 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "support-inro-6085",
+    "name": "AI support: team backup after 24 hours",
+    "source_ids": [
+      "inro-6085"
+    ],
+    "entry": "Direct message asking a question or requesting help",
+    "mandatory_conditions": [
+      "AI answers",
+      "If unresolved after 24 hours, email the team"
+    ],
+    "outcome": "A resolved question or a team notification",
+    "timing": [
+      "AI handover expiration: 24 hours."
+    ],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "dm-ai",
+      "human",
+      "email-send",
+      "timers",
+      "graph"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "AI replies and team handoff are documented. Replace the exact 24-hour limit, email action and folders with handoff rules.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "AI replies and team handoff are documented. Replace the exact 24-hour limit, email action and folders with handoff rules.",
+        "result": "AI answers from approved knowledge and hands unresolved questions to the team, without the exact time limit.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "inro-6085": "The notification recipient and approved answer boundaries still need configuration."
+    },
+    "client_inputs": [],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6085"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "inro-6085-dm_base",
+          "label": "Direct-message entry",
+          "target": "dm_base",
+          "allowed_targets": [
+            "dm_base"
+          ],
+          "entry": "Actual incoming support question. Preserve unrelated support.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Answer from approved facts and hand unresolved questions or explicit requests to the Chatfuel team.",
+          "output_bindings": [
+            "service_name",
+            "known_facts"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "AI answers",
+            "If unresolved after 24 hours, email the team"
+          ],
+          "approval_required": true,
+          "source_id": "inro-6085",
+          "draft": {
+            "modes": [
+              "D",
+              "H"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "service_name",
+              "known_facts",
+              "public_text",
+              "handoff_text"
+            ],
+            "initial": "Thanks for your message. How can we help with {service_name}?",
+            "messages": {
+              "initial": "Thanks for your message. How can we help with {service_name}?",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "handoff": "{handoff_text}",
+              "answer": "{known_facts}"
+            },
+            "instruction": "Answer only from {known_facts}. On an unresolved question, inability to finish or explicit team request, use switchToHuman and {handoff_text}. This is an actual Chatfuel team handoff draft, not outbound email. No automatic 24-hour escalation, resolution tag or promised response deadline.",
+            "contact_requirement": null,
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Answer the actual question from approved facts.",
+                  "message_ids": [
+                    "answer"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "handoff",
+                  "action": "Transfer an unresolved question or explicit team request.",
+                  "message_ids": [
+                    "handoff"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "refusal",
+                  "action": "End this request without delivering gated content.",
+                  "message_ids": [
+                    "refusal"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Actual question or help request"
+                },
+                {
+                  "from": "first",
+                  "to": "handoff",
+                  "condition": "Unresolved question, inability to finish, or explicit team request"
+                },
+                {
+                  "from": "first",
+                  "to": "refusal",
+                  "condition": "Actual refusal"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No new reply"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "binding_review": {
+        "source_entry": "Direct message asking a question or requesting help",
+        "source_outcome": "A resolved question or a team notification",
+        "mandatory_conditions": [
+          "AI answers",
+          "If unresolved after 24 hours, email the team"
+        ],
+        "source_contact_policy": [
+          "If unresolved after 24 hours, email the team"
+        ],
+        "plan_count": 1,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Answer from approved facts and hand unresolved questions or explicit requests to the Chatfuel team.",
+        "source_requirements": [
+          "AI answers",
+          "If unresolved after 24 hours, email the team"
+        ],
+        "source_timing": [
+          "AI handover expiration: 24 hours."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Answer from approved facts and hand unresolved questions or explicit requests to the Chatfuel team."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: AI handover expiration: 24 hours.. No timed unsolicited message is configured.",
+          "No imported deterministic graph or source folder/tag tracking.",
+          "No outbound escalation email or external booking-completion check."
+        ],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Help people find an answer and involve the team when needed.",
+  "fit": "Businesses receiving product, website or service questions in DMs.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Answer from approved facts and hand unresolved questions or explicit requests to the Chatfuel team.",
+    "source_requirements": [
+      "AI answers",
+      "If unresolved after 24 hours, email the team"
+    ],
+    "source_timing": [
+      "AI handover expiration: 24 hours."
+    ],
+    "blocking_dependencies": [],
+    "retained": [
+      "Answer from approved facts and hand unresolved questions or explicit requests to the Chatfuel team."
+    ],
+    "omitted": [
+      "Exact source timing is not retained: AI handover expiration: 24 hours.. No timed unsolicited message is configured.",
+      "No imported deterministic graph or source folder/tag tracking.",
+      "No outbound escalation email or external booking-completion check."
+    ],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "email-send",
+    "timers",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "inro-6085",
+      "source_file": "source-records/inro-6085.json",
+      "source_title": "Answer every DM with AI, team as backup",
+      "start": "n000",
+      "nodes": [
+        {
+          "id": "n000",
+          "source_type": "trigger",
+          "content": {
+            "text": "When\nSomeone sends you a DM\nFILTER MESSAGES\nAI-detected intent\nAsks a question or for help in their ...",
+            "preview": "When\nSomeone sends you a DM\nFILTER MESSAGES\nAI-detected intent\nAsks a question or for help in their ...",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "c6d092e6934efebf84981de19c35017ff353ac7b0cbf29b574e8539e9c597060",
+          "settings_leaf_count": 44
+        },
+        {
+          "id": "n001",
+          "source_type": "agent_handover",
+          "content": {
+            "text": "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends",
+            "preview": "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved knowledge and team fallback"
+          ],
+          "reason": "The Inro agent is an AI agent in this capture. Do not relabel it as human handoff.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/settings_panels/0/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "Goal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": null
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "button",
+                "value": false,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": null
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "Goal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "switch",
+                "value": true,
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "number",
+                "value": "1",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "select-one",
+                "value": "hours",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/3/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/3/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/3/options/2",
+              "phase": "captured",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/3/options/3",
+              "phase": "captured",
+              "fields": {
+                "value": "days"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "4df50764912bd9d1037a04aaa90b04df45e3aae8be074f09efe2da1be3f17847",
+          "settings_leaf_count": 151
+        },
+        {
+          "id": "n002",
+          "source_type": "branch_option",
+          "content": {
+            "text": "TASK COMPLETED",
+            "preview": "TASK COMPLETED",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "d19f26248d0ece6f97155cedfa0d3b5da259a0a510eea2dd9cfa8a11e86bc186",
+          "settings_leaf_count": 35
+        },
+        {
+          "id": "n003",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nFront desk: resolv…",
+            "preview": "Add contact to folder(s)\nFront desk: resolv…",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "add",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "validation": null
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "add"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "remove"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "3013da4d51d7e544480af5e0b512a6decc2a485a0f3954c6a56b178d9903c8e6",
+          "settings_leaf_count": 66
+        },
+        {
+          "id": "n004",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "HANDOVER EXPIRED\n24 hours",
+            "preview": "HANDOVER EXPIRED\n24 hours",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "number",
+                "value": "24",
+                "value_state": "observed_value",
+                "options": null,
+                "validation": null
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "hours",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "validation": null
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "seconds"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "minutes"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/2",
+              "phase": "captured",
+              "fields": {
+                "value": "hours"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/1/options/3",
+              "phase": "captured",
+              "fields": {
+                "value": "days"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "7160389adc0687e300f7e15175f9c26e58449e9756830d034b83ac478d85c0d0",
+          "settings_leaf_count": 65
+        },
+        {
+          "id": "n005",
+          "source_type": "send_email",
+          "content": {
+            "text": "Send email\nSend an email to a specified email address.\nFrom\tcontact@inroapp.com\nTo\t\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nThe AI couldn't finish with @{{contact.username}}. First message: \"{{trigger.message}}\" Latest message: \"{{conversation.last_message_received}}\" Reply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write. Next step: answer, then remove them from \"Needs a human\".",
+            "preview": "Send email\nSend an email to a specified email address.\nFrom\tcontact@inroapp.com\nTo\t\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nThe AI couldn't finish with @{{contact.username}}. First message: \"{{trigger.message}}\" Latest message: \"{{conversation.last_message_received}}\" Reply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write. Next step: answer, then remove them from \"Needs a human\".",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "email-send"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "recipient, purpose and existing authorized provider"
+          ],
+          "reason": "External notification remains a separate continuation; switchToHuman is not an email send.",
+          "unsupported": [
+            "email-send"
+          ],
+          "known_fields": [
+            {
+              "path": "/settings_panels/0/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "contact@inroapp.com (Default email)",
+                    "value": ""
+                  }
+                ],
+                "validation": null
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/0/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": ""
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": null
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": null
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": null
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/4",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "<redacted>",
+                "value_state": "unknown",
+                "options": null,
+                "validation": null
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/5",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "<redacted>",
+                "value_state": "unknown",
+                "options": null,
+                "validation": null
+              }
+            },
+            {
+              "path": "/settings_panels/0/fields/6",
+              "phase": "captured",
+              "fields": {
+                "label": "Select a file",
+                "type": "file",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": null
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "select-one",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "contact@inroapp.com (Default email)",
+                    "value": ""
+                  }
+                ],
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/0/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": ""
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/1",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/2",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/3",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/4",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/5",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "<redacted>",
+                "value_state": "unknown",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/6",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "textarea",
+                "value": "<redacted>",
+                "value_state": "unknown",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            },
+            {
+              "path": "/variant_panels/0/panel/fields/7",
+              "phase": "captured",
+              "fields": {
+                "label": "Select a file",
+                "type": "file",
+                "value": "",
+                "value_state": "observed_unset",
+                "options": null,
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "645fd1a9552b7597152436ce71f4b0f7741226a782d39270b06964b9ed1313a3",
+          "settings_leaf_count": 266
+        },
+        {
+          "id": "n006",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nNeeds a human",
+            "preview": "Add contact to folder(s)\nNeeds a human",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [
+            {
+              "path": "/editor_observed/fields/0",
+              "phase": "captured",
+              "fields": {
+                "label": null,
+                "type": "text",
+                "value": "add",
+                "value_state": "observed_value",
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "validation": null
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/0",
+              "phase": "captured",
+              "fields": {
+                "value": "add"
+              }
+            },
+            {
+              "path": "/editor_observed/fields/0/options/1",
+              "phase": "captured",
+              "fields": {
+                "value": "remove"
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/6/settings",
+          "settings_sha256": "812f6f0b9b23b61b9a0264ee1777a3b5888892cefb5a3d61a4db7f20f632a523",
+          "settings_leaf_count": 66
+        }
+      ],
+      "transitions": [
+        {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "label": "",
+          "settings": {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 438528",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/0"
+          }
+        },
+        {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "label": "",
+          "settings": {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 438528 to 438528_option_completed",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/1"
+          }
+        },
+        {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "label": "TASK COMPLETED",
+          "settings": {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 438528_option_completed to 438529",
+            "source_port": "438528_option_completed",
+            "condition_text": "TASK COMPLETED",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/2"
+          }
+        },
+        {
+          "id": "e003",
+          "from": "n001",
+          "to": "n004",
+          "label": "",
+          "settings": {
+            "id": "e003",
+            "from": "n001",
+            "to": "n004",
+            "source_label": "Edge from 438528 to 438528_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/3"
+          }
+        },
+        {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "label": "HANDOVER EXPIRED\n24 hours",
+          "settings": {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 438528_option_expired to 438530",
+            "source_port": "438528_option_expired",
+            "condition_text": "HANDOVER EXPIRED\n24 hours",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/4"
+          }
+        },
+        {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "label": "",
+          "settings": {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 438530 to 438531",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/5"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/triggers/0/settings_panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/0/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/0/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "radio",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": "",
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/0/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "Asks a question or for help in their own words about products, services, prices, hours, bookings or orders. Not a button reply, a collab pitch, a compliment or spam.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/triggers/0/settings_panels/0/fields/5",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/settings_panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "Goal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/1/settings_panels/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "button",
+            "value": false,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/0/panel/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "Goal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/0/panel/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "switch",
+            "value": true,
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/0/panel/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "1",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/0/panel/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "select-one",
+            "value": "hours",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "days",
+                "value": "days"
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/0/panel/fields/3/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/0/panel/fields/3/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/0/panel/fields/3/options/2",
+          "phase": "captured",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/graph/nodes/1/variant_panels/0/panel/fields/3/options/3",
+          "phase": "captured",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/graph/nodes/3/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "add",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": true,
+                "text": "Add contact to folder(s)",
+                "value": "add"
+              },
+              {
+                "selected": false,
+                "text": "Remove contact from folder(s)",
+                "value": "remove"
+              }
+            ],
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/3/editor_observed/fields/0/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "add"
+          }
+        },
+        {
+          "path": "/graph/nodes/3/editor_observed/fields/0/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "remove"
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "number",
+            "value": "24",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "hours",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": false,
+                "text": "seconds",
+                "value": "seconds"
+              },
+              {
+                "selected": false,
+                "text": "minutes",
+                "value": "minutes"
+              },
+              {
+                "selected": true,
+                "text": "hours",
+                "value": "hours"
+              },
+              {
+                "selected": false,
+                "text": "days",
+                "value": "days"
+              }
+            ],
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/1/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "seconds"
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/1/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "minutes"
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/1/options/2",
+          "phase": "captured",
+          "fields": {
+            "value": "hours"
+          }
+        },
+        {
+          "path": "/graph/nodes/4/editor_observed/fields/1/options/3",
+          "phase": "captured",
+          "fields": {
+            "value": "days"
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": [
+              {
+                "selected": true,
+                "text": "contact@inroapp.com (Default email)",
+                "value": ""
+              }
+            ],
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/0/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": ""
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "<redacted>",
+            "value_state": "unknown",
+            "options": null,
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/5",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "<redacted>",
+            "value_state": "unknown",
+            "options": null,
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/5/settings_panels/0/fields/6",
+          "phase": "captured",
+          "fields": {
+            "label": "Select a file",
+            "type": "file",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/0/panel/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "select-one",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": [
+              {
+                "selected": true,
+                "text": "contact@inroapp.com (Default email)",
+                "value": ""
+              }
+            ],
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/0/panel/fields/0/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": ""
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/0/panel/fields/1",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/0/panel/fields/2",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/0/panel/fields/3",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/0/panel/fields/4",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/0/panel/fields/5",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "<redacted>",
+            "value_state": "unknown",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/0/panel/fields/6",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "textarea",
+            "value": "<redacted>",
+            "value_state": "unknown",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/5/variant_panels/0/panel/fields/7",
+          "phase": "captured",
+          "fields": {
+            "label": "Select a file",
+            "type": "file",
+            "value": "",
+            "value_state": "observed_unset",
+            "options": null,
+            "validation": {
+              "disabled": null,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "readonly": null,
+              "required": null
+            }
+          }
+        },
+        {
+          "path": "/graph/nodes/6/editor_observed/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "add",
+            "value_state": "observed_value",
+            "options": [
+              {
+                "selected": true,
+                "text": "Add contact to folder(s)",
+                "value": "add"
+              },
+              {
+                "selected": false,
+                "text": "Remove contact from folder(s)",
+                "value": "remove"
+              }
+            ],
+            "validation": null
+          }
+        },
+        {
+          "path": "/graph/nodes/6/editor_observed/fields/0/options/0",
+          "phase": "captured",
+          "fields": {
+            "value": "add"
+          }
+        },
+        {
+          "path": "/graph/nodes/6/editor_observed/fields/0/options/1",
+          "phase": "captured",
+          "fields": {
+            "value": "remove"
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/0/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Answer every DM with AI, team as backup",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": null
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/1/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Answer every DM with AI, team as backup",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": null
+          }
+        },
+        {
+          "path": "/scenario_settings/panels/2/fields/0",
+          "phase": "captured",
+          "fields": {
+            "label": null,
+            "type": "text",
+            "value": "Answer every DM with AI, team as backup",
+            "value_state": "observed_value",
+            "options": null,
+            "validation": null
+          }
+        }
+      ],
+      "source_settings_sha256": "13a10fda696639bc390b962919034fd3da8b5e977f6f5cfb408338cf5437a1cf",
+      "source_leaf_count": 1020,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "inro-6085-dm_base",
+        "label": "Direct-message entry",
+        "target": "dm_base",
+        "allowed_targets": [
+          "dm_base"
+        ],
+        "entry": "Actual incoming support question. Preserve unrelated support.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Answer from approved facts and hand unresolved questions or explicit requests to the Chatfuel team.",
+        "output_bindings": [
+          "service_name",
+          "known_facts"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "AI answers",
+          "If unresolved after 24 hours, email the team"
+        ],
+        "approval_required": true,
+        "source_id": "inro-6085",
+        "draft": {
+          "modes": [
+            "D",
+            "H"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "service_name",
+            "known_facts",
+            "public_text",
+            "handoff_text"
+          ],
+          "initial": "Thanks for your message. How can we help with {service_name}?",
+          "messages": {
+            "initial": "Thanks for your message. How can we help with {service_name}?",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "handoff": "{handoff_text}",
+            "answer": "{known_facts}"
+          },
+          "instruction": "Answer only from {known_facts}. On an unresolved question, inability to finish or explicit team request, use switchToHuman and {handoff_text}. This is an actual Chatfuel team handoff draft, not outbound email. No automatic 24-hour escalation, resolution tag or promised response deadline.",
+          "contact_requirement": null,
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Answer the actual question from approved facts.",
+                "message_ids": [
+                  "answer"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "handoff",
+                "action": "Transfer an unresolved question or explicit team request.",
+                "message_ids": [
+                  "handoff"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "refusal",
+                "action": "End this request without delivering gated content.",
+                "message_ids": [
+                  "refusal"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Actual question or help request"
+              },
+              {
+                "from": "first",
+                "to": "handoff",
+                "condition": "Unresolved question, inability to finish, or explicit team request"
+              },
+              {
+                "from": "first",
+                "to": "refusal",
+                "condition": "Actual refusal"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No new reply"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [
+        "whenAIReplies",
+        "followUps"
+      ],
+      "entry_readback_fields": [],
+      "preparation_gates": [
+        "Preserve current whenAIReplies and followUps values, including inheritance, on the shared DM base. If its schedule or active follow-ups conflict with the proposed behavior, hold affected configuration or obtain separate approval for the exact base-wide change. No schedule/follow-up write is a default draft operation."
+      ],
+      "missing_readback": [],
+      "target": "dm_base",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "service_name",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "known_facts",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "handoff_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Thanks for your message. How can we help with {service_name}?",
+        "public": "",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "{handoff_text}",
+        "answer": "{known_facts}",
+        "placement": "DM {keyword}."
+      },
+      "instruction": "Answer only from {known_facts}. On an unresolved question, inability to finish or explicit team request, use switchToHuman and {handoff_text}. This is an actual Chatfuel team handoff draft, not outbound email. No automatic 24-hour escalation, resolution tag or promised response deadline.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "Actual incoming support question. Preserve unrelated support.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Answer the actual question from approved facts.",
+            "message_ids": [
+              "answer"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "handoff",
+            "action": "Transfer an unresolved question or explicit team request.",
+            "message_ids": [
+              "handoff"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "refusal",
+            "action": "End this request without delivering gated content.",
+            "message_ids": [
+              "refusal"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Actual question or help request"
+          },
+          {
+            "from": "first",
+            "to": "handoff",
+            "condition": "Unresolved question, inability to finish, or explicit team request"
+          },
+          {
+            "from": "first",
+            "to": "refusal",
+            "condition": "Actual refusal"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No new reply"
+          }
+        ]
+      },
+      "contact_requirement": null,
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: Actual incoming support question. Preserve unrelated support.. First message: Thanks for your message. How can we help with {service_name}?\nAnswer only from {known_facts}. On an unresolved question, inability to finish or explicit team request, use switchToHuman and {handoff_text}. This is an actual Chatfuel team handoff draft, not outbound email. No automatic 24-hour escalation, resolution tag or promised response deadline.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\nhandoff: {handoff_text}\nanswer: {known_facts}"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "switchToHuman": {
+              "howToSwitch": "SwitchToTeammates",
+              "rules": "$resolved.safe_handoff_rules"
+            }
+          }
+        }
+      ],
+      "list_additions": {
+        "switchToHuman": {
+          "switchingConditions": "Campaign {campaign}: the person requests the team or facts are unresolved.",
+          "messagePrompt": "{handoff_text}"
+        }
+      },
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "dm_base",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "inro-6085": [
+      {
+        "id": "team-email",
+        "title": "Retain the source team-email notification",
+        "scope": "Optional: retain the captured external email notification instead of replacing it with Chatfuel handoff.",
+        "inputs": [
+          "Team recipient and service",
+          "Permitted lead fields",
+          "Notification condition and approved text",
+          "Existing authorized connection"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Retain the source team-email notification.\nSelected source: inro-6085 - Answer every DM with AI, team as backup.\nGoal: Help people find an answer and involve the team when needed.\nVariant: AI support: team backup after 24 hours\nScope: Optional: retain the captured external email notification instead of replacing it with Chatfuel handoff.\nSource entry: Direct message asking a question or requesting help\nSource requirements: AI answers; If unresolved after 24 hours, email the team\nSource timing: AI handover expiration: 24 hours.\nSource outcome: A resolved question or a team notification\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Answer from approved facts and hand unresolved questions or explicit requests to the Chatfuel team.\nUse the existing authorized team mailbox or notification service.\nAsk me for: Team recipient and service; Permitted lead fields; Notification condition and approved text; Existing authorized connection.\n1. This step is optional if the owner chooses Chatfuel team handoff instead. If the original email notification must remain, verify an existing authorized connection and draft recipient, field mapping and trigger conditions.\n2. Do not invent an email-sending bridge. If none is verified, list the missing access and exact next action. Preserve consent and data minimization; prevent duplicate notifications. Verify the recipient and delivery separately from the Chatfuel handoff. Return draft settings only.\n3. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n4. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n5. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ]
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/inro-6085.json": "7c5c960ca6681f639ca4a0fcb19ed6a99ec4ad1a03bf453911b73e49f738e717",
+    "described-recipes/inro-6085.json": "71a8ef2c6b62cc8bb2bfb1bf56143571dbf71bc12bb157fec457e98e852c0c91"
+  }
+}

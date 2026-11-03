@@ -1,0 +1,1042 @@
+{
+  "id": "manychat-60",
+  "source": {
+    "vendor": "manychat",
+    "file": "templates/manychat-60.json",
+    "title": "Trigger DMs during IG Live",
+    "category": "Drive traffic",
+    "facets": [
+      "Drive traffic",
+      "Live comment",
+      "link_delivery",
+      "live_comment"
+    ],
+    "job": "link_delivery",
+    "model": "flow_builder",
+    "document": {
+      "schema_version": "1.2",
+      "id": "manychat-60",
+      "ordinal": 27,
+      "title": "Trigger DMs during IG Live",
+      "source_id": "campaign-card-60",
+      "observed_at": "2026-10-30",
+      "configuration_model": "flow_builder",
+      "entry_type": "template",
+      "source": {
+        "url": "https://app.manychat.com/fb4213902/dashboard",
+        "catalog_evidence": {
+          "file": "evidence/inventory.json",
+          "pointer": "/items/26"
+        },
+        "catalog_mode": "Flow Builder",
+        "facets": [
+          "Drive traffic",
+          "Live comment"
+        ],
+        "badge_text_exact": "",
+        "description_exact": "Use Lives to spark DMs, drop links, and collect leads while eyeballs are actually on you",
+        "preview_evidence": {
+          "file": "evidence/60-preview.json",
+          "pointer": ""
+        },
+        "preview_text_exact": "Instagram\nTrigger DMs during IG Live\nUse Lives to spark DMs, drop links, and collect leads while eyeballs are actually on you.\nBusiness value\nTurn that awkward stream into a cash machine. If they’re watching, they’re buying. Make it easy.\nHow does it work?\nYou go Live. You say “DM me ‘YES’.” Your automation slides into their inbox with the goods. You keep performing while closing.\nBack To List\nSet Up Template",
+        "original_graph_state": "not_exposed",
+        "original_defaults": null,
+        "source_original_settings_complete": false
+      },
+      "instance": {
+        "scope": "installed_draft_not_original",
+        "capture_semantics": "Baseline captured before follow-up changes; current safety and retained inspection variants are separate.",
+        "draft_id": "content20261031005259_003686",
+        "url": "https://app.manychat.com/fb4213902/cms/files/content20261031005259_003686/edit",
+        "title_exact": "Trigger DMs during IG Live",
+        "original_equivalence": "unverified",
+        "nodes": [
+          {
+            "id": "node-0",
+            "kind": "message",
+            "label_exact": "Send Message",
+            "identity": {
+              "position": 0,
+              "group": "builder-node-start",
+              "original_source_id": null,
+              "visible_ids_exact": null,
+              "active_sidebar_exact": [
+                {
+                  "active": true,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                }
+              ],
+              "header_exact": [
+                "Send Message"
+              ],
+              "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+            },
+            "default_panel": {
+              "label": "node.0.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\n+ Create New Step\nSend Message\nSend\nas Private Reply\nYou made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇\nCLICK HERE 🔥\n+ Add Button\n+ Add Quick Reply\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nYou made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇\nCLICK HERE 🔥\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Enter your text...",
+                  "value": "You made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/60-editor.json",
+                    "pointer": "/node_defaults/0/capture/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/60-editor.json",
+                "pointer": "/node_defaults/0/capture"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": true,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  }
+                ],
+                "header": [
+                  "Send Message"
+                ]
+              },
+              "source_hash": "60713e521afa0a9f9628bca61dd3855ae15ba0eae09f8f506a4a9a286b6bc292",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/60-editor.json",
+                  "pointer": "/node_defaults/0/capture/scope"
+                }
+              }
+            },
+            "nested_panels": [
+              {
+                "label": "node-0.button-0.default",
+                "scope": "publication_draft_clone",
+                "phase": "captured_default",
+                "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nCLICK HERE 🔥\nWhen this button is pressed\nOpen website\nhttps://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat\nWebsite URL\nhttps://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat\nAdditional actions\nE.g. you can add a tag on a button click.\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nPeople will see a redirection page for 2 seconds. Upgrade to remove it.\nDelete button\nDone",
+                "fields": [
+                  {
+                    "name": "caption",
+                    "label": null,
+                    "tag": "textarea",
+                    "type": null,
+                    "placeholder": "Enter title...",
+                    "value": "CLICK HERE 🔥",
+                    "value_state": "observed",
+                    "checked": false,
+                    "options_exact": null,
+                    "validation_exact": {
+                      "aria_disabled": null,
+                      "aria_invalid": null,
+                      "aria_required": null,
+                      "disabled": false,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "required": false,
+                      "step": null
+                    },
+                    "evidence": {
+                      "file": "evidence/60-editor.json",
+                      "pointer": "/captures/1/panel/fields/0"
+                    }
+                  },
+                  {
+                    "name": "url",
+                    "label": null,
+                    "tag": "textarea",
+                    "type": null,
+                    "placeholder": "https://yourwebsite.com",
+                    "value": "https://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat",
+                    "value_state": "observed",
+                    "checked": false,
+                    "options_exact": null,
+                    "validation_exact": {
+                      "aria_disabled": null,
+                      "aria_invalid": null,
+                      "aria_required": null,
+                      "disabled": false,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "required": false,
+                      "step": null
+                    },
+                    "evidence": {
+                      "file": "evidence/60-editor.json",
+                      "pointer": "/captures/1/panel/fields/1"
+                    }
+                  },
+                  {
+                    "name": null,
+                    "label": "Additional actions",
+                    "tag": "input",
+                    "type": "checkbox",
+                    "placeholder": null,
+                    "value": "on",
+                    "value_state": "observed",
+                    "checked": false,
+                    "options_exact": null,
+                    "validation_exact": {
+                      "aria_disabled": "false",
+                      "aria_invalid": null,
+                      "aria_required": null,
+                      "disabled": false,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "required": false,
+                      "step": null
+                    },
+                    "evidence": {
+                      "file": "evidence/60-editor.json",
+                      "pointer": "/captures/1/panel/fields/2"
+                    }
+                  }
+                ],
+                "buttons_exact": [
+                  {
+                    "disabled": false,
+                    "label": "Close",
+                    "text": ""
+                  },
+                  {
+                    "disabled": false,
+                    "label": null,
+                    "text": "Delete button"
+                  },
+                  {
+                    "disabled": false,
+                    "label": null,
+                    "text": "Done"
+                  }
+                ],
+                "evidence": {
+                  "file": "evidence/60-editor.json",
+                  "pointer": "/captures/1"
+                },
+                "identity_evidence_exact": {
+                  "visible_button_identity": {
+                    "ids": [
+                      "4af18e99-83e5-4242-91bc-cecaaf5534ef"
+                    ],
+                    "position": 0,
+                    "text": "CLICK HERE 🔥"
+                  }
+                },
+                "source_hash": "da1c4f31d68f4f969aa21418f62d5a73ea8c53b9fac2360b0e3d599c77fae61d",
+                "scope_history": {
+                  "label_exact": "inactive_clone",
+                  "interpretation": "historical_label_not_inactivity_evidence",
+                  "evidence": {
+                    "file": "evidence/60-editor.json",
+                    "pointer": "/captures/1/scope"
+                  }
+                }
+              }
+            ],
+            "shared_options": [
+              {
+                "definition": "message_personalization",
+                "panel": {
+                  "file": "evidence/60-editor.json",
+                  "pointer": "/node_defaults/0/capture"
+                },
+                "matched_tokens": [
+                  "textarea",
+                  "Enter your text..."
+                ],
+                "signature": "80b16fd296c5abd6956845ffd7460885f53e617030421172d410ee6785221c7e",
+                "scope": "Matched visible textarea and placeholder; hidden editor state was not read."
+              },
+              {
+                "definition": "button_action",
+                "panel": {
+                  "file": "evidence/60-editor.json",
+                  "pointer": "/captures/1"
+                },
+                "matched_tokens": [
+                  "Edit Button",
+                  "Button title",
+                  "When this button is pressed"
+                ],
+                "signature": "7c613d956a182137c9574e1fa61dff9684623998fff456c3928f87500d0ff4e9",
+                "scope": "Shared option choices only; instance values remain in this panel."
+              }
+            ],
+            "inspection": {
+              "default_opened": true,
+              "nested_panels_opened": 1,
+              "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+              "existing_block_controls_complete": true,
+              "all_variants_verified": false,
+              "gaps": []
+            },
+            "exit_semantics": [
+              {
+                "state": "no_connected_destination_observed",
+                "detail": "No captured outgoing graph edge; this is not proof of purchase, registration or runtime termination."
+              }
+            ]
+          }
+        ],
+        "annotations": [],
+        "edges": [
+          {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/60-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          }
+        ],
+        "observations": [
+          {
+            "label": "trigger.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\n+ Create New Step\nLive Comments #3\nTrigger replies with these keywords\nIf\nmessage is\n+ Keyword\nKeywords are not case-sensitive, e.g. \"Hello\" and \"hello\" are recognised as the same.\nSave\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nYou made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇\nCLICK HERE 🔥\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "message is"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Save"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/60-editor.json",
+              "pointer": "/captures/0"
+            },
+            "identity_evidence_exact": {
+              "sidebar": [
+                {
+                  "active": true,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                }
+              ],
+              "header": [
+                "Live Comments #3"
+              ]
+            },
+            "source_hash": "9d78d1a493c468cc6a6de8880f95ce8281d058f358edb72304fd24cc6d98d4d3",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/60-editor.json",
+                "pointer": "/captures/0/scope"
+              }
+            }
+          },
+          {
+            "label": "node-0.button-0.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nCLICK HERE 🔥\nWhen this button is pressed\nOpen website\nhttps://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat\nWebsite URL\nhttps://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat\nAdditional actions\nE.g. you can add a tag on a button click.\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nPeople will see a redirection page for 2 seconds. Upgrade to remove it.\nDelete button\nDone",
+            "fields": [
+              {
+                "name": "caption",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter title...",
+                "value": "CLICK HERE 🔥",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/60-editor.json",
+                  "pointer": "/captures/1/panel/fields/0"
+                }
+              },
+              {
+                "name": "url",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "https://yourwebsite.com",
+                "value": "https://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/60-editor.json",
+                  "pointer": "/captures/1/panel/fields/1"
+                }
+              },
+              {
+                "name": null,
+                "label": "Additional actions",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/60-editor.json",
+                  "pointer": "/captures/1/panel/fields/2"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": "Close",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Delete button"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Done"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/60-editor.json",
+              "pointer": "/captures/1"
+            },
+            "identity_evidence_exact": {
+              "visible_button_identity": {
+                "ids": [
+                  "4af18e99-83e5-4242-91bc-cecaaf5534ef"
+                ],
+                "position": 0,
+                "text": "CLICK HERE 🔥"
+              }
+            },
+            "source_hash": "da1c4f31d68f4f969aa21418f62d5a73ea8c53b9fac2360b0e3d599c77fae61d",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/60-editor.json",
+                "pointer": "/captures/1/scope"
+              }
+            }
+          }
+        ],
+        "trigger_shared_options": [
+          {
+            "definition": "live_trigger",
+            "panel": {
+              "file": "evidence/60-editor.json",
+              "pointer": "/captures/0"
+            },
+            "matched_tokens": [
+              "Trigger replies with these keywords"
+            ],
+            "signature": "95ad9cd983c913de7ffac06263771fd103346bd97e0f393373f6490a507df6f4",
+            "scope": "Shared option choices only; instance values remain in this panel."
+          }
+        ],
+        "inspection_only_node_ids": [],
+        "graph_integrity": {
+          "captured_sidebar_items": 1,
+          "executable_nodes_including_trigger": 2,
+          "captured_edges": 1,
+          "rendered_totals_exact": null,
+          "all_original_nodes_and_edges_proven": false,
+          "limitation": "Original graph is not exposed. Draft edges use visible navigation identity; no hidden IDs or server export."
+        },
+        "supporting_evidence": [
+          {
+            "kind": "option_sets",
+            "evidence": {
+              "file": "evidence/60-editor.json",
+              "pointer": "/option_sets"
+            },
+            "json_exact": []
+          },
+          {
+            "kind": "draft_changes",
+            "evidence": {
+              "file": "evidence/60-editor.json",
+              "pointer": "/draft_changes"
+            },
+            "json_exact": []
+          },
+          {
+            "kind": "capture_corrections",
+            "evidence": {
+              "file": "evidence/60-editor.json",
+              "pointer": "/capture_corrections"
+            },
+            "json_exact": [
+              {
+                "requested_node": 0,
+                "reason": "First capture still showed Live Comments #3. Reopened existing draft and verified Send Message header and active start row before recapture."
+              }
+            ]
+          }
+        ]
+      },
+      "native_setup": null,
+      "followup": null,
+      "selection": {
+        "basis": "product_interpretation",
+        "job_family": "link_delivery",
+        "trigger": "live_comment",
+        "route": "direct_private_link",
+        "choose_when": "Use one Live keyword private reply with a URL, without an opening-button gate.",
+        "avoid_when": "Do not infer keyword values: the clone's keyword list is unset.",
+        "client_inputs": [
+          "Live keyword",
+          "message",
+          "destination"
+        ]
+      },
+      "safety": {
+        "draft_evidence": {
+          "file": "evidence/draft-manifest.json",
+          "pointer": "/19"
+        },
+        "draft_publication_verified": true,
+        "all_configured_triggers_off": true,
+        "current_state": {
+          "entry_trigger_state": "off",
+          "publication": "DRAFT",
+          "evidence": {
+            "file": "evidence/followup-reconciliation.json",
+            "pointer": "/after_representative1080_cleanup/rows/19"
+          },
+          "source_hash": "3a9ff88aa730a9078a07f57503defe023f1cd33ce674b4425e8a4bf83ab2e183"
+        },
+        "remediation_evidence": null,
+        "delivery_limit": "No Set Live or send action. Scoped 0 runs before trigger removal and n/a list metrics are not account-wide no-delivery proof.",
+        "set_live_pressed": false,
+        "runtime_tested": false,
+        "credential_values_collected": false
+      },
+      "reconstruction": {
+        "status": "partial",
+        "original_settings_complete": false,
+        "instance_default_panels_captured": true,
+        "instance_ui_inspection_complete": true,
+        "all_possible_variants_verified": false,
+        "client_ready": false,
+        "runtime_tested": false
+      },
+      "gaps": [
+        "Original server settings and IDs were not exported. Clone defaults are not asserted to equal source defaults.",
+        "Runtime was not tested because execution is forbidden; this is separate from settings completeness.",
+        "All existing node defaults were opened. Shared options are evidence-matched; exhaustive alternative node-type conversion is not proven."
+      ]
+    }
+  },
+  "graph": {
+    "start": "trigger",
+    "steps": [
+      {
+        "id": "trigger",
+        "type": "entry",
+        "sourceType": "trigger",
+        "title": "Trigger",
+        "content": {
+          "text": "",
+          "preview": "Live Comments #3\n\nSelected values were not captured",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "panels": [
+            {
+              "label": "trigger.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\n+ Create New Step\nLive Comments #3\nTrigger replies with these keywords\nIf\nmessage is\n+ Keyword\nKeywords are not case-sensitive, e.g. \"Hello\" and \"hello\" are recognised as the same.\nSave\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nYou made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇\nCLICK HERE 🔥\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "message is"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Save"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/60-editor.json",
+                "pointer": "/captures/0"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": true,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  }
+                ],
+                "header": [
+                  "Live Comments #3"
+                ]
+              },
+              "source_hash": "9d78d1a493c468cc6a6de8880f95ce8281d058f358edb72304fd24cc6d98d4d3",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/60-editor.json",
+                  "pointer": "/captures/0/scope"
+                }
+              }
+            }
+          ],
+          "trigger_shared_options": [
+            {
+              "definition": "live_trigger",
+              "panel": {
+                "file": "evidence/60-editor.json",
+                "pointer": "/captures/0"
+              },
+              "matched_tokens": [
+                "Trigger replies with these keywords"
+              ],
+              "signature": "95ad9cd983c913de7ffac06263771fd103346bd97e0f393373f6490a507df6f4",
+              "scope": "Shared option choices only; instance values remain in this panel."
+            }
+          ]
+        },
+        "provenance": {
+          "pointer": null,
+          "derived": "implicit_trigger_endpoint",
+          "evidence": [
+            "/instance/edges",
+            "/instance/observations"
+          ]
+        }
+      },
+      {
+        "id": "node-0",
+        "type": "message",
+        "sourceType": "message",
+        "title": "Send Message",
+        "content": {
+          "text": "You made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇",
+          "preview": "You made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇",
+          "buttons": [
+            "CLICK HERE 🔥"
+          ],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "node-0",
+          "kind": "message",
+          "label_exact": "Send Message",
+          "identity": {
+            "position": 0,
+            "group": "builder-node-start",
+            "original_source_id": null,
+            "visible_ids_exact": null,
+            "active_sidebar_exact": [
+              {
+                "active": true,
+                "group": "builder-node-start",
+                "label": "Send Message",
+                "position": 0
+              }
+            ],
+            "header_exact": [
+              "Send Message"
+            ],
+            "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+          },
+          "default_panel": {
+            "label": "node.0.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\n+ Create New Step\nSend Message\nSend\nas Private Reply\nYou made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇\nCLICK HERE 🔥\n+ Add Button\n+ Add Quick Reply\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nYou made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇\nCLICK HERE 🔥\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": "text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter your text...",
+                "value": "You made it to the Live!\n\nWanna grab that free ebook? It’s yours 👇👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/60-editor.json",
+                  "pointer": "/node_defaults/0/capture/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/60-editor.json",
+              "pointer": "/node_defaults/0/capture"
+            },
+            "identity_evidence_exact": {
+              "sidebar": [
+                {
+                  "active": true,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                }
+              ],
+              "header": [
+                "Send Message"
+              ]
+            },
+            "source_hash": "60713e521afa0a9f9628bca61dd3855ae15ba0eae09f8f506a4a9a286b6bc292",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/60-editor.json",
+                "pointer": "/node_defaults/0/capture/scope"
+              }
+            }
+          },
+          "nested_panels": [
+            {
+              "label": "node-0.button-0.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nCLICK HERE 🔥\nWhen this button is pressed\nOpen website\nhttps://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat\nWebsite URL\nhttps://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat\nAdditional actions\nE.g. you can add a tag on a button click.\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nPeople will see a redirection page for 2 seconds. Upgrade to remove it.\nDelete button\nDone",
+              "fields": [
+                {
+                  "name": "caption",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Enter title...",
+                  "value": "CLICK HERE 🔥",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "aria_disabled": null,
+                    "aria_invalid": null,
+                    "aria_required": null,
+                    "disabled": false,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "required": false,
+                    "step": null
+                  },
+                  "evidence": {
+                    "file": "evidence/60-editor.json",
+                    "pointer": "/captures/1/panel/fields/0"
+                  }
+                },
+                {
+                  "name": "url",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "https://yourwebsite.com",
+                  "value": "https://www.youtube.com/watch?v=hNIAaQ8dZC0&ab_channel=Manychat",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "aria_disabled": null,
+                    "aria_invalid": null,
+                    "aria_required": null,
+                    "disabled": false,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "required": false,
+                    "step": null
+                  },
+                  "evidence": {
+                    "file": "evidence/60-editor.json",
+                    "pointer": "/captures/1/panel/fields/1"
+                  }
+                },
+                {
+                  "name": null,
+                  "label": "Additional actions",
+                  "tag": "input",
+                  "type": "checkbox",
+                  "placeholder": null,
+                  "value": "on",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "aria_disabled": "false",
+                    "aria_invalid": null,
+                    "aria_required": null,
+                    "disabled": false,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "required": false,
+                    "step": null
+                  },
+                  "evidence": {
+                    "file": "evidence/60-editor.json",
+                    "pointer": "/captures/1/panel/fields/2"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": "Close",
+                  "text": ""
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Delete button"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Done"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/60-editor.json",
+                "pointer": "/captures/1"
+              },
+              "identity_evidence_exact": {
+                "visible_button_identity": {
+                  "ids": [
+                    "4af18e99-83e5-4242-91bc-cecaaf5534ef"
+                  ],
+                  "position": 0,
+                  "text": "CLICK HERE 🔥"
+                }
+              },
+              "source_hash": "da1c4f31d68f4f969aa21418f62d5a73ea8c53b9fac2360b0e3d599c77fae61d",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/60-editor.json",
+                  "pointer": "/captures/1/scope"
+                }
+              }
+            }
+          ],
+          "shared_options": [
+            {
+              "definition": "message_personalization",
+              "panel": {
+                "file": "evidence/60-editor.json",
+                "pointer": "/node_defaults/0/capture"
+              },
+              "matched_tokens": [
+                "textarea",
+                "Enter your text..."
+              ],
+              "signature": "80b16fd296c5abd6956845ffd7460885f53e617030421172d410ee6785221c7e",
+              "scope": "Matched visible textarea and placeholder; hidden editor state was not read."
+            },
+            {
+              "definition": "button_action",
+              "panel": {
+                "file": "evidence/60-editor.json",
+                "pointer": "/captures/1"
+              },
+              "matched_tokens": [
+                "Edit Button",
+                "Button title",
+                "When this button is pressed"
+              ],
+              "signature": "7c613d956a182137c9574e1fa61dff9684623998fff456c3928f87500d0ff4e9",
+              "scope": "Shared option choices only; instance values remain in this panel."
+            }
+          ],
+          "inspection": {
+            "default_opened": true,
+            "nested_panels_opened": 1,
+            "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+            "existing_block_controls_complete": true,
+            "all_variants_verified": false,
+            "gaps": []
+          },
+          "exit_semantics": [
+            {
+              "state": "no_connected_destination_observed",
+              "detail": "No captured outgoing graph edge; this is not proof of purchase, registration or runtime termination."
+            }
+          ]
+        },
+        "provenance": {
+          "pointer": "/instance/nodes/0",
+          "derived": null,
+          "evidence": []
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "edge-0",
+        "from": "trigger",
+        "to": "node-0",
+        "label": "Starting Step",
+        "settings": {
+          "from": "trigger",
+          "to": "node-0",
+          "port_exact": "Starting Step",
+          "source_branch_id": null,
+          "source_reply_id": null,
+          "visible_button_ids": [],
+          "weight_percent": null,
+          "caption_exact": null,
+          "navigation_label": null,
+          "evidence": {
+            "file": "evidence/60-editor.json",
+            "pointer": "/graph/edges/0"
+          }
+        },
+        "provenance": {
+          "pointer": "/instance/edges/0"
+        }
+      }
+    ]
+  },
+  "setup": [],
+  "annotations": []
+}

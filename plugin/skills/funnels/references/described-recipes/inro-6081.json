@@ -1,0 +1,571 @@
+{
+  "schema_version": 1,
+  "id": "inro-6081",
+  "version": "1.0.0",
+  "description_status": "described_not_accepted",
+  "title": "Named-launch waitlist with withdrawal",
+  "source": {
+    "id": "inro-6081",
+    "title": "Build a waitlist for your next launch",
+    "url": "https://app.inro.social/public/scenarios/6081",
+    "observed_at": "2026-10-30",
+    "original_goal": "Build a waitlist for your next launch",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "native": {
+    "inputs_text": "launch_name, launch_purpose, consent_text containing YES and STOP, membership_attribute.",
+    "messages_text": "\"Join the waitlist for {launch_name}, for {launch_purpose}? {consent_text}\" Persist joined after this run's YES; STOP persists withdrawn before any handoff. Before YES keep unset; on restart preserve existing state.",
+    "modes": [
+      "C",
+      "D",
+      "W",
+      "H"
+    ],
+    "end_stop": "Actual attribute readback joined/withdrawn, isolated to this launch; S retains membership. No automatic mailings or external list claim.",
+    "difference": ""
+  },
+  "applicability": {
+    "use_when": [
+      "People request a named launch waitlist by comment and give fresh purpose-specific YES consent."
+    ],
+    "prerequisites": [
+      "Have launch name/purpose, YES/STOP copy and a unique membership attribute; inventory all names and preserve existing membership."
+    ],
+    "exclude_when": [
+      "Do not choose when external list enrollment or automatic mailings are required. STOP must persist withdrawn before handoff.",
+      "Do not configure when required lifecycle operations are unavailable on the actual host."
+    ]
+  },
+  "inputs": [
+    {
+      "name": "campaign",
+      "type": "text",
+      "requirement": "required",
+      "description": "Unique ASCII campaign name, at most 48 characters. Journal belongs to this conversation only."
+    },
+    {
+      "name": "language",
+      "type": "text",
+      "requirement": "required",
+      "description": "Language for the exact approved messages."
+    },
+    {
+      "name": "initial_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved first message; promised value must be in that message."
+    },
+    {
+      "name": "refusal_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved refusal reply. Ends this campaign before keyword matching."
+    },
+    {
+      "name": "handoff_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved team reply; native handoff needs separate readback."
+    },
+    {
+      "name": "post_ids",
+      "type": "ids",
+      "requirement": "required",
+      "description": "Actual owned Instagram posts; inspect overlap before preparation."
+    },
+    {
+      "name": "keyword",
+      "type": "text",
+      "requirement": "required",
+      "description": "Approved entry word; read actual host matching rules."
+    },
+    {
+      "name": "public_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved public copy, or nonempty inactive copy when public replies are disabled."
+    },
+    {
+      "name": "launch_name",
+      "type": "text",
+      "requirement": "required",
+      "description": "Coach-supplied launch name, preserved without invented claims."
+    },
+    {
+      "name": "launch_purpose",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact purpose of membership for this named launch only; no existing email-list subscription or automatic follow-ups."
+    },
+    {
+      "name": "consent_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact purpose-specific consent text containing YES and STOP, localized where appropriate."
+    },
+    {
+      "name": "membership_attribute",
+      "type": "text",
+      "requirement": "required",
+      "description": "Unique campaign-specific attribute; inventory full namespace before preparation."
+    }
+  ],
+  "messages": [
+    {
+      "id": "public",
+      "kind": "template",
+      "text": "Check DMs and message requests.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6081",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "initial",
+      "kind": "template",
+      "text": "Join the waitlist for {launch_name}, for {launch_purpose}? {consent_text}",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6081",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "placement",
+      "kind": "template",
+      "text": "",
+      "availability": "not_required",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6081",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "continuation",
+      "kind": "instruction",
+      "text": "\"Join the waitlist for {launch_name}, for {launch_purpose}? {consent_text}\" Persist joined after this run's YES; STOP persists withdrawn before any handoff. Before YES keep unset; on restart preserve existing state.",
+      "availability": "instruction_not_sent_text",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6081",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "refusal",
+      "kind": "template",
+      "text": "Understood. I will not continue this campaign.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6081",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "handoff",
+      "kind": "template",
+      "text": "Our team will handle your request.",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6081",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    }
+  ],
+  "route": {
+    "origin": "derived_native_instructions",
+    "deterministic": false,
+    "start": "entry",
+    "steps": [
+      {
+        "id": "entry",
+        "action": "Actual matching keyword comment on the selected post.",
+        "message_ids": [
+          "placement"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "id": "first",
+        "action": "Send the exact approved first message. Deliver any promised value now.",
+        "message_ids": [
+          "public",
+          "initial"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "id": "end",
+        "action": "Stated outcome only. No inferred booking, registration, purchase, verified follow or verified share.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "id": "joined",
+        "action": "Persist joined in the campaign attribute only after fresh explicit YES for this launch.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "id": "withdrawn",
+        "action": "Persist withdrawn on STOP BEFORE any handoff. Preserve other launch state.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "id": "refusal",
+        "action": "End this campaign on refusal. Do not restart from a keyword in the refusal.",
+        "message_ids": [
+          "refusal"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "id": "silence",
+        "action": "Send nothing for silence or external clicks; enforce current delivery windows.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "id": "repeat",
+        "action": "Same-run repeat does not restart intake, resend a bonus or duplicate capture. Ambiguous late replies need clarification.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "id": "handoff",
+        "action": "Use native team handoff on person request, unresolved facts or approved handoff criteria. Text alone is not handoff proof.",
+        "message_ids": [
+          "handoff"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "from": "entry",
+        "to": "first",
+        "condition": "New matching source event; current account, permission and delivery window verified.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "first",
+        "to": "joined",
+        "condition": "Fresh source and new explicit YES for this launch purpose.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "first",
+        "to": "withdrawn",
+        "condition": "STOP, including before enrollment.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "joined",
+        "to": "withdrawn",
+        "condition": "Later STOP.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "joined",
+        "to": "end",
+        "condition": "Actual saved attribute readback.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "withdrawn",
+        "to": "end",
+        "condition": "Actual withdrawn readback. Restart preserves state; no re-enrollment from old YES.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "first",
+        "to": "refusal",
+        "condition": "Actual refusal; waitlist STOP writes withdrawn first.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "joined",
+        "to": "refusal",
+        "condition": "Actual refusal; waitlist STOP writes withdrawn first.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "first",
+        "to": "silence",
+        "condition": "No inbound reply, or only an external click.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "first",
+        "to": "repeat",
+        "condition": "Same-run repeated word.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "refusal",
+        "to": "end",
+        "condition": "Refusal completed. No permanent cross-source suppression claimed.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "first",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "joined",
+        "to": "handoff",
+        "condition": "Person request, unknown facts or unresolved issue; never silently invent an answer.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "handoff",
+        "to": "end",
+        "condition": "Actual native team control readback.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      },
+      {
+        "from": "withdrawn",
+        "to": "handoff",
+        "condition": "Only after actual withdrawn readback, if team help requested.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6081"
+        }
+      }
+    ]
+  },
+  "source_differences": [
+    "Not preserved from the source: unproven-waitlist-membership. A business analogue is not an equivalent graph."
+  ],
+  "reconciliation": {
+    "legacy_file": "recipes/inro-6081.json",
+    "legacy_sha256": "e71e379a06804867d43cd2ef31a7834288de15dcd21906189f9c8281d6ed5128",
+    "legacy_version": "0.1.0",
+    "legacy_status": "candidate",
+    "legacy_goal": "Capture explicit consent as membership of one named launch and support withdrawal.",
+    "relationship": "native_guide_revision_not_literal_equivalence",
+    "explanation": "The native guide defines this business outcome. Legacy inputs, messages and transitions remain available for exact-source audit, not as a second authority for this analogue.",
+    "required_input_changes": {
+      "legacy": [
+        "post_ids",
+        "keyword",
+        "launch_name",
+        "launch_purpose",
+        "consent_text",
+        "membership_attribute",
+        "language",
+        "public_text",
+        "initial_text",
+        "refusal_text",
+        "handoff_text"
+      ],
+      "legacy_initial": [
+        "launch_name",
+        "launch_purpose",
+        "consent_text"
+      ],
+      "canonical": [
+        {
+          "name": "campaign",
+          "requirement": "required"
+        },
+        {
+          "name": "language",
+          "requirement": "required"
+        },
+        {
+          "name": "initial_text",
+          "requirement": "required"
+        },
+        {
+          "name": "refusal_text",
+          "requirement": "required"
+        },
+        {
+          "name": "handoff_text",
+          "requirement": "required"
+        },
+        {
+          "name": "post_ids",
+          "requirement": "required"
+        },
+        {
+          "name": "keyword",
+          "requirement": "required"
+        },
+        {
+          "name": "public_text",
+          "requirement": "required"
+        },
+        {
+          "name": "launch_name",
+          "requirement": "required"
+        },
+        {
+          "name": "launch_purpose",
+          "requirement": "required"
+        },
+        {
+          "name": "consent_text",
+          "requirement": "required"
+        },
+        {
+          "name": "membership_attribute",
+          "requirement": "required"
+        }
+      ]
+    }
+  },
+  "configuration": {
+    "policy": "native-policy.md",
+    "capability_observation": "capability-observation.json",
+    "operations": [
+      "Read actual host tools and get_playbook for this recipe.",
+      "Create/bind only an approved owned OFF rule. Normal setup_comment_replies is not draft preparation.",
+      "Read/stage general InstagramDirectMessages only under explicit OFF/ON shared-state branches.",
+      "Apply native policy mode C; inspect actual inputs before writes.",
+      "Apply native policy mode D; inspect actual inputs before writes.",
+      "Apply native policy mode W; inspect actual inputs before writes.",
+      "Apply native policy mode H; inspect actual inputs before writes.",
+      "Read back each exact setting and inheritance before continuing."
+    ],
+    "normal_connector_gate": "Required OFF creation, exact inheritance restoration or continuing comment preview may be unavailable. Stop before writes; a documented GraphQL alternative is not an available normal tool."
+  },
+  "lifecycle": {
+    "checks": [
+      "content",
+      "return",
+      "stop",
+      "refusal",
+      "repeat",
+      "unknown_action",
+      "wrong_account",
+      "two_campaigns",
+      "source_attribution",
+      "new_contact_silence",
+      "old_contact_silence",
+      "non_follower",
+      "expired_window",
+      "comment_context_return",
+      "dm_fallback_return",
+      "launch_membership",
+      "withdrawal",
+      "capture_validation",
+      "launch_membership_readback",
+      "launch_withdrawal_confirmed",
+      "normal_host_capabilities",
+      "fresh_account_state",
+      "exact_restoration",
+      "live_suppression"
+    ],
+    "return": "Use this conversation journal and fresh native readback. No cross-chat state or user settings transfer. If the journal is missing, read-only reconciliation only.",
+    "stop": "Apply S from native-policy.md: safe owned disable; exact campaign additions only; preserve concurrent changes and inheritance. Restore dormant Send only after original OFF DM is OFF. Read back every stop; live silence is separate.",
+    "restart": "Fresh source and consent, same verified ownership. Waitlist membership stays joined/withdrawn; no old consent reuse."
+  },
+  "evidence": {
+    "source_capture": {
+      "observed_at": "2026-10-30",
+      "status": "captured_research_not_runtime"
+    },
+    "canonical_version": {
+      "status": "described_not_runtime_tested"
+    },
+    "capability": {
+      "observed_at": "2026-11-01",
+      "status": "dated_document_and_tool_observation_not_account_check"
+    },
+    "preview": {
+      "status": "not_tested_for_canonical_version",
+      "note": "Older previews do not establish unchanged behavior after prompt changes."
+    },
+    "live": {
+      "status": "historical_partial_not_accepted",
+      "observed_at": "2026-10-31",
+      "note": "No individual live acceptance for this canonical version.",
+      "reference": "inro-business-analogues-live.json; checked_at=2026-10-31T06:52:44Z"
+    },
+    "acceptance": {
+      "status": "not_accepted",
+      "registry": "catalog.json",
+      "note": "Zero versions qualify. Local checks, previews and partial live paths are not acceptance."
+    }
+  }
+}

@@ -1,0 +1,3669 @@
+{
+  "id": "inro-4530",
+  "source": {
+    "vendor": "inro",
+    "file": "templates/inro-4530.json",
+    "title": "Gamify IG Lives",
+    "category": "Engage your audience",
+    "facets": [
+      "Engage your audience",
+      "game",
+      "Live Comments"
+    ],
+    "job": "game",
+    "model": "source_graph",
+    "document": {
+      "schema_version": "0.1.0",
+      "id": "inro-4530",
+      "ordinal": 3,
+      "title": "Gamify IG Lives",
+      "source_category": "Engage your audience",
+      "source": {
+        "catalog_url": "https://app.inro.social/automation",
+        "preview_url": "https://app.inro.social/public/scenarios/4530",
+        "public_template_id": "4530",
+        "observed_at": "2026-10-30",
+        "source_version": null,
+        "capture_sha256": "aa373727811a360e54b269f3e77da1ef854697c1cc2e6900bc575386a7874ef4",
+        "editor_url": null,
+        "editor_inactive_verified": false,
+        "official_export": false
+      },
+      "classification": {
+        "basis": "product_interpretation",
+        "job_family": "game",
+        "route": "quiz_and_random_prize",
+        "desired_business_event": "prize_fulfilled",
+        "trigger_classes": [
+          "live_comment"
+        ]
+      },
+      "selection": {
+        "basis": "product_interpretation",
+        "use_when": [
+          "Run a live quiz with answer branches and randomized prizes when both mechanics are intentional."
+        ],
+        "avoid_when": [
+          "Do not substitute this for simple lead capture or imply that random prize allocation exists in Chatfuel MCP.",
+          "Do not silently drop an essential unsupported gate."
+        ],
+        "required_facts": [
+          "Quiz answers, prize rules, probabilities, fulfillment owner and eligibility policy.",
+          "Confirm account scope, messaging permission and the real outcome measurement."
+        ]
+      },
+      "trigger_labels": [
+        "Live Comments"
+      ],
+      "triggers": [
+        {
+          "node_id": "n000",
+          "exact_visible_text": "When\nSomeone comments on your Live",
+          "settings_panels": [],
+          "matching_complete": false
+        }
+      ],
+      "graph": {
+        "entry_node": "n000",
+        "nodes": [
+          {
+            "id": "n000",
+            "source_id": "trigger",
+            "editor_source_id": null,
+            "source_type": "trigger",
+            "observed": {
+              "level": "public_graph",
+              "text": "When\nSomeone comments on your Live",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "trigger",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n001",
+            "source_id": "46456",
+            "editor_source_id": null,
+            "source_type": "folder",
+            "observed": {
+              "level": "public_graph",
+              "text": "Add contact to folder(s)\nIG Live Game Parti…",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "folder",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [
+              "dep-n001"
+            ],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": {
+              "source_action": "Add contact to folder(s)",
+              "source_labels": [
+                "IG Live Game Parti…"
+              ],
+              "source_labels_state": "observed_truncated",
+              "source_resource_ids": [],
+              "source_binding_state": "unknown_not_exposed",
+              "clone_labels": [],
+              "clone_binding_state": "not_observed",
+              "required_client_binding": "client.folder_binding.n001",
+              "recovery_evidence": null
+            }
+          },
+          {
+            "id": "n002",
+            "source_id": "46457",
+            "editor_source_id": null,
+            "source_type": "button_template",
+            "observed": {
+              "level": "public_graph",
+              "text": "Are you ready? Win and get a chance to get an exclusive prize \nLet's go!!!🔥",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Let's go!!!🔥",
+                  "title": "Let's go!!!🔥"
+                }
+              ]
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "button_template",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n003",
+            "source_id": "46457_option_0",
+            "editor_source_id": null,
+            "source_type": "branch_option",
+            "observed": {
+              "level": "public_graph",
+              "text": "WHEN BUTTON IS CLICKED\nLet's go!!!🔥",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_option",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n004",
+            "source_id": "46459",
+            "editor_source_id": null,
+            "source_type": "media_message",
+            "observed": {
+              "level": "public_graph",
+              "text": "",
+              "fields": [],
+              "links": [],
+              "images": [
+                {
+                  "alt": "",
+                  "url": "https://app.inro.social/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBM0g5TUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--1da0e2b77e78f3b4d84036cdacdfea006b518ba2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9VY21WemFYcGxYM1J2WDJ4cGJXbDBXd2RwQWVBdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--77580adcb47c9209a9fc05070e60d13ba9bc109e/clap-clapping.mp4"
+                }
+              ],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "media_message",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n005",
+            "source_id": "46460",
+            "editor_source_id": null,
+            "source_type": "message",
+            "observed": {
+              "level": "public_graph",
+              "text": "Here are the rules:\n\nWatch for my next question in your DMs.\nReply with your best answer.\n\n✅ Got it right? Nice one! But heads-up: only 50 % of the correct answers will actually win, so luck still plays a part.\n\n🔴 Missed it? No stress! Just catch my next live and have another go.",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "message",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n006",
+            "source_id": "46461",
+            "editor_source_id": null,
+            "source_type": "survey",
+            "observed": {
+              "level": "public_graph",
+              "text": "Quiz\nWhich of these animals is physically incapable of jumping?\nKangaroo\nElephant\nGoat\nRabbit",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Kangaroo",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Elephant",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Goat",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Rabbit",
+                  "title": null
+                }
+              ]
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "survey",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [
+              "dep-n006"
+            ],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n007",
+            "source_id": "46462",
+            "editor_source_id": null,
+            "source_type": "wait_for_reply",
+            "observed": {
+              "level": "public_graph",
+              "text": "Wait for reply\nThe scenario will pause and wait until the contact replies to proceed.",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "wait_for_reply",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n008",
+            "source_id": "46462_option_replied_0",
+            "editor_source_id": null,
+            "source_type": "branch_option",
+            "observed": {
+              "level": "public_graph",
+              "text": "IF MESSAGE CONTAINS\nElephant",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_option",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n009",
+            "source_id": "46465",
+            "editor_source_id": null,
+            "source_type": "ab_testing",
+            "observed": {
+              "level": "public_graph",
+              "text": "A/B testing\nTest different flows randomly to see which one performs better.\nOption A: 50% - Option B: 50%",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "ab_testing",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n010",
+            "source_id": "46465_option_a",
+            "editor_source_id": null,
+            "source_type": "branch_option",
+            "observed": {
+              "level": "public_graph",
+              "text": "50%",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_option",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n011",
+            "source_id": "46467",
+            "editor_source_id": null,
+            "source_type": "message",
+            "observed": {
+              "level": "public_graph",
+              "text": "Congratulations, you won!\nLuck was on your part after all 😃",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "message",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n012",
+            "source_id": "46468",
+            "editor_source_id": null,
+            "source_type": "conversion_link",
+            "observed": {
+              "level": "public_graph",
+              "text": "Your prize!\nEnjoy\nGet it now 🥰",
+              "fields": [],
+              "links": [
+                {
+                  "text": "Get it now 🥰",
+                  "url": "https://www.inro.social/"
+                }
+              ],
+              "images": [
+                {
+                  "alt": "",
+                  "url": "https://app.inro.social/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMk9YS0E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b4f3d77b21751e3d6dd475c245ff3115e970eb9f/Screen%20Shot%202025-06-24%20at%204.38.11%20PM.png"
+                }
+              ],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "conversion_link",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [
+              "dep-n012"
+            ],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n013",
+            "source_id": "46468_option_clicked",
+            "editor_source_id": null,
+            "source_type": "branch_option",
+            "observed": {
+              "level": "public_graph",
+              "text": "WHEN LINK IS CLICKED",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_option",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n014",
+            "source_id": "46468_option_expired",
+            "editor_source_id": null,
+            "source_type": "branch_expiration",
+            "observed": {
+              "level": "public_graph",
+              "text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_expiration",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n015",
+            "source_id": "46465_option_b",
+            "editor_source_id": null,
+            "source_type": "branch_option",
+            "observed": {
+              "level": "public_graph",
+              "text": "50%",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_option",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n016",
+            "source_id": "46466",
+            "editor_source_id": null,
+            "source_type": "message",
+            "observed": {
+              "level": "public_graph",
+              "text": "Your answer was correct, however you're not part of the winners! Join my next live to try again ❤️",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "message",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n017",
+            "source_id": "46462_option_replied",
+            "editor_source_id": null,
+            "source_type": "branch_option",
+            "observed": {
+              "level": "public_graph",
+              "text": "ELSE",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_option",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n018",
+            "source_id": "46464",
+            "editor_source_id": null,
+            "source_type": "message",
+            "observed": {
+              "level": "public_graph",
+              "text": "Sorry... wrong answer!\nJoin my next live to try again ❤️",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "message",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n019",
+            "source_id": "46462_option_expired",
+            "editor_source_id": null,
+            "source_type": "branch_expiration",
+            "observed": {
+              "level": "public_graph",
+              "text": "IF CONTACT HASN'T REPLIED AFTER\n2 hours",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_expiration",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n020",
+            "source_id": "46463",
+            "editor_source_id": null,
+            "source_type": "message",
+            "observed": {
+              "level": "public_graph",
+              "text": "Thank you for joining my live. The game is expired, but you will be able to play next time! ",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "message",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n021",
+            "source_id": "46457_option_expired",
+            "editor_source_id": null,
+            "source_type": "branch_expiration",
+            "observed": {
+              "level": "public_graph",
+              "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n1 hours",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_expiration",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n022",
+            "source_id": "46458",
+            "editor_source_id": null,
+            "source_type": "message",
+            "observed": {
+              "level": "public_graph",
+              "text": "Thank you for joining my live. Even if you missed the game, you will be able to play next time! ",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": null,
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "graph_only",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              ],
+              "defaults_captured": false,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "node editor and variants",
+                  "status": "unavailable",
+                  "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+                }
+              ],
+              "shared_control_refs": []
+            },
+            "outcome_type": "message",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "unavailable",
+              "method": "no matched editor",
+              "topology_equal": false,
+              "exact_text_equal": false,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          }
+        ],
+        "edges": [
+          {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 46456",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 46456 to 46457",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 46457 to 46457_option_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 46457_option_0 to 46459",
+            "source_port": "46457_option_0",
+            "condition_text": "WHEN BUTTON IS CLICKED\nLet's go!!!🔥",
+            "condition_basis": "source_branch_label"
+          },
+          {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 46459 to 46460",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 46460 to 46461",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e006",
+            "from": "n006",
+            "to": "n007",
+            "source_label": "Edge from 46461 to 46462",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e007",
+            "from": "n007",
+            "to": "n008",
+            "source_label": "Edge from 46462 to 46462_option_replied_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e008",
+            "from": "n008",
+            "to": "n009",
+            "source_label": "Edge from 46462_option_replied_0 to 46465",
+            "source_port": "46462_option_replied_0",
+            "condition_text": "IF MESSAGE CONTAINS\nElephant",
+            "condition_basis": "source_branch_label"
+          },
+          {
+            "id": "e009",
+            "from": "n009",
+            "to": "n010",
+            "source_label": "Edge from 46465 to 46465_option_a",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e010",
+            "from": "n010",
+            "to": "n011",
+            "source_label": "Edge from 46465_option_a to 46467",
+            "source_port": "46465_option_a",
+            "condition_text": "50%",
+            "condition_basis": "source_branch_label"
+          },
+          {
+            "id": "e011",
+            "from": "n011",
+            "to": "n012",
+            "source_label": "Edge from 46467 to 46468",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e012",
+            "from": "n012",
+            "to": "n013",
+            "source_label": "Edge from 46468 to 46468_option_clicked",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e013",
+            "from": "n012",
+            "to": "n014",
+            "source_label": "Edge from 46468 to 46468_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e014",
+            "from": "n009",
+            "to": "n015",
+            "source_label": "Edge from 46465 to 46465_option_b",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e015",
+            "from": "n015",
+            "to": "n016",
+            "source_label": "Edge from 46465_option_b to 46466",
+            "source_port": "46465_option_b",
+            "condition_text": "50%",
+            "condition_basis": "source_branch_label"
+          },
+          {
+            "id": "e016",
+            "from": "n007",
+            "to": "n017",
+            "source_label": "Edge from 46462 to 46462_option_replied",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e017",
+            "from": "n017",
+            "to": "n018",
+            "source_label": "Edge from 46462_option_replied to 46464",
+            "source_port": "46462_option_replied",
+            "condition_text": "ELSE",
+            "condition_basis": "source_branch_label"
+          },
+          {
+            "id": "e018",
+            "from": "n007",
+            "to": "n019",
+            "source_label": "Edge from 46462 to 46462_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e019",
+            "from": "n019",
+            "to": "n020",
+            "source_label": "Edge from 46462_option_expired to 46463",
+            "source_port": "46462_option_expired",
+            "condition_text": "IF CONTACT HASN'T REPLIED AFTER\n2 hours",
+            "condition_basis": "source_branch_label"
+          },
+          {
+            "id": "e020",
+            "from": "n002",
+            "to": "n021",
+            "source_label": "Edge from 46457 to 46457_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e021",
+            "from": "n021",
+            "to": "n022",
+            "source_label": "Edge from 46457_option_expired to 46458",
+            "source_port": "46457_option_expired",
+            "condition_text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n1 hours",
+            "condition_basis": "source_branch_label"
+          }
+        ],
+        "graph_source_complete": true,
+        "capture_audit": {
+          "rendered_node_count": 23,
+          "rendered_edge_count": 22,
+          "saved_node_count": 23,
+          "saved_edge_count": 22,
+          "counts_equal": true,
+          "reachable_nodes": 23,
+          "dangling_edges": 0,
+          "duplicate_node_ids": 0,
+          "limitations": [
+            "Complete relative to saved rendered DOM, not an official export or hidden server graph.",
+            "No outgoing rendered edge means an observed graph end, not proof of delivery or successful business outcome.",
+            "In the editor, Add a step placeholders were excluded from source-node matching; original public edges were retained."
+          ]
+        }
+      },
+      "scenario_settings": {
+        "panels": [],
+        "defaults_complete": false,
+        "inheritance": "Observed account opt-out, menu and global exclusions apply separately. These are not template defaults. No account setting changed.",
+        "global_settings_source": "evidence/shared-control-options.json#/global_options",
+        "shared_control_refs": []
+      },
+      "rules": {
+        "refusal": "Source stop, negative-answer, no-response and expiry ports are retained. Account opt-out is a separate inherited control.",
+        "reentry": "Per-template Limit frequency per contact defaults and shared enabled options are preserved in scenario settings.",
+        "duplicates": "No idempotency guarantee established. Frequency control is not proof of cross-scenario deduplication.",
+        "retry_and_timeout_evidence": [
+          "n014",
+          "n019",
+          "n021"
+        ],
+        "failure_semantics": "UI retry/expiry values are preserved per node. Transport/runtime failures were not tested; lack of runtime proof is not counted as an unopened setting."
+      },
+      "dependencies": [
+        {
+          "id": "dep-n001",
+          "node_id": "n001",
+          "kind": "folder",
+          "source_reference": null,
+          "observed_values": [
+            "Add contact to folder(s)\nIG Live Game Parti…"
+          ],
+          "required_coach_input": "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "status": "partial"
+        },
+        {
+          "id": "dep-n006",
+          "node_id": "n006",
+          "kind": "survey",
+          "source_reference": null,
+          "observed_values": [
+            "Quiz\nWhich of these animals is physically incapable of jumping?\nKangaroo\nElephant\nGoat\nRabbit"
+          ],
+          "required_coach_input": "Bind and verify the survey resource for this node; preserve the source value separately.",
+          "status": "partial"
+        },
+        {
+          "id": "dep-n012",
+          "node_id": "n012",
+          "kind": "conversion_link",
+          "source_reference": null,
+          "observed_values": [
+            "https://www.inro.social/"
+          ],
+          "required_coach_input": "Bind and verify the conversion_link resource for this node; preserve the source value separately.",
+          "status": "partial"
+        }
+      ],
+      "placeholders": [],
+      "outcomes": {
+        "observed_events": [
+          "50%",
+          "ELSE",
+          "IF MESSAGE CONTAINS\nElephant",
+          "WHEN BUTTON IS CLICKED\nLet's go!!!🔥",
+          "WHEN LINK IS CLICKED"
+        ],
+        "desired_event_verified": false,
+        "attribution_gap": "UI branch labels are observable mechanisms, not confirmation of the desired business event."
+      },
+      "gaps": [
+        {
+          "id": "runtime-not-tested",
+          "scope": "execution",
+          "field": "runtime_tested",
+          "reason": "No customer or test execution is authorized. Static observations do not prove delivery or outcome.",
+          "blocks_exact_reconstruction": false
+        },
+        {
+          "id": "n000-control-0",
+          "scope": "n000",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n001-control-0",
+          "scope": "n001",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n001-source-folder-binding",
+          "scope": "n001",
+          "field": "source folder configuration",
+          "reason": "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default. Original label is literally truncated; the missing text was not recovered or guessed.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n002-control-0",
+          "scope": "n002",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n003-control-0",
+          "scope": "n003",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n004-control-0",
+          "scope": "n004",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n005-control-0",
+          "scope": "n005",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n006-control-0",
+          "scope": "n006",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n007-control-0",
+          "scope": "n007",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n008-control-0",
+          "scope": "n008",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n009-control-0",
+          "scope": "n009",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n010-control-0",
+          "scope": "n010",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n011-control-0",
+          "scope": "n011",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n012-control-0",
+          "scope": "n012",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n013-control-0",
+          "scope": "n013",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n014-control-0",
+          "scope": "n014",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n015-control-0",
+          "scope": "n015",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n016-control-0",
+          "scope": "n016",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n017-control-0",
+          "scope": "n017",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n018-control-0",
+          "scope": "n018",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n019-control-0",
+          "scope": "n019",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n020-control-0",
+          "scope": "n020",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n021-control-0",
+          "scope": "n021",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n022-control-0",
+          "scope": "n022",
+          "field": "node editor and variants",
+          "reason": "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "editor-attempt-unresolved",
+          "scope": "source",
+          "field": "editor access",
+          "reason": "No editor or draft after the original attempt and delayed reconciliation; inspector timed out waiting for Activate scenario. Original exception was not preserved. Application refusal is not proven.",
+          "blocks_exact_reconstruction": true
+        }
+      ],
+      "reconstruction": {
+        "record_schema_valid": true,
+        "graph_integrity_valid": true,
+        "source_settings_complete": false,
+        "status": "partially_reconstructable",
+        "runtime_tested": false,
+        "blockers": [
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default. Original label is literally truncated; the missing text was not recovered or guessed.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "unavailable: No verified matching editor capture. No editor/draft after original attempt; application cause is not established.",
+          "No editor or draft after the original attempt and delayed reconciliation; inspector timed out waiting for Activate scenario. Original exception was not preserved. Application refusal is not proven."
+        ],
+        "coverage": {
+          "source_nodes": 23,
+          "source_edges": 22,
+          "editor_nodes_matched": 0,
+          "nodes_with_editor_panels": 0,
+          "nodes_all_controls_opened": 0,
+          "terminal_nodes": 6,
+          "timeout_nodes": 3
+        },
+        "client_data_ready": false,
+        "external_binding_blockers": [
+          "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "Bind and verify the survey resource for this node; preserve the source value separately.",
+          "Bind and verify the conversion_link resource for this node; preserve the source value separately.",
+          "Authorized client channel, real offer and account scope have not been configured."
+        ]
+      },
+      "evidence_files": [
+        "evidence/4530-public.json",
+        "evidence/shared-control-options.json",
+        "evidence/shared-variable-options.json",
+        "draft-manifest.json",
+        "evidence/final-reconciliation.json"
+      ],
+      "wizard_settings": [],
+      "access_evidence": {
+        "state": "attempt_unresolved",
+        "attempts": 2,
+        "visible_error": null,
+        "cause_proven": false,
+        "delayed_reconciliation": "23 list rows: 21 owned inactive drafts and 2 pre-existing. No additional draft matched the nine unresolved attempts. Original creation exception/render was not retained; app refusal is unproven."
+      }
+    }
+  },
+  "graph": {
+    "start": "n000",
+    "steps": [
+      {
+        "id": "n000",
+        "type": "entry",
+        "sourceType": "trigger",
+        "title": "trigger",
+        "content": {
+          "text": "When\nSomeone comments on your Live",
+          "preview": "When\nSomeone comments on your Live",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n000",
+          "source_id": "trigger",
+          "editor_source_id": null,
+          "source_type": "trigger",
+          "observed": {
+            "level": "public_graph",
+            "text": "When\nSomeone comments on your Live",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "trigger",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/0",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n001",
+        "type": "group",
+        "sourceType": "folder",
+        "title": "folder",
+        "content": {
+          "text": "Add contact to folder(s)\nIG Live Game Parti…",
+          "preview": "Add contact to folder(s)\nIG Live Game Parti…",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n001",
+          "source_id": "46456",
+          "editor_source_id": null,
+          "source_type": "folder",
+          "observed": {
+            "level": "public_graph",
+            "text": "Add contact to folder(s)\nIG Live Game Parti…",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "folder",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [
+            "dep-n001"
+          ],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": {
+            "source_action": "Add contact to folder(s)",
+            "source_labels": [
+              "IG Live Game Parti…"
+            ],
+            "source_labels_state": "observed_truncated",
+            "source_resource_ids": [],
+            "source_binding_state": "unknown_not_exposed",
+            "clone_labels": [],
+            "clone_binding_state": "not_observed",
+            "required_client_binding": "client.folder_binding.n001",
+            "recovery_evidence": null
+          }
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/1",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n002",
+        "type": "message",
+        "sourceType": "button_template",
+        "title": "button_template",
+        "content": {
+          "text": "Are you ready? Win and get a chance to get an exclusive prize \nLet's go!!!🔥",
+          "preview": "Are you ready? Win and get a chance to get an exclusive prize \nLet's go!!!🔥",
+          "buttons": [
+            "Let's go!!!🔥"
+          ],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n002",
+          "source_id": "46457",
+          "editor_source_id": null,
+          "source_type": "button_template",
+          "observed": {
+            "level": "public_graph",
+            "text": "Are you ready? Win and get a chance to get an exclusive prize \nLet's go!!!🔥",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Let's go!!!🔥",
+                "title": "Let's go!!!🔥"
+              }
+            ]
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "button_template",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/2",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n003",
+        "type": "choice",
+        "sourceType": "branch_option",
+        "title": "branch_option",
+        "content": {
+          "text": "WHEN BUTTON IS CLICKED\nLet's go!!!🔥",
+          "preview": "WHEN BUTTON IS CLICKED\nLet's go!!!🔥",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n003",
+          "source_id": "46457_option_0",
+          "editor_source_id": null,
+          "source_type": "branch_option",
+          "observed": {
+            "level": "public_graph",
+            "text": "WHEN BUTTON IS CLICKED\nLet's go!!!🔥",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_option",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/3",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n004",
+        "type": "message",
+        "sourceType": "media_message",
+        "title": "media_message",
+        "content": {
+          "text": "",
+          "preview": "",
+          "buttons": [],
+          "media": [
+            "https://app.inro.social/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBM0g5TUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--1da0e2b77e78f3b4d84036cdacdfea006b518ba2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9VY21WemFYcGxYM1J2WDJ4cGJXbDBXd2RwQWVBdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--77580adcb47c9209a9fc05070e60d13ba9bc109e/clap-clapping.mp4"
+          ],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n004",
+          "source_id": "46459",
+          "editor_source_id": null,
+          "source_type": "media_message",
+          "observed": {
+            "level": "public_graph",
+            "text": "",
+            "fields": [],
+            "links": [],
+            "images": [
+              {
+                "alt": "",
+                "url": "https://app.inro.social/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBM0g5TUE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--1da0e2b77e78f3b4d84036cdacdfea006b518ba2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9VY21WemFYcGxYM1J2WDJ4cGJXbDBXd2RwQWVBdyIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--77580adcb47c9209a9fc05070e60d13ba9bc109e/clap-clapping.mp4"
+              }
+            ],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "media_message",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/4",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n005",
+        "type": "message",
+        "sourceType": "message",
+        "title": "message",
+        "content": {
+          "text": "Here are the rules:\n\nWatch for my next question in your DMs.\nReply with your best answer.\n\n✅ Got it right? Nice one! But heads-up: only 50 % of the correct answers will actually win, so luck still plays a part.\n\n🔴 Missed it? No stress! Just catch my next live and have another go.",
+          "preview": "Here are the rules:\n\nWatch for my next question in your DMs.\nReply with your best answer.\n\n✅ Got it right? Nice one! But heads-up: only 50 % of the correct answers will actually win, so luck still plays a part.\n\n🔴 Missed it? No stress! Just catch my next live and have another go.",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n005",
+          "source_id": "46460",
+          "editor_source_id": null,
+          "source_type": "message",
+          "observed": {
+            "level": "public_graph",
+            "text": "Here are the rules:\n\nWatch for my next question in your DMs.\nReply with your best answer.\n\n✅ Got it right? Nice one! But heads-up: only 50 % of the correct answers will actually win, so luck still plays a part.\n\n🔴 Missed it? No stress! Just catch my next live and have another go.",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "message",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/5",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n006",
+        "type": "question",
+        "sourceType": "survey",
+        "title": "survey",
+        "content": {
+          "text": "Quiz\nWhich of these animals is physically incapable of jumping?\nKangaroo\nElephant\nGoat\nRabbit",
+          "preview": "Quiz\nWhich of these animals is physically incapable of jumping?\nKangaroo\nElephant\nGoat\nRabbit",
+          "buttons": [
+            "Kangaroo",
+            "Elephant",
+            "Goat",
+            "Rabbit"
+          ],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n006",
+          "source_id": "46461",
+          "editor_source_id": null,
+          "source_type": "survey",
+          "observed": {
+            "level": "public_graph",
+            "text": "Quiz\nWhich of these animals is physically incapable of jumping?\nKangaroo\nElephant\nGoat\nRabbit",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Kangaroo",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Elephant",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Goat",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Rabbit",
+                "title": null
+              }
+            ]
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "survey",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [
+            "dep-n006"
+          ],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/6",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n007",
+        "type": "wait",
+        "sourceType": "wait_for_reply",
+        "title": "wait_for_reply",
+        "content": {
+          "text": "Wait for reply\nThe scenario will pause and wait until the contact replies to proceed.",
+          "preview": "Wait for reply\nThe scenario will pause and wait until the contact replies to proceed.",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n007",
+          "source_id": "46462",
+          "editor_source_id": null,
+          "source_type": "wait_for_reply",
+          "observed": {
+            "level": "public_graph",
+            "text": "Wait for reply\nThe scenario will pause and wait until the contact replies to proceed.",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "wait_for_reply",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/7",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n008",
+        "type": "choice",
+        "sourceType": "branch_option",
+        "title": "branch_option",
+        "content": {
+          "text": "IF MESSAGE CONTAINS\nElephant",
+          "preview": "IF MESSAGE CONTAINS\nElephant",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n008",
+          "source_id": "46462_option_replied_0",
+          "editor_source_id": null,
+          "source_type": "branch_option",
+          "observed": {
+            "level": "public_graph",
+            "text": "IF MESSAGE CONTAINS\nElephant",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_option",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/8",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n009",
+        "type": "distribution",
+        "sourceType": "ab_testing",
+        "title": "ab_testing",
+        "content": {
+          "text": "A/B testing\nTest different flows randomly to see which one performs better.\nOption A: 50% - Option B: 50%",
+          "preview": "A/B testing\nTest different flows randomly to see which one performs better.\nOption A: 50% - Option B: 50%",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n009",
+          "source_id": "46465",
+          "editor_source_id": null,
+          "source_type": "ab_testing",
+          "observed": {
+            "level": "public_graph",
+            "text": "A/B testing\nTest different flows randomly to see which one performs better.\nOption A: 50% - Option B: 50%",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "ab_testing",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/9",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n010",
+        "type": "choice",
+        "sourceType": "branch_option",
+        "title": "branch_option",
+        "content": {
+          "text": "50%",
+          "preview": "50%",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n010",
+          "source_id": "46465_option_a",
+          "editor_source_id": null,
+          "source_type": "branch_option",
+          "observed": {
+            "level": "public_graph",
+            "text": "50%",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_option",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/10",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n011",
+        "type": "message",
+        "sourceType": "message",
+        "title": "message",
+        "content": {
+          "text": "Congratulations, you won!\nLuck was on your part after all 😃",
+          "preview": "Congratulations, you won!\nLuck was on your part after all 😃",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n011",
+          "source_id": "46467",
+          "editor_source_id": null,
+          "source_type": "message",
+          "observed": {
+            "level": "public_graph",
+            "text": "Congratulations, you won!\nLuck was on your part after all 😃",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "message",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/11",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n012",
+        "type": "link",
+        "sourceType": "conversion_link",
+        "title": "conversion_link",
+        "content": {
+          "text": "Your prize!\nEnjoy\nGet it now 🥰",
+          "preview": "Your prize!\nEnjoy\nGet it now 🥰",
+          "buttons": [],
+          "media": [
+            "https://app.inro.social/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMk9YS0E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b4f3d77b21751e3d6dd475c245ff3115e970eb9f/Screen%20Shot%202025-06-24%20at%204.38.11%20PM.png"
+          ],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n012",
+          "source_id": "46468",
+          "editor_source_id": null,
+          "source_type": "conversion_link",
+          "observed": {
+            "level": "public_graph",
+            "text": "Your prize!\nEnjoy\nGet it now 🥰",
+            "fields": [],
+            "links": [
+              {
+                "text": "Get it now 🥰",
+                "url": "https://www.inro.social/"
+              }
+            ],
+            "images": [
+              {
+                "alt": "",
+                "url": "https://app.inro.social/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMk9YS0E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b4f3d77b21751e3d6dd475c245ff3115e970eb9f/Screen%20Shot%202025-06-24%20at%204.38.11%20PM.png"
+              }
+            ],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "conversion_link",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [
+            "dep-n012"
+          ],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/12",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n013",
+        "type": "choice",
+        "sourceType": "branch_option",
+        "title": "branch_option",
+        "content": {
+          "text": "WHEN LINK IS CLICKED",
+          "preview": "WHEN LINK IS CLICKED",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n013",
+          "source_id": "46468_option_clicked",
+          "editor_source_id": null,
+          "source_type": "branch_option",
+          "observed": {
+            "level": "public_graph",
+            "text": "WHEN LINK IS CLICKED",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_option",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/13",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n014",
+        "type": "timeout",
+        "sourceType": "branch_expiration",
+        "title": "branch_expiration",
+        "content": {
+          "text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+          "preview": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n014",
+          "source_id": "46468_option_expired",
+          "editor_source_id": null,
+          "source_type": "branch_expiration",
+          "observed": {
+            "level": "public_graph",
+            "text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_expiration",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/14",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n015",
+        "type": "choice",
+        "sourceType": "branch_option",
+        "title": "branch_option",
+        "content": {
+          "text": "50%",
+          "preview": "50%",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n015",
+          "source_id": "46465_option_b",
+          "editor_source_id": null,
+          "source_type": "branch_option",
+          "observed": {
+            "level": "public_graph",
+            "text": "50%",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_option",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/15",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n016",
+        "type": "message",
+        "sourceType": "message",
+        "title": "message",
+        "content": {
+          "text": "Your answer was correct, however you're not part of the winners! Join my next live to try again ❤️",
+          "preview": "Your answer was correct, however you're not part of the winners! Join my next live to try again ❤️",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n016",
+          "source_id": "46466",
+          "editor_source_id": null,
+          "source_type": "message",
+          "observed": {
+            "level": "public_graph",
+            "text": "Your answer was correct, however you're not part of the winners! Join my next live to try again ❤️",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "message",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/16",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n017",
+        "type": "choice",
+        "sourceType": "branch_option",
+        "title": "branch_option",
+        "content": {
+          "text": "ELSE",
+          "preview": "ELSE",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n017",
+          "source_id": "46462_option_replied",
+          "editor_source_id": null,
+          "source_type": "branch_option",
+          "observed": {
+            "level": "public_graph",
+            "text": "ELSE",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_option",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/17",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n018",
+        "type": "message",
+        "sourceType": "message",
+        "title": "message",
+        "content": {
+          "text": "Sorry... wrong answer!\nJoin my next live to try again ❤️",
+          "preview": "Sorry... wrong answer!\nJoin my next live to try again ❤️",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n018",
+          "source_id": "46464",
+          "editor_source_id": null,
+          "source_type": "message",
+          "observed": {
+            "level": "public_graph",
+            "text": "Sorry... wrong answer!\nJoin my next live to try again ❤️",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "message",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/18",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n019",
+        "type": "timeout",
+        "sourceType": "branch_expiration",
+        "title": "branch_expiration",
+        "content": {
+          "text": "IF CONTACT HASN'T REPLIED AFTER\n2 hours",
+          "preview": "IF CONTACT HASN'T REPLIED AFTER\n2 hours",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n019",
+          "source_id": "46462_option_expired",
+          "editor_source_id": null,
+          "source_type": "branch_expiration",
+          "observed": {
+            "level": "public_graph",
+            "text": "IF CONTACT HASN'T REPLIED AFTER\n2 hours",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_expiration",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/19",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n020",
+        "type": "message",
+        "sourceType": "message",
+        "title": "message",
+        "content": {
+          "text": "Thank you for joining my live. The game is expired, but you will be able to play next time! ",
+          "preview": "Thank you for joining my live. The game is expired, but you will be able to play next time! ",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n020",
+          "source_id": "46463",
+          "editor_source_id": null,
+          "source_type": "message",
+          "observed": {
+            "level": "public_graph",
+            "text": "Thank you for joining my live. The game is expired, but you will be able to play next time! ",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "message",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/20",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n021",
+        "type": "timeout",
+        "sourceType": "branch_expiration",
+        "title": "branch_expiration",
+        "content": {
+          "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n1 hours",
+          "preview": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n1 hours",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n021",
+          "source_id": "46457_option_expired",
+          "editor_source_id": null,
+          "source_type": "branch_expiration",
+          "observed": {
+            "level": "public_graph",
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n1 hours",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_expiration",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/21",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n022",
+        "type": "message",
+        "sourceType": "message",
+        "title": "message",
+        "content": {
+          "text": "Thank you for joining my live. Even if you missed the game, you will be able to play next time! ",
+          "preview": "Thank you for joining my live. Even if you missed the game, you will be able to play next time! ",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n022",
+          "source_id": "46458",
+          "editor_source_id": null,
+          "source_type": "message",
+          "observed": {
+            "level": "public_graph",
+            "text": "Thank you for joining my live. Even if you missed the game, you will be able to play next time! ",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": null,
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "graph_only",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "node editor and variants: No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+            ],
+            "defaults_captured": false,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "node editor and variants",
+                "status": "unavailable",
+                "reason": "No verified matching editor capture. No editor/draft after original attempt; application cause is not established."
+              }
+            ],
+            "shared_control_refs": []
+          },
+          "outcome_type": "message",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "unavailable",
+            "method": "no matched editor",
+            "topology_equal": false,
+            "exact_text_equal": false,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/22",
+          "derived": null,
+          "evidence": []
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "e000",
+        "from": "n000",
+        "to": "n001",
+        "label": "",
+        "settings": {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "source_label": "Edge from trigger to 46456",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/0"
+        }
+      },
+      {
+        "id": "e001",
+        "from": "n001",
+        "to": "n002",
+        "label": "",
+        "settings": {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "source_label": "Edge from 46456 to 46457",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/1"
+        }
+      },
+      {
+        "id": "e002",
+        "from": "n002",
+        "to": "n003",
+        "label": "",
+        "settings": {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "source_label": "Edge from 46457 to 46457_option_0",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/2"
+        }
+      },
+      {
+        "id": "e003",
+        "from": "n003",
+        "to": "n004",
+        "label": "WHEN BUTTON IS CLICKED\nLet's go!!!🔥",
+        "settings": {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "source_label": "Edge from 46457_option_0 to 46459",
+          "source_port": "46457_option_0",
+          "condition_text": "WHEN BUTTON IS CLICKED\nLet's go!!!🔥",
+          "condition_basis": "source_branch_label"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/3"
+        }
+      },
+      {
+        "id": "e004",
+        "from": "n004",
+        "to": "n005",
+        "label": "",
+        "settings": {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "source_label": "Edge from 46459 to 46460",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/4"
+        }
+      },
+      {
+        "id": "e005",
+        "from": "n005",
+        "to": "n006",
+        "label": "",
+        "settings": {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "source_label": "Edge from 46460 to 46461",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/5"
+        }
+      },
+      {
+        "id": "e006",
+        "from": "n006",
+        "to": "n007",
+        "label": "",
+        "settings": {
+          "id": "e006",
+          "from": "n006",
+          "to": "n007",
+          "source_label": "Edge from 46461 to 46462",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/6"
+        }
+      },
+      {
+        "id": "e007",
+        "from": "n007",
+        "to": "n008",
+        "label": "",
+        "settings": {
+          "id": "e007",
+          "from": "n007",
+          "to": "n008",
+          "source_label": "Edge from 46462 to 46462_option_replied_0",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/7"
+        }
+      },
+      {
+        "id": "e008",
+        "from": "n008",
+        "to": "n009",
+        "label": "IF MESSAGE CONTAINS\nElephant",
+        "settings": {
+          "id": "e008",
+          "from": "n008",
+          "to": "n009",
+          "source_label": "Edge from 46462_option_replied_0 to 46465",
+          "source_port": "46462_option_replied_0",
+          "condition_text": "IF MESSAGE CONTAINS\nElephant",
+          "condition_basis": "source_branch_label"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/8"
+        }
+      },
+      {
+        "id": "e009",
+        "from": "n009",
+        "to": "n010",
+        "label": "",
+        "settings": {
+          "id": "e009",
+          "from": "n009",
+          "to": "n010",
+          "source_label": "Edge from 46465 to 46465_option_a",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/9"
+        }
+      },
+      {
+        "id": "e010",
+        "from": "n010",
+        "to": "n011",
+        "label": "50%",
+        "settings": {
+          "id": "e010",
+          "from": "n010",
+          "to": "n011",
+          "source_label": "Edge from 46465_option_a to 46467",
+          "source_port": "46465_option_a",
+          "condition_text": "50%",
+          "condition_basis": "source_branch_label"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/10"
+        }
+      },
+      {
+        "id": "e011",
+        "from": "n011",
+        "to": "n012",
+        "label": "",
+        "settings": {
+          "id": "e011",
+          "from": "n011",
+          "to": "n012",
+          "source_label": "Edge from 46467 to 46468",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/11"
+        }
+      },
+      {
+        "id": "e012",
+        "from": "n012",
+        "to": "n013",
+        "label": "",
+        "settings": {
+          "id": "e012",
+          "from": "n012",
+          "to": "n013",
+          "source_label": "Edge from 46468 to 46468_option_clicked",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/12"
+        }
+      },
+      {
+        "id": "e013",
+        "from": "n012",
+        "to": "n014",
+        "label": "",
+        "settings": {
+          "id": "e013",
+          "from": "n012",
+          "to": "n014",
+          "source_label": "Edge from 46468 to 46468_option_expired",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/13"
+        }
+      },
+      {
+        "id": "e014",
+        "from": "n009",
+        "to": "n015",
+        "label": "",
+        "settings": {
+          "id": "e014",
+          "from": "n009",
+          "to": "n015",
+          "source_label": "Edge from 46465 to 46465_option_b",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/14"
+        }
+      },
+      {
+        "id": "e015",
+        "from": "n015",
+        "to": "n016",
+        "label": "50%",
+        "settings": {
+          "id": "e015",
+          "from": "n015",
+          "to": "n016",
+          "source_label": "Edge from 46465_option_b to 46466",
+          "source_port": "46465_option_b",
+          "condition_text": "50%",
+          "condition_basis": "source_branch_label"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/15"
+        }
+      },
+      {
+        "id": "e016",
+        "from": "n007",
+        "to": "n017",
+        "label": "",
+        "settings": {
+          "id": "e016",
+          "from": "n007",
+          "to": "n017",
+          "source_label": "Edge from 46462 to 46462_option_replied",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/16"
+        }
+      },
+      {
+        "id": "e017",
+        "from": "n017",
+        "to": "n018",
+        "label": "ELSE",
+        "settings": {
+          "id": "e017",
+          "from": "n017",
+          "to": "n018",
+          "source_label": "Edge from 46462_option_replied to 46464",
+          "source_port": "46462_option_replied",
+          "condition_text": "ELSE",
+          "condition_basis": "source_branch_label"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/17"
+        }
+      },
+      {
+        "id": "e018",
+        "from": "n007",
+        "to": "n019",
+        "label": "",
+        "settings": {
+          "id": "e018",
+          "from": "n007",
+          "to": "n019",
+          "source_label": "Edge from 46462 to 46462_option_expired",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/18"
+        }
+      },
+      {
+        "id": "e019",
+        "from": "n019",
+        "to": "n020",
+        "label": "IF CONTACT HASN'T REPLIED AFTER\n2 hours",
+        "settings": {
+          "id": "e019",
+          "from": "n019",
+          "to": "n020",
+          "source_label": "Edge from 46462_option_expired to 46463",
+          "source_port": "46462_option_expired",
+          "condition_text": "IF CONTACT HASN'T REPLIED AFTER\n2 hours",
+          "condition_basis": "source_branch_label"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/19"
+        }
+      },
+      {
+        "id": "e020",
+        "from": "n002",
+        "to": "n021",
+        "label": "",
+        "settings": {
+          "id": "e020",
+          "from": "n002",
+          "to": "n021",
+          "source_label": "Edge from 46457 to 46457_option_expired",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/20"
+        }
+      },
+      {
+        "id": "e021",
+        "from": "n021",
+        "to": "n022",
+        "label": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n1 hours",
+        "settings": {
+          "id": "e021",
+          "from": "n021",
+          "to": "n022",
+          "source_label": "Edge from 46457_option_expired to 46458",
+          "source_port": "46457_option_expired",
+          "condition_text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n1 hours",
+          "condition_basis": "source_branch_label"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/21"
+        }
+      }
+    ]
+  },
+  "setup": [],
+  "annotations": []
+}

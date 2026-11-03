@@ -1,0 +1,2752 @@
+{
+  "id": "inro-6085",
+  "source": {
+    "vendor": "inro",
+    "file": "templates/inro-6085.json",
+    "title": "Answer every DM with AI, team as backup",
+    "category": "Engage your audience",
+    "facets": [
+      "Engage your audience",
+      "support",
+      "Incoming DMs"
+    ],
+    "job": "support",
+    "model": "source_graph",
+    "document": {
+      "schema_version": "0.1.0",
+      "id": "inro-6085",
+      "ordinal": 2,
+      "title": "Answer every DM with AI, team as backup",
+      "source_category": "Engage your audience",
+      "source": {
+        "catalog_url": "https://app.inro.social/automation",
+        "preview_url": "https://app.inro.social/public/scenarios/6085",
+        "public_template_id": "6085",
+        "observed_at": "2026-10-30",
+        "source_version": null,
+        "capture_sha256": "b662ba02efd893b7d9ab786b9557de24d3f896a3735d797b2caaea7baabe708a",
+        "editor_url": "https://app.inro.social/automation/scenarios/38327",
+        "editor_inactive_verified": true,
+        "official_export": false
+      },
+      "classification": {
+        "basis": "product_interpretation",
+        "job_family": "support",
+        "route": "ai_with_human_backup",
+        "desired_business_event": "question_resolved",
+        "trigger_classes": [
+          "incoming_dm"
+        ]
+      },
+      "selection": {
+        "basis": "product_interpretation",
+        "use_when": [
+          "Answer varied inbound support questions from a maintained knowledge base, with a named human backup."
+        ],
+        "avoid_when": [
+          "Do not use when the business requires a deterministic answer or no human can handle unresolved questions.",
+          "Do not silently drop an essential unsupported gate."
+        ],
+        "required_facts": [
+          "Knowledge base, answer boundaries, escalation owner and notification destination.",
+          "Confirm account scope, messaging permission and the real outcome measurement."
+        ]
+      },
+      "trigger_labels": [
+        "Incoming DMs"
+      ],
+      "triggers": [
+        {
+          "node_id": "n000",
+          "exact_visible_text": "When\nSomeone sends you a DM\nFILTER MESSAGES\nAI-detected intent\nAsks a question or for help in their ...",
+          "settings_panels": [
+            {
+              "name": null,
+              "text": "Someone sends you a DM\nSet up filters to trigger the scenario only on specific messages\nWHICH MESSAGES\nAll messages\nFirst message only\nMESSAGE CONTENT\nAny content\nNo filter on what the message says\nContains keyword(s)\nOnly messages containing one of the keywords you define\nOnly emojis\nOnly messages made up of emojis, with no text\nAI-detected intent\nOnly messages matching an intent you describe in your own words\nAI\nDescribe message intent\nBe as precise and specific as possible to get better results.\nAI-detected intents may not always be accurate.\nSave",
+              "fields": [
+                {
+                  "context": "Any content\nNo filter on what the message says",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Contains keyword(s)\nOnly messages containing one of the keywords you define",
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Only emojis\nOnly messages made up of emojis, with no text",
+                  "index": 2,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": false,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "AI-detected intent\nOnly messages matching an intent you describe in your own words\nAI",
+                  "index": 3,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "radio",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": "",
+                    "required": null
+                  },
+                  "value": true,
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 4,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "e.g. asks for a refund, wants to book a meeting, etc.",
+                  "tag": "textarea",
+                  "type": "textarea",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Asks a question or for help in their own words about products, services, prices, hours, bookings or orders. Not a button reply, a collab pitch, a compliment or spam.",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": null,
+                  "index": 5,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Test intent detection",
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "",
+                  "value_state": "observed_unset"
+                }
+              ]
+            }
+          ],
+          "matching_complete": true
+        }
+      ],
+      "graph": {
+        "entry_node": "n000",
+        "nodes": [
+          {
+            "id": "n000",
+            "source_id": "trigger",
+            "editor_source_id": "trigger",
+            "source_type": "trigger",
+            "observed": {
+              "level": "public_graph",
+              "text": "When\nSomeone sends you a DM\nFILTER MESSAGES\nAI-detected intent\nAsks a question or for help in their ...",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "When\nSomeone sends you a DM\nFILTER MESSAGES\nAI-detected intent\nAsks a question or for help in their ...\nAdd trigger",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "Close",
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Add trigger",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "inline_settings",
+              "all_controls_opened": false,
+              "unknown_settings": [
+                "Contains keyword(s) alternate variant: Shared DM variant crashed editor: TypeError undefined.join. Actual template default captured independently; no further failed variant retries."
+              ],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [
+                {
+                  "label": "Contains keyword(s) alternate variant",
+                  "status": "unavailable",
+                  "reason": "Shared DM variant crashed editor: TypeError undefined.join. Actual template default captured independently; no further failed variant retries."
+                }
+              ],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/incoming_dm",
+                  "signature": "sha256:6b15e925159302378f1d0377a405eaa5d464231646e8194e269caa1668dcca43",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "trigger",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n001",
+            "source_id": "438528",
+            "editor_source_id": "454972",
+            "source_type": "agent_handover",
+            "observed": {
+              "level": "public_graph",
+              "text": "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends\nGoal: answer the person's question from the knowledge base in one or two short messages, with one question back at most. Done only when they have their answer or the link they need. If the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.\n2 credits",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "Edit",
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [
+              {
+                "name": null,
+                "text": "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends\nGive specific instructions\nGoal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.\n314/480\nWrite clear and simple instructions for better results.\nUse setting\nFOLLOW-UP AUTOMATICALLY AFTER EACH MESSAGE\nPREVIEW\nMessage generated by AI Agent\nReply from contact\nMessage generated by AI Agent\nSave",
+                "fields": [
+                  {
+                    "context": "Goal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.",
+                    "index": 0,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "e.g. Give advice on products, help with booking, etc.",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "value": "Goal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.",
+                    "value_state": "observed_value",
+                    "validation": null
+                  },
+                  {
+                    "context": "Use setting\nFOLLOW-UP AUTOMATICALLY AFTER EACH MESSAGE",
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "button",
+                    "type": "button",
+                    "value": false,
+                    "value_state": "observed_value",
+                    "validation": null
+                  }
+                ]
+              }
+            ],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-variable-options.json",
+                  "signature": "sha256:500fa09425fc6bc82dd85a7efa2630322b277637f4cf36cedb13d5194c52c71c",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "agent_handover",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [
+              "dep-n001"
+            ],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [
+              {
+                "control": "Use setting\nFOLLOW-UP AUTOMATICALLY AFTER EACH MESSAGE",
+                "is_source_default": false,
+                "panel": {
+                  "name": null,
+                  "text": "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends\nGive specific instructions\nGoal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.\n314/480\nWrite clear and simple instructions for better results.\nUse setting\nFOLLOW-UP AUTOMATICALLY AFTER EACH MESSAGE\nWAIT\nseconds\nminutes\nhours\ndays\nPREVIEW\nMessage generated by AI Agent\nReply from contact\nMessage generated by AI Agent\nAFTER 1 HOURS\nFollow-up message generated by AI Agent\nSave",
+                  "fields": [
+                    {
+                      "context": "Goal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.",
+                      "index": 0,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "e.g. Give advice on products, help with booking, etc.",
+                      "tag": "textarea",
+                      "type": "textarea",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "Goal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "Use setting\nFOLLOW-UP AUTOMATICALLY AFTER EACH MESSAGE",
+                      "index": 1,
+                      "label": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "button",
+                      "type": "switch",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": true,
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": null,
+                      "index": 2,
+                      "label": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "number",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "1",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "seconds\nminutes\nhours\ndays",
+                      "index": 3,
+                      "label": null,
+                      "options": [
+                        {
+                          "selected": false,
+                          "text": "seconds",
+                          "value": "seconds"
+                        },
+                        {
+                          "selected": false,
+                          "text": "minutes",
+                          "value": "minutes"
+                        },
+                        {
+                          "selected": true,
+                          "text": "hours",
+                          "value": "hours"
+                        },
+                        {
+                          "selected": false,
+                          "text": "days",
+                          "value": "days"
+                        }
+                      ],
+                      "placeholder": null,
+                      "tag": "select",
+                      "type": "select-one",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "hours",
+                      "value_state": "observed_value"
+                    }
+                  ]
+                }
+              }
+            ],
+            "folder_configuration": null
+          },
+          {
+            "id": "n002",
+            "source_id": "438528_option_completed",
+            "editor_source_id": "454972_option_completed",
+            "source_type": "branch_option",
+            "observed": {
+              "level": "public_graph",
+              "text": "TASK COMPLETED",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "TASK COMPLETED",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_option",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": true,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n003",
+            "source_id": "438529",
+            "editor_source_id": "454973",
+            "source_type": "folder",
+            "observed": {
+              "level": "public_graph",
+              "text": "Add contact to folder(s)\nFront desk: resolv…",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+              "fields": [
+                {
+                  "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                  "index": 0,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": true,
+                      "text": "Add contact to folder(s)",
+                      "value": "add"
+                    },
+                    {
+                      "selected": false,
+                      "text": "Remove contact from folder(s)",
+                      "value": "remove"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "value": "add",
+                  "value_state": "observed_value",
+                  "validation": null
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Pick a folder",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/folder_picker",
+                  "signature": "sha256:f6d35b49dd7b0a25d6e6cfee7deb70915645aafd4c1f3e9dcc3055aeb8411b07",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "folder",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [
+              "dep-n003"
+            ],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": {
+              "source_action": "Add contact to folder(s)",
+              "source_labels": [
+                "Front desk: resolv…"
+              ],
+              "source_labels_state": "observed_truncated",
+              "source_resource_ids": [],
+              "source_binding_state": "unknown_not_exposed",
+              "clone_labels": [],
+              "clone_binding_state": "observed_unset",
+              "required_client_binding": "client.folder_binding.n003",
+              "recovery_evidence": null
+            }
+          },
+          {
+            "id": "n004",
+            "source_id": "438528_option_expired",
+            "editor_source_id": "454972_option_expired",
+            "source_type": "branch_expiration",
+            "observed": {
+              "level": "public_graph",
+              "text": "HANDOVER EXPIRED\n24 hours",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "HANDOVER EXPIRED\nseconds\nminutes\nhours\ndays\n2 credits",
+              "fields": [
+                {
+                  "context": null,
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "number",
+                  "value": "24",
+                  "value_state": "observed_value",
+                  "validation": null
+                },
+                {
+                  "context": "seconds\nminutes\nhours\ndays",
+                  "index": 1,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": false,
+                      "text": "seconds",
+                      "value": "seconds"
+                    },
+                    {
+                      "selected": false,
+                      "text": "minutes",
+                      "value": "minutes"
+                    },
+                    {
+                      "selected": true,
+                      "text": "hours",
+                      "value": "hours"
+                    },
+                    {
+                      "selected": false,
+                      "text": "days",
+                      "value": "days"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "value": "hours",
+                  "value_state": "observed_value",
+                  "validation": null
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_expiration",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n005",
+            "source_id": "438530",
+            "editor_source_id": "454974",
+            "source_type": "send_email",
+            "observed": {
+              "level": "public_graph",
+              "text": "Send email\nSend an email to a specified email address.\nFrom\tcontact@inroapp.com\nTo\t\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nThe AI couldn't finish with @{{contact.username}}. First message: \"{{trigger.message}}\" Latest message: \"{{conversation.last_message_received}}\" Reply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write. Next step: answer, then remove them from \"Needs a human\".",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Send email\nSend an email to a specified email address.\nFrom\tcontact@inroapp.com\nTo\t\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nThe AI couldn't finish with @{{contact.username}}. First message: \"{{trigger.message}}\" Latest message: \"{{conversation.last_message_received}}\" Reply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write. Next step: answer, then remove them from \"Needs a human\".",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "Edit",
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [
+              {
+                "name": null,
+                "text": "Edit email\nFrom\ncontact@inroapp.com (Default email)\nManage\nTo\nAdd recipient\nCc\nAdd\nBcc\nAdd\nSubject\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nEmail content\nThe AI couldn't finish with @{{contact.username}}.\nFirst message: \"{{trigger.message}}\"\nLatest message: \"{{conversation.last_message_received}}\"\n\nReply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write.\n\nNext step: answer, then remove them from \"Needs a human\".\nYou can use Markdown syntax and insert variables.\nAttachments\n\nSelect a file\n\nSave\nCancel",
+                "fields": [
+                  {
+                    "context": "From\ncontact@inroapp.com (Default email)",
+                    "index": 0,
+                    "label": null,
+                    "options": [
+                      {
+                        "selected": true,
+                        "text": "contact@inroapp.com (Default email)",
+                        "value": ""
+                      }
+                    ],
+                    "placeholder": null,
+                    "tag": "select",
+                    "type": "text",
+                    "value": "",
+                    "value_state": "observed_unset",
+                    "validation": null
+                  },
+                  {
+                    "context": null,
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "adam@example.com",
+                    "tag": "input",
+                    "type": "text",
+                    "value": "",
+                    "value_state": "observed_unset",
+                    "validation": null
+                  },
+                  {
+                    "context": null,
+                    "index": 2,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "adam@example.com",
+                    "tag": "input",
+                    "type": "text",
+                    "value": "",
+                    "value_state": "observed_unset",
+                    "validation": null
+                  },
+                  {
+                    "context": null,
+                    "index": 3,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "adam@example.com",
+                    "tag": "input",
+                    "type": "text",
+                    "value": "",
+                    "value_state": "observed_unset",
+                    "validation": null
+                  },
+                  {
+                    "context": "Needs a human: @{{contact.username}} | @{{organization.username}}",
+                    "index": 4,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Enter email subject",
+                    "tag": "input",
+                    "type": "text",
+                    "value": "<redacted>",
+                    "value_state": "unknown",
+                    "validation": null
+                  },
+                  {
+                    "context": "The AI couldn't finish with @{{contact.username}}.\nFirst message: \"{{trigger.message}}\"\nLatest message: \"{{conversation.last_message_received}}\"\n\nReply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write.\n\nNext step: answer, then remove them from \"Needs a human\".",
+                    "index": 5,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Write your email...",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "value": "<redacted>",
+                    "value_state": "unknown",
+                    "validation": null
+                  },
+                  {
+                    "context": "Select a file",
+                    "index": 6,
+                    "label": "Select a file",
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "input",
+                    "type": "file",
+                    "value": "",
+                    "value_state": "observed_unset",
+                    "validation": null
+                  }
+                ]
+              }
+            ],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-variable-options.json",
+                  "signature": "sha256:c27b1f31e551500b61c45563c3faf436a3c3b24ef1ed608decdbb9a3467c7250",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "send_email",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [
+              "dep-n005"
+            ],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": true,
+              "notes": []
+            },
+            "variant_panels": [
+              {
+                "control": "Add recipient",
+                "is_source_default": false,
+                "panel": {
+                  "name": null,
+                  "text": "Edit email\nFrom\ncontact@inroapp.com (Default email)\nManage\nTo\nAdd recipient\nCc\nAdd\nBcc\nAdd\nSubject\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nEmail content\nThe AI couldn't finish with @{{contact.username}}.\nFirst message: \"{{trigger.message}}\"\nLatest message: \"{{conversation.last_message_received}}\"\n\nReply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write.\n\nNext step: answer, then remove them from \"Needs a human\".\nYou can use Markdown syntax and insert variables.\nAttachments\n\nSelect a file\n\nSave\nCancel",
+                  "fields": [
+                    {
+                      "context": "From\ncontact@inroapp.com (Default email)",
+                      "index": 0,
+                      "label": null,
+                      "options": [
+                        {
+                          "selected": true,
+                          "text": "contact@inroapp.com (Default email)",
+                          "value": ""
+                        }
+                      ],
+                      "placeholder": null,
+                      "tag": "select",
+                      "type": "select-one",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    },
+                    {
+                      "context": null,
+                      "index": 1,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "adam@example.com",
+                      "tag": "input",
+                      "type": "text",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    },
+                    {
+                      "context": null,
+                      "index": 2,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "adam@example.com",
+                      "tag": "input",
+                      "type": "text",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    },
+                    {
+                      "context": null,
+                      "index": 3,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "adam@example.com",
+                      "tag": "input",
+                      "type": "text",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    },
+                    {
+                      "context": null,
+                      "index": 4,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "adam@example.com",
+                      "tag": "input",
+                      "type": "text",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    },
+                    {
+                      "context": "Needs a human: @{{contact.username}} | @{{organization.username}}",
+                      "index": 5,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Enter email subject",
+                      "tag": "input",
+                      "type": "text",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "<redacted>",
+                      "value_state": "unknown"
+                    },
+                    {
+                      "context": "The AI couldn't finish with @{{contact.username}}.\nFirst message: \"{{trigger.message}}\"\nLatest message: \"{{conversation.last_message_received}}\"\n\nReply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write.\n\nNext step: answer, then remove them from \"Needs a human\".",
+                      "index": 6,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Write your email...",
+                      "tag": "textarea",
+                      "type": "textarea",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "<redacted>",
+                      "value_state": "unknown"
+                    },
+                    {
+                      "context": "Select a file",
+                      "index": 7,
+                      "label": "Select a file",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "file",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    }
+                  ]
+                }
+              }
+            ],
+            "folder_configuration": null
+          },
+          {
+            "id": "n006",
+            "source_id": "438531",
+            "editor_source_id": "454975",
+            "source_type": "folder",
+            "observed": {
+              "level": "public_graph",
+              "text": "Add contact to folder(s)\nNeeds a human",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+              "fields": [
+                {
+                  "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                  "index": 0,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": true,
+                      "text": "Add contact to folder(s)",
+                      "value": "add"
+                    },
+                    {
+                      "selected": false,
+                      "text": "Remove contact from folder(s)",
+                      "value": "remove"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "value": "add",
+                  "value_state": "observed_value",
+                  "validation": null
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Pick a folder",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/folder_picker",
+                  "signature": "sha256:05afad3379d384d6e0523dec2cff5dd10fbeec1516e224e97e7e991814ee233b",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "folder",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [
+              "dep-n006"
+            ],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": {
+              "source_action": "Add contact to folder(s)",
+              "source_labels": [
+                "Needs a human"
+              ],
+              "source_labels_state": "observed_full",
+              "source_resource_ids": [],
+              "source_binding_state": "unknown_not_exposed",
+              "clone_labels": [],
+              "clone_binding_state": "observed_unset",
+              "required_client_binding": "client.folder_binding.n006",
+              "recovery_evidence": null
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 438528",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 438528 to 438528_option_completed",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 438528_option_completed to 438529",
+            "source_port": "438528_option_completed",
+            "condition_text": "TASK COMPLETED",
+            "condition_basis": "source_branch_label"
+          },
+          {
+            "id": "e003",
+            "from": "n001",
+            "to": "n004",
+            "source_label": "Edge from 438528 to 438528_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 438528_option_expired to 438530",
+            "source_port": "438528_option_expired",
+            "condition_text": "HANDOVER EXPIRED\n24 hours",
+            "condition_basis": "source_branch_label"
+          },
+          {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 438530 to 438531",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          }
+        ],
+        "graph_source_complete": true,
+        "capture_audit": {
+          "rendered_node_count": 7,
+          "rendered_edge_count": 6,
+          "saved_node_count": 7,
+          "saved_edge_count": 6,
+          "counts_equal": true,
+          "reachable_nodes": 7,
+          "dangling_edges": 0,
+          "duplicate_node_ids": 0,
+          "limitations": [
+            "Complete relative to saved rendered DOM, not an official export or hidden server graph.",
+            "No outgoing rendered edge means an observed graph end, not proof of delivery or successful business outcome.",
+            "In the editor, Add a step placeholders were excluded from source-node matching; original public edges were retained."
+          ]
+        }
+      },
+      "scenario_settings": {
+        "panels": [
+          {
+            "name": "Limit frequency per contact",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nLimit how often this scenario can run for each contact\nLimit how often this scenario can run for each contact\nRun scenario only\nonce\nonce every\nseconds\nminutes\nhours\ndays\nweeks\nper contact\nInterrupt on message replies\nExclude specific folders\nTest scenario\nEmail address is empty",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "value": "Answer every DM with AI, team as backup",
+                "value_state": "observed_value",
+                "validation": null
+              }
+            ]
+          },
+          {
+            "name": "Interrupt on message replies",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nInterrupt on message replies\nInterrupt when you reply manually\nInterrupt when you reply manually\nInterrupt when contact replies\nInterrupt when contact replies\nExclude specific folders\nTest scenario\nEmail address is empty",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "value": "Answer every DM with AI, team as backup",
+                "value_state": "observed_value",
+                "validation": null
+              }
+            ]
+          },
+          {
+            "name": "Exclude specific folders",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nInterrupt on message replies\nExclude specific folders\nThis scenario will not run for contacts in the selected folders\nPick a folder\nTest scenario\nEmail address is empty",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "value": "Answer every DM with AI, team as backup",
+                "value_state": "observed_value",
+                "validation": null
+              }
+            ]
+          }
+        ],
+        "defaults_complete": true,
+        "inheritance": "Observed account opt-out, menu and global exclusions apply separately. These are not template defaults. No account setting changed.",
+        "global_settings_source": "evidence/shared-control-options.json#/global_options",
+        "shared_control_refs": [
+          "evidence/6024-editor.json#/scenario_panels"
+        ]
+      },
+      "rules": {
+        "refusal": "Source stop, negative-answer, no-response and expiry ports are retained. Account opt-out is a separate inherited control.",
+        "reentry": "Per-template Limit frequency per contact defaults and shared enabled options are preserved in scenario settings.",
+        "duplicates": "No idempotency guarantee established. Frequency control is not proof of cross-scenario deduplication.",
+        "retry_and_timeout_evidence": [
+          "n004"
+        ],
+        "failure_semantics": "UI retry/expiry values are preserved per node. Transport/runtime failures were not tested; lack of runtime proof is not counted as an unopened setting."
+      },
+      "dependencies": [
+        {
+          "id": "dep-n001",
+          "node_id": "n001",
+          "kind": "agent_handover",
+          "source_reference": null,
+          "observed_values": [
+            "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends"
+          ],
+          "required_coach_input": "Bind and verify the agent_handover resource for this node; preserve the source value separately.",
+          "status": "partial"
+        },
+        {
+          "id": "dep-n003",
+          "node_id": "n003",
+          "kind": "folder",
+          "source_reference": null,
+          "observed_values": [
+            "Add contact to folder(s)\nFront desk: resolv…"
+          ],
+          "required_coach_input": "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "status": "partial"
+        },
+        {
+          "id": "dep-n005",
+          "node_id": "n005",
+          "kind": "send_email",
+          "source_reference": null,
+          "observed_values": [
+            "Send email\nSend an email to a specified email address.\nFrom\tcontact@inroapp.com\nTo\t\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nThe AI couldn't finish with @{{contact.username}}. First message: \"{{trigger.message}}\" Latest message: \"{{conversation.last_message_received}}\" Reply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write. Next step: answer, then remove them from \"Needs a human\"."
+          ],
+          "required_coach_input": "Bind and verify the send_email resource for this node; preserve the source value separately.",
+          "status": "partial"
+        },
+        {
+          "id": "dep-n006",
+          "node_id": "n006",
+          "kind": "folder",
+          "source_reference": null,
+          "observed_values": [
+            "Add contact to folder(s)\nNeeds a human"
+          ],
+          "required_coach_input": "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "status": "partial"
+        }
+      ],
+      "placeholders": [
+        "{{contact.username}}",
+        "{{conversation.last_message_received}}",
+        "{{organization.username}}",
+        "{{trigger.message}}"
+      ],
+      "outcomes": {
+        "observed_events": [
+          "TASK COMPLETED"
+        ],
+        "desired_event_verified": false,
+        "attribution_gap": "UI branch labels are observable mechanisms, not confirmation of the desired business event."
+      },
+      "gaps": [
+        {
+          "id": "runtime-not-tested",
+          "scope": "execution",
+          "field": "runtime_tested",
+          "reason": "No customer or test execution is authorized. Static observations do not prove delivery or outcome.",
+          "blocks_exact_reconstruction": false
+        },
+        {
+          "id": "n000-control-0",
+          "scope": "n000",
+          "field": "Contains keyword(s) alternate variant",
+          "reason": "unavailable: Shared DM variant crashed editor: TypeError undefined.join. Actual template default captured independently; no further failed variant retries.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n003-source-folder-binding",
+          "scope": "n003",
+          "field": "source folder configuration",
+          "reason": "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default. Original label is literally truncated; the missing text was not recovered or guessed.",
+          "blocks_exact_reconstruction": true
+        },
+        {
+          "id": "n006-source-folder-binding",
+          "scope": "n006",
+          "field": "source folder configuration",
+          "reason": "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default.",
+          "blocks_exact_reconstruction": true
+        }
+      ],
+      "reconstruction": {
+        "record_schema_valid": true,
+        "graph_integrity_valid": true,
+        "source_settings_complete": false,
+        "status": "partially_reconstructable",
+        "runtime_tested": false,
+        "blockers": [
+          "unavailable: Shared DM variant crashed editor: TypeError undefined.join. Actual template default captured independently; no further failed variant retries.",
+          "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default. Original label is literally truncated; the missing text was not recovered or guessed.",
+          "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default."
+        ],
+        "coverage": {
+          "source_nodes": 7,
+          "source_edges": 6,
+          "editor_nodes_matched": 7,
+          "nodes_with_editor_panels": 2,
+          "nodes_all_controls_opened": 6,
+          "terminal_nodes": 2,
+          "timeout_nodes": 1
+        },
+        "client_data_ready": false,
+        "external_binding_blockers": [
+          "Bind and verify the agent_handover resource for this node; preserve the source value separately.",
+          "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "Bind and verify the send_email resource for this node; preserve the source value separately.",
+          "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "Authorized client channel, real offer and account scope have not been configured."
+        ]
+      },
+      "evidence_files": [
+        "evidence/6085-editor.json",
+        "evidence/6085-public.json",
+        "evidence/shared-control-options.json",
+        "evidence/shared-variable-options.json",
+        "draft-manifest.json",
+        "evidence/final-reconciliation.json"
+      ],
+      "wizard_settings": [],
+      "access_evidence": {
+        "state": "editor_opened",
+        "attempts": 1,
+        "visible_error": "Contains keyword(s) variant: TypeError undefined.join",
+        "cause_proven": true,
+        "delayed_reconciliation": "23 list rows: 21 owned inactive drafts and 2 pre-existing. No additional draft matched the nine unresolved attempts. Original creation exception/render was not retained; app refusal is unproven."
+      }
+    }
+  },
+  "graph": {
+    "start": "n000",
+    "steps": [
+      {
+        "id": "n000",
+        "type": "entry",
+        "sourceType": "trigger",
+        "title": "trigger",
+        "content": {
+          "text": "When\nSomeone sends you a DM\nFILTER MESSAGES\nAI-detected intent\nAsks a question or for help in their ...",
+          "preview": "When\nSomeone sends you a DM\nFILTER MESSAGES\nAI-detected intent\nAsks a question or for help in their ...",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n000",
+          "source_id": "trigger",
+          "editor_source_id": "trigger",
+          "source_type": "trigger",
+          "observed": {
+            "level": "public_graph",
+            "text": "When\nSomeone sends you a DM\nFILTER MESSAGES\nAI-detected intent\nAsks a question or for help in their ...",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "When\nSomeone sends you a DM\nFILTER MESSAGES\nAI-detected intent\nAsks a question or for help in their ...\nAdd trigger",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": "Close",
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Add trigger",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "inline_settings",
+            "all_controls_opened": false,
+            "unknown_settings": [
+              "Contains keyword(s) alternate variant: Shared DM variant crashed editor: TypeError undefined.join. Actual template default captured independently; no further failed variant retries."
+            ],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [
+              {
+                "label": "Contains keyword(s) alternate variant",
+                "status": "unavailable",
+                "reason": "Shared DM variant crashed editor: TypeError undefined.join. Actual template default captured independently; no further failed variant retries."
+              }
+            ],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/incoming_dm",
+                "signature": "sha256:6b15e925159302378f1d0377a405eaa5d464231646e8194e269caa1668dcca43",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "trigger",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/0",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n001",
+        "type": "handover",
+        "sourceType": "agent_handover",
+        "title": "agent_handover",
+        "content": {
+          "text": "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends",
+          "preview": "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n001",
+          "source_id": "438528",
+          "editor_source_id": "454972",
+          "source_type": "agent_handover",
+          "observed": {
+            "level": "public_graph",
+            "text": "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends\nGoal: answer the person's question from the knowledge base in one or two short messages, with one question back at most. Done only when they have their answer or the link they need. If the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.\n2 credits",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": "Edit",
+                "text": "",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [
+            {
+              "name": null,
+              "text": "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends\nGive specific instructions\nGoal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.\n314/480\nWrite clear and simple instructions for better results.\nUse setting\nFOLLOW-UP AUTOMATICALLY AFTER EACH MESSAGE\nPREVIEW\nMessage generated by AI Agent\nReply from contact\nMessage generated by AI Agent\nSave",
+              "fields": [
+                {
+                  "context": "Goal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "e.g. Give advice on products, help with booking, etc.",
+                  "tag": "textarea",
+                  "type": "textarea",
+                  "value": "Goal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.",
+                  "value_state": "observed_value",
+                  "validation": null
+                },
+                {
+                  "context": "Use setting\nFOLLOW-UP AUTOMATICALLY AFTER EACH MESSAGE",
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "button",
+                  "type": "button",
+                  "value": false,
+                  "value_state": "observed_value",
+                  "validation": null
+                }
+              ]
+            }
+          ],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-variable-options.json",
+                "signature": "sha256:500fa09425fc6bc82dd85a7efa2630322b277637f4cf36cedb13d5194c52c71c",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "agent_handover",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [
+            "dep-n001"
+          ],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [
+            {
+              "control": "Use setting\nFOLLOW-UP AUTOMATICALLY AFTER EACH MESSAGE",
+              "is_source_default": false,
+              "panel": {
+                "name": null,
+                "text": "Hand over to AI Agent\nHand over all incoming messages to the AI Agent until the conversation ends\nGive specific instructions\nGoal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.\n314/480\nWrite clear and simple instructions for better results.\nUse setting\nFOLLOW-UP AUTOMATICALLY AFTER EACH MESSAGE\nWAIT\nseconds\nminutes\nhours\ndays\nPREVIEW\nMessage generated by AI Agent\nReply from contact\nMessage generated by AI Agent\nAFTER 1 HOURS\nFollow-up message generated by AI Agent\nSave",
+                "fields": [
+                  {
+                    "context": "Goal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.",
+                    "index": 0,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "e.g. Give advice on products, help with booking, etc.",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Goal: answer the person's question from the knowledge base in one or two short messages, with one question back at most.\nDone only when they have their answer or the link they need.\nIf the answer is not in the knowledge base, or they ask for a person, say the team will reply here. That does not complete the task.",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "Use setting\nFOLLOW-UP AUTOMATICALLY AFTER EACH MESSAGE",
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "button",
+                    "type": "switch",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": true,
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": null,
+                    "index": 2,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "input",
+                    "type": "number",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "1",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "seconds\nminutes\nhours\ndays",
+                    "index": 3,
+                    "label": null,
+                    "options": [
+                      {
+                        "selected": false,
+                        "text": "seconds",
+                        "value": "seconds"
+                      },
+                      {
+                        "selected": false,
+                        "text": "minutes",
+                        "value": "minutes"
+                      },
+                      {
+                        "selected": true,
+                        "text": "hours",
+                        "value": "hours"
+                      },
+                      {
+                        "selected": false,
+                        "text": "days",
+                        "value": "days"
+                      }
+                    ],
+                    "placeholder": null,
+                    "tag": "select",
+                    "type": "select-one",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "hours",
+                    "value_state": "observed_value"
+                  }
+                ]
+              }
+            }
+          ],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/1",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n002",
+        "type": "choice",
+        "sourceType": "branch_option",
+        "title": "branch_option",
+        "content": {
+          "text": "TASK COMPLETED",
+          "preview": "TASK COMPLETED",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n002",
+          "source_id": "438528_option_completed",
+          "editor_source_id": "454972_option_completed",
+          "source_type": "branch_option",
+          "observed": {
+            "level": "public_graph",
+            "text": "TASK COMPLETED",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "TASK COMPLETED",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_option",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": true,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/2",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n003",
+        "type": "group",
+        "sourceType": "folder",
+        "title": "folder",
+        "content": {
+          "text": "Add contact to folder(s)\nFront desk: resolv…",
+          "preview": "Add contact to folder(s)\nFront desk: resolv…",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n003",
+          "source_id": "438529",
+          "editor_source_id": "454973",
+          "source_type": "folder",
+          "observed": {
+            "level": "public_graph",
+            "text": "Add contact to folder(s)\nFront desk: resolv…",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+            "fields": [
+              {
+                "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                "index": 0,
+                "label": null,
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "value": "add",
+                "value_state": "observed_value",
+                "validation": null
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Pick a folder",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/folder_picker",
+                "signature": "sha256:f6d35b49dd7b0a25d6e6cfee7deb70915645aafd4c1f3e9dcc3055aeb8411b07",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "folder",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [
+            "dep-n003"
+          ],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": {
+            "source_action": "Add contact to folder(s)",
+            "source_labels": [
+              "Front desk: resolv…"
+            ],
+            "source_labels_state": "observed_truncated",
+            "source_resource_ids": [],
+            "source_binding_state": "unknown_not_exposed",
+            "clone_labels": [],
+            "clone_binding_state": "observed_unset",
+            "required_client_binding": "client.folder_binding.n003",
+            "recovery_evidence": null
+          }
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/3",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n004",
+        "type": "timeout",
+        "sourceType": "branch_expiration",
+        "title": "branch_expiration",
+        "content": {
+          "text": "HANDOVER EXPIRED\n24 hours",
+          "preview": "HANDOVER EXPIRED\n24 hours",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n004",
+          "source_id": "438528_option_expired",
+          "editor_source_id": "454972_option_expired",
+          "source_type": "branch_expiration",
+          "observed": {
+            "level": "public_graph",
+            "text": "HANDOVER EXPIRED\n24 hours",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "HANDOVER EXPIRED\nseconds\nminutes\nhours\ndays\n2 credits",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "number",
+                "value": "24",
+                "value_state": "observed_value",
+                "validation": null
+              },
+              {
+                "context": "seconds\nminutes\nhours\ndays",
+                "index": 1,
+                "label": null,
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "value": "hours",
+                "value_state": "observed_value",
+                "validation": null
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_expiration",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/4",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n005",
+        "type": "action",
+        "sourceType": "send_email",
+        "title": "send_email",
+        "content": {
+          "text": "Send email\nSend an email to a specified email address.\nFrom\tcontact@inroapp.com\nTo\t\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nThe AI couldn't finish with @{{contact.username}}. First message: \"{{trigger.message}}\" Latest message: \"{{conversation.last_message_received}}\" Reply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write. Next step: answer, then remove them from \"Needs a human\".",
+          "preview": "Send email\nSend an email to a specified email address.\nFrom\tcontact@inroapp.com\nTo\t\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nThe AI couldn't finish with @{{contact.username}}. First message: \"{{trigger.message}}\" Latest message: \"{{conversation.last_message_received}}\" Reply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write. Next step: answer, then remove them from \"Needs a human\".",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n005",
+          "source_id": "438530",
+          "editor_source_id": "454974",
+          "source_type": "send_email",
+          "observed": {
+            "level": "public_graph",
+            "text": "Send email\nSend an email to a specified email address.\nFrom\tcontact@inroapp.com\nTo\t\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nThe AI couldn't finish with @{{contact.username}}. First message: \"{{trigger.message}}\" Latest message: \"{{conversation.last_message_received}}\" Reply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write. Next step: answer, then remove them from \"Needs a human\".",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Send email\nSend an email to a specified email address.\nFrom\tcontact@inroapp.com\nTo\t\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nThe AI couldn't finish with @{{contact.username}}. First message: \"{{trigger.message}}\" Latest message: \"{{conversation.last_message_received}}\" Reply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write. Next step: answer, then remove them from \"Needs a human\".",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": "Edit",
+                "text": "",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [
+            {
+              "name": null,
+              "text": "Edit email\nFrom\ncontact@inroapp.com (Default email)\nManage\nTo\nAdd recipient\nCc\nAdd\nBcc\nAdd\nSubject\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nEmail content\nThe AI couldn't finish with @{{contact.username}}.\nFirst message: \"{{trigger.message}}\"\nLatest message: \"{{conversation.last_message_received}}\"\n\nReply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write.\n\nNext step: answer, then remove them from \"Needs a human\".\nYou can use Markdown syntax and insert variables.\nAttachments\n\nSelect a file\n\nSave\nCancel",
+              "fields": [
+                {
+                  "context": "From\ncontact@inroapp.com (Default email)",
+                  "index": 0,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": true,
+                      "text": "contact@inroapp.com (Default email)",
+                      "value": ""
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "value": "",
+                  "value_state": "observed_unset",
+                  "validation": null
+                },
+                {
+                  "context": null,
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "adam@example.com",
+                  "tag": "input",
+                  "type": "text",
+                  "value": "",
+                  "value_state": "observed_unset",
+                  "validation": null
+                },
+                {
+                  "context": null,
+                  "index": 2,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "adam@example.com",
+                  "tag": "input",
+                  "type": "text",
+                  "value": "",
+                  "value_state": "observed_unset",
+                  "validation": null
+                },
+                {
+                  "context": null,
+                  "index": 3,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "adam@example.com",
+                  "tag": "input",
+                  "type": "text",
+                  "value": "",
+                  "value_state": "observed_unset",
+                  "validation": null
+                },
+                {
+                  "context": "Needs a human: @{{contact.username}} | @{{organization.username}}",
+                  "index": 4,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Enter email subject",
+                  "tag": "input",
+                  "type": "text",
+                  "value": "<redacted>",
+                  "value_state": "unknown",
+                  "validation": null
+                },
+                {
+                  "context": "The AI couldn't finish with @{{contact.username}}.\nFirst message: \"{{trigger.message}}\"\nLatest message: \"{{conversation.last_message_received}}\"\n\nReply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write.\n\nNext step: answer, then remove them from \"Needs a human\".",
+                  "index": 5,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Write your email...",
+                  "tag": "textarea",
+                  "type": "textarea",
+                  "value": "<redacted>",
+                  "value_state": "unknown",
+                  "validation": null
+                },
+                {
+                  "context": "Select a file",
+                  "index": 6,
+                  "label": "Select a file",
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "file",
+                  "value": "",
+                  "value_state": "observed_unset",
+                  "validation": null
+                }
+              ]
+            }
+          ],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-variable-options.json",
+                "signature": "sha256:c27b1f31e551500b61c45563c3faf436a3c3b24ef1ed608decdbb9a3467c7250",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "send_email",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [
+            "dep-n005"
+          ],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": true,
+            "notes": []
+          },
+          "variant_panels": [
+            {
+              "control": "Add recipient",
+              "is_source_default": false,
+              "panel": {
+                "name": null,
+                "text": "Edit email\nFrom\ncontact@inroapp.com (Default email)\nManage\nTo\nAdd recipient\nCc\nAdd\nBcc\nAdd\nSubject\nNeeds a human: @{{contact.username}} | @{{organization.username}}\nEmail content\nThe AI couldn't finish with @{{contact.username}}.\nFirst message: \"{{trigger.message}}\"\nLatest message: \"{{conversation.last_message_received}}\"\n\nReply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write.\n\nNext step: answer, then remove them from \"Needs a human\".\nYou can use Markdown syntax and insert variables.\nAttachments\n\nSelect a file\n\nSave\nCancel",
+                "fields": [
+                  {
+                    "context": "From\ncontact@inroapp.com (Default email)",
+                    "index": 0,
+                    "label": null,
+                    "options": [
+                      {
+                        "selected": true,
+                        "text": "contact@inroapp.com (Default email)",
+                        "value": ""
+                      }
+                    ],
+                    "placeholder": null,
+                    "tag": "select",
+                    "type": "select-one",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  },
+                  {
+                    "context": null,
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "adam@example.com",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  },
+                  {
+                    "context": null,
+                    "index": 2,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "adam@example.com",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  },
+                  {
+                    "context": null,
+                    "index": 3,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "adam@example.com",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  },
+                  {
+                    "context": null,
+                    "index": 4,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "adam@example.com",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  },
+                  {
+                    "context": "Needs a human: @{{contact.username}} | @{{organization.username}}",
+                    "index": 5,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Enter email subject",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "<redacted>",
+                    "value_state": "unknown"
+                  },
+                  {
+                    "context": "The AI couldn't finish with @{{contact.username}}.\nFirst message: \"{{trigger.message}}\"\nLatest message: \"{{conversation.last_message_received}}\"\n\nReply in the Inrō inbox or on Instagram. If Instagram blocks the reply, the 24-hour window has closed: answer when they next write.\n\nNext step: answer, then remove them from \"Needs a human\".",
+                    "index": 6,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Write your email...",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "<redacted>",
+                    "value_state": "unknown"
+                  },
+                  {
+                    "context": "Select a file",
+                    "index": 7,
+                    "label": "Select a file",
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "input",
+                    "type": "file",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  }
+                ]
+              }
+            }
+          ],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/5",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n006",
+        "type": "group",
+        "sourceType": "folder",
+        "title": "folder",
+        "content": {
+          "text": "Add contact to folder(s)\nNeeds a human",
+          "preview": "Add contact to folder(s)\nNeeds a human",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n006",
+          "source_id": "438531",
+          "editor_source_id": "454975",
+          "source_type": "folder",
+          "observed": {
+            "level": "public_graph",
+            "text": "Add contact to folder(s)\nNeeds a human",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+            "fields": [
+              {
+                "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                "index": 0,
+                "label": null,
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "value": "add",
+                "value_state": "observed_value",
+                "validation": null
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Pick a folder",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/folder_picker",
+                "signature": "sha256:05afad3379d384d6e0523dec2cff5dd10fbeec1516e224e97e7e991814ee233b",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "folder",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [
+            "dep-n006"
+          ],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": {
+            "source_action": "Add contact to folder(s)",
+            "source_labels": [
+              "Needs a human"
+            ],
+            "source_labels_state": "observed_full",
+            "source_resource_ids": [],
+            "source_binding_state": "unknown_not_exposed",
+            "clone_labels": [],
+            "clone_binding_state": "observed_unset",
+            "required_client_binding": "client.folder_binding.n006",
+            "recovery_evidence": null
+          }
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/6",
+          "derived": null,
+          "evidence": []
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "e000",
+        "from": "n000",
+        "to": "n001",
+        "label": "",
+        "settings": {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "source_label": "Edge from trigger to 438528",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/0"
+        }
+      },
+      {
+        "id": "e001",
+        "from": "n001",
+        "to": "n002",
+        "label": "",
+        "settings": {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "source_label": "Edge from 438528 to 438528_option_completed",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/1"
+        }
+      },
+      {
+        "id": "e002",
+        "from": "n002",
+        "to": "n003",
+        "label": "TASK COMPLETED",
+        "settings": {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "source_label": "Edge from 438528_option_completed to 438529",
+          "source_port": "438528_option_completed",
+          "condition_text": "TASK COMPLETED",
+          "condition_basis": "source_branch_label"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/2"
+        }
+      },
+      {
+        "id": "e003",
+        "from": "n001",
+        "to": "n004",
+        "label": "",
+        "settings": {
+          "id": "e003",
+          "from": "n001",
+          "to": "n004",
+          "source_label": "Edge from 438528 to 438528_option_expired",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/3"
+        }
+      },
+      {
+        "id": "e004",
+        "from": "n004",
+        "to": "n005",
+        "label": "HANDOVER EXPIRED\n24 hours",
+        "settings": {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "source_label": "Edge from 438528_option_expired to 438530",
+          "source_port": "438528_option_expired",
+          "condition_text": "HANDOVER EXPIRED\n24 hours",
+          "condition_basis": "source_branch_label"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/4"
+        }
+      },
+      {
+        "id": "e005",
+        "from": "n005",
+        "to": "n006",
+        "label": "",
+        "settings": {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "source_label": "Edge from 438530 to 438531",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/5"
+        }
+      }
+    ]
+  },
+  "setup": [],
+  "annotations": []
+}

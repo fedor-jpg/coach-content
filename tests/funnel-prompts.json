@@ -1,0 +1,955 @@
+{
+  "kind": "manual-prompt-evaluation-fixtures-not-executed-conversations",
+  "grading": "Run each prompt in a fresh authorized session without revealing recipe IDs. Score each criterion pass/fail against actual output. All must pass; any invented result or silent condition change fails. Do not start agents automatically.",
+  "recipes": [
+    {
+      "recipe_id": "inro-comment-moderation",
+      "family": "moderation",
+      "prompts": [
+        "Hide comments with abusive words under my posts.",
+        "Remove unwanted comments automatically; do not reply to them.",
+        "I need automatic comment moderation, not an apology message."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": false,
+        "developer_preparable": false,
+        "required_outcome": "Hide unwanted comments automatically.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "comment-hiding"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6085",
+      "family": "support",
+      "prompts": [
+        "Answer common programme questions in DMs and bring in our team when unsure.",
+        "Use my approved FAQ for incoming messages with a human backup.",
+        "Handle Instagram support from these facts; hand over unknown questions."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Answer incoming support questions from approved facts and hand unresolved questions to the team.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "email-notification",
+          "deterministic-answer"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-4530",
+      "family": "quiz",
+      "prompts": [
+        "Prepare a DM quiz with the same bonus for every answer from my Live invitation.",
+        "I will tell Live viewers to DM QUIZ; ask one question and give our fixed bonus.",
+        "Use ordinary Direct messages for a quiz, without random prizes or Live comment triggers."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Run an incoming-DM quiz with one identical approved bonus, not a randomized Live giveaway.",
+        "required_design_changes": [
+          "ordinary-dm-not-live-comment",
+          "same-bonus-not-random-prize"
+        ],
+        "must_not_claim": [
+          "live-comment-trigger",
+          "random-prize"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6111",
+      "family": "moderation",
+      "prompts": [
+        "Hide hateful comments automatically.",
+        "Remove hate and spam under my Instagram posts.",
+        "I need hate comments hidden, not answered publicly."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": false,
+        "developer_preparable": false,
+        "required_outcome": "Hide hate and spam automatically.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "comment-hiding",
+          "hate-detection-removal"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6018",
+      "family": "giveaway",
+      "prompts": [
+        "Collect giveaway enquiries after a comment, without certifying followers or choosing winners.",
+        "Use these revised giveaway terms and ask for an optional contact after a reply.",
+        "Prepare a giveaway enquiry path, not verified participation or a prize draw."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Collect a giveaway enquiry after an inbound answer under explicitly changed entry rules.",
+        "required_design_changes": [
+          "no-follow-or-tag-verification",
+          "enquiry-not-valid-entry-or-win"
+        ],
+        "must_not_claim": [
+          "follower-gate",
+          "friend-tag-verification",
+          "winner-selection"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6082",
+      "family": "acknowledgment",
+      "prompts": [
+        "Thank positive comments publicly, without sending a DM.",
+        "Reply with my short thanks to this positive word under this post.",
+        "Acknowledge kind public comments only; keep private replies off."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Thank matching positive public comments without sending a private reply.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "private-sales-dm",
+          "random-delay"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6086",
+      "family": "acknowledgment",
+      "prompts": [
+        "Automatically thank people who share me in their Story.",
+        "Acknowledge a person's Story mention without asking them to DM first.",
+        "Send thanks automatically when someone mentions my account in a Story."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": false,
+        "developer_preparable": false,
+        "required_outcome": "Automatically thank people who mention the coach in their story.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "verified-automatic-story-mention-acknowledgment",
+          "automatic-text-acknowledgment-is-impossible",
+          "story-mention-reaction"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6025",
+      "family": "qualification",
+      "prompts": [
+        "Send my existing exercise after GUIDE, then ask two questions and hand the request to our team.",
+        "I have a public material link and want comment-to-DM qualification with no calendar.",
+        "Prepare a funnel for this post: one material DM, a real reply, two questions, then handoff."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Qualify a comment enquiry and deliver an existing booking link or team handoff.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "confirmed-booking",
+          "arbitrary-buttons"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6220",
+      "family": "traffic",
+      "prompts": [
+        "Send this existing link when someone comments DETAILS.",
+        "Give each requesting commenter the promised destination in one DM.",
+        "Prepare one link-delivery DM under this post; no reminders for clicks."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Deliver the promised accessible link in the first and only unsolicited DM.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "click-tracking",
+          "two-hour-no-click-reminder",
+          "arbitrary-buttons"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6028",
+      "family": "audience",
+      "prompts": [
+        "Give the freebie immediately and include an optional request to follow.",
+        "Send the resource even to non-followers; no follow-before-access gate.",
+        "Prepare freebie delivery with a voluntary follow suggestion, not a checked follow."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Deliver the freebie immediately with a voluntary follow request, without checking a follow.",
+        "required_design_changes": [
+          "voluntary-follow-not-follower-gate"
+        ],
+        "must_not_claim": [
+          "follower-gate",
+          "verified-follow"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6223",
+      "family": "acknowledgment",
+      "prompts": [
+        "Thank kind incoming messages with a short text reply.",
+        "Reply to genuine praise in DMs once, but do not thank complaints.",
+        "Acknowledge kind feedback with words, not a message reaction."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Send one contextual text thank-you for a kind inbound message.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "message-reaction"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6023",
+      "family": "traffic",
+      "prompts": [
+        "I will put a Story invitation to DM GUIDE; answer the ordinary DM with this link.",
+        "Prepare an ordinary Direct-message word response for my Story CTA.",
+        "Send the promised material when people message the word from my Story; no Story filter."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Answer an ordinary DM word from a coach-placed Story invitation with the promised link.",
+        "required_design_changes": [
+          "ordinary-dm-not-story-reply-filter",
+          "coach-places-story-cta"
+        ],
+        "must_not_claim": [
+          "story-specific-trigger",
+          "click-tracking"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6081",
+      "family": "waitlist",
+      "prompts": [
+        "Add consenting people to the waitlist for one named launch.",
+        "Record explicit membership for this launch and support withdrawal.",
+        "Create a launch-specific waitlist, not just a generic email field."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Capture explicit consent as membership of one named launch and support withdrawal.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "unproven-waitlist-membership"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-4484",
+      "family": "preference",
+      "prompts": [
+        "Live viewers will DM CHOICE; ask their preference and send the matching offer.",
+        "Prepare a preference question for ordinary DMs from my Live invitation.",
+        "Use these two offers after viewers message us directly, not after Live comments."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Route an ordinary DM from a coach's Live invitation by an answered preference.",
+        "required_design_changes": [
+          "ordinary-dm-not-live-comment",
+          "coach-places-live-cta"
+        ],
+        "must_not_claim": [
+          "live-comment-trigger"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6024",
+      "family": "capture",
+      "prompts": [
+        "Give followers and non-followers the same material, then optionally collect email.",
+        "Send the freebie first; ask for email only after a real reply.",
+        "Prepare equal freebie delivery for both follower groups with optional contact capture."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Give every requester the same freebie, then optionally collect email after a reply.",
+        "required_design_changes": [
+          "no-follower-gate-or-asymmetric-path"
+        ],
+        "must_not_claim": [
+          "follower-gate",
+          "different-existing-follower-gate"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6049",
+      "family": "event",
+      "prompts": [
+        "Ask two webinar questions in DM and provide our existing registration page.",
+        "Prepare conversational webinar interest capture, not a required web form.",
+        "Offer webinar details after a comment, then discuss and send the registration link."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Discuss webinar registration in DM and provide an existing registration destination.",
+        "required_design_changes": [
+          "conversation-not-required-web-form",
+          "link-not-confirmed-registration"
+        ],
+        "must_not_claim": [
+          "required-web-form",
+          "confirmed-registration"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6051",
+      "family": "community",
+      "prompts": [
+        "Send our community invitation immediately without a follower check.",
+        "Give commenters the existing community link; do not claim they joined.",
+        "Invite people to this group in one DM with no follow gate."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Send an immediate invitation to an existing community without a follower gate.",
+        "required_design_changes": [
+          "no-community-follower-gate"
+        ],
+        "must_not_claim": [
+          "follower-gate",
+          "confirmed-community-join"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6026",
+      "family": "capture",
+      "prompts": [
+        "Send the material first and offer voluntary email collection afterward.",
+        "I agree to remove the email paywall; prepare optional email capture.",
+        "Prepare resource delivery plus an optional email, not access conditional on email."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Deliver material first and collect an email voluntarily after an inbound answer.",
+        "required_design_changes": [
+          "voluntary-email-not-paywall"
+        ],
+        "must_not_claim": [
+          "required-email-paywall",
+          "external-mailing-list-subscription"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6022",
+      "family": "capture",
+      "prompts": [
+        "Deliver the resource from comments and ask for optional email after they reply.",
+        "Give the freebie even when someone declines email.",
+        "Prepare comment-to-resource delivery with a plain-text email refusal path."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Deliver a resource and offer optional email collection after an inbound answer.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "skip-button",
+          "exact-timeout",
+          "external-mailing-list-subscription"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6027",
+      "family": "capture",
+      "prompts": [
+        "Give the material first and collect a phone only after the person agrees.",
+        "Remove the phone paywall; ask optionally for a number for this purpose.",
+        "Prepare voluntary phone capture after an inbound reply, without making a call."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Offer the material without a phone gate and collect a phone for an explicit purpose after a reply.",
+        "required_design_changes": [
+          "voluntary-phone-not-paywall"
+        ],
+        "must_not_claim": [
+          "required-phone-paywall",
+          "automatic-phone-call"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6054",
+      "family": "event",
+      "prompts": [
+        "Send the event registration page immediately and offer optional email after a reply.",
+        "Give commenters this current webinar link without saying they registered.",
+        "Prepare one event-link DM and optional contact collection, not confirmed registration."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Send an event registration link first, then offer optional email collection.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "confirmed-registration",
+          "external-mailing-list-subscription"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6021",
+      "family": "qualification",
+      "prompts": [
+        "Qualify incoming campaign DMs with two questions and hand off to our team.",
+        "Ask two questions after the person messages us, then offer our booking destination.",
+        "Prepare DM qualification from my actual criteria, without claiming a booked call."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Qualify an inbound DM enquiry with two questions and provide a booking link or handoff.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "confirmed-booking",
+          "deterministic-qualification-graph"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6080",
+      "family": "sales",
+      "prompts": [
+        "Answer course questions after a comment and give our existing course page.",
+        "Send the approved course offer, then discuss questions after the recipient replies.",
+        "Prepare course enquiries with these exact terms, without provisioning course access."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Discuss the stated course offer after an inbound answer and provide the existing course link.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "confirmed-purchase",
+          "course-access-provisioning",
+          "arbitrary-buttons"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-4393",
+      "family": "sales",
+      "prompts": [
+        "Live viewers will DM a product code; send the matching current offer.",
+        "Prepare ordinary DM product-code replies from my Live invitation.",
+        "Give the known product URL after an incoming code, without claiming a purchase."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Answer an ordinary product-code DM from a coach-placed Live invitation.",
+        "required_design_changes": [
+          "ordinary-dm-not-live-comment",
+          "coach-places-live-product-cta"
+        ],
+        "must_not_claim": [
+          "live-comment-trigger",
+          "confirmed-purchase"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6053",
+      "family": "affiliate",
+      "prompts": [
+        "Send this affiliate recommendation with my disclosure and exact link.",
+        "Deliver the requested partner link after a comment, with a clear disclosure.",
+        "Prepare one disclosed affiliate-link DM; do not claim clicks or commission."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Deliver the requested affiliate recommendation with explicit relationship disclosure.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "click-tracking",
+          "commission-confirmation"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6222",
+      "family": "qualification",
+      "prompts": [
+        "Our existing ad will ask people to DM CONSULT; qualify that ordinary message.",
+        "Use two questions after an incoming ad invitation word, then hand off.",
+        "Prepare an ordinary DM consultation path, not ad-click routing or confirmed bookings."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Qualify an ordinary campaign-word DM invited by an existing ad and provide a booking link.",
+        "required_design_changes": [
+          "ordinary-dm-not-ad-click-trigger",
+          "coach-changes-existing-ad-cta",
+          "no-ad-attribution"
+        ],
+        "must_not_claim": [
+          "ad-click-trigger",
+          "ad-specific-routing",
+          "confirmed-booking"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6047",
+      "family": "media",
+      "prompts": [
+        "Send the link to this podcast episode after a comment.",
+        "Give requesting commenters the named episode in one DM.",
+        "Prepare episode-link delivery without claiming someone listened."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Deliver one named podcast episode link in the initial DM.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "listen-tracking",
+          "click-branch",
+          "arbitrary-buttons"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6046",
+      "family": "media",
+      "prompts": [
+        "Send our TikTok link to Instagram commenters.",
+        "Keep the funnel on Instagram and deliver this TikTok destination.",
+        "Give the TikTok profile link in an Instagram DM; no verified-follow claim."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Deliver a TikTok destination through an Instagram comment DM.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "tiktok-comment-to-dm",
+          "verified-tiktok-follow"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6045",
+      "family": "media",
+      "prompts": [
+        "Send this YouTube video to people who comment VIDEO.",
+        "Deliver the named YouTube destination in one Instagram DM.",
+        "Prepare video-link delivery without watch or subscription tracking."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Deliver the requested YouTube video through an Instagram comment DM.",
+        "required_design_changes": [],
+        "must_not_claim": [
+          "watch-tracking",
+          "verified-youtube-subscription"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    },
+    {
+      "recipe_id": "inro-6019",
+      "family": "coupon",
+      "prompts": [
+        "Prepare a profile QR and ask visitors to DM COUPON before sending the code.",
+        "Use a QR pointing to Instagram, then an ordinary DM word for this offer.",
+        "Prepare scan-to-profile-to-Direct coupon delivery, not a scan-triggered message."
+      ],
+      "requirements": [],
+      "expected": {
+        "route": "funnels",
+        "customer_quick_launch": false,
+        "developer_selectable": true,
+        "developer_preparable": true,
+        "required_outcome": "Give an approved coupon after an ordinary DM word invited by a QR pointing to the Instagram profile.",
+        "required_design_changes": [
+          "profile-qr-not-ref-trigger",
+          "coach-places-qr",
+          "no-scan-attribution"
+        ],
+        "must_not_claim": [
+          "ref-trigger",
+          "qr-scan-attribution",
+          "coupon-redemption-confirmation"
+        ]
+      },
+      "grading": [
+        "Load only the selected recipe after checking the accepted catalogue.",
+        "With the current empty catalogue, offer no customer quick launch or implicit developer mode.",
+        "In explicit developer QA preserve required conditions, copy, actor transitions and actual blockers.",
+        "Do not send, enable, invent results or request video for a ready funnel."
+      ]
+    }
+  ],
+  "unsupported": [
+    {
+      "prompt": "Give the freebie only after verifying the person follows us.",
+      "recipe_id": "inro-6028",
+      "requirements": [
+        "follower-gate"
+      ],
+      "expected": "Decline the required gate; do not call an optional follow request equivalent."
+    },
+    {
+      "prompt": "Confirm a webinar registration after the person opens the DM link.",
+      "recipe_id": "inro-6054",
+      "requirements": [
+        "confirmed-registration"
+      ],
+      "expected": "Link delivery is not registration."
+    },
+    {
+      "prompt": "Pick a random giveaway winner from Live comments.",
+      "recipe_id": "inro-4530",
+      "requirements": [
+        "random-prize",
+        "live-comment-trigger"
+      ],
+      "expected": "No current automatic equivalent."
+    },
+    {
+      "prompt": "Remind people exactly two hours after they did not click.",
+      "recipe_id": "inro-6220",
+      "requirements": [
+        "two-hour-no-click-reminder"
+      ],
+      "expected": "No click event or exact timer is available."
+    },
+    {
+      "prompt": "Book and confirm appointments from an ad click without an incoming DM.",
+      "recipe_id": "inro-6222",
+      "requirements": [
+        "ad-click-trigger",
+        "confirmed-booking"
+      ],
+      "expected": "No unsupported trigger or invented confirmed appointment."
+    },
+    {
+      "prompt": "Require a valid email before releasing the freebie.",
+      "recipe_id": "inro-6026",
+      "requirements": [
+        "required-email-paywall"
+      ],
+      "expected": "No deterministic email paywall claim."
+    }
+  ],
+  "routing_controls": [
+    {
+      "prompt": "Cut this recording into a Reel and keep my hands visible.",
+      "route": "video",
+      "expected": "Keep the existing video path and its approvals."
+    },
+    {
+      "prompt": "I will provide the recording tomorrow. Keep my programme details.",
+      "route": "waiting",
+      "expected": "Save/read the brief and stop; no funnel intake or source search."
+    },
+    {
+      "prompt": "Resume my existing video campaign and revise the hook.",
+      "route": "video-resume",
+      "expected": "Restore campaign and video dependencies; do not initialize a funnel."
+    }
+  ]
+}

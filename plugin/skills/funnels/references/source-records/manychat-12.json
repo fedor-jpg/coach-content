@@ -1,0 +1,3964 @@
+{
+  "id": "manychat-12",
+  "source": {
+    "vendor": "manychat",
+    "file": "templates/manychat-12.json",
+    "title": "Auto-DM links from comments",
+    "category": "Drive traffic",
+    "facets": [
+      "Drive traffic",
+      "Post or Reel comment",
+      "link_delivery",
+      "post_comment"
+    ],
+    "job": "link_delivery",
+    "model": "quick_wizard",
+    "document": {
+      "schema_version": "1.2",
+      "id": "manychat-12",
+      "ordinal": 1,
+      "title": "Auto-DM links from comments",
+      "source_id": "campaign-card-12",
+      "observed_at": "2026-10-30",
+      "configuration_model": "quick_wizard",
+      "entry_type": "native_setup",
+      "source": {
+        "url": "https://app.manychat.com/fb4213902/dashboard",
+        "catalog_evidence": {
+          "file": "evidence/inventory.json",
+          "pointer": "/items/0"
+        },
+        "catalog_mode": "Quick Automation",
+        "facets": [
+          "Drive traffic",
+          "Post or Reel comment"
+        ],
+        "badge_text_exact": "POPULARPopular choice: Frequently selected or widely recognized among users.",
+        "description_exact": "Send a link when people comment on a post or reel",
+        "preview_evidence": null,
+        "preview_text_exact": null,
+        "original_graph_state": "not_applicable",
+        "original_defaults": null,
+        "source_original_settings_complete": false
+      },
+      "instance": null,
+      "native_setup": {
+        "model": "quick_wizard",
+        "url": "https://app.manychat.com/fb4213902/cms/easy-builder?campaign_type=easy_builder_cgt_next_post_multi_links",
+        "ordered_observations": [
+          {
+            "label": "post_scope.default",
+            "scope": "native_setup_default",
+            "phase": "captured_default",
+            "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nNext",
+            "fields": [
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "a specific post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "specific_post",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/0/panel/fields/0"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "any post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "all_posts",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/0/panel/fields/1"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "next post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "next_post",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/0/panel/fields/2"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Next"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/12-setup.json",
+              "pointer": "/captures/0"
+            },
+            "identity_evidence_exact": {},
+            "source_hash": "8d23a20c04b5fe4059b618dc95c886a59198fd6d7955bb044ec072eb7ae8d3e4"
+          },
+          {
+            "label": "comment_condition.default",
+            "scope": "native_setup_default",
+            "phase": "captured_default",
+            "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nany word\nreply to their comments under the post\nNext",
+            "fields": [
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "a specific post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "specific_post",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/1/panel/fields/0"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "any post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "all_posts",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/1/panel/fields/1"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "next post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "next_post",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/1/panel/fields/2"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                "label": "a specific word or words",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "specific_words",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/1/panel/fields/3"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.include_keywords_input",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Enter a word or multiple",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/1/panel/fields/4"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                "label": "any word",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "any_words",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/1/panel/fields/5"
+                }
+              },
+              {
+                "name": "use_cases.publicly_reply_to_comment.enable",
+                "label": "reply to their comments under the post",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/1/panel/fields/6"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Price"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Link"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Shop"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Next"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/12-setup.json",
+              "pointer": "/captures/1"
+            },
+            "identity_evidence_exact": {},
+            "source_hash": "2ad8716e31aac5665a4c7e59d4b97954a424df32cdd07e0b23465f9e25d4acd0"
+          },
+          {
+            "label": "condition.blank_next_result",
+            "scope": "native_setup_default",
+            "phase": "inspection_observation",
+            "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nType the words that suit best\nFor example:\nPrice\nLink\nShop\nany word\nreply to their comments under the post\nNext",
+            "fields": [
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "a specific post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "specific_post",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/2/panel/fields/0"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "any post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "all_posts",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/2/panel/fields/1"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "next post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "next_post",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/2/panel/fields/2"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                "label": "a specific word or words",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "specific_words",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/2/panel/fields/3"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.include_keywords_input",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Enter a word or multiple",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "true",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/2/panel/fields/4"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                "label": "any word",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "any_words",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/2/panel/fields/5"
+                }
+              },
+              {
+                "name": "use_cases.publicly_reply_to_comment.enable",
+                "label": "reply to their comments under the post",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/2/panel/fields/6"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Price"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Link"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Shop"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Next"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/12-setup.json",
+              "pointer": "/captures/2"
+            },
+            "identity_evidence_exact": {},
+            "source_hash": "fab9a0f236b2d62dd51367f74ec76a0535030edde3c6a6b1330c491b4fb9e8f7"
+          },
+          {
+            "label": "delivery_gates.initial",
+            "scope": "native_setup_default",
+            "phase": "captured_default",
+            "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nany word\nreply to their comments under the post\nThey will get\nan opening DM\n872\nWhy does an Opening DM matter?\na DM asking to follow you before they get the link\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\na DM asking for their email\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nNext",
+            "fields": [
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "a specific post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "specific_post",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/3/panel/fields/0"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "any post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "all_posts",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/3/panel/fields/1"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "next post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "next_post",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/3/panel/fields/2"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                "label": "a specific word or words",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "specific_words",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/3/panel/fields/3"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                "label": "any word",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "any_words",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/3/panel/fields/4"
+                }
+              },
+              {
+                "name": "use_cases.publicly_reply_to_comment.enable",
+                "label": "reply to their comments under the post",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/3/panel/fields/5"
+                }
+              },
+              {
+                "name": null,
+                "label": "an opening DM",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/3/panel/fields/6"
+                }
+              },
+              {
+                "name": "contents.content20240829181834_361233.1021777883.blocks.cc0d6fa1-d597-43d6-96ad-754bb1d6f4e6.text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Do a quick vibe check first - are you ready for the link?",
+                "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/3/panel/fields/7"
+                }
+              },
+              {
+                "name": "contents.content20240829181834_361233.1021777883.blocks.1e137234-7aef-4ff6-bddc-64c757d7f901.caption",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Add a button label e.g Yes, send the link",
+                "value": "Send me the link",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/3/panel/fields/8"
+                }
+              },
+              {
+                "name": "use_cases.ask_for_follow.enable",
+                "label": "a DM asking to follow you before they get the link",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/3/panel/fields/9"
+                }
+              },
+              {
+                "name": "use_cases.collect_email.enable",
+                "label": "a DM asking for their email",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/3/panel/fields/10"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Next"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/12-setup.json",
+              "pointer": "/captures/3"
+            },
+            "identity_evidence_exact": {
+              "prerequisite_variant": "comment condition temporarily set to any word to advance past blank required keyword"
+            },
+            "source_hash": "1220020fc5db246ac251617b62eb37b6004ee7814221202ed793a2d4b2ceb9a2"
+          },
+          {
+            "label": "link_delivery.initial",
+            "scope": "native_setup_default",
+            "phase": "captured_default",
+            "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nany word\nreply to their comments under the post\nThey will get\nan opening DM\n872\nWhy does an Opening DM matter?\na DM asking to follow you before they get the link\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\na DM asking for their email\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd then, they will get\na DM with a link\n1000\nAdd A Link\na follow up DM if they don't click the link\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.",
+            "fields": [
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "a specific post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "specific_post",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/0"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "any post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "all_posts",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/1"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                "label": "next post or reel",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "next_post",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/2"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                "label": "a specific word or words",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "specific_words",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/3"
+                }
+              },
+              {
+                "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                "label": "any word",
+                "tag": "input",
+                "type": "radio",
+                "placeholder": null,
+                "value": "any_words",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/4"
+                }
+              },
+              {
+                "name": "use_cases.publicly_reply_to_comment.enable",
+                "label": "reply to their comments under the post",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/5"
+                }
+              },
+              {
+                "name": null,
+                "label": "an opening DM",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/6"
+                }
+              },
+              {
+                "name": "contents.content20240829181834_361233.1021777883.blocks.cc0d6fa1-d597-43d6-96ad-754bb1d6f4e6.text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Do a quick vibe check first - are you ready for the link?",
+                "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/7"
+                }
+              },
+              {
+                "name": "contents.content20240829181834_361233.1021777883.blocks.1e137234-7aef-4ff6-bddc-64c757d7f901.caption",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Add a button label e.g Yes, send the link",
+                "value": "Send me the link",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/8"
+                }
+              },
+              {
+                "name": "use_cases.ask_for_follow.enable",
+                "label": "a DM asking to follow you before they get the link",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/9"
+                }
+              },
+              {
+                "name": "use_cases.collect_email.enable",
+                "label": "a DM asking for their email",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/10"
+                }
+              },
+              {
+                "name": "contents.content20240829181834_361233.1021777908.blocks.0f737649-51ed-4cc6-8360-d7e68b7bf11a.text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Write a message",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/11"
+                }
+              },
+              {
+                "name": "use_cases.follow_up.enable",
+                "label": "a follow up DM if they don't click the link",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/12-setup.json",
+                  "pointer": "/captures/4/panel/fields/12"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Add A Link"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/12-setup.json",
+              "pointer": "/captures/4"
+            },
+            "identity_evidence_exact": {
+              "prerequisite_variant": "any word selected to pass empty keyword validation"
+            },
+            "source_hash": "a38eafc8e8f1447515fe2c59aed220c067ab04f76888cd737d1d015716ef8b30"
+          }
+        ],
+        "graph_state": "not_applicable",
+        "order_semantics": "Observed wizard visit order, including variants and validation checks; not an invented message graph.",
+        "supporting_evidence": [
+          {
+            "kind": "variants",
+            "evidence": {
+              "file": "evidence/12-setup.json",
+              "pointer": "/variants"
+            },
+            "json_exact": [
+              {
+                "label": "public_replies.enabled",
+                "scope": "inspection_variant",
+                "url": "https://app.manychat.com/fb4213902/cms/easy-builder?campaign_type=easy_builder_cgt_next_post_multi_links",
+                "panel": {
+                  "buttons": [
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": ""
+                    },
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": ""
+                    },
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": "Price"
+                    },
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": "Link"
+                    },
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": "Shop"
+                    },
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": "Next"
+                    }
+                  ],
+                  "fields": [
+                    {
+                      "aria_checked": "true",
+                      "checked": true,
+                      "index": 0,
+                      "label": "a specific post or reel",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "specific_post"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 1,
+                      "label": "any post or reel",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "all_posts"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 2,
+                      "label": "next post or reel",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "next_post"
+                    },
+                    {
+                      "aria_checked": "true",
+                      "checked": true,
+                      "index": 3,
+                      "label": "a specific word or words",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": null,
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "specific_words"
+                    },
+                    {
+                      "aria_checked": null,
+                      "checked": false,
+                      "index": 4,
+                      "label": null,
+                      "name": "triggers.widgets.37456583.feed_comment_settings.include_keywords_input",
+                      "options": null,
+                      "placeholder": "Enter a word or multiple",
+                      "tag": "input",
+                      "type": null,
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": ""
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 5,
+                      "label": "any word",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": null,
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "any_words"
+                    },
+                    {
+                      "aria_checked": "true",
+                      "checked": true,
+                      "index": 6,
+                      "label": "reply to their comments under the post",
+                      "name": "use_cases.publicly_reply_to_comment.enable",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "checkbox",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "on"
+                    },
+                    {
+                      "aria_checked": null,
+                      "checked": false,
+                      "index": 7,
+                      "label": null,
+                      "name": "triggers.widgets.37456583.feed_comment_welcome.public_reply_messages.0",
+                      "options": null,
+                      "placeholder": "Write a reply",
+                      "tag": "input",
+                      "type": null,
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "Thanks! Please see DMs."
+                    },
+                    {
+                      "aria_checked": null,
+                      "checked": false,
+                      "index": 8,
+                      "label": null,
+                      "name": "triggers.widgets.37456583.feed_comment_welcome.public_reply_messages.1",
+                      "options": null,
+                      "placeholder": "Write a reply",
+                      "tag": "input",
+                      "type": null,
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "Sent you a message! Check it out!"
+                    },
+                    {
+                      "aria_checked": null,
+                      "checked": false,
+                      "index": 9,
+                      "label": null,
+                      "name": "triggers.widgets.37456583.feed_comment_welcome.public_reply_messages.2",
+                      "options": null,
+                      "placeholder": "Write a reply",
+                      "tag": "input",
+                      "type": null,
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "Nice! Check your DMs!"
+                    }
+                  ],
+                  "text": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nany word\nreply to their comments under the post\nNext"
+                }
+              },
+              {
+                "label": "condition.any_word",
+                "scope": "inspection_variant",
+                "url": "https://app.manychat.com/fb4213902/cms/easy-builder?campaign_type=easy_builder_cgt_next_post_multi_links",
+                "panel": {
+                  "buttons": [
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": ""
+                    },
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": ""
+                    },
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": "Next"
+                    }
+                  ],
+                  "fields": [
+                    {
+                      "aria_checked": "true",
+                      "checked": true,
+                      "index": 0,
+                      "label": "a specific post or reel",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "specific_post"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 1,
+                      "label": "any post or reel",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "all_posts"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 2,
+                      "label": "next post or reel",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "next_post"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 3,
+                      "label": "a specific word or words",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": null,
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "specific_words"
+                    },
+                    {
+                      "aria_checked": "true",
+                      "checked": true,
+                      "index": 4,
+                      "label": "any word",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": null,
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "any_words"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 5,
+                      "label": "reply to their comments under the post",
+                      "name": "use_cases.publicly_reply_to_comment.enable",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "checkbox",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "on"
+                    },
+                    {
+                      "aria_checked": "true",
+                      "checked": true,
+                      "index": 6,
+                      "label": "an opening DM",
+                      "name": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "checkbox",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "on"
+                    },
+                    {
+                      "aria_checked": null,
+                      "checked": false,
+                      "index": 7,
+                      "label": null,
+                      "name": "contents.content20240829181834_361233.1021777883.blocks.cc0d6fa1-d597-43d6-96ad-754bb1d6f4e6.text",
+                      "options": null,
+                      "placeholder": "Do a quick vibe check first - are you ready for the link?",
+                      "tag": "textarea",
+                      "type": null,
+                      "validation": {
+                        "aria_disabled": null,
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨"
+                    },
+                    {
+                      "aria_checked": null,
+                      "checked": false,
+                      "index": 8,
+                      "label": null,
+                      "name": "contents.content20240829181834_361233.1021777883.blocks.1e137234-7aef-4ff6-bddc-64c757d7f901.caption",
+                      "options": null,
+                      "placeholder": "Add a button label e.g Yes, send the link",
+                      "tag": "input",
+                      "type": null,
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "Send me the link"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 9,
+                      "label": "a DM asking to follow you before they get the link",
+                      "name": "use_cases.ask_for_follow.enable",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "checkbox",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "on"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 10,
+                      "label": "a DM asking for their email",
+                      "name": "use_cases.collect_email.enable",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "checkbox",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "<redacted>"
+                    }
+                  ],
+                  "text": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nany word\nreply to their comments under the post\nThey will get\nan opening DM\n872\nWhy does an Opening DM matter?\na DM asking to follow you before they get the link\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\na DM asking for their email\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nNext"
+                }
+              },
+              {
+                "label": "opening_dm.disabled",
+                "scope": "inspection_variant",
+                "url": "https://app.manychat.com/fb4213902/cms/easy-builder?campaign_type=easy_builder_cgt_next_post_multi_links",
+                "panel": {
+                  "buttons": [
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": ""
+                    },
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": ""
+                    },
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": "Next"
+                    }
+                  ],
+                  "fields": [
+                    {
+                      "aria_checked": "true",
+                      "checked": true,
+                      "index": 0,
+                      "label": "a specific post or reel",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "specific_post"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 1,
+                      "label": "any post or reel",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "all_posts"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 2,
+                      "label": "next post or reel",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "next_post"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 3,
+                      "label": "a specific word or words",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": null,
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "specific_words"
+                    },
+                    {
+                      "aria_checked": "true",
+                      "checked": true,
+                      "index": 4,
+                      "label": "any word",
+                      "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "radio",
+                      "validation": {
+                        "aria_disabled": null,
+                        "aria_invalid": "false",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "any_words"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 5,
+                      "label": "reply to their comments under the post",
+                      "name": "use_cases.publicly_reply_to_comment.enable",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "checkbox",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "on"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 6,
+                      "label": "an opening DM",
+                      "name": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "checkbox",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "on"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 7,
+                      "label": "a DM asking to follow you before they get the link",
+                      "name": "use_cases.ask_for_follow.enable",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "checkbox",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "on"
+                    },
+                    {
+                      "aria_checked": "false",
+                      "checked": false,
+                      "index": 8,
+                      "label": "a DM asking for their email",
+                      "name": "use_cases.collect_email.enable",
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "input",
+                      "type": "checkbox",
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": "<redacted>"
+                    }
+                  ],
+                  "text": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nany word\nreply to their comments under the post\nThey will get\nan opening DM\na DM asking to follow you before they get the link\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\na DM asking for their email\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nNext"
+                }
+              },
+              {
+                "label": "link_editor.empty",
+                "scope": "configuration_option",
+                "panel": {
+                  "buttons": [],
+                  "fields": [
+                    {
+                      "aria_checked": null,
+                      "checked": false,
+                      "index": 0,
+                      "label": "Button label",
+                      "name": null,
+                      "options": null,
+                      "placeholder": "Add a button label e.g Open",
+                      "tag": "input",
+                      "type": null,
+                      "validation": {
+                        "aria_disabled": null,
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": ""
+                    },
+                    {
+                      "aria_checked": null,
+                      "checked": false,
+                      "index": 1,
+                      "label": "Link",
+                      "name": null,
+                      "options": null,
+                      "placeholder": "Add a link",
+                      "tag": "input",
+                      "type": null,
+                      "validation": {
+                        "aria_disabled": null,
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": ""
+                    }
+                  ],
+                  "text": "Button label\nLink"
+                },
+                "committed": false
+              }
+            ]
+          },
+          {
+            "kind": "actions_performed",
+            "evidence": {
+              "file": "evidence/12-setup.json",
+              "pointer": "/actions_performed"
+            },
+            "json_exact": [
+              {
+                "control": "public reply",
+                "before": false,
+                "variant": true,
+                "restored": true
+              },
+              {
+                "control": "comment condition",
+                "before": "specific_words, blank client keyword",
+                "variant": "any_words",
+                "restored": true
+              },
+              {
+                "control": "opening DM",
+                "before": true,
+                "variant": false,
+                "restored": true
+              },
+              {
+                "control": "new link form",
+                "before": "no links",
+                "variant": "opened empty form",
+                "restored": true,
+                "save_clicked": false
+              }
+            ]
+          },
+          {
+            "kind": "live",
+            "evidence": {
+              "file": "evidence/12-setup.json",
+              "pointer": "/live"
+            },
+            "json_exact": false
+          },
+          {
+            "kind": "persistence",
+            "evidence": {
+              "file": "evidence/12-setup.json",
+              "pointer": "/persistence"
+            },
+            "json_exact": "No draft ID exposed in setup URL; Go live not pressed. Final list reconciliation required."
+          },
+          {
+            "kind": "access_limits",
+            "evidence": {
+              "file": "evidence/12-setup.json",
+              "pointer": "/access_limits"
+            },
+            "json_exact": [
+              {
+                "control": "a DM asking to follow you before they get the link",
+                "initial_value": false,
+                "attempt": "check",
+                "result": "State remains off; upgrade dialog shown",
+                "visible_heading": "Get them following you before sharing the link",
+                "cta": "Get Essential",
+                "notice": "Credit card will be needed later",
+                "nested_settings": "unavailable_without_upgrade"
+              },
+              {
+                "control": "a DM asking for their email",
+                "initial_value": false,
+                "attempt": "click",
+                "result": "State remains off; upgrade dialog shown",
+                "visible_heading": "Collect emails in DMs with our Essential plan",
+                "cta": "Get Essential",
+                "nested_settings": "unavailable_without_upgrade"
+              },
+              {
+                "control": "a follow up DM if they don't click the link",
+                "initial_value": false,
+                "result": "Upgrade dialog; switch remains off",
+                "visible_state": "- button:\n- paragraph: Engage more. It’s Essential\n- heading \"Follow up with those who forgot with Essential\" [level=1]\n- paragraph:\n  - text: Not everyone clicks the link the first time. A timely nudge goes a long way for anyone who forgot about your DM. Creators like you send follow-ups all the time with the Essential plan.\n  - text: Try it for free (if you haven’t had a free trial before), and cancel anytime if you’re not feeling it.\n- heading \"Keep engagement flowing with Essential:\" [level=2]\n- list \"Keep engagement flowing with Essential:\":\n  - text: Launch as many automations as you like\n  - text: Say hi to new followers automatically\n  - text: Collect emails through customizable DMs\n  - text: No limits on story replies\n- button \"Get Essential\":\n  - generic: Get Essential\n- generic: Credit card will be needed later"
+              },
+              {
+                "control": "any post or reel",
+                "initial_value": false,
+                "result": "Upgrade prompt; no plan change",
+                "visible_headings": [
+                  "When someone comments on",
+                  "And this comment has",
+                  "They will get",
+                  "And then, they will get",
+                  "Reply to all your posts and reels with Essential",
+                  "Keep engagement flowing with Essential:"
+                ]
+              },
+              {
+                "control": "next post or reel",
+                "initial_value": false,
+                "result": "Upgrade prompt; no plan change",
+                "visible_headings": [
+                  "When someone comments on",
+                  "And this comment has",
+                  "They will get",
+                  "And then, they will get",
+                  "Have your reply ready for your next post with Essential",
+                  "Keep engagement flowing with Essential:"
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "opening_dm_dependency",
+            "evidence": {
+              "file": "evidence/12-setup.json",
+              "pointer": "/opening_dm_dependency"
+            },
+            "json_exact": {
+              "observed_text": "When someone clicks the button in your Opening DM, it starts a two-way chat so you can do way more than just send a link.",
+              "ui_lists": [
+                "Send a follow up",
+                "Grow your followers",
+                "Collect emails"
+              ],
+              "off_state_dialog": "Here’s a thing...",
+              "restoration_control": "Turn It Back On"
+            }
+          },
+          {
+            "kind": "coverage",
+            "evidence": {
+              "file": "evidence/12-setup.json",
+              "pointer": "/coverage"
+            },
+            "json_exact": {
+              "ordered_sections": 4,
+              "initial_defaults_captured": true,
+              "accessible_controls_inspected": true,
+              "all_variant_settings_available": false,
+              "unavailable_controls": [
+                "a DM asking to follow you before they get the link",
+                "a DM asking for their email",
+                "a follow up DM if they don't click the link",
+                "any post or reel",
+                "next post or reel"
+              ],
+              "runtime_tested": false
+            }
+          }
+        ]
+      },
+      "followup": null,
+      "selection": {
+        "basis": "product_interpretation",
+        "job_family": "link_delivery",
+        "trigger": "post_comment",
+        "route": "opening_then_link",
+        "choose_when": "Use a small comment-to-link wizard with an opening DM and client-supplied destination.",
+        "avoid_when": "Do not choose for a scored quiz or deterministic qualification. Follow/email/no-click options require an upgrade here.",
+        "client_inputs": [
+          "post",
+          "keywords",
+          "message",
+          "destination"
+        ]
+      },
+      "safety": {
+        "draft_evidence": {
+          "file": "evidence/native-setup-manifest.json",
+          "pointer": ""
+        },
+        "draft_publication_verified": false,
+        "all_configured_triggers_off": null,
+        "current_state": null,
+        "remediation_evidence": null,
+        "delivery_limit": "No Set Live or send action. Scoped 0 runs before trigger removal and n/a list metrics are not account-wide no-delivery proof.",
+        "set_live_pressed": false,
+        "runtime_tested": false,
+        "credential_values_collected": false
+      },
+      "reconstruction": {
+        "status": "partial",
+        "original_settings_complete": false,
+        "instance_default_panels_captured": false,
+        "instance_ui_inspection_complete": true,
+        "all_possible_variants_verified": false,
+        "client_ready": false,
+        "runtime_tested": false
+      },
+      "gaps": [
+        "Original server settings and IDs were not exported. Clone defaults are not asserted to equal source defaults.",
+        "Runtime was not tested because execution is forbidden; this is separate from settings completeness.",
+        "a DM asking to follow you before they get the link: State remains off; upgrade dialog shown",
+        "a DM asking for their email: State remains off; upgrade dialog shown",
+        "a follow up DM if they don't click the link: Upgrade dialog; switch remains off",
+        "any post or reel: Upgrade prompt; no plan change",
+        "next post or reel: Upgrade prompt; no plan change"
+      ]
+    }
+  },
+  "graph": {
+    "start": null,
+    "steps": [],
+    "transitions": []
+  },
+  "setup": [
+    {
+      "label": "post_scope.default",
+      "scope": "native_setup_default",
+      "phase": "captured_default",
+      "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nNext",
+      "fields": [
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "a specific post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "specific_post",
+          "value_state": "observed",
+          "checked": true,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/0/panel/fields/0"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "any post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "all_posts",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/0/panel/fields/1"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "next post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "next_post",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/0/panel/fields/2"
+          }
+        }
+      ],
+      "buttons_exact": [
+        {
+          "disabled": false,
+          "label": null,
+          "text": ""
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": ""
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Next"
+        }
+      ],
+      "evidence": {
+        "file": "evidence/12-setup.json",
+        "pointer": "/captures/0"
+      },
+      "identity_evidence_exact": {},
+      "source_hash": "8d23a20c04b5fe4059b618dc95c886a59198fd6d7955bb044ec072eb7ae8d3e4"
+    },
+    {
+      "label": "comment_condition.default",
+      "scope": "native_setup_default",
+      "phase": "captured_default",
+      "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nany word\nreply to their comments under the post\nNext",
+      "fields": [
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "a specific post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "specific_post",
+          "value_state": "observed",
+          "checked": true,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/1/panel/fields/0"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "any post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "all_posts",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/1/panel/fields/1"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "next post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "next_post",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/1/panel/fields/2"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+          "label": "a specific word or words",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "specific_words",
+          "value_state": "observed",
+          "checked": true,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/1/panel/fields/3"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.include_keywords_input",
+          "label": null,
+          "tag": "input",
+          "type": null,
+          "placeholder": "Enter a word or multiple",
+          "value": "",
+          "value_state": "unset_client_input_required",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/1/panel/fields/4"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+          "label": "any word",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "any_words",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/1/panel/fields/5"
+          }
+        },
+        {
+          "name": "use_cases.publicly_reply_to_comment.enable",
+          "label": "reply to their comments under the post",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/1/panel/fields/6"
+          }
+        }
+      ],
+      "buttons_exact": [
+        {
+          "disabled": false,
+          "label": null,
+          "text": ""
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": ""
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Price"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Link"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Shop"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Next"
+        }
+      ],
+      "evidence": {
+        "file": "evidence/12-setup.json",
+        "pointer": "/captures/1"
+      },
+      "identity_evidence_exact": {},
+      "source_hash": "2ad8716e31aac5665a4c7e59d4b97954a424df32cdd07e0b23465f9e25d4acd0"
+    },
+    {
+      "label": "condition.blank_next_result",
+      "scope": "native_setup_default",
+      "phase": "inspection_observation",
+      "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nType the words that suit best\nFor example:\nPrice\nLink\nShop\nany word\nreply to their comments under the post\nNext",
+      "fields": [
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "a specific post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "specific_post",
+          "value_state": "observed",
+          "checked": true,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/2/panel/fields/0"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "any post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "all_posts",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/2/panel/fields/1"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "next post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "next_post",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/2/panel/fields/2"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+          "label": "a specific word or words",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "specific_words",
+          "value_state": "observed",
+          "checked": true,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/2/panel/fields/3"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.include_keywords_input",
+          "label": null,
+          "tag": "input",
+          "type": null,
+          "placeholder": "Enter a word or multiple",
+          "value": "",
+          "value_state": "unset_client_input_required",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "true",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/2/panel/fields/4"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+          "label": "any word",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "any_words",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/2/panel/fields/5"
+          }
+        },
+        {
+          "name": "use_cases.publicly_reply_to_comment.enable",
+          "label": "reply to their comments under the post",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/2/panel/fields/6"
+          }
+        }
+      ],
+      "buttons_exact": [
+        {
+          "disabled": false,
+          "label": null,
+          "text": ""
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": ""
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Price"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Link"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Shop"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Next"
+        }
+      ],
+      "evidence": {
+        "file": "evidence/12-setup.json",
+        "pointer": "/captures/2"
+      },
+      "identity_evidence_exact": {},
+      "source_hash": "fab9a0f236b2d62dd51367f74ec76a0535030edde3c6a6b1330c491b4fb9e8f7"
+    },
+    {
+      "label": "delivery_gates.initial",
+      "scope": "native_setup_default",
+      "phase": "captured_default",
+      "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nany word\nreply to their comments under the post\nThey will get\nan opening DM\n872\nWhy does an Opening DM matter?\na DM asking to follow you before they get the link\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\na DM asking for their email\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nNext",
+      "fields": [
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "a specific post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "specific_post",
+          "value_state": "observed",
+          "checked": true,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/3/panel/fields/0"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "any post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "all_posts",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/3/panel/fields/1"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "next post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "next_post",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/3/panel/fields/2"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+          "label": "a specific word or words",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "specific_words",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/3/panel/fields/3"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+          "label": "any word",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "any_words",
+          "value_state": "observed",
+          "checked": true,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/3/panel/fields/4"
+          }
+        },
+        {
+          "name": "use_cases.publicly_reply_to_comment.enable",
+          "label": "reply to their comments under the post",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/3/panel/fields/5"
+          }
+        },
+        {
+          "name": null,
+          "label": "an opening DM",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": true,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/3/panel/fields/6"
+          }
+        },
+        {
+          "name": "contents.content20240829181834_361233.1021777883.blocks.cc0d6fa1-d597-43d6-96ad-754bb1d6f4e6.text",
+          "label": null,
+          "tag": "textarea",
+          "type": null,
+          "placeholder": "Do a quick vibe check first - are you ready for the link?",
+          "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/3/panel/fields/7"
+          }
+        },
+        {
+          "name": "contents.content20240829181834_361233.1021777883.blocks.1e137234-7aef-4ff6-bddc-64c757d7f901.caption",
+          "label": null,
+          "tag": "input",
+          "type": null,
+          "placeholder": "Add a button label e.g Yes, send the link",
+          "value": "Send me the link",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/3/panel/fields/8"
+          }
+        },
+        {
+          "name": "use_cases.ask_for_follow.enable",
+          "label": "a DM asking to follow you before they get the link",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/3/panel/fields/9"
+          }
+        },
+        {
+          "name": "use_cases.collect_email.enable",
+          "label": "a DM asking for their email",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "<redacted>",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/3/panel/fields/10"
+          }
+        }
+      ],
+      "buttons_exact": [
+        {
+          "disabled": false,
+          "label": null,
+          "text": ""
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": ""
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Next"
+        }
+      ],
+      "evidence": {
+        "file": "evidence/12-setup.json",
+        "pointer": "/captures/3"
+      },
+      "identity_evidence_exact": {
+        "prerequisite_variant": "comment condition temporarily set to any word to advance past blank required keyword"
+      },
+      "source_hash": "1220020fc5db246ac251617b62eb37b6004ee7814221202ed793a2d4b2ceb9a2"
+    },
+    {
+      "label": "link_delivery.initial",
+      "scope": "native_setup_default",
+      "phase": "captured_default",
+      "text_exact": "When someone comments on\na specific post or reel\nany post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nnext post or reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd this comment has\na specific word or words\nany word\nreply to their comments under the post\nThey will get\nan opening DM\n872\nWhy does an Opening DM matter?\na DM asking to follow you before they get the link\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\na DM asking for their email\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAnd then, they will get\na DM with a link\n1000\nAdd A Link\na follow up DM if they don't click the link\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.",
+      "fields": [
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "a specific post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "specific_post",
+          "value_state": "observed",
+          "checked": true,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/0"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "any post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "all_posts",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/1"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.post_covered_area",
+          "label": "next post or reel",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "next_post",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/2"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+          "label": "a specific word or words",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "specific_words",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/3"
+          }
+        },
+        {
+          "name": "triggers.widgets.37456583.feed_comment_settings.comment_contains",
+          "label": "any word",
+          "tag": "input",
+          "type": "radio",
+          "placeholder": null,
+          "value": "any_words",
+          "value_state": "observed",
+          "checked": true,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/4"
+          }
+        },
+        {
+          "name": "use_cases.publicly_reply_to_comment.enable",
+          "label": "reply to their comments under the post",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/5"
+          }
+        },
+        {
+          "name": null,
+          "label": "an opening DM",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": true,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/6"
+          }
+        },
+        {
+          "name": "contents.content20240829181834_361233.1021777883.blocks.cc0d6fa1-d597-43d6-96ad-754bb1d6f4e6.text",
+          "label": null,
+          "tag": "textarea",
+          "type": null,
+          "placeholder": "Do a quick vibe check first - are you ready for the link?",
+          "value": "Hey there! I’m so happy you’re here, thanks so much for your interest 😊 \n\nClick below and I’ll send you the link in just a sec ✨",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/7"
+          }
+        },
+        {
+          "name": "contents.content20240829181834_361233.1021777883.blocks.1e137234-7aef-4ff6-bddc-64c757d7f901.caption",
+          "label": null,
+          "tag": "input",
+          "type": null,
+          "placeholder": "Add a button label e.g Yes, send the link",
+          "value": "Send me the link",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/8"
+          }
+        },
+        {
+          "name": "use_cases.ask_for_follow.enable",
+          "label": "a DM asking to follow you before they get the link",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/9"
+          }
+        },
+        {
+          "name": "use_cases.collect_email.enable",
+          "label": "a DM asking for their email",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "<redacted>",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/10"
+          }
+        },
+        {
+          "name": "contents.content20240829181834_361233.1021777908.blocks.0f737649-51ed-4cc6-8360-d7e68b7bf11a.text",
+          "label": null,
+          "tag": "textarea",
+          "type": null,
+          "placeholder": "Write a message",
+          "value": "",
+          "value_state": "unset_client_input_required",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/11"
+          }
+        },
+        {
+          "name": "use_cases.follow_up.enable",
+          "label": "a follow up DM if they don't click the link",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/12-setup.json",
+            "pointer": "/captures/4/panel/fields/12"
+          }
+        }
+      ],
+      "buttons_exact": [
+        {
+          "disabled": false,
+          "label": null,
+          "text": ""
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": ""
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Add A Link"
+        }
+      ],
+      "evidence": {
+        "file": "evidence/12-setup.json",
+        "pointer": "/captures/4"
+      },
+      "identity_evidence_exact": {
+        "prerequisite_variant": "any word selected to pass empty keyword validation"
+      },
+      "source_hash": "a38eafc8e8f1447515fe2c59aed220c067ab04f76888cd737d1d015716ef8b30"
+    }
+  ],
+  "annotations": []
+}

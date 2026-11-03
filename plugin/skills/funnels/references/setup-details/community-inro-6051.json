@@ -1,0 +1,847 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "community-inro-6051",
+    "name": "Grow your community: follow-gated invitation",
+    "source_ids": [
+      "inro-6051"
+    ],
+    "entry": "Community comment or DM",
+    "mandatory_conditions": [
+      "Press the opening button",
+      "Verify a follow before the invitation"
+    ],
+    "outcome": "An invitation to an external community",
+    "timing": [
+      "Link click: 3 days; follow and opening button: 2 days."
+    ],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "comment",
+      "dm-ai",
+      "follower",
+      "buttons",
+      "timers",
+      "click",
+      "graph"
+    ],
+    "assessment": {
+      "status": "unavailable",
+      "reason": "Follower verification is unavailable. Clicking an invitation is not evidence of joining.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Follower verification is unavailable. Clicking an invitation is not evidence of joining.",
+        "result": "With owner approval: send the invitation to everyone without checking whether they follow the account.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "inro-6051": "An invitation click does not confirm community membership."
+    },
+    "client_inputs": [],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6051"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [],
+      "binding_review": {
+        "source_entry": "Community comment or DM",
+        "source_outcome": "An invitation to an external community",
+        "mandatory_conditions": [
+          "Press the opening button",
+          "Verify a follow before the invitation"
+        ],
+        "source_contact_policy": [
+          "Verify a follow before the invitation"
+        ],
+        "plan_count": 0,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+        "primary_result": "An invitation to an external community",
+        "source_requirements": [
+          "Press the opening button",
+          "Verify a follow before the invitation"
+        ],
+        "source_timing": [
+          "Link click: 3 days; follow and opening button: 2 days."
+        ],
+        "blocking_dependencies": [
+          "follower"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Invite interested people into your next launch or a shared community.",
+  "fit": "Creators launching an offer or welcoming members.",
+  "preparation_status": "waiting_for_chatfuel",
+  "function_review": {
+    "status": "waiting_for_chatfuel",
+    "reason": "The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.",
+    "primary_result": "An invitation to an external community",
+    "source_requirements": [
+      "Press the opening button",
+      "Verify a follow before the invitation"
+    ],
+    "source_timing": [
+      "Link click: 3 days; follow and opening button: 2 days."
+    ],
+    "blocking_dependencies": [
+      "follower"
+    ],
+    "retained": [],
+    "omitted": [],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "follower",
+    "buttons",
+    "timers",
+    "click",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "inro-6051",
+      "source_file": "source-records/inro-6051.json",
+      "source_title": "Grow Your Community",
+      "start": "n000",
+      "nodes": [
+        {
+          "id": "n000",
+          "source_type": "trigger",
+          "content": {
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\nCommunity\nWhen\nSomeone sends you a DM\nFILTER MESSAGES\nContains keyword(s)\nCommunity",
+            "preview": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\nCommunity\nWhen\nSomeone sends you a DM\nFILTER MESSAGES\nContains keyword(s)\nCommunity",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment",
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "37f9fcda526c03810d0ace46ea5f87972dda29aad32dac1b7ffb4850c00d66b7",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n001",
+          "source_type": "button_template",
+          "content": {
+            "text": "Hey {{contact.name}} ❤️ Do you want to join my community?\nYesss 👀",
+            "preview": "Hey {{contact.name}} ❤️ Do you want to join my community?\nYesss 👀",
+            "buttons": [
+              "Yesss 👀"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved alternative text or choice words"
+          ],
+          "reason": "Rich buttons/callbacks are not normal MCP fields. A text-choice adaptation needs approval; never treat it as the captured button event.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "e9316a3dab2d8e1f567a63306eee1dee1bd569a8b2d91139cd0b3b1d149c7375",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n002",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN BUTTON IS CLICKED\nYesss 👀",
+            "preview": "WHEN BUTTON IS CLICKED\nYesss 👀",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "9b481564e73310ae2ecd53c1303958d679e3138b4a764b62327f0268b7a40c44",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n003",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nCommunity leads",
+            "preview": "Add contact to folder(s)\nCommunity leads",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "dc9865148f2df77c153135cedec6e3d267cebdeaa623d855910e52b428348d25",
+          "settings_leaf_count": 40
+        },
+        {
+          "id": "n004",
+          "source_type": "ask_for_follow",
+          "content": {
+            "text": "First, make sure to follow my page to be on top of all new trends and tips 💫\nI have followed you",
+            "preview": "First, make sure to follow my page to be on top of all new trends and tips 💫\nI have followed you",
+            "buttons": [
+              "I have followed you"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "follower"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "whether unconditional delivery is acceptable"
+          ],
+          "reason": "A follow request is not a verified follow gate. Keep true delivery/false retry in the original only.",
+          "unsupported": [
+            "buttons",
+            "follower"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "aa12a20d95f195693c1172bed0096b106bef79056884a00a497d9914fc9d2238",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n005",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN CONTACT CLICKS AND FOLLOWS YOU",
+            "preview": "WHEN CONTACT CLICKS AND FOLLOWS YOU",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "7cab8f14209754e54b9c842fe70e8bf8bf4a850ada20b6e8fe755262b8536741",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n006",
+          "source_type": "message",
+          "content": {
+            "text": "thanks for your follow❤️  ",
+            "preview": "thanks for your follow❤️  ",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/6/settings",
+          "settings_sha256": "15bf3e359f850f7e4b47082a2a2e2e8c92a325d5f0257b220caffe4e269a4749",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n007",
+          "source_type": "conversion_link",
+          "content": {
+            "text": "Here's the access to my community\nJoin creators, automation experts and more!\nJoin now 🤝",
+            "preview": "Here's the access to my community\nJoin creators, automation experts and more!\nJoin now 🤝",
+            "buttons": [],
+            "media": [
+              "https://app.inro.social/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBei9BUEE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--98318ba47c94561b7eef793d7a5221729dde6f78/Join%20Now.png"
+            ],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved URL and recipient access"
+          ],
+          "reason": "Delivering a text URL is possible; click/no-click events and external completion are not established.",
+          "unsupported": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/7/settings",
+          "settings_sha256": "9e38259c7fe9e3565654764f6fa0ac8327424677062dea1ce33395e317c2c2ca",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n008",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN LINK IS CLICKED",
+            "preview": "WHEN LINK IS CLICKED",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/8/settings",
+          "settings_sha256": "929cf9c2a549d9c3f3bca11ec8bd2d3c619e00b8a1899091ae245859cd313a53",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n009",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nCommunity joiner",
+            "preview": "Add contact to folder(s)\nCommunity joiner",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/9/settings",
+          "settings_sha256": "86be1684fc93797838818e3570c8c639bbbff7309212d670591f90da88a4270f",
+          "settings_leaf_count": 40
+        },
+        {
+          "id": "n010",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "preview": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/10/settings",
+          "settings_sha256": "9970cb556a6f2faf756e255a08c48e60d1325b0db7a7ebbd521daa067b91c39e",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n011",
+          "source_type": "message",
+          "content": {
+            "text": "Have you received the link?",
+            "preview": "Have you received the link?",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/11/settings",
+          "settings_sha256": "9623840ab8b67313be0a98992e37ff84dbf3d440d973d59da2faac01b7360fc9",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n012",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF CONTACT HASN'T CLICKED AND FOLLOWED YOU AFTER\n2 days",
+            "preview": "IF CONTACT HASN'T CLICKED AND FOLLOWED YOU AFTER\n2 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/12/settings",
+          "settings_sha256": "5e88bacd484dcecebd097a6897d51c7b9c0bae8764ecd8b4083d67f129f4bf40",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n013",
+          "source_type": "message",
+          "content": {
+            "text": "Make sure to follow me if you want access to exclusive perks and a community of like-minded individuals 🔥",
+            "preview": "Make sure to follow me if you want access to exclusive perks and a community of like-minded individuals 🔥",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/13/settings",
+          "settings_sha256": "5cc5ca22eb1e34be908d5e3880f8f5e89065d58af1cd53c82901eeb73f43fe02",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n014",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n2 days",
+            "preview": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n2 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/14/settings",
+          "settings_sha256": "272e87e33702ef8e073253f14ce42d91237ea6f3098fda3f9e61c134b9e2626a",
+          "settings_leaf_count": 32
+        }
+      ],
+      "transitions": [
+        {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "label": "",
+          "settings": {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 60063",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/0"
+          }
+        },
+        {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "label": "",
+          "settings": {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 60063 to 60063_option_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/1"
+          }
+        },
+        {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "label": "WHEN BUTTON IS CLICKED\nYesss 👀",
+          "settings": {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 60063_option_0 to 60064",
+            "source_port": "60063_option_0",
+            "condition_text": "WHEN BUTTON IS CLICKED\nYesss 👀",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/2"
+          }
+        },
+        {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "label": "",
+          "settings": {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 60064 to 60065",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/3"
+          }
+        },
+        {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "label": "",
+          "settings": {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 60065 to 60065_option_followed",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/4"
+          }
+        },
+        {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "label": "WHEN CONTACT CLICKS AND FOLLOWS YOU",
+          "settings": {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 60065_option_followed to 60066",
+            "source_port": "60065_option_followed",
+            "condition_text": "WHEN CONTACT CLICKS AND FOLLOWS YOU",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/5"
+          }
+        },
+        {
+          "id": "e006",
+          "from": "n006",
+          "to": "n007",
+          "label": "",
+          "settings": {
+            "id": "e006",
+            "from": "n006",
+            "to": "n007",
+            "source_label": "Edge from 60066 to 60067",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/6"
+          }
+        },
+        {
+          "id": "e007",
+          "from": "n007",
+          "to": "n008",
+          "label": "",
+          "settings": {
+            "id": "e007",
+            "from": "n007",
+            "to": "n008",
+            "source_label": "Edge from 60067 to 60067_option_clicked",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/7"
+          }
+        },
+        {
+          "id": "e008",
+          "from": "n008",
+          "to": "n009",
+          "label": "WHEN LINK IS CLICKED",
+          "settings": {
+            "id": "e008",
+            "from": "n008",
+            "to": "n009",
+            "source_label": "Edge from 60067_option_clicked to 60405",
+            "source_port": "60067_option_clicked",
+            "condition_text": "WHEN LINK IS CLICKED",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/8"
+          }
+        },
+        {
+          "id": "e009",
+          "from": "n007",
+          "to": "n010",
+          "label": "",
+          "settings": {
+            "id": "e009",
+            "from": "n007",
+            "to": "n010",
+            "source_label": "Edge from 60067 to 60067_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/9"
+          }
+        },
+        {
+          "id": "e010",
+          "from": "n010",
+          "to": "n011",
+          "label": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+          "settings": {
+            "id": "e010",
+            "from": "n010",
+            "to": "n011",
+            "source_label": "Edge from 60067_option_expired to 60406",
+            "source_port": "60067_option_expired",
+            "condition_text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/10"
+          }
+        },
+        {
+          "id": "e011",
+          "from": "n004",
+          "to": "n012",
+          "label": "",
+          "settings": {
+            "id": "e011",
+            "from": "n004",
+            "to": "n012",
+            "source_label": "Edge from 60065 to 60065_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/11"
+          }
+        },
+        {
+          "id": "e012",
+          "from": "n012",
+          "to": "n013",
+          "label": "IF CONTACT HASN'T CLICKED AND FOLLOWED YOU AFTER\n2 days",
+          "settings": {
+            "id": "e012",
+            "from": "n012",
+            "to": "n013",
+            "source_label": "Edge from 60065_option_expired to 60068",
+            "source_port": "60065_option_expired",
+            "condition_text": "IF CONTACT HASN'T CLICKED AND FOLLOWED YOU AFTER\n2 days",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/12"
+          }
+        },
+        {
+          "id": "e013",
+          "from": "n001",
+          "to": "n014",
+          "label": "",
+          "settings": {
+            "id": "e013",
+            "from": "n001",
+            "to": "n014",
+            "source_label": "Edge from 60063 to 60063_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/13"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [],
+      "source_settings_sha256": "a6874e51fc5c20ff3b0ff49cc3a4d9e3d874626017364f011451a296443e9044",
+      "source_leaf_count": 825,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [],
+  "continuations": {
+    "inro-6051": [
+      {
+        "id": "community",
+        "title": "Finish community access",
+        "scope": "Optional destination setup. The Chatfuel variant delivers an invitation, not verified membership.",
+        "inputs": [
+          "Community and invitation URL",
+          "Membership or access rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish community access.\nSelected source: inro-6051 - Grow Your Community.\nGoal: Invite interested people into your next launch or a shared community.\nVariant: Grow your community: follow-gated invitation\nScope: Optional destination setup. The Chatfuel variant delivers an invitation, not verified membership.\nSource entry: Community comment or DM\nSource requirements: Press the opening button; Verify a follow before the invitation\nSource timing: Link click: 3 days; follow and opening button: 2 days.\nSource outcome: An invitation to an external community\nCaptured text (n001, not approved campaign copy):\nHey {{contact.name}} ❤️ Do you want to join my community?\nYesss 👀\nCurrent setup decision: waiting_for_chatfuel. The promised resource, coupon or eligibility depends on a verified Instagram follow. Ordinary MCP cannot check follower status; unconditional delivery would remove the gate.\nPrimary Chatfuel result: An invitation to an external community\nSelected Chatfuel setup is disabled. This external planning prompt does not bypass its missing capability or source evidence.\nUse the existing community and invitation service.\nAsk me for: Community and invitation URL; Membership or access rules; Existing authorized access.\n1. Confirm the destination and owner authorization. Draft invitation settings and check the intended membership rules without issuing invitations.\n2. Distinguish link delivery, link clicks and actual membership. Do not claim automatic admission, membership verification or expiry without evidence from the service. Return the destination check, draft settings and unresolved access.\n3. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n4. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n5. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ]
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/inro-6051.json": "ddb17bade526248b047770b893dd404d18c9579a7aceb2bf2425f3401d256701",
+    "described-recipes/inro-6051.json": "8cb78df99cc2e33d5d194f41af372572d459a06a5ec836950676007726b036c6"
+  }
+}

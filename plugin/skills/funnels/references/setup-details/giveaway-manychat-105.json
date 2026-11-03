@@ -1,0 +1,3035 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "giveaway-manychat-105",
+    "name": "Giveaway: captured 95/5 random split",
+    "source_ids": [
+      "manychat-105"
+    ],
+    "entry": "Comment tagging another person",
+    "mandatory_conditions": [
+      "Check started_giveaway",
+      "Choose between random outcomes with 95% and 5% weights"
+    ],
+    "outcome": "One of two giveaway outcomes",
+    "timing": [],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "comment",
+      "random",
+      "graph",
+      "buttons"
+    ],
+    "assessment": {
+      "status": "insufficient_data",
+      "reason": "The captured tag gate and prize labels conflict with the notes. Ordinary MCP also has no random outcome operation.",
+      "missing_source_behavior": [
+        "Resolve the gate/notes and 95%/5% outcome conflict without correcting the original record."
+      ],
+      "replacement": null
+    },
+    "source_notes": {
+      "manychat-105": "Captured 95% and 5% weights conflict with the notes. Values remain unchanged."
+    },
+    "client_inputs": [
+      "post",
+      "keywords",
+      "eligibility policy",
+      "tag",
+      "prizes",
+      "destinations"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "blocked_original",
+      "analogue_ids": [],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [],
+      "binding_review": {
+        "source_entry": "Comment tagging another person",
+        "source_outcome": "One of two giveaway outcomes",
+        "mandatory_conditions": [
+          "Check started_giveaway",
+          "Choose between random outcomes with 95% and 5% weights"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 0,
+        "decision": "No complete adaptation; stop at the named dependencies."
+      },
+      "function_review": {
+        "status": "waiting_for_chatfuel",
+        "reason": "The selected outcome requires random selection or allocation. Ordinary MCP cannot implement that selection; giving everyone the same reward is a different result.",
+        "primary_result": "One of two giveaway outcomes",
+        "source_requirements": [
+          "Check started_giveaway",
+          "Choose between random outcomes with 95% and 5% weights"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [
+          "random"
+        ],
+        "retained": [],
+        "omitted": [],
+        "limitations": [],
+        "examples": []
+      }
+    }
+  },
+  "goal": "Invite participation and apply the giveaway rules before confirming an entry.",
+  "fit": "Businesses running a campaign with clear eligibility and prize rules.",
+  "preparation_status": "waiting_for_chatfuel",
+  "function_review": {
+    "status": "waiting_for_chatfuel",
+    "reason": "The selected outcome requires random selection or allocation. Ordinary MCP cannot implement that selection; giving everyone the same reward is a different result.",
+    "primary_result": "One of two giveaway outcomes",
+    "source_requirements": [
+      "Check started_giveaway",
+      "Choose between random outcomes with 95% and 5% weights"
+    ],
+    "source_timing": [],
+    "blocking_dependencies": [
+      "random"
+    ],
+    "retained": [],
+    "omitted": [],
+    "limitations": [],
+    "examples": []
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "random",
+    "graph",
+    "buttons"
+  ],
+  "sources": [
+    {
+      "source_id": "manychat-105",
+      "source_file": "source-records/manychat-105.json",
+      "source_title": "Run a giveaway",
+      "start": "trigger",
+      "nodes": [
+        {
+          "id": "trigger",
+          "source_type": "trigger",
+          "content": {
+            "text": "",
+            "preview": "Go To Basic Builder\n\nSelected values were not captured",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/panels/2/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "replies.0.reply",
+                "label": null,
+                "type": null,
+                "value": "Link in your DMs, check it out! 🚀",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/2/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "replies.1.reply",
+                "label": null,
+                "type": null,
+                "value": "Done! Details in your inbox 📩",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/panels/2/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": "replies.2.reply",
+                "label": null,
+                "type": null,
+                "value": "Sent the info, check DMs! 📂",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "65f7e173b2c8552ddd4256a8da61c6c8e0db26cbfeb2a9d7edf6c93b587fd439",
+          "settings_leaf_count": 177
+        },
+        {
+          "id": "node-0",
+          "source_type": "condition",
+          "content": {
+            "text": "",
+            "preview": "Tag\nis\nstarted_giveaway",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "mandatory business condition"
+          ],
+          "reason": "Preserve true/false exits, field values and retry loops. No deterministic condition import.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "8043bb641e1d7654f3ca94cde9827a51cad905067031c6c2eb8561a56e387051",
+          "settings_leaf_count": 117
+        },
+        {
+          "id": "node-1",
+          "source_type": "message",
+          "content": {
+            "text": "Hey! Are you ready to see if you're one of our winners for our Pilates Pack giveaway? \n\nHit the button below to test your luck 👇",
+            "preview": "Hey! Are you ready to see if you're one of our winners for our Pilates Pack giveaway? \n\nHit the button below to test your luck 👇",
+            "buttons": [
+              "LET'S GOOOO! 🔥"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Hey! Are you ready to see if you're one of our winners for our Pilates Pack giveaway? \n\nHit the button below to test your luck 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "LET'S GOOOO! 🔥",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "7b3316d14d63c1b47f70a6febc9f37ce25189e52b11b70445a41610155de2171",
+          "settings_leaf_count": 215
+        },
+        {
+          "id": "node-2",
+          "source_type": "actions",
+          "content": {
+            "text": "",
+            "preview": "Perform following actions:\nAdd Tag\n+ Action\nRandomizer\nRandomizer",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "required tag/field action"
+          ],
+          "reason": "Preserve every actual action. A tag alone is not a URL navigation, purchase or channel transfer.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Tag picker",
+                "type": null,
+                "value": "started_giveaway",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "16d3ec2b68b56ec75a987b597c2b741f364f70553a40b493b834c93b21a55017",
+          "settings_leaf_count": 152
+        },
+        {
+          "id": "node-3",
+          "source_type": "randomizer",
+          "content": {
+            "text": "",
+            "preview": "Split the traffic\nPick a random path every time \nAssigned traffic\n100%\nA\n%\nInstagram\nSend Message #2\nB\n%\nInstagram\nSend Message #3\n+ New Variation",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "random"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed outcome, if desired"
+          ],
+          "reason": "No weighted random outcomes in ordinary MCP. Do not substitute a deterministic message without consent.",
+          "unsupported": [
+            "random"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "randomized",
+                "label": null,
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "range",
+                "value": "95",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": "100",
+                  "maxlength": null,
+                  "min": "0",
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Value",
+                "type": "text",
+                "value": "95",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": "100",
+                  "maxlength": "3",
+                  "min": "0",
+                  "pattern": "[0-9]*",
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/3",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "range",
+                "value": "5",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": "100",
+                  "maxlength": null,
+                  "min": "0",
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/4",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Value",
+                "type": "text",
+                "value": "5",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": "100",
+                  "maxlength": "3",
+                  "min": "0",
+                  "pattern": "[0-9]*",
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "randomized",
+                "label": "Pick a random path every time ",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "range",
+                "value": "95",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": "100",
+                  "maxlength": null,
+                  "min": "0",
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": "1"
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Value",
+                "type": "text",
+                "value": "95",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": "numeric",
+                  "max": "100",
+                  "maxlength": "3",
+                  "min": "0",
+                  "minlength": null,
+                  "pattern": "[0-9]*",
+                  "required": false,
+                  "step": "1"
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/3",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "range",
+                "value": "5",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": "100",
+                  "maxlength": null,
+                  "min": "0",
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": "1"
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/4",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Value",
+                "type": "text",
+                "value": "5",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": "numeric",
+                  "max": "100",
+                  "maxlength": "3",
+                  "min": "0",
+                  "minlength": null,
+                  "pattern": "[0-9]*",
+                  "required": false,
+                  "step": "1"
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/1/fields/0",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": "randomized",
+                "label": null,
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": true,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/1/fields/1",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "range",
+                "value": "95",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": "100",
+                  "maxlength": null,
+                  "min": "0",
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/1/fields/2",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": "Value",
+                "type": "text",
+                "value": "95",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": "100",
+                  "maxlength": "3",
+                  "min": "0",
+                  "pattern": "[0-9]*",
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/1/fields/3",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "range",
+                "value": "5",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": "100",
+                  "maxlength": null,
+                  "min": "0",
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/1/fields/4",
+              "phase": "inspection_variant",
+              "fields": {
+                "name": null,
+                "label": "Value",
+                "type": "text",
+                "value": "5",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": "100",
+                  "maxlength": "3",
+                  "min": "0",
+                  "pattern": "[0-9]*",
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "63742d7c8fc4d33b83a1077e027bdf04d91c0316679638c2566732ae9d67bf60",
+          "settings_leaf_count": 482
+        },
+        {
+          "id": "node-4",
+          "source_type": "message",
+          "content": {
+            "text": "Congrats! You're one of our lucky winners! 🥳\n\nClick the button below to enter your details so we can send your prize  👇",
+            "preview": "Congrats! You're one of our lucky winners! 🥳\n\nClick the button below to enter your details so we can send your prize  👇",
+            "buttons": [
+              "Claim My Prize 🎁"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Congrats! You're one of our lucky winners! 🥳\n\nClick the button below to enter your details so we can send your prize  👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Claim My Prize 🎁",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "yourwebsite.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Additional actions",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "adf6bfe33cbcd194ed1b0e38363b559e839600bfb984552bfdb2018651eb32bb",
+          "settings_leaf_count": 261
+        },
+        {
+          "id": "node-5",
+          "source_type": "message",
+          "content": {
+            "text": "We're sorry! You're not a lucky winner... This time. \n\nYeah, we're bummed, too. 😭\n\nBut don't worry — we'll announce an new giveaway soon! Stay tuned. ❤️️",
+            "preview": "We're sorry! You're not a lucky winner... This time. \n\nYeah, we're bummed, too. 😭\n\nBut don't worry — we'll announce an new giveaway soon! Stay tuned. ❤️️",
+            "buttons": [
+              "Visit Website🌐"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "We're sorry! You're not a lucky winner... This time. \n\nYeah, we're bummed, too. 😭\n\nBut don't worry — we'll announce an new giveaway soon! Stay tuned. ❤️️",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Visit Website🌐",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "yourwebsite.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Additional actions",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/6/settings",
+          "settings_sha256": "ea13d55586c230490efe88e49ebf09d68ff5720f80790dac44f3b66ff5f44ac4",
+          "settings_leaf_count": 261
+        },
+        {
+          "id": "node-6",
+          "source_type": "message",
+          "content": {
+            "text": "Oops! You've already entered. It's only one entry per person.  ✨\nBut we have some other cool Pilates stuff on our website. Check it out 👇",
+            "preview": "Oops! You've already entered. It's only one entry per person.  ✨\nBut we have some other cool Pilates stuff on our website. Check it out 👇",
+            "buttons": [
+              "Visit website 🌐"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Oops! You've already entered. It's only one entry per person.  ✨\nBut we have some other cool Pilates stuff on our website. Check it out 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Visit website 🌐",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "yourwebsite.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Additional actions",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/7/settings",
+          "settings_sha256": "1c8339e4fa87e382c0ecd846edf19b5eb4fe3b2d9c212df471b01268b5f78c86",
+          "settings_leaf_count": 261
+        }
+      ],
+      "transitions": [
+        {
+          "id": "edge-0",
+          "from": "node-1",
+          "to": "node-2",
+          "label": "LET'S GOOOO! 🔥",
+          "settings": {
+            "from": "node-1",
+            "to": "node-2",
+            "port_exact": "button-0",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [
+              "858b077c-432b-45cd-a11f-f697280be7dd"
+            ],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-1.button-0.target",
+            "evidence": {
+              "file": "evidence/105-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/0"
+          }
+        },
+        {
+          "id": "edge-1",
+          "from": "trigger",
+          "to": "node-0",
+          "label": "Starting Step",
+          "settings": {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/105-editor.json",
+              "pointer": "/graph/edges/1"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/1"
+          }
+        },
+        {
+          "id": "edge-2",
+          "from": "node-0",
+          "to": "node-1",
+          "label": "Yes, the contact matches",
+          "settings": {
+            "from": "node-0",
+            "to": "node-1",
+            "port_exact": "Yes, the contact matches",
+            "source_branch_id": "a6239836-bdfd-4f84-99d9-1215702e582e",
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.condition.true.target",
+            "evidence": {
+              "file": "evidence/105-editor.json",
+              "pointer": "/graph/edges/2"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/2"
+          }
+        },
+        {
+          "id": "edge-3",
+          "from": "node-0",
+          "to": "node-6",
+          "label": "If not",
+          "settings": {
+            "from": "node-0",
+            "to": "node-6",
+            "port_exact": "If not",
+            "source_branch_id": "cbd3462c-91d1-4a16-830d-542a2f7468c1",
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.condition.false.target",
+            "evidence": {
+              "file": "evidence/105-editor.json",
+              "pointer": "/graph/edges/3"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/3"
+          }
+        },
+        {
+          "id": "edge-4",
+          "from": "node-2",
+          "to": "node-3",
+          "label": "Next Step",
+          "settings": {
+            "from": "node-2",
+            "to": "node-3",
+            "port_exact": "Next Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.actions.next.target",
+            "evidence": {
+              "file": "evidence/105-editor.json",
+              "pointer": "/graph/edges/4"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/4"
+          }
+        },
+        {
+          "id": "edge-5",
+          "from": "node-3",
+          "to": "node-4",
+          "label": "95% A",
+          "settings": {
+            "from": "node-3",
+            "to": "node-4",
+            "port_exact": "A",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": 95,
+            "caption_exact": null,
+            "navigation_label": "navigation.randomizer.A.target",
+            "evidence": {
+              "file": "evidence/105-editor.json",
+              "pointer": "/graph/edges/5"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/5"
+          }
+        },
+        {
+          "id": "edge-6",
+          "from": "node-3",
+          "to": "node-5",
+          "label": "5% B",
+          "settings": {
+            "from": "node-3",
+            "to": "node-5",
+            "port_exact": "B",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": 5,
+            "caption_exact": null,
+            "navigation_label": "navigation.randomizer.B.target",
+            "evidence": {
+              "file": "evidence/105-editor.json",
+              "pointer": "/graph/edges/6"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/6"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/instance/nodes/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Hey! Are you ready to see if you're one of our winners for our Pilates Pack giveaway? \n\nHit the button below to test your luck 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "LET'S GOOOO! 🔥",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Tag picker",
+            "type": null,
+            "value": "started_giveaway",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "randomized",
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/default_panel/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "range",
+            "value": "95",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": null,
+              "min": "0",
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/default_panel/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Value",
+            "type": "text",
+            "value": "95",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": "3",
+              "min": "0",
+              "pattern": "[0-9]*",
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/default_panel/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "range",
+            "value": "5",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": null,
+              "min": "0",
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/default_panel/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Value",
+            "type": "text",
+            "value": "5",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": "3",
+              "min": "0",
+              "pattern": "[0-9]*",
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "randomized",
+            "label": "Pick a random path every time ",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "range",
+            "value": "95",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": "100",
+              "maxlength": null,
+              "min": "0",
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": "1"
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Value",
+            "type": "text",
+            "value": "95",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": "numeric",
+              "max": "100",
+              "maxlength": "3",
+              "min": "0",
+              "minlength": null,
+              "pattern": "[0-9]*",
+              "required": false,
+              "step": "1"
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/0/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "range",
+            "value": "5",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": "100",
+              "maxlength": null,
+              "min": "0",
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": "1"
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/0/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Value",
+            "type": "text",
+            "value": "5",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": "numeric",
+              "max": "100",
+              "maxlength": "3",
+              "min": "0",
+              "minlength": null,
+              "pattern": "[0-9]*",
+              "required": false,
+              "step": "1"
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/1/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "randomized",
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/1/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "range",
+            "value": "95",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": null,
+              "min": "0",
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/1/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": "Value",
+            "type": "text",
+            "value": "95",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": "3",
+              "min": "0",
+              "pattern": "[0-9]*",
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/1/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "range",
+            "value": "5",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": null,
+              "min": "0",
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/3/nested_panels/1/fields/4",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": "Value",
+            "type": "text",
+            "value": "5",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": "3",
+              "min": "0",
+              "pattern": "[0-9]*",
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/4/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Congrats! You're one of our lucky winners! 🥳\n\nClick the button below to enter your details so we can send your prize  👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/4/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Claim My Prize 🎁",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/4/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/4/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/5/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "We're sorry! You're not a lucky winner... This time. \n\nYeah, we're bummed, too. 😭\n\nBut don't worry — we'll announce an new giveaway soon! Stay tuned. ❤️️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/5/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Visit Website🌐",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/5/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/5/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/6/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Oops! You've already entered. It's only one entry per person.  ✨\nBut we have some other cool Pilates stuff on our website. Check it out 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/6/nested_panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Visit website 🌐",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/6/nested_panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/6/nested_panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Be sure to update this Button Link with your own website URL!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Be sure to update this Button Link with your own website URL!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "This is a Randomizer. It randomly picks winners for you.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/3/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "This Action step applies a tag to the person, so you can see who entered. You can view them in your Contacts tab.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/4/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "For more inspiration for your giveaway, check out our blog post, \"6 Ways to Run Instagram Giveaways that Generate Quality Leads\":\nhttps://manychat.com/blog/instagram-giveaways/",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/5/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Be sure to update this Button Link with your own website URL!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/6/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "This is a Condition. It checks to see if the person has already entered your giveaway, so they can't enter a second time.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/7/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Your starting step will be \"User comments on your Post or Reel\"\n\nWhen you click it, you'll be able to see your posts and Reels. Choose the content you'd like to connect this automation to.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/8/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "This is a giveaway automation! 🎁\n\nJust ask folks to comment a keyword of your choice and we'll DM them the entry info for your giveaway. We'll even help you pick the winner.\n",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "replies.0.reply",
+            "label": null,
+            "type": null,
+            "value": "Link in your DMs, check it out! 🚀",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "replies.1.reply",
+            "label": null,
+            "type": null,
+            "value": "Done! Details in your inbox 📩",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/2/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "replies.2.reply",
+            "label": null,
+            "type": null,
+            "value": "Sent the info, check DMs! 📂",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "LET'S GOOOO! 🔥",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": null,
+            "label": "Tag picker",
+            "type": null,
+            "value": "started_giveaway",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Claim My Prize 🎁",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Visit Website🌐",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Visit website 🌐",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/8/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Hey! Are you ready to see if you're one of our winners for our Pilates Pack giveaway? \n\nHit the button below to test your luck 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/9/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Oops! You've already entered. It's only one entry per person.  ✨\nBut we have some other cool Pilates stuff on our website. Check it out 👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "randomized",
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/1",
+          "phase": "navigation",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "range",
+            "value": "95",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": null,
+              "min": "0",
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/2",
+          "phase": "navigation",
+          "fields": {
+            "name": null,
+            "label": "Value",
+            "type": "text",
+            "value": "95",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": "3",
+              "min": "0",
+              "pattern": "[0-9]*",
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/3",
+          "phase": "navigation",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "range",
+            "value": "5",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": null,
+              "min": "0",
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/10/fields/4",
+          "phase": "navigation",
+          "fields": {
+            "name": null,
+            "label": "Value",
+            "type": "text",
+            "value": "5",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": "3",
+              "min": "0",
+              "pattern": "[0-9]*",
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/11/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "randomized",
+            "label": "Pick a random path every time ",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/11/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "range",
+            "value": "95",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": "100",
+              "maxlength": null,
+              "min": "0",
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": "1"
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/11/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Value",
+            "type": "text",
+            "value": "95",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": "numeric",
+              "max": "100",
+              "maxlength": "3",
+              "min": "0",
+              "minlength": null,
+              "pattern": "[0-9]*",
+              "required": false,
+              "step": "1"
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/11/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "range",
+            "value": "5",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": "100",
+              "maxlength": null,
+              "min": "0",
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": "1"
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/11/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Value",
+            "type": "text",
+            "value": "5",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": "false",
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": "numeric",
+              "max": "100",
+              "maxlength": "3",
+              "min": "0",
+              "minlength": null,
+              "pattern": "[0-9]*",
+              "required": false,
+              "step": "1"
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/12/fields/0",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": "randomized",
+            "label": null,
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": true,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/12/fields/1",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "range",
+            "value": "95",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": null,
+              "min": "0",
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/12/fields/2",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": "Value",
+            "type": "text",
+            "value": "95",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": "3",
+              "min": "0",
+              "pattern": "[0-9]*",
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/12/fields/3",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "range",
+            "value": "5",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": null,
+              "min": "0",
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/12/fields/4",
+          "phase": "inspection_variant",
+          "fields": {
+            "name": null,
+            "label": "Value",
+            "type": "text",
+            "value": "5",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": "100",
+              "maxlength": "3",
+              "min": "0",
+              "pattern": "[0-9]*",
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/13/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Congrats! You're one of our lucky winners! 🥳\n\nClick the button below to enter your details so we can send your prize  👇",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/14/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "We're sorry! You're not a lucky winner... This time. \n\nYeah, we're bummed, too. 😭\n\nBut don't worry — we'll announce an new giveaway soon! Stay tuned. ❤️️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "e00fe0ae60fb46a0fc085f6a7df248c5e33ca031fd51bf3de78d0ded469b2227",
+      "source_leaf_count": 4581,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [],
+  "continuations": {
+    "manychat-105": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-105.json": "f114286c1b9bff009f8a39bf2eb9b2f78da8530318ab9d6f1638f7fcdf899db6"
+  }
+}

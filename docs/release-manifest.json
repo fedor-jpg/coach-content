@@ -1,11 +1,11 @@
 {
-  "version": "0.2.3",
+  "version": "0.3.0",
   "status": "Allowlisted snapshot; staging does not perform publication or installation",
   "files": [
     {
       "path": ".claude-plugin/marketplace.json",
-      "sha256": "fe3e0f198c4e7b013b7658b120fd56f2b19a1f01d9d450516e8493d9ae4b5392",
-      "bytes": 409
+      "sha256": "d73818eeb6db2c8185fa1943a10beef29b9b7d7e1215df239b5e7f6241446a89",
+      "bytes": 475
     },
     {
       "path": ".gitignore",
@@ -14,28 +14,28 @@
     },
     {
       "path": "README.md",
-      "sha256": "73aaae0cb9d25b8f92e0bba4de71729a8521663ac07dfaa3061734672c6280aa",
-      "bytes": 1402
+      "sha256": "fb2faf4f2fbd5f88a418b2052ce502c4d2fdaa7f77772d38f9965496263765d6",
+      "bytes": 2615
     },
     {
       "path": "docs/maintainer-notes.md",
-      "sha256": "82a0f0b53b460485dda90919c05f68fce91decd69496adaaa8f5781c7e73fc79",
-      "bytes": 12878
+      "sha256": "8c21cdc591321effabd037aea026e848eb583618d4f7b7ec870332e06d2736f9",
+      "bytes": 14274
     },
     {
       "path": "plugin/.claude-plugin/plugin.json",
-      "sha256": "c59e9ba5610cb5c30f70faca22b952f549991fa908f713980f2b432fa925d824",
-      "bytes": 247
+      "sha256": "cdb6d7791808b502d179d088ad29cdd7ca83911090155ce60a33a4120566a1b1",
+      "bytes": 327
     },
     {
       "path": "plugin/commands/start.md",
-      "sha256": "09f17366af802f897fc61c0a9882a5219afae2b6ceb0d36651494229edfe17a4",
-      "bytes": 1150
+      "sha256": "ef44db1c8ec227410528d482076a29ba62378f0dd4c4178aa8dc3ea07be59dcb",
+      "bytes": 1818
     },
     {
       "path": "plugin/scripts/coach.py",
-      "sha256": "71f1a9e0a001e7310b5a0cff1a497ca419ad78175959a1e58b9594a45e18808d",
-      "bytes": 31228
+      "sha256": "069ee51554e3cd8ad701da6e746af7a795329e7a354d78bd989912dde65b6939",
+      "bytes": 34223
     },
     {
       "path": "plugin/skills/campaign/SKILL.md",
@@ -59,8 +59,1583 @@
     },
     {
       "path": "tests/test_coach.py",
-      "sha256": "fb580c70b2a292b1e5df88b81ccf4cce072d801da11ea14482ba89bb714fdd4a",
-      "bytes": 35162
+      "sha256": "960abe659364e294febf78ecf3bd02cde20b0c4ee59a7cde95fe670c68489fce",
+      "bytes": 35250
+    },
+    {
+      "path": "plugin/scripts/funnels.py",
+      "sha256": "2bc3f77d71b278ec9b06c2a587511a494ab4f32690627ce5dacb58ac8b1d3b17",
+      "bytes": 83890
+    },
+    {
+      "path": "plugin/skills/funnels/SKILL.md",
+      "sha256": "73f9340ad551895411cf350fff82f9fef01e8dbd28f7fe6140aaa9a16cfa364b",
+      "bytes": 4115
+    },
+    {
+      "path": "plugin/skills/funnels/references/catalog.json",
+      "sha256": "0b1a0ec1a1bc9b5b1a25e313996b54f06c3fcbfed9ab431ec4ed7d6ae778c2b3",
+      "bytes": 176
+    },
+    {
+      "path": "plugin/skills/funnels/references/research.json",
+      "sha256": "9e6ba638ab11d4e7749030ed272eb00073cb1ca49da46c67dbfe7b44f76dc444",
+      "bytes": 5756
+    },
+    {
+      "path": "plugin/skills/funnels/references/chatfuel-execution.md",
+      "sha256": "79a9d8c57f667acba728e7311281dbc9bb0c1d89b430a172ddf40b459647b20d",
+      "bytes": 19737
+    },
+    {
+      "path": "plugin/skills/funnels/references/local-checks.md",
+      "sha256": "f9bc8237cfab9ffcdfd7b59c22a580d9068c2aec5c76a2bb7921bd9380044257",
+      "bytes": 23615
+    },
+    {
+      "path": "plugin/skills/funnels/references/chatgpt-funnels.md",
+      "sha256": "a1892ae7766ffec7e314d6372804b8ae9fb0016d446f0c85d5122c8a0e15f694",
+      "bytes": 32741
+    },
+    {
+      "path": "tests/test_funnel_handoff.py",
+      "sha256": "9057697bc4362eeadea9af5deabe1f48e2bbd19695a74731706d545fe21abb3c",
+      "bytes": 14792
+    },
+    {
+      "path": "tests/test_funnels.py",
+      "sha256": "fa987372c7389237fa092316db33df0a878cf77e269860cae98f139d2035718d",
+      "bytes": 115087
+    },
+    {
+      "path": "tests/funnel-prompts.json",
+      "sha256": "8668b630601fc595becc6f52c63a873565eda574531dd48fa36277daaf2f9e2c",
+      "bytes": 39959
+    },
+    {
+      "path": "tests/fixtures/funnel-contract.json",
+      "sha256": "650d3e4a097ca92011459662d149312a3ccfa71d3a944bf3cdbe068649d10422",
+      "bytes": 1421
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-comment-moderation.json",
+      "sha256": "dbcee8552b24c198a1ec9e79b1df509263eb11c67d9947db6998dd8a86fee6cf",
+      "bytes": 2850
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6085.json",
+      "sha256": "c2f02ca972820545b921379214447cbea2a7277e6865e7b8b75bd378af2893a6",
+      "bytes": 5789
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-4530.json",
+      "sha256": "ee825445d85f99c6113039543e2297982e3ee254e5b7c7da435d2ba4927ce808",
+      "bytes": 6327
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6111.json",
+      "sha256": "f8ea6de8ed88f00501276712163291c84d9ca5b9207dc1dcf987ee367b8ac83f",
+      "bytes": 2921
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6018.json",
+      "sha256": "fed7ac8530fef7f8c5ec3f2120f61af0399f1e7195caa194f866273dffcd293f",
+      "bytes": 6685
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6082.json",
+      "sha256": "3304ec1019fcc42336354ec4b5f8fb12bf2a16f68c5e4d24f6a82a4903095581",
+      "bytes": 4686
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6086.json",
+      "sha256": "f58c94678fe2f39a53950b279850c0e915af7c4d438a429931ad380e4dc46d53",
+      "bytes": 3848
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6025.json",
+      "sha256": "523729ee975fa70740f935e8e47bb6eb27c587ae1413339a19c836c928acda2c",
+      "bytes": 9392
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6220.json",
+      "sha256": "0ee40ada3e5cd6eaed24a2d3681bc3ca8263892776569887f6c9bed097fe5007",
+      "bytes": 5331
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6028.json",
+      "sha256": "9905ab3ccfff36ed8a4b455a3796ca83dda71f0741f37e2e7b71012d0b5bab5b",
+      "bytes": 5582
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6223.json",
+      "sha256": "ade5ac29860f1a142ce9d58c549f57ab418ba455ccd9286bf41f754287928b51",
+      "bytes": 5556
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6023.json",
+      "sha256": "55578b07f11f337c10aa32f89ddbd89d8153163c0775c59679660dc0cfb1cdd9",
+      "bytes": 6031
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6081.json",
+      "sha256": "e71e379a06804867d43cd2ef31a7834288de15dcd21906189f9c8281d6ed5128",
+      "bytes": 7793
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-4484.json",
+      "sha256": "435b3e3a0c82fb7d24c9d3809b1147990ce0017533a8bf626a9ce56821b9db91",
+      "bytes": 6384
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6024.json",
+      "sha256": "90cb92772b3fdc05f2d693de10ba286df1d5ea6f4181d2af0284c04034170127",
+      "bytes": 6915
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6049.json",
+      "sha256": "9d7d631f0bb6f2722e0a07bccaddf4684af1fccd445f5cdf2f644cd2894d8dde",
+      "bytes": 7301
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6051.json",
+      "sha256": "1b034b1be4b8eb3486668a6fb5be80603332709afffb508d81c4901284b1be8a",
+      "bytes": 5607
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6026.json",
+      "sha256": "cc36784a8bfa404fc0616f453297a6471f4ced250cc44a78b181007f91ec11c8",
+      "bytes": 6923
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6022.json",
+      "sha256": "275ed54299350ce5677d17cebcdbcb7b187172c0443e77ee952f49b75c9d40a3",
+      "bytes": 6820
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6027.json",
+      "sha256": "ee157d39d717c60ac21ed1f03a0ee96658da191873f220fd93e44d88fdc950d2",
+      "bytes": 6866
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6054.json",
+      "sha256": "bf86255d7b8b48dbc758e49d1bae6cf8769a51d3cded26f4b8a38bf23f185478",
+      "bytes": 7319
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6021.json",
+      "sha256": "04f3bdb3fdf35dd9ee3b78abc6754d5726d6ef8758a5c26b3cd82b025d22b962",
+      "bytes": 7688
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6080.json",
+      "sha256": "ba86bd4a7c22944ce2a0874f9cf981e3237f306c0eb5bdd1e6ec6ef0a1e6d145",
+      "bytes": 6731
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-4393.json",
+      "sha256": "a74e5a03814b9675c3bbd5d4cb294db8e7a34ca16c44dc17090729620c5b6887",
+      "bytes": 6881
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6053.json",
+      "sha256": "49bd4c60192666a21ae7dc03aabdb091b7beb16e77e4f51cb8d802636e5c4214",
+      "bytes": 5518
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6222.json",
+      "sha256": "e77963f945cd82dbf19f63081f2a8453ddc3d9bc949f1ce48cfd86cfdc726a70",
+      "bytes": 8112
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6047.json",
+      "sha256": "993630088dab5966ad993fabbb9969bb12bfb7397a17d350d157e521f98ffee7",
+      "bytes": 5193
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6046.json",
+      "sha256": "dce5b275cfbf205239818e81b89d96c3d5306e86b29338efcbad4afd6e3b6176",
+      "bytes": 5245
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6045.json",
+      "sha256": "9394f1b9c3fb2611a4ca7ba76d0f13050b5246d434bbb72ce53cafb3579249e9",
+      "bytes": 5152
+    },
+    {
+      "path": "plugin/skills/funnels/references/recipes/inro-6019.json",
+      "sha256": "69671cfb57be9f6a5287333285cf73c7a3e253f2c87c2d2c98b2b6714a8ac7c3",
+      "bytes": 6354
+    },
+    {
+      "path": "plugin/scripts/funnel_library.py",
+      "sha256": "71a6558a616db796df0562cef2d9c892673c05b5a3798c8d619be4248539fa03",
+      "bytes": 16331
+    },
+    {
+      "path": "plugin/scripts/scenario_library.py",
+      "sha256": "f1f1fd89167889c30d1efe4727ac9bf0a41ba00b14ac1d20e5ee99cb5bffc030",
+      "bytes": 11831
+    },
+    {
+      "path": "tests/test_funnel_library.py",
+      "sha256": "2b62939e35ba14f892d4063e6cced5df20069a70643c2400d668cdfd757f0ebb",
+      "bytes": 9450
+    },
+    {
+      "path": "tests/test_scenario_library.py",
+      "sha256": "7b89db2fd338f1a8559e81c66ea43e9e482ab1c2ccbf27390e44bd7031259b04",
+      "bytes": 9897
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-policy.md",
+      "sha256": "bfc84f8881be61b9d9d9f1b73c67da00f595b822f898f1ba5d8133673b3c105b",
+      "bytes": 20515
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-coverage.json",
+      "sha256": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+      "bytes": 41005
+    },
+    {
+      "path": "plugin/skills/funnels/references/capability-observation.json",
+      "sha256": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+      "bytes": 22156
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-index.json",
+      "sha256": "f6bd3d5fdae70abe397ff8bc94b04e8124e6c9016eab454e7bf4001855534807",
+      "bytes": 9418
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-index.md",
+      "sha256": "9b6ff35cf949b72ec19c5cde9dd9b6294a3ecfab7ef51a2d0c2a0524b4f0928d",
+      "bytes": 3906
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenarios.json",
+      "sha256": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+      "bytes": 479921
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-index.json",
+      "sha256": "d6615fc18902a95b1ef3e108c3c7bcc0f5de39b383a2d7bb2084584058419753",
+      "bytes": 92525
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-index.md",
+      "sha256": "357658bf5325eaec09165c94070ed39a5e6c9442b5f3c87e8e006c39c9e52af9",
+      "bytes": 6074
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-comment-moderation.json",
+      "sha256": "6a746ede1a5f2bf9940eafed55c91a87b1706ad76008847ad38c970f47dd8ec0",
+      "bytes": 16330
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-comment-moderation.md",
+      "sha256": "798b39a33853942a58f006f5d8a802f70fe8e089a84c2bca93859fd366782946",
+      "bytes": 9674
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6085.json",
+      "sha256": "71a8ef2c6b62cc8bb2bfb1bf56143571dbf71bc12bb157fec457e98e852c0c91",
+      "bytes": 14863
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6085.md",
+      "sha256": "0a2118aebcfaed4d1599d3e5e4f89fcbde003065a3281e99c987e89d89dbde6f",
+      "bytes": 9023
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-4530.json",
+      "sha256": "2ac7c53fd990e94d52d2df7f6a5bbabaede979c391d26555639095218870c218",
+      "bytes": 15758
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-4530.md",
+      "sha256": "334b5f546bae78bd4e0185d2b8be4cf82473df2e60e290876b042e07f7e20bdc",
+      "bytes": 8899
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6111.json",
+      "sha256": "87d7e0a9cb9b7d293c0683790aa1c63ef50666139915ed740c4132fa24e3db4d",
+      "bytes": 16301
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6111.md",
+      "sha256": "a029dd44596677c989757595060d72640f8fd525e3b01cb6e403a8f1321f7bd3",
+      "bytes": 9697
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6018.json",
+      "sha256": "71c1cb07382ebc0a43c6dd6cd9836abd9a911cac93696d3b8ddbc1880424a356",
+      "bytes": 18167
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6018.md",
+      "sha256": "03e3eaf10cdea2dbf48496639334994b3572a39d601a9d2f6bf089b80d162e64",
+      "bytes": 10913
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6082.json",
+      "sha256": "b4224b5ef886ff7ef14344d30b19af2b687056724f549b3cc9274a70050ff9a4",
+      "bytes": 10156
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6082.md",
+      "sha256": "3c886b59b2a9e51f80f9352d28ce86da05a9d3da49f828a769251aca8cc9bcc4",
+      "bytes": 6030
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6086.json",
+      "sha256": "b41fd9aa8851d1c5b2a117cabb69146033af1ea599c87289352a7fd2fb2a0342",
+      "bytes": 14442
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6086.md",
+      "sha256": "a2211b289c8a44f96ae50ccebbdb9943b4ccc5889a69f8344bb21375791066fd",
+      "bytes": 8884
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6025.json",
+      "sha256": "7c5f7c18edb6708e852d5db843560a2b535db0c8833029bad44613d2337d85b9",
+      "bytes": 23484
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6025.md",
+      "sha256": "3f029ea2beb8e717d52b3ce87555a8c16718ff1692f3a135c7d4374060e6bbfc",
+      "bytes": 12609
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6220.json",
+      "sha256": "e0c71c647550f0de3283a9bf044cd3a451afc7527c30a862802728bae1851d65",
+      "bytes": 12870
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6220.md",
+      "sha256": "5ed131bcd596456a0e242e4b072d5f201402e771bc1325810ea6d021e89bc4cb",
+      "bytes": 8616
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6028.json",
+      "sha256": "059f931c66b3358c9836adebd80909eabb852b440fa86bdd7f6f116f4a327716",
+      "bytes": 13205
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6028.md",
+      "sha256": "4ec9620be229c38aed5abd9e595ad17f21e5763ecdaca384dc2e1ab4a42100f9",
+      "bytes": 8655
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6223.json",
+      "sha256": "4398397408d67d67e2a62167c917a78ed698c2246cda2361f391add940b3c1fd",
+      "bytes": 15067
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6223.md",
+      "sha256": "7d06d6fd822455bf1925767c7a664c5555e01c74c01624461256cd251d2606c7",
+      "bytes": 8577
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6023.json",
+      "sha256": "22d79467e68d40e19013cfd23c9b315d446aa80d6d4c50e225d639ae40628b72",
+      "bytes": 14009
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6023.md",
+      "sha256": "24d6d1632521dd383870e4797042d7475d28bebfc91c50a8c28461136c936dda",
+      "bytes": 9937
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6081.json",
+      "sha256": "b50c8355be06db3ba49e90e2a2b7e6fe43bc4e654ccfa2501ac0be23e860ff0e",
+      "bytes": 18662
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6081.md",
+      "sha256": "eed5e94ee403a418cd598ffe5e25b17a2971ae07d4c6a617ac2d1175ad07b736",
+      "bytes": 11397
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-4484.json",
+      "sha256": "1fa0d8a79ac1c535bef8ee0378465908c9ac525dd184eae4ecdc3a8462a75a95",
+      "bytes": 19151
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-4484.md",
+      "sha256": "4d9a0d26b2f9a6e2ecddcfde20a4bc9211353d9d777e5fdce57b8684bf709764",
+      "bytes": 9698
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6024.json",
+      "sha256": "ef8320f41be98b20717025a713e7881f5d80b57acca8c2763ac923ef11350f7c",
+      "bytes": 18151
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6024.md",
+      "sha256": "9e6fffd58ebcd2d130d26cf924b6d6cfdfe227b96dd3b0d591f460e60be595e0",
+      "bytes": 10873
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6049.json",
+      "sha256": "4571115c1c61f5e4b720486a5f4cbe58d2e04fd54c872682182ffa72f2949977",
+      "bytes": 20972
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6049.md",
+      "sha256": "007e561c7a8107544783245f63a8a5a02db86f298b56144bc05909abd1a087da",
+      "bytes": 11012
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6051.json",
+      "sha256": "8cb78df99cc2e33d5d194f41af372572d459a06a5ec836950676007726b036c6",
+      "bytes": 12662
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6051.md",
+      "sha256": "f5093eefa4e7127273f04ea37ead2202373188b7be9fdaa219e46a4e94c1c414",
+      "bytes": 7145
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6026.json",
+      "sha256": "2f7b3673fa7dc89d357239cd6f3a324c627f1061f82d52f8b91302699c902b4b",
+      "bytes": 18222
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6026.md",
+      "sha256": "766d64044a18fc0dfd568b8a92ed3b2613f58deacc69722dc0c1626e18e9203d",
+      "bytes": 10947
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6022.json",
+      "sha256": "34da0b9c154211139e6df958959afab5d23cde21d548c6770226d96274b5817c",
+      "bytes": 18360
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6022.md",
+      "sha256": "5f31fe79339f59518afbf2edd699c4dad380c10ce22f31708b872be74609d31d",
+      "bytes": 11052
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6027.json",
+      "sha256": "ff4b7c05bfc0d0e4ab5342437c8a1d8a1160e706b106c87741e68f235a6859a1",
+      "bytes": 18250
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6027.md",
+      "sha256": "d375be0bd2232dc869071231f5c7af3a032cfefbc122f2dae500d1af0fa863ae",
+      "bytes": 10971
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6054.json",
+      "sha256": "8fbcf5bdd823fd350474e223eda629ba29e6c94792573702619a3d2fab48ee64",
+      "bytes": 18649
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6054.md",
+      "sha256": "fa9e73e576aefee0ff9d51d8db8df896a54facd83ccfa46ebd2f5a36b75bd13a",
+      "bytes": 11529
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6021.json",
+      "sha256": "ece2aa73a33e568b79fde1ab59c245d83a5b081d133862c509cdf94043739c11",
+      "bytes": 21218
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6021.md",
+      "sha256": "65e4ad0b6e3ec8d093418956a083b06977892ffc0d579959c888b23fa299a929",
+      "bytes": 10805
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6080.json",
+      "sha256": "949e027f723ce1d49c8c4aea7d5591bf1f272a6a0151f12890ae40bb79ab836f",
+      "bytes": 16502
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6080.md",
+      "sha256": "23ebbea3327f04770d4ec3d63f317633223ce6d47fbae6b35badca68a1673057",
+      "bytes": 10249
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-4393.json",
+      "sha256": "729572b0d75abe88e8479492376c971b2db662b1c274591f6590816030732a43",
+      "bytes": 16337
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-4393.md",
+      "sha256": "ce59ee1d1fedf407a658a8c83de082d95ce12df272f879776c4b62d6c8b21169",
+      "bytes": 9515
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6053.json",
+      "sha256": "4ba4635a14c301b78a4106e21371cbdfc3d85f1c416d9bdded50adf17f9bcd77",
+      "bytes": 13217
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6053.md",
+      "sha256": "d0b9b8d00f11d6483baf951455d512dde959c9028498a80dfbc762bdf23f262f",
+      "bytes": 7896
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6222.json",
+      "sha256": "8ace48814f511604092d314a1abe7d8c6c031e92554f4c55b1947b8364f0b4aa",
+      "bytes": 21279
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6222.md",
+      "sha256": "1c8194a720b697eac355d2ffb98737f77906c5be4172fbf6c130754dc0df0f75",
+      "bytes": 10849
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6047.json",
+      "sha256": "b184e2590a8acce562277c4316481b69c25b56ac87e1453d88cc6de6159f93e9",
+      "bytes": 12675
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6047.md",
+      "sha256": "2ceffcbe267d5f1f6f07f753d0dd1b301d8815b15829cf0cc7931a83cf5fd68a",
+      "bytes": 7145
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6046.json",
+      "sha256": "182e4e8d58e5ca931354a299a485c5d75029ea7fbc40c792544d34663de5d51d",
+      "bytes": 12675
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6046.md",
+      "sha256": "bafadd535143354317f417b1263da3c5530e4919054b138652fd9e4c128e2648",
+      "bytes": 7169
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6045.json",
+      "sha256": "77167b325a4b63ee9d4b365a32db6aa0a275cf7e8a93de8a78962c22b5398e8e",
+      "bytes": 12656
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6045.md",
+      "sha256": "f9dc6beb45e0c11b974bb5fff6efd71b5fbc0ba6d9b595be1cb2375e6716cc5d",
+      "bytes": 7485
+    },
+    {
+      "path": "plugin/skills/funnels/references/described-recipes/inro-6019.json",
+      "sha256": "24fba558e2d45df7dab8e06691e709464e59e70a9c744aacebd49504c7924912",
+      "bytes": 15129
+    },
+    {
+      "path": "plugin/skills/funnels/references/native-recipes/inro-6019.md",
+      "sha256": "9f1da66d673b3eefc523ef32dbfb559abc118d5d317b5d552aa1d8909f8a87d5",
+      "bytes": 9240
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/link-delivery.md",
+      "sha256": "c9e545cd10201cfdedbd3a9c12be02dc1236e1b2d2ea82e5e1d90c6f96f89388",
+      "bytes": 21443
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/follower-material.md",
+      "sha256": "90d469b0402dd1cb976aa46feee28e87a545ab99b2cd3cff3960f3d6d845bfef",
+      "bytes": 14813
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/contact-material.md",
+      "sha256": "bd58a9400ae6ce56d48b2dfb00df21c2b833b912acd580ca576e54df16154261",
+      "bytes": 24845
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/webinar.md",
+      "sha256": "4ff72e0fdd6807bc9aef683f505eecd5163cc4fe304a657328a1b8db28bb3aa1",
+      "bytes": 18323
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/booking.md",
+      "sha256": "3182085af5c713e5c9b5e653fc59f2e0c210a786627fa8c1a3e4674fbced26ce",
+      "bytes": 22914
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/community.md",
+      "sha256": "47a6b5469ad88e62d18eeeb413e48022b4085186ca58b078afe29bcba938b7f5",
+      "bytes": 13577
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/content.md",
+      "sha256": "4e2012b2c981d870eb4d6071991d0193fff1d085d102cf320a42a30d54951f79",
+      "bytes": 9177
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/affiliate.md",
+      "sha256": "dd0e5b9de50ac6ef973895b5828a83d01d4b621fb30608e4ddf089c21598b875",
+      "bytes": 5260
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/courses.md",
+      "sha256": "483a7983aeb2a9ee12472e01c916ad806d7496c7d829054b9368c5e1ef0d24f9",
+      "bytes": 10559
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/offers.md",
+      "sha256": "fd9e6a874eb933923849c4680a17f737c01161e66111cc8c24d156c387b83372",
+      "bytes": 31774
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/giveaway.md",
+      "sha256": "5a737b6c4b87c3c446ba3d3e1b20707537012adcd6c01ddfcfe5ec88464a9025",
+      "bytes": 5709
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/games.md",
+      "sha256": "466febddfa075e7fb0a4ee107ef1120b679de62b4e37933ddc7ef833f1264361",
+      "bytes": 9704
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/moderation.md",
+      "sha256": "dd27ffcd41edc4dbfb312b4cb01d47d4bcf830570326c0b927368505cb9f108f",
+      "bytes": 4343
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/thanks.md",
+      "sha256": "54c722182d4350d38ee8ce7614ca90b38621e6a04b3af7b1ba3120cf58b978d2",
+      "bytes": 7130
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/support.md",
+      "sha256": "5c0dd171aab53508ad816271d89862d5c0151ece81ba668a87cf65510e998ca1",
+      "bytes": 7148
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/collaboration.md",
+      "sha256": "6af18497f9170f6e1bb774763159933466764a1fc9e47e8234195358952b1640",
+      "bytes": 3408
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/phone-community.md",
+      "sha256": "cc38afc1db46f73151fbe81922b864dae4d439225888e2c6b9041c0b98140855",
+      "bytes": 7881
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/channel-transfer.md",
+      "sha256": "2a32f138015f51d3fc262b89737a757368e2a73c5c35f222a02792a6e619912b",
+      "bytes": 5294
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/reminder.md",
+      "sha256": "7734b39b42e07d9f314fbdb4601a3ae55f2cae975760fa8821cb85ca1e204bd9",
+      "bytes": 3324
+    },
+    {
+      "path": "plugin/skills/funnels/references/scenario-details/conversation-builder.md",
+      "sha256": "981a9fb42b53f54ec5903ac5b41526d0eef76c3bb53370f69dfe4e2a7f93f485",
+      "bytes": 2516
+    },
+    {
+      "path": "plugin/scripts/setup_library.py",
+      "sha256": "0527c074648e328055d725e484edfca9842926c06cffcb33503e75850eabb6f2",
+      "bytes": 34814
+    },
+    {
+      "path": "tests/test_setup_library.py",
+      "sha256": "41ce614ecd382f2a0b687a2daf8c1384287ab4cb082a5a930a65863cc05c2a45",
+      "bytes": 29670
+    },
+    {
+      "path": "tests/test_funnel_publication.py",
+      "sha256": "c11ac8ea5624e92438eaeb4210e71d8e30fdadbd784116047fff99f7ccb83281",
+      "bytes": 3743
+    },
+    {
+      "path": "docs/funnel-setup-audit.md",
+      "sha256": "ee0c23c578c54e8bd50d8603cf89e783d7c5045d7b76ef83962f1b4875a0a022",
+      "bytes": 28731
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-policy.md",
+      "sha256": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+      "bytes": 12740
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-index.md",
+      "sha256": "1bf07391aea7e92035239501b0facba395f67039890efe6da4ab321fd489704c",
+      "bytes": 8241
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-index.json",
+      "sha256": "404d619815ae9650475ab15c261de5a195ea70d8764bc4451622cd2e41479f65",
+      "bytes": 103474
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-source-index.json",
+      "sha256": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+      "bytes": 18640
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-inro-6220.md",
+      "sha256": "cf6b17e288c4f6bbb82c42ee13dd63c9204a04e9030f087b8af42cccffb78b42",
+      "bytes": 18493
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-inro-6220.json",
+      "sha256": "57b3776aff4aaf6d5b95a7d2b06995245722f113f57a25e08b5e62287e34b228",
+      "bytes": 83930
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-90.md",
+      "sha256": "4c8a9c5134c06cdff05e640bcd1a4f61788303560acb65529eeed146abd5662a",
+      "bytes": 15127
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-90.json",
+      "sha256": "96c544f4fe664c3f0c9b205489ce1ab41fb3121c8a456670798cdccf6634e9aa",
+      "bytes": 69224
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-433.md",
+      "sha256": "32331d3ac364aeb447d62071d87a30ee9960294e54c4f249cc12ddce2df6800a",
+      "bytes": 11991
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-433.json",
+      "sha256": "beda1a07c76fdcf3498bace871d8e1a4e1f9d1e5acc896dfe9aa5daeeee17d5e",
+      "bytes": 45396
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-432.md",
+      "sha256": "c9839ae19fd99519f0b50b1151accfdbdfff24fc40a69b4b9230630d1ff1d0fd",
+      "bytes": 9656
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-432.json",
+      "sha256": "0e1b4bb200a5dc44ad9546f1660759ddfb34f5e561b3e9cb1c9677023981b498",
+      "bytes": 33433
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-12.md",
+      "sha256": "a2913042a391be370495adc3d1ff3a8b817865feec0da9dfac567dcdc8809936",
+      "bytes": 25954
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-12.json",
+      "sha256": "94fb00501c927cf119bc9742c61b7e0d64de251c9ad2c17629bd8a72a2ea5948",
+      "bytes": 136216
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-8.md",
+      "sha256": "f1a812cb5f0fef8aa24918d523b17da7a4fced723e5671cb7f9dca121f0812d6",
+      "bytes": 16858
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-8.json",
+      "sha256": "56d4ce8640878f5b7c8c080969af50533533ecbe78ee5b554cc3c77b7346ece9",
+      "bytes": 60068
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-113.md",
+      "sha256": "a4f3116efea2e52a476a8f7dfc75dbe885ada84e296f25a43cf6f0553b71a360",
+      "bytes": 15263
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-113.json",
+      "sha256": "f5721c9640cde471d27575b1c5627a4758fb61988602928b56677053a7c65218",
+      "bytes": 65728
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-inro-6023.md",
+      "sha256": "073db8e6a0d282ad91e48b676af0ceae84826a58f9b6af6c52a6347f7a8a8b2f",
+      "bytes": 8280
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-inro-6023.json",
+      "sha256": "2a79fee2b9ee1c53ccc0b2d48ff2c15586867136177d1b390e4640d5457b1eab",
+      "bytes": 37883
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-13.md",
+      "sha256": "63ab4acea211215046c2da86fabc036ecdf48c15ae1a51d625c4c7b72e8c03d8",
+      "bytes": 16251
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-13.json",
+      "sha256": "f8a830408a0b74c61ae5e6d9002294897e504bc036d0cb8180fdd8fbc5860616",
+      "bytes": 84720
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-60.md",
+      "sha256": "4ad02436e59920c0eabe1ace16f157632a2cfdbb14658065ef794f58e7034cf2",
+      "bytes": 5098
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/link-delivery-manychat-60.json",
+      "sha256": "315b3817404635b604078a4e5bec3a5553547d32770b96926755810bf9495b94",
+      "bytes": 17820
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/follower-material-inro-6028.md",
+      "sha256": "c77a97c9394bd660e45c7f95a477106f49e9b3d7945b771c0ebd786384b74e2b",
+      "bytes": 23034
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/follower-material-inro-6028.json",
+      "sha256": "64bdf8fb805771b6c204629c93e9a232ab1bf33aa7463fea734b6f0cb62eebdf",
+      "bytes": 107653
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/follower-material-manychat-107.md",
+      "sha256": "607438c490d23bd97aba26ee89b66a1d4c78a8b4ef5f1a85e242e772c063b9eb",
+      "bytes": 10758
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/follower-material-manychat-107.json",
+      "sha256": "87339f39ca0a4b1698f8bf9546c6f6c77e8944d5ad133db8954c41d9734ac4cb",
+      "bytes": 47662
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/follower-material-inro-6024.md",
+      "sha256": "37c8ca5f4fb8c3787148546a5dd511b0978b769bfd310c840eafb8b4758952c5",
+      "bytes": 47622
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/follower-material-inro-6024.json",
+      "sha256": "66b44c8ee9eef241d0e4e6bc4d76fd896be592ed97d22d94d9256045656995eb",
+      "bytes": 244890
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/follower-material-manychat-17.md",
+      "sha256": "bcc5cb6747a9ee4f1c16ec98ff04b12520db96f58d767cab1a7703f63822630e",
+      "bytes": 16838
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/follower-material-manychat-17.json",
+      "sha256": "71814f0280a6574b2c0fc47db4f78221ec9d52f9cc23d34047dfad49de6548d1",
+      "bytes": 118741
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/contact-material-inro-6026.md",
+      "sha256": "0c229012d26d51e83cbc67d2b6991d33e31a8e3e1978e7c15f3a4d5c312c469e",
+      "bytes": 45113
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/contact-material-inro-6026.json",
+      "sha256": "6be1ec009b827853a8b6a934ddaf7b9aaa09cea7c9d7517216ae813aeb3c3ae6",
+      "bytes": 204731
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/contact-material-inro-6022.md",
+      "sha256": "2b383c42bc98184c3776ca17ad08e57bfb35f294fb949d4884b7f6944a64ef6a",
+      "bytes": 36180
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/contact-material-inro-6022.json",
+      "sha256": "24c1ffbfce4a1f213d9bdbe8214f77fbd499fd9fc1870a2dc81f6b76430d12cd",
+      "bytes": 156166
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/contact-material-inro-6027.md",
+      "sha256": "f8994c25de5f8381633f917fc586fc9f406fe82df703e066a3bd2fc91d5e2c3c",
+      "bytes": 40458
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/contact-material-inro-6027.json",
+      "sha256": "b820762f374e97e4c8259c573d7f0aa9e17426d96ba0e87727cb3656ec0c7752",
+      "bytes": 196560
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/contact-material-manychat-20.md",
+      "sha256": "633fd340d6e8aa6d2d69a4c0486632edb1197bb2be5442af54117dcef6e0899e",
+      "bytes": 27908
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/contact-material-manychat-20.json",
+      "sha256": "9e9f1a5535953e73be26b67967358fca8991fdfe73a8436d233c98c8845b75eb",
+      "bytes": 118583
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/webinar-inro-6049.md",
+      "sha256": "3c4e930158c43f9b5ef789193c7a5d4e94380708c49378181d32a039de0331b5",
+      "bytes": 14910
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/webinar-inro-6049.json",
+      "sha256": "42a0f2d025516200e11a1698b1d30352b5361485556768c753e755060115114c",
+      "bytes": 36560
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/webinar-inro-6054.md",
+      "sha256": "a43341cee2b1886697788983b851fe2423d427623b1a03956025e890ac4e69dd",
+      "bytes": 35123
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/webinar-inro-6054.json",
+      "sha256": "d02aa0bf6c1e89e1b6edf376533bac75a267980819bb06de2792e014da2d7160",
+      "bytes": 154353
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/webinar-manychat-81.md",
+      "sha256": "4d3333a40227ebe10ff35a73bb95fb9d84333b1806e633c71a141d2eaf93617b",
+      "bytes": 32811
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/webinar-manychat-81.json",
+      "sha256": "a29009950e56112893a8a6c58f363c4a9b508a29a042bbf34b7d83c7cd8efb8c",
+      "bytes": 148522
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/booking-inro-6025.md",
+      "sha256": "f0fcad1399b3ab271389aed7f4eb8e82629b3f1014643892e0110378f674f9cc",
+      "bytes": 38188
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/booking-inro-6025.json",
+      "sha256": "15d021961adf59e680ec0d5a3dbb717c037cee2dd84dbe464aef7802c61e8781",
+      "bytes": 225205
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/booking-inro-6021.md",
+      "sha256": "6a243f81528d73ec3c6551a60ed80badffd6a1f1dcaf18ef7cbff0be673e5790",
+      "bytes": 30158
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/booking-inro-6021.json",
+      "sha256": "835b840b1832c403ff482e5f0de35161ab7311a33ab052c32275da5c06d2b6a8",
+      "bytes": 121977
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/booking-inro-6222.md",
+      "sha256": "3cb7cbb560ed024d388e6b94f525a7d6a16edb1c63fd825ac840dd3e468d1cc2",
+      "bytes": 29208
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/booking-inro-6222.json",
+      "sha256": "32d7e8f44481ca7b6909a51711a3636540479522d16a16f7c8e8c73fb53953da",
+      "bytes": 191549
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/community-inro-6081.md",
+      "sha256": "b1caffe587f55c1e0b72420216f8b9b7bce650142784f25d67971d9ae18ba48a",
+      "bytes": 30144
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/community-inro-6081.json",
+      "sha256": "f987bdcf19efe81ea924c073aa1249cb0aee58d4bc5387062391d5f263f7703c",
+      "bytes": 134328
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/community-inro-6051.md",
+      "sha256": "e416725b95d6f8e117245cf273a760d0056e5db692aa1cfc87dc85f32d270f34",
+      "bytes": 13490
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/community-inro-6051.json",
+      "sha256": "8782c27a4235569af07dadeed0dc2cfd3ee65ced6c4ea32dd395341468eebdc1",
+      "bytes": 32870
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/content-inro-6045.md",
+      "sha256": "1e11796b85166eb0d456adfc4efd22a1917679c5a242560468ce52b24ea8e028",
+      "bytes": 38109
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/content-inro-6045.json",
+      "sha256": "a24eb121cdeaf2c977a97777d3ee768a8d9b55226264bd048ccc69b864afeb17",
+      "bytes": 125694
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/content-inro-6046.md",
+      "sha256": "4eeabf295c258b14ea08efb6a65fb9be551e909932d9374d62c8d2103e26a4aa",
+      "bytes": 17492
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/content-inro-6046.json",
+      "sha256": "2154bd6940d92b4b7ff6c74537d0d0668ba52f407309a90ce465c313c09220e3",
+      "bytes": 53994
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/content-manychat-112.md",
+      "sha256": "751810b56aa8edf4ec65124d789b44c89da8ae25b8fb8ff929ca68c970c30002",
+      "bytes": 12400
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/content-manychat-112.json",
+      "sha256": "1651e750c3ea3b1b9a7706b23f919ed64ee393a0c7e3ae01deec031cc53f3c80",
+      "bytes": 48028
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/affiliate-inro-6053.md",
+      "sha256": "d686edddf1630a63da9ea053fd9cc158495ae755369c641640a7be95a580d2f1",
+      "bytes": 13358
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/affiliate-inro-6053.json",
+      "sha256": "78ffe6319d880c1dcdccb974ec1161f351464be04a9019508575b6af63cc9115",
+      "bytes": 38726
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/affiliate-manychat-183.md",
+      "sha256": "c973076bda9d9e3d552e4386a7a3c737635cbb02966540469ab9f589331681e4",
+      "bytes": 65373
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/affiliate-manychat-183.json",
+      "sha256": "666dafa967b37a1aef63fd0a9474c08cfb636e1c00bd4afe4455ab5fb6f74a2f",
+      "bytes": 284384
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/courses-inro-6080.md",
+      "sha256": "6bbbf77eab2b49b1273bd8479ab58d2fd37b9f0c62857cfb9ceb45f66df699dd",
+      "bytes": 22953
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/courses-inro-6080.json",
+      "sha256": "4c5466f0b3f80ae18c875ff192df39c9cbe186bd08c4cdbe16c388dfec4530d9",
+      "bytes": 68164
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/courses-manychat-111.md",
+      "sha256": "4b4348b7a2fc622b6d31ce8417cf2886343b6dfe1ed5702fcc0ebf962cdf1ce5",
+      "bytes": 19647
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/courses-manychat-111.json",
+      "sha256": "ab85340edb191f6627490ccb2b0e3e1c4d51e8433d36645a2d289aa3822735f7",
+      "bytes": 93484
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-inro-4393.md",
+      "sha256": "b0fd8e0f0670a922bf16a36915e02c83dbf209d1d0b2032409a455d1d8c062f4",
+      "bytes": 14608
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-inro-4393.json",
+      "sha256": "cfcd188342b7e0afa82433429f21865026a11368121ace6de7db7d0be8d05130",
+      "bytes": 64333
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-inro-4484.md",
+      "sha256": "79c7fda4b9d209236ca7c3990059efeb89ff0d5f7d6ff21355bbc71f49e155cd",
+      "bytes": 15442
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-inro-4484.json",
+      "sha256": "3db692a69ca649979027d62f2d2f91e3743f82174c579698fdb17a0af4b9930f",
+      "bytes": 44032
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-manychat-63.md",
+      "sha256": "cc7167c259d96e14bef67244ae347bc203adcc60f0dda2c8d77c52c66df44ad9",
+      "bytes": 9019
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-manychat-63.json",
+      "sha256": "aa232bb1ea8b22e190e5ae1a8537d3bf357073af03ca5ffde2a694c1f3bc46fc",
+      "bytes": 30839
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-manychat-66.md",
+      "sha256": "1933dc06129e4c7aff78488d07fa6529d22e3c0b338a3764145d8dd18a294054",
+      "bytes": 9872
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-manychat-66.json",
+      "sha256": "48cc69fe10a697ef95ec89ef6e8a4e86b2de0d98772ef431702511279b67b305",
+      "bytes": 37678
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-manychat-72.md",
+      "sha256": "7b82f2fc03a946ccc3845ecd79cc0c52ceae1419e0adeb35b196b423836d93c6",
+      "bytes": 19116
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-manychat-72.json",
+      "sha256": "050325141b8e6562770c2e94de97a0f3767e9841b612a05b80f0ea87d68ade65",
+      "bytes": 75674
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-manychat-73.md",
+      "sha256": "e1a9d579d7095f729a23b20e881e93a5e24d64f272e6aaa8878a28fdc2cbb928",
+      "bytes": 12620
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-manychat-73.json",
+      "sha256": "3d5796ee105f01dfac53982796506d372e8e524df6b961bcaa1537fe41ddb3a6",
+      "bytes": 48262
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-inro-6019.md",
+      "sha256": "1efea64ae630718d23a6f5c38421852070314a09b0c14e3648dc5518b9ff350e",
+      "bytes": 11758
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/offers-inro-6019.json",
+      "sha256": "03957f580b4f2d9c4b733a5a4b94d601c3b88261804999ce84fc59cd627d8935",
+      "bytes": 48500
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/giveaway-inro-6018.md",
+      "sha256": "f1ab56c4e86e013aa2836f9fee4a76f41573397437684bc76663634eb4561aa0",
+      "bytes": 17156
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/giveaway-inro-6018.json",
+      "sha256": "93c9b3c581770c971b282adbde1f8eeddbb55c2cc87028bf71c63615862d5ff6",
+      "bytes": 86241
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/giveaway-manychat-105.md",
+      "sha256": "ce99269bd54318b5282a073d6478bf2672ef7e97ab2916ecd550841d2001a9da",
+      "bytes": 18289
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/giveaway-manychat-105.json",
+      "sha256": "cefc8b1cd3a5584992cb0208ee2fb8d0afaf3b1093ab7c2425dfd9d1e62bb09b",
+      "bytes": 98788
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/games-inro-4530.md",
+      "sha256": "5a301ff22f76d555431a6018e5dc0eea4d29e2f05a1df576738a8ac19f1f8e60",
+      "bytes": 15751
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/games-inro-4530.json",
+      "sha256": "a67b5582ae1c2d3fe0c7ad379ef8361b477add3e12de1a219c5a8912cf747a48",
+      "bytes": 43731
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/games-manychat-57.md",
+      "sha256": "5d78ea8d3a615ed7e41358ce71a90938d5b4db9d1b787420a2d900f1044f859f",
+      "bytes": 15572
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/games-manychat-57.json",
+      "sha256": "c6b6d3584117004d0d751920e0a8a11158bd148d672ffcd1237844dc696e49e5",
+      "bytes": 73924
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/games-manychat-108.md",
+      "sha256": "ed6ce12115540a0394825347272d3922fbfd1465f580bce7279815d9041f2ffe",
+      "bytes": 34443
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/games-manychat-108.json",
+      "sha256": "4db81635c96787019e4cb90d7163a95da525fe5a9674f85697db21bebe736e30",
+      "bytes": 234103
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/moderation-inro-comment-moderation.md",
+      "sha256": "2e01b7863eb084d9529aba91c27f4fd4b607e1046b7da4d38de66e16bb53fb5c",
+      "bytes": 3801
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/moderation-inro-comment-moderation.json",
+      "sha256": "79fb71cfb759d0a9e15d8dc29d9a3a7efae8cb59894acd39334740ee48e8863b",
+      "bytes": 26150
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/moderation-inro-6111.md",
+      "sha256": "64a046879fffc03f6c656f285ba9dd79926dcf0cf02498298675a19b5a7b6d8c",
+      "bytes": 4490
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/moderation-inro-6111.json",
+      "sha256": "53ed0623ebcbdf934fb0699ca49b92a094d98c419bc57801018e173c1664c967",
+      "bytes": 17355
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/thanks-inro-6082.md",
+      "sha256": "a87b30cd3d903e54df0cffc30c9bacea75b74051e5cc22a0dc11df84e1e78a0b",
+      "bytes": 10556
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/thanks-inro-6082.json",
+      "sha256": "9a3b4b30bfc824d952a7cd0babd2435c615b0384c362e478e932be684a51c0ef",
+      "bytes": 53820
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/thanks-inro-6086.md",
+      "sha256": "1e9e370830e609618c2d95cacb9a2576e40e7172c7cfef50d3c6201b57f1a944",
+      "bytes": 5924
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/thanks-inro-6086.json",
+      "sha256": "920c32e721cd1db01602d772bf2b5abb69707a5622f34cc03cddffd5c128c42f",
+      "bytes": 29022
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/thanks-inro-6223.md",
+      "sha256": "b98de5add30e33004ddbca000f72c44b62ee33410100d998695093171161d3c7",
+      "bytes": 8774
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/thanks-inro-6223.json",
+      "sha256": "ecb8567bc1e1ccffd593508571bee164d597bd0311886f4dbd0a4f4cac9f5751",
+      "bytes": 40847
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/support-inro-6085.md",
+      "sha256": "a4772075cdc5c970d4d4c2ebe537c2d4741b505ed4373ada0e9826018e543c87",
+      "bytes": 19175
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/support-inro-6085.json",
+      "sha256": "0711e81c85603a969581d03c3f7e77807aa6afaead0575d7caf00d72ec70cda5",
+      "bytes": 77351
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/support-manychat-46.md",
+      "sha256": "bf89db440e5c422245310ca3fb361cc97fcf92fe2a802a7c66068ddce03bcd36",
+      "bytes": 6897
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/support-manychat-46.json",
+      "sha256": "94d30cda1668b97afa39cfa22600faa4052632b5654f0a75b5eb09563ba06ae2",
+      "bytes": 22748
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/collaboration-manychat-69.md",
+      "sha256": "f3b704f8bc4e52c3d82984177e57836eed20bbb2ad82174ecdfbc5c487783f6a",
+      "bytes": 22583
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/collaboration-manychat-69.json",
+      "sha256": "d969d40778d114ca00658cc52cf2569a2c16cb343ea96ed0b6f89e37e6dcb956",
+      "bytes": 125996
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/phone-community-manychat-84.md",
+      "sha256": "bd7c3f83e59a175b32a64ddf0d9a0015c81da25ecd87bde300c2c79492fd37b8",
+      "bytes": 20210
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/phone-community-manychat-84.json",
+      "sha256": "80a45c79cf8cd721cbd30fb7e65d05c2173f77ccfb786513bbf010d0f14f840c",
+      "bytes": 73952
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/channel-transfer-manychat-101.md",
+      "sha256": "680f2deef7b3bd00c7afe4d51e9c14cff8edec160c43129200845e2e7db19dad",
+      "bytes": 11402
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/channel-transfer-manychat-101.json",
+      "sha256": "b7fa3affb096aa763f2b666252e60b0c000d1ec13bdf53ffe8b3d6f80fe0537b",
+      "bytes": 34811
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/reminder-manychat-434.md",
+      "sha256": "39fc0878fa91695a926c848d491d5ba92e39228190ab7fa070921cb217a38882",
+      "bytes": 21067
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/reminder-manychat-434.json",
+      "sha256": "3954e308c87b632795b20d78d67b942f1448975c3007c456339bb7d2e377c3ba",
+      "bytes": 163401
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/conversation-builder-manychat-3.md",
+      "sha256": "d58654e928c71c82c4b4d672293eccbf6288cda13baa36fc412b9d290eed40bf",
+      "bytes": 3264
+    },
+    {
+      "path": "plugin/skills/funnels/references/setup-details/conversation-builder-manychat-3.json",
+      "sha256": "daf544e4162e0c0295f2600e484b6b8c66e2e234c896888608151c0e16c8c483",
+      "bytes": 9011
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6220.json",
+      "sha256": "9c732cb58f694eea2b00d991f97a8e94ef3dd65229e7363da2e78ac83653c070",
+      "bytes": 123982
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-90.json",
+      "sha256": "b0d9bf60ab86346da4bd0f144a19cce1788b0a085976403fc6ee62390feac910",
+      "bytes": 213523
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-433.json",
+      "sha256": "9525746feacd664e86a1203e98e2ece89959912a7e68c27a5289389f96a4a6f8",
+      "bytes": 94633
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-432.json",
+      "sha256": "b70054ef49cc47474dcc6744de5c0f64ebeba421ae6ffddd0c2437ddb417734d",
+      "bytes": 61120
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-12.json",
+      "sha256": "eed5e10ffe0e65ab9c9f0e5fdaa389dd370015100da6720f381e094540229da5",
+      "bytes": 148610
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-8.json",
+      "sha256": "6af0848b9b4c0ee29d081b0d57d18199e85952e7731fcb39e312fffedade9228",
+      "bytes": 36108
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-286.json",
+      "sha256": "12df8e436ed391e41f6bd40e58bddad35431e711312cb83274f03b5501eb0342",
+      "bytes": 44485
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-113.json",
+      "sha256": "0471241ef23053e309519bf2257720c828d511937d526efd340f8c827f191a7f",
+      "bytes": 155989
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6023.json",
+      "sha256": "67be2c84cad4a20090e62410ef0868df827884d1beb2b1a3f178d5b7640762d4",
+      "bytes": 75418
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-13.json",
+      "sha256": "3a02b107771beb051758ae03ce968048b39dff3061730ac98ec86bda83b74925",
+      "bytes": 106929
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-60.json",
+      "sha256": "c42b83a29946ef8eeec3b04430423d4b4d302610df87e1c75b5480fcedfb59d9",
+      "bytes": 40831
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6028.json",
+      "sha256": "619d5615c3c2471b1f499d60e24544a9f3625c70d4a6846571216d87a209097f",
+      "bytes": 211569
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-107.json",
+      "sha256": "011d5b0dab007100e1b2e0086a8c6b62b18130572bbe7ac28bcba5f00d07d884",
+      "bytes": 250806
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6024.json",
+      "sha256": "315e60c666706616ddbe1276e009fc92e289e1a73a71a1c3031c549054cf098a",
+      "bytes": 454590
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-17.json",
+      "sha256": "b8bf956449d8b9ce41f089dfa5495ba7bb66497abb40b3e42d86d1554d521775",
+      "bytes": 139297
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6026.json",
+      "sha256": "465121b97242f1d3e998c4233324deb447d8d0d585fcf7b89e7beecfca3205ee",
+      "bytes": 302492
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6022.json",
+      "sha256": "46b76d075d2b7a95b26aa3b414404b3b5d08ba3e7c091b3ca1a022918c5de5a1",
+      "bytes": 219610
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6027.json",
+      "sha256": "47babb4549829710babfb4a05b0ac7668a134489ec5a784a6b0cc4886161de49",
+      "bytes": 294885
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-20.json",
+      "sha256": "d5f1ab8adccf68e0ef1771326bb63b8c47ed6af69148814a4e959d7eaff1e1d5",
+      "bytes": 202823
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6049.json",
+      "sha256": "e5953f97080dbd72c414850b5d3dcc849f447647c2565393594c02322ec56b17",
+      "bytes": 104137
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6054.json",
+      "sha256": "ecc1c325e4a2a1098a468b1e13884bc825929c7e14eb9cb5e0f68026a4107ff2",
+      "bytes": 221908
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-81.json",
+      "sha256": "f7251692de55403a80e7cc06767522e5f8fed7d332f58ce47ec3c92ab8ff1ada",
+      "bytes": 370770
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6025.json",
+      "sha256": "b1c4f5aa79ab782582a8c59d1c7762948cf6cf5325e17500f3bb504d0c50b013",
+      "bytes": 329919
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6021.json",
+      "sha256": "4bc910a8e702cc9b7d9eeb677ab704ca12727bb33c9ea7cad5c5b733f1f6efca",
+      "bytes": 188368
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6222.json",
+      "sha256": "cad52bac8cff49da66813f64efa5a867c6b0c7aac42150ba9a449e7cc6b07b8a",
+      "bytes": 315560
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6081.json",
+      "sha256": "192efcc131828ab3a350da4220e0e8e18bbb1a23bfb2be9866d474938c99597b",
+      "bytes": 174181
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6051.json",
+      "sha256": "ddb17bade526248b047770b893dd404d18c9579a7aceb2bf2425f3401d256701",
+      "bytes": 93084
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6045.json",
+      "sha256": "f568856237c8d895329e7bcccfed6ff686a3ef498bb714663bdfd04399b9855d",
+      "bytes": 68635
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6047.json",
+      "sha256": "f4fc91981f6edc2680af623636ded3efe4053387dd37bd0661f5fdf01f32ef28",
+      "bytes": 68718
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6046.json",
+      "sha256": "87e9e4ab5552e41e1e08e7b25dd70369157464cb0d5eedaa943566d2f3610fc3",
+      "bytes": 63345
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-112.json",
+      "sha256": "1d9afba4a6b789047e82c05b9df45cbf7d3ff173acf9e9f0d40a5d2c34c92bf9",
+      "bytes": 130790
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6053.json",
+      "sha256": "c0c9b7ecfd4cb52711a32c9f26be0727aa20431c9824962f722b9d7b2b639993",
+      "bytes": 65138
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-183.json",
+      "sha256": "f6bb9c157483bf1c5f4bd151c4c2c588f049a3edbcf08d2a7d647e8d2bc3e309",
+      "bytes": 405621
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6080.json",
+      "sha256": "f8a858821b50bf13ef66ffea10585a598beb14583e297287ff288bec08fd5431",
+      "bytes": 70749
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-111.json",
+      "sha256": "ad60d4d74edaa70ed6c66b043711ae248189e52cf2e57a4201a958b9e6e6cff1",
+      "bytes": 242157
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-4393.json",
+      "sha256": "fd5d151c916933e2dd1f818ff53639eda9051b952a2c0e901aa671f5e49dbffc",
+      "bytes": 109645
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-4484.json",
+      "sha256": "e3441eccc18f5d282ff5e944d7bf4f114fe3e948ae525902ac910c01a139ccd1",
+      "bytes": 143634
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-63.json",
+      "sha256": "69488795cecafb78736c46424f19bd7d376ce41e310d9f1909f0dd956cc2aa98",
+      "bytes": 132383
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-66.json",
+      "sha256": "5810354af62aa581d4e42055738ca744cc0ac2fe8e8745d260b124be7cec49af",
+      "bytes": 132993
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-72.json",
+      "sha256": "51e4971a33b16543ec7d355961553c6bfe1d0ca9f5dadef3ecd62c64ae6aa055",
+      "bytes": 201070
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-73.json",
+      "sha256": "0081445ec3e471b9ed5e7c1cbd3ad3527e33207d38b2a2a2783efde098a02959",
+      "bytes": 248565
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6019.json",
+      "sha256": "b9e87a10886bec0b85f7594f8e0a19a2d3fa138ee48ba4b586a7b63420cf6484",
+      "bytes": 84506
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6018.json",
+      "sha256": "3bc121238e80d0e768dabf4f3887d529f1a5bcbe42a1ae7af00f637ea10d5308",
+      "bytes": 146546
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-105.json",
+      "sha256": "f114286c1b9bff009f8a39bf2eb9b2f78da8530318ab9d6f1638f7fcdf899db6",
+      "bytes": 465220
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-4530.json",
+      "sha256": "11ebf5b34dd7afa96fe72aeb8da097228ca7b00d26162bcc4e1dff75d92e405b",
+      "bytes": 136051
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-57.json",
+      "sha256": "45fbb85b67261163d93747e36b144d3bacea606f8c6cbfaf187f1f83da7eefcf",
+      "bytes": 365247
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-108.json",
+      "sha256": "7bd020131af645c6e5914a5ec3b83fd3f10120f3dd328721e2b4102593650798",
+      "bytes": 1455431
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-comment-moderation.json",
+      "sha256": "e795715b15d9651699d236c3a7a8332b738912f8fc1f10421a27910d34ba7aec",
+      "bytes": 28792
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6111.json",
+      "sha256": "25663f20bf70ee4bedda0b2f1af0d97b48a24a8671ac6391da6b52afa6b383af",
+      "bytes": 39140
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6082.json",
+      "sha256": "c16c6ff4eb61904408f695881036183acdd15fdd17ebf5509bddaa25d652d813",
+      "bytes": 72779
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6086.json",
+      "sha256": "7797465da4b9a377b1da3490420a73839b74469739bee5fbc7659d0548904b4f",
+      "bytes": 49256
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6223.json",
+      "sha256": "0c6e6eb26d9e29335d16f31d4d74da4d8eff50c9294a75da79f219c3a74ea8bd",
+      "bytes": 53617
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/inro-6085.json",
+      "sha256": "7c5c960ca6681f639ca4a0fcb19ed6a99ec4ad1a03bf453911b73e49f738e717",
+      "bytes": 113694
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-46.json",
+      "sha256": "466735d02274034fce480d558c1d08c9c83fc9a26b930b294a488a64f830072b",
+      "bytes": 47477
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-69.json",
+      "sha256": "28d58a2cfa66b9b65c8c920b136fad866d4dd16e61c56acc3b1b39157f191233",
+      "bytes": 283147
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-251.json",
+      "sha256": "650447fb306aa5285ad157b5bbca0fbf77ef7457d7d23b6b19f53ed9acfd6130",
+      "bytes": 253750
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-84.json",
+      "sha256": "857b23cf60315fd2b7edb1f2a38ec66ee4db783aff22ac1d4068134303021ea3",
+      "bytes": 191919
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-101.json",
+      "sha256": "1307014042e8d4be50386cb34bfac47f93099c69d139c0967a74334d9d51f2c5",
+      "bytes": 101812
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-434.json",
+      "sha256": "8a73dd5c3c6a537d8e053838273a1a94986fb9767560b560e1e904cfeaf4a8d3",
+      "bytes": 396906
+    },
+    {
+      "path": "plugin/skills/funnels/references/source-records/manychat-3.json",
+      "sha256": "a73ac9e02b17812f0fc0af8de2a0b51ad765ab120b506a200e5026540be901a5",
+      "bytes": 10359
     }
   ],
   "excluded": [

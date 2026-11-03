@@ -1,0 +1,1025 @@
+{
+  "id": "manychat-8",
+  "source": {
+    "vendor": "manychat",
+    "file": "templates/manychat-8.json",
+    "title": "Respond to all your DMs",
+    "category": "Engage your audience",
+    "facets": [
+      "Engage your audience",
+      "Drive traffic",
+      "DM",
+      "link_delivery",
+      "direct_message"
+    ],
+    "job": "link_delivery",
+    "model": "quick_wizard",
+    "document": {
+      "schema_version": "1.2",
+      "id": "manychat-8",
+      "ordinal": 3,
+      "title": "Respond to all your DMs",
+      "source_id": "campaign-card-8",
+      "observed_at": "2026-10-30",
+      "configuration_model": "quick_wizard",
+      "entry_type": "native_setup",
+      "source": {
+        "url": "https://app.manychat.com/fb4213902/dashboard",
+        "catalog_evidence": {
+          "file": "evidence/inventory.json",
+          "pointer": "/items/2"
+        },
+        "catalog_mode": "Quick Automation",
+        "facets": [
+          "Engage your audience",
+          "Drive traffic",
+          "DM"
+        ],
+        "badge_text_exact": "",
+        "description_exact": "Auto-send customized replies when people DM you",
+        "preview_evidence": null,
+        "preview_text_exact": null,
+        "original_graph_state": "not_applicable",
+        "original_defaults": null,
+        "source_original_settings_complete": false
+      },
+      "instance": null,
+      "native_setup": {
+        "model": "quick_wizard",
+        "url": "https://app.manychat.com/fb4213902/cms/easy-builder?campaign_type=easy_builder_dm_multi_links",
+        "ordered_observations": [
+          {
+            "label": "dm_keyword.default",
+            "scope": "native_setup_default",
+            "phase": "captured_default",
+            "text_exact": "When someone DMs you with\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nNext",
+            "fields": [
+              {
+                "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Enter a word or multiple",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/8-setup.json",
+                  "pointer": "/captures/0/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Price"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Link"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Shop"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Next"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/8-setup.json",
+              "pointer": "/captures/0"
+            },
+            "identity_evidence_exact": {},
+            "source_hash": "6bae7018920914335117895c6a4aec1db007e78ad1271098b01f4f738a30f108"
+          },
+          {
+            "label": "dm_reply.initial",
+            "scope": "native_setup_default",
+            "phase": "captured_default",
+            "text_exact": "When someone DMs you with\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nThey’ll get a DM back from you with a link\na DM with a link\n1000\nAdd A Link\nNext",
+            "fields": [
+              {
+                "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Enter a word or multiple",
+                "value": "Price",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/8-setup.json",
+                  "pointer": "/captures/1/panel/fields/0"
+                }
+              },
+              {
+                "name": "contents.content20250424093659_147100.1047869889.blocks.f51c211f-1c86-42c9-8423-c1f5966c1337.text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Write a message",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/8-setup.json",
+                  "pointer": "/captures/1/panel/fields/1"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Price"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Link"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Shop"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Add A Link"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Next"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/8-setup.json",
+              "pointer": "/captures/1"
+            },
+            "identity_evidence_exact": {
+              "prerequisite_variant": "UI example Price used temporarily; source keyword is unset."
+            },
+            "source_hash": "99979a1cd95e7bf8c1d2803d10d00824e02cb3549069d613c260a552a10f98d0"
+          },
+          {
+            "label": "other_automations.initial",
+            "scope": "native_setup_default",
+            "phase": "captured_default",
+            "text_exact": "When someone DMs you with\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nThey’ll get a DM back from you with a link\na DM with a link\n958\nAdd A Link\nOther things to automate\nFollow up to re-engage and build trust\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAutomatically ask for a follow to build your audience\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAsk for emails in DMs to keep in touch beyond social\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.",
+            "fields": [
+              {
+                "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Enter a word or multiple",
+                "value": "Price",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/8-setup.json",
+                  "pointer": "/captures/2/panel/fields/0"
+                }
+              },
+              {
+                "name": "contents.content20250424093659_147100.1047869889.blocks.f51c211f-1c86-42c9-8423-c1f5966c1337.text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Write a message",
+                "value": "Inspection placeholder; not customer copy.",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/8-setup.json",
+                  "pointer": "/captures/2/panel/fields/1"
+                }
+              },
+              {
+                "name": "use_cases.follow_up.enable",
+                "label": "Follow up to re-engage and build trust",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/8-setup.json",
+                  "pointer": "/captures/2/panel/fields/2"
+                }
+              },
+              {
+                "name": "use_cases.ask_for_follow.enable",
+                "label": "Automatically ask for a follow to build your audience",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/8-setup.json",
+                  "pointer": "/captures/2/panel/fields/3"
+                }
+              },
+              {
+                "name": "use_cases.collect_email.enable",
+                "label": "Ask for emails in DMs to keep in touch beyond social",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/8-setup.json",
+                  "pointer": "/captures/2/panel/fields/4"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Price"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Link"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Shop"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Add A Link"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/8-setup.json",
+              "pointer": "/captures/2"
+            },
+            "identity_evidence_exact": {
+              "prerequisite_variant": "Temporary UI example keyword Price and inspection message; original keyword and message are blank."
+            },
+            "source_hash": "ef049d064021f96a167a2da6cc2c92b7869d27d7a8f34836fe7ddb0348f8d702"
+          }
+        ],
+        "graph_state": "not_applicable",
+        "order_semantics": "Observed wizard visit order, including variants and validation checks; not an invented message graph.",
+        "supporting_evidence": [
+          {
+            "kind": "variants",
+            "evidence": {
+              "file": "evidence/8-setup.json",
+              "pointer": "/variants"
+            },
+            "json_exact": [
+              {
+                "label": "empty_keyword.validation",
+                "scope": "inspection_variant",
+                "url": "https://app.manychat.com/fb4213902/cms/easy-builder?campaign_type=easy_builder_dm_multi_links",
+                "panel": {
+                  "buttons": [
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": "Price"
+                    },
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": "Link"
+                    },
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": "Shop"
+                    },
+                    {
+                      "disabled": false,
+                      "label": null,
+                      "text": "Next"
+                    }
+                  ],
+                  "fields": [
+                    {
+                      "aria_checked": null,
+                      "checked": false,
+                      "index": 0,
+                      "label": null,
+                      "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+                      "options": null,
+                      "placeholder": "Enter a word or multiple",
+                      "tag": "input",
+                      "type": null,
+                      "validation": {
+                        "aria_disabled": "false",
+                        "aria_invalid": "true",
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": ""
+                    }
+                  ],
+                  "text": "When someone DMs you with\na specific word or words\nType the words that suit best\nFor example:\nPrice\nLink\nShop\nNext"
+                }
+              },
+              {
+                "label": "link_editor.empty",
+                "scope": "configuration_option",
+                "panel": {
+                  "buttons": [],
+                  "fields": [
+                    {
+                      "aria_checked": null,
+                      "checked": false,
+                      "index": 0,
+                      "label": "Button label",
+                      "name": null,
+                      "options": null,
+                      "placeholder": "Add a button label e.g Open",
+                      "tag": "input",
+                      "type": null,
+                      "validation": {
+                        "aria_disabled": null,
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": ""
+                    },
+                    {
+                      "aria_checked": null,
+                      "checked": false,
+                      "index": 1,
+                      "label": "Link",
+                      "name": null,
+                      "options": null,
+                      "placeholder": "Add a link",
+                      "tag": "input",
+                      "type": null,
+                      "validation": {
+                        "aria_disabled": null,
+                        "aria_invalid": null,
+                        "aria_required": null,
+                        "disabled": false,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "required": false,
+                        "step": null
+                      },
+                      "value": ""
+                    }
+                  ],
+                  "text": "Button label\nLink"
+                },
+                "committed": false
+              }
+            ]
+          },
+          {
+            "kind": "access_limits",
+            "evidence": {
+              "file": "evidence/8-setup.json",
+              "pointer": "/access_limits"
+            },
+            "json_exact": [
+              {
+                "control": "Follow up to re-engage and build trust",
+                "visible_headings": [
+                  "Follow up with those who forgot with Essential"
+                ],
+                "result": "Upgrade prompt; no plan change"
+              },
+              {
+                "control": "Automatically ask for a follow to build your audience",
+                "visible_headings": [
+                  "Get them following you before sharing the link"
+                ],
+                "result": "Upgrade prompt; no plan change"
+              },
+              {
+                "control": "Ask for emails in DMs to keep in touch beyond social",
+                "visible_headings": [
+                  "Collect emails in DMs with our Essential plan"
+                ],
+                "result": "Upgrade prompt; no plan change"
+              }
+            ]
+          },
+          {
+            "kind": "actions_performed",
+            "evidence": {
+              "file": "evidence/8-setup.json",
+              "pointer": "/actions_performed"
+            },
+            "json_exact": [
+              {
+                "control": "keyword",
+                "before": "",
+                "inspection_value": "Price (UI example)",
+                "restored": true
+              },
+              {
+                "control": "message",
+                "before": "",
+                "inspection_value": "Inspection placeholder; not customer copy.",
+                "restored": true
+              }
+            ]
+          },
+          {
+            "kind": "live",
+            "evidence": {
+              "file": "evidence/8-setup.json",
+              "pointer": "/live"
+            },
+            "json_exact": false
+          },
+          {
+            "kind": "coverage",
+            "evidence": {
+              "file": "evidence/8-setup.json",
+              "pointer": "/coverage"
+            },
+            "json_exact": {
+              "ordered_sections": 3,
+              "initial_defaults_captured": true,
+              "accessible_controls_inspected": true,
+              "all_variant_settings_available": false,
+              "unavailable_controls": [
+                "Follow up to re-engage and build trust",
+                "Automatically ask for a follow to build your audience",
+                "Ask for emails in DMs to keep in touch beyond social"
+              ],
+              "runtime_tested": false
+            }
+          },
+          {
+            "kind": "title_semantics_note",
+            "evidence": {
+              "file": "evidence/8-setup.json",
+              "pointer": "/title_semantics_note"
+            },
+            "json_exact": "Despite the catalog title Respond to all your DMs, the actual native setup requires specific word(s). No any-DM option is exposed here."
+          }
+        ]
+      },
+      "followup": null,
+      "selection": {
+        "basis": "product_interpretation",
+        "job_family": "link_delivery",
+        "trigger": "direct_message",
+        "route": "keyword_link",
+        "choose_when": "Use a keyword DM entry with a simple link message. The actual setup requires keywords despite the broad card title.",
+        "avoid_when": "Do not choose as an unconditional response to every DM.",
+        "client_inputs": [
+          "keywords",
+          "message",
+          "destination"
+        ]
+      },
+      "safety": {
+        "draft_evidence": {
+          "file": "evidence/native-setup-manifest.json",
+          "pointer": ""
+        },
+        "draft_publication_verified": false,
+        "all_configured_triggers_off": null,
+        "current_state": null,
+        "remediation_evidence": null,
+        "delivery_limit": "No Set Live or send action. Scoped 0 runs before trigger removal and n/a list metrics are not account-wide no-delivery proof.",
+        "set_live_pressed": false,
+        "runtime_tested": false,
+        "credential_values_collected": false
+      },
+      "reconstruction": {
+        "status": "partial",
+        "original_settings_complete": false,
+        "instance_default_panels_captured": false,
+        "instance_ui_inspection_complete": true,
+        "all_possible_variants_verified": false,
+        "client_ready": false,
+        "runtime_tested": false
+      },
+      "gaps": [
+        "Original server settings and IDs were not exported. Clone defaults are not asserted to equal source defaults.",
+        "Runtime was not tested because execution is forbidden; this is separate from settings completeness.",
+        "Follow up to re-engage and build trust: Upgrade prompt; no plan change",
+        "Automatically ask for a follow to build your audience: Upgrade prompt; no plan change",
+        "Ask for emails in DMs to keep in touch beyond social: Upgrade prompt; no plan change"
+      ]
+    }
+  },
+  "graph": {
+    "start": null,
+    "steps": [],
+    "transitions": []
+  },
+  "setup": [
+    {
+      "label": "dm_keyword.default",
+      "scope": "native_setup_default",
+      "phase": "captured_default",
+      "text_exact": "When someone DMs you with\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nNext",
+      "fields": [
+        {
+          "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+          "label": null,
+          "tag": "input",
+          "type": null,
+          "placeholder": "Enter a word or multiple",
+          "value": "",
+          "value_state": "unset_client_input_required",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/8-setup.json",
+            "pointer": "/captures/0/panel/fields/0"
+          }
+        }
+      ],
+      "buttons_exact": [
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Price"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Link"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Shop"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Next"
+        }
+      ],
+      "evidence": {
+        "file": "evidence/8-setup.json",
+        "pointer": "/captures/0"
+      },
+      "identity_evidence_exact": {},
+      "source_hash": "6bae7018920914335117895c6a4aec1db007e78ad1271098b01f4f738a30f108"
+    },
+    {
+      "label": "dm_reply.initial",
+      "scope": "native_setup_default",
+      "phase": "captured_default",
+      "text_exact": "When someone DMs you with\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nThey’ll get a DM back from you with a link\na DM with a link\n1000\nAdd A Link\nNext",
+      "fields": [
+        {
+          "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+          "label": null,
+          "tag": "input",
+          "type": null,
+          "placeholder": "Enter a word or multiple",
+          "value": "Price",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/8-setup.json",
+            "pointer": "/captures/1/panel/fields/0"
+          }
+        },
+        {
+          "name": "contents.content20250424093659_147100.1047869889.blocks.f51c211f-1c86-42c9-8423-c1f5966c1337.text",
+          "label": null,
+          "tag": "textarea",
+          "type": null,
+          "placeholder": "Write a message",
+          "value": "",
+          "value_state": "unset_client_input_required",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/8-setup.json",
+            "pointer": "/captures/1/panel/fields/1"
+          }
+        }
+      ],
+      "buttons_exact": [
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Price"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Link"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Shop"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Add A Link"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Next"
+        }
+      ],
+      "evidence": {
+        "file": "evidence/8-setup.json",
+        "pointer": "/captures/1"
+      },
+      "identity_evidence_exact": {
+        "prerequisite_variant": "UI example Price used temporarily; source keyword is unset."
+      },
+      "source_hash": "99979a1cd95e7bf8c1d2803d10d00824e02cb3549069d613c260a552a10f98d0"
+    },
+    {
+      "label": "other_automations.initial",
+      "scope": "native_setup_default",
+      "phase": "captured_default",
+      "text_exact": "When someone DMs you with\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nThey’ll get a DM back from you with a link\na DM with a link\n958\nAdd A Link\nOther things to automate\nFollow up to re-engage and build trust\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAutomatically ask for a follow to build your audience\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAsk for emails in DMs to keep in touch beyond social\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.",
+      "fields": [
+        {
+          "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+          "label": null,
+          "tag": "input",
+          "type": null,
+          "placeholder": "Enter a word or multiple",
+          "value": "Price",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/8-setup.json",
+            "pointer": "/captures/2/panel/fields/0"
+          }
+        },
+        {
+          "name": "contents.content20250424093659_147100.1047869889.blocks.f51c211f-1c86-42c9-8423-c1f5966c1337.text",
+          "label": null,
+          "tag": "textarea",
+          "type": null,
+          "placeholder": "Write a message",
+          "value": "Inspection placeholder; not customer copy.",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/8-setup.json",
+            "pointer": "/captures/2/panel/fields/1"
+          }
+        },
+        {
+          "name": "use_cases.follow_up.enable",
+          "label": "Follow up to re-engage and build trust",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/8-setup.json",
+            "pointer": "/captures/2/panel/fields/2"
+          }
+        },
+        {
+          "name": "use_cases.ask_for_follow.enable",
+          "label": "Automatically ask for a follow to build your audience",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/8-setup.json",
+            "pointer": "/captures/2/panel/fields/3"
+          }
+        },
+        {
+          "name": "use_cases.collect_email.enable",
+          "label": "Ask for emails in DMs to keep in touch beyond social",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "<redacted>",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/8-setup.json",
+            "pointer": "/captures/2/panel/fields/4"
+          }
+        }
+      ],
+      "buttons_exact": [
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Price"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Link"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Shop"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Add A Link"
+        }
+      ],
+      "evidence": {
+        "file": "evidence/8-setup.json",
+        "pointer": "/captures/2"
+      },
+      "identity_evidence_exact": {
+        "prerequisite_variant": "Temporary UI example keyword Price and inspection message; original keyword and message are blank."
+      },
+      "source_hash": "ef049d064021f96a167a2da6cc2c92b7869d27d7a8f34836fe7ddb0348f8d702"
+    }
+  ],
+  "annotations": []
+}

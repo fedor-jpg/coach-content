@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "id": "inro-6085",
+  "version": "0.1.0",
+  "source": {
+    "id": "inro-6085",
+    "title": "Answer every DM with AI, team as backup",
+    "url": "https://app.inro.social/public/scenarios/6085",
+    "observed_at": "2026-10-30",
+    "original_goal": "Answer every DM with AI, team as backup",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "status": "candidate",
+  "family": "support",
+  "goal": "Answer incoming support questions from approved facts and hand unresolved questions to the team.",
+  "entry": "dm",
+  "platforms": [
+    "Instagram"
+  ],
+  "conversation": true,
+  "design_changes": [],
+  "unsupported_requirements": [
+    "email-notification",
+    "deterministic-answer"
+  ],
+  "blockers": [],
+  "required_inputs": [
+    "known_facts",
+    "handoff_conditions",
+    "language",
+    "initial_text",
+    "refusal_text",
+    "handoff_text"
+  ],
+  "allowed_parameters": {
+    "known_facts": {
+      "type": "text",
+      "description": "Approved business answers and factual boundaries; no invented price or outcome."
+    },
+    "handoff_conditions": {
+      "type": "text",
+      "description": "When the team must handle the request; name the responsible team."
+    },
+    "language": {
+      "type": "text",
+      "description": "Coach's message language; provide the exact approved copy in this language."
+    },
+    "initial_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved initial text in language, within this recipe's unchanged promise and transitions."
+    },
+    "refusal_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved refusal text in language, within this recipe's unchanged promise and transitions."
+    },
+    "handoff_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved handoff text in language, within this recipe's unchanged promise and transitions."
+    }
+  },
+  "messages": {
+    "public": "",
+    "initial": "Thanks for your question. {known_facts}",
+    "continuation": "Answer only from known_facts. Ask for clarification when needed; hand off unknown facts and requests for a person.",
+    "refusal": "Understood. I will not continue this campaign. You can ask our team for help.",
+    "handoff": "Our team will handle your request.",
+    "placement": ""
+  },
+  "transitions": [
+    {
+      "event": "Coach supplies approved business facts and selects the existing account.",
+      "actor": "Claude",
+      "action": "Prepare exact messages and native payloads locally; obtain scoped approvals and save private intent.",
+      "evidence": "Preview, recipe digest and private card readback."
+    },
+    {
+      "event": "The contact sends any ordinary support question in an Instagram DM.",
+      "actor": "Contact",
+      "action": "Ask the actual support question; no keyword is required.",
+      "evidence": "Actual account, recipient, media/word and entry event IDs."
+    },
+    {
+      "event": "The approved native automation receives that entry.",
+      "actor": "Chatfuel",
+      "action": "Send exactly one initial message containing the approved value or question.",
+      "evidence": "Recipient-side first message and linked source."
+    },
+    {
+      "event": "The contact actually replies within the permitted window.",
+      "actor": "Chatfuel AI",
+      "action": "Answer only from known_facts. Ask for clarification when needed; hand off unknown facts and requests for a person.",
+      "evidence": "The same conversation contains a grounded answer or confirmed team handoff."
+    }
+  ],
+  "native_operations": [
+    "get_bot",
+    "get_automation",
+    "get_knowledge_base",
+    "fuelyAutomationUpdateSetting",
+    "test_reply",
+    "take_over_chat"
+  ],
+  "outcome": "The same conversation contains a grounded answer or confirmed team handoff.",
+  "negative_cases": [
+    "Unknown price goes to the team, not an invented answer.",
+    "A request for a person triggers handoff, not an email alert."
+  ],
+  "runtime_checks": [
+    "content",
+    "return",
+    "stop",
+    "refusal",
+    "repeat",
+    "unknown_action",
+    "wrong_account",
+    "two_campaigns",
+    "source_attribution",
+    "expired_window",
+    "late_ambiguous_reply",
+    "grounded_support_answer",
+    "unknown_question_handoff"
+  ],
+  "resume": {
+    "actor": "Claude",
+    "action": "Restore the private card, confirm this recipe digest and account, then read current owned and shared settings. Reconcile unknown results without retry.",
+    "campaign_match": "Require the actual ordinary inbound support event and the same recipient's grounded answer or handoff; do not require a campaign keyword."
+  },
+  "stop": {
+    "actor": "Claude with scoped native approval",
+    "action": "Disable only the campaign-owned comment rule, if present. Remove only campaign additions from shared DM text, captures and handoff; retain other campaigns and support.",
+    "proof": "Read back changes. Test late entry, late DM, the second campaign and ordinary support before accepting complete stop."
+  },
+  "execution_reference": "../chatfuel-execution.md",
+  "initial_required_parameters": [],
+  "supported_requirements": [
+    "instagram",
+    "local-preview",
+    "team-handoff",
+    "ordinary-dm",
+    "ordinary-support"
+  ],
+  "business_outcomes": {
+    "grounded_support_answer": {
+      "origin": "native-readback",
+      "description": "A real ordinary support question receives an answer from the approved facts.",
+      "min_native_refs": 1
+    },
+    "unknown_question_handoff": {
+      "origin": "native-readback",
+      "description": "An unknown support question or request for a person reaches confirmed team handoff.",
+      "min_native_refs": 1
+    }
+  },
+  "entry_match": "any_inbound"
+}

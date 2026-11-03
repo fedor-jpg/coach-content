@@ -1,0 +1,3113 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "content-inro-6045",
+    "name": "Grow YouTube or podcast visits: help after a click",
+    "source_ids": [
+      "inro-6045",
+      "inro-6047"
+    ],
+    "entry": "Keyword comment or direct message",
+    "mandatory_conditions": [
+      "Press the opening button",
+      "Wait 3 seconds",
+      "Offer help after the click"
+    ],
+    "outcome": "A content link and a help branch",
+    "timing": [
+      "Before link: 3 seconds; no click or opening button: 3 days."
+    ],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "comment",
+      "dm-ai",
+      "buttons",
+      "timers",
+      "click",
+      "graph"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "Use a text link without a button, delay or click check. Automatic help after a click is removed.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Use a text link without a button, delay or click check. Automatic help after a click is removed.",
+        "result": "A content link in the reply; help only after a real new request.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "inro-6045": "YouTube viewing and subscription are not confirmed.",
+      "inro-6047": "Sending an episode link does not confirm listening."
+    },
+    "client_inputs": [],
+    "deduplication": "Same business purpose, entry, required conditions and result. Original copy, destinations and capture-state differences remain in each source; identical server configuration is not claimed.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6045",
+        "inro-6047"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "inro-6045-owned_comment",
+          "label": "Selected-post comment entry / Video",
+          "target": "owned_comment",
+          "allowed_targets": [
+            "owned_comment",
+            "dm_base"
+          ],
+          "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Send the video link after an actual YES reply and retain help.",
+          "output_bindings": [
+            "video_title",
+            "video_url"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Press the opening button",
+            "Wait 3 seconds",
+            "Offer help after the click"
+          ],
+          "approval_required": true,
+          "source_id": "inro-6045",
+          "draft": {
+            "modes": [
+              "C",
+              "D"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "video_title",
+              "video_url",
+              "public_text"
+            ],
+            "initial": "Want {video_title}? Reply YES and I will send it.",
+            "messages": {
+              "initial": "Want {video_title}? Reply YES and I will send it.",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "delivery": "Here is {video_title}: {video_url}\nLet me know if you have any questions!",
+              "help": "Let me know if you have any questions!"
+            },
+            "instruction": "Wait for an actual affirmative reply before delivering: Here is {video_title}: {video_url}\nLet me know if you have any questions! On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+            "contact_requirement": null,
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Ask for an actual affirmative reply; no link yet.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "delivery",
+                  "action": "Deliver the approved destination and included help together.",
+                  "message_ids": [
+                    "delivery"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "help",
+                  "action": "Only for bare HELP, ask what assistance is needed.",
+                  "message_ids": [
+                    "help"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "refusal",
+                  "action": "End this request without delivering gated content.",
+                  "message_ids": [
+                    "refusal"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                },
+                {
+                  "id": "answer",
+                  "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                },
+                {
+                  "from": "first",
+                  "to": "delivery",
+                  "condition": "Actual affirmative reply in this conversation"
+                },
+                {
+                  "from": "first",
+                  "to": "refusal",
+                  "condition": "Actual refusal"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                },
+                {
+                  "from": "delivery",
+                  "to": "help",
+                  "condition": "Actual bare HELP reply"
+                },
+                {
+                  "from": "delivery",
+                  "to": "answer",
+                  "condition": "Actual concrete question"
+                },
+                {
+                  "from": "help",
+                  "to": "answer",
+                  "condition": "Actual question or problem details in a new reply"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "inro-6045-dm_base",
+          "label": "Direct-message entry / Video",
+          "target": "dm_base",
+          "allowed_targets": [
+            "owned_comment",
+            "dm_base"
+          ],
+          "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Send the video link after an actual YES reply and retain help.",
+          "output_bindings": [
+            "video_title",
+            "video_url"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Press the opening button",
+            "Wait 3 seconds",
+            "Offer help after the click"
+          ],
+          "approval_required": true,
+          "source_id": "inro-6045",
+          "draft": {
+            "modes": [
+              "D"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "video_title",
+              "video_url",
+              "public_text"
+            ],
+            "initial": "Want {video_title}? Reply YES and I will send it.",
+            "messages": {
+              "initial": "Want {video_title}? Reply YES and I will send it.",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "delivery": "Here is {video_title}: {video_url}\nLet me know if you have any questions!",
+              "help": "Let me know if you have any questions!"
+            },
+            "instruction": "Wait for an actual affirmative reply before delivering: Here is {video_title}: {video_url}\nLet me know if you have any questions! On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+            "contact_requirement": null,
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Ask for an actual affirmative reply; no link yet.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "delivery",
+                  "action": "Deliver the approved destination and included help together.",
+                  "message_ids": [
+                    "delivery"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "help",
+                  "action": "Only for bare HELP, ask what assistance is needed.",
+                  "message_ids": [
+                    "help"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "refusal",
+                  "action": "End this request without delivering gated content.",
+                  "message_ids": [
+                    "refusal"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                },
+                {
+                  "id": "answer",
+                  "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                },
+                {
+                  "from": "first",
+                  "to": "delivery",
+                  "condition": "Actual affirmative reply in this conversation"
+                },
+                {
+                  "from": "first",
+                  "to": "refusal",
+                  "condition": "Actual refusal"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                },
+                {
+                  "from": "delivery",
+                  "to": "help",
+                  "condition": "Actual bare HELP reply"
+                },
+                {
+                  "from": "delivery",
+                  "to": "answer",
+                  "condition": "Actual concrete question"
+                },
+                {
+                  "from": "help",
+                  "to": "answer",
+                  "condition": "Actual question or problem details in a new reply"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "inro-6047-owned_comment",
+          "label": "Selected-post comment entry / Podcast",
+          "target": "owned_comment",
+          "allowed_targets": [
+            "owned_comment",
+            "dm_base"
+          ],
+          "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Send the podcast link after an actual YES reply and retain help.",
+          "output_bindings": [
+            "episode_title",
+            "episode_url"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Press the opening button",
+            "Wait 3 seconds",
+            "Offer help after the click"
+          ],
+          "approval_required": true,
+          "source_id": "inro-6047",
+          "draft": {
+            "modes": [
+              "C",
+              "D"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "episode_title",
+              "episode_url",
+              "public_text"
+            ],
+            "initial": "Want {episode_title}? Reply YES and I will send it.",
+            "messages": {
+              "initial": "Want {episode_title}? Reply YES and I will send it.",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "delivery": "Here is {episode_title}: {episode_url}\nLet me know if you have any questions! ",
+              "help": "Let me know if you have any questions! "
+            },
+            "instruction": "Wait for an actual affirmative reply before delivering: Here is {episode_title}: {episode_url}\nLet me know if you have any questions!  On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+            "contact_requirement": null,
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Ask for an actual affirmative reply; no link yet.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "delivery",
+                  "action": "Deliver the approved destination and included help together.",
+                  "message_ids": [
+                    "delivery"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "help",
+                  "action": "Only for bare HELP, ask what assistance is needed.",
+                  "message_ids": [
+                    "help"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "refusal",
+                  "action": "End this request without delivering gated content.",
+                  "message_ids": [
+                    "refusal"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                },
+                {
+                  "id": "answer",
+                  "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                },
+                {
+                  "from": "first",
+                  "to": "delivery",
+                  "condition": "Actual affirmative reply in this conversation"
+                },
+                {
+                  "from": "first",
+                  "to": "refusal",
+                  "condition": "Actual refusal"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                },
+                {
+                  "from": "delivery",
+                  "to": "help",
+                  "condition": "Actual bare HELP reply"
+                },
+                {
+                  "from": "delivery",
+                  "to": "answer",
+                  "condition": "Actual concrete question"
+                },
+                {
+                  "from": "help",
+                  "to": "answer",
+                  "condition": "Actual question or problem details in a new reply"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "inro-6047-dm_base",
+          "label": "Direct-message entry / Podcast",
+          "target": "dm_base",
+          "allowed_targets": [
+            "owned_comment",
+            "dm_base"
+          ],
+          "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Send the podcast link after an actual YES reply and retain help.",
+          "output_bindings": [
+            "episode_title",
+            "episode_url"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Press the opening button",
+            "Wait 3 seconds",
+            "Offer help after the click"
+          ],
+          "approval_required": true,
+          "source_id": "inro-6047",
+          "draft": {
+            "modes": [
+              "D"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "episode_title",
+              "episode_url",
+              "public_text"
+            ],
+            "initial": "Want {episode_title}? Reply YES and I will send it.",
+            "messages": {
+              "initial": "Want {episode_title}? Reply YES and I will send it.",
+              "public": "{public_text}",
+              "refusal": "Understood. I will stop this request.",
+              "delivery": "Here is {episode_title}: {episode_url}\nLet me know if you have any questions! ",
+              "help": "Let me know if you have any questions! "
+            },
+            "instruction": "Wait for an actual affirmative reply before delivering: Here is {episode_title}: {episode_url}\nLet me know if you have any questions!  On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+            "contact_requirement": null,
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Ask for an actual affirmative reply; no link yet.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "delivery",
+                  "action": "Deliver the approved destination and included help together.",
+                  "message_ids": [
+                    "delivery"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "help",
+                  "action": "Only for bare HELP, ask what assistance is needed.",
+                  "message_ids": [
+                    "help"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "refusal",
+                  "action": "End this request without delivering gated content.",
+                  "message_ids": [
+                    "refusal"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "silence",
+                  "action": "No message after silence.",
+                  "message_ids": [],
+                  "response_mode": "silent"
+                },
+                {
+                  "id": "answer",
+                  "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                },
+                {
+                  "from": "first",
+                  "to": "delivery",
+                  "condition": "Actual affirmative reply in this conversation"
+                },
+                {
+                  "from": "first",
+                  "to": "refusal",
+                  "condition": "Actual refusal"
+                },
+                {
+                  "from": "first",
+                  "to": "silence",
+                  "condition": "No actual reply"
+                },
+                {
+                  "from": "delivery",
+                  "to": "help",
+                  "condition": "Actual bare HELP reply"
+                },
+                {
+                  "from": "delivery",
+                  "to": "answer",
+                  "condition": "Actual concrete question"
+                },
+                {
+                  "from": "help",
+                  "to": "answer",
+                  "condition": "Actual question or problem details in a new reply"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "binding_review": {
+        "source_entry": "Keyword comment or direct message",
+        "source_outcome": "A content link and a help branch",
+        "mandatory_conditions": [
+          "Press the opening button",
+          "Wait 3 seconds",
+          "Offer help after the click"
+        ],
+        "source_contact_policy": [],
+        "plan_count": 4,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Deliver the selected video or podcast link after confirmation; retain help through actual replies.",
+        "source_requirements": [
+          "Press the opening button",
+          "Wait 3 seconds",
+          "Offer help after the click"
+        ],
+        "source_timing": [
+          "Before link: 3 seconds; no click or opening button: 3 days."
+        ],
+        "blocking_dependencies": [],
+        "retained": [
+          "Deliver the selected video or podcast link after confirmation; retain help through actual replies.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [
+          "Exact source timing is not retained: Before link: 3 seconds; no click or opening button: 3 days.. No timed unsolicited message is configured.",
+          "No click tracking, click-dependent branch or no-click reminder.",
+          "No imported deterministic graph or source folder/tag tracking."
+        ],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "inro-6045",
+            "node_id": "n001",
+            "source_text": "Hi {{contact.name}}! ❤️\nDo you want the full video?\nYesss 👀",
+            "adapted_text": "Want {video_title}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          },
+          {
+            "source_id": "inro-6047",
+            "node_id": "n001",
+            "source_text": "Hi {{contact.name}}! ❤️ Do you want to see the full video?\nYes 👀",
+            "adapted_text": "Want {episode_title}? Reply YES and I will send it.",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      }
+    }
+  },
+  "goal": "Bring Instagram interest to your video, podcast or another channel.",
+  "fit": "Creators distributing existing YouTube, TikTok or podcast content.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Deliver the selected video or podcast link after confirmation; retain help through actual replies.",
+    "source_requirements": [
+      "Press the opening button",
+      "Wait 3 seconds",
+      "Offer help after the click"
+    ],
+    "source_timing": [
+      "Before link: 3 seconds; no click or opening button: 3 days."
+    ],
+    "blocking_dependencies": [],
+    "retained": [
+      "Deliver the selected video or podcast link after confirmation; retain help through actual replies.",
+      "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+    ],
+    "omitted": [
+      "Exact source timing is not retained: Before link: 3 seconds; no click or opening button: 3 days.. No timed unsolicited message is configured.",
+      "No click tracking, click-dependent branch or no-click reminder.",
+      "No imported deterministic graph or source folder/tag tracking."
+    ],
+    "limitations": [],
+    "examples": [
+      {
+        "source_id": "inro-6045",
+        "node_id": "n001",
+        "source_text": "Hi {{contact.name}}! ❤️\nDo you want the full video?\nYesss 👀",
+        "adapted_text": "Want {video_title}? Reply YES and I will send it.",
+        "provenance": "authored_adaptation_not_captured"
+      },
+      {
+        "source_id": "inro-6047",
+        "node_id": "n001",
+        "source_text": "Hi {{contact.name}}! ❤️ Do you want to see the full video?\nYes 👀",
+        "adapted_text": "Want {episode_title}? Reply YES and I will send it.",
+        "provenance": "authored_adaptation_not_captured"
+      }
+    ]
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "buttons",
+    "timers",
+    "click",
+    "graph"
+  ],
+  "sources": [
+    {
+      "source_id": "inro-6045",
+      "source_file": "source-records/inro-6045.json",
+      "source_title": "Grow Your YouTube",
+      "start": "n000",
+      "nodes": [
+        {
+          "id": "n000",
+          "source_type": "trigger",
+          "content": {
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\nTutorial\nWhen\nSomeone sends you a DM\nFILTER MESSAGES\nContains keyword(s)\nTutorial",
+            "preview": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\nTutorial\nWhen\nSomeone sends you a DM\nFILTER MESSAGES\nContains keyword(s)\nTutorial",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment",
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "73492caa5a9adef8925e8aa4b3d171251648257679a347cd9453c603bf6dd841",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n001",
+          "source_type": "button_template",
+          "content": {
+            "text": "Hi {{contact.name}}! ❤️\nDo you want the full video?\nYesss 👀",
+            "preview": "Hi {{contact.name}}! ❤️\nDo you want the full video?\nYesss 👀",
+            "buttons": [
+              "Yesss 👀"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved alternative text or choice words"
+          ],
+          "reason": "Rich buttons/callbacks are not normal MCP fields. A text-choice adaptation needs approval; never treat it as the captured button event.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "05559f92be46d263f4c753f2a6147acd25f4ae9625ba040e5a0823f3daaba79e",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n002",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN BUTTON IS CLICKED\nYesss 👀",
+            "preview": "WHEN BUTTON IS CLICKED\nYesss 👀",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "3ccaf8fabb3b690b3d51551f8192455633d99bedbfcec820862ccc41e770c009",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n003",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\nyoutube leads",
+            "preview": "Add contact to folder(s)\nyoutube leads",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "25bc511df64a467ddc7c49eaa085d3442872dd050946c93b85ca81c8bc8ec00c",
+          "settings_leaf_count": 40
+        },
+        {
+          "id": "n004",
+          "source_type": "delay",
+          "content": {
+            "text": "Wait 3 seconds",
+            "preview": "Wait 3 seconds",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved timing change"
+          ],
+          "reason": "Retain the exact captured delay; no numeric per-step timer in ordinary MCP.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "45abfff7921fa289d2cca5821aa6be2eef99ed67076f1f0306e30470fd60f5cf",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n005",
+          "source_type": "conversion_link",
+          "content": {
+            "text": "Check the full video!\nExplore how to grow your IG.\nCheck it out 🔗",
+            "preview": "Check the full video!\nExplore how to grow your IG.\nCheck it out 🔗",
+            "buttons": [],
+            "media": [
+              "https://app.inro.social/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMkRBUEE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--33264cdf0859918a926931e848a8df49cfe0da84/Join%20Now%20(3).png"
+            ],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved URL and recipient access"
+          ],
+          "reason": "Delivering a text URL is possible; click/no-click events and external completion are not established.",
+          "unsupported": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "fcab62fa3a99bb9ff09796ff1fdc6b5f0d29d739952940b65c482f64569beca9",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n006",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN LINK IS CLICKED",
+            "preview": "WHEN LINK IS CLICKED",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/6/settings",
+          "settings_sha256": "d47a5d00bd8557f264ad43644da0a7fdd2027436a88deac4d59584915a328c55",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n007",
+          "source_type": "message",
+          "content": {
+            "text": "Let me know if you have any questions!",
+            "preview": "Let me know if you have any questions!",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/7/settings",
+          "settings_sha256": "14fb4c065d6ec08b02e5cd8ba7fe481e8fbe0dbe0fff9b373de55a1c3f7ff845",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n008",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "preview": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/8/settings",
+          "settings_sha256": "bfcbb8e049275d1939eb8642d6005898d43ba216478ca733244a7795fb0575de",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n009",
+          "source_type": "message",
+          "content": {
+            "text": "Have you checked it out yet?",
+            "preview": "Have you checked it out yet?",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/9/settings",
+          "settings_sha256": "4940e6874c07b72381c9a8da4db5a90d5526e7c316d3a62fb7cbc58e407a35b6",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n010",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n3 days",
+            "preview": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n3 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/10/settings",
+          "settings_sha256": "651a5fcef121e34b81971110bad742f313bb96882c662bc555b567306cd87c80",
+          "settings_leaf_count": 32
+        }
+      ],
+      "transitions": [
+        {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "label": "",
+          "settings": {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 60024",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/0"
+          }
+        },
+        {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "label": "",
+          "settings": {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 60024 to 60024_option_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/1"
+          }
+        },
+        {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "label": "WHEN BUTTON IS CLICKED\nYesss 👀",
+          "settings": {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 60024_option_0 to 60025",
+            "source_port": "60024_option_0",
+            "condition_text": "WHEN BUTTON IS CLICKED\nYesss 👀",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/2"
+          }
+        },
+        {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "label": "",
+          "settings": {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 60025 to 60009",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/3"
+          }
+        },
+        {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "label": "",
+          "settings": {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 60009 to 60010",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/4"
+          }
+        },
+        {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "label": "",
+          "settings": {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 60010 to 60010_option_clicked",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/5"
+          }
+        },
+        {
+          "id": "e006",
+          "from": "n006",
+          "to": "n007",
+          "label": "WHEN LINK IS CLICKED",
+          "settings": {
+            "id": "e006",
+            "from": "n006",
+            "to": "n007",
+            "source_label": "Edge from 60010_option_clicked to 60011",
+            "source_port": "60010_option_clicked",
+            "condition_text": "WHEN LINK IS CLICKED",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/6"
+          }
+        },
+        {
+          "id": "e007",
+          "from": "n005",
+          "to": "n008",
+          "label": "",
+          "settings": {
+            "id": "e007",
+            "from": "n005",
+            "to": "n008",
+            "source_label": "Edge from 60010 to 60010_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/7"
+          }
+        },
+        {
+          "id": "e008",
+          "from": "n008",
+          "to": "n009",
+          "label": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+          "settings": {
+            "id": "e008",
+            "from": "n008",
+            "to": "n009",
+            "source_label": "Edge from 60010_option_expired to 60386",
+            "source_port": "60010_option_expired",
+            "condition_text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/8"
+          }
+        },
+        {
+          "id": "e009",
+          "from": "n001",
+          "to": "n010",
+          "label": "",
+          "settings": {
+            "id": "e009",
+            "from": "n001",
+            "to": "n010",
+            "source_label": "Edge from 60024 to 60024_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/9"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [],
+      "source_settings_sha256": "f4b2fc03b22a26540f232c47a853dabc6161389a0642cc6e35bfa54c8b49c7d4",
+      "source_leaf_count": 620,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    },
+    {
+      "source_id": "inro-6047",
+      "source_file": "source-records/inro-6047.json",
+      "source_title": "Grow Your Podcast",
+      "start": "n000",
+      "nodes": [
+        {
+          "id": "n000",
+          "source_type": "trigger",
+          "content": {
+            "text": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\npodcast\nWhen\nSomeone sends you a DM\nFILTER MESSAGES\nContains keyword(s)\npodcast",
+            "preview": "When\nSomeone comments on your post\nSELECT THE POSTS\nAll posts\nFILTER THE COMMENTS\nComments with keyword(s)\npodcast\nWhen\nSomeone sends you a DM\nFILTER MESSAGES\nContains keyword(s)\npodcast",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "comment",
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "115fac1e403b0625cf9c35b6cd2c08dacb7acaf44f59e649ce062f71f54650f1",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n001",
+          "source_type": "button_template",
+          "content": {
+            "text": "Hi {{contact.name}}! ❤️ Do you want to see the full video?\nYes 👀",
+            "preview": "Hi {{contact.name}}! ❤️ Do you want to see the full video?\nYes 👀",
+            "buttons": [
+              "Yes 👀"
+            ],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved alternative text or choice words"
+          ],
+          "reason": "Rich buttons/callbacks are not normal MCP fields. A text-choice adaptation needs approval; never treat it as the captured button event.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "a64d22e5b2fcd8be748ff4933628f2ffd2eb3fba8d83815f180325c835357c83",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n002",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN BUTTON IS CLICKED\nYes 👀",
+            "preview": "WHEN BUTTON IS CLICKED\nYes 👀",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "055015faea9270ead5ecab714162a745f0f7b1ab9ca27a432bbb9b97d86d8c96",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n003",
+          "source_type": "folder",
+          "content": {
+            "text": "Add contact to folder(s)\npodcast leads",
+            "preview": "Add contact to folder(s)\npodcast leads",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "business meaning of the membership/tag"
+          ],
+          "reason": "Arbitrary folder/tag membership is not imported. Contact capture does not prove the original folder action.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/3/settings",
+          "settings_sha256": "b9cc8be38cb4107d1fdc031fd5d2918cd5435914ac1f43d055ccc6156ac0ae52",
+          "settings_leaf_count": 40
+        },
+        {
+          "id": "n004",
+          "source_type": "delay",
+          "content": {
+            "text": "Wait 3 seconds",
+            "preview": "Wait 3 seconds",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved timing change"
+          ],
+          "reason": "Retain the exact captured delay; no numeric per-step timer in ordinary MCP.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/4/settings",
+          "settings_sha256": "ed9b18efacee3010c4e74724316f30a6b790ca25822d47353c7cf63f1337eac5",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n005",
+          "source_type": "conversion_link",
+          "content": {
+            "text": "Check the full podcast here!\nExplore how to grow your IG.\nCheck it out 🎵",
+            "preview": "Check the full podcast here!\nExplore how to grow your IG.\nCheck it out 🎵",
+            "buttons": [],
+            "media": [
+              "https://app.inro.social/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeHpBUEE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--9bbd9b1834d21693977e74ffd2699642b77811a5/Untitled%20design%20-%202025-10-16T105356.308.png"
+            ],
+            "gallery": []
+          },
+          "capabilities": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved URL and recipient access"
+          ],
+          "reason": "Delivering a text URL is possible; click/no-click events and external completion are not established.",
+          "unsupported": [
+            "buttons",
+            "click",
+            "external"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/5/settings",
+          "settings_sha256": "9cac4772d5f2031fea869ca2d2eaf10cca534e58231d54663d3264661df1de26",
+          "settings_leaf_count": 34
+        },
+        {
+          "id": "n006",
+          "source_type": "branch_option",
+          "content": {
+            "text": "WHEN LINK IS CLICKED",
+            "preview": "WHEN LINK IS CLICKED",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "graph"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved interpretation if replacing the branch"
+          ],
+          "reason": "Preserve this outgoing branch and its actual target. AI intent is not a deterministic button callback or stored-field condition.",
+          "unsupported": [
+            "graph"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/6/settings",
+          "settings_sha256": "5fff614b4b335dde213b22557311d1d2caeff676c8339df30750ad94301381be",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n007",
+          "source_type": "message",
+          "content": {
+            "text": "Let me know if you have any questions! ",
+            "preview": "Let me know if you have any questions! ",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/7/settings",
+          "settings_sha256": "90cead60ede7d6cb4a3c26c26d4b0b0c3a25209fc9fe1f98c29e7bab5c452e63",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n008",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "preview": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/8/settings",
+          "settings_sha256": "d31bdc936624dd75e35425e8cb1c9d5b91ce55a5033d5f599abf224991cb683f",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n009",
+          "source_type": "message",
+          "content": {
+            "text": "Have you checked it out yet?",
+            "preview": "Have you checked it out yet?",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/9/settings",
+          "settings_sha256": "f82d995302af8a87a0ee6924e1aafab35c42994a7024ba98c970912b4356f241",
+          "settings_leaf_count": 32
+        },
+        {
+          "id": "n010",
+          "source_type": "branch_expiration",
+          "content": {
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n3 days",
+            "preview": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n3 days",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "timers"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "approved changed timing, if any"
+          ],
+          "reason": "No exact timeout/expiration branch in ordinary MCP. Do not replace this with generic followUps or send after silence.",
+          "unsupported": [
+            "timers"
+          ],
+          "known_fields": [],
+          "settings_pointer": "/graph/steps/10/settings",
+          "settings_sha256": "99cea901d9fb5578a68a1f63c38fed704f98af1e899cb8902c091d69f08db945",
+          "settings_leaf_count": 32
+        }
+      ],
+      "transitions": [
+        {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "label": "",
+          "settings": {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 60018",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/0"
+          }
+        },
+        {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "label": "",
+          "settings": {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 60018 to 60018_option_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/1"
+          }
+        },
+        {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "label": "WHEN BUTTON IS CLICKED\nYes 👀",
+          "settings": {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 60018_option_0 to 60021",
+            "source_port": "60018_option_0",
+            "condition_text": "WHEN BUTTON IS CLICKED\nYes 👀",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/2"
+          }
+        },
+        {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "label": "",
+          "settings": {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 60021 to 60019",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/3"
+          }
+        },
+        {
+          "id": "e004",
+          "from": "n004",
+          "to": "n005",
+          "label": "",
+          "settings": {
+            "id": "e004",
+            "from": "n004",
+            "to": "n005",
+            "source_label": "Edge from 60019 to 60020",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/4"
+          }
+        },
+        {
+          "id": "e005",
+          "from": "n005",
+          "to": "n006",
+          "label": "",
+          "settings": {
+            "id": "e005",
+            "from": "n005",
+            "to": "n006",
+            "source_label": "Edge from 60020 to 60020_option_clicked",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/5"
+          }
+        },
+        {
+          "id": "e006",
+          "from": "n006",
+          "to": "n007",
+          "label": "WHEN LINK IS CLICKED",
+          "settings": {
+            "id": "e006",
+            "from": "n006",
+            "to": "n007",
+            "source_label": "Edge from 60020_option_clicked to 60022",
+            "source_port": "60020_option_clicked",
+            "condition_text": "WHEN LINK IS CLICKED",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/6"
+          }
+        },
+        {
+          "id": "e007",
+          "from": "n005",
+          "to": "n008",
+          "label": "",
+          "settings": {
+            "id": "e007",
+            "from": "n005",
+            "to": "n008",
+            "source_label": "Edge from 60020 to 60020_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/7"
+          }
+        },
+        {
+          "id": "e008",
+          "from": "n008",
+          "to": "n009",
+          "label": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+          "settings": {
+            "id": "e008",
+            "from": "n008",
+            "to": "n009",
+            "source_label": "Edge from 60020_option_expired to 60387",
+            "source_port": "60020_option_expired",
+            "condition_text": "IF LINK HASN'T BEEN CLICKED AFTER\n3 days",
+            "condition_basis": "source_branch_label"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/8"
+          }
+        },
+        {
+          "id": "e009",
+          "from": "n001",
+          "to": "n010",
+          "label": "",
+          "settings": {
+            "id": "e009",
+            "from": "n001",
+            "to": "n010",
+            "source_label": "Edge from 60018 to 60018_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          "provenance": {
+            "pointer": "/graph/edges/9"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [],
+      "source_settings_sha256": "aa0b3be4877491a3d78472c9360536d15e07cbb50931614a60cabf7985673982",
+      "source_leaf_count": 620,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "inro-6045-owned_comment",
+        "label": "Selected-post comment entry / Video",
+        "target": "owned_comment",
+        "allowed_targets": [
+          "owned_comment",
+          "dm_base"
+        ],
+        "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Send the video link after an actual YES reply and retain help.",
+        "output_bindings": [
+          "video_title",
+          "video_url"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Press the opening button",
+          "Wait 3 seconds",
+          "Offer help after the click"
+        ],
+        "approval_required": true,
+        "source_id": "inro-6045",
+        "draft": {
+          "modes": [
+            "C",
+            "D"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "video_title",
+            "video_url",
+            "public_text"
+          ],
+          "initial": "Want {video_title}? Reply YES and I will send it.",
+          "messages": {
+            "initial": "Want {video_title}? Reply YES and I will send it.",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "delivery": "Here is {video_title}: {video_url}\nLet me know if you have any questions!",
+            "help": "Let me know if you have any questions!"
+          },
+          "instruction": "Wait for an actual affirmative reply before delivering: Here is {video_title}: {video_url}\nLet me know if you have any questions! On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+          "contact_requirement": null,
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Ask for an actual affirmative reply; no link yet.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "delivery",
+                "action": "Deliver the approved destination and included help together.",
+                "message_ids": [
+                  "delivery"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "help",
+                "action": "Only for bare HELP, ask what assistance is needed.",
+                "message_ids": [
+                  "help"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "refusal",
+                "action": "End this request without delivering gated content.",
+                "message_ids": [
+                  "refusal"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              },
+              {
+                "id": "answer",
+                "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+                "message_ids": [],
+                "response_mode": "message"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              },
+              {
+                "from": "first",
+                "to": "delivery",
+                "condition": "Actual affirmative reply in this conversation"
+              },
+              {
+                "from": "first",
+                "to": "refusal",
+                "condition": "Actual refusal"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No actual reply"
+              },
+              {
+                "from": "delivery",
+                "to": "help",
+                "condition": "Actual bare HELP reply"
+              },
+              {
+                "from": "delivery",
+                "to": "answer",
+                "condition": "Actual concrete question"
+              },
+              {
+                "from": "help",
+                "to": "answer",
+                "condition": "Actual question or problem details in a new reply"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [],
+      "entry_readback_fields": [
+        "post_ids",
+        "keywords",
+        "match_mode"
+      ],
+      "preparation_gates": [
+        "Before staging an owned OFF custom, complete readback must equal approved posts, keywords and match mode. Reply-setting updates cannot change filters. A mismatch blocks staging; setup_comment_replies needs separate immediate-enabled approval."
+      ],
+      "missing_readback": [],
+      "target": "owned_comment",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "video_title",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "video_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Want {video_title}? Reply YES and I will send it.",
+        "public": "{public_text}",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "delivery": "Here is {video_title}: {video_url}\nLet me know if you have any questions!",
+        "help": "Let me know if you have any questions!"
+      },
+      "instruction": "Wait for an actual affirmative reply before delivering: Here is {video_title}: {video_url}\nLet me know if you have any questions! On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Ask for an actual affirmative reply; no link yet.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "delivery",
+            "action": "Deliver the approved destination and included help together.",
+            "message_ids": [
+              "delivery"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "help",
+            "action": "Only for bare HELP, ask what assistance is needed.",
+            "message_ids": [
+              "help"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "refusal",
+            "action": "End this request without delivering gated content.",
+            "message_ids": [
+              "refusal"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          },
+          {
+            "id": "answer",
+            "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+            "message_ids": [],
+            "response_mode": "message"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          },
+          {
+            "from": "first",
+            "to": "delivery",
+            "condition": "Actual affirmative reply in this conversation"
+          },
+          {
+            "from": "first",
+            "to": "refusal",
+            "condition": "Actual refusal"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No actual reply"
+          },
+          {
+            "from": "delivery",
+            "to": "help",
+            "condition": "Actual bare HELP reply"
+          },
+          {
+            "from": "delivery",
+            "to": "answer",
+            "condition": "Actual concrete question"
+          },
+          {
+            "from": "help",
+            "to": "answer",
+            "condition": "Actual question or problem details in a new reply"
+          }
+        ]
+      },
+      "contact_requirement": null,
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "publicReply": {
+              "publicReplyHowToReply": "ExactText",
+              "exactTextReply": "{public_text}"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "privateReply": {
+              "privateReplyHowToReply": "ExactText",
+              "exactTextReply": "Want {video_title}? Reply YES and I will send it."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.. First message: Want {video_title}? Reply YES and I will send it.\nWait for an actual affirmative reply before delivering: Here is {video_title}: {video_url}\nLet me know if you have any questions! On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\ndelivery: Here is {video_title}: {video_url}\nLet me know if you have any questions!\nhelp: Let me know if you have any questions! The one private comment reply has already sent the opener. Wait for the person's actual linked reply; do not resend the opener or send a second unsolicited DM. Continue only within the permitted messaging window."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "whenAIReplies": {
+              "option": "Always"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "followUps": {
+              "howToSend": "DontSend"
+            }
+          }
+        }
+      ],
+      "list_additions": {},
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "owned_comment",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    },
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "inro-6045-dm_base",
+        "label": "Direct-message entry / Video",
+        "target": "dm_base",
+        "allowed_targets": [
+          "owned_comment",
+          "dm_base"
+        ],
+        "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Send the video link after an actual YES reply and retain help.",
+        "output_bindings": [
+          "video_title",
+          "video_url"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Press the opening button",
+          "Wait 3 seconds",
+          "Offer help after the click"
+        ],
+        "approval_required": true,
+        "source_id": "inro-6045",
+        "draft": {
+          "modes": [
+            "D"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "video_title",
+            "video_url",
+            "public_text"
+          ],
+          "initial": "Want {video_title}? Reply YES and I will send it.",
+          "messages": {
+            "initial": "Want {video_title}? Reply YES and I will send it.",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "delivery": "Here is {video_title}: {video_url}\nLet me know if you have any questions!",
+            "help": "Let me know if you have any questions!"
+          },
+          "instruction": "Wait for an actual affirmative reply before delivering: Here is {video_title}: {video_url}\nLet me know if you have any questions! On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+          "contact_requirement": null,
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Ask for an actual affirmative reply; no link yet.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "delivery",
+                "action": "Deliver the approved destination and included help together.",
+                "message_ids": [
+                  "delivery"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "help",
+                "action": "Only for bare HELP, ask what assistance is needed.",
+                "message_ids": [
+                  "help"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "refusal",
+                "action": "End this request without delivering gated content.",
+                "message_ids": [
+                  "refusal"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              },
+              {
+                "id": "answer",
+                "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+                "message_ids": [],
+                "response_mode": "message"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              },
+              {
+                "from": "first",
+                "to": "delivery",
+                "condition": "Actual affirmative reply in this conversation"
+              },
+              {
+                "from": "first",
+                "to": "refusal",
+                "condition": "Actual refusal"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No actual reply"
+              },
+              {
+                "from": "delivery",
+                "to": "help",
+                "condition": "Actual bare HELP reply"
+              },
+              {
+                "from": "delivery",
+                "to": "answer",
+                "condition": "Actual concrete question"
+              },
+              {
+                "from": "help",
+                "to": "answer",
+                "condition": "Actual question or problem details in a new reply"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [
+        "whenAIReplies",
+        "followUps"
+      ],
+      "entry_readback_fields": [],
+      "preparation_gates": [
+        "Preserve current whenAIReplies and followUps values, including inheritance, on the shared DM base. If its schedule or active follow-ups conflict with the proposed behavior, hold affected configuration or obtain separate approval for the exact base-wide change. No schedule/follow-up write is a default draft operation."
+      ],
+      "missing_readback": [],
+      "target": "dm_base",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "video_title",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "video_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Want {video_title}? Reply YES and I will send it.",
+        "public": "",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "delivery": "Here is {video_title}: {video_url}\nLet me know if you have any questions!",
+        "help": "Let me know if you have any questions!",
+        "placement": "DM {keyword}."
+      },
+      "instruction": "Wait for an actual affirmative reply before delivering: Here is {video_title}: {video_url}\nLet me know if you have any questions! On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Ask for an actual affirmative reply; no link yet.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "delivery",
+            "action": "Deliver the approved destination and included help together.",
+            "message_ids": [
+              "delivery"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "help",
+            "action": "Only for bare HELP, ask what assistance is needed.",
+            "message_ids": [
+              "help"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "refusal",
+            "action": "End this request without delivering gated content.",
+            "message_ids": [
+              "refusal"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          },
+          {
+            "id": "answer",
+            "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+            "message_ids": [],
+            "response_mode": "message"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          },
+          {
+            "from": "first",
+            "to": "delivery",
+            "condition": "Actual affirmative reply in this conversation"
+          },
+          {
+            "from": "first",
+            "to": "refusal",
+            "condition": "Actual refusal"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No actual reply"
+          },
+          {
+            "from": "delivery",
+            "to": "help",
+            "condition": "Actual bare HELP reply"
+          },
+          {
+            "from": "delivery",
+            "to": "answer",
+            "condition": "Actual concrete question"
+          },
+          {
+            "from": "help",
+            "to": "answer",
+            "condition": "Actual question or problem details in a new reply"
+          }
+        ]
+      },
+      "contact_requirement": null,
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.. First message: Want {video_title}? Reply YES and I will send it.\nWait for an actual affirmative reply before delivering: Here is {video_title}: {video_url}\nLet me know if you have any questions! On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\ndelivery: Here is {video_title}: {video_url}\nLet me know if you have any questions!\nhelp: Let me know if you have any questions!"
+            }
+          }
+        }
+      ],
+      "list_additions": {},
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "dm_base",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    },
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "inro-6047-owned_comment",
+        "label": "Selected-post comment entry / Podcast",
+        "target": "owned_comment",
+        "allowed_targets": [
+          "owned_comment",
+          "dm_base"
+        ],
+        "entry": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Send the podcast link after an actual YES reply and retain help.",
+        "output_bindings": [
+          "episode_title",
+          "episode_url"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Press the opening button",
+          "Wait 3 seconds",
+          "Offer help after the click"
+        ],
+        "approval_required": true,
+        "source_id": "inro-6047",
+        "draft": {
+          "modes": [
+            "C",
+            "D"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "episode_title",
+            "episode_url",
+            "public_text"
+          ],
+          "initial": "Want {episode_title}? Reply YES and I will send it.",
+          "messages": {
+            "initial": "Want {episode_title}? Reply YES and I will send it.",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "delivery": "Here is {episode_title}: {episode_url}\nLet me know if you have any questions! ",
+            "help": "Let me know if you have any questions! "
+          },
+          "instruction": "Wait for an actual affirmative reply before delivering: Here is {episode_title}: {episode_url}\nLet me know if you have any questions!  On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+          "contact_requirement": null,
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Ask for an actual affirmative reply; no link yet.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "delivery",
+                "action": "Deliver the approved destination and included help together.",
+                "message_ids": [
+                  "delivery"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "help",
+                "action": "Only for bare HELP, ask what assistance is needed.",
+                "message_ids": [
+                  "help"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "refusal",
+                "action": "End this request without delivering gated content.",
+                "message_ids": [
+                  "refusal"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              },
+              {
+                "id": "answer",
+                "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+                "message_ids": [],
+                "response_mode": "message"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              },
+              {
+                "from": "first",
+                "to": "delivery",
+                "condition": "Actual affirmative reply in this conversation"
+              },
+              {
+                "from": "first",
+                "to": "refusal",
+                "condition": "Actual refusal"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No actual reply"
+              },
+              {
+                "from": "delivery",
+                "to": "help",
+                "condition": "Actual bare HELP reply"
+              },
+              {
+                "from": "delivery",
+                "to": "answer",
+                "condition": "Actual concrete question"
+              },
+              {
+                "from": "help",
+                "to": "answer",
+                "condition": "Actual question or problem details in a new reply"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [],
+      "entry_readback_fields": [
+        "post_ids",
+        "keywords",
+        "match_mode"
+      ],
+      "preparation_gates": [
+        "Before staging an owned OFF custom, complete readback must equal approved posts, keywords and match mode. Reply-setting updates cannot change filters. A mismatch blocks staging; setup_comment_replies needs separate immediate-enabled approval."
+      ],
+      "missing_readback": [],
+      "target": "owned_comment",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "episode_title",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "episode_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Want {episode_title}? Reply YES and I will send it.",
+        "public": "{public_text}",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "delivery": "Here is {episode_title}: {episode_url}\nLet me know if you have any questions! ",
+        "help": "Let me know if you have any questions! "
+      },
+      "instruction": "Wait for an actual affirmative reply before delivering: Here is {episode_title}: {episode_url}\nLet me know if you have any questions!  On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Ask for an actual affirmative reply; no link yet.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "delivery",
+            "action": "Deliver the approved destination and included help together.",
+            "message_ids": [
+              "delivery"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "help",
+            "action": "Only for bare HELP, ask what assistance is needed.",
+            "message_ids": [
+              "help"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "refusal",
+            "action": "End this request without delivering gated content.",
+            "message_ids": [
+              "refusal"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          },
+          {
+            "id": "answer",
+            "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+            "message_ids": [],
+            "response_mode": "message"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          },
+          {
+            "from": "first",
+            "to": "delivery",
+            "condition": "Actual affirmative reply in this conversation"
+          },
+          {
+            "from": "first",
+            "to": "refusal",
+            "condition": "Actual refusal"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No actual reply"
+          },
+          {
+            "from": "delivery",
+            "to": "help",
+            "condition": "Actual bare HELP reply"
+          },
+          {
+            "from": "delivery",
+            "to": "answer",
+            "condition": "Actual concrete question"
+          },
+          {
+            "from": "help",
+            "to": "answer",
+            "condition": "Actual question or problem details in a new reply"
+          }
+        ]
+      },
+      "contact_requirement": null,
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "publicReply": {
+              "publicReplyHowToReply": "ExactText",
+              "exactTextReply": "{public_text}"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "privateReply": {
+              "privateReplyHowToReply": "ExactText",
+              "exactTextReply": "Want {episode_title}? Reply YES and I will send it."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New matching {keyword} comment on the selected post; continuation only after a verified linked actual reply.. First message: Want {episode_title}? Reply YES and I will send it.\nWait for an actual affirmative reply before delivering: Here is {episode_title}: {episode_url}\nLet me know if you have any questions!  On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\ndelivery: Here is {episode_title}: {episode_url}\nLet me know if you have any questions! \nhelp: Let me know if you have any questions!  The one private comment reply has already sent the opener. Wait for the person's actual linked reply; do not resend the opener or send a second unsolicited DM. Continue only within the permitted messaging window."
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "whenAIReplies": {
+              "option": "Always"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "owned_comment",
+          "settings": {
+            "followUps": {
+              "howToSend": "DontSend"
+            }
+          }
+        }
+      ],
+      "list_additions": {},
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "owned_comment",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    },
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "inro-6047-dm_base",
+        "label": "Direct-message entry / Podcast",
+        "target": "dm_base",
+        "allowed_targets": [
+          "owned_comment",
+          "dm_base"
+        ],
+        "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Send the podcast link after an actual YES reply and retain help.",
+        "output_bindings": [
+          "episode_title",
+          "episode_url"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Press the opening button",
+          "Wait 3 seconds",
+          "Offer help after the click"
+        ],
+        "approval_required": true,
+        "source_id": "inro-6047",
+        "draft": {
+          "modes": [
+            "D"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "episode_title",
+            "episode_url",
+            "public_text"
+          ],
+          "initial": "Want {episode_title}? Reply YES and I will send it.",
+          "messages": {
+            "initial": "Want {episode_title}? Reply YES and I will send it.",
+            "public": "{public_text}",
+            "refusal": "Understood. I will stop this request.",
+            "delivery": "Here is {episode_title}: {episode_url}\nLet me know if you have any questions! ",
+            "help": "Let me know if you have any questions! "
+          },
+          "instruction": "Wait for an actual affirmative reply before delivering: Here is {episode_title}: {episode_url}\nLet me know if you have any questions!  On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+          "contact_requirement": null,
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Ask for an actual affirmative reply; no link yet.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "delivery",
+                "action": "Deliver the approved destination and included help together.",
+                "message_ids": [
+                  "delivery"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "help",
+                "action": "Only for bare HELP, ask what assistance is needed.",
+                "message_ids": [
+                  "help"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "refusal",
+                "action": "End this request without delivering gated content.",
+                "message_ids": [
+                  "refusal"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "silence",
+                "action": "No message after silence.",
+                "message_ids": [],
+                "response_mode": "silent"
+              },
+              {
+                "id": "answer",
+                "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+                "message_ids": [],
+                "response_mode": "message"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              },
+              {
+                "from": "first",
+                "to": "delivery",
+                "condition": "Actual affirmative reply in this conversation"
+              },
+              {
+                "from": "first",
+                "to": "refusal",
+                "condition": "Actual refusal"
+              },
+              {
+                "from": "first",
+                "to": "silence",
+                "condition": "No actual reply"
+              },
+              {
+                "from": "delivery",
+                "to": "help",
+                "condition": "Actual bare HELP reply"
+              },
+              {
+                "from": "delivery",
+                "to": "answer",
+                "condition": "Actual concrete question"
+              },
+              {
+                "from": "help",
+                "to": "answer",
+                "condition": "Actual question or problem details in a new reply"
+              }
+            ]
+          }
+        }
+      },
+      "preserve_settings": [
+        "whenAIReplies",
+        "followUps"
+      ],
+      "entry_readback_fields": [],
+      "preparation_gates": [
+        "Preserve current whenAIReplies and followUps values, including inheritance, on the shared DM base. If its schedule or active follow-ups conflict with the proposed behavior, hold affected configuration or obtain separate approval for the exact base-wide change. No schedule/follow-up write is a default draft operation."
+      ],
+      "missing_readback": [],
+      "target": "dm_base",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "episode_title",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "episode_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "public_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Want {episode_title}? Reply YES and I will send it.",
+        "public": "",
+        "refusal": "Understood. I will stop this request.",
+        "handoff": "",
+        "delivery": "Here is {episode_title}: {episode_url}\nLet me know if you have any questions! ",
+        "help": "Let me know if you have any questions! ",
+        "placement": "DM {keyword}."
+      },
+      "instruction": "Wait for an actual affirmative reply before delivering: Here is {episode_title}: {episode_url}\nLet me know if you have any questions!  On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Ask for an actual affirmative reply; no link yet.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "delivery",
+            "action": "Deliver the approved destination and included help together.",
+            "message_ids": [
+              "delivery"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "help",
+            "action": "Only for bare HELP, ask what assistance is needed.",
+            "message_ids": [
+              "help"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "refusal",
+            "action": "End this request without delivering gated content.",
+            "message_ids": [
+              "refusal"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "silence",
+            "action": "No message after silence.",
+            "message_ids": [],
+            "response_mode": "silent"
+          },
+          {
+            "id": "answer",
+            "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+            "message_ids": [],
+            "response_mode": "message"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          },
+          {
+            "from": "first",
+            "to": "delivery",
+            "condition": "Actual affirmative reply in this conversation"
+          },
+          {
+            "from": "first",
+            "to": "refusal",
+            "condition": "Actual refusal"
+          },
+          {
+            "from": "first",
+            "to": "silence",
+            "condition": "No actual reply"
+          },
+          {
+            "from": "delivery",
+            "to": "help",
+            "condition": "Actual bare HELP reply"
+          },
+          {
+            "from": "delivery",
+            "to": "answer",
+            "condition": "Actual concrete question"
+          },
+          {
+            "from": "help",
+            "to": "answer",
+            "condition": "Actual question or problem details in a new reply"
+          }
+        ]
+      },
+      "contact_requirement": null,
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.. First message: Want {episode_title}? Reply YES and I will send it.\nWait for an actual affirmative reply before delivering: Here is {episode_title}: {episode_url}\nLet me know if you have any questions!  On bare HELP ask what assistance is needed. For an actual question, answer only approved facts; otherwise state that human review is needed without promising an unconfigured handoff. Do not repeat the help invitation. Do not infer confirmation from a comment, silence, button click or URL visit. Do not resend the opener. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n\nHandle refusal before keyword matching. On refusal: Understood. I will stop this request. End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: Understood. I will stop this request.\ndelivery: Here is {episode_title}: {episode_url}\nLet me know if you have any questions! \nhelp: Let me know if you have any questions! "
+            }
+          }
+        }
+      ],
+      "list_additions": {},
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "dm_base",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "inro-6045": [],
+    "inro-6047": []
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/inro-6045.json": "f568856237c8d895329e7bcccfed6ff686a3ef498bb714663bdfd04399b9855d",
+    "source-records/inro-6047.json": "f4fc91981f6edc2680af623636ded3efe4053387dd37bd0661f5fdf01f32ef28",
+    "described-recipes/inro-6045.json": "77167b325a4b63ee9d4b365a32db6aa0a275cf7e8a93de8a78962c22b5398e8e",
+    "described-recipes/inro-6047.json": "b184e2590a8acce562277c4316481b69c25b56ac87e1453d88cc6de6159f93e9"
+  }
+}

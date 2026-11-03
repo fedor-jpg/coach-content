@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "id": "inro-4393",
+  "version": "0.1.0",
+  "source": {
+    "id": "inro-4393",
+    "title": "Sell your products during a live",
+    "url": "https://app.inro.social/public/scenarios/4393",
+    "observed_at": "2026-10-30",
+    "original_goal": "Sell your products during a live",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "status": "changed",
+  "family": "sales",
+  "goal": "Answer an ordinary product-code DM from a coach-placed Live invitation.",
+  "entry": "dm",
+  "platforms": [
+    "Instagram"
+  ],
+  "conversation": true,
+  "design_changes": [
+    "ordinary-dm-not-live-comment",
+    "coach-places-live-product-cta"
+  ],
+  "unsupported_requirements": [
+    "live-comment-trigger",
+    "confirmed-purchase"
+  ],
+  "blockers": [],
+  "required_inputs": [
+    "keyword",
+    "product_code",
+    "product_name",
+    "availability",
+    "offer_terms",
+    "product_url",
+    "language",
+    "initial_text",
+    "refusal_text",
+    "handoff_text"
+  ],
+  "allowed_parameters": {
+    "keyword": {
+      "type": "text",
+      "description": "Exact comment or inbound DM campaign word, at most 50 characters."
+    },
+    "product_code": {
+      "type": "text",
+      "description": "Coach-supplied product code, preserved without invented claims."
+    },
+    "product_name": {
+      "type": "text",
+      "description": "Coach-supplied product name, preserved without invented claims."
+    },
+    "availability": {
+      "type": "text",
+      "description": "Current verified stock or availability statement."
+    },
+    "offer_terms": {
+      "type": "text",
+      "description": "Approved price, currency and conditions, or an explicit absence of a price."
+    },
+    "product_url": {
+      "type": "url",
+      "description": "Coach-supplied product url, preserved without invented claims."
+    },
+    "language": {
+      "type": "text",
+      "description": "Coach's message language; provide the exact approved copy in this language."
+    },
+    "initial_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved initial text in language, within this recipe's unchanged promise and transitions."
+    },
+    "refusal_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved refusal text in language, within this recipe's unchanged promise and transitions."
+    },
+    "handoff_text": {
+      "type": "text",
+      "description": "Exact complete coach-approved handoff text in language, within this recipe's unchanged promise and transitions."
+    }
+  },
+  "messages": {
+    "public": "",
+    "initial": "{product_name}: {availability}. {offer_terms}. {product_url}",
+    "continuation": "Match the exact product_code; clarify unknown codes. Use only supplied availability and offer_terms. Never claim payment.",
+    "refusal": "Understood. I will not continue this campaign. You can ask our team for help.",
+    "handoff": "Our team will handle your request.",
+    "placement": "Open Instagram messages and send {keyword}."
+  },
+  "transitions": [
+    {
+      "event": "Coach supplies approved business facts and selects the existing account.",
+      "actor": "Claude",
+      "action": "Prepare exact messages and native payloads locally; obtain scoped approvals and save private intent.",
+      "evidence": "Preview, recipe digest and private card readback."
+    },
+    {
+      "event": "Before any real entry test.",
+      "actor": "Coach",
+      "action": "Place the approved campaign-word invitation on the stated existing Story, Live or ad surface.",
+      "evidence": "Actual placement; no publishing operation is assumed."
+    },
+    {
+      "event": "The contact sends the campaign word in an ordinary Instagram DM.",
+      "actor": "Contact",
+      "action": "Act on the coach-placed invitation and write first.",
+      "evidence": "Actual account, recipient, media/word and entry event IDs."
+    },
+    {
+      "event": "The approved native automation receives that entry.",
+      "actor": "Chatfuel",
+      "action": "Send exactly one initial message containing the approved value or question.",
+      "evidence": "Recipient-side first message and linked source."
+    },
+    {
+      "event": "The contact actually replies within the permitted window.",
+      "actor": "Chatfuel AI",
+      "action": "Match the exact product_code; clarify unknown codes. Use only supplied availability and offer_terms. Never claim payment.",
+      "evidence": "A real matching-code DM receives the current product offer and destination."
+    },
+    {
+      "event": "The contact opens the supplied external destination.",
+      "actor": "External destination",
+      "action": "Handle any actual booking, registration, join or purchase outside this skill.",
+      "evidence": "An external confirmation is required before claiming that external result."
+    }
+  ],
+  "native_operations": [
+    "get_bot",
+    "get_automation",
+    "get_knowledge_base",
+    "fuelyAutomationUpdateSetting",
+    "test_reply",
+    "take_over_chat"
+  ],
+  "outcome": "A real matching-code DM receives the current product offer and destination.",
+  "negative_cases": [
+    "An unknown code does not receive a guessed product.",
+    "Unavailable stock must not be described as available."
+  ],
+  "runtime_checks": [
+    "content",
+    "return",
+    "stop",
+    "refusal",
+    "repeat",
+    "unknown_action",
+    "wrong_account",
+    "two_campaigns",
+    "source_attribution",
+    "expired_window",
+    "late_ambiguous_reply",
+    "destination",
+    "product_code_offer_received"
+  ],
+  "resume": {
+    "actor": "Claude",
+    "action": "Restore the private card, confirm this recipe digest and account, then read current owned and shared settings. Reconcile unknown results without retry.",
+    "campaign_match": "Require an actual unambiguous campaign-word inbound event and the same recipient's linked answers."
+  },
+  "stop": {
+    "actor": "Claude with scoped native approval",
+    "action": "Disable only the campaign-owned comment rule, if present. Remove only campaign additions from shared DM text, captures and handoff; retain other campaigns and support.",
+    "proof": "Read back changes. Test late entry, late DM, the second campaign and ordinary support before accepting complete stop."
+  },
+  "execution_reference": "../chatfuel-execution.md",
+  "initial_required_parameters": [
+    "product_name",
+    "availability",
+    "offer_terms",
+    "product_url"
+  ],
+  "supported_requirements": [
+    "instagram",
+    "local-preview",
+    "ordinary-dm",
+    "team-handoff",
+    "link-delivery"
+  ],
+  "business_outcomes": {
+    "product_code_offer_received": {
+      "origin": "recipient-observation",
+      "description": "The actual product-code DM gets the correct current offer and destination.",
+      "min_native_refs": 1,
+      "parameter": "product_url"
+    }
+  }
+}

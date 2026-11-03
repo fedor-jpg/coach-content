@@ -1,0 +1,2542 @@
+{
+  "schema_version": 1,
+  "revision": "1.1.0",
+  "variant": {
+    "id": "courses-manychat-111",
+    "name": "Sell courses: three cards and help",
+    "source_ids": [
+      "manychat-111"
+    ],
+    "entry": "Keyword direct message",
+    "mandatory_conditions": [
+      "Three-course gallery",
+      "Separate card and purchase URLs",
+      "A following help message"
+    ],
+    "outcome": "A choice of three courses",
+    "timing": [],
+    "consent": "Consent to an external mailing list or service is not established by this capture.",
+    "external_completion": "Sending a link or collecting a contact does not confirm registration, subscription, payment or attendance in an external service.",
+    "requirements": [
+      "dm-ai",
+      "buttons"
+    ],
+    "assessment": {
+      "status": "replacement",
+      "reason": "Replace the gallery with a text list of three courses and their links. Visual navigation and URL buttons change.",
+      "missing_source_behavior": [],
+      "replacement": {
+        "changes": "Replace the gallery with a text list of three courses and their links. Visual navigation and URL buttons change.",
+        "result": "AI offers the three courses in text. Payment and course access are not confirmed.",
+        "requires_consent": true
+      }
+    },
+    "source_notes": {
+      "manychat-111": "Payment and access are not confirmed. Original cards and buttons remain captured."
+    },
+    "client_inputs": [
+      "keywords",
+      "three product images",
+      "titles",
+      "subtitles",
+      "purchase URLs"
+    ],
+    "deduplication": "A distinct variant because its entry, required conditions, timing or outcome differs.",
+    "lifecycle_ref": "normal-mcp-unverified",
+    "runtime_status": "not_tested",
+    "setup": {
+      "revision": "1.1.0",
+      "kind": "existing_analogue_draft",
+      "analogue_ids": [
+        "inro-6080"
+      ],
+      "write_permission": "none",
+      "runtime_status": "not_tested",
+      "bindings": [
+        {
+          "id": "manychat-111-dm_base",
+          "label": "Direct-message entry",
+          "draft": {
+            "modes": [
+              "D",
+              "H"
+            ],
+            "inputs": [
+              "campaign",
+              "language",
+              "keyword",
+              "course_one_title",
+              "course_one_terms",
+              "course_one_card_url",
+              "course_one_purchase_url",
+              "course_two_title",
+              "course_two_terms",
+              "course_two_card_url",
+              "course_two_purchase_url",
+              "course_three_title",
+              "course_three_terms",
+              "course_three_card_url",
+              "course_three_purchase_url",
+              "help_text",
+              "refusal_text",
+              "handoff_text"
+            ],
+            "initial": "Choose a course: 1. {course_one_title}: {course_one_terms}. Details: {course_one_card_url}. Buy: {course_one_purchase_url}. 2. {course_two_title}: {course_two_terms}. Details: {course_two_card_url}. Buy: {course_two_purchase_url}. 3. {course_three_title}: {course_three_terms}. Details: {course_three_card_url}. Buy: {course_three_purchase_url}. If you have any questions, I'm here to help 💛",
+            "instruction": "On the actual DM keyword show all three distinct offers and all six destinations in plain text. Preserve each card/details URL separately from its purchase URL, even when the owner intentionally uses the same destination. Include the following help invitation in the same reply: If you have any questions, I'm here to help 💛. After a new question answer only from the selected offer terms; unknown facts use {handoff_text}. No gallery, button callback, separate autonomous second message, purchase or access verification. On refusal send {refusal_text} and stop. HELP is an actual reply, not a button callback. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+            "contact_requirement": null,
+            "messages": {
+              "help": "If you have any questions, I'm here to help 💛"
+            },
+            "branches": {
+              "steps": [
+                {
+                  "id": "entry",
+                  "action": "Only the selected source entry.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "first",
+                  "action": "Send the requested response.",
+                  "message_ids": [
+                    "initial"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "help",
+                  "action": "Only for bare HELP, ask what assistance is needed.",
+                  "message_ids": [
+                    "help"
+                  ],
+                  "response_mode": "message"
+                },
+                {
+                  "id": "answer",
+                  "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+                  "message_ids": [],
+                  "response_mode": "message"
+                }
+              ],
+              "transitions": [
+                {
+                  "from": "entry",
+                  "to": "first",
+                  "condition": "Selected entry received"
+                },
+                {
+                  "from": "first",
+                  "to": "help",
+                  "condition": "Actual bare HELP reply"
+                },
+                {
+                  "from": "first",
+                  "to": "answer",
+                  "condition": "Actual concrete question"
+                },
+                {
+                  "from": "help",
+                  "to": "answer",
+                  "condition": "Actual question or problem details in a new reply"
+                }
+              ]
+            }
+          },
+          "target": "dm_base",
+          "allowed_targets": [
+            "dm_base"
+          ],
+          "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+          "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+          "output": "Offer three named courses with all six detail/purchase URLs and a help branch.",
+          "output_bindings": [
+            "course_one_title",
+            "course_one_terms",
+            "course_one_card_url",
+            "course_one_purchase_url",
+            "course_two_title",
+            "course_two_terms",
+            "course_two_card_url",
+            "course_two_purchase_url",
+            "course_three_title",
+            "course_three_terms",
+            "course_three_card_url",
+            "course_three_purchase_url"
+          ],
+          "instruction": "",
+          "source_requirements": [
+            "Three-course gallery",
+            "Separate card and purchase URLs",
+            "A following help message"
+          ],
+          "approval_required": true,
+          "source_id": "manychat-111"
+        }
+      ],
+      "binding_review": {
+        "source_entry": "Keyword direct message",
+        "source_outcome": "A choice of three courses",
+        "mandatory_conditions": [
+          "Three-course gallery",
+          "Separate card and purchase URLs",
+          "A following help message"
+        ],
+        "source_contact_policy": [
+          "A following help message"
+        ],
+        "plan_count": 1,
+        "decision": "Explicit entry/output draft; original mandatory differences require consent."
+      },
+      "function_review": {
+        "status": "adaptation_draft_requires_consent",
+        "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+        "primary_result": "Offer three named courses with all six detail/purchase URLs and a help branch.",
+        "source_requirements": [
+          "Three-course gallery",
+          "Separate card and purchase URLs",
+          "A following help message"
+        ],
+        "source_timing": [],
+        "blocking_dependencies": [],
+        "retained": [
+          "Offer three named courses with all six detail/purchase URLs and a help branch.",
+          "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+        ],
+        "omitted": [],
+        "limitations": [],
+        "examples": [
+          {
+            "source_id": "manychat-111",
+            "node_id": "node-0",
+            "source_text": "Let me show you my new drop! My courses are designed to help you get more dream clients from Instagram ☁️",
+            "adapted_text": "Choose a course: 1. {course_one_title}: {course_one_terms}. Details: {course_one_card_url}. Buy: {course_one_purchase_url}. 2. {course_two_title}: {course_two_terms}. Details: {course_two_card_url}. Buy: {course_two_purchase_url}. 3. {course_three_title}: {course_three_terms}. Details: {course_three_card_url}. Buy: {course_three_purchase_url}. If you have any questions, I'm here to help 💛",
+            "provenance": "authored_adaptation_not_captured"
+          }
+        ]
+      }
+    }
+  },
+  "goal": "Present the right course and help interested learners reach the offer.",
+  "fit": "Educators selling one course or a small course catalogue.",
+  "preparation_status": "adaptation_draft_requires_consent",
+  "function_review": {
+    "status": "adaptation_draft_requires_consent",
+    "reason": "The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.",
+    "primary_result": "Offer three named courses with all six detail/purchase URLs and a help branch.",
+    "source_requirements": [
+      "Three-course gallery",
+      "Separate card and purchase URLs",
+      "A following help message"
+    ],
+    "source_timing": [],
+    "blocking_dependencies": [],
+    "retained": [
+      "Offer three named courses with all six detail/purchase URLs and a help branch.",
+      "URL buttons become readable URLs; confirmation and help controls become actual user replies."
+    ],
+    "omitted": [],
+    "limitations": [],
+    "examples": [
+      {
+        "source_id": "manychat-111",
+        "node_id": "node-0",
+        "source_text": "Let me show you my new drop! My courses are designed to help you get more dream clients from Instagram ☁️",
+        "adapted_text": "Choose a course: 1. {course_one_title}: {course_one_terms}. Details: {course_one_card_url}. Buy: {course_one_purchase_url}. 2. {course_two_title}: {course_two_terms}. Details: {course_two_card_url}. Buy: {course_two_purchase_url}. 3. {course_three_title}: {course_three_terms}. Details: {course_three_card_url}. Buy: {course_three_purchase_url}. If you have any questions, I'm here to help 💛",
+        "provenance": "authored_adaptation_not_captured"
+      }
+    ]
+  },
+  "runtime_accepted": false,
+  "mandatory_dependencies": [
+    "buttons"
+  ],
+  "sources": [
+    {
+      "source_id": "manychat-111",
+      "source_file": "source-records/manychat-111.json",
+      "source_title": "DM your course like a closer",
+      "start": "trigger",
+      "nodes": [
+        {
+          "id": "trigger",
+          "source_type": "trigger",
+          "content": {
+            "text": "",
+            "preview": "User sends a message\n\nAdd text: new",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": null,
+          "candidate_settings": [],
+          "business_inputs": [
+            "entry word and selected post or invitation placement"
+          ],
+          "reason": "Read the actual captured entry. Post/comment configuration is not Story, Live, ad or referral configuration.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/panels/0/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": null,
+                "value": "new",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/0/settings",
+          "settings_sha256": "5be34f1900b85c8913c6b4b419a84d8c5edb8f49db28daae1bfc32520e7068e3",
+          "settings_leaf_count": 78
+        },
+        {
+          "id": "node-0",
+          "source_type": "message",
+          "content": {
+            "text": "Let me show you my new drop! My courses are designed to help you get more dream clients from Instagram ☁️",
+            "preview": "Let me show you my new drop! My courses are designed to help you get more dream clients from Instagram ☁️",
+            "buttons": [
+              "Buy Now🛍️"
+            ],
+            "media": [],
+            "gallery": [
+              {
+                "background_image": "url(\"https://manychat-storage.s3.eu-central-1.amazonaws.com/manychat/quickcampaign/ca/2025/11/26/818756a64161df38e0315cab60549421/big_ed56a3400119d3e7a59963207bb56d38\")",
+                "file_control": [
+                  {
+                    "multiple": true
+                  }
+                ],
+                "position": 0,
+                "rendered_height": "280px",
+                "subtitle": "The #1 easy marketing guide",
+                "title": "Marketing Master Plan",
+                "image": "https://manychat-storage.s3.eu-central-1.amazonaws.com/manychat/quickcampaign/ca/2025/11/26/818756a64161df38e0315cab60549421/big_ed56a3400119d3e7a59963207bb56d38"
+              },
+              {
+                "background_image": "url(\"https://manychat-storage.s3.eu-central-1.amazonaws.com/manychat/quickcampaign/ca/2025/11/26/c1db65893942fb23b518a61cf18ffd6b/big_1661f57af6dcd96e3c013fd58d158b94\")",
+                "file_control": [
+                  {
+                    "multiple": true
+                  }
+                ],
+                "position": 1,
+                "rendered_height": "280px",
+                "subtitle": "The bumper target market guide",
+                "title": "Ideal Client Roadmap",
+                "image": "https://manychat-storage.s3.eu-central-1.amazonaws.com/manychat/quickcampaign/ca/2025/11/26/c1db65893942fb23b518a61cf18ffd6b/big_1661f57af6dcd96e3c013fd58d158b94"
+              },
+              {
+                "background_image": "url(\"https://manychat-storage.s3.eu-central-1.amazonaws.com/manychat/quickcampaign/ca/2025/11/26/d3bead947a019cb41492cf5eca931de9/big_c182299b4ba66f0aa0fd54c47df1a590\")",
+                "file_control": [
+                  {
+                    "multiple": true
+                  }
+                ],
+                "position": 2,
+                "rendered_height": "280px",
+                "subtitle": "The only lead magnet workbook you need!",
+                "title": "Create a Freebie Your Followers Love!",
+                "image": "https://manychat-storage.s3.eu-central-1.amazonaws.com/manychat/quickcampaign/ca/2025/11/26/d3bead947a019cb41492cf5eca931de9/big_c182299b4ba66f0aa0fd54c47df1a590"
+              }
+            ]
+          },
+          "capabilities": [
+            "buttons",
+            "dm-ai"
+          ],
+          "disposition": "requires_change_or_external_dependency",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [
+            "buttons"
+          ],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "Let me show you my new drop! My courses are designed to help you get more dream clients from Instagram ☁️",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "file",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": true,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": "title",
+                "label": null,
+                "type": null,
+                "value": "Marketing Master Plan",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/3",
+              "phase": "captured_default",
+              "fields": {
+                "name": "subtitle",
+                "label": null,
+                "type": null,
+                "value": "The #1 easy marketing guide",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/4",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "file",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": true,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/5",
+              "phase": "captured_default",
+              "fields": {
+                "name": "title",
+                "label": null,
+                "type": null,
+                "value": "Ideal Client Roadmap",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/6",
+              "phase": "captured_default",
+              "fields": {
+                "name": "subtitle",
+                "label": null,
+                "type": null,
+                "value": "The bumper target market guide",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/7",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": null,
+                "type": "file",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": true,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/8",
+              "phase": "captured_default",
+              "fields": {
+                "name": "title",
+                "label": null,
+                "type": null,
+                "value": "Create a Freebie Your Followers Love!",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/default_panel/fields/9",
+              "phase": "captured_default",
+              "fields": {
+                "name": "subtitle",
+                "label": null,
+                "type": null,
+                "value": "The only lead magnet workbook you need!",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/0/identity_evidence_exact/field",
+              "phase": "captured_default",
+              "fields": {
+                "name": "",
+                "value": ""
+              }
+            },
+            {
+              "path": "/nested_panels/1/identity_evidence_exact/field",
+              "phase": "captured_default",
+              "fields": {
+                "name": "",
+                "value": ""
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Buy Now🛍️",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "yourwebsite.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/2/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Additional actions",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/3/identity_evidence_exact/field",
+              "phase": "captured_default",
+              "fields": {
+                "name": "",
+                "value": ""
+              }
+            },
+            {
+              "path": "/nested_panels/4/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Buy Now🛍️",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/4/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "yourwebsite.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/4/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Additional actions",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/5/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "caption",
+                "label": null,
+                "type": null,
+                "value": "Buy Now🛍️",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/5/fields/1",
+              "phase": "captured_default",
+              "fields": {
+                "name": "url",
+                "label": null,
+                "type": null,
+                "value": "yourwebsite.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            },
+            {
+              "path": "/nested_panels/5/fields/2",
+              "phase": "captured_default",
+              "fields": {
+                "name": null,
+                "label": "Additional actions",
+                "type": "checkbox",
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/1/settings",
+          "settings_sha256": "21190f72197aa76c47d447d0c70f42f491b4a0f22775d75b66fd00f7dd3f513b",
+          "settings_leaf_count": 658
+        },
+        {
+          "id": "node-1",
+          "source_type": "message",
+          "content": {
+            "text": "If you have any questions, I'm here to help 💛",
+            "preview": "If you have any questions, I'm here to help 💛",
+            "buttons": [],
+            "media": [],
+            "gallery": []
+          },
+          "capabilities": [
+            "dm-ai"
+          ],
+          "disposition": "documented_primitive_not_graph_equivalence",
+          "candidate_tool": "update_automation_setting",
+          "candidate_settings": [
+            "incomingMessages"
+          ],
+          "business_inputs": [
+            "approved message and destination"
+          ],
+          "reason": "AI may use approved copy as instructions. Exact branch delivery and callback conditions are not imported. A first comment DM can use privateReply instead.",
+          "unsupported": [],
+          "known_fields": [
+            {
+              "path": "/default_panel/fields/0",
+              "phase": "captured_default",
+              "fields": {
+                "name": "text",
+                "label": null,
+                "type": null,
+                "value": "If you have any questions, I'm here to help 💛",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                }
+              }
+            }
+          ],
+          "settings_pointer": "/graph/steps/2/settings",
+          "settings_sha256": "4420e3cb88b316c0246f7628952726464f6f275c8bab61bef7c833a33ae643b8",
+          "settings_leaf_count": 130
+        }
+      ],
+      "transitions": [
+        {
+          "id": "edge-0",
+          "from": "node-0",
+          "to": "node-1",
+          "label": "Next Step",
+          "settings": {
+            "from": "node-0",
+            "to": "node-1",
+            "port_exact": "Next Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-0.Next Step.target",
+            "evidence": {
+              "file": "evidence/111-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/0"
+          }
+        },
+        {
+          "id": "edge-1",
+          "from": "trigger",
+          "to": "node-0",
+          "label": "Starting Step",
+          "settings": {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/111-editor.json",
+              "pointer": "/graph/edges/1"
+            }
+          },
+          "provenance": {
+            "pointer": "/instance/edges/1"
+          }
+        }
+      ],
+      "transition_disposition": "Captured conditions and targets only; deterministic transitions cannot be imported through ordinary MCP.",
+      "setup_screens": [],
+      "global_fields": [
+        {
+          "path": "/instance/nodes/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Let me show you my new drop! My courses are designed to help you get more dream clients from Instagram ☁️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/default_panel/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "file",
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": true,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/default_panel/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "title",
+            "label": null,
+            "type": null,
+            "value": "Marketing Master Plan",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/default_panel/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "subtitle",
+            "label": null,
+            "type": null,
+            "value": "The #1 easy marketing guide",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/default_panel/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "file",
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": true,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/default_panel/fields/5",
+          "phase": "captured_default",
+          "fields": {
+            "name": "title",
+            "label": null,
+            "type": null,
+            "value": "Ideal Client Roadmap",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/default_panel/fields/6",
+          "phase": "captured_default",
+          "fields": {
+            "name": "subtitle",
+            "label": null,
+            "type": null,
+            "value": "The bumper target market guide",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/default_panel/fields/7",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "file",
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": true,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/default_panel/fields/8",
+          "phase": "captured_default",
+          "fields": {
+            "name": "title",
+            "label": null,
+            "type": null,
+            "value": "Create a Freebie Your Followers Love!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/default_panel/fields/9",
+          "phase": "captured_default",
+          "fields": {
+            "name": "subtitle",
+            "label": null,
+            "type": null,
+            "value": "The only lead magnet workbook you need!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/0/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "name": "",
+            "value": ""
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/1/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "name": "",
+            "value": ""
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/2/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Buy Now🛍️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/2/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/2/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/3/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "name": "",
+            "value": ""
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/4/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Buy Now🛍️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/4/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/4/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/5/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Buy Now🛍️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/5/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/0/nested_panels/5/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/nodes/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "If you have any questions, I'm here to help 💛",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/0/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Your trigger here will be \"User sends you a message\". You can change these keywords to be anything you'd like!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/1/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Make sure you update this button URL so each of them open to your product page.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/2/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Make sure you update this button URL so each of them open to your product page.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/3/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Make sure you update this button URL so each of them open to your product page.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/4/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Here's your first message and product gallery showing your amazing new product drop.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/5/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Here's your message to encourage people to ask you questions. You can change this text!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/annotations/6/default_panel/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Make sure you update the images and text for each product card. The best image size is 500 px by 500 px.",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": null,
+            "value": "new",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/1/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "name": "",
+            "value": ""
+          }
+        },
+        {
+          "path": "/instance/observations/2/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "name": "",
+            "value": ""
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Buy Now🛍️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/3/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/4/identity_evidence_exact/field",
+          "phase": "captured_default",
+          "fields": {
+            "name": "",
+            "value": ""
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Buy Now🛍️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/5/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "caption",
+            "label": null,
+            "type": null,
+            "value": "Buy Now🛍️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": "url",
+            "label": null,
+            "type": null,
+            "value": "yourwebsite.com",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": null,
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/6/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": "Additional actions",
+            "type": "checkbox",
+            "value": "on",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_disabled": "false",
+              "aria_invalid": null,
+              "aria_required": null,
+              "disabled": false,
+              "inputmode": null,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "minlength": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/instance/observations/7/fields/0",
+          "phase": "navigation",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "If you have any questions, I'm here to help 💛",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/0/fields/0",
+          "phase": "captured_default",
+          "fields": {
+            "name": "text",
+            "label": null,
+            "type": null,
+            "value": "Let me show you my new drop! My courses are designed to help you get more dream clients from Instagram ☁️",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/0/fields/1",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "file",
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": true,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/0/fields/2",
+          "phase": "captured_default",
+          "fields": {
+            "name": "title",
+            "label": null,
+            "type": null,
+            "value": "Marketing Master Plan",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/0/fields/3",
+          "phase": "captured_default",
+          "fields": {
+            "name": "subtitle",
+            "label": null,
+            "type": null,
+            "value": "The #1 easy marketing guide",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/0/fields/4",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "file",
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": true,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/0/fields/5",
+          "phase": "captured_default",
+          "fields": {
+            "name": "title",
+            "label": null,
+            "type": null,
+            "value": "Ideal Client Roadmap",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/0/fields/6",
+          "phase": "captured_default",
+          "fields": {
+            "name": "subtitle",
+            "label": null,
+            "type": null,
+            "value": "The bumper target market guide",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/0/fields/7",
+          "phase": "captured_default",
+          "fields": {
+            "name": null,
+            "label": null,
+            "type": "file",
+            "value": "",
+            "value_state": "unset_client_input_required",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": true,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/0/fields/8",
+          "phase": "captured_default",
+          "fields": {
+            "name": "title",
+            "label": null,
+            "type": null,
+            "value": "Create a Freebie Your Followers Love!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        },
+        {
+          "path": "/followup/panels/0/fields/9",
+          "phase": "captured_default",
+          "fields": {
+            "name": "subtitle",
+            "label": null,
+            "type": null,
+            "value": "The only lead magnet workbook you need!",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "aria_invalid": null,
+              "disabled": false,
+              "max": null,
+              "maxlength": null,
+              "min": null,
+              "pattern": null,
+              "required": false,
+              "step": null
+            }
+          }
+        }
+      ],
+      "source_settings_sha256": "d3a8e3e1c01c7f7a01d4edc91483866fe68262d3cb0378f733acb61d5395be71",
+      "source_leaf_count": 2383,
+      "source_status": "Captured values preserved; unknowns and inspection variants are not defaults or requirements for an approved simpler adaptation."
+    }
+  ],
+  "plans": [
+    {
+      "origin": "authored_source_adaptation",
+      "analogue_id": null,
+      "selection": {
+        "id": "manychat-111-dm_base",
+        "label": "Direct-message entry",
+        "draft": {
+          "modes": [
+            "D",
+            "H"
+          ],
+          "inputs": [
+            "campaign",
+            "language",
+            "keyword",
+            "course_one_title",
+            "course_one_terms",
+            "course_one_card_url",
+            "course_one_purchase_url",
+            "course_two_title",
+            "course_two_terms",
+            "course_two_card_url",
+            "course_two_purchase_url",
+            "course_three_title",
+            "course_three_terms",
+            "course_three_card_url",
+            "course_three_purchase_url",
+            "help_text",
+            "refusal_text",
+            "handoff_text"
+          ],
+          "initial": "Choose a course: 1. {course_one_title}: {course_one_terms}. Details: {course_one_card_url}. Buy: {course_one_purchase_url}. 2. {course_two_title}: {course_two_terms}. Details: {course_two_card_url}. Buy: {course_two_purchase_url}. 3. {course_three_title}: {course_three_terms}. Details: {course_three_card_url}. Buy: {course_three_purchase_url}. If you have any questions, I'm here to help 💛",
+          "instruction": "On the actual DM keyword show all three distinct offers and all six destinations in plain text. Preserve each card/details URL separately from its purchase URL, even when the owner intentionally uses the same destination. Include the following help invitation in the same reply: If you have any questions, I'm here to help 💛. After a new question answer only from the selected offer terms; unknown facts use {handoff_text}. No gallery, button callback, separate autonomous second message, purchase or access verification. On refusal send {refusal_text} and stop. HELP is an actual reply, not a button callback. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.",
+          "contact_requirement": null,
+          "messages": {
+            "help": "If you have any questions, I'm here to help 💛"
+          },
+          "branches": {
+            "steps": [
+              {
+                "id": "entry",
+                "action": "Only the selected source entry.",
+                "message_ids": [],
+                "response_mode": "message"
+              },
+              {
+                "id": "first",
+                "action": "Send the requested response.",
+                "message_ids": [
+                  "initial"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "help",
+                "action": "Only for bare HELP, ask what assistance is needed.",
+                "message_ids": [
+                  "help"
+                ],
+                "response_mode": "message"
+              },
+              {
+                "id": "answer",
+                "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+                "message_ids": [],
+                "response_mode": "message"
+              }
+            ],
+            "transitions": [
+              {
+                "from": "entry",
+                "to": "first",
+                "condition": "Selected entry received"
+              },
+              {
+                "from": "first",
+                "to": "help",
+                "condition": "Actual bare HELP reply"
+              },
+              {
+                "from": "first",
+                "to": "answer",
+                "condition": "Actual concrete question"
+              },
+              {
+                "from": "help",
+                "to": "answer",
+                "condition": "Actual question or problem details in a new reply"
+              }
+            ]
+          }
+        },
+        "target": "dm_base",
+        "allowed_targets": [
+          "dm_base"
+        ],
+        "entry": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+        "entry_change": "Source entry retained. UI controls use actual replies or plain URLs; no source-specific entry is silently substituted.",
+        "output": "Offer three named courses with all six detail/purchase URLs and a help branch.",
+        "output_bindings": [
+          "course_one_title",
+          "course_one_terms",
+          "course_one_card_url",
+          "course_one_purchase_url",
+          "course_two_title",
+          "course_two_terms",
+          "course_two_card_url",
+          "course_two_purchase_url",
+          "course_three_title",
+          "course_three_terms",
+          "course_three_card_url",
+          "course_three_purchase_url"
+        ],
+        "instruction": "",
+        "source_requirements": [
+          "Three-course gallery",
+          "Separate card and purchase URLs",
+          "A following help message"
+        ],
+        "approval_required": true,
+        "source_id": "manychat-111"
+      },
+      "preserve_settings": [
+        "whenAIReplies",
+        "followUps"
+      ],
+      "entry_readback_fields": [],
+      "preparation_gates": [
+        "Preserve current whenAIReplies and followUps values, including inheritance, on the shared DM base. If its schedule or active follow-ups conflict with the proposed behavior, hold affected configuration or obtain separate approval for the exact base-wide change. No schedule/follow-up write is a default draft operation."
+      ],
+      "missing_readback": [],
+      "target": "dm_base",
+      "business_inputs": [
+        {
+          "name": "campaign",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "keyword",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "course_one_title",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "course_one_terms",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "course_one_card_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "course_one_purchase_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "course_two_title",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "course_two_terms",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "course_two_card_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "course_two_purchase_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "course_three_title",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "course_three_terms",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "course_three_card_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "course_three_purchase_url",
+          "type": "url",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "business_fact_if_missing"
+        },
+        {
+          "name": "help_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "refusal_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        },
+        {
+          "name": "handoff_text",
+          "type": "text",
+          "requirement": "required",
+          "description": "Supply the business value and approve its use in this selected draft.",
+          "provided_by": "drafted_by_assistant_for_approval"
+        }
+      ],
+      "messages": {
+        "initial": "Choose a course: 1. {course_one_title}: {course_one_terms}. Details: {course_one_card_url}. Buy: {course_one_purchase_url}. 2. {course_two_title}: {course_two_terms}. Details: {course_two_card_url}. Buy: {course_two_purchase_url}. 3. {course_three_title}: {course_three_terms}. Details: {course_three_card_url}. Buy: {course_three_purchase_url}. If you have any questions, I'm here to help 💛",
+        "public": "",
+        "refusal": "{refusal_text}",
+        "handoff": "{handoff_text}",
+        "help": "If you have any questions, I'm here to help 💛",
+        "placement": "DM {keyword}."
+      },
+      "instruction": "On the actual DM keyword show all three distinct offers and all six destinations in plain text. Preserve each card/details URL separately from its purchase URL, even when the owner intentionally uses the same destination. Include the following help invitation in the same reply: If you have any questions, I'm here to help 💛. After a new question answer only from the selected offer terms; unknown facts use {handoff_text}. No gallery, button callback, separate autonomous second message, purchase or access verification. On refusal send {refusal_text} and stop. HELP is an actual reply, not a button callback. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n",
+      "intended_branches": {
+        "steps": [
+          {
+            "id": "entry",
+            "action": "New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.",
+            "message_ids": [],
+            "response_mode": "message"
+          },
+          {
+            "id": "first",
+            "action": "Send the requested response.",
+            "message_ids": [
+              "initial"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "help",
+            "action": "Only for bare HELP, ask what assistance is needed.",
+            "message_ids": [
+              "help"
+            ],
+            "response_mode": "message"
+          },
+          {
+            "id": "answer",
+            "action": "Answer a concrete question only from approved facts; otherwise state that human review is needed. Do not repeat the help invitation or claim an unconfigured transfer.",
+            "message_ids": [],
+            "response_mode": "message"
+          }
+        ],
+        "transitions": [
+          {
+            "from": "entry",
+            "to": "first",
+            "condition": "Selected entry received"
+          },
+          {
+            "from": "first",
+            "to": "help",
+            "condition": "Actual bare HELP reply"
+          },
+          {
+            "from": "first",
+            "to": "answer",
+            "condition": "Actual concrete question"
+          },
+          {
+            "from": "help",
+            "to": "answer",
+            "condition": "Actual question or problem details in a new reply"
+          }
+        ]
+      },
+      "contact_requirement": null,
+      "operations": [
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "incomingMessages": {
+              "howToReply": "UsingAI",
+              "messagePrompt": "Campaign {campaign}. Language: {language}. Entry: New ordinary DM matching {keyword}; subsequent messages must belong to this campaign in the current conversation.. First message: Choose a course: 1. {course_one_title}: {course_one_terms}. Details: {course_one_card_url}. Buy: {course_one_purchase_url}. 2. {course_two_title}: {course_two_terms}. Details: {course_two_card_url}. Buy: {course_two_purchase_url}. 3. {course_three_title}: {course_three_terms}. Details: {course_three_card_url}. Buy: {course_three_purchase_url}. If you have any questions, I'm here to help 💛\nOn the actual DM keyword show all three distinct offers and all six destinations in plain text. Preserve each card/details URL separately from its purchase URL, even when the owner intentionally uses the same destination. Include the following help invitation in the same reply: If you have any questions, I'm here to help 💛. After a new question answer only from the selected offer terms; unknown facts use {handoff_text}. No gallery, button callback, separate autonomous second message, purchase or access verification. On refusal send {refusal_text} and stop. HELP is an actual reply, not a button callback. On bare HELP ask for details only. For a concrete question answer only approved knowledge; if unavailable, state that human review is needed without claiming an unconfigured transfer. Never repeat a help invitation instead of answering a concrete question. Pending contact gates still apply.\n\nHandle refusal before keyword matching. On refusal: {refusal_text} End this campaign. Use only new answers and consent from this run. Same-run repeats must not restart intake or duplicate capture. Do not send after silence or an external click. Preserve unrelated support.\nApproved reply texts by branch (choose only the applicable branch; never send these as a sequence):\nrefusal: {refusal_text}\nhandoff: {handoff_text}\nhelp: If you have any questions, I'm here to help 💛"
+            }
+          }
+        },
+        {
+          "tool": "update_automation_setting",
+          "target": "dm_base",
+          "settings": {
+            "switchToHuman": {
+              "howToSwitch": "SwitchToTeammates",
+              "rules": "$resolved.safe_handoff_rules"
+            }
+          }
+        }
+      ],
+      "list_additions": {
+        "switchToHuman": {
+          "switchingConditions": "Campaign {campaign}: the person requests the team or facts are unresolved.",
+          "messagePrompt": "{handoff_text}"
+        }
+      },
+      "stop": {
+        "tool": "set_automation_enabled",
+        "enabled": false,
+        "scope": "dm_base",
+        "gate": "Only the owned custom or exclusive unchanged DM base; never All or foreign/shared work."
+      },
+      "write_permission": "none",
+      "runtime_status": "not_tested"
+    }
+  ],
+  "continuations": {
+    "manychat-111": [
+      {
+        "id": "checkout",
+        "title": "Finish the offer destination",
+        "scope": "Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.",
+        "inputs": [
+          "Offer and destination URL",
+          "Price or coupon terms",
+          "Access or fulfillment rules",
+          "Existing authorized access"
+        ],
+        "citations": [],
+        "prompt": "Help me prepare: Finish the offer destination.\nSelected source: manychat-111 - DM your course like a closer.\nGoal: Present the right course and help interested learners reach the offer.\nVariant: Sell courses: three cards and help\nScope: Optional destination setup. Skip this step when sharing an existing approved offer link without changing checkout or fulfillment.\nSource entry: Keyword direct message\nSource requirements: Three-course gallery; Separate card and purchase URLs; A following help message\nSource timing: No exact timer captured.\nSource outcome: A choice of three courses\nCaptured text (node-0, not approved campaign copy):\nLet me show you my new drop! My courses are designed to help you get more dream clients from Instagram ☁️\nCurrent setup decision: adaptation_draft_requires_consent. The primary job can be prepared with the explicit reply/text substitutions below; this is not a full reproduction or a runtime test.\nPrimary Chatfuel result: Offer three named courses with all six detail/purchase URLs and a help branch.\nUse the existing store, course platform or checkout named by the owner.\nAsk me for: Offer and destination URL; Price or coupon terms; Access or fulfillment rules; Existing authorized access.\n1. Confirm the existing destination and approved offer. Draft the product, coupon or course-access configuration only where it is needed; merely sharing an existing link needs no new integration.\n2. Check the page and define separate evidence for payment, coupon redemption and access delivery. Neither a DM link nor a source message promising expiry proves these outcomes. Keep unverified expiry or completion callbacks unresolved.\n3. Return draft settings, authorization gaps and exact success checks. Do not publish an offer, create a purchase, charge money or grant access.\n4. Prepare a draft only. Do not create accounts, spend, register senders, activate automations, send messages or change live settings without separate approval.\n5. Use existing authorized access available in this host. Never request secret API keys in chat. Do not assume background persistence or an installed connection; claim connected only after readback.\n6. Keep the selected source gates, delays and optional inputs explicit. Any changed journey needs owner approval. Do not silently introduce exports, manual transfers, Zapier, a new MCP or backend."
+      }
+    ]
+  },
+  "bindings": {
+    "scenarios.json": "58b6005af852482770516dbc57525e483d2b8bbdaf0e4ac5f6cfc505b389a154",
+    "capability-observation.json": "b41a7774576e31b1a88fe243e7e64e8ceb39866b135098eaa33b0d8c0089a5c6",
+    "setup-policy.md": "27298576f6c742ec26eafd7385b02e04fe456947c11f16d8396a9294be51424b",
+    "setup-source-index.json": "8bdba4c7b7dc8a95d6dd7747e751315c3b13df8262e7b0fc5675aa212e9cb12e",
+    "source-coverage.json": "bae664741406fd7b43ffb32b1c8861985debec9b1e5605a9e66f753f923cca16",
+    "source-records/manychat-111.json": "ad60d4d74edaa70ed6c66b043711ae248189e52cf2e57a4201a958b9e6e6cff1",
+    "described-recipes/inro-6080.json": "949e027f723ce1d49c8c4aea7d5591bf1f272a6a0151f12890ae40bb79ab836f"
+  }
+}

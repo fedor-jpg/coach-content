@@ -1,0 +1,2427 @@
+{
+  "id": "manychat-433",
+  "source": {
+    "vendor": "manychat",
+    "file": "templates/manychat-433.json",
+    "title": "* Opening DM (Manychat for Brands)",
+    "category": "DM",
+    "facets": [
+      "DM",
+      "campaign_component",
+      "post_comment"
+    ],
+    "job": "campaign_component",
+    "model": "flow_builder",
+    "document": {
+      "schema_version": "1.2",
+      "id": "manychat-433",
+      "ordinal": 18,
+      "title": "* Opening DM (Manychat for Brands)",
+      "source_id": "campaign-card-433",
+      "observed_at": "2026-10-30",
+      "configuration_model": "flow_builder",
+      "entry_type": "template",
+      "source": {
+        "url": "https://app.manychat.com/fb4213902/dashboard",
+        "catalog_evidence": {
+          "file": "evidence/inventory.json",
+          "pointer": "/items/17"
+        },
+        "catalog_mode": "Flow Builder",
+        "facets": [
+          "DM"
+        ],
+        "badge_text_exact": "",
+        "description_exact": "Start the conversation first, then send your link once they reply.",
+        "preview_evidence": {
+          "file": "evidence/433-preview.json",
+          "pointer": ""
+        },
+        "preview_text_exact": "Instagram\nTiktok\nTelegram\nOpening DM: [Campaign] [Creator]\nStart the conversation first, then send your link once they reply.\nBack To List\nSet Up Template",
+        "original_graph_state": "not_exposed",
+        "original_defaults": null,
+        "source_original_settings_complete": false
+      },
+      "instance": {
+        "scope": "installed_draft_not_original",
+        "capture_semantics": "Baseline captured before follow-up changes; current safety and retained inspection variants are separate.",
+        "draft_id": "content20261031003838_307290",
+        "url": "https://app.manychat.com/fb4213902/cms/files/content20261031003838_307290/edit",
+        "title_exact": "Opening DM: [Campaign] [Creator]",
+        "original_equivalence": "unverified",
+        "nodes": [
+          {
+            "id": "node-0",
+            "kind": "message",
+            "label_exact": "Send Message",
+            "identity": {
+              "position": 0,
+              "group": "builder-node-start",
+              "original_source_id": null,
+              "visible_ids_exact": {
+                "blocks": [],
+                "buttons": [
+                  {
+                    "ids": [
+                      "b2510522-a3b9-4ae1-911c-0e88fa093df8"
+                    ],
+                    "position": 0,
+                    "text": "Send me the link"
+                  }
+                ]
+              },
+              "active_sidebar_exact": [
+                {
+                  "active": true,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                }
+              ],
+              "header_exact": [
+                "Send Message"
+              ],
+              "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+            },
+            "default_panel": {
+              "label": "node.0.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\nSend Message\nSend\nas Private Reply\nThanks for your comment! Want the link? Tap below and I'll send it 👇\nSend me the link\n+ Add Button\n+ Add Quick Reply\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your comment! Want the link? Tap below and I'll send it 👇\nSend me the link\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Enter your text...",
+                  "value": "Thanks for your comment! Want the link? Tap below and I'll send it 👇",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/433-editor.json",
+                    "pointer": "/node_defaults/0/capture/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/node_defaults/0/capture"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": true,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-attached",
+                    "label": "Send Message #1",
+                    "position": 1
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  }
+                ],
+                "header": [
+                  "Send Message"
+                ],
+                "visible_identity": {
+                  "blocks": [],
+                  "buttons": [
+                    {
+                      "ids": [
+                        "b2510522-a3b9-4ae1-911c-0e88fa093df8"
+                      ],
+                      "position": 0,
+                      "text": "Send me the link"
+                    }
+                  ]
+                }
+              },
+              "source_hash": "ee498f1c31b38fad4e4dabbc4d7a380eb72357840c4a725ea20b6281017ac074",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/node_defaults/0/capture/scope"
+                }
+              }
+            },
+            "nested_panels": [
+              {
+                "label": "node-0.button-0.default",
+                "scope": "publication_draft_clone",
+                "phase": "captured_default",
+                "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nSend me the link\nWhen this button is pressed\nInstagram\nSend Message #1\nDelete button\nDone",
+                "fields": [
+                  {
+                    "name": "caption",
+                    "label": null,
+                    "tag": "textarea",
+                    "type": null,
+                    "placeholder": "Enter title...",
+                    "value": "Send me the link",
+                    "value_state": "observed",
+                    "checked": false,
+                    "options_exact": null,
+                    "validation_exact": {
+                      "aria_disabled": null,
+                      "aria_invalid": null,
+                      "aria_required": null,
+                      "disabled": false,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "required": false,
+                      "step": null
+                    },
+                    "evidence": {
+                      "file": "evidence/433-editor.json",
+                      "pointer": "/captures/3/panel/fields/0"
+                    }
+                  }
+                ],
+                "buttons_exact": [
+                  {
+                    "disabled": false,
+                    "label": "Close",
+                    "text": ""
+                  },
+                  {
+                    "disabled": false,
+                    "label": null,
+                    "text": "Delete button"
+                  },
+                  {
+                    "disabled": false,
+                    "label": null,
+                    "text": "Done"
+                  }
+                ],
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/3"
+                },
+                "identity_evidence_exact": {
+                  "visible_button_identity": {
+                    "ids": [
+                      "b2510522-a3b9-4ae1-911c-0e88fa093df8"
+                    ],
+                    "position": 0,
+                    "text": "Send me the link"
+                  }
+                },
+                "source_hash": "d3393a8797a88aab6abc2438d5276aa5918e3cba007151af3d6dc74fdcefa54e",
+                "scope_history": {
+                  "label_exact": "inactive_clone",
+                  "interpretation": "historical_label_not_inactivity_evidence",
+                  "evidence": {
+                    "file": "evidence/433-editor.json",
+                    "pointer": "/captures/3/scope"
+                  }
+                }
+              }
+            ],
+            "shared_options": [
+              {
+                "definition": "message_personalization",
+                "panel": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/node_defaults/0/capture"
+                },
+                "matched_tokens": [
+                  "textarea",
+                  "Enter your text..."
+                ],
+                "signature": "80b16fd296c5abd6956845ffd7460885f53e617030421172d410ee6785221c7e",
+                "scope": "Matched visible textarea and placeholder; hidden editor state was not read."
+              },
+              {
+                "definition": "button_action",
+                "panel": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/3"
+                },
+                "matched_tokens": [
+                  "Edit Button",
+                  "Button title",
+                  "When this button is pressed"
+                ],
+                "signature": "7c613d956a182137c9574e1fa61dff9684623998fff456c3928f87500d0ff4e9",
+                "scope": "Shared option choices only; instance values remain in this panel."
+              }
+            ],
+            "inspection": {
+              "default_opened": true,
+              "nested_panels_opened": 1,
+              "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+              "existing_block_controls_complete": true,
+              "all_variants_verified": false,
+              "gaps": []
+            },
+            "exit_semantics": [
+              {
+                "state": "no_click_unknown",
+                "detail": "No automatic timeout is inferred for a button. Only captured delay/expiration connections count."
+              }
+            ]
+          },
+          {
+            "id": "node-1",
+            "kind": "message",
+            "label_exact": "Send Message #1",
+            "identity": {
+              "position": 1,
+              "group": "builder-node-attached",
+              "original_source_id": null,
+              "visible_ids_exact": {
+                "blocks": [],
+                "buttons": [
+                  {
+                    "ids": [
+                      "479c9cd2-e1fc-4374-8005-a61b9f9ee498"
+                    ],
+                    "position": 0,
+                    "text": "New Button #1"
+                  }
+                ]
+              },
+              "active_sidebar_exact": [
+                {
+                  "active": true,
+                  "group": "builder-node-attached",
+                  "label": "Send Message #1",
+                  "position": 1
+                }
+              ],
+              "header_exact": [
+                "Send Message #1"
+              ],
+              "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+            },
+            "default_panel": {
+              "label": "node.1.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\nSend Message #1\nSend\nwithin 24 hour window\nHere you go! 👇\nNew Button #1\n+ Add Button\n+ Add Quick Reply\nAdd one of the content blocks:\nText\nAdd simple text and buttons\nImage\nBoost engagement with visuals\nPDF\nAdd PDF files to your message\nDelay\nWait a few seconds in between texts\nData Collection\nCollect emails, phones and more\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nMore\nView all available options\nChoose Next Step\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nHere you go! 👇\nNew Button #1\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Enter your text...",
+                  "value": "Here you go! 👇",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/433-editor.json",
+                    "pointer": "/node_defaults/1/capture/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Text\nAdd simple text and buttons"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Image\nBoost engagement with visuals"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "PDF\nAdd PDF files to your message"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Delay\nWait a few seconds in between texts"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Data Collection\nCollect emails, phones and more\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access."
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "More\nView all available options"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Choose Next Step"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/node_defaults/1/capture"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": false,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": true,
+                    "group": "builder-node-attached",
+                    "label": "Send Message #1",
+                    "position": 1
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  }
+                ],
+                "header": [
+                  "Send Message #1"
+                ],
+                "visible_identity": {
+                  "blocks": [],
+                  "buttons": [
+                    {
+                      "ids": [
+                        "479c9cd2-e1fc-4374-8005-a61b9f9ee498"
+                      ],
+                      "position": 0,
+                      "text": "New Button #1"
+                    }
+                  ]
+                }
+              },
+              "source_hash": "11211d1491228f142c7f9b50f9f8a6146744d3a4c48ebb77b74645715a80049a",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/node_defaults/1/capture/scope"
+                }
+              }
+            },
+            "nested_panels": [
+              {
+                "label": "node-1.button-0.default",
+                "scope": "publication_draft_clone",
+                "phase": "captured_default",
+                "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nNew Button #1\nWhen this button is pressed\nOpen website\nyourlink.com\nWebsite URL\nyourlink.com\nAdditional actions\nE.g. you can add a tag on a button click.\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nPeople will see a redirection page for 2 seconds. Upgrade to remove it.\nDelete button\nDone",
+                "fields": [
+                  {
+                    "name": "caption",
+                    "label": null,
+                    "tag": "textarea",
+                    "type": null,
+                    "placeholder": "Enter title...",
+                    "value": "New Button #1",
+                    "value_state": "observed",
+                    "checked": false,
+                    "options_exact": null,
+                    "validation_exact": {
+                      "aria_disabled": null,
+                      "aria_invalid": null,
+                      "aria_required": null,
+                      "disabled": false,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "required": false,
+                      "step": null
+                    },
+                    "evidence": {
+                      "file": "evidence/433-editor.json",
+                      "pointer": "/captures/5/panel/fields/0"
+                    }
+                  },
+                  {
+                    "name": "url",
+                    "label": null,
+                    "tag": "textarea",
+                    "type": null,
+                    "placeholder": "https://yourwebsite.com",
+                    "value": "yourlink.com",
+                    "value_state": "observed",
+                    "checked": false,
+                    "options_exact": null,
+                    "validation_exact": {
+                      "aria_disabled": null,
+                      "aria_invalid": null,
+                      "aria_required": null,
+                      "disabled": false,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "required": false,
+                      "step": null
+                    },
+                    "evidence": {
+                      "file": "evidence/433-editor.json",
+                      "pointer": "/captures/5/panel/fields/1"
+                    }
+                  },
+                  {
+                    "name": null,
+                    "label": "Additional actions",
+                    "tag": "input",
+                    "type": "checkbox",
+                    "placeholder": null,
+                    "value": "on",
+                    "value_state": "observed",
+                    "checked": false,
+                    "options_exact": null,
+                    "validation_exact": {
+                      "aria_disabled": "false",
+                      "aria_invalid": null,
+                      "aria_required": null,
+                      "disabled": false,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "required": false,
+                      "step": null
+                    },
+                    "evidence": {
+                      "file": "evidence/433-editor.json",
+                      "pointer": "/captures/5/panel/fields/2"
+                    }
+                  }
+                ],
+                "buttons_exact": [
+                  {
+                    "disabled": false,
+                    "label": "Close",
+                    "text": ""
+                  },
+                  {
+                    "disabled": false,
+                    "label": null,
+                    "text": "Delete button"
+                  },
+                  {
+                    "disabled": false,
+                    "label": null,
+                    "text": "Done"
+                  }
+                ],
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/5"
+                },
+                "identity_evidence_exact": {
+                  "visible_button_identity": {
+                    "ids": [
+                      "479c9cd2-e1fc-4374-8005-a61b9f9ee498"
+                    ],
+                    "position": 0,
+                    "text": "New Button #1"
+                  }
+                },
+                "source_hash": "bfa5778eec13e686e70abddc6c28ee2807eba43ea4bb9de6751df8fe5933c528",
+                "scope_history": {
+                  "label_exact": "inactive_clone",
+                  "interpretation": "historical_label_not_inactivity_evidence",
+                  "evidence": {
+                    "file": "evidence/433-editor.json",
+                    "pointer": "/captures/5/scope"
+                  }
+                }
+              }
+            ],
+            "shared_options": [
+              {
+                "definition": "send_mode",
+                "panel": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/node_defaults/1/capture"
+                },
+                "matched_tokens": [
+                  "Send",
+                  "within 24 hour window"
+                ],
+                "signature": "46327c2cfcbd80f93652b66488bf6cf99abca1b326dd6907286fd76264380534",
+                "scope": "Shared option choices only; instance values remain in this panel."
+              },
+              {
+                "definition": "message_personalization",
+                "panel": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/node_defaults/1/capture"
+                },
+                "matched_tokens": [
+                  "textarea",
+                  "Enter your text..."
+                ],
+                "signature": "80b16fd296c5abd6956845ffd7460885f53e617030421172d410ee6785221c7e",
+                "scope": "Matched visible textarea and placeholder; hidden editor state was not read."
+              },
+              {
+                "definition": "button_action",
+                "panel": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/5"
+                },
+                "matched_tokens": [
+                  "Edit Button",
+                  "Button title",
+                  "When this button is pressed"
+                ],
+                "signature": "7c613d956a182137c9574e1fa61dff9684623998fff456c3928f87500d0ff4e9",
+                "scope": "Shared option choices only; instance values remain in this panel."
+              }
+            ],
+            "inspection": {
+              "default_opened": true,
+              "nested_panels_opened": 1,
+              "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+              "existing_block_controls_complete": true,
+              "all_variants_verified": false,
+              "gaps": []
+            },
+            "exit_semantics": [
+              {
+                "state": "unset_exit_visible",
+                "detail": "Choose Next Step is visible; no destination is inferred for that port."
+              },
+              {
+                "state": "no_connected_destination_observed",
+                "detail": "No captured outgoing graph edge; this is not proof of purchase, registration or runtime termination."
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "id": "node-2",
+            "kind": "note",
+            "label_exact": "note",
+            "identity": {
+              "position": 2,
+              "group": "builder-node-unattached",
+              "original_source_id": null,
+              "visible_ids_exact": {
+                "blocks": [],
+                "buttons": []
+              },
+              "active_sidebar_exact": [
+                {
+                  "active": true,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 2
+                }
+              ],
+              "header_exact": [],
+              "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+            },
+            "default_panel": {
+              "label": "node.2.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\n590\nNote Size\nS\nM\nL\nFont Size\naA\naA\n[preview time excluded]\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": null,
+                  "value": "Keyword trigger is defined in \nManychat for Brands",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": "640",
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/433-editor.json",
+                    "pointer": "/node_defaults/2/capture/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/node_defaults/2/capture"
+              },
+              "identity_evidence_exact": {
+                "sidebar": [
+                  {
+                    "active": false,
+                    "group": "builder-node-start",
+                    "label": "Send Message",
+                    "position": 0
+                  },
+                  {
+                    "active": false,
+                    "group": "builder-node-attached",
+                    "label": "Send Message #1",
+                    "position": 1
+                  },
+                  {
+                    "active": true,
+                    "group": "builder-node-unattached",
+                    "label": "note",
+                    "position": 2
+                  }
+                ],
+                "header": [],
+                "visible_identity": {
+                  "blocks": [],
+                  "buttons": []
+                }
+              },
+              "source_hash": "bba734993d2310c6e52bb6e3bd4b776f106515aa66a4c0cf76fbab75e7c57b31",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/node_defaults/2/capture/scope"
+                }
+              }
+            },
+            "nested_panels": [],
+            "shared_options": [],
+            "inspection": {
+              "default_opened": true,
+              "nested_panels_opened": 0,
+              "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+              "existing_block_controls_complete": true,
+              "all_variants_verified": false,
+              "gaps": []
+            },
+            "exit_semantics": []
+          }
+        ],
+        "edges": [
+          {
+            "from": "node-0",
+            "to": "node-1",
+            "port_exact": "button-0",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [
+              "b2510522-a3b9-4ae1-911c-0e88fa093df8"
+            ],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": "navigation.node-0.button-0.target",
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/graph/edges/0"
+            }
+          },
+          {
+            "from": "trigger",
+            "to": "node-0",
+            "port_exact": "Starting Step",
+            "source_branch_id": null,
+            "source_reply_id": null,
+            "visible_button_ids": [],
+            "weight_percent": null,
+            "caption_exact": null,
+            "navigation_label": null,
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/graph/edges/1"
+            }
+          }
+        ],
+        "observations": [
+          {
+            "label": "trigger.post.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\nPost or Reel Comments #9\n\nStep 1 of 3\n\nWhich Post or Reel do you want to use in automation?\nSpecific Post or Reel\nAll Posts or Reels\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nNext Post or Reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nContinue\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your comment! Want the link? Tap below and I'll send it 👇\nSend me the link\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Continue"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/captures/0"
+            },
+            "identity_evidence_exact": {},
+            "source_hash": "c69a980cdbaeaeb6e87148c3fd162838415acaee345d3e8e332c88432cc91e3c",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/0/scope"
+              }
+            }
+          },
+          {
+            "label": "trigger.keywords.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\nPost or Reel Comments #9\n\nStep 2 of 3\n\nWhat will start your DM automation?\nSpecific Keywords\nAny comment\nContinue\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your comment! Want the link? Tap below and I'll send it 👇\nSend me the link\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              },
+              {
+                "disabled": false,
+                "label": "Previous step",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Continue"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/captures/1"
+            },
+            "identity_evidence_exact": {},
+            "source_hash": "c3b02847abd4069c0a8448be01aa71eb94a317af011c372fa05483b06f58c9b8",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/1/scope"
+              }
+            }
+          },
+          {
+            "label": "trigger.public_reply.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\nPost or Reel Comments #9\n\nStep 3 of 3\n\nWould you like to set up Public Reply in the feed?\nYes, random multiple replies\nDetails sent, review your DMs 🧭\nLink's in your DMs 📥\nSent the link! Check your messages 📝\nNew Replies\nNo\nSave\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your comment! Want the link? Tap below and I'll send it 👇\nSend me the link\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": "replies.0.reply",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Type your reply",
+                "value": "Details sent, review your DMs 🧭",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/2/panel/fields/0"
+                }
+              },
+              {
+                "name": "replies.1.reply",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Type your reply",
+                "value": "Link's in your DMs 📥",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/2/panel/fields/1"
+                }
+              },
+              {
+                "name": "replies.2.reply",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Type your reply",
+                "value": "Sent the link! Check your messages 📝",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/2/panel/fields/2"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "New Replies"
+              },
+              {
+                "disabled": false,
+                "label": "Previous step",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Save"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/captures/2"
+            },
+            "identity_evidence_exact": {},
+            "source_hash": "24abbcf1201e3de1fc3cabb0afe529961851b52246f0799399645ef828d39dac",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/2/scope"
+              }
+            }
+          },
+          {
+            "label": "node-0.button-0.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nSend me the link\nWhen this button is pressed\nInstagram\nSend Message #1\nDelete button\nDone",
+            "fields": [
+              {
+                "name": "caption",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter title...",
+                "value": "Send me the link",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/3/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": "Close",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Delete button"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Done"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/captures/3"
+            },
+            "identity_evidence_exact": {
+              "visible_button_identity": {
+                "ids": [
+                  "b2510522-a3b9-4ae1-911c-0e88fa093df8"
+                ],
+                "position": 0,
+                "text": "Send me the link"
+              }
+            },
+            "source_hash": "d3393a8797a88aab6abc2438d5276aa5918e3cba007151af3d6dc74fdcefa54e",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/3/scope"
+              }
+            }
+          },
+          {
+            "label": "navigation.node-0.button-0.target",
+            "scope": "publication_draft_clone",
+            "phase": "navigation",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\nSend Message #1\nSend\nwithin 24 hour window\nHere you go! 👇\nNew Button #1\n+ Add Button\n+ Add Quick Reply\nAdd one of the content blocks:\nText\nAdd simple text and buttons\nImage\nBoost engagement with visuals\nPDF\nAdd PDF files to your message\nDelay\nWait a few seconds in between texts\nData Collection\nCollect emails, phones and more\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nMore\nView all available options\nChoose Next Step\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your comment! Want the link? Tap below and I'll send it 👇\nSend me the link\nSend me the link\nHere you go! 👇\nNew Button #1\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": "text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter your text...",
+                "value": "Here you go! 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/4/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Text\nAdd simple text and buttons"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Image\nBoost engagement with visuals"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "PDF\nAdd PDF files to your message"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Delay\nWait a few seconds in between texts"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Data Collection\nCollect emails, phones and more\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access."
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "More\nView all available options"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Choose Next Step"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/captures/4"
+            },
+            "identity_evidence_exact": {
+              "sidebar": [
+                {
+                  "active": false,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                },
+                {
+                  "active": true,
+                  "group": "builder-node-attached",
+                  "label": "Send Message #1",
+                  "position": 1
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 2
+                }
+              ],
+              "header": [
+                "Send Message #1"
+              ]
+            },
+            "source_hash": "07d736419cf5d3f8f26577b61b1f259f3f34951e09e0f4f57ee87077bfca4905",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/4/scope"
+              }
+            }
+          },
+          {
+            "label": "node-1.button-0.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nNew Button #1\nWhen this button is pressed\nOpen website\nyourlink.com\nWebsite URL\nyourlink.com\nAdditional actions\nE.g. you can add a tag on a button click.\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nPeople will see a redirection page for 2 seconds. Upgrade to remove it.\nDelete button\nDone",
+            "fields": [
+              {
+                "name": "caption",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter title...",
+                "value": "New Button #1",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/5/panel/fields/0"
+                }
+              },
+              {
+                "name": "url",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "https://yourwebsite.com",
+                "value": "yourlink.com",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/5/panel/fields/1"
+                }
+              },
+              {
+                "name": null,
+                "label": "Additional actions",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/5/panel/fields/2"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": "Close",
+                "text": ""
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Delete button"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Done"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/captures/5"
+            },
+            "identity_evidence_exact": {
+              "visible_button_identity": {
+                "ids": [
+                  "479c9cd2-e1fc-4374-8005-a61b9f9ee498"
+                ],
+                "position": 0,
+                "text": "New Button #1"
+              }
+            },
+            "source_hash": "bfa5778eec13e686e70abddc6c28ee2807eba43ea4bb9de6751df8fe5933c528",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/5/scope"
+              }
+            }
+          }
+        ],
+        "trigger_shared_options": [],
+        "inspection_only_node_ids": [],
+        "graph_integrity": {
+          "captured_sidebar_items": 3,
+          "executable_nodes_including_trigger": 3,
+          "captured_edges": 2,
+          "rendered_totals_exact": null,
+          "all_original_nodes_and_edges_proven": false,
+          "limitation": "Original graph is not exposed. Draft edges use visible navigation identity; no hidden IDs or server export."
+        },
+        "supporting_evidence": [
+          {
+            "kind": "option_sets",
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/option_sets"
+            },
+            "json_exact": [
+              {
+                "control": "trigger.post_scope",
+                "indicators": [
+                  {
+                    "classes": "_publicationTypeOption_zftkd_1 _publicationTypeOption_noCursorPointer_zftkd_8",
+                    "text": "Specific Post or Reel"
+                  },
+                  {
+                    "classes": "_publicationTypeOption_zftkd_1 _publicationTypeOption_active_zftkd_12",
+                    "text": "All Posts or Reels\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access."
+                  },
+                  {
+                    "classes": "_publicationTypeOption_zftkd_1",
+                    "text": "Next Post or Reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access."
+                  }
+                ],
+                "continue_enabled": true
+              }
+            ]
+          },
+          {
+            "kind": "draft_changes",
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/draft_changes"
+            },
+            "json_exact": []
+          }
+        ]
+      },
+      "native_setup": null,
+      "followup": null,
+      "selection": {
+        "basis": "product_interpretation",
+        "job_family": "campaign_component",
+        "trigger": "post_comment",
+        "route": "opening_then_link",
+        "choose_when": "Use the Brands Opening DM component when a button interaction precedes the link.",
+        "avoid_when": "Do not assume the Brands campaign integration exists in Chatfuel.",
+        "client_inputs": [
+          "campaign",
+          "creator",
+          "keywords",
+          "link"
+        ]
+      },
+      "safety": {
+        "draft_evidence": {
+          "file": "evidence/draft-manifest.json",
+          "pointer": "/10"
+        },
+        "draft_publication_verified": true,
+        "all_configured_triggers_off": true,
+        "current_state": {
+          "entry_trigger_state": "off",
+          "publication": "DRAFT",
+          "evidence": {
+            "file": "evidence/followup-reconciliation.json",
+            "pointer": "/after_representative1080_cleanup/rows/10"
+          },
+          "source_hash": "b5bc2e1accadd630e3d831ccc7b83a329959df09e646e734efbce64cb3452e53"
+        },
+        "remediation_evidence": null,
+        "delivery_limit": "No Set Live or send action. Scoped 0 runs before trigger removal and n/a list metrics are not account-wide no-delivery proof.",
+        "set_live_pressed": false,
+        "runtime_tested": false,
+        "credential_values_collected": false
+      },
+      "reconstruction": {
+        "status": "partial",
+        "original_settings_complete": false,
+        "instance_default_panels_captured": true,
+        "instance_ui_inspection_complete": true,
+        "all_possible_variants_verified": false,
+        "client_ready": false,
+        "runtime_tested": false
+      },
+      "gaps": [
+        "Original server settings and IDs were not exported. Clone defaults are not asserted to equal source defaults.",
+        "Runtime was not tested because execution is forbidden; this is separate from settings completeness.",
+        "All existing node defaults were opened. Shared options are evidence-matched; exhaustive alternative node-type conversion is not proven."
+      ]
+    }
+  },
+  "graph": {
+    "start": "trigger",
+    "steps": [
+      {
+        "id": "trigger",
+        "type": "entry",
+        "sourceType": "trigger",
+        "title": "Trigger",
+        "content": {
+          "text": "",
+          "preview": "Post or Reel Comments #9\n\nSelected values were not captured",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "panels": [
+            {
+              "label": "trigger.post.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\nPost or Reel Comments #9\n\nStep 1 of 3\n\nWhich Post or Reel do you want to use in automation?\nSpecific Post or Reel\nAll Posts or Reels\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nNext Post or Reel\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nContinue\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your comment! Want the link? Tap below and I'll send it 👇\nSend me the link\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Continue"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/0"
+              },
+              "identity_evidence_exact": {},
+              "source_hash": "c69a980cdbaeaeb6e87148c3fd162838415acaee345d3e8e332c88432cc91e3c",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/0/scope"
+                }
+              }
+            },
+            {
+              "label": "trigger.keywords.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\nPost or Reel Comments #9\n\nStep 2 of 3\n\nWhat will start your DM automation?\nSpecific Keywords\nAny comment\nContinue\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your comment! Want the link? Tap below and I'll send it 👇\nSend me the link\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                },
+                {
+                  "disabled": false,
+                  "label": "Previous step",
+                  "text": ""
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Continue"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/1"
+              },
+              "identity_evidence_exact": {},
+              "source_hash": "c3b02847abd4069c0a8448be01aa71eb94a317af011c372fa05483b06f58c9b8",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/1/scope"
+                }
+              }
+            },
+            {
+              "label": "trigger.public_reply.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\nPost or Reel Comments #9\n\nStep 3 of 3\n\nWould you like to set up Public Reply in the feed?\nYes, random multiple replies\nDetails sent, review your DMs 🧭\nLink's in your DMs 📥\nSent the link! Check your messages 📝\nNew Replies\nNo\nSave\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your comment! Want the link? Tap below and I'll send it 👇\nSend me the link\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+              "fields": [
+                {
+                  "name": "replies.0.reply",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Type your reply",
+                  "value": "Details sent, review your DMs 🧭",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/433-editor.json",
+                    "pointer": "/captures/2/panel/fields/0"
+                  }
+                },
+                {
+                  "name": "replies.1.reply",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Type your reply",
+                  "value": "Link's in your DMs 📥",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/433-editor.json",
+                    "pointer": "/captures/2/panel/fields/1"
+                  }
+                },
+                {
+                  "name": "replies.2.reply",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Type your reply",
+                  "value": "Sent the link! Check your messages 📝",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "disabled": false,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "pattern": null,
+                    "required": false
+                  },
+                  "evidence": {
+                    "file": "evidence/433-editor.json",
+                    "pointer": "/captures/2/panel/fields/2"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Go To Flow Builder"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "New Replies"
+                },
+                {
+                  "disabled": false,
+                  "label": "Previous step",
+                  "text": ""
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Save"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/2"
+              },
+              "identity_evidence_exact": {},
+              "source_hash": "24abbcf1201e3de1fc3cabb0afe529961851b52246f0799399645ef828d39dac",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/2/scope"
+                }
+              }
+            }
+          ],
+          "trigger_shared_options": []
+        },
+        "provenance": {
+          "pointer": null,
+          "derived": "implicit_trigger_endpoint",
+          "evidence": [
+            "/instance/edges",
+            "/instance/observations"
+          ]
+        }
+      },
+      {
+        "id": "node-0",
+        "type": "message",
+        "sourceType": "message",
+        "title": "Send Message",
+        "content": {
+          "text": "Thanks for your comment! Want the link? Tap below and I'll send it 👇",
+          "preview": "Thanks for your comment! Want the link? Tap below and I'll send it 👇",
+          "buttons": [
+            "Send me the link"
+          ],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "node-0",
+          "kind": "message",
+          "label_exact": "Send Message",
+          "identity": {
+            "position": 0,
+            "group": "builder-node-start",
+            "original_source_id": null,
+            "visible_ids_exact": {
+              "blocks": [],
+              "buttons": [
+                {
+                  "ids": [
+                    "b2510522-a3b9-4ae1-911c-0e88fa093df8"
+                  ],
+                  "position": 0,
+                  "text": "Send me the link"
+                }
+              ]
+            },
+            "active_sidebar_exact": [
+              {
+                "active": true,
+                "group": "builder-node-start",
+                "label": "Send Message",
+                "position": 0
+              }
+            ],
+            "header_exact": [
+              "Send Message"
+            ],
+            "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+          },
+          "default_panel": {
+            "label": "node.0.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\nSend Message\nSend\nas Private Reply\nThanks for your comment! Want the link? Tap below and I'll send it 👇\nSend me the link\n+ Add Button\n+ Add Quick Reply\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nThanks for your comment! Want the link? Tap below and I'll send it 👇\nSend me the link\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": "text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter your text...",
+                "value": "Thanks for your comment! Want the link? Tap below and I'll send it 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/node_defaults/0/capture/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/node_defaults/0/capture"
+            },
+            "identity_evidence_exact": {
+              "sidebar": [
+                {
+                  "active": true,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-attached",
+                  "label": "Send Message #1",
+                  "position": 1
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 2
+                }
+              ],
+              "header": [
+                "Send Message"
+              ],
+              "visible_identity": {
+                "blocks": [],
+                "buttons": [
+                  {
+                    "ids": [
+                      "b2510522-a3b9-4ae1-911c-0e88fa093df8"
+                    ],
+                    "position": 0,
+                    "text": "Send me the link"
+                  }
+                ]
+              }
+            },
+            "source_hash": "ee498f1c31b38fad4e4dabbc4d7a380eb72357840c4a725ea20b6281017ac074",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/node_defaults/0/capture/scope"
+              }
+            }
+          },
+          "nested_panels": [
+            {
+              "label": "node-0.button-0.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nSend me the link\nWhen this button is pressed\nInstagram\nSend Message #1\nDelete button\nDone",
+              "fields": [
+                {
+                  "name": "caption",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Enter title...",
+                  "value": "Send me the link",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "aria_disabled": null,
+                    "aria_invalid": null,
+                    "aria_required": null,
+                    "disabled": false,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "required": false,
+                    "step": null
+                  },
+                  "evidence": {
+                    "file": "evidence/433-editor.json",
+                    "pointer": "/captures/3/panel/fields/0"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": "Close",
+                  "text": ""
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Delete button"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Done"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/3"
+              },
+              "identity_evidence_exact": {
+                "visible_button_identity": {
+                  "ids": [
+                    "b2510522-a3b9-4ae1-911c-0e88fa093df8"
+                  ],
+                  "position": 0,
+                  "text": "Send me the link"
+                }
+              },
+              "source_hash": "d3393a8797a88aab6abc2438d5276aa5918e3cba007151af3d6dc74fdcefa54e",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/3/scope"
+                }
+              }
+            }
+          ],
+          "shared_options": [
+            {
+              "definition": "message_personalization",
+              "panel": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/node_defaults/0/capture"
+              },
+              "matched_tokens": [
+                "textarea",
+                "Enter your text..."
+              ],
+              "signature": "80b16fd296c5abd6956845ffd7460885f53e617030421172d410ee6785221c7e",
+              "scope": "Matched visible textarea and placeholder; hidden editor state was not read."
+            },
+            {
+              "definition": "button_action",
+              "panel": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/3"
+              },
+              "matched_tokens": [
+                "Edit Button",
+                "Button title",
+                "When this button is pressed"
+              ],
+              "signature": "7c613d956a182137c9574e1fa61dff9684623998fff456c3928f87500d0ff4e9",
+              "scope": "Shared option choices only; instance values remain in this panel."
+            }
+          ],
+          "inspection": {
+            "default_opened": true,
+            "nested_panels_opened": 1,
+            "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+            "existing_block_controls_complete": true,
+            "all_variants_verified": false,
+            "gaps": []
+          },
+          "exit_semantics": [
+            {
+              "state": "no_click_unknown",
+              "detail": "No automatic timeout is inferred for a button. Only captured delay/expiration connections count."
+            }
+          ]
+        },
+        "provenance": {
+          "pointer": "/instance/nodes/0",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "node-1",
+        "type": "message",
+        "sourceType": "message",
+        "title": "Send Message #1",
+        "content": {
+          "text": "Here you go! 👇",
+          "preview": "Here you go! 👇",
+          "buttons": [
+            "New Button #1"
+          ],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "node-1",
+          "kind": "message",
+          "label_exact": "Send Message #1",
+          "identity": {
+            "position": 1,
+            "group": "builder-node-attached",
+            "original_source_id": null,
+            "visible_ids_exact": {
+              "blocks": [],
+              "buttons": [
+                {
+                  "ids": [
+                    "479c9cd2-e1fc-4374-8005-a61b9f9ee498"
+                  ],
+                  "position": 0,
+                  "text": "New Button #1"
+                }
+              ]
+            },
+            "active_sidebar_exact": [
+              {
+                "active": true,
+                "group": "builder-node-attached",
+                "label": "Send Message #1",
+                "position": 1
+              }
+            ],
+            "header_exact": [
+              "Send Message #1"
+            ],
+            "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+          },
+          "default_panel": {
+            "label": "node.1.default",
+            "scope": "publication_draft_clone",
+            "phase": "captured_default",
+            "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\nSend Message #1\nSend\nwithin 24 hour window\nHere you go! 👇\nNew Button #1\n+ Add Button\n+ Add Quick Reply\nAdd one of the content blocks:\nText\nAdd simple text and buttons\nImage\nBoost engagement with visuals\nPDF\nAdd PDF files to your message\nDelay\nWait a few seconds in between texts\nData Collection\nCollect emails, phones and more\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nMore\nView all available options\nChoose Next Step\n[preview time excluded]\n[account display name excluded]\nTypically replies instantly\nHere you go! 👇\nNew Button #1\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+            "fields": [
+              {
+                "name": "text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Enter your text...",
+                "value": "Here you go! 👇",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false
+                },
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/node_defaults/1/capture/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Go To Flow Builder"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Text\nAdd simple text and buttons"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Image\nBoost engagement with visuals"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "PDF\nAdd PDF files to your message"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Delay\nWait a few seconds in between texts"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Data Collection\nCollect emails, phones and more\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access."
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "More\nView all available options"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Choose Next Step"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/node_defaults/1/capture"
+            },
+            "identity_evidence_exact": {
+              "sidebar": [
+                {
+                  "active": false,
+                  "group": "builder-node-start",
+                  "label": "Send Message",
+                  "position": 0
+                },
+                {
+                  "active": true,
+                  "group": "builder-node-attached",
+                  "label": "Send Message #1",
+                  "position": 1
+                },
+                {
+                  "active": false,
+                  "group": "builder-node-unattached",
+                  "label": "note",
+                  "position": 2
+                }
+              ],
+              "header": [
+                "Send Message #1"
+              ],
+              "visible_identity": {
+                "blocks": [],
+                "buttons": [
+                  {
+                    "ids": [
+                      "479c9cd2-e1fc-4374-8005-a61b9f9ee498"
+                    ],
+                    "position": 0,
+                    "text": "New Button #1"
+                  }
+                ]
+              }
+            },
+            "source_hash": "11211d1491228f142c7f9b50f9f8a6146744d3a4c48ebb77b74645715a80049a",
+            "scope_history": {
+              "label_exact": "inactive_clone",
+              "interpretation": "historical_label_not_inactivity_evidence",
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/node_defaults/1/capture/scope"
+              }
+            }
+          },
+          "nested_panels": [
+            {
+              "label": "node-1.button-0.default",
+              "scope": "publication_draft_clone",
+              "phase": "captured_default",
+              "text_exact": "Edit Button\n\nSet up this button\n\nButton title\nNew Button #1\nWhen this button is pressed\nOpen website\nyourlink.com\nWebsite URL\nyourlink.com\nAdditional actions\nE.g. you can add a tag on a button click.\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nPeople will see a redirection page for 2 seconds. Upgrade to remove it.\nDelete button\nDone",
+              "fields": [
+                {
+                  "name": "caption",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "Enter title...",
+                  "value": "New Button #1",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "aria_disabled": null,
+                    "aria_invalid": null,
+                    "aria_required": null,
+                    "disabled": false,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "required": false,
+                    "step": null
+                  },
+                  "evidence": {
+                    "file": "evidence/433-editor.json",
+                    "pointer": "/captures/5/panel/fields/0"
+                  }
+                },
+                {
+                  "name": "url",
+                  "label": null,
+                  "tag": "textarea",
+                  "type": null,
+                  "placeholder": "https://yourwebsite.com",
+                  "value": "yourlink.com",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "aria_disabled": null,
+                    "aria_invalid": null,
+                    "aria_required": null,
+                    "disabled": false,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "required": false,
+                    "step": null
+                  },
+                  "evidence": {
+                    "file": "evidence/433-editor.json",
+                    "pointer": "/captures/5/panel/fields/1"
+                  }
+                },
+                {
+                  "name": null,
+                  "label": "Additional actions",
+                  "tag": "input",
+                  "type": "checkbox",
+                  "placeholder": null,
+                  "value": "on",
+                  "value_state": "observed",
+                  "checked": false,
+                  "options_exact": null,
+                  "validation_exact": {
+                    "aria_disabled": "false",
+                    "aria_invalid": null,
+                    "aria_required": null,
+                    "disabled": false,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "required": false,
+                    "step": null
+                  },
+                  "evidence": {
+                    "file": "evidence/433-editor.json",
+                    "pointer": "/captures/5/panel/fields/2"
+                  }
+                }
+              ],
+              "buttons_exact": [
+                {
+                  "disabled": false,
+                  "label": "Close",
+                  "text": ""
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Delete button"
+                },
+                {
+                  "disabled": false,
+                  "label": null,
+                  "text": "Done"
+                }
+              ],
+              "evidence": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/5"
+              },
+              "identity_evidence_exact": {
+                "visible_button_identity": {
+                  "ids": [
+                    "479c9cd2-e1fc-4374-8005-a61b9f9ee498"
+                  ],
+                  "position": 0,
+                  "text": "New Button #1"
+                }
+              },
+              "source_hash": "bfa5778eec13e686e70abddc6c28ee2807eba43ea4bb9de6751df8fe5933c528",
+              "scope_history": {
+                "label_exact": "inactive_clone",
+                "interpretation": "historical_label_not_inactivity_evidence",
+                "evidence": {
+                  "file": "evidence/433-editor.json",
+                  "pointer": "/captures/5/scope"
+                }
+              }
+            }
+          ],
+          "shared_options": [
+            {
+              "definition": "send_mode",
+              "panel": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/node_defaults/1/capture"
+              },
+              "matched_tokens": [
+                "Send",
+                "within 24 hour window"
+              ],
+              "signature": "46327c2cfcbd80f93652b66488bf6cf99abca1b326dd6907286fd76264380534",
+              "scope": "Shared option choices only; instance values remain in this panel."
+            },
+            {
+              "definition": "message_personalization",
+              "panel": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/node_defaults/1/capture"
+              },
+              "matched_tokens": [
+                "textarea",
+                "Enter your text..."
+              ],
+              "signature": "80b16fd296c5abd6956845ffd7460885f53e617030421172d410ee6785221c7e",
+              "scope": "Matched visible textarea and placeholder; hidden editor state was not read."
+            },
+            {
+              "definition": "button_action",
+              "panel": {
+                "file": "evidence/433-editor.json",
+                "pointer": "/captures/5"
+              },
+              "matched_tokens": [
+                "Edit Button",
+                "Button title",
+                "When this button is pressed"
+              ],
+              "signature": "7c613d956a182137c9574e1fa61dff9684623998fff456c3928f87500d0ff4e9",
+              "scope": "Shared option choices only; instance values remain in this panel."
+            }
+          ],
+          "inspection": {
+            "default_opened": true,
+            "nested_panels_opened": 1,
+            "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+            "existing_block_controls_complete": true,
+            "all_variants_verified": false,
+            "gaps": []
+          },
+          "exit_semantics": [
+            {
+              "state": "unset_exit_visible",
+              "detail": "Choose Next Step is visible; no destination is inferred for that port."
+            },
+            {
+              "state": "no_connected_destination_observed",
+              "detail": "No captured outgoing graph edge; this is not proof of purchase, registration or runtime termination."
+            }
+          ]
+        },
+        "provenance": {
+          "pointer": "/instance/nodes/1",
+          "derived": null,
+          "evidence": []
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "edge-0",
+        "from": "node-0",
+        "to": "node-1",
+        "label": "Send me the link",
+        "settings": {
+          "from": "node-0",
+          "to": "node-1",
+          "port_exact": "button-0",
+          "source_branch_id": null,
+          "source_reply_id": null,
+          "visible_button_ids": [
+            "b2510522-a3b9-4ae1-911c-0e88fa093df8"
+          ],
+          "weight_percent": null,
+          "caption_exact": null,
+          "navigation_label": "navigation.node-0.button-0.target",
+          "evidence": {
+            "file": "evidence/433-editor.json",
+            "pointer": "/graph/edges/0"
+          }
+        },
+        "provenance": {
+          "pointer": "/instance/edges/0"
+        }
+      },
+      {
+        "id": "edge-1",
+        "from": "trigger",
+        "to": "node-0",
+        "label": "Starting Step",
+        "settings": {
+          "from": "trigger",
+          "to": "node-0",
+          "port_exact": "Starting Step",
+          "source_branch_id": null,
+          "source_reply_id": null,
+          "visible_button_ids": [],
+          "weight_percent": null,
+          "caption_exact": null,
+          "navigation_label": null,
+          "evidence": {
+            "file": "evidence/433-editor.json",
+            "pointer": "/graph/edges/1"
+          }
+        },
+        "provenance": {
+          "pointer": "/instance/edges/1"
+        }
+      }
+    ]
+  },
+  "setup": [],
+  "annotations": [
+    {
+      "id": "node-2",
+      "kind": "note",
+      "label_exact": "note",
+      "identity": {
+        "position": 2,
+        "group": "builder-node-unattached",
+        "original_source_id": null,
+        "visible_ids_exact": {
+          "blocks": [],
+          "buttons": []
+        },
+        "active_sidebar_exact": [
+          {
+            "active": true,
+            "group": "builder-node-unattached",
+            "label": "note",
+            "position": 2
+          }
+        ],
+        "header_exact": [],
+        "matching_basis": "Visible active sidebar position, group and exact header; never label alone."
+      },
+      "default_panel": {
+        "label": "node.2.default",
+        "scope": "publication_draft_clone",
+        "phase": "captured_default",
+        "text_exact": "Go To Flow Builder\nStarting Step\nSend Message\nAttached Steps\nSend Message #1\nUnattached Steps\nnote\n+ Create New Step\n590\nNote Size\nS\nM\nL\nFont Size\naA\naA\n[preview time excluded]\nVersion history\nBETA\nBeta version: An early release with experimental features that may change.",
+        "fields": [
+          {
+            "name": "text",
+            "label": null,
+            "tag": "textarea",
+            "type": null,
+            "placeholder": null,
+            "value": "Keyword trigger is defined in \nManychat for Brands",
+            "value_state": "observed",
+            "checked": false,
+            "options_exact": null,
+            "validation_exact": {
+              "disabled": false,
+              "max": null,
+              "maxlength": "640",
+              "min": null,
+              "pattern": null,
+              "required": false
+            },
+            "evidence": {
+              "file": "evidence/433-editor.json",
+              "pointer": "/node_defaults/2/capture/panel/fields/0"
+            }
+          }
+        ],
+        "buttons_exact": [
+          {
+            "disabled": false,
+            "label": null,
+            "text": "Go To Flow Builder"
+          }
+        ],
+        "evidence": {
+          "file": "evidence/433-editor.json",
+          "pointer": "/node_defaults/2/capture"
+        },
+        "identity_evidence_exact": {
+          "sidebar": [
+            {
+              "active": false,
+              "group": "builder-node-start",
+              "label": "Send Message",
+              "position": 0
+            },
+            {
+              "active": false,
+              "group": "builder-node-attached",
+              "label": "Send Message #1",
+              "position": 1
+            },
+            {
+              "active": true,
+              "group": "builder-node-unattached",
+              "label": "note",
+              "position": 2
+            }
+          ],
+          "header": [],
+          "visible_identity": {
+            "blocks": [],
+            "buttons": []
+          }
+        },
+        "source_hash": "bba734993d2310c6e52bb6e3bd4b776f106515aa66a4c0cf76fbab75e7c57b31",
+        "scope_history": {
+          "label_exact": "inactive_clone",
+          "interpretation": "historical_label_not_inactivity_evidence",
+          "evidence": {
+            "file": "evidence/433-editor.json",
+            "pointer": "/node_defaults/2/capture/scope"
+          }
+        }
+      },
+      "nested_panels": [],
+      "shared_options": [],
+      "inspection": {
+        "default_opened": true,
+        "nested_panels_opened": 0,
+        "available_variant_scope": "Existing source block type; reusable option definitions are linked. Creating unrelated new blocks is outside scope.",
+        "existing_block_controls_complete": true,
+        "all_variants_verified": false,
+        "gaps": []
+      },
+      "exit_semantics": []
+    }
+  ]
+}

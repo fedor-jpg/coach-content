@@ -530,6 +530,7 @@ class PackageTests(unittest.TestCase):
             manifest = coach.load(result["manifest"])
             paths = {entry["path"] for entry in manifest["files"]}
             self.assertEqual(paths, set(coach.RELEASE_FILES))
+            self.assertIn("plugin/skills/funnels/references/chatgpt-funnels.md", paths)
             for entry in manifest["files"]:
                 self.assertEqual(coach.digest(output / entry["path"]), entry["sha256"])
             self.assertFalse((output / "docs/artifacts").exists())
@@ -545,7 +546,7 @@ class PackageTests(unittest.TestCase):
         self.assertTrue(plugin.is_relative_to(ROOT))
         self.assertEqual(coach.load(plugin / ".claude-plugin/plugin.json")["name"], "coach-content")
         self.assertEqual(coach.load(plugin / ".claude-plugin/plugin.json")["version"], marketplace["plugins"][0]["version"])
-        self.assertEqual(len(list((plugin / "skills").glob("*/SKILL.md"))), 3)
+        self.assertEqual(len(list((plugin / "skills").glob("*/SKILL.md"))), 4)
         self.assertTrue((plugin / "commands/start.md").is_file())
         with tempfile.TemporaryDirectory() as directory:
             relocated = Path(directory) / "relocated plugin"

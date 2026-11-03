@@ -1,0 +1,1161 @@
+{
+  "id": "manychat-286",
+  "source": {
+    "vendor": "manychat",
+    "file": "templates/manychat-286.json",
+    "title": "Respond to all your DMs",
+    "category": "Engage your audience",
+    "facets": [
+      "Engage your audience",
+      "Drive traffic",
+      "DM",
+      "link_delivery",
+      "direct_message"
+    ],
+    "job": "link_delivery",
+    "model": "quick_wizard",
+    "document": {
+      "schema_version": "1.2",
+      "id": "manychat-286",
+      "ordinal": 6,
+      "title": "Respond to all your DMs",
+      "source_id": "campaign-card-286",
+      "observed_at": "2026-10-30",
+      "configuration_model": "quick_wizard",
+      "entry_type": "native_setup",
+      "source": {
+        "url": "https://app.manychat.com/fb4213902/dashboard",
+        "catalog_evidence": {
+          "file": "evidence/inventory.json",
+          "pointer": "/items/5"
+        },
+        "catalog_mode": "Quick Automation",
+        "facets": [
+          "Engage your audience",
+          "Drive traffic",
+          "DM"
+        ],
+        "badge_text_exact": "",
+        "description_exact": "Auto-send customized replies when people DM you",
+        "preview_evidence": null,
+        "preview_text_exact": null,
+        "original_graph_state": "not_applicable",
+        "original_defaults": null,
+        "source_original_settings_complete": false
+      },
+      "instance": null,
+      "native_setup": {
+        "model": "quick_wizard",
+        "url": "https://app.manychat.com/fb4213902/cms/easy-builder?campaign_type=easy_builder_dm_multi_links",
+        "ordered_observations": [
+          {
+            "label": "resumed_setup.current",
+            "scope": "resumed_owned_setup",
+            "phase": "resumed_instance",
+            "text_exact": "When someone DMs you with\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nThey’ll get a DM back from you with a link\na DM with a link\n1000\nAdd A Link\nOther things to automate\nFollow up to re-engage and build trust\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAutomatically ask for a follow to build your audience\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAsk for emails in DMs to keep in touch beyond social\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.",
+            "fields": [
+              {
+                "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Enter a word or multiple",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/286-setup.json",
+                  "pointer": "/captures/0/panel/fields/0"
+                }
+              },
+              {
+                "name": "contents.content20250424093659_147100.1047869889.blocks.f51c211f-1c86-42c9-8423-c1f5966c1337.text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Write a message",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": null,
+                  "aria_invalid": "false",
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/286-setup.json",
+                  "pointer": "/captures/0/panel/fields/1"
+                }
+              },
+              {
+                "name": "use_cases.follow_up.enable",
+                "label": "Follow up to re-engage and build trust",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/286-setup.json",
+                  "pointer": "/captures/0/panel/fields/2"
+                }
+              },
+              {
+                "name": "use_cases.ask_for_follow.enable",
+                "label": "Automatically ask for a follow to build your audience",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/286-setup.json",
+                  "pointer": "/captures/0/panel/fields/3"
+                }
+              },
+              {
+                "name": "use_cases.collect_email.enable",
+                "label": "Ask for emails in DMs to keep in touch beyond social",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_disabled": "false",
+                  "aria_invalid": null,
+                  "aria_required": null,
+                  "disabled": false,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/286-setup.json",
+                  "pointer": "/captures/0/panel/fields/4"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Price"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Link"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Shop"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Add A Link"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/286-setup.json",
+              "pointer": "/captures/0"
+            },
+            "identity_evidence_exact": {},
+            "source_hash": "663878f8c5233ead73969b9c92c8d020a3e9be2eaebd0e83724b9a0f6c7442ab"
+          }
+        ],
+        "graph_state": "not_applicable",
+        "order_semantics": "Observed wizard visit order, including variants and validation checks; not an invented message graph.",
+        "supporting_evidence": [
+          {
+            "kind": "variants",
+            "evidence": {
+              "file": "evidence/286-setup.json",
+              "pointer": "/variants"
+            },
+            "json_exact": []
+          },
+          {
+            "kind": "access_limits",
+            "evidence": {
+              "file": "evidence/286-setup.json",
+              "pointer": "/access_limits"
+            },
+            "json_exact": [
+              {
+                "control": "Follow up to re-engage and build trust",
+                "visible_headings": [
+                  "Follow up with those who forgot with Essential"
+                ],
+                "result": "Upgrade prompt; no plan change"
+              },
+              {
+                "control": "Automatically ask for a follow to build your audience",
+                "visible_headings": [
+                  "Get them following you before sharing the link"
+                ],
+                "result": "Upgrade prompt; no plan change"
+              },
+              {
+                "control": "Ask for emails in DMs to keep in touch beyond social",
+                "visible_headings": [
+                  "Collect emails in DMs with our Essential plan"
+                ],
+                "result": "Upgrade prompt; no plan change"
+              }
+            ]
+          },
+          {
+            "kind": "actions_performed",
+            "evidence": {
+              "file": "evidence/286-setup.json",
+              "pointer": "/actions_performed"
+            },
+            "json_exact": []
+          },
+          {
+            "kind": "live",
+            "evidence": {
+              "file": "evidence/286-setup.json",
+              "pointer": "/live"
+            },
+            "json_exact": false
+          },
+          {
+            "kind": "entry_behavior",
+            "evidence": {
+              "file": "evidence/286-setup.json",
+              "pointer": "/entry_behavior"
+            },
+            "json_exact": {
+              "prompt": "Continue or start fresh?",
+              "choice": "Continue",
+              "cancel_start_fresh_pressed": false
+            }
+          },
+          {
+            "kind": "shared_instance",
+            "evidence": {
+              "file": "evidence/286-setup.json",
+              "pointer": "/shared_instance"
+            },
+            "json_exact": {
+              "other_catalog_id": "campaign-card-8",
+              "evidence": "8-setup.json",
+              "scope": "Same campaign_type URL resumed the previously inspected owned setup. This is not independent original default evidence.",
+              "field_paths_equal": true
+            }
+          },
+          {
+            "kind": "coverage",
+            "evidence": {
+              "file": "evidence/286-setup.json",
+              "pointer": "/coverage"
+            },
+            "json_exact": {
+              "ordered_sections": 3,
+              "initial_defaults_captured": false,
+              "accessible_controls_inspected": false,
+              "all_variant_settings_available": false,
+              "unavailable_controls": [
+                "Follow up to re-engage and build trust",
+                "Automatically ask for a follow to build your audience",
+                "Ask for emails in DMs to keep in touch beyond social"
+              ],
+              "runtime_tested": false
+            }
+          }
+        ]
+      },
+      "followup": {
+        "evidence": {
+          "file": "evidence/settings-followup.json",
+          "pointer": "/templates/286"
+        },
+        "source_hash": "b552518f663ee1e746aa8fd730bb85b98dc1e63ac4fee24bf84929473245995a",
+        "baseline_preserved": true,
+        "original_equivalence": "unverified",
+        "panels": [
+          {
+            "label": "fresh.keyword.initial",
+            "scope": "native_quick_setup",
+            "phase": "captured_default",
+            "text_exact": "When someone DMs you with\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nNext",
+            "fields": [
+              {
+                "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Enter a word or multiple",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/0/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Next"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/286/captures/0"
+            },
+            "identity_evidence_exact": {
+              "phase": "fresh_setup_default"
+            },
+            "source_hash": "618ea2c66de535e9432504db8f83753752878af2a6d18067e92fe005d1a23c8e"
+          },
+          {
+            "label": "fresh.keyword.required-validation",
+            "scope": "native_quick_setup",
+            "phase": "inspection_observation",
+            "text_exact": "When someone DMs you with\na specific word or words\nType the words that suit best\nFor example:\nPrice\nLink\nShop\nNext",
+            "fields": [
+              {
+                "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Enter a word or multiple",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": "true",
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/1/panel/fields/0"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Next"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/286/captures/1"
+            },
+            "identity_evidence_exact": {
+              "phase": "validation_observation"
+            },
+            "source_hash": "7399e34b49014bee2927760254e1cc3e563b60a40a1c0d9748664cee0ffff03d"
+          },
+          {
+            "label": "fresh.message.initial",
+            "scope": "native_quick_setup",
+            "phase": "inspection_variant",
+            "text_exact": "When someone DMs you with\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nThey’ll get a DM back from you with a link\na DM with a link\n1000\nAdd A Link\nNext",
+            "fields": [
+              {
+                "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Enter a word or multiple",
+                "value": "sol-inspection-only-286",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/2/panel/fields/0"
+                }
+              },
+              {
+                "name": "contents.content20250424093659_147100.1047869889.blocks.f51c211f-1c86-42c9-8423-c1f5966c1337.text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Write a message",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": "false",
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/2/panel/fields/1"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Add A Link"
+              },
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Next"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/286/captures/2"
+            },
+            "identity_evidence_exact": {
+              "phase": "fresh_setup_default",
+              "phase_qualification": {
+                "historical_phase_exact": "fresh_setup_default",
+                "reason": "Mixed panel: keyword was entered for inspection; the newly exposed message field remained blank. The whole panel is not an untouched default.",
+                "inspection_change_evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/inspection_changes/0"
+                },
+                "blank_keyword_baseline": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/0"
+                }
+              }
+            },
+            "source_hash": "219e49e7e151d91fddec29ca6d89f7c4b024d6fba02808717e4fa6a828ad8985"
+          },
+          {
+            "label": "fresh.final-options",
+            "scope": "native_quick_setup",
+            "phase": "inspection_variant",
+            "text_exact": "When someone DMs you with\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nThey’ll get a DM back from you with a link\na DM with a link\n984\nAdd A Link\nOther things to automate\nFollow up to re-engage and build trust\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAutomatically ask for a follow to build your audience\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAsk for emails in DMs to keep in touch beyond social\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.",
+            "fields": [
+              {
+                "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Enter a word or multiple",
+                "value": "sol-inspection-only-286",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/3/panel/fields/0"
+                }
+              },
+              {
+                "name": "contents.content20250424093659_147100.1047869889.blocks.f51c211f-1c86-42c9-8423-c1f5966c1337.text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Write a message",
+                "value": "Inspection only.",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": "false",
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/3/panel/fields/1"
+                }
+              },
+              {
+                "name": "use_cases.follow_up.enable",
+                "label": "Follow up to re-engage and build trust",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/3/panel/fields/2"
+                }
+              },
+              {
+                "name": "use_cases.ask_for_follow.enable",
+                "label": "Automatically ask for a follow to build your audience",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/3/panel/fields/3"
+                }
+              },
+              {
+                "name": "use_cases.collect_email.enable",
+                "label": "Ask for emails in DMs to keep in touch beyond social",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/3/panel/fields/4"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Add A Link"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/286/captures/3"
+            },
+            "identity_evidence_exact": {
+              "phase": "fresh_setup_with_inspection_placeholders"
+            },
+            "source_hash": "7b63ef4b115afc435ac477a2ef11301761333ebdc77d780675d7906741bed2fc"
+          },
+          {
+            "label": "fresh.placeholders-cleared",
+            "scope": "native_quick_setup",
+            "phase": "restoration_check",
+            "text_exact": "When someone DMs you with\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nThey’ll get a DM back from you with a link\na DM with a link\n1000\nAdd A Link\nOther things to automate\nFollow up to re-engage and build trust\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAutomatically ask for a follow to build your audience\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAsk for emails in DMs to keep in touch beyond social\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.",
+            "fields": [
+              {
+                "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+                "label": null,
+                "tag": "input",
+                "type": null,
+                "placeholder": "Enter a word or multiple",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/4/panel/fields/0"
+                }
+              },
+              {
+                "name": "contents.content20250424093659_147100.1047869889.blocks.f51c211f-1c86-42c9-8423-c1f5966c1337.text",
+                "label": null,
+                "tag": "textarea",
+                "type": null,
+                "placeholder": "Write a message",
+                "value": "",
+                "value_state": "unset_client_input_required",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": "false",
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/4/panel/fields/1"
+                }
+              },
+              {
+                "name": "use_cases.follow_up.enable",
+                "label": "Follow up to re-engage and build trust",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/4/panel/fields/2"
+                }
+              },
+              {
+                "name": "use_cases.ask_for_follow.enable",
+                "label": "Automatically ask for a follow to build your audience",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "on",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/4/panel/fields/3"
+                }
+              },
+              {
+                "name": "use_cases.collect_email.enable",
+                "label": "Ask for emails in DMs to keep in touch beyond social",
+                "tag": "input",
+                "type": "checkbox",
+                "placeholder": null,
+                "value": "<redacted>",
+                "value_state": "observed",
+                "checked": false,
+                "options_exact": null,
+                "validation_exact": {
+                  "aria_invalid": null,
+                  "disabled": false,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "pattern": null,
+                  "required": false,
+                  "step": null
+                },
+                "evidence": {
+                  "file": "evidence/settings-followup.json",
+                  "pointer": "/templates/286/captures/4/panel/fields/4"
+                }
+              }
+            ],
+            "buttons_exact": [
+              {
+                "disabled": false,
+                "label": null,
+                "text": "Add A Link"
+              }
+            ],
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/286/captures/4"
+            },
+            "identity_evidence_exact": {
+              "phase": "restoration_check"
+            },
+            "source_hash": "54bc1a16a56e1cb790feabc5b462c8402d66f8d3f336f20c12a85991c2cef530"
+          }
+        ],
+        "supporting_evidence": [
+          {
+            "kind": "source_id",
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/286/source_id"
+            },
+            "json_exact": "campaign-card-286"
+          },
+          {
+            "kind": "source_url",
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/286/source_url"
+            },
+            "json_exact": "https://app.manychat.com/fb4213902/cms/easy-builder?campaign_type=easy_builder_dm_multi_links"
+          },
+          {
+            "kind": "findings",
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/286/findings"
+            },
+            "json_exact": [
+              {
+                "field": "independent initial versus resumed wizard",
+                "newly_captured": "Cancel and start fresh opened blank required keyword, blank message, empty link form; final follow-up/follow/email toggles off and Upgrade required",
+                "remaining": "Original server template equivalence; plan-gated nested settings",
+                "reason": "Fresh setup now separately captured; it is not the previous resumed setup. Same UI model as card 8 is supported, exact underlying server flow not exposed.",
+                "no_safe_action": "No paid feature or Go live action allowed"
+              }
+            ]
+          },
+          {
+            "kind": "inspection_changes",
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/286/inspection_changes"
+            },
+            "json_exact": [
+              {
+                "field": "keyword and DM text",
+                "before": "both blank",
+                "variant": [
+                  "sol-inspection-only-286",
+                  "Inspection only."
+                ],
+                "after": "both blank",
+                "restored": true
+              }
+            ]
+          },
+          {
+            "kind": "entry",
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/286/entry"
+            },
+            "json_exact": {
+              "prompt": "Continue or start fresh?",
+              "explanation": "Keep working on the automation you started or cancel and start a new one.",
+              "prior_setup": "Owned research wizard shared with card 8; prior capture preserved in 286-setup.json",
+              "choice": "Cancel and start fresh",
+              "go_live_clicked": false
+            }
+          },
+          {
+            "kind": "link_form",
+            "evidence": {
+              "file": "evidence/settings-followup.json",
+              "pointer": "/templates/286/link_form"
+            },
+            "json_exact": {
+              "fields": [
+                {
+                  "maxLength": -1,
+                  "placeholder": "Add a button label e.g Open",
+                  "required": false,
+                  "value": ""
+                },
+                {
+                  "maxLength": -1,
+                  "placeholder": "Add a link",
+                  "required": false,
+                  "value": ""
+                }
+              ],
+              "save_enabled": true,
+              "saved": false,
+              "blank_validation": [
+                "Add a button label to continue",
+                "Add a link to continue"
+              ]
+            }
+          }
+        ]
+      },
+      "selection": {
+        "basis": "product_interpretation",
+        "job_family": "link_delivery",
+        "trigger": "direct_message",
+        "route": "keyword_link",
+        "choose_when": "Use the observed shared DM setup model with card 8. A fresh initial form was separately captured: required keyword, message and link controls.",
+        "avoid_when": "Underlying original server equivalence remains unknown. Do not count the shared UI model as a second proven fixed funnel; historical resumed evidence remains separate.",
+        "client_inputs": [
+          "keywords",
+          "message",
+          "destination"
+        ]
+      },
+      "safety": {
+        "draft_evidence": {
+          "file": "evidence/native-setup-manifest.json",
+          "pointer": ""
+        },
+        "draft_publication_verified": false,
+        "all_configured_triggers_off": null,
+        "current_state": null,
+        "remediation_evidence": null,
+        "delivery_limit": "No Set Live or send action. Scoped 0 runs before trigger removal and n/a list metrics are not account-wide no-delivery proof.",
+        "set_live_pressed": false,
+        "runtime_tested": false,
+        "credential_values_collected": false
+      },
+      "reconstruction": {
+        "status": "partial",
+        "original_settings_complete": false,
+        "instance_default_panels_captured": false,
+        "instance_ui_inspection_complete": false,
+        "all_possible_variants_verified": false,
+        "client_ready": false,
+        "runtime_tested": false
+      },
+      "gaps": [
+        "Original server settings and IDs were not exported. Clone defaults are not asserted to equal source defaults.",
+        "Runtime was not tested because execution is forbidden; this is separate from settings completeness.",
+        "Follow up to re-engage and build trust: Upgrade prompt; no plan change",
+        "Automatically ask for a follow to build your audience: Upgrade prompt; no plan change",
+        "Ask for emails in DMs to keep in touch beyond social: Upgrade prompt; no plan change",
+        "Historical resumed setup is preserved. Follow-up separately captured a fresh setup; original server equivalence remains unverified.",
+        "independent initial versus resumed wizard: Original server template equivalence; plan-gated nested settings. Fresh setup now separately captured; it is not the previous resumed setup. Same UI model as card 8 is supported, exact underlying server flow not exposed."
+      ]
+    }
+  },
+  "graph": {
+    "start": null,
+    "steps": [],
+    "transitions": []
+  },
+  "setup": [
+    {
+      "label": "resumed_setup.current",
+      "scope": "resumed_owned_setup",
+      "phase": "resumed_instance",
+      "text_exact": "When someone DMs you with\na specific word or words\nUse commas to separate words\nFor example:\nPrice\nLink\nShop\nThey’ll get a DM back from you with a link\na DM with a link\n1000\nAdd A Link\nOther things to automate\nFollow up to re-engage and build trust\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAutomatically ask for a follow to build your audience\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.\nAsk for emails in DMs to keep in touch beyond social\nUPGRADE\nUpgrade required: This feature requires upgrading your plan to access.",
+      "fields": [
+        {
+          "name": "triggers.keyword_rules.32080745.keyword_rules_input",
+          "label": null,
+          "tag": "input",
+          "type": null,
+          "placeholder": "Enter a word or multiple",
+          "value": "",
+          "value_state": "unset_client_input_required",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/286-setup.json",
+            "pointer": "/captures/0/panel/fields/0"
+          }
+        },
+        {
+          "name": "contents.content20250424093659_147100.1047869889.blocks.f51c211f-1c86-42c9-8423-c1f5966c1337.text",
+          "label": null,
+          "tag": "textarea",
+          "type": null,
+          "placeholder": "Write a message",
+          "value": "",
+          "value_state": "unset_client_input_required",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": null,
+            "aria_invalid": "false",
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/286-setup.json",
+            "pointer": "/captures/0/panel/fields/1"
+          }
+        },
+        {
+          "name": "use_cases.follow_up.enable",
+          "label": "Follow up to re-engage and build trust",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/286-setup.json",
+            "pointer": "/captures/0/panel/fields/2"
+          }
+        },
+        {
+          "name": "use_cases.ask_for_follow.enable",
+          "label": "Automatically ask for a follow to build your audience",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "on",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/286-setup.json",
+            "pointer": "/captures/0/panel/fields/3"
+          }
+        },
+        {
+          "name": "use_cases.collect_email.enable",
+          "label": "Ask for emails in DMs to keep in touch beyond social",
+          "tag": "input",
+          "type": "checkbox",
+          "placeholder": null,
+          "value": "<redacted>",
+          "value_state": "observed",
+          "checked": false,
+          "options_exact": null,
+          "validation_exact": {
+            "aria_disabled": "false",
+            "aria_invalid": null,
+            "aria_required": null,
+            "disabled": false,
+            "inputmode": null,
+            "max": null,
+            "maxlength": null,
+            "min": null,
+            "minlength": null,
+            "pattern": null,
+            "required": false,
+            "step": null
+          },
+          "evidence": {
+            "file": "evidence/286-setup.json",
+            "pointer": "/captures/0/panel/fields/4"
+          }
+        }
+      ],
+      "buttons_exact": [
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Price"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Link"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Shop"
+        },
+        {
+          "disabled": false,
+          "label": null,
+          "text": "Add A Link"
+        }
+      ],
+      "evidence": {
+        "file": "evidence/286-setup.json",
+        "pointer": "/captures/0"
+      },
+      "identity_evidence_exact": {},
+      "source_hash": "663878f8c5233ead73969b9c92c8d020a3e9be2eaebd0e83724b9a0f6c7442ab"
+    }
+  ],
+  "annotations": []
+}

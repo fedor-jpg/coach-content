@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "id": "inro-6111",
+  "version": "0.1.0",
+  "source": {
+    "id": "inro-6111",
+    "title": "Keep hate out of your comments",
+    "url": "https://app.inro.social/public/scenarios/6111",
+    "observed_at": "2026-10-30",
+    "original_goal": "Keep hate out of your comments",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "status": "unavailable",
+  "family": "moderation",
+  "goal": "Hide hate and spam automatically.",
+  "entry": "none",
+  "platforms": [
+    "Instagram"
+  ],
+  "conversation": false,
+  "design_changes": [],
+  "unsupported_requirements": [
+    "comment-hiding",
+    "hate-detection-removal"
+  ],
+  "blockers": [
+    "No automatic hate-removal result is available."
+  ],
+  "required_inputs": [
+    "moderation_policy"
+  ],
+  "allowed_parameters": {
+    "moderation_policy": {
+      "type": "text",
+      "description": "The required moderation scope and removal policy, retained for honest rejection."
+    }
+  },
+  "messages": {
+    "public": "",
+    "initial": "",
+    "continuation": "AI replies do not remove public comments.",
+    "refusal": "Understood. I will not continue this campaign. You can ask our team for help.",
+    "handoff": "Our team will handle your request.",
+    "placement": ""
+  },
+  "transitions": [
+    {
+      "event": "The source requires an unavailable automatic event/action.",
+      "actor": "Claude",
+      "action": "Decline the unavailable automatic goal; do not create a reply rule.",
+      "evidence": "No automatic hate-removal result is available."
+    }
+  ],
+  "native_operations": [],
+  "outcome": "No automatic hate-removal result is available.",
+  "negative_cases": [
+    "Do not replace removal with a warning or reply."
+  ],
+  "runtime_checks": [
+    "content",
+    "return",
+    "stop",
+    "refusal",
+    "repeat",
+    "unknown_action",
+    "wrong_account",
+    "two_campaigns",
+    "source_attribution",
+    "unavailable_hate_removal_declined"
+  ],
+  "resume": {
+    "actor": "Claude",
+    "action": "Restore the private card, confirm this recipe digest and account, then read current owned and shared settings. Reconcile unknown results without retry.",
+    "campaign_match": "Require the actual media, commentID and linked private reply; do not infer campaign from lead stage."
+  },
+  "stop": {
+    "actor": "Claude with scoped native approval",
+    "action": "No automation is created; there is nothing to disable.",
+    "proof": "Honest rejection is tested, not a released funnel."
+  },
+  "execution_reference": "../chatfuel-execution.md",
+  "initial_required_parameters": [],
+  "supported_requirements": [
+    "instagram",
+    "local-preview"
+  ],
+  "business_outcomes": {
+    "unavailable_hate_removal_declined": {
+      "origin": "human-review",
+      "description": "The assistant does not call a warning automatic comment removal.",
+      "min_native_refs": 1
+    }
+  }
+}

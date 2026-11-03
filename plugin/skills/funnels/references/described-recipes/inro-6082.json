@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "id": "inro-6082",
+  "version": "1.0.0",
+  "description_status": "described_not_accepted",
+  "title": "Public thanks only",
+  "source": {
+    "id": "inro-6082",
+    "title": "Thank fans who love your posts",
+    "url": "https://app.inro.social/public/scenarios/6082",
+    "observed_at": "2026-10-30",
+    "original_goal": "Thank fans who love your posts",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "native": {
+    "inputs_text": "thanks_text.",
+    "messages_text": "public_text equals thanks_text. No private message.",
+    "modes": [
+      "P"
+    ],
+    "end_stop": "Matching positive keyword receives approved public thanks only; S. No semantic sentiment promise.",
+    "difference": ""
+  },
+  "applicability": {
+    "use_when": [
+      "People use an approved positive keyword on selected posts and need public thanks only."
+    ],
+    "prerequisites": [
+      "Approve exact thanks text and explicit matching terms; keep private replies and continuation off."
+    ],
+    "exclude_when": [
+      "Do not choose for semantic sentiment detection, private messages or random-delay behavior.",
+      "Do not configure when required lifecycle operations are unavailable on the actual host."
+    ]
+  },
+  "inputs": [
+    {
+      "name": "campaign",
+      "type": "text",
+      "requirement": "required",
+      "description": "Unique ASCII campaign name, at most 48 characters. Journal belongs to this conversation only."
+    },
+    {
+      "name": "language",
+      "type": "text",
+      "requirement": "required",
+      "description": "Language for the exact approved messages."
+    },
+    {
+      "name": "post_ids",
+      "type": "ids",
+      "requirement": "required",
+      "description": "Actual owned Instagram posts; inspect overlap before preparation."
+    },
+    {
+      "name": "keyword",
+      "type": "text",
+      "requirement": "required",
+      "description": "Approved entry word; read actual host matching rules."
+    },
+    {
+      "name": "public_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Exact approved public copy, or nonempty inactive copy when public replies are disabled."
+    },
+    {
+      "name": "thanks_text",
+      "type": "text",
+      "requirement": "required",
+      "description": "Coach-supplied thanks text, preserved without invented claims."
+    }
+  ],
+  "messages": [
+    {
+      "id": "public",
+      "kind": "template",
+      "text": "{thanks_text}",
+      "availability": "available_template",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6082",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "initial",
+      "kind": "template",
+      "text": "",
+      "availability": "not_sent",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6082",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "placement",
+      "kind": "template",
+      "text": "",
+      "availability": "not_required",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6082",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "continuation",
+      "kind": "instruction",
+      "text": "",
+      "availability": "not_sent",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6082",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "refusal",
+      "kind": "template",
+      "text": "",
+      "availability": "not_sent",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6082",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    },
+    {
+      "id": "handoff",
+      "kind": "template",
+      "text": "",
+      "availability": "not_sent",
+      "provenance": {
+        "origin": "native_guide",
+        "section": "inro-6082",
+        "status": "unfilled_template_or_instruction_not_customer_approved"
+      }
+    }
+  ],
+  "route": {
+    "origin": "derived_native_instructions",
+    "deterministic": false,
+    "start": "entry",
+    "steps": [
+      {
+        "id": "entry",
+        "action": "Actual matching keyword comment on the selected post.",
+        "message_ids": [
+          "placement"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6082"
+        }
+      },
+      {
+        "id": "first",
+        "action": "Send approved public thanks only. No DM.",
+        "message_ids": [
+          "public"
+        ],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6082"
+        }
+      },
+      {
+        "id": "end",
+        "action": "One-shot campaign finished. Keep incomingMessages.howToReply:DontReply; send no further campaign message.",
+        "message_ids": [],
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6082"
+        },
+        "response_mode": "silent"
+      }
+    ],
+    "transitions": [
+      {
+        "from": "entry",
+        "to": "first",
+        "condition": "New matching source event; current account, permission and delivery window verified.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6082"
+        }
+      },
+      {
+        "from": "first",
+        "to": "end",
+        "condition": "One approved response; no follow-up for silence or clicks.",
+        "provenance": {
+          "origin": "derived_native_instructions",
+          "section": "inro-6082"
+        }
+      }
+    ]
+  },
+  "source_differences": [
+    "Not preserved from the source: private-sales-dm, random-delay. A business analogue is not an equivalent graph."
+  ],
+  "reconciliation": {
+    "legacy_file": "recipes/inro-6082.json",
+    "legacy_sha256": "3304ec1019fcc42336354ec4b5f8fb12bf2a16f68c5e4d24f6a82a4903095581",
+    "legacy_version": "0.1.0",
+    "legacy_status": "candidate",
+    "legacy_goal": "Thank matching positive public comments without sending a private reply.",
+    "relationship": "native_guide_revision_not_literal_equivalence",
+    "explanation": "The native guide defines this business outcome. Legacy inputs, messages and transitions remain available for exact-source audit, not as a second authority for this analogue.",
+    "required_input_changes": {
+      "legacy": [
+        "post_ids",
+        "keyword",
+        "thanks_text",
+        "language",
+        "public_text"
+      ],
+      "legacy_initial": [],
+      "canonical": [
+        {
+          "name": "campaign",
+          "requirement": "required"
+        },
+        {
+          "name": "language",
+          "requirement": "required"
+        },
+        {
+          "name": "post_ids",
+          "requirement": "required"
+        },
+        {
+          "name": "keyword",
+          "requirement": "required"
+        },
+        {
+          "name": "public_text",
+          "requirement": "required"
+        },
+        {
+          "name": "thanks_text",
+          "requirement": "required"
+        }
+      ]
+    }
+  },
+  "configuration": {
+    "policy": "native-policy.md",
+    "capability_observation": "capability-observation.json",
+    "operations": [
+      "Read actual host tools and get_playbook for this recipe.",
+      "Create/bind only an approved owned OFF rule. Normal setup_comment_replies is not draft preparation.",
+      "Apply native policy mode P; inspect actual inputs before writes.",
+      "Read back each exact setting and inheritance before continuing.",
+      "Keep owned incomingMessages.howToReply:DontReply and followUps:DontSend. Leave general DM unchanged; send no campaign refusal, clarification or continuation."
+    ],
+    "normal_connector_gate": "Required OFF creation, exact inheritance restoration or continuing comment preview may be unavailable. Stop before writes; a documented GraphQL alternative is not an available normal tool.",
+    "continuation_reply_mode": "DontReply"
+  },
+  "lifecycle": {
+    "checks": [
+      "content",
+      "return",
+      "stop",
+      "refusal",
+      "repeat",
+      "unknown_action",
+      "wrong_account",
+      "two_campaigns",
+      "source_attribution",
+      "public_only",
+      "unmatched_comment",
+      "public_thanks_received",
+      "normal_host_capabilities",
+      "fresh_account_state",
+      "exact_restoration",
+      "live_suppression"
+    ],
+    "return": "Use this conversation journal and fresh native readback. No cross-chat state or user settings transfer. If the journal is missing, read-only reconciliation only.",
+    "stop": "Apply S from native-policy.md: safe owned disable; exact campaign additions only; preserve concurrent changes and inheritance. Restore dormant Send only after original OFF DM is OFF. Read back every stop; live silence is separate.",
+    "restart": "Fresh source and consent, same verified ownership. Waitlist membership stays joined/withdrawn; no old consent reuse."
+  },
+  "evidence": {
+    "source_capture": {
+      "observed_at": "2026-10-30",
+      "status": "captured_research_not_runtime"
+    },
+    "canonical_version": {
+      "status": "described_not_runtime_tested"
+    },
+    "capability": {
+      "observed_at": "2026-11-01",
+      "status": "dated_document_and_tool_observation_not_account_check"
+    },
+    "preview": {
+      "status": "not_tested_for_canonical_version",
+      "note": "Older previews do not establish unchanged behavior after prompt changes."
+    },
+    "live": {
+      "status": "historical_partial_not_accepted",
+      "observed_at": "2026-10-31",
+      "note": "No individual live acceptance for this canonical version.",
+      "reference": "inro-business-analogues-live.json; checked_at=2026-10-31T06:52:44Z"
+    },
+    "acceptance": {
+      "status": "not_accepted",
+      "registry": "catalog.json",
+      "note": "Zero versions qualify. Local checks, previews and partial live paths are not acceptance."
+    }
+  }
+}

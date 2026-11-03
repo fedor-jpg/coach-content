@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "id": "inro-comment-moderation",
+  "version": "0.1.0",
+  "source": {
+    "id": "inro-comment-moderation",
+    "title": "Comment moderation",
+    "url": "https://app.inro.social/automation",
+    "observed_at": "2026-10-30",
+    "original_goal": "Comment moderation",
+    "demand_evidence": "Catalogue presence only; popularity and conversion are unmeasured."
+  },
+  "status": "unavailable",
+  "family": "moderation",
+  "goal": "Hide unwanted comments automatically.",
+  "entry": "none",
+  "platforms": [
+    "Instagram"
+  ],
+  "conversation": false,
+  "design_changes": [],
+  "unsupported_requirements": [
+    "comment-hiding"
+  ],
+  "blockers": [
+    "No hidden-comment result can be promised."
+  ],
+  "required_inputs": [
+    "moderation_policy"
+  ],
+  "allowed_parameters": {
+    "moderation_policy": {
+      "type": "text",
+      "description": "The required moderation scope and removal policy, retained for honest rejection."
+    }
+  },
+  "messages": {
+    "public": "",
+    "initial": "",
+    "continuation": "No automatic removal operation is verified.",
+    "refusal": "Understood. I will not continue this campaign. You can ask our team for help.",
+    "handoff": "Our team will handle your request.",
+    "placement": ""
+  },
+  "transitions": [
+    {
+      "event": "The source requires an unavailable automatic event/action.",
+      "actor": "Claude",
+      "action": "Decline the unavailable automatic goal; do not create a reply rule.",
+      "evidence": "No hidden-comment result can be promised."
+    }
+  ],
+  "native_operations": [],
+  "outcome": "No hidden-comment result can be promised.",
+  "negative_cases": [
+    "A reply must not be described as hiding a comment."
+  ],
+  "runtime_checks": [
+    "content",
+    "return",
+    "stop",
+    "refusal",
+    "repeat",
+    "unknown_action",
+    "wrong_account",
+    "two_campaigns",
+    "source_attribution",
+    "unavailable_removal_declined"
+  ],
+  "resume": {
+    "actor": "Claude",
+    "action": "Restore the private card, confirm this recipe digest and account, then read current owned and shared settings. Reconcile unknown results without retry.",
+    "campaign_match": "Require the actual media, commentID and linked private reply; do not infer campaign from lead stage."
+  },
+  "stop": {
+    "actor": "Claude with scoped native approval",
+    "action": "No automation is created; there is nothing to disable.",
+    "proof": "Honest rejection is tested, not a released funnel."
+  },
+  "execution_reference": "../chatfuel-execution.md",
+  "initial_required_parameters": [],
+  "supported_requirements": [
+    "instagram",
+    "local-preview"
+  ],
+  "business_outcomes": {
+    "unavailable_removal_declined": {
+      "origin": "human-review",
+      "description": "The assistant does not promise comment hiding.",
+      "min_native_refs": 1
+    }
+  }
+}

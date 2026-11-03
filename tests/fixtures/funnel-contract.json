@@ -1,0 +1,19 @@
+{
+  "kind": "read-only-public-schema-fixture-not-runtime-proof",
+  "checked_at": "2026-10-30",
+  "operation": "fuelyAutomationUpdateSetting",
+  "wrapper": "update",
+  "one_setting_per_call": true,
+  "settings": {
+    "keywords": {"required": ["reactTo", "keywords"], "enums": {"reactTo": ["AnyComment", "CommentThatContains", "CommentThatExactlyMatches", "CommentThatDoesNotContain"]}},
+    "listOfPosts": {"required": ["postIDs"], "enums": {}},
+    "publicReply": {"required": ["publicReplyHowToReply", "exactTextReply", "messagePrompt", "likeContactComment"], "enums": {"publicReplyHowToReply": ["UsingAI", "ExactText", "DontReply"]}},
+    "privateReply": {"required": ["privateReplyHowToReply", "exactTextReply", "messagePrompt"], "enums": {"privateReplyHowToReply": ["UsingAI", "ExactText", "DontReply"]}},
+    "followUps": {"required": ["howToSend", "messagePrompt"], "enums": {"howToSend": ["Send", "DontSend"]}},
+    "incomingMessages": {"required": ["howToReply", "messagePrompt"], "enums": {"howToReply": ["UsingAI", "DontReply"]}},
+    "switchToHuman": {"required": ["howToSwitch", "rules"], "enums": {"howToSwitch": ["SwitchToTeammates", "DontSwitch"]}},
+    "collectContactInfo": {"required": ["howToCollect", "captures"], "enums": {"howToCollect": ["CollectInfo", "DoNotCollectInfo"]}}
+  },
+  "handoff_rule_required": ["switchingConditions", "messagePrompt"],
+  "capture_required": ["description", "name"]
+}

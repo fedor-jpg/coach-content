@@ -1,0 +1,2298 @@
+{
+  "id": "inro-6019",
+  "source": {
+    "vendor": "inro",
+    "file": "templates/inro-6019.json",
+    "title": "Welcome new customers from a QR code",
+    "category": "Drive more traffic",
+    "facets": [
+      "Drive more traffic",
+      "incentive",
+      "Referral link"
+    ],
+    "job": "incentive",
+    "model": "source_graph",
+    "document": {
+      "schema_version": "0.1.0",
+      "id": "inro-6019",
+      "ordinal": 30,
+      "title": "Welcome new customers from a QR code",
+      "source_category": "Drive more traffic",
+      "source": {
+        "catalog_url": "https://app.inro.social/automation",
+        "preview_url": "https://app.inro.social/public/scenarios/6019",
+        "public_template_id": "6019",
+        "observed_at": "2026-10-30",
+        "source_version": null,
+        "capture_sha256": "65e784782dc3358cfcda31df8ae7f6a12ac7ff91153f946a26915a972b21b2d4",
+        "editor_url": "https://app.inro.social/automation/scenarios/38356",
+        "editor_inactive_verified": true,
+        "official_export": false
+      },
+      "classification": {
+        "basis": "product_interpretation",
+        "job_family": "incentive",
+        "route": "referral_then_coupon",
+        "desired_business_event": "coupon_redeemed",
+        "trigger_classes": [
+          "referral_link"
+        ]
+      },
+      "selection": {
+        "basis": "product_interpretation",
+        "use_when": [
+          "A QR/referral entry welcomes a person and offers a coupon through a button."
+        ],
+        "avoid_when": [
+          "Do not use QR scans or coupon display as proof of redemption or purchase.",
+          "Do not silently drop an essential unsupported gate."
+        ],
+        "required_facts": [
+          "Referral link/QR, coupon code and terms, expiration and redemption evidence.",
+          "Confirm account scope, messaging permission and the real outcome measurement."
+        ]
+      },
+      "trigger_labels": [
+        "Referral link"
+      ],
+      "triggers": [
+        {
+          "node_id": "n000",
+          "exact_visible_text": "When\nSomeone clicks a referral link",
+          "settings_panels": [],
+          "matching_complete": true
+        }
+      ],
+      "graph": {
+        "entry_node": "n000",
+        "nodes": [
+          {
+            "id": "n000",
+            "source_id": "trigger",
+            "editor_source_id": "trigger",
+            "source_type": "trigger",
+            "observed": {
+              "level": "public_graph",
+              "text": "When\nSomeone clicks a referral link",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "When\nSomeone clicks a referral link\nig.me/m/[account username]?ref=\nCopy link\nGet QR code\nReferral links open the conversation with you on Instagram. Learn more\nIcebreaker\nSelect ice breaker\nLinks only trigger if contacts message you. Set up an icebreaker to encourage them!\nReferral link automations are not supported on Instagram Web.\nAdd trigger",
+              "fields": [
+                {
+                  "context": "ig.me/m/[account username]?ref=",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "WELCOME",
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [
+                {
+                  "text": "Learn more",
+                  "url": "https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api/ig-me"
+                },
+                {
+                  "text": "",
+                  "url": "https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api/ice-breakers"
+                }
+              ],
+              "images": [],
+              "buttons": [
+                {
+                  "label": "Close",
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Copy link",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Get QR code",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Select ice breaker",
+                  "title": null
+                },
+                {
+                  "label": null,
+                  "text": "Add trigger",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/referral_qr",
+                  "signature": "sha256:09866f6fffd7662f93378dee8e57ac79f9b93f9d2fb8d275d2495f6f57468331",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "trigger",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n001",
+            "source_id": "438614",
+            "editor_source_id": "455142",
+            "source_type": "button_template",
+            "observed": {
+              "level": "public_graph",
+              "text": "Welcome! Want 10% off? Tap below for your code.\nGet my code",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Get my code",
+                  "title": "Get my code"
+                }
+              ]
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Welcome! Want 10% off? Tap below for your code.\nGet my code",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Get my code",
+                  "title": "Get my code"
+                },
+                {
+                  "label": "Edit",
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [
+              {
+                "name": null,
+                "text": "Send message with button\nWelcome! Want 10% off? Tap below for your code.\n47/640\nAdd image\nBUTTONS\nGet my code\n11/20\nAdd a URL\nAdd button\nYou can trigger actions for each non-URL button in the automation flow.\nPREVIEW\nWelcome! Want 10% off? Tap below for your code.\nGet my code\nSave",
+                "fields": [
+                  {
+                    "context": "Welcome! Want 10% off? Tap below for your code.",
+                    "index": 0,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Write your message",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Welcome! Want 10% off? Tap below for your code.",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "Get my code",
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Button text",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Get my code",
+                    "value_state": "observed_value"
+                  }
+                ]
+              }
+            ],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/media",
+                  "signature": "sha256:7bed40034648829e8533991701fd347b0477f284737656b7c4ae6dab36f5559c",
+                  "matched": true
+                },
+                {
+                  "definition": "evidence/shared-control-options.json#/fetch_image_from_url",
+                  "signature": "sha256:44f81cd7c479ed65327856a8c6de7060ff8c2b6dadb3d9d17effd5cb7acfd757",
+                  "matched": true
+                },
+                {
+                  "definition": "evidence/shared-variable-options.json",
+                  "signature": "sha256:0526214789d99cc96c3a6267c7e80aafe2dd7dd717bd80ca7c8e519fcfdfd656",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "button_template",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": true,
+              "notes": []
+            },
+            "variant_panels": [
+              {
+                "control": "Add a URL",
+                "is_source_default": false,
+                "panel": {
+                  "name": null,
+                  "text": "Send message with button\nWelcome! Want 10% off? Tap below for your code.\n47/640\nAdd image\nBUTTONS\nGet my code\n11/20\nFETCH IMAGE FROM WEBSITE URL\nUse setting\nAdd button\nPREVIEW\nWelcome! Want 10% off? Tap below for your code.\nGet my code\nSave",
+                  "fields": [
+                    {
+                      "context": "Welcome! Want 10% off? Tap below for your code.",
+                      "index": 0,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Write your message",
+                      "tag": "textarea",
+                      "type": "textarea",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "Welcome! Want 10% off? Tap below for your code.",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "Get my code",
+                      "index": 1,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Button text",
+                      "tag": "input",
+                      "type": "text",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "Get my code",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": null,
+                      "index": 2,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "https://example.com",
+                      "tag": "input",
+                      "type": "url",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    },
+                    {
+                      "context": "FETCH IMAGE FROM WEBSITE URL\nUse setting",
+                      "index": 3,
+                      "label": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "button",
+                      "type": "switch",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": false,
+                      "value_state": "observed_value"
+                    }
+                  ]
+                }
+              },
+              {
+                "control": "Add button",
+                "is_source_default": false,
+                "panel": {
+                  "name": null,
+                  "text": "Send message with button\nWelcome! Want 10% off? Tap below for your code.\n47/640\nAdd image\nBUTTONS\nGet my code\n11/20\nFETCH IMAGE FROM WEBSITE URL\nUse setting\nAdd a URL\nAdd button\nYou can trigger actions for each non-URL button in the automation flow.\nPREVIEW\nWelcome! Want 10% off? Tap below for your code.\nGet my code\nSave",
+                  "fields": [
+                    {
+                      "context": "Welcome! Want 10% off? Tap below for your code.",
+                      "index": 0,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Write your message",
+                      "tag": "textarea",
+                      "type": "textarea",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "Welcome! Want 10% off? Tap below for your code.",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": "Get my code",
+                      "index": 1,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Button text",
+                      "tag": "input",
+                      "type": "text",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "Get my code",
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": null,
+                      "index": 2,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "https://example.com",
+                      "tag": "input",
+                      "type": "url",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    },
+                    {
+                      "context": "FETCH IMAGE FROM WEBSITE URL\nUse setting",
+                      "index": 3,
+                      "label": null,
+                      "options": null,
+                      "placeholder": null,
+                      "tag": "button",
+                      "type": "switch",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": false,
+                      "value_state": "observed_value"
+                    },
+                    {
+                      "context": null,
+                      "index": 4,
+                      "label": null,
+                      "options": null,
+                      "placeholder": "Button text",
+                      "tag": "input",
+                      "type": "text",
+                      "validation": {
+                        "disabled": null,
+                        "inputmode": null,
+                        "max": null,
+                        "maxlength": null,
+                        "min": null,
+                        "minlength": null,
+                        "pattern": null,
+                        "readonly": null,
+                        "required": null
+                      },
+                      "value": "",
+                      "value_state": "observed_unset"
+                    }
+                  ]
+                }
+              }
+            ],
+            "folder_configuration": null
+          },
+          {
+            "id": "n002",
+            "source_id": "438614_option_0",
+            "editor_source_id": "455142_option_0",
+            "source_type": "branch_option",
+            "observed": {
+              "level": "public_graph",
+              "text": "WHEN BUTTON IS CLICKED\nGet my code",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "WHEN BUTTON IS CLICKED\nGet my code",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_option",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": true,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n003",
+            "source_id": "438615",
+            "editor_source_id": "455143",
+            "source_type": "message",
+            "observed": {
+              "level": "public_graph",
+              "text": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+              "fields": [
+                {
+                  "context": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Type your message",
+                  "tag": "textarea",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/inline_message_variable",
+                  "signature": "sha256:8c871e42e0afc5d6bfeb22b6c3573879748b2223d909135893207b02f51cd411",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "message",
+            "terminal_semantics": "has_outgoing_edges",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": true,
+              "notes": []
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          },
+          {
+            "id": "n004",
+            "source_id": "438616",
+            "editor_source_id": "455144",
+            "source_type": "folder",
+            "observed": {
+              "level": "public_graph",
+              "text": "Add contact to folder(s)\nWelcome offer: sen…",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+              "fields": [
+                {
+                  "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                  "index": 0,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": true,
+                      "text": "Add contact to folder(s)",
+                      "value": "add"
+                    },
+                    {
+                      "selected": false,
+                      "text": "Remove contact from folder(s)",
+                      "value": "remove"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "add",
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": [
+                {
+                  "label": null,
+                  "text": "Pick a folder",
+                  "title": null
+                },
+                {
+                  "label": "More actions",
+                  "text": "",
+                  "title": null
+                }
+              ]
+            },
+            "settings_panels": [],
+            "option_panels": [
+              {
+                "name": "More actions",
+                "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+                "fields": []
+              }
+            ],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": [
+                {
+                  "definition": "evidence/shared-control-options.json#/folder_picker",
+                  "signature": "sha256:05c1b1322aca193bb8e214f22b918b84f25460b446663110d80007cbf89cbb89",
+                  "matched": true
+                }
+              ]
+            },
+            "outcome_type": "folder",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [
+              "dep-n004"
+            ],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": {
+              "source_action": "Add contact to folder(s)",
+              "source_labels": [
+                "Welcome offer: sen…"
+              ],
+              "source_labels_state": "observed_truncated",
+              "source_resource_ids": [],
+              "source_binding_state": "unknown_not_exposed",
+              "clone_labels": [],
+              "clone_binding_state": "observed_unset",
+              "required_client_binding": "client.folder_binding.n004",
+              "recovery_evidence": "evidence/folder-label-recovery.json#/nodes/4"
+            }
+          },
+          {
+            "id": "n005",
+            "source_id": "438614_option_expired",
+            "editor_source_id": "455142_option_expired",
+            "source_type": "branch_expiration",
+            "observed": {
+              "level": "public_graph",
+              "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n6 hours",
+              "fields": [],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "editor_observed": {
+              "level": "inactive_editor",
+              "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\nseconds\nminutes\nhours\ndays",
+              "fields": [
+                {
+                  "context": null,
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": null,
+                  "tag": "input",
+                  "type": "number",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "6",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "seconds\nminutes\nhours\ndays",
+                  "index": 1,
+                  "label": null,
+                  "options": [
+                    {
+                      "selected": false,
+                      "text": "seconds",
+                      "value": "seconds"
+                    },
+                    {
+                      "selected": false,
+                      "text": "minutes",
+                      "value": "minutes"
+                    },
+                    {
+                      "selected": true,
+                      "text": "hours",
+                      "value": "hours"
+                    },
+                    {
+                      "selected": false,
+                      "text": "days",
+                      "value": "days"
+                    }
+                  ],
+                  "placeholder": null,
+                  "tag": "select",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "hours",
+                  "value_state": "observed_value"
+                }
+              ],
+              "links": [],
+              "images": [],
+              "buttons": []
+            },
+            "settings_panels": [],
+            "option_panels": [],
+            "inspection": {
+              "level": "all_accessible_controls",
+              "all_controls_opened": true,
+              "unknown_settings": [],
+              "defaults_captured": true,
+              "defaults_scope": "cloned_editor_only",
+              "remaining_controls": [],
+              "shared_control_refs": []
+            },
+            "outcome_type": "branch_expiration",
+            "terminal_semantics": "no_outgoing_edge_observed",
+            "dependency_refs": [],
+            "node_match": {
+              "status": "verified",
+              "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+              "topology_equal": true,
+              "exact_text_equal": false,
+              "notes": [
+                "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+              ]
+            },
+            "variant_panels": [],
+            "folder_configuration": null
+          }
+        ],
+        "edges": [
+          {
+            "id": "e000",
+            "from": "n000",
+            "to": "n001",
+            "source_label": "Edge from trigger to 438614",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e001",
+            "from": "n001",
+            "to": "n002",
+            "source_label": "Edge from 438614 to 438614_option_0",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e002",
+            "from": "n002",
+            "to": "n003",
+            "source_label": "Edge from 438614_option_0 to 438615",
+            "source_port": "438614_option_0",
+            "condition_text": "WHEN BUTTON IS CLICKED\nGet my code",
+            "condition_basis": "source_branch_label"
+          },
+          {
+            "id": "e003",
+            "from": "n003",
+            "to": "n004",
+            "source_label": "Edge from 438615 to 438616",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          },
+          {
+            "id": "e004",
+            "from": "n001",
+            "to": "n005",
+            "source_label": "Edge from 438614 to 438614_option_expired",
+            "source_port": null,
+            "condition_text": null,
+            "condition_basis": "sequential_edge"
+          }
+        ],
+        "graph_source_complete": true,
+        "capture_audit": {
+          "rendered_node_count": 6,
+          "rendered_edge_count": 5,
+          "saved_node_count": 6,
+          "saved_edge_count": 5,
+          "counts_equal": true,
+          "reachable_nodes": 6,
+          "dangling_edges": 0,
+          "duplicate_node_ids": 0,
+          "limitations": [
+            "Complete relative to saved rendered DOM, not an official export or hidden server graph.",
+            "No outgoing rendered edge means an observed graph end, not proof of delivery or successful business outcome.",
+            "In the editor, Add a step placeholders were excluded from source-node matching; original public edges were retained."
+          ]
+        }
+      },
+      "scenario_settings": {
+        "panels": [
+          {
+            "name": "Limit frequency per contact",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nLimit how often this scenario can run for each contact\nLimit how often this scenario can run for each contact\nRun scenario only\nonce\nonce every\nper contact\nInterrupt on message replies\nExclude specific folders\nUnsaved changes\nCancel changes\nSave scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Welcome new customers from a QR code",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Limit how often this scenario can run for each contact\nLimit how often this scenario can run for each contact",
+                "index": 1,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "button",
+                "type": "button",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": true,
+                "value_state": "observed_value"
+              },
+              {
+                "context": "once\nonce every",
+                "index": 2,
+                "label": null,
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "once",
+                    "value": "once"
+                  },
+                  {
+                    "selected": false,
+                    "text": "once every",
+                    "value": "once_every"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "once",
+                "value_state": "observed_value"
+              }
+            ]
+          },
+          {
+            "name": "Interrupt on message replies",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nInterrupt on message replies\nInterrupt when you reply manually\nInterrupt when you reply manually\nInterrupt when contact replies\nInterrupt when contact replies\nExclude specific folders\nUnsaved changes\nCancel changes\nSave scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Welcome new customers from a QR code",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Interrupt when you reply manually\nInterrupt when you reply manually",
+                "index": 1,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "button",
+                "type": "button",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": false,
+                "value_state": "observed_value"
+              },
+              {
+                "context": "Interrupt when contact replies\nInterrupt when contact replies",
+                "index": 2,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "button",
+                "type": "button",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": false,
+                "value_state": "observed_value"
+              }
+            ]
+          },
+          {
+            "name": "Exclude specific folders",
+            "text": "Results\nHistory\nActivate scenario\nLimit frequency per contact\nInterrupt on message replies\nExclude specific folders\nThis scenario will not run for contacts in the selected folders\nPick a folder\nUnsaved changes\nCancel changes\nSave scenario",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "My awesome automation scenario",
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Welcome new customers from a QR code",
+                "value_state": "observed_value"
+              }
+            ]
+          }
+        ],
+        "defaults_complete": true,
+        "inheritance": "Observed account opt-out, menu and global exclusions apply separately. These are not template defaults. No account setting changed.",
+        "global_settings_source": "evidence/shared-control-options.json#/global_options",
+        "shared_control_refs": [
+          "evidence/6024-editor.json#/scenario_panels"
+        ]
+      },
+      "rules": {
+        "refusal": "Source stop, negative-answer, no-response and expiry ports are retained. Account opt-out is a separate inherited control.",
+        "reentry": "Per-template Limit frequency per contact defaults and shared enabled options are preserved in scenario settings.",
+        "duplicates": "No idempotency guarantee established. Frequency control is not proof of cross-scenario deduplication.",
+        "retry_and_timeout_evidence": [
+          "n005"
+        ],
+        "failure_semantics": "UI retry/expiry values are preserved per node. Transport/runtime failures were not tested; lack of runtime proof is not counted as an unopened setting."
+      },
+      "dependencies": [
+        {
+          "id": "dep-n004",
+          "node_id": "n004",
+          "kind": "folder",
+          "source_reference": null,
+          "observed_values": [
+            "Add contact to folder(s)\nWelcome offer: sen…"
+          ],
+          "required_coach_input": "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "status": "partial"
+        }
+      ],
+      "placeholders": [],
+      "outcomes": {
+        "observed_events": [
+          "WHEN BUTTON IS CLICKED\nGet my code"
+        ],
+        "desired_event_verified": false,
+        "attribution_gap": "UI branch labels are observable mechanisms, not confirmation of the desired business event."
+      },
+      "gaps": [
+        {
+          "id": "runtime-not-tested",
+          "scope": "execution",
+          "field": "runtime_tested",
+          "reason": "No customer or test execution is authorized. Static observations do not prove delivery or outcome.",
+          "blocks_exact_reconstruction": false
+        },
+        {
+          "id": "n004-source-folder-binding",
+          "scope": "n004",
+          "field": "source folder configuration",
+          "reason": "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default. Original label is literally truncated; the missing text was not recovered or guessed.",
+          "blocks_exact_reconstruction": true
+        }
+      ],
+      "reconstruction": {
+        "record_schema_valid": true,
+        "graph_integrity_valid": true,
+        "source_settings_complete": false,
+        "status": "partially_reconstructable",
+        "runtime_tested": false,
+        "blockers": [
+          "Original folder resource IDs are not exposed. Clone folder choice is separate client binding, not the source default. Original label is literally truncated; the missing text was not recovered or guessed."
+        ],
+        "coverage": {
+          "source_nodes": 6,
+          "source_edges": 5,
+          "editor_nodes_matched": 6,
+          "nodes_with_editor_panels": 1,
+          "nodes_all_controls_opened": 6,
+          "terminal_nodes": 2,
+          "timeout_nodes": 1
+        },
+        "client_data_ready": false,
+        "external_binding_blockers": [
+          "Bind and verify the folder resource for this node; preserve the source value separately.",
+          "Authorized client channel, real offer and account scope have not been configured."
+        ]
+      },
+      "evidence_files": [
+        "evidence/6019-editor.json",
+        "evidence/6019-public.json",
+        "evidence/shared-control-options.json",
+        "evidence/shared-variable-options.json",
+        "draft-manifest.json",
+        "evidence/final-reconciliation.json"
+      ],
+      "wizard_settings": [],
+      "access_evidence": {
+        "state": "editor_opened",
+        "attempts": 1,
+        "visible_error": null,
+        "cause_proven": false,
+        "delayed_reconciliation": "23 list rows: 21 owned inactive drafts and 2 pre-existing. No additional draft matched the nine unresolved attempts. Original creation exception/render was not retained; app refusal is unproven."
+      }
+    }
+  },
+  "graph": {
+    "start": "n000",
+    "steps": [
+      {
+        "id": "n000",
+        "type": "entry",
+        "sourceType": "trigger",
+        "title": "trigger",
+        "content": {
+          "text": "When\nSomeone clicks a referral link",
+          "preview": "When\nSomeone clicks a referral link",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n000",
+          "source_id": "trigger",
+          "editor_source_id": "trigger",
+          "source_type": "trigger",
+          "observed": {
+            "level": "public_graph",
+            "text": "When\nSomeone clicks a referral link",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "When\nSomeone clicks a referral link\nig.me/m/[account username]?ref=\nCopy link\nGet QR code\nReferral links open the conversation with you on Instagram. Learn more\nIcebreaker\nSelect ice breaker\nLinks only trigger if contacts message you. Set up an icebreaker to encourage them!\nReferral link automations are not supported on Instagram Web.\nAdd trigger",
+            "fields": [
+              {
+                "context": "ig.me/m/[account username]?ref=",
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "WELCOME",
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [
+              {
+                "text": "Learn more",
+                "url": "https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api/ig-me"
+              },
+              {
+                "text": "",
+                "url": "https://developers.facebook.com/docs/instagram-platform/instagram-api-with-instagram-login/messaging-api/ice-breakers"
+              }
+            ],
+            "images": [],
+            "buttons": [
+              {
+                "label": "Close",
+                "text": "",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Copy link",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Get QR code",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Select ice breaker",
+                "title": null
+              },
+              {
+                "label": null,
+                "text": "Add trigger",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/referral_qr",
+                "signature": "sha256:09866f6fffd7662f93378dee8e57ac79f9b93f9d2fb8d275d2495f6f57468331",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "trigger",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/0",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n001",
+        "type": "message",
+        "sourceType": "button_template",
+        "title": "button_template",
+        "content": {
+          "text": "Welcome! Want 10% off? Tap below for your code.\nGet my code",
+          "preview": "Welcome! Want 10% off? Tap below for your code.\nGet my code",
+          "buttons": [
+            "Get my code"
+          ],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n001",
+          "source_id": "438614",
+          "editor_source_id": "455142",
+          "source_type": "button_template",
+          "observed": {
+            "level": "public_graph",
+            "text": "Welcome! Want 10% off? Tap below for your code.\nGet my code",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Get my code",
+                "title": "Get my code"
+              }
+            ]
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Welcome! Want 10% off? Tap below for your code.\nGet my code",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Get my code",
+                "title": "Get my code"
+              },
+              {
+                "label": "Edit",
+                "text": "",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [
+            {
+              "name": null,
+              "text": "Send message with button\nWelcome! Want 10% off? Tap below for your code.\n47/640\nAdd image\nBUTTONS\nGet my code\n11/20\nAdd a URL\nAdd button\nYou can trigger actions for each non-URL button in the automation flow.\nPREVIEW\nWelcome! Want 10% off? Tap below for your code.\nGet my code\nSave",
+              "fields": [
+                {
+                  "context": "Welcome! Want 10% off? Tap below for your code.",
+                  "index": 0,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Write your message",
+                  "tag": "textarea",
+                  "type": "textarea",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Welcome! Want 10% off? Tap below for your code.",
+                  "value_state": "observed_value"
+                },
+                {
+                  "context": "Get my code",
+                  "index": 1,
+                  "label": null,
+                  "options": null,
+                  "placeholder": "Button text",
+                  "tag": "input",
+                  "type": "text",
+                  "validation": {
+                    "disabled": null,
+                    "inputmode": null,
+                    "max": null,
+                    "maxlength": null,
+                    "min": null,
+                    "minlength": null,
+                    "pattern": null,
+                    "readonly": null,
+                    "required": null
+                  },
+                  "value": "Get my code",
+                  "value_state": "observed_value"
+                }
+              ]
+            }
+          ],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/media",
+                "signature": "sha256:7bed40034648829e8533991701fd347b0477f284737656b7c4ae6dab36f5559c",
+                "matched": true
+              },
+              {
+                "definition": "evidence/shared-control-options.json#/fetch_image_from_url",
+                "signature": "sha256:44f81cd7c479ed65327856a8c6de7060ff8c2b6dadb3d9d17effd5cb7acfd757",
+                "matched": true
+              },
+              {
+                "definition": "evidence/shared-variable-options.json",
+                "signature": "sha256:0526214789d99cc96c3a6267c7e80aafe2dd7dd717bd80ca7c8e519fcfdfd656",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "button_template",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": true,
+            "notes": []
+          },
+          "variant_panels": [
+            {
+              "control": "Add a URL",
+              "is_source_default": false,
+              "panel": {
+                "name": null,
+                "text": "Send message with button\nWelcome! Want 10% off? Tap below for your code.\n47/640\nAdd image\nBUTTONS\nGet my code\n11/20\nFETCH IMAGE FROM WEBSITE URL\nUse setting\nAdd button\nPREVIEW\nWelcome! Want 10% off? Tap below for your code.\nGet my code\nSave",
+                "fields": [
+                  {
+                    "context": "Welcome! Want 10% off? Tap below for your code.",
+                    "index": 0,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Write your message",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Welcome! Want 10% off? Tap below for your code.",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "Get my code",
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Button text",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Get my code",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": null,
+                    "index": 2,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "https://example.com",
+                    "tag": "input",
+                    "type": "url",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  },
+                  {
+                    "context": "FETCH IMAGE FROM WEBSITE URL\nUse setting",
+                    "index": 3,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "button",
+                    "type": "switch",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": false,
+                    "value_state": "observed_value"
+                  }
+                ]
+              }
+            },
+            {
+              "control": "Add button",
+              "is_source_default": false,
+              "panel": {
+                "name": null,
+                "text": "Send message with button\nWelcome! Want 10% off? Tap below for your code.\n47/640\nAdd image\nBUTTONS\nGet my code\n11/20\nFETCH IMAGE FROM WEBSITE URL\nUse setting\nAdd a URL\nAdd button\nYou can trigger actions for each non-URL button in the automation flow.\nPREVIEW\nWelcome! Want 10% off? Tap below for your code.\nGet my code\nSave",
+                "fields": [
+                  {
+                    "context": "Welcome! Want 10% off? Tap below for your code.",
+                    "index": 0,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Write your message",
+                    "tag": "textarea",
+                    "type": "textarea",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Welcome! Want 10% off? Tap below for your code.",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": "Get my code",
+                    "index": 1,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Button text",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "Get my code",
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": null,
+                    "index": 2,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "https://example.com",
+                    "tag": "input",
+                    "type": "url",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  },
+                  {
+                    "context": "FETCH IMAGE FROM WEBSITE URL\nUse setting",
+                    "index": 3,
+                    "label": null,
+                    "options": null,
+                    "placeholder": null,
+                    "tag": "button",
+                    "type": "switch",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": false,
+                    "value_state": "observed_value"
+                  },
+                  {
+                    "context": null,
+                    "index": 4,
+                    "label": null,
+                    "options": null,
+                    "placeholder": "Button text",
+                    "tag": "input",
+                    "type": "text",
+                    "validation": {
+                      "disabled": null,
+                      "inputmode": null,
+                      "max": null,
+                      "maxlength": null,
+                      "min": null,
+                      "minlength": null,
+                      "pattern": null,
+                      "readonly": null,
+                      "required": null
+                    },
+                    "value": "",
+                    "value_state": "observed_unset"
+                  }
+                ]
+              }
+            }
+          ],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/1",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n002",
+        "type": "choice",
+        "sourceType": "branch_option",
+        "title": "branch_option",
+        "content": {
+          "text": "WHEN BUTTON IS CLICKED\nGet my code",
+          "preview": "WHEN BUTTON IS CLICKED\nGet my code",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n002",
+          "source_id": "438614_option_0",
+          "editor_source_id": "455142_option_0",
+          "source_type": "branch_option",
+          "observed": {
+            "level": "public_graph",
+            "text": "WHEN BUTTON IS CLICKED\nGet my code",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "WHEN BUTTON IS CLICKED\nGet my code",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_option",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": true,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/2",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n003",
+        "type": "message",
+        "sourceType": "message",
+        "title": "message",
+        "content": {
+          "text": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+          "preview": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n003",
+          "source_id": "438615",
+          "editor_source_id": "455143",
+          "source_type": "message",
+          "observed": {
+            "level": "public_graph",
+            "text": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+            "fields": [
+              {
+                "context": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": "Type your message",
+                "tag": "textarea",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "Your code is WELCOME10. Use it at checkout, or show this message in store.",
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/inline_message_variable",
+                "signature": "sha256:8c871e42e0afc5d6bfeb22b6c3573879748b2223d909135893207b02f51cd411",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "message",
+          "terminal_semantics": "has_outgoing_edges",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": true,
+            "notes": []
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/3",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n004",
+        "type": "group",
+        "sourceType": "folder",
+        "title": "folder",
+        "content": {
+          "text": "Add contact to folder(s)\nWelcome offer: sen…",
+          "preview": "Add contact to folder(s)\nWelcome offer: sen…",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n004",
+          "source_id": "438616",
+          "editor_source_id": "455144",
+          "source_type": "folder",
+          "observed": {
+            "level": "public_graph",
+            "text": "Add contact to folder(s)\nWelcome offer: sen…",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "Add contact to folder(s)\nRemove contact from folder(s)\nPick a folder",
+            "fields": [
+              {
+                "context": "Add contact to folder(s)\nRemove contact from folder(s)",
+                "index": 0,
+                "label": null,
+                "options": [
+                  {
+                    "selected": true,
+                    "text": "Add contact to folder(s)",
+                    "value": "add"
+                  },
+                  {
+                    "selected": false,
+                    "text": "Remove contact from folder(s)",
+                    "value": "remove"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "add",
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": [
+              {
+                "label": null,
+                "text": "Pick a folder",
+                "title": null
+              },
+              {
+                "label": "More actions",
+                "text": "",
+                "title": null
+              }
+            ]
+          },
+          "settings_panels": [],
+          "option_panels": [
+            {
+              "name": "More actions",
+              "text": "- button \"Copy\":\n  - generic: Copy\n- button \"Delete\":\n  - generic: Delete",
+              "fields": []
+            }
+          ],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": [
+              {
+                "definition": "evidence/shared-control-options.json#/folder_picker",
+                "signature": "sha256:05c1b1322aca193bb8e214f22b918b84f25460b446663110d80007cbf89cbb89",
+                "matched": true
+              }
+            ]
+          },
+          "outcome_type": "folder",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [
+            "dep-n004"
+          ],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": {
+            "source_action": "Add contact to folder(s)",
+            "source_labels": [
+              "Welcome offer: sen…"
+            ],
+            "source_labels_state": "observed_truncated",
+            "source_resource_ids": [],
+            "source_binding_state": "unknown_not_exposed",
+            "clone_labels": [],
+            "clone_binding_state": "observed_unset",
+            "required_client_binding": "client.folder_binding.n004",
+            "recovery_evidence": "evidence/folder-label-recovery.json#/nodes/4"
+          }
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/4",
+          "derived": null,
+          "evidence": []
+        }
+      },
+      {
+        "id": "n005",
+        "type": "timeout",
+        "sourceType": "branch_expiration",
+        "title": "branch_expiration",
+        "content": {
+          "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n6 hours",
+          "preview": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n6 hours",
+          "buttons": [],
+          "media": [],
+          "gallery": []
+        },
+        "settings": {
+          "id": "n005",
+          "source_id": "438614_option_expired",
+          "editor_source_id": "455142_option_expired",
+          "source_type": "branch_expiration",
+          "observed": {
+            "level": "public_graph",
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\n6 hours",
+            "fields": [],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "editor_observed": {
+            "level": "inactive_editor",
+            "text": "IF BUTTON HAS NOT BEEN CLICKED AFTER\nseconds\nminutes\nhours\ndays",
+            "fields": [
+              {
+                "context": null,
+                "index": 0,
+                "label": null,
+                "options": null,
+                "placeholder": null,
+                "tag": "input",
+                "type": "number",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "6",
+                "value_state": "observed_value"
+              },
+              {
+                "context": "seconds\nminutes\nhours\ndays",
+                "index": 1,
+                "label": null,
+                "options": [
+                  {
+                    "selected": false,
+                    "text": "seconds",
+                    "value": "seconds"
+                  },
+                  {
+                    "selected": false,
+                    "text": "minutes",
+                    "value": "minutes"
+                  },
+                  {
+                    "selected": true,
+                    "text": "hours",
+                    "value": "hours"
+                  },
+                  {
+                    "selected": false,
+                    "text": "days",
+                    "value": "days"
+                  }
+                ],
+                "placeholder": null,
+                "tag": "select",
+                "type": "text",
+                "validation": {
+                  "disabled": null,
+                  "inputmode": null,
+                  "max": null,
+                  "maxlength": null,
+                  "min": null,
+                  "minlength": null,
+                  "pattern": null,
+                  "readonly": null,
+                  "required": null
+                },
+                "value": "hours",
+                "value_state": "observed_value"
+              }
+            ],
+            "links": [],
+            "images": [],
+            "buttons": []
+          },
+          "settings_panels": [],
+          "option_panels": [],
+          "inspection": {
+            "level": "all_accessible_controls",
+            "all_controls_opened": true,
+            "unknown_settings": [],
+            "defaults_captured": true,
+            "defaults_scope": "cloned_editor_only",
+            "remaining_controls": [],
+            "shared_control_refs": []
+          },
+          "outcome_type": "branch_expiration",
+          "terminal_semantics": "no_outgoing_edge_observed",
+          "dependency_refs": [],
+          "node_match": {
+            "status": "verified",
+            "method": "ordered DOM candidate + type + complete remapped edge set + parent/label uniqueness",
+            "topology_equal": true,
+            "exact_text_equal": false,
+            "notes": [
+              "Editor adds controls, option labels or editable field rendering. Original source text is retained independently."
+            ]
+          },
+          "variant_panels": [],
+          "folder_configuration": null
+        },
+        "provenance": {
+          "pointer": "/graph/nodes/5",
+          "derived": null,
+          "evidence": []
+        }
+      }
+    ],
+    "transitions": [
+      {
+        "id": "e000",
+        "from": "n000",
+        "to": "n001",
+        "label": "",
+        "settings": {
+          "id": "e000",
+          "from": "n000",
+          "to": "n001",
+          "source_label": "Edge from trigger to 438614",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/0"
+        }
+      },
+      {
+        "id": "e001",
+        "from": "n001",
+        "to": "n002",
+        "label": "",
+        "settings": {
+          "id": "e001",
+          "from": "n001",
+          "to": "n002",
+          "source_label": "Edge from 438614 to 438614_option_0",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/1"
+        }
+      },
+      {
+        "id": "e002",
+        "from": "n002",
+        "to": "n003",
+        "label": "WHEN BUTTON IS CLICKED\nGet my code",
+        "settings": {
+          "id": "e002",
+          "from": "n002",
+          "to": "n003",
+          "source_label": "Edge from 438614_option_0 to 438615",
+          "source_port": "438614_option_0",
+          "condition_text": "WHEN BUTTON IS CLICKED\nGet my code",
+          "condition_basis": "source_branch_label"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/2"
+        }
+      },
+      {
+        "id": "e003",
+        "from": "n003",
+        "to": "n004",
+        "label": "",
+        "settings": {
+          "id": "e003",
+          "from": "n003",
+          "to": "n004",
+          "source_label": "Edge from 438615 to 438616",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/3"
+        }
+      },
+      {
+        "id": "e004",
+        "from": "n001",
+        "to": "n005",
+        "label": "",
+        "settings": {
+          "id": "e004",
+          "from": "n001",
+          "to": "n005",
+          "source_label": "Edge from 438614 to 438614_option_expired",
+          "source_port": null,
+          "condition_text": null,
+          "condition_basis": "sequential_edge"
+        },
+        "provenance": {
+          "pointer": "/graph/edges/4"
+        }
+      }
+    ]
+  },
+  "setup": [],
+  "annotations": []
+}
