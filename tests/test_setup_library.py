@@ -249,16 +249,16 @@ class SetupLibraryTests(unittest.TestCase):
         paths = set(coach.RELEASE_FILES)
         for packet in self.packets.values():
             identifier = packet["variant"]["id"]
-            self.assertIn(f"plugin/skills/funnels/references/setup-details/{identifier}.md", paths)
+            self.assertIn(f"internal/funnels/setup-details/{identifier}.md", paths)
             for source in packet["sources"]:
-                self.assertIn("plugin/skills/funnels/references/" + source["source_file"], paths)
-        self.assertIn("plugin/skills/funnels/references/setup-policy.md", paths)
+                self.assertIn("internal/funnels/" + source["source_file"], paths)
+        self.assertIn("internal/funnels/setup-policy.md", paths)
 
     def test_package_rejects_stale_selected_setup_before_copying(self):
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory) / "relocated"
-            coach.release(source)
-            detail = source / "plugin/skills/funnels/references/setup-details/courses-manychat-111.md"
+            coach.source_snapshot(source)
+            detail = source / "internal/funnels/setup-details/courses-manychat-111.md"
             detail.write_text(detail.read_text() + "\nStale course entry.\n")
             destination = Path(directory) / "rejected"
             result = subprocess.run([sys.executable, str(source / "plugin/scripts/coach.py"), "release", str(destination)], capture_output=True, text=True)

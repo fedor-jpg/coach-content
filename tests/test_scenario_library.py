@@ -133,7 +133,7 @@ class ScenarioLibraryTests(unittest.TestCase):
         self.assertIn("Entry:", outputs["scenario-details/link-delivery.md"])
         self.assertIn("Outcome:", outputs["scenario-details/link-delivery.md"])
         for name in outputs:
-            self.assertIn(f"plugin/skills/funnels/references/{name}", coach.RELEASE_FILES)
+            self.assertIn(f"internal/funnels/{name}", coach.RELEASE_FILES)
         with tempfile.TemporaryDirectory() as directory:
             relocated = Path(directory) / "relocated"
             for name in coach.RELEASE_FILES:
@@ -143,7 +143,7 @@ class ScenarioLibraryTests(unittest.TestCase):
             command = [sys.executable, str(relocated / "plugin/scripts/funnel_library.py"), "--check"]
             result = subprocess.run(command, capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
-            (relocated / "plugin/skills/funnels/references/scenario-index.md").write_text("stale")
+            (relocated / "internal/funnels/scenario-index.md").write_text("stale")
             output = Path(directory) / "not-created"
             result = subprocess.run([sys.executable, str(relocated / "plugin/scripts/coach.py"), "release", str(output)], capture_output=True, text=True)
             self.assertNotEqual(result.returncode, 0)

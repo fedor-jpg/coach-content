@@ -5,11 +5,15 @@ import argparse
 import hashlib
 import json
 import re
+import zipfile
+import re
 from pathlib import Path
 from scenario_library import scenario_outputs, read_scenarios, continuation_prompts
 from setup_library import setup_outputs
 
-REFERENCES = Path(__file__).resolve().parents[1] / "skills/funnels/references"
+ROOT = Path(__file__).resolve().parents[2]
+REFERENCES = ROOT / "internal/funnels"
+CUSTOMER_SKILL = ROOT / "plugin/skills/funnels"
 
 
 def digest(data):
@@ -201,8 +205,66 @@ def generate(references=REFERENCES, check=False):
     return {"described_recipes": 30, "sources": 60, "generated_files": len(expected), "checked": check}
 
 
+def customer_outputs():
+    import funnels
+
+    entries = load(REFERENCES / "catalog.json")["recipes"]
+    require(bool(entries), "No runtime-accepted funnel. Customer release is blocked; the previous release is unchanged.")
+    result = {"SKILL.md": (CUSTOMER_SKILL / "SKILL.md").read_text(encoding="utf-8"),
+              "references/operations.md": (CUSTOMER_SKILL / "references/operations.md").read_text(encoding="utf-8")}
+    index = ["# Ready Funnels", "", "Open only the selected funnel. Read its compatibility record before account changes.", ""]
+    compatibility = {}
+    for raw in entries:
+        value = funnels.recipe(raw["id"])
+        entry = funnels.accepted_entry(value, raw)
+        path = REFERENCES / "customer-recipes" / f"{value['id']}.json"
+        require(path.is_file() and not path.is_symlink(), "Accepted funnel has no safe customer instructions")
+        card = load(path)
+        require(set(card) == {"slug", "title", "summary", "variants", "requires_material_delivery", "body"}, "Unexpected customer instruction fields")
+        slug = card["slug"]
+        require(isinstance(slug, str) and re.fullmatch(r"[a-z][a-z0-9-]{0,63}", slug), "Unsafe customer funnel path")
+        require(slug not in compatibility, "Duplicate customer funnel")
+        require(all(isinstance(card[key], str) and card[key].strip() for key in ("title", "summary", "body")), "Empty customer instructions")
+        require(isinstance(card["requires_material_delivery"], bool), "Invalid material-delivery requirement")
+        require(isinstance(card["variants"], list) and card["variants"] and all(isinstance(item, str) for item in card["variants"]), "Invalid customer outcome variants")
+        require(set(card["variants"]) <= set(entry["acceptance"]["variants"]), "Customer outcome lacks runtime acceptance")
+        require(not card["requires_material_delivery"] or entry["acceptance"].get("material_delivery") is True, "Customer material delivery lacks runtime acceptance")
+        require(not any(char in card["title"] for char in "[]\n\r") and "\n" not in card["summary"], "Unsafe index text")
+        result[f"references/funnels/{slug}.md"] = card["body"]
+        index.append(f"- [{card['title']}](funnels/{slug}.md): {card['summary']}")
+        compatibility[slug] = {"environment": entry["environment"], "accepted_at": entry["acceptance"]["accepted_at"], "digest": entry["digest"]}
+    result["references/index.md"] = "\n".join(index) + "\n"
+    result["references/compatibility.json"] = json.dumps(compatibility, indent=2) + "\n"
+    for name, body in result.items():
+        if not name.endswith(".md"):
+            continue
+        for link in re.findall(r"\]\(([^)]+)\)", body):
+            require(not link.startswith(("/", "file:", "../")), "Customer instructions have an unsafe reference")
+            if not link.startswith(("https://", "#")):
+                require(str(Path(name).parent / link) in result, f"Customer instruction dependency is missing: {link}")
+    return result
+
+
+def package_customer(output):
+    files = customer_outputs()
+    output = Path(output)
+    require(output.suffix == ".skill" and not output.exists(), "Use a new .skill output path")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(output, "x", compression=zipfile.ZIP_DEFLATED) as archive:
+        for name, content in sorted(files.items()):
+            archive.writestr(f"funnels/{name}", content)
+    return {"output": str(output), "files": len(files), "status": "Packaged accepted funnels; installation is a separate check"}
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--customer-package", type=Path)
+    parser.add_argument("--customer-check", action="store_true")
     args = parser.parse_args()
-    print(json.dumps(generate(check=args.check)))
+    if args.customer_package:
+        print(json.dumps(package_customer(args.customer_package)))
+    elif args.customer_check:
+        print(json.dumps({"customer_files": len(customer_outputs())}))
+    else:
+        print(json.dumps(generate(check=args.check)))

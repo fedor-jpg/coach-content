@@ -526,11 +526,11 @@ class PackageTests(unittest.TestCase):
     def test_release_allowlist_and_checksums(self):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "release"
-            result = invoke("release", output)
+            result = coach.source_snapshot(output)
             manifest = coach.load(result["manifest"])
             paths = {entry["path"] for entry in manifest["files"]}
             self.assertEqual(paths, set(coach.RELEASE_FILES))
-            self.assertIn("plugin/skills/funnels/references/chatgpt-funnels.md", paths)
+            self.assertIn("internal/funnels/chatgpt-funnels.md", paths)
             for entry in manifest["files"]:
                 self.assertEqual(coach.digest(output / entry["path"]), entry["sha256"])
             self.assertFalse((output / "docs/artifacts").exists())

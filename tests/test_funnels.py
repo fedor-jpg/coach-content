@@ -1667,7 +1667,8 @@ class EvidenceTests(unittest.TestCase):
             self.assertNotIn("runs", entry)
             installed = root / "installed plugin"
             shutil.copytree(ROOT / "plugin", installed)
-            save_fixture(installed, "skills/funnels/references/catalog.json", {"schema_version": 1, "recipes": [entry]})
+            shutil.copytree(ROOT / "internal/funnels", root / "internal/funnels")
+            save_fixture(root, "internal/funnels/catalog.json", {"schema_version": 1, "recipes": [entry]})
             shutil.rmtree(proof)
             environment_path = root / "environment.json"
             save_fixture(root, environment_path.name, ENV)
@@ -1720,6 +1721,7 @@ class AttributionAndPackagingTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             relocated = Path(directory) / "plugin with spaces"
             shutil.copytree(ROOT / "plugin", relocated)
+            shutil.copytree(ROOT / "internal/funnels", Path(directory) / "internal/funnels")
             for command in (["validate"], ["catalog"], ["select", "inro-6025", "--developer-qa"]):
                 result = subprocess.run([sys.executable, str(relocated / "scripts/funnels.py"), *command], capture_output=True, text=True, cwd=directory)
                 self.assertEqual(result.returncode, 0, result.stderr)
