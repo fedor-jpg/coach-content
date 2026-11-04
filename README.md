@@ -1,13 +1,24 @@
 # Coach Content
 
-Prepare an Instagram funnel from the audited library through existing Chatfuel MCP.
-Version 0.3.0 adds the [setup skill](plugin/skills/funnels/SKILL.md): 30 adaptation drafts, 25 variants waiting for capabilities and two incomplete source references.
-The 57 variants retain 60 captured originals. 35 entry plans preserve only their stated primary result and disclose changed or omitted behavior.
-GitHub availability does not install the plugin, connect an account or verify a campaign. The accepted runtime registry remains empty.
+## Funnels Candidate
+
+Set up one Instagram campaign through Chatfuel: prepare the messages, save while paused, approve activation, verify delivery, then edit or stop.
+
+This branch contains the simplified [setup skill](plugin/skills/funnels/SKILL.md) and [acceptance criteria](docs/funnels-acceptance.md). The first candidate sends a resource link in DM when someone comments the approved keyword on a selected post.
+
+**Review only. Do not install this branch yet.** Clean native installation and live delivery remain unverified. The customer index is generated only after runtime acceptance. The empty accepted catalogue blocks both customer packaging commands; it is not a ready customer bundle.
+
+All 57 variants and 60 captured originals remain in `internal/funnels`, outside the installed skill. Customer exports contain only accepted instructions. The skill has no competitor audit, technical questionnaire or unsupported fallback. Account changes and activation need separate approval.
+
+After an accepted release is installed, start with:
+
+> Use Funnels. Set up sending my resource when someone comments on my post. Prepare the messages and ask only for what is missing. Keep the campaign paused until I approve activation.
+
+The previous [published release](https://github.com/fedor-jpg/coach-content/releases/tag/funnels-setup-1.1.0) and main branch remain unchanged. The installation instructions below refer to that earlier release, not this candidate.
 
 The plugin also retains its existing permitted-video editing, practical exercise and approval workflows. This release does not change those three existing skills.
 
-## Try Funnels in ChatGPT
+## Previous Release in ChatGPT
 
 **Start here:** [Download funnels.skill](https://github.com/fedor-jpg/coach-content/releases/download/funnels-setup-1.1.0/funnels.skill).
 This is the complete template setup skill, including its library and supporting files. It does not include the separate video skills. Do not upload only `SKILL.md` or the whole repository ZIP.
@@ -30,7 +41,7 @@ The archive matches the published skill source. **ChatGPT import and a complete 
 
 If the Skills or Upload option is absent, this upload path is unavailable in your workspace. Pasting the repository URL into a chat does not install the skill. See [OpenAI's Skills instructions](https://help.openai.com/en/articles/20001066-skills-in-chatgpt) and the [release contents](https://github.com/fedor-jpg/coach-content/releases/tag/funnels-setup-1.1.0).
 
-## Install the Full Plugin in Claude Cowork
+## Previous Release in Claude Cowork
 
 Install from [fedor-jpg/coach-content](https://github.com/fedor-jpg/coach-content):
 
@@ -41,7 +52,7 @@ Install from [fedor-jpg/coach-content](https://github.com/fedor-jpg/coach-conten
 5. Select the native Project or folder for the campaign.
 6. Run `/coach-content:start` with a business goal or named funnel. For video work, explicitly request video production or resume a video campaign.
 
-The assistant reads the compact setup index and only the selected detail. You supply business facts, not technical IDs or local commands.
+The earlier published assistant reads the compact setup index and only the selected detail. You supply business facts, not technical IDs or local commands.
 Supported drafts remain preparation until separate readback and approval. Missing follower checks, unsupported entries and other mandatory capabilities keep setup blocked.
 External email/SMS continuations are instructions, not installed integrations. No automated sending is authorized by reading or installing this repository.
 See the [per-variant audit](docs/funnel-setup-audit.md) for preserved functions and exact limitations.

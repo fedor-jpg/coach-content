@@ -14,7 +14,8 @@ from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
-REFERENCES = ROOT / "skills/funnels/references"
+REFERENCES = ROOT.parent / "internal/funnels"
+CUSTOMER_SKILL = ROOT / "skills/funnels"
 ENVIRONMENT_KEYS = {"host", "model", "connector_contract"}
 CONTRACT_REQUESTS = [
     {"name": "Mutation", "filter": "fuelyAutomation"},
@@ -70,7 +71,10 @@ def recipe(identifier):
 
 def recipe_digest(value):
     return fingerprint({"recipe": value, "execution": (REFERENCES / "chatfuel-execution.md").read_text(encoding="utf-8"),
-                        "skill": (REFERENCES.parent / "SKILL.md").read_text(encoding="utf-8"),
+                        "skill": (CUSTOMER_SKILL / "SKILL.md").read_text(encoding="utf-8"),
+                        "operations": (CUSTOMER_SKILL / "references/operations.md").read_text(encoding="utf-8"),
+                        "customer_recipe": load(REFERENCES / "customer-recipes" / f"{value['id']}.json")
+                        if (REFERENCES / "customer-recipes" / f"{value['id']}.json").is_file() else None,
                         "helper": Path(__file__).read_text(encoding="utf-8")})
 
 
@@ -912,6 +916,8 @@ def receipt(root, reference, bindings, check):
 
 def business_checks(value, parameters):
     checks = dict(value["business_outcomes"])
+    if value["id"] == "inro-6220":
+        checks["recipient_access"] = {"origin": "recipient-observation", "min_native_refs": 1, "parameter": "resource_url"}
     if value["family"] == "qualification":
         checks.update(value["outcome_variants"][parameters["next_step"]])
     for parameter, conditional in value.get("conditional_business_outcomes", {}).items():
@@ -990,7 +996,9 @@ def evidence_check(value, root, env):
                     verify_business_receipt(observed, check, outcomes[check], parameters, run["recipient_id"])
             if run["mode"] == "live":
                 live_variants.add(parameters["next_step"] if value["family"] == "qualification" else "default")
-                material_live = material_live or (value["id"] == "inro-6025" and "resource_url" in parameters)
+                material_live = material_live or ("resource_url" in parameters and (
+                    value["id"] == "inro-6025" or value["id"] == "inro-6220"
+                    and {"promised_link_received", "recipient_access"} <= set(outcomes)))
         accepted = record["acceptance"]
         require(accepted.get("status") == "accepted" and accepted.get("independent_reviewer"), "Independent acceptance required")
         require(accepted.get("runs_sha256") == fingerprint(runs), "Acceptance does not bind current runs")

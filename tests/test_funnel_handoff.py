@@ -11,7 +11,7 @@ from test_funnels import apply_commands, business, funnels, native_shaped_state,
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL = ROOT / "plugin/skills/funnels"
-GUIDE = (SKILL / "references/chatgpt-funnels.md").read_text(encoding="utf-8")
+GUIDE = (funnels.REFERENCES / "chatgpt-funnels.md").read_text(encoding="utf-8")
 SECTIONS = dict(re.findall(r"^### (inro-[\w-]+) \| [^\n]+\n(.*?)(?=^### inro-|\Z)", GUIDE, re.M | re.S))
 
 
@@ -54,7 +54,7 @@ class NativeHandoffTests(unittest.TestCase):
             self.assertIn(instruction, GUIDE)
 
     def test_all_thirty_source_ids_have_concrete_variant_contracts(self):
-        research = json.loads((SKILL / "references/research.json").read_text(encoding="utf-8"))
+        research = json.loads((funnels.REFERENCES / "research.json").read_text(encoding="utf-8"))
         self.assertEqual(set(SECTIONS), {row["id"] for row in research["sources"]})
         self.assertEqual(len(SECTIONS), 30)
         self.assertEqual(len(re.findall(r"^### inro-", GUIDE, re.M)), 30)
@@ -85,7 +85,8 @@ class NativeHandoffTests(unittest.TestCase):
                           "fuelyAutomationUpdateSetting", "fuelyAutomationSetEnabled"):
             self.assertIn(operation, GUIDE)
         entry = (SKILL / "SKILL.md").read_text(encoding="utf-8")
-        self.assertIn("references/chatgpt-funnels.md", entry)
+        self.assertNotIn("references/chatgpt-funnels.md", entry)
+        self.assertIn("references/index.md", entry)
         self.assertNotIn("return before `select`", entry)
 
     def test_changed_outcomes_do_not_relabel_literal_source_evidence(self):
@@ -95,7 +96,7 @@ class NativeHandoffTests(unittest.TestCase):
             self.assertEqual(funnels.recipe(identifier)["status"], "unavailable")
         self.assertIn("not automatic Story-mention detection", SECTIONS["inro-6086"])
         self.assertEqual(funnels.recipe("inro-6086")["status"], "unverified")
-        self.assertEqual(funnels.load(SKILL / "references/catalog.json")["recipes"], [])
+        self.assertEqual(funnels.load(funnels.REFERENCES / "catalog.json")["recipes"], [])
         self.assertIn("30 predefined business analogues", GUIDE)
         self.assertIn("not exact copies", GUIDE)
         self.assertIn("do not ask the coach to design a workaround", GUIDE)

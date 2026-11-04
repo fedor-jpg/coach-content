@@ -26,9 +26,9 @@ class FunnelLibraryTests(unittest.TestCase):
         result = funnel_library.generate(check=True)
         self.assertEqual(result["generated_files"], 171)
         self.assertLess((funnel_library.REFERENCES / "described-index.md").stat().st_size, 8192)
-        entry = (funnel_library.REFERENCES.parent / "SKILL.md").read_text()
+        entry = (funnel_library.CUSTOMER_SKILL / "SKILL.md").read_text()
         self.assertIn("only the selected", entry)
-        self.assertIn("Do not load all 60 raw graphs", entry)
+        self.assertIn("Do not search the repository for other recipes", entry)
 
     def test_missing_stale_and_contradictory_inputs_fail(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -69,7 +69,7 @@ class FunnelLibraryTests(unittest.TestCase):
         self.assertEqual(next(m["text"] for m in quiz["messages"] if m["id"] == "quiz_result"), "{quiz_answer} {bonus_text}")
 
     def test_packaged_and_relocated_native_library_is_complete(self):
-        expected = {f"plugin/skills/funnels/references/{name}" for name in funnel_library.outputs()}
+        expected = {f"internal/funnels/{name}" for name in funnel_library.outputs()}
         expected |= {str(path.relative_to(ROOT)) for path in (funnel_library.REFERENCES / "described-recipes").glob("*.json")}
         self.assertTrue(expected <= set(coach.RELEASE_FILES))
         with tempfile.TemporaryDirectory() as directory:
@@ -80,10 +80,10 @@ class FunnelLibraryTests(unittest.TestCase):
                 shutil.copy2(ROOT / name, target)
             result = subprocess.run([sys.executable, str(output / "plugin/scripts/funnel_library.py"), "--check"], cwd=directory, capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
-            relocated = output / "plugin/skills/funnels"
-            for item in funnel_library.load(relocated / "references/described-index.json")["recipes"]:
-                self.assertTrue((relocated / "references" / item["native_file"]).is_file())
-                self.assertTrue((relocated / "references" / item["file"]).is_file())
+            relocated = output / "internal/funnels"
+            for item in funnel_library.load(relocated / "described-index.json")["recipes"]:
+                self.assertTrue((relocated / item["native_file"]).is_file())
+                self.assertTrue((relocated / item["file"]).is_file())
 
     def test_no_dm_continuation_modes_have_only_silent_terminal_branches(self):
         recipes = funnel_library.read_library()[0]
@@ -137,8 +137,8 @@ class FunnelLibraryTests(unittest.TestCase):
     def test_release_rejects_stale_native_instructions_before_creating_package(self):
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory) / "relocated"
-            coach.release(source)
-            detail = source / "plugin/skills/funnels/references/native-recipes/inro-6220.md"
+            coach.source_snapshot(source)
+            detail = source / "internal/funnels/native-recipes/inro-6220.md"
             detail.write_text(detail.read_text() + "\nStale generated refusal instruction.\n")
             output = Path(directory) / "rejected"
             result = subprocess.run([sys.executable, str(source / "plugin/scripts/coach.py"), "release", str(output)],

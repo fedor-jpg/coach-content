@@ -27,11 +27,11 @@ RELEASE_FILES = (
     "plugin/skills/campaign/SKILL.md", "plugin/skills/video/SKILL.md",
     "plugin/skills/video/references/criteria.md", "plugin/skills/delivery/SKILL.md", "tests/test_coach.py",
     "plugin/scripts/funnels.py", "plugin/skills/funnels/SKILL.md",
-    "plugin/skills/funnels/references/catalog.json", "plugin/skills/funnels/references/research.json",
-    "plugin/skills/funnels/references/chatfuel-execution.md", "plugin/skills/funnels/references/local-checks.md",
-    "plugin/skills/funnels/references/chatgpt-funnels.md", "tests/test_funnel_handoff.py",
+    "internal/funnels/catalog.json", "internal/funnels/research.json",
+    "internal/funnels/chatfuel-execution.md", "internal/funnels/local-checks.md",
+    "internal/funnels/chatgpt-funnels.md", "tests/test_funnel_handoff.py",
     "tests/test_funnels.py", "tests/funnel-prompts.json", "tests/fixtures/funnel-contract.json",
-    *(f"plugin/skills/funnels/references/recipes/inro-{identifier}.json" for identifier in (
+    *(f"internal/funnels/recipes/inro-{identifier}.json" for identifier in (
         "comment-moderation", "6085", "4530", "6111", "6018", "6082", "6086", "6025", "6220", "6028",
         "6223", "6023", "6081", "4484", "6024", "6049", "6051", "6026", "6022", "6027", "6054",
         "6021", "6080", "4393", "6053", "6222", "6047", "6046", "6045", "6019",
@@ -39,26 +39,30 @@ RELEASE_FILES = (
 )
 RELEASE_FILES += (
     "plugin/scripts/funnel_library.py", "plugin/scripts/scenario_library.py", "tests/test_funnel_library.py", "tests/test_scenario_library.py",
-    *(f"plugin/skills/funnels/references/{name}" for name in (
+    *(f"internal/funnels/{name}" for name in (
         "native-policy.md", "source-coverage.json", "capability-observation.json",
         "described-index.json", "described-index.md", "scenarios.json", "scenario-index.json", "scenario-index.md",
     )),
-    *(f"plugin/skills/funnels/references/{folder}/{Path(name).stem}{suffix}"
-      for name in RELEASE_FILES if "/references/recipes/" in name
+    *(f"internal/funnels/{folder}/{Path(name).stem}{suffix}"
+      for name in RELEASE_FILES if "/recipes/" in name
       for folder, suffix in (("described-recipes", ".json"), ("native-recipes", ".md"))),
 )
-RELEASE_FILES += tuple(f"plugin/skills/funnels/references/scenario-details/{name}.md" for name in (
+RELEASE_FILES += tuple(f"internal/funnels/scenario-details/{name}.md" for name in (
     "link-delivery", "follower-material", "contact-material", "webinar", "booking", "community", "content",
     "affiliate", "courses", "offers", "giveaway", "games", "moderation", "thanks", "support", "collaboration",
     "phone-community", "channel-transfer", "reminder", "conversation-builder",
 ))
-_FUNNEL_REFERENCES = Path(__file__).resolve().parents[1] / "skills/funnels/references"
-_SETUP_VARIANTS = [variant for family in json.loads((_FUNNEL_REFERENCES / "scenarios.json").read_text())["families"] for variant in family["variants"]]
+_FUNNEL_REFERENCES = Path(__file__).resolve().parents[2] / "internal/funnels"
+_SETUP_VARIANTS = [variant for family in json.loads((_FUNNEL_REFERENCES / "scenarios.json").read_text())["families"] for variant in family["variants"]] if (_FUNNEL_REFERENCES / "scenarios.json").is_file() else []
 RELEASE_FILES += (
     "plugin/scripts/setup_library.py", "tests/test_setup_library.py", "tests/test_funnel_publication.py", "docs/funnel-setup-audit.md",
-    *(f"plugin/skills/funnels/references/{name}" for name in ("setup-policy.md", "setup-index.md", "setup-index.json", "setup-source-index.json")),
-    *(f"plugin/skills/funnels/references/setup-details/{variant['id']}.{suffix}" for variant in _SETUP_VARIANTS for suffix in ("md", "json")),
-    *(f"plugin/skills/funnels/references/source-records/{source}.json" for variant in _SETUP_VARIANTS for source in variant["source_ids"]),
+    *(f"internal/funnels/{name}" for name in ("setup-policy.md", "setup-index.md", "setup-index.json", "setup-source-index.json")),
+    *(f"internal/funnels/setup-details/{variant['id']}.{suffix}" for variant in _SETUP_VARIANTS for suffix in ("md", "json")),
+    *(f"internal/funnels/source-records/{source}.json" for variant in _SETUP_VARIANTS for source in variant["source_ids"]),
+)
+RELEASE_FILES += (
+    "plugin/skills/funnels/references/operations.md", "tests/test_customer_funnels.py",
+    "internal/funnels/customer-recipes/inro-6220.json", "docs/funnels-acceptance.md",
 )
 
 
@@ -113,8 +117,7 @@ def resources():
     names = {"manifest": ".claude-plugin/plugin.json", "helper": "scripts/coach.py",
              "campaign": "skills/campaign/SKILL.md", "video": "skills/video/SKILL.md",
              "delivery": "skills/delivery/SKILL.md", "criteria": "skills/video/references/criteria.md",
-             "funnels": "skills/funnels/SKILL.md", "funnel_helper": "scripts/funnels.py",
-             "funnel_catalog": "skills/funnels/references/catalog.json"}
+             "funnels": "skills/funnels/SKILL.md"}
     paths = {key: (root / name).resolve() for key, name in names.items()}
     for path in paths.values():
         if not path.is_relative_to(root) or not path.is_file():
@@ -262,7 +265,7 @@ def cover(spec_path, output):
     return {"output": str(output), "sha256": digest(output), "type": "standalone cover; not a subtitle screenshot"}
 
 
-def release(output):
+def source_snapshot(output):
     root = Path(__file__).resolve().parents[2]
     output = Path(output).resolve()
     if output.exists():
@@ -279,11 +282,45 @@ def release(output):
         shutil.copyfile(root / name, destination)
         files.append({"path": name, "sha256": digest(destination), "bytes": destination.stat().st_size})
     manifest = {"version": load(root / "plugin/.claude-plugin/plugin.json")["version"],
-                "status": "Allowlisted snapshot; staging does not perform publication or installation",
+                "status": "Maintainer source snapshot, not a customer release or installation",
                 "files": files, "excluded": ["source media", "transcripts", "model weights", "campaign records", "_system", "runtime caches"],
                 "license_status": "Original plugin code; no additional license grant specified. No third-party skill code or binaries bundled."}
     save(output / "docs/release-manifest.json", manifest)
     return {"output": str(output), "files": len(files), "manifest": str(output / "docs/release-manifest.json")}
+
+
+def release(output):
+    from funnel_library import customer_outputs, generate
+
+    generate(check=True)
+    customer = customer_outputs()
+    source = Path(__file__).resolve().parents[2]
+    root = Path(output).resolve()
+    if root.exists():
+        raise ValueError("Release destination exists; retain/review it before creating another snapshot")
+    runtime_paths = [".claude-plugin/marketplace.json", "README.md", "plugin/.claude-plugin/plugin.json",
+                     "plugin/commands/start.md", "plugin/scripts/coach.py", "plugin/skills/campaign/SKILL.md",
+                     "plugin/skills/video/SKILL.md", "plugin/skills/video/references/criteria.md",
+                     "plugin/skills/delivery/SKILL.md"]
+    for name in runtime_paths:
+        if not (source / name).is_file() or (source / name).is_symlink():
+            raise ValueError(f"Missing or unsafe release file: {name}")
+    manifest = {"version": load(source / "plugin/.claude-plugin/plugin.json")["version"], "files": [],
+                "status": "Customer skill contains only runtime-accepted funnels; publication and installation are separate"}
+    for name in runtime_paths:
+        path = root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source / name, path)
+        manifest["files"].append({"path": name, "sha256": digest(path), "bytes": path.stat().st_size})
+    manifest_path = root / "docs/release-manifest.json"
+    for name, content in customer.items():
+        path = root / "plugin/skills/funnels" / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(content, encoding="utf-8")
+        manifest["files"].append({"path": str(path.relative_to(root)), "sha256": digest(path), "bytes": path.stat().st_size})
+    manifest_path.parent.mkdir(parents=True, exist_ok=True)
+    save(manifest_path, manifest)
+    return {"output": str(root), "files": len(manifest["files"]), "manifest": str(manifest_path)}
 
 
 def render(spec_path, output):
